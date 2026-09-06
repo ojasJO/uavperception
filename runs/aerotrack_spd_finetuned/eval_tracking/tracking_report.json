@@ -1,0 +1,462 @@
+{
+  "weights": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\weights\\best.pt",
+  "split": "val",
+  "datasets": [
+    "anti_uav",
+    "cst"
+  ],
+  "conf": 0.05,
+  "tracker": {
+    "track_thresh": 0.5,
+    "low_thresh": 0.1,
+    "track_buffer": 90
+  },
+  "bytetrack": {
+    "MOTA": 0.59759,
+    "IDF1_mean_per_sequence": 0.30985,
+    "id_switches": 578,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 457,
+    "false_positives": 1326,
+    "false_negatives": 1898,
+    "n_gt_boxes": 9448,
+    "n_gt_ids": 10,
+    "n_pred_ids": 279,
+    "n_sequences": 10
+  },
+  "sort": {
+    "MOTA": 0.64585,
+    "IDF1_mean_per_sequence": 0.31391,
+    "id_switches": 375,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 471,
+    "false_positives": 368,
+    "false_negatives": 2603,
+    "n_gt_boxes": 9448,
+    "n_gt_ids": 10,
+    "n_pred_ids": 258,
+    "n_sequences": 10
+  },
+  "per_sequence": [
+    {
+      "dataset": "anti_uav",
+      "sequence": "antiuav_val_20190925_101846_1_4__IR",
+      "frames": 1000,
+      "occluded_frames": 0,
+      "bytetrack": {
+        "MOTA": 0.725,
+        "IDF1": 0.07889,
+        "id_switches": 111,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 56,
+        "false_positives": 58,
+        "false_negatives": 106,
+        "n_gt_boxes": 1000,
+        "n_matched": 894,
+        "n_gt_ids": 1,
+        "n_pred_ids": 64,
+        "assoc_stats": {
+          "low_assoc": 33,
+          "reactivations": 86,
+          "new_tracks": 81
+        }
+      },
+      "sort": {
+        "MOTA": 0.771,
+        "IDF1": 0.08021,
+        "id_switches": 97,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 58,
+        "false_positives": 26,
+        "false_negatives": 106,
+        "n_gt_boxes": 1000,
+        "n_matched": 894,
+        "n_gt_ids": 1,
+        "n_pred_ids": 61,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 65,
+          "new_tracks": 80
+        }
+      }
+    },
+    {
+      "dataset": "anti_uav",
+      "sequence": "antiuav_val_20190925_101846_1_4__RGB",
+      "frames": 1000,
+      "occluded_frames": 0,
+      "bytetrack": {
+        "MOTA": 0.6,
+        "IDF1": 0.06628,
+        "id_switches": 118,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 59,
+        "false_positives": 167,
+        "false_negatives": 115,
+        "n_gt_boxes": 1000,
+        "n_matched": 885,
+        "n_gt_ids": 1,
+        "n_pred_ids": 94,
+        "assoc_stats": {
+          "low_assoc": 145,
+          "reactivations": 108,
+          "new_tracks": 108
+        }
+      },
+      "sort": {
+        "MOTA": 0.742,
+        "IDF1": 0.07132,
+        "id_switches": 101,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 64,
+        "false_positives": 32,
+        "false_negatives": 125,
+        "n_gt_boxes": 1000,
+        "n_matched": 875,
+        "n_gt_ids": 1,
+        "n_pred_ids": 73,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 71,
+          "new_tracks": 108
+        }
+      }
+    },
+    {
+      "dataset": "anti_uav",
+      "sequence": "antiuav_val_20190925_101846_1_5__IR",
+      "frames": 1000,
+      "occluded_frames": 0,
+      "bytetrack": {
+        "MOTA": 0.413,
+        "IDF1": 0.13316,
+        "id_switches": 95,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 29,
+        "false_positives": 425,
+        "false_negatives": 67,
+        "n_gt_boxes": 1000,
+        "n_matched": 933,
+        "n_gt_ids": 1,
+        "n_pred_ids": 31,
+        "assoc_stats": {
+          "low_assoc": 392,
+          "reactivations": 151,
+          "new_tracks": 35
+        }
+      },
+      "sort": {
+        "MOTA": 0.818,
+        "IDF1": 0.1728,
+        "id_switches": 44,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 30,
+        "false_positives": 47,
+        "false_negatives": 91,
+        "n_gt_boxes": 1000,
+        "n_matched": 909,
+        "n_gt_ids": 1,
+        "n_pred_ids": 32,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 34,
+          "new_tracks": 45
+        }
+      }
+    },
+    {
+      "dataset": "anti_uav",
+      "sequence": "antiuav_val_20190925_101846_1_5__RGB",
+      "frames": 1000,
+      "occluded_frames": 0,
+      "bytetrack": {
+        "MOTA": 0.659,
+        "IDF1": 0.16293,
+        "id_switches": 79,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 34,
+        "false_positives": 156,
+        "false_negatives": 106,
+        "n_gt_boxes": 1000,
+        "n_matched": 894,
+        "n_gt_ids": 1,
+        "n_pred_ids": 45,
+        "assoc_stats": {
+          "low_assoc": 150,
+          "reactivations": 72,
+          "new_tracks": 52
+        }
+      },
+      "sort": {
+        "MOTA": 0.799,
+        "IDF1": 0.17464,
+        "id_switches": 26,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 36,
+        "false_positives": 38,
+        "false_negatives": 137,
+        "n_gt_boxes": 1000,
+        "n_matched": 863,
+        "n_gt_ids": 1,
+        "n_pred_ids": 28,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 17,
+          "new_tracks": 51
+        }
+      }
+    },
+    {
+      "dataset": "anti_uav",
+      "sequence": "antiuav_val_20190925_130434_1_1__IR",
+      "frames": 1000,
+      "occluded_frames": 0,
+      "bytetrack": {
+        "MOTA": 0.779,
+        "IDF1": 0.39304,
+        "id_switches": 82,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 5,
+        "false_positives": 133,
+        "false_negatives": 6,
+        "n_gt_boxes": 1000,
+        "n_matched": 994,
+        "n_gt_ids": 1,
+        "n_pred_ids": 9,
+        "assoc_stats": {
+          "low_assoc": 88,
+          "reactivations": 73,
+          "new_tracks": 9
+        }
+      },
+      "sort": {
+        "MOTA": 0.893,
+        "IDF1": 0.41904,
+        "id_switches": 51,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 6,
+        "false_positives": 47,
+        "false_negatives": 9,
+        "n_gt_boxes": 1000,
+        "n_matched": 991,
+        "n_gt_ids": 1,
+        "n_pred_ids": 10,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 41,
+          "new_tracks": 10
+        }
+      }
+    },
+    {
+      "dataset": "cst",
+      "sequence": "cst_train_building_14",
+      "frames": 1100,
+      "occluded_frames": 243,
+      "bytetrack": {
+        "MOTA": 0.89382,
+        "IDF1": 0.94441,
+        "id_switches": 0,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 12,
+        "false_positives": 7,
+        "false_negatives": 84,
+        "n_gt_boxes": 857,
+        "n_matched": 773,
+        "n_gt_ids": 1,
+        "n_pred_ids": 1,
+        "assoc_stats": {
+          "low_assoc": 72,
+          "reactivations": 10,
+          "new_tracks": 1
+        }
+      },
+      "sort": {
+        "MOTA": 0.82614,
+        "IDF1": 0.90479,
+        "id_switches": 0,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 12,
+        "false_positives": 0,
+        "false_negatives": 149,
+        "n_gt_boxes": 857,
+        "n_matched": 708,
+        "n_gt_ids": 1,
+        "n_pred_ids": 1,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 11,
+          "new_tracks": 1
+        }
+      }
+    },
+    {
+      "dataset": "cst",
+      "sequence": "cst_train_building_4",
+      "frames": 1115,
+      "occluded_frames": 406,
+      "bytetrack": {
+        "MOTA": 0.89281,
+        "IDF1": 0.59867,
+        "id_switches": 1,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 2,
+        "false_positives": 5,
+        "false_negatives": 70,
+        "n_gt_boxes": 709,
+        "n_matched": 639,
+        "n_gt_ids": 1,
+        "n_pred_ids": 4,
+        "assoc_stats": {
+          "low_assoc": 79,
+          "reactivations": 0,
+          "new_tracks": 16
+        }
+      },
+      "sort": {
+        "MOTA": 0.78702,
+        "IDF1": 0.62951,
+        "id_switches": 1,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 11,
+        "false_positives": 3,
+        "false_negatives": 147,
+        "n_gt_boxes": 709,
+        "n_matched": 562,
+        "n_gt_ids": 1,
+        "n_pred_ids": 2,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 10,
+          "new_tracks": 16
+        }
+      }
+    },
+    {
+      "dataset": "cst",
+      "sequence": "cst_train_cn_mountains_15",
+      "frames": 1245,
+      "occluded_frames": 454,
+      "bytetrack": {
+        "MOTA": 0.32617,
+        "IDF1": 0.20017,
+        "id_switches": 10,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 57,
+        "false_positives": 55,
+        "false_negatives": 468,
+        "n_gt_boxes": 791,
+        "n_matched": 323,
+        "n_gt_ids": 1,
+        "n_pred_ids": 8,
+        "assoc_stats": {
+          "low_assoc": 185,
+          "reactivations": 68,
+          "new_tracks": 8
+        }
+      },
+      "sort": {
+        "MOTA": 0.20228,
+        "IDF1": 0.19262,
+        "id_switches": 13,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 38,
+        "false_positives": 6,
+        "false_negatives": 612,
+        "n_gt_boxes": 791,
+        "n_matched": 179,
+        "n_gt_ids": 1,
+        "n_pred_ids": 14,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 32,
+          "new_tracks": 16
+        }
+      }
+    },
+    {
+      "dataset": "cst",
+      "sequence": "cst_train_cn_mountains_17",
+      "frames": 1064,
+      "occluded_frames": 72,
+      "bytetrack": {
+        "MOTA": 0.49496,
+        "IDF1": 0.19763,
+        "id_switches": 43,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 77,
+        "false_positives": 82,
+        "false_negatives": 376,
+        "n_gt_boxes": 992,
+        "n_matched": 616,
+        "n_gt_ids": 1,
+        "n_pred_ids": 10,
+        "assoc_stats": {
+          "low_assoc": 227,
+          "reactivations": 93,
+          "new_tracks": 10
+        }
+      },
+      "sort": {
+        "MOTA": 0.3881,
+        "IDF1": 0.19904,
+        "id_switches": 18,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 87,
+        "false_positives": 31,
+        "false_negatives": 558,
+        "n_gt_boxes": 992,
+        "n_matched": 434,
+        "n_gt_ids": 1,
+        "n_pred_ids": 13,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 78,
+          "new_tracks": 16
+        }
+      }
+    },
+    {
+      "dataset": "cst",
+      "sequence": "cst_train_cn_mountains_18",
+      "frames": 1099,
+      "occluded_frames": 0,
+      "bytetrack": {
+        "MOTA": 0.29299,
+        "IDF1": 0.32335,
+        "id_switches": 39,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 126,
+        "false_positives": 238,
+        "false_negatives": 500,
+        "n_gt_boxes": 1099,
+        "n_matched": 599,
+        "n_gt_ids": 1,
+        "n_pred_ids": 13,
+        "assoc_stats": {
+          "low_assoc": 257,
+          "reactivations": 65,
+          "new_tracks": 13
+        }
+      },
+      "sort": {
+        "MOTA": 0.24386,
+        "IDF1": 0.29514,
+        "id_switches": 24,
+        "id_switches_at_occlusion_reentry": 0,
+        "fragmentations": 129,
+        "false_positives": 138,
+        "false_negatives": 669,
+        "n_gt_boxes": 1099,
+        "n_matched": 430,
+        "n_gt_ids": 1,
+        "n_pred_ids": 24,
+        "assoc_stats": {
+          "low_assoc": 0,
+          "reactivations": 71,
+          "new_tracks": 25
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+# AeroTrack-Net ABLATION CONTROL  --  identical network, stock stride-2 Conv
+# ---------------------------------------------------------------------------
+#  This is `yolo11-spd.yaml` with the five SPDConv downsamplers reverted to
+#  ordinary stride-2 `Conv`. Nothing else changes: same 9-channel input, same
+#  depth/width multipliers, same layer indices, same neck, same head, same
+#  training recipe.
+#
+#  It exists to answer one question and only one: does space-to-depth actually
+#  buy anything on 9-px targets, or is the rest of the pipeline doing the work?
+#  Compare `micro` AP specifically (evaluation.py -> by_size.micro) — aggregate
+#  mAP is dominated by large targets and will barely move either way, which is
+#  precisely why the stratified metric exists.
+#
+#  Prediction from Review 1: at P3/8 a strided backbone delivers ~1/64 of the
+#  original target samples to the detection head; SPD delivers all of them. If
+#  that argument is right, the gap shows up here and nowhere else.
+
+nc: 2                 # 0 = uav_drone, 1 = bird_hard_negative
+ch: 9                 # 9-channel spatio-temporal input (t-1, t, t+1)
+
+depth_multiple: 0.50
+width_multiple: 0.25
+max_channels: 1024
+
+# ------------------------------- Backbone ---------------------------------- #
+# [from, repeats, module, args]
+backbone:
+  - [-1, 1, Conv, [64, 3, 2]]            # 0-P1/2    <- stride-2 (was SPDConv)
+  - [-1, 1, Conv, [128, 3, 2]]           # 1-P2/4    <- stride-2 (was SPDConv)
+  - [-1, 2, C3k2, [256, False, 0.25]]    # 2
+  - [-1, 1, Conv, [256, 3, 2]]           # 3-P3/8    <- stride-2 (was SPDConv)
+  - [-1, 2, C3k2, [512, False, 0.25]]    # 4
+  - [-1, 1, Conv, [512, 3, 2]]           # 5-P4/16   <- stride-2 (was SPDConv)
+  - [-1, 2, C3k2, [512, True]]           # 6
+  - [-1, 1, Conv, [1024, 3, 2]]          # 7-P5/32   <- stride-2 (was SPDConv)
+  - [-1, 2, C3k2, [1024, True]]          # 8
+  - [-1, 1, SPPF, [1024, 5]]             # 9
+  - [-1, 2, C2PSA, [1024]]               # 10
+
+# --------------------------- Neck + Head (intact) -------------------------- #
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 6], 1, Concat, [1]]            # cat backbone P4
+  - [-1, 2, C3k2, [512, False]]          # 13
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 4], 1, Concat, [1]]            # cat backbone P3
+  - [-1, 2, C3k2, [256, False]]          # 16 (P3/8-small)
+
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 13], 1, Concat, [1]]           # cat head P4
+  - [-1, 2, C3k2, [512, False]]          # 19 (P4/16-medium)
+
+  - [-1, 1, Conv, [512, 3, 2]]
+  - [[-1, 10], 1, Concat, [1]]           # cat head P5
+  - [-1, 2, C3k2, [1024, True]]          # 22 (P5/32-large)
+
+  - [[16, 19, 22], 1, Detect, [nc]]      # Detect(P3, P4, P5)

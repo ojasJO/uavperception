@@ -1,0 +1,67 @@
+# AeroTrack-Net v2  --  SPD-Conv backbone + 9-channel input + P2/4 DETECTION HEAD
+# ---------------------------------------------------------------------------
+#  Why a fourth, finer detection scale (00_TRAINING_ROADMAP.md §4.4):
+#
+#  The median CST target is 9.5 x 9.5 px. At the P3/8 stride of the stock head
+#  that target spans ~1.2 grid cells, so Ultralytics' TaskAlignedAssigner has
+#  barely one candidate anchor to hand it — and when the top-k selection finds
+#  no well-aligned anchor, the target contributes almost nothing to the loss.
+#  The detector is not failing to *see* the drone; it is failing to *assign* it.
+#
+#  A P2/4 scale quadruples the anchor density over small objects (160x160 grid
+#  instead of 80x80), which is the standard fix in the small-object literature.
+#  It costs memory and latency, so this is the A/B variant, not the default:
+#  train `yolo11-spd.yaml` first, then this, and compare micro-AP specifically.
+#
+#  Backbone is byte-identical to yolo11-spd.yaml so the comparison is clean —
+#  only the neck/head differ.
+
+nc: 2                 # 0 = uav_drone, 1 = bird_hard_negative
+ch: 9                 # 9-channel spatio-temporal input (t-g, t, t+g)
+
+depth_multiple: 0.50
+width_multiple: 0.25
+max_channels: 1024
+
+# ------------------------------- Backbone ---------------------------------- #
+# [from, repeats, module, args]
+backbone:
+  - [-1, 1, SPDConv, [64, 3]]            # 0-P1/2   (9  -> 64,  640->320)
+  - [-1, 1, SPDConv, [128, 3]]           # 1-P2/4   (      ->128, 320->160)
+  - [-1, 2, C3k2, [256, False, 0.25]]    # 2        <- P2/4 feature, now used
+  - [-1, 1, SPDConv, [256, 3]]           # 3-P3/8   (160->80)
+  - [-1, 2, C3k2, [512, False, 0.25]]    # 4        <- P3/8 feature
+  - [-1, 1, SPDConv, [512, 3]]           # 5-P4/16  (80->40)
+  - [-1, 2, C3k2, [512, True]]           # 6        <- P4/16 feature
+  - [-1, 1, SPDConv, [1024, 3]]          # 7-P5/32  (40->20)
+  - [-1, 2, C3k2, [1024, True]]          # 8
+  - [-1, 1, SPPF, [1024, 5]]             # 9
+  - [-1, 2, C2PSA, [1024]]               # 10       <- P5/32 feature
+
+# ------------------------ Neck + Head (P2/P3/P4/P5) ------------------------ #
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]   # 11
+  - [[-1, 6], 1, Concat, [1]]                     # 12  cat backbone P4
+  - [-1, 2, C3k2, [512, False]]                   # 13
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]    # 14
+  - [[-1, 4], 1, Concat, [1]]                     # 15  cat backbone P3
+  - [-1, 2, C3k2, [256, False]]                   # 16
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]    # 17
+  - [[-1, 2], 1, Concat, [1]]                     # 18  cat backbone P2
+  - [-1, 2, C3k2, [128, False]]                   # 19 (P2/4-xsmall)  <- NEW
+
+  - [-1, 1, Conv, [128, 3, 2]]                    # 20
+  - [[-1, 16], 1, Concat, [1]]                    # 21
+  - [-1, 2, C3k2, [256, False]]                   # 22 (P3/8-small)
+
+  - [-1, 1, Conv, [256, 3, 2]]                    # 23
+  - [[-1, 13], 1, Concat, [1]]                    # 24
+  - [-1, 2, C3k2, [512, False]]                   # 25 (P4/16-medium)
+
+  - [-1, 1, Conv, [512, 3, 2]]                    # 26
+  - [[-1, 10], 1, Concat, [1]]                    # 27
+  - [-1, 2, C3k2, [1024, True]]                   # 28 (P5/32-large)
+
+  - [[19, 22, 25, 28], 1, Detect, [nc]]           # Detect(P2, P3, P4, P5)

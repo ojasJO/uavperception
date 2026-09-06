@@ -1,0 +1,70 @@
+# ==============================================================================
+# AeroTrack-Net Git Ignore Rules
+# ==============================================================================
+
+# Python & Virtual Environments
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Datasets (Strictly excluded - research data hosted externally)
+data/
+datasets/
+b_pipeline/data_unified/
+*.zip
+*.tar
+*.gz
+*.z01
+*.z02
+*.z03
+*.z04
+*.z05
+*.z06
+*.z07
+
+# Machine-Specific Setup, Hardware Notes & Transfer Scratch Files
+00_OMEN_SETUP.md
+00_PROJECT_JOURNAL.md
+00_TRAINING_ROADMAP.md
+TRANSFER_TO_OMEN.md
+requirements_omen.txt
+rebuild_junctions.py
+run.bat
+pyrightconfig.json
+
+# Local inspection artifacts and intermediate caches
+a_inspection/artifacts/
+a_inspection/logs/
+
+# IDE & Editor Configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Notebook checkpoints and backups
+.ipynb_checkpoints/
+*.ipynb.bak
+*.ipynb.prebg.bak
+_nbtest.ipynb
+train_executed.ipynb
+
+# Local training background logs and temp directories
+runs/_bg/
+runs/s0_overfit/
+runs/s1_smoke/
+runs/snapshots/
+runs/**/*.log
+logs/
+*.log
+
+# Large weight files (Keep repository lightweight; weights can be hosted via releases)
+runs/**/weights/
+c_model/yolo11n.pt

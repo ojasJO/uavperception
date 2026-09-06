@@ -1,0 +1,17 @@
+# AeroTrack-Net dataset metadata (class definitions only).
+# NOTE: the actual training/val samples are served by the manifest-driven
+# AeroTrackTrainer (see train.py -> build_dataset / get_dataloader), which reads
+# b_pipeline/data_unified/manifest.csv and stacks t-1/t/t+1 into 9-channel
+# tensors. The `train`/`val` paths below are placeholders to satisfy tooling;
+# they are NOT scanned for YOLO-format images.
+
+path: ../b_pipeline/data_unified
+train: anti_uav/images        # placeholder (samples come from manifest.csv)
+val: cst/images               # placeholder (samples come from manifest.csv)
+
+nc: 2
+names:
+  0: uav_drone
+  1: bird_hard_negative
+
+channels: 9                   # 3 RGB x 3 temporal frames (t-1, t, t+1)
