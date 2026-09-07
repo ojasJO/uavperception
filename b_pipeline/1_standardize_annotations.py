@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# --*-- coding: utf-8 --*--
 """
 1_standardize_annotations.py  --  Phase B, Step 2: Unified Label Converter
 =========================================================================
