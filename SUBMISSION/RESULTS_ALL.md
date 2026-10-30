@@ -129,7 +129,7 @@ Drone-class AP50. `stock` = single frame; `sym_g4` = symmetric window [t−4, t,
 | v2_sym_g4_s0_e20 | sym_g4 | 0 | 0.678 | 0.979 | 0.440 | 0.803 | 0.552 | 0.353 |
 | v2_sym_g4_s1_e20 | sym_g4 | 1 | 0.669 | 0.981 | 0.485 | 0.806 | 0.539 | 0.343 |
 | gen_temporal_fp_g4_full_e20 | temporal_fp_g4 | 0 | 0.599 | 0.980 | 0.498 | 0.784 | 0.462 | 0.238 |
-| omen_v2_stock_s0_e20 | stock | 0 | 0.566 | 0.977 | 0.471 | 0.758 | 0.450 | 0.285 |
+| laptop_v2_stock_s0_e20 | stock | 0 | 0.566 | 0.977 | 0.471 | 0.758 | 0.450 | 0.285 |
 
 Source: `experiments/aerotrack_v2/hpc/reports/v2_results.json`.
 

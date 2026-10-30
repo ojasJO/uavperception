@@ -56,7 +56,7 @@ weights sha256 `d26641b2cedb…`, set `37e944793773…` (corpus v1, CST train tr
 | run | config | seed | CST AP50 | Anti-UAV AP50 | Det-Fly AP50 | pooled AP50 | CST micro AP50 | CST urban-areas |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
 | gen_temporal_fp_g4_full_e20 | temporal_fp_g4 | 0 | 0.599 | 0.980 | 0.498 | 0.784 | 0.462 | 0.238 |
-| omen_v2_stock_s0_e20 | stock | 0 | 0.566 | 0.977 | 0.471 | 0.758 | 0.450 | 0.285 |
+| laptop_v2_stock_s0_e20 | stock | 0 | 0.566 | 0.977 | 0.471 | 0.758 | 0.450 | 0.285 |
 | v2_stock_s0_e20 | stock | 0 | 0.564 | 0.979 | 0.472 | 0.755 | 0.454 | 0.276 |
 | v2_sym_g4_s0_e20 | sym_g4 | 0 | 0.678 | 0.979 | 0.440 | 0.803 | 0.552 | 0.353 |
 | v2_causal_g4_s0_e20 | causal_g4 | 0 | 0.676 | 0.982 | 0.445 | 0.805 | 0.555 | 0.377 |

@@ -205,7 +205,7 @@ def main():
           "- Single laptop GPU: 1–2 seeds per configuration, 20-epoch budget; HPC access was not available.",
           "- Anti-UAV VAL shares recording sessions with TRAIN (optimistic for Anti-UAV); Det-Fly VAL is near-duplicate of TRAIN.",
           "- The temporal window helps static-camera thermal data (CST); gimbal footage (Anti-UAV) gains nothing measurable.",
-          "", "## 17. Future work", "", "- Pending campaigns listed in `progress/RESEARCH_PROGRAM_PROGRESS.md` (v3 capacity, cross-domain, more seeds).", "",
+          "", "## 17. Future work", "", "- Pending campaigns listed in `docs/progress/RESEARCH_PROGRAM_PROGRESS.md` (v3 capacity, cross-domain, more seeds).", "",
           "## 18. Reproducibility", "", "Registry `artifacts/experiment_registry.json` (git commit, config hash, data / split hashes, seed, checkpoint "
           "SHA-256, environment per run); environments `environments/`; every report regenerable by its named script."]
     (REPO / "docs" / "AEROTRACK_RESEARCH_REPORT.md").write_text("\n".join(L) + "\n", encoding="utf-8")

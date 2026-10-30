@@ -116,7 +116,7 @@ Direction B tracker (Anti-UAV 2021 paper reproduction)
     v2_sym_g4_s1_e20           0.8056      0.6689     0.5387      0.9814     0.4847    0.6446
     v2_stock_s0_e20            0.7552      0.5636     0.4537      0.9787     0.4720    0.6337
     v2_stock_s1_e20            0.7678      0.5761     0.4743      0.9814     0.5013    0.6529
-    omen_v2_stock_s0_e20       0.7579      0.5662     0.4498      0.9768     0.4708    0.6423
+    laptop_v2_stock_s0_e20       0.7579      0.5662     0.4498      0.9768     0.4708    0.6423
     gen_temporal_fp_g4_full    0.7839      0.5992     0.4621      0.9801     0.4981    0.6611   (previous detector)
 
 3.3 CF final system (v2_causal_g4_s0_e20 last.pt + STE) - single registered TEST pass

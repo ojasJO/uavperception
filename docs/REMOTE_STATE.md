@@ -100,7 +100,7 @@ Side effect: Ultralytics migrated the user's pre-existing `~/.config/Ultralytics
 - Sparse checkout excludes the OMEN's v2 artifacts (`runs/v2_stock_s0_e20/`, `runs/v2_sym_g4_s0_e20/`,
   `runs/v2_causal_g4_s0_e2_smoke/`, `runs/aerotrack_v2/`, `experiments/aerotrack_v2/{ledger.jsonl,reports/v2_results*.json}`)
   so the series re-runs from scratch under its registered names (amendment A1). Re-hosted OMEN checkpoints for evaluation only:
-  `runs/omen_v2_stock_s0_e20/` (HC1), `runs/gen_temporal_fp_g4_full_e20/weights/` (v1 reference).
+  `runs/laptop_v2_stock_s0_e20/` (HC1), `runs/gen_temporal_fp_g4_full_e20/weights/` (v1 reference).
 
 ## 8. Practical GPU capacity (2026-10-06 ~02:00)
 Of 5 V100s: node03 free; head node GPU used by another user's process (01:55); node04 GPU used by another user's CPU-only job;

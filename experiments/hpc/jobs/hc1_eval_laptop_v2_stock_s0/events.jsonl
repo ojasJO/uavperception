@@ -1,0 +1,4 @@
+{"t": "2026-10-06T04:40:59+0530", "job": "hc1_eval_laptop_v2_stock_s0", "kind": "submitted", "pbs_job": "92845.amritahpc", "host": "node03", "ncpus": 4, "mem_gb": 32, "walltime": "01:00:00", "gpu": 1, "stage": 1, "depend": "", "commit": "9fff89a9777e74d72dbf7a50984c317ff4318838"}
+{"t": "2026-10-06T04:41:01+0530", "job": "hc1_eval_laptop_v2_stock_s0", "kind": "start", "pbs_job": "92845.amritahpc", "host": "node03"}
+{"t": "2026-10-06T04:41:05+0530", "job": "hc1_eval_laptop_v2_stock_s0", "kind": "run", "cmd": "python experiments/aerotrack_v2/scripts/eval_v2.py --run laptop_v2_stock_s0_e20"}
+{"t": "2026-10-06T04:46:28+0530", "job": "hc1_eval_laptop_v2_stock_s0", "kind": "end", "rc": 0, "minutes": 5}

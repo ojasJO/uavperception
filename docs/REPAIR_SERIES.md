@@ -13,9 +13,9 @@
 This repository holds **two research directions** that share one workspace but never one result row:
 
 - **Direction A — AeroTrack**, a multi-source research system (temporal-window detector, single-target state estimator, Track C
-  forecasting, deployment), evaluated under the CST Anti-UAV benchmark protocol among others: `research/aero_multi_paper/README.md`.
+  forecasting, deployment), evaluated under the CST Anti-UAV benchmark protocol among others: `docs/research/aero_multi_paper/README.md`.
 - **Direction B — the reproduction of *Anti-UAV* (Jiang et al., arXiv:2101.08466)**, DFSC training on GlobalTrack:
-  `research/anti_uav_paper_reproduction/README.md`.
+  `docs/research/anti_uav_paper_reproduction/README.md`.
 
 | to… | use |
 |---|---|

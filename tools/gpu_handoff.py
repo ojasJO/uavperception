@@ -2,7 +2,7 @@
 """GPU hand-off after the corpus-v2 gate (run as a job of tools/chains/gpu_handoff.json, which waits for runs/_chains/corpus_v2).
 
 The user's 2026-10-05 instruction: once the corpus-v2 verification gate is satisfied, proceed with the complete-CST corpus and the
-pre-registered v2 campaign (v2 has GPU priority over the Anti-UAV H3 remainder; reasons in progress/RESEARCH_PROGRAM_PROGRESS.md).
+pre-registered v2 campaign (v2 has GPU priority over the Anti-UAV H3 remainder; reasons in docs/progress/RESEARCH_PROGRAM_PROGRESS.md).
 Steps, each recorded in runs/_chains/gpu_handoff/handoff.json:
   1. experiments/cst_completion/reports/corpus_v2.json must say verdict OK (else exit 1: nothing is launched, H3 continues).
   2. H3 yields the GPU at its next arm boundary: write experiments/anti_uav/runs/_h3_optimisation/PAUSE_AFTER_ARM (reason inside).

@@ -14,7 +14,7 @@ venv\Scripts\python.exe -c "import sys; sys.path.insert(0,'.'); from aerolab.hea
 Verified: CUDA available, RTX 5050 Laptop (8 GB). Without CUDA, detector and GlobalTrack inference fall back to CPU (correct but slow);
 forecasters always run on CPU. To simulate a machine without CUDA, set `CUDA_VISIBLE_DEVICES=-1`; an empty value does not
 hide the GPU on this Windows setup. TensorRT is not importable in this venv, so the TensorRT engines are registered but not runnable from
-the studio. The environment freeze is in `environments/omen_venv_freeze_2026-10-05.txt` (HPC: `artifacts/hpc_recovery_20261013/aerotrack_server/environments/at311_freeze.txt`).
+the studio. The environment freeze is in `environments/venv_freeze_2026-10-05.txt` (HPC: `artifacts/hpc_recovery_20261013/aerotrack_server/environments/at311_freeze.txt`).
 
 ## 2. Launch / stop the studio
 

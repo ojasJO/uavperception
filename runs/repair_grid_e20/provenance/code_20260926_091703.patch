@@ -1642,10 +1642,10 @@ index d3566c0..7cf7c69 100644
      sys.exit(rc)
  
  
-diff --git a/progress/AEROTRACK_REPAIR_PROGRESS.md b/progress/AEROTRACK_REPAIR_PROGRESS.md
+diff --git a/docs/progress/AEROTRACK_REPAIR_PROGRESS.md b/docs/progress/AEROTRACK_REPAIR_PROGRESS.md
 index 1071f13..a801ed3 100644
---- a/progress/AEROTRACK_REPAIR_PROGRESS.md
-+++ b/progress/AEROTRACK_REPAIR_PROGRESS.md
+--- a/docs/progress/AEROTRACK_REPAIR_PROGRESS.md
++++ b/docs/progress/AEROTRACK_REPAIR_PROGRESS.md
 @@ -37,8 +37,16 @@ runs/aerotrack_spd_finetuned/eval_val/*) are left untouched and uncommitted.
    `docs/historical/README_review2.md`); `docs/AEROTRACK_REPAIR_REPORT.md` lists the 14 plan items with status.
    Attribution rule for the grid pre-registered in the script (> 0.02 AP50 on both best.pt and last.pt).

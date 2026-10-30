@@ -1,7 +1,7 @@
 # DECISIONS — engineering and scientific decisions (append-only)
 
-*Earlier decisions (2026-09 → 2026-10-05) are recorded in `progress/RESEARCH_PROGRAM_PROGRESS.md` §Decisions,
-`progress/AEROTRACK_REPAIR_PROGRESS.md`, `progress/ANTI_UAV_PROGRESS.md` and the series reports; they remain valid unless
+*Earlier decisions (2026-09 → 2026-10-05) are recorded in `docs/progress/RESEARCH_PROGRAM_PROGRESS.md` §Decisions,
+`docs/progress/AEROTRACK_REPAIR_PROGRESS.md`, `docs/progress/ANTI_UAV_PROGRESS.md` and the series reports; they remain valid unless
 superseded below. Format: id · date · decision · evidence · alternatives · why.*
 
 ---

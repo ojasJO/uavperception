@@ -24,8 +24,8 @@
   "all_runs_retrained": "stock / sym_g4 / causal_g4 x seeds (0, 1 per the futility rule) are trained on the HPC; the OMEN runs v2_stock_s0_e20 (complete, VAL-scored) and v2_sym_g4_s0_e20 (interrupted at epoch 10/20, never scored) are historical evidence and enter no registered comparison",
   "v1_reference": "gen_temporal_fp_g4_full_e20 (trained on the OMEN, bf16) is re-evaluated on the HPC VAL set (evaluation only) for the within-host baseline row; comparison C4 therefore also contains a training-host difference -> C4 is reported with the host checks below",
   "host_checks": {
-   "HC1_eval_host": "evaluate the OMEN-trained checkpoint v2_stock_s0_e20/last.pt on the HPC under the run name omen_v2_stock_s0_e20 and compare its VAL metrics with the OMEN evaluation of the same weights (experiments/aerotrack_v2/reports/v2_results.json): expected |delta| <= 0.005 AP50 (precision of evaluation only)",
-   "HC2_train_host": "descriptive: HPC-trained v2_stock_s0_e20 vs omen_v2_stock_s0_e20, both evaluated on the HPC = training-host + run-to-run effect (one sample; reported, never used for a decision)"
+   "HC1_eval_host": "evaluate the OMEN-trained checkpoint v2_stock_s0_e20/last.pt on the HPC under the run name laptop_v2_stock_s0_e20 and compare its VAL metrics with the OMEN evaluation of the same weights (experiments/aerotrack_v2/reports/v2_results.json): expected |delta| <= 0.005 AP50 (precision of evaluation only)",
+   "HC2_train_host": "descriptive: HPC-trained v2_stock_s0_e20 vs laptop_v2_stock_s0_e20, both evaluated on the HPC = training-host + run-to-run effect (one sample; reported, never used for a decision)"
   }
  },
  "anti_uav_h3_specifics": {

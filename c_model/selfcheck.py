@@ -56,7 +56,7 @@ PY_FILES = sorted(
     [p for p in (ROOT / "a_inspection").glob("*.py")] +
     [ROOT / "rebuild_junctions.py"]
 )
-NOTEBOOK = ROOT / "train.ipynb"
+NOTEBOOK = ROOT / "notebooks" / "train.ipynb"
 
 # Modules that must be importable, in dependency order.
 IMPORT_ORDER = ["custom_modules", "stacked_dataset", "imbalance_sampler",

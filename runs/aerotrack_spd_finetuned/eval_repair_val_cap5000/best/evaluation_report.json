@@ -244,7 +244,7 @@
         "assets/temporal_motion_demo.gif",
         "audit/",
         "experiments/aerotrack_repair/",
-        "progress/AEROTRACK_REPAIR_PROGRESS.md",
+        "docs/progress/AEROTRACK_REPAIR_PROGRESS.md",
         "rev2.ipynb",
         "runs/aerotrack_spd_finetuned/eval_repair_val_cap5000/",
         "runs/aerotrack_spd_v1/eval_repair_val_cap5000/",

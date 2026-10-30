@@ -2698,8 +2698,8 @@
         "experiments/anti_uav/runs/largescale_globaltrack/",
         "experiments/anti_uav/runs/normal_ir/eval_val_IR_last_hpc_HC3/",
         "experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/eval_val_IR_last/",
-        "runs/aerotrack_v2/_cache/omen_v2_stock_s0_e20__val.pkl",
-        "runs/omen_v2_stock_s0_e20/"
+        "runs/aerotrack_v2/_cache/laptop_v2_stock_s0_e20__val.pkl",
+        "runs/laptop_v2_stock_s0_e20/"
       ]
     },
     "seed": 0,

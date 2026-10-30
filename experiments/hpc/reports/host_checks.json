@@ -3,7 +3,7 @@
   {
    "weights": "5bba24c8dece",
    "omen_run": "v2_stock_s0_e20",
-   "hpc_run": "omen_v2_stock_s0_e20",
+   "hpc_run": "laptop_v2_stock_s0_e20",
    "omen": {
     "cst_drone_AP50": 0.5672566631130314,
     "anti_uav_drone_AP50": 0.9763810525310054,

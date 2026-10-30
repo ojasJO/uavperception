@@ -43,7 +43,7 @@ The Flight Deck (2026-10-13) is described in `docs/workspace/FLIGHT_DECK.md`; it
 | registry `direction` | `aerotrack` | `antiuav_repro` |
 | code | `c_model/`, `b_pipeline/`, `experiments/aerotrack_*`, `systems`, `deployment`, `cst_anti_uav` | `experiments/anti_uav/` |
 | adapters | `aerotrack_detector`, `trackc_forecaster` | `globaltrack_repro` |
-| README | `research/aero_multi_paper/README.md` | `research/anti_uav_paper_reproduction/README.md` |
+| README | `docs/research/aero_multi_paper/README.md` | `docs/research/anti_uav_paper_reproduction/README.md` |
 
 Shared (`direction = shared`): the CST benchmark protocol and its 21 released baselines (reproduced from the authors' predictions),
 COCO YOLO11 bases, the official GlobalTrack weights. Shared *software*: registry, schemas, evaluation service, metric code (Track A's

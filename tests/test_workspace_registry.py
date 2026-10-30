@@ -213,7 +213,7 @@ class Locks(unittest.TestCase):
 
 
 class Docs(unittest.TestCase):
-    DOCS = ("README.md", "research/aero_multi_paper/README.md", "research/anti_uav_paper_reproduction/README.md",
+    DOCS = ("README.md", "docs/research/aero_multi_paper/README.md", "docs/research/anti_uav_paper_reproduction/README.md",
             "docs/workspace/ARCHITECTURE.md", "docs/workspace/OPERATING_GUIDE.md", "docs/workspace/INITIAL_AUDIT.md", "registry/README.md")
 
     def test_cited_paths_exist(self):

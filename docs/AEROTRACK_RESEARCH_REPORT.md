@@ -140,7 +140,7 @@ Per-dataset and per-scene-category AP are reported in every campaign; training-d
 
 ## 17. Future work
 
-- Pending campaigns listed in `progress/RESEARCH_PROGRAM_PROGRESS.md` (v3 capacity, cross-domain, more seeds).
+- Pending campaigns listed in `docs/progress/RESEARCH_PROGRAM_PROGRESS.md` (v3 capacity, cross-domain, more seeds).
 
 ## 18. Reproducibility
 

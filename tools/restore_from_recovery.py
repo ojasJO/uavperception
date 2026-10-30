@@ -26,7 +26,7 @@ PROTECTED = ("runs/_deploy/", "runs/tmp_wheels/", "runs/v2_causal_g4_s0_e20/")
 # backup path prefix (relative to aerotrack_server/source/) -> why it is restored
 SELECTION = {
     **{f"runs/{d}/": "HPC-trained detector run present only in the backup" for d in (
-        "omen_v2_stock_s0_e20", "v2_causal_g1_s0_e20", "v2_causal_g1_s1_e20", "v2_causal_g2_s0_e20", "v2_causal_g2_s1_e20",
+        "laptop_v2_stock_s0_e20", "v2_causal_g1_s0_e20", "v2_causal_g1_s1_e20", "v2_causal_g2_s0_e20", "v2_causal_g2_s1_e20",
         "v2_causal_g4_s1_e20", "v2_causal_g8_s0_e20", "v2_causal_g8_s1_e20", "v2_stock_s1_e20", "v2_sym_g4_s1_e20",
         "v3_n__causal_g4_cst_s0_e20", "v3_n__causal_g4_cst_s1_e20", "v3_n__causal_g4_cst_s2_e20",
         "v3_n__ttt_cst_s0_e20", "v3_n__ttt_cst_s1_e20", "v3_n__ttt_cst_s2_e20",

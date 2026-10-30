@@ -2,7 +2,7 @@
 
 | environment | where | what | record |
 |---|---|---|---|
-| OMEN research + deployment venv | `venv/` (local only) | Python 3.11.9, torch 2.13.0+cu130, Ultralytics 8.4.115, RTX 5050 (sm_120), driver 592.19 | `omen_venv_freeze_2026-10-05.txt` |
+| OMEN research + deployment venv | `venv/` (local only) | Python 3.11.9, torch 2.13.0+cu130, Ultralytics 8.4.115, RTX 5050 (sm_120), driver 592.19 | `venv_freeze_2026-10-05.txt` |
 | remote HPC | not available (no access details on this machine) | — | — |
 
 Changes made by the research program (purely additive; no existing package changed — verified with pip dry runs):

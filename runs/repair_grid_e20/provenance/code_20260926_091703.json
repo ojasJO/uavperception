@@ -14,7 +14,7 @@
     " M experiments/aerotrack_repair/scripts/evaluate_detector.py",
     " M experiments/aerotrack_repair/scripts/render_report.py",
     " M experiments/aerotrack_repair/scripts/train_ablation.py",
-    " M progress/AEROTRACK_REPAIR_PROGRESS.md",
+    " M docs/progress/AEROTRACK_REPAIR_PROGRESS.md",
     "?? experiments/aerotrack_repair/reports/ablation_grid_e20.json",
     "?? experiments/aerotrack_repair/reports/ablation_grid_e20.md",
     "?? experiments/aerotrack_repair/reports/detector_test_cap5000.json",

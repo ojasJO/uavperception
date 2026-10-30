@@ -50,7 +50,7 @@ def git_state():
 
 def environment_reference(device):
     ref = {"python": platform.python_version(), "platform": platform.platform(), "device": device,
-           "venv_freeze_reference": "environments/omen_venv_freeze_2026-10-05.txt"}
+           "venv_freeze_reference": "environments/venv_freeze_2026-10-05.txt"}
     try:
         import torch
         ref.update(torch=torch.__version__, cuda=torch.version.cuda, gpu=torch.cuda.get_device_name(0) if torch.cuda.is_available() else None)

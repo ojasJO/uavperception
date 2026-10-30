@@ -19,7 +19,7 @@
       "experiments/anti_uav/runs/_h3_optimisation/RUNNING",
       "experiments/anti_uav/runs/largescale_globaltrack/",
       "experiments/anti_uav/runs/normal_ir/eval_val_IR_last_hpc_HC3/",
-      "runs/omen_v2_stock_s0_e20/"
+      "runs/laptop_v2_stock_s0_e20/"
     ]
   },
   "env": {

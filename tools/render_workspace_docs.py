@@ -68,7 +68,7 @@ def antiuav(R):
             "`experiments/anti_uav/reports/FINAL_PROTOCOL_II_IR_BENCHMARK_REPORT.md`.")
 
 
-TARGETS = {"research/aero_multi_paper/README.md": aerotrack, "research/anti_uav_paper_reproduction/README.md": antiuav}
+TARGETS = {"docs/research/aero_multi_paper/README.md": aerotrack, "docs/research/anti_uav_paper_reproduction/README.md": antiuav}
 
 
 def main():

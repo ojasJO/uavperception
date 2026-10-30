@@ -22,16 +22,16 @@ def rows(rel):
 def main():
     omen, hpc = rows("experiments/aerotrack_v2/reports/v2_results.json"), rows("experiments/aerotrack_v2/hpc/reports/v2_results.json")
     out = {"HC1": [], "HC2": None, "HC3": None}
-    for o_name, h_name in (("v2_stock_s0_e20", "omen_v2_stock_s0_e20"), ("gen_temporal_fp_g4_full_e20", "gen_temporal_fp_g4_full_e20")):
+    for o_name, h_name in (("v2_stock_s0_e20", "laptop_v2_stock_s0_e20"), ("gen_temporal_fp_g4_full_e20", "gen_temporal_fp_g4_full_e20")):
         if o_name in omen and h_name in hpc:
             assert omen[o_name]["weights_sha256"] == hpc[h_name]["weights_sha256"], "HC1 must compare identical weights"
             d = {k: hpc[h_name]["metrics"][k] - omen[o_name]["metrics"][k] for k in KEYS}
             out["HC1"].append({"weights": omen[o_name]["weights_sha256"][:12], "omen_run": o_name, "hpc_run": h_name,
                                "omen": {k: omen[o_name]["metrics"][k] for k in KEYS}, "hpc": {k: hpc[h_name]["metrics"][k] for k in KEYS},
                                "delta": d, "pass": all(abs(v) <= 0.005 for v in d.values())})
-    if "v2_stock_s0_e20" in hpc and "omen_v2_stock_s0_e20" in hpc:
+    if "v2_stock_s0_e20" in hpc and "laptop_v2_stock_s0_e20" in hpc:
         out["HC2"] = {"descriptive_only": True, "delta_hpc_trained_minus_omen_trained":
-                      {k: hpc["v2_stock_s0_e20"]["metrics"][k] - hpc["omen_v2_stock_s0_e20"]["metrics"][k] for k in KEYS}}
+                      {k: hpc["v2_stock_s0_e20"]["metrics"][k] - hpc["laptop_v2_stock_s0_e20"]["metrics"][k] for k in KEYS}}
     a = REPO / "experiments/anti_uav/runs/normal_ir/eval_val_IR_last_hpc_HC3/metrics.json"
     b = REPO / "experiments/anti_uav/runs/normal_ir/eval_val_IR_last/metrics.json"
     if a.exists() and b.exists():

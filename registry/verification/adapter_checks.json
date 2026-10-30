@@ -635,13 +635,13 @@
    ],
    "seconds": 0.4
   },
-  "aerotrack.detector.v2:omen_v2_stock_s0_e20@last": {
+  "aerotrack.detector.v2:laptop_v2_stock_s0_e20@last": {
    "checked": "2026-10-13T19:01:40+05:30",
    "sha256": "5bba24c8dece77a1657605b68d63bbdd29dc4f37200391649c9360269f6d7bc1",
    "load": "passed",
    "device": "cuda",
    "load_seconds": 0.18,
-   "weights_path": "runs/omen_v2_stock_s0_e20/weights/last.pt",
+   "weights_path": "runs/laptop_v2_stock_s0_e20/weights/last.pt",
    "inference": "passed",
    "sample": "CST VAL building_41, 8 frames",
    "deterministic": true,

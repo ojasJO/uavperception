@@ -70,7 +70,7 @@ incidents are summarised at the end with pointers to their full records.*
 | 2026-08-04 | CST archive delivered as 7 of 11 parts; sequence-key collision; Anti-UAV 9.6 % materialised | `docs/PROJECT_KNOWLEDGE.md` §B; `00_PROJECT_JOURNAL.md` §5 |
 | 2026-09-03 | standardisation without Pillow produced 162,187 empty CST labels | `00_PROJECT_JOURNAL.md` §5 |
 | 2026-09-23 | OMEN crash (Kernel-Power 41) interrupted the DFSC-all TEST pass at 54/91 (no valid result) | `docs/PROJECT_KNOWLEDGE.md` §A.5 |
-| 2026-09-24 | DataLoader collate memory leak | `progress/AEROTRACK_REPAIR_PROGRESS.md` |
-| 2026-10-05 06:57 | H3 launch killed by Windows commit limit (error 1455) beside CPU chains | `progress/RESEARCH_PROGRAM_PROGRESS.md` milestones |
+| 2026-09-24 | DataLoader collate memory leak | `docs/progress/AEROTRACK_REPAIR_PROGRESS.md` |
+| 2026-10-05 06:57 | H3 launch killed by Windows commit limit (error 1455) beside CPU chains | `docs/progress/RESEARCH_PROGRAM_PROGRESS.md` milestones |
 | 2026-10-05 11:11 | v2 attempt 1 failed its smoke run (window-unaware pre-flight T2) | same |
 | 2026-10-05 15:59 | Track C loader kept ~400 decompressed copies (~6 GB) | `docs/PROJECT_KNOWLEDGE.md` §A.10 |

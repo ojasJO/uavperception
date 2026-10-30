@@ -58,7 +58,7 @@ as a shared benchmark / protocol, not as Direction B. The paper-specific reprodu
 |---|---|
 | local workspace (excl. venv, data, recovery) | 297 files: 62.7 GB in `experiments/anti_uav/runs` (8 IR runs × 19 checkpoints), ~2 GB of detector runs in `runs/`, Track C C1 forecasters, ONNX / TensorRT engines (`artifacts/deploy`, `deployment/`) |
 | recovery backup | 1,348 files (16.37 GB) incl. 1,193 `.npz` |
-| **only in the backup** | X1 / X2 / F1 runs `v3_*` (8 dirs), v2 seeds `v2_causal_g{1,2,8}_s{0,1}`, `v2_causal_g4_s1`, `v2_stock_s1`, `v2_sym_g4_s1`, `omen_v2_stock_s0`; C1c forecasters (15); Anti-UAV RGB `normal_rgb` / `dfsc_rgb` (epochs 1-12 + last) and `largescale_globaltrack` |
+| **only in the backup** | X1 / X2 / F1 runs `v3_*` (8 dirs), v2 seeds `v2_causal_g{1,2,8}_s{0,1}`, `v2_causal_g4_s1`, `v2_stock_s1`, `v2_sym_g4_s1`, `laptop_v2_stock_s0`; C1c forecasters (15); Anti-UAV RGB `normal_rgb` / `dfsc_rgb` (epochs 1-12 + last) and `largescale_globaltrack` |
 
 X1 shares its checkpoint with X2 temporal seed 0 (`v3_n__causal_g4_cst_s0_e20/weights/last.pt`, sha256 `e52a5645…`).
 

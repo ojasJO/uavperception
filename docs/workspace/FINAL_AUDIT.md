@@ -14,7 +14,7 @@ Companion to `INITIAL_AUDIT.md` (state before) and `ARCHITECTURE.md` / `OPERATIN
 | `registry/*.json, *.csv, *.jsonl` | generated registry (models, files, lineage, duplicates, datasets, experiments, build summary), adapter evidence, restore ledger |
 | `tools/build_workspace_registry.py`, `tools/verify_adapters.py`, `tools/restore_from_recovery.py`, `tools/render_workspace_docs.py` | registry build, adapter verification, backup restore (copy-only), generated README tables |
 | `tests/test_workspace_registry.py` (30), `tests/test_workspace_adapters.py` (12), `tests/test_studio_ui.py` (10) | new tests |
-| `research/aero_multi_paper/README.md`, `research/anti_uav_paper_reproduction/README.md` | per-direction READMEs (provenance matrix; generated result tables) |
+| `docs/research/aero_multi_paper/README.md`, `docs/research/anti_uav_paper_reproduction/README.md` | per-direction READMEs (provenance matrix; generated result tables) |
 | `docs/workspace/{INITIAL_AUDIT,ARCHITECTURE,OPERATING_GUIDE,FINAL_AUDIT}.md`, `registry/README.md` | documentation |
 | `runs/<18 restored run dirs>/{args.json, init_check.json, results.csv, run_meta.json, training_curves.png}` | run metadata copied from the backup (2.7 MB; tracked like every other run's metadata; weights git-ignored) |
 
@@ -28,7 +28,7 @@ Companion to `INITIAL_AUDIT.md` (state before) and `ARCHITECTURE.md` / `OPERATIN
 | `docs/MASTER_STATE.md`, `docs/SESSION_HANDOFF.md` | current state; the stale 2026-10-06 trailing sections of MASTER_STATE are now labelled historical (text kept) |
 
 **Copied out of the recovery backup (git-ignored weights)**: 137 files, 2.32 GB, each SHA-256-verified before being moved into place
-(`registry/migrations/restore_manifest.json`). This covers the X1 / X2 / F1 `v3_*` runs, 10 v2-campaign runs, `omen_v2_stock_s0_e20`, 15
+(`registry/migrations/restore_manifest.json`). This covers the X1 / X2 / F1 `v3_*` runs, 10 v2-campaign runs, `laptop_v2_stock_s0_e20`, 15
 C1c forecasters, 3 ONNX exports, and the `normal_rgb` / `dfsc_rgb` / `largescale_globaltrack` final checkpoints. Nothing was moved,
 renamed or deleted anywhere.
 

@@ -28,7 +28,7 @@ Corpus v2 (`data_unified_v2`, manifest `f842d03909cf`): CST sequences train 120,
 | run | config | seed | epochs | training h | init check | last.pt sha256 |
 |---|---|---|---:|---:|---|---|
 | `gen_temporal_fp_g4_full_e20` | temporal_fp_g4 | 0 | 20 | 2.21 | ok | `d26641b2cedb` |
-| `omen_v2_stock_s0_e20` | stock | 0 | 20 | 2.14 | — | `5bba24c8dece` |
+| `laptop_v2_stock_s0_e20` | stock | 0 | 20 | 2.14 | — | `5bba24c8dece` |
 | `v2_causal_g4_s0_e20` | causal_g4 | 0 | 20 | 1.02 | ok | `1118cf3290ae` |
 | `v2_causal_g4_s1_e20` | causal_g4 | 1 | 20 | 1.05 | ok | `2d6aceab5ccf` |
 | `v2_stock_s0_e20` | stock | 0 | 20 | 1.03 | ok | `5287cda7ddf7` |
@@ -41,7 +41,7 @@ Corpus v2 (`data_unified_v2`, manifest `f842d03909cf`): CST sequences train 120,
 | run | drone AP50 | CST | CST micro | Anti-UAV | Det-Fly | mAP50 | CST building | CST cn_mountains | CST cn_sky | CST jungle | CST urban-areas | CST water |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | `gen_temporal_fp_g4_full_e20` | 0.7839 | 0.5992 | 0.4621 | 0.9801 | 0.4981 | 0.6611 | 0.5796 | 0.7321 | 0.7516 | 1.0000 | 0.2380 | 0.8870 |
-| `omen_v2_stock_s0_e20` | 0.7579 | 0.5662 | 0.4498 | 0.9768 | 0.4708 | 0.6423 | 0.5446 | 0.5985 | 0.7498 | 0.9998 | 0.2851 | 0.9573 |
+| `laptop_v2_stock_s0_e20` | 0.7579 | 0.5662 | 0.4498 | 0.9768 | 0.4708 | 0.6423 | 0.5446 | 0.5985 | 0.7498 | 0.9998 | 0.2851 | 0.9573 |
 | `v2_causal_g4_s0_e20` | 0.8054 | 0.6760 | 0.5551 | 0.9820 | 0.4447 | 0.6627 | 0.6382 | 0.7876 | 0.8238 | 1.0000 | 0.3767 | 0.9508 |
 | `v2_causal_g4_s1_e20` | 0.8124 | 0.6857 | 0.5389 | 0.9800 | 0.4869 | 0.6628 | 0.6433 | 0.8399 | 0.7226 | 1.0000 | 0.3635 | 0.9411 |
 | `v2_stock_s0_e20` | 0.7552 | 0.5636 | 0.4537 | 0.9787 | 0.4720 | 0.6337 | 0.5470 | 0.6113 | 0.7606 | 0.9985 | 0.2764 | 0.9426 |

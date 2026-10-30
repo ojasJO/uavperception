@@ -4,7 +4,7 @@
  "preregistration": "experiments/aerotrack_v2/preregistration.json",
  "runs": [
   "gen_temporal_fp_g4_full_e20",
-  "omen_v2_stock_s0_e20",
+  "laptop_v2_stock_s0_e20",
   "v2_causal_g4_s0_e20",
   "v2_causal_g4_s1_e20",
   "v2_stock_s0_e20",
@@ -25,7 +25,7 @@
    "cst_urban-areas": 0.23802467162507362,
    "cst_water": 0.887049156708289
   },
-  "omen_v2_stock_s0_e20": {
+  "laptop_v2_stock_s0_e20": {
    "cst": 0.5661788113107267,
    "anti_uav": 0.9768482787024589,
    "pooled": 0.7578976662598792,

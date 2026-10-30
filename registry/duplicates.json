@@ -184,8 +184,8 @@
   {
    "sha256": "1862525272f9d3c706021ea5ccf7737d80447e4d0760608cd9e58c84c0d22c82",
    "logical_paths": [
-    "runs/aerotrack_v2/_cache/omen_v2_stock_s0_e20__val.pkl",
-    "runs/hpc/aerotrack_v2/_cache/omen_v2_stock_s0_e20__val.pkl"
+    "runs/aerotrack_v2/_cache/laptop_v2_stock_s0_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/laptop_v2_stock_s0_e20__val.pkl"
    ],
    "model_ids": [],
    "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
@@ -319,11 +319,11 @@
   {
    "sha256": "5bba24c8dece77a1657605b68d63bbdd29dc4f37200391649c9360269f6d7bc1",
    "logical_paths": [
-    "runs/omen_v2_stock_s0_e20/weights/last.pt",
+    "runs/laptop_v2_stock_s0_e20/weights/last.pt",
     "runs/v2_stock_s0_e20/weights/last.pt"
    ],
    "model_ids": [
-    "aerotrack.detector.v2:omen_v2_stock_s0_e20@last",
+    "aerotrack.detector.v2:laptop_v2_stock_s0_e20@last",
     "aerotrack.detector.v2:v2_stock_s0_e20@last"
    ],
    "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."

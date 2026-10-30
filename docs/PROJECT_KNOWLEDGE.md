@@ -2,7 +2,7 @@
 
 *Written 2026-10-05 from a repository-wide knowledge audit (triage of every document, ledger, registry and report; deep reads of the
 sources below; numerical cross-checks). Complements — does not repeat — `docs/AGENT_CONTEXT.md` (architecture map, scientific state)
-and `progress/RESEARCH_PROGRAM_PROGRESS.md` (live job table, decisions). Authority order when sources disagree: append-only ledgers
+and `docs/progress/RESEARCH_PROGRAM_PROGRESS.md` (live job table, decisions). Authority order when sources disagree: append-only ledgers
 and run metadata > generated reports (from JSON) > registrations > hand-written docs > memory notes.*
 
 Sources deep-read in this audit: `00_PROJECT_JOURNAL.md` (timeline, §5 problems, §6–7), `audit/AUDIT_REPORT.md` (§0, §1, §3–6),
@@ -115,7 +115,7 @@ metadata of the baseline and candidate runs, the CST benchmark paper (arXiv:2507
 
 ## F. Current execution state
 
-Authoritative: `progress/RESEARCH_PROGRAM_PROGRESS.md` (job table) and the sentinel directories it lists. Snapshot at writing: GPU =
+Authoritative: `docs/progress/RESEARCH_PROGRAM_PROGRESS.md` (job table) and the sentinel directories it lists. Snapshot at writing: GPU =
 v2 campaign stage 1 (`v2_stock_s0_e20`, 4 loader workers, ~6.3 min / epoch); queue v2 -> post-v2 -> causal caches -> F1 -> X1 -> H3
 evaluations -> C2; CPU = C3 prep; C3 / C1b wait for the causal caches.
 

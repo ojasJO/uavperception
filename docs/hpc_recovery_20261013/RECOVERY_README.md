@@ -38,7 +38,7 @@ Sources of the hashes: `experiments/aerotrack_v3/reports/x1_final_test.json`, `e
 
 ### Other models preserved (all verified)
 - `best.pt` + `last.pt` of every other CST/AeroTrack run: v2 campaign (stock / sym_g4 / causal_g1/g2/g4/g8 × seeds 0-1, smoke),
-  F1 standard yolo11n (`v3_n_std__causal_g4_s{0,1}`), `gen_temporal_fp_g4_full_e20`, `omen_v2_stock_s0_e20`, retired `lstm_forecaster`.
+  F1 standard yolo11n (`v3_n_std__causal_g4_s{0,1}`), `gen_temporal_fp_g4_full_e20`, `laptop_v2_stock_s0_e20`, retired `lstm_forecaster`.
 - Anti-UAV Track A (`source/experiments/anti_uav/runs/`): `normal_ir`, `dfsc_ir`, `phaseB_*_lr0.02_accum8`, `largescale_globaltrack`
   (last.pt) and `normal_rgb` / `dfsc_rgb` (epoch_01-12 + last.pt); GlobalTrack init `checkpoints/globaltrack/…torchvision.pt`;
   base `c_model/yolo11{n,s}.pt`. Training-state checkpoints are the Ultralytics / GlobalTrack `.pt` files themselves (resume-capable).

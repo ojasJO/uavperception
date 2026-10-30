@@ -101,7 +101,7 @@
    "aerotrack.detector.repair:repair_abl_stock_yolo11n_e20@last"
   ],
   "aerotrack.detector.v2": [
-   "aerotrack.detector.v2:omen_v2_stock_s0_e20@last",
+   "aerotrack.detector.v2:laptop_v2_stock_s0_e20@last",
    "aerotrack.detector.v2:v2_causal_g1_s0_e20@best",
    "aerotrack.detector.v2:v2_causal_g1_s0_e20@last",
    "aerotrack.detector.v2:v2_causal_g1_s1_e20@best",
@@ -492,7 +492,7 @@
    "relation": "initialised_from"
   },
   {
-   "from": "aerotrack.detector.v2:omen_v2_stock_s0_e20@last",
+   "from": "aerotrack.detector.v2:laptop_v2_stock_s0_e20@last",
    "to": "aerotrack.detector.v2:v2_stock_s0_e20@last",
    "relation": "same_bytes"
   },

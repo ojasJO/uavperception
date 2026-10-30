@@ -1,0 +1,1 @@
+python experiments/aerotrack_v2/scripts/eval_v2.py --run laptop_v2_stock_s0_e20
