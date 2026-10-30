@@ -9,7 +9,7 @@ and does DFSC beat plain fine-tuning?
 **Not to be confused with** the CST Anti-UAV benchmark (arXiv:2507.23473). That paper is a benchmark paper whose protocol scores
 Direction A's AeroTrack models. It is not reproduced as a method here, because it proposes none.
 
-Code: `experiments/anti_uav/` (self-contained: `src/anti_uav_repro`, configs, frozen manifests, append-only TEST ledger, the original
+Code: `experiments/anti_uav/` (self-contained: `experiments/anti_uav/src/anti_uav_repro`, configs, frozen manifests, append-only TEST ledger, the original
 VAL demo `experiments/anti_uav/demo/`). The studio's adapter `globaltrack_repro` calls exactly this tracker.
 
 ## What is faithful, inherited, or substituted
@@ -29,7 +29,7 @@ config), 1 GPU × batch 2 with a linearly scaled learning rate, and the final-ep
 
 ## Results (generated — do not edit by hand)
 
-<!-- BEGIN GENERATED: tools/render_workspace_docs.py -->
+<!-- BEGIN GENERATED: scripts/render_workspace_docs.py -->
 | method | split | paper mSA (IR) | ours mSA (IR) | ours: record |
 |---|---|---:|---:|---|
 | normal (seed 0) | val | 79.60 | 79.29 | `ledger:eval:anti_uav/repro/normal_ir/seed0/val` |

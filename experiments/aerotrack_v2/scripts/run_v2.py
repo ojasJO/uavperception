@@ -9,7 +9,7 @@ OK) and preregistration.json committed and unmodified. Order: optional wait for 
 machinery smoke test (2 epochs x 512 samples, scored on 50 images/dataset, results kept apart) -> v1 reference evaluation ->
 stage 1 (seed 0) -> pre-registered futility check -> stage 2 (seed 1, survivors) -> analyze_v2.py.
 A training run interrupted mid-way is resumed from its last.pt (one retry); a finished run / evaluation is never redone.
-State: runs/aerotrack_v2/_runner/ (RUNNING / DONE / FAILED, events.jsonl, one log per job).
+State: results/runs/aerotrack_v2/_runner/ (RUNNING / DONE / FAILED, events.jsonl, one log per job).
 """
 import json
 import os
@@ -49,7 +49,7 @@ def sh(cmd, log_name):
 
 
 def trained(name):
-    d = S.REPO / "runs" / name
+    d = S.REPO / "results/runs" / name
     try:
         m = json.loads((d / "run_meta.json").read_text(encoding="utf-8"))
     except FileNotFoundError:
@@ -62,7 +62,7 @@ def evaluated(name, smoke=False):
     p = S.REPORTS / ("v2_results_smoke.json" if smoke else "v2_results.json")
     if not p.exists():
         return False
-    w = S.REPO / "runs" / name / "weights" / "last.pt"
+    w = S.REPO / "results/runs" / name / "weights" / "last.pt"
     sha = file_sha256(w) if w.exists() else None
     return any(r["run"] == name and r["set"] == "val" and r["weights_sha256"] == sha
                for r in json.loads(p.read_text(encoding="utf-8"))["rows"])
@@ -74,7 +74,7 @@ def train(config, seed, smoke=False):
         event(kind="skip_trained", run=name)
         return name
     base = [PY, "-u", str(HERE / "train_v2.py"), "--config", config, "--seed", str(seed)] + (["--smoke"] if smoke else [])
-    exists = (S.REPO / "runs" / name / "run_meta.json").exists()
+    exists = (S.REPO / "results/runs" / name / "run_meta.json").exists()
     rc = sh(base + (["--resume"] if exists else []), f"train_{name}")
     if rc != 0 and not trained(name):
         event(kind="retry_resume", run=name)
@@ -102,7 +102,7 @@ def preconditions():
     rep = json.loads(CORPUS_REPORT.read_text(encoding="utf-8")) if CORPUS_REPORT.exists() else {}
     if rep.get("verdict") != "OK":
         raise SystemExit(f"corpus v2 not verified ({CORPUS_REPORT.name}: {rep.get('verdict')!r})")
-    corpus_dir = S.REPO / "b_pipeline" / S.CORPUS
+    corpus_dir = S.REPO / "src/pipeline" / S.CORPUS
     if file_sha256(corpus_dir / "manifest.csv") != rep["manifest_sha256"]:
         raise SystemExit("corpus v2 manifest differs from the verified one")
     tracked = subprocess.run(["git", "ls-files", "--error-unmatch", str(PRE)], cwd=S.REPO, capture_output=True).returncode == 0

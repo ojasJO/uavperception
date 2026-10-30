@@ -1,7 +1,7 @@
 {
  "run": "v2_causal_g4_s0_e20",
- "weights": "runs\\hpc\\v2_causal_g4_s0_e20\\weights\\last.pt",
- "onnx": "artifacts\\deploy\\v2_causal_g4_s0_e20\\v2_causal_g4_s0_e20_b1_op18.onnx",
+ "weights": "results\\runs\\hpc\\v2_causal_g4_s0_e20\\weights\\last.pt",
+ "onnx": "results\\artifacts\\deploy\\v2_causal_g4_s0_e20\\v2_causal_g4_s0_e20_b1_op18.onnx",
  "window": "causal",
  "gap": 4,
  "gpu_before": {

@@ -2,7 +2,7 @@
 """Deployment gate of the COMPLETE stack (detector + tracker + forecaster) on the RTX 5050: per-stage and end-to-end latency over
 several real VAL sequences per domain, through the one-command runtime (aerotrack_stream.py, drawing disabled).
 
-    venv\\Scripts\\python.exe experiments\\deployment\\scripts\\stack_gate.py --weights runs\\<run>\\weights\\last.pt --backend trt_fp16 ^
+    venv\\Scripts\\python.exe experiments\\deployment\\scripts\\stack_gate.py --weights results\\runs\\<run>\\weights\\last.pt --backend trt_fp16 ^
         [--tracker fste --forecaster <spec.json> --fste-params <p.json>] [--seqs 2] [--frames 300]
 
 Run on an otherwise idle GPU. Sequences: the first --seqs VAL sequences (sorted) of Anti-UAV IR, Anti-UAV RGB and CST (corpus v2
@@ -23,7 +23,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 REPORTS = REPO / "experiments" / "deployment" / "reports"
 CST_VAL = REPO / "data" / "cst_anti_uav_full" / "CST-AntiUAV" / "CST-AntiUAV" / "val"
-AU_FRAMES = REPO / "b_pipeline" / "data_unified" / "anti_uav" / "images"
+AU_FRAMES = REPO / "data" / "derived" / "data_unified" / "anti_uav" / "images"
 
 
 def sources(n):
@@ -53,7 +53,7 @@ def main():
     run = Path(a.weights).parent.parent.name
     if not (Path(a.weights).parent.parent / "run_meta.json").exists():   # the runtime would silently default the window
         raise SystemExit(f"run_meta.json missing next to {a.weights}: the stream runtime reads the temporal window from it")
-    tmp = REPO / "runs" / "deploy_stream" / f"_stack_gate_{run}_{a.tracker}"
+    tmp = REPO / "results/runs" / "deploy_stream" / f"_stack_gate_{run}_{a.tracker}"
     tmp.mkdir(parents=True, exist_ok=True)
     per_group, summaries = {}, []
     for grp, dirs in sources(a.seqs).items():
@@ -71,7 +71,7 @@ def main():
             summ = json.loads(out.with_suffix(".summary.json").read_text(encoding="utf-8"))
             if summ["backend"] != a.backend:          # the runtime falls back silently (e.g. no engine for this run name)
                 raise SystemExit(f"{d.name}: requested backend {a.backend} but the runtime used {summ['backend']}; "
-                                 f"expected engines under artifacts/deploy/{run}/")
+                                 f"expected engines under results/artifacts/deploy/{run}/")
             summaries.append({"group": grp, "sequence": d.name, "backend": summ["backend"], "look_ahead_ms": summ["look_ahead_ms"],
                               "modes": summ["modes"]})
             for line in out.with_suffix(".frames.jsonl").read_text(encoding="utf-8").splitlines()[10:]:     # same warm-up rule

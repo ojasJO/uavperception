@@ -2,14 +2,14 @@
 
 *2026-09-26. Diagnosis only: **nothing has been trained** in this series and **the test split has not been read** (no test
 image, label or prediction; test sequence *names* were read once for a composition/leakage check). The completed repair grid
-(`runs/repair_abl_*_e20`, `experiments/aerotrack_repair/reports/*`) is read, never modified. Every number below comes from
+(`results/runs/repair_abl_*_e20`, `experiments/aerotrack_repair/reports/*`) is read, never modified. Every number below comes from
 `reports/*.json` in this directory, produced by `scripts/*.py`, and each run is logged in `ledger.jsonl`.*
 
 | id | script | what | output |
 |---|---|---|---|
 | D1 | `diag_data.py` | split structure / leakage, neighbour adjacency, target size and motion, camera motion, label flicker, Det-Fly duplicates | `reports/diag_data.json` |
 | D2 | `diag_training.py` | per-epoch curves of the grid, COCO-initialisation audit, function-preserving-init check | `reports/diag_training.json` |
-| D3 | `collect_val_records.py` | per-image VAL predictions of the 8 grid checkpoints (registered protocol; reproduces the registered mAP50) | `runs/aerotrack_generalization/_cache/` |
+| D3 | `collect_val_records.py` | per-image VAL predictions of the 8 grid checkpoints (registered protocol; reproduces the registered mAP50) | `results/runs/aerotrack_generalization/_cache/` |
 | D4 | `bootstrap_val.py` | paired, dataset-stratified, sequence-level bootstrap of the grid's comparisons (B = 1000) | `reports/bootstrap_val.json` |
 | D5 | `diag_localization.py` | CST micro drones: missed vs found-but-mislocalised | `reports/diag_localization.json` |
 
@@ -136,7 +136,7 @@ relative Δ, per-fold values, mean ± sd, CIs. Anything else is "not supported" 
 picking.
 
 **Ledger.** Every run appends configuration, fold, seed, data/fold-file hashes, git state, checkpoint hashes, metrics and rationale
-to `ledger.jsonl`; code reuses the repair runner's resume/provenance machinery; new runs go to `runs/gen_<config>_f<k>_e20/`.
+to `ledger.jsonl`; code reuses the repair runner's resume/provenance machinery; new runs go to `results/runs/gen_<config>_f<k>_e20/`.
 
 ## 6. Test-set protection and the final step
 

@@ -6,7 +6,7 @@
     ... --preflight-only              (T1-T8 on the exact job under a scratch name; nothing trained)
     ... --smoke                       (machinery test: 2 epochs x 512 samples, name suffix _smoke, flagged in run_meta)
 
-Recipe = c_model/train.py STAGES["baseline"] exactly as in the repair grid and the generalization series: 20 epochs x 25,000
+Recipe = src/model/train.py STAGES["baseline"] exactly as in the repair grid and the generalization series: 20 epochs x 25,000
 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine, same sampler / augmentation / letterbox / pre-flight.
 Differences allowed: the configuration's window (v2lib.CONFIGS), the seed, the corpus (v2). Function-preserving init for every
 configuration (runtime-checked; the run aborts if the check fails). Checkpoint scored: weights/last.pt (fixed before any run).
@@ -52,7 +52,7 @@ def child(a):
     device = T.require_gpu()
     stage_cfg = dict(T.STAGES["baseline"])
     kw = {k: v for k, v in stage_cfg.items() if k in T.TrainConfig().to_dict()}
-    kw.update(name=a.name, project=str(S.REPO / "runs"), epochs=a.epochs, batch=a.batch, workers=a.workers, seed=a.seed)
+    kw.update(name=a.name, project=str(S.REPO / "results/runs"), epochs=a.epochs, batch=a.batch, workers=a.workers, seed=a.seed)
     if a.samples_per_epoch:
         kw["samples_per_epoch"] = a.samples_per_epoch
     cfg = T.TrainConfig(**kw)
@@ -66,7 +66,7 @@ def child(a):
           f"{len(val_s):,} monitoring samples, corpus {S.CORPUS}", flush=True)
     train_ds, val_ds, train_loader, val_loader = T.build_loaders(train_s, val_s, cfg, stage_cfg, label_cache=cache, augment_kwargs=None,
                                                                  sampler_weights=None, letterbox=True, verbose=True)
-    model = build_model(S.REPO / "c_model" / G.YAML[c["layout"]], ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
+    model = build_model(S.REPO / "src/model" / G.YAML[c["layout"]], ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
     transfer_pretrained(model, T.PRETRAINED, verbose=True)
     check = G.apply_fp_init(model, c["layout"])
     print(f"[init] function-preserving: {json.dumps(check)}", flush=True)
@@ -114,7 +114,7 @@ def main():
         return child(a)
 
     name = L.run_name(a.config, a.seed, a.epochs) + ("_smoke" if a.smoke else "")
-    run_dir = S.REPO / "runs" / name
+    run_dir = S.REPO / "results/runs" / name
     last = run_dir / "weights" / "last.pt"
     base = [sys.executable, "-u", os.path.abspath(__file__), "--_child", "--config", a.config, "--seed", str(a.seed),
             "--epochs", str(a.epochs), "--batch", str(a.batch), "--workers", str(a.workers)]
@@ -122,7 +122,7 @@ def main():
         if v:
             base += [flag, str(v)]
     if a.preflight_only:
-        scratch = S.REPO / "runs" / f"_preflight_{name}"
+        scratch = S.REPO / "results/runs" / f"_preflight_{name}"
         if scratch.exists():
             shutil.rmtree(scratch)
         rc = subprocess.call(base + ["--name", scratch.name, "--preflight-only"], cwd=str(S.REPO))
@@ -133,12 +133,12 @@ def main():
         sys.exit(f"{run_dir} already exists -- use --resume; earlier runs are never overwritten")
     resume_ckpt = a.resume_from or (str(last) if a.resume and last.exists() else None)
     cmd = base + ["--name", name] + (["--resume-from", resume_ckpt] if resume_ckpt else [])
-    corpus_dir = S.REPO / "b_pipeline" / S.CORPUS
+    corpus_dir = S.REPO / "src/pipeline" / S.CORPUS
     meta = {"run_name": name, "series": "aerotrack_v2", "config": a.config, "config_definition": L.CONFIGS[a.config],
             "window": L.CONFIGS[a.config]["window"], "gap": L.CONFIGS[a.config]["gap"], "layout": L.CONFIGS[a.config]["layout"],
             "seed": a.seed, "epochs": a.epochs, "batch": a.batch, "init": "function_preserving",
-            "recipe": "c_model/train.py STAGES['baseline']", "smoke": bool(a.smoke),
-            "precision": os.environ.get("AEROTRACK_AMP") or "auto (bf16 on sm>=8.0, fp16 below; c_model/precision.py)",
+            "recipe": "src/model/train.py STAGES['baseline']", "smoke": bool(a.smoke),
+            "precision": os.environ.get("AEROTRACK_AMP") or "auto (bf16 on sm>=8.0, fp16 below; src/model/precision.py)",
             "host": platform.node(),
             "overrides": {"samples_per_epoch": a.samples_per_epoch, "monitor_cap": a.monitor_cap},
             "data": {"corpus": S.CORPUS, "manifest_sha256": file_sha256(corpus_dir / "manifest.csv"),

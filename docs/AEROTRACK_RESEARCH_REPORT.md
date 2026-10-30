@@ -1,6 +1,6 @@
 # AeroTrack — research report
 
-*Generated 2026-10-05 16:24 by `tools/render_aerotrack_report.py` from the campaigns' JSON (index: `artifacts/experiment_registry.json`). No number is typed by hand; sections without evidence yet are marked pending.*
+*Generated 2026-10-05 16:24 by `scripts/render_aerotrack_report.py` from the campaigns' JSON (index: `results/artifacts/experiment_registry.json`). No number is typed by hand; sections without evidence yet are marked pending.*
 
 ## 1. Problem definition
 
@@ -8,7 +8,7 @@ Detect, track and predict a single small UAV in thermal (IR) and visible (RGB) v
 
 ## 2. Dataset characterization
 
-From `artifacts/dataset_card_data_unified_v2.json` (full table: `docs/DATASETS_data_unified_v2.md`).
+From `results/artifacts/dataset_card_data_unified_v2.json` (full table: `docs/DATASETS_data_unified_v2.md`).
 
 | dataset / modality / split | seq | frames | box diag median px | tiny (≤10 px diag) | micro area | motion px/frame (median) |
 |---|---:|---:|---:|---:|---:|---:|
@@ -144,4 +144,4 @@ Per-dataset and per-scene-category AP are reported in every campaign; training-d
 
 ## 18. Reproducibility
 
-Registry `artifacts/experiment_registry.json` (git commit, config hash, data / split hashes, seed, checkpoint SHA-256, environment per run); environments `environments/`; every report regenerable by its named script.
+Registry `results/artifacts/experiment_registry.json` (git commit, config hash, data / split hashes, seed, checkpoint SHA-256, environment per run); environments `docs/environments/`; every report regenerable by its named script.

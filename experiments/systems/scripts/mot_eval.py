@@ -4,10 +4,10 @@
     venv\\Scripts\\python.exe experiments\\systems\\scripts\\mot_eval.py --run <run> [--corpus auto]
 
 Same detections for every tracker (cached; drone class, conf >= 0.05 so ByteTrack's low band exists), every VAL sequence
-(Anti-UAV IR / RGB, CST), the repair series' metric code (`c_model/bytetrack.evaluate_tracking` + pooled CLEAR-MOT
-`c_model/track_eval._accumulate`, id switches also at re-entry after invisible frames), MOT protocol (no init box):
+(Anti-UAV IR / RGB, CST), the repair series' metric code (`src/model/bytetrack.evaluate_tracking` + pooled CLEAR-MOT
+`src/model/track_eval._accumulate`, id switches also at re-entry after invisible frames), MOT protocol (no init box):
 
-    bytetrack     c_model/bytetrack.BYTETracker defaults (track .5 / low .1 / buffer 90)
+    bytetrack     src/model/bytetrack.BYTETracker defaults (track .5 / low .1 / buffer 90)
     sort          the same code with the low-score stage disabled
     argmax@0.25   the repair series' registered single-target baseline
     argmax@cf     argmax with the threshold cross-fitted in track_eval.py (each half: the other half's choice)
@@ -26,12 +26,12 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 sys.path.insert(0, str(HERE))
-for p in (REPO / "c_model", REPO / "b_pipeline"):
+for p in (REPO / "src/model", REPO / "src/pipeline"):
     sys.path.insert(1, str(p))
 import ste as T  # noqa: E402
 import track_eval as TE  # noqa: E402  (systems harness: cache + annotation loader)
 
-_spec = importlib.util.spec_from_file_location("c_model_track_eval", REPO / "c_model" / "track_eval.py")
+_spec = importlib.util.spec_from_file_location("c_model_track_eval", REPO / "src/model" / "track_eval.py")
 CM = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(CM)                       # the repair series' MOT helpers (run_tracker, _accumulate)
 from bytetrack import evaluate_tracking  # noqa: E402
@@ -65,7 +65,7 @@ def main():
     ap.add_argument("--corpus", default="auto")
     a = ap.parse_args()
     if a.corpus == "auto":
-        base = REPO / "runs" / "systems" / "_cache" / a.run
+        base = REPO / "results/runs" / "systems" / "_cache" / a.run
         a.corpus = "data_unified_v2" if (base / "data_unified_v2" / "val" / "index.json").exists() else "data_unified"
     t0 = time.time()
     index, seqs = TE.load(a.run, a.corpus)

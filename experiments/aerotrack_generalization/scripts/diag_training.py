@@ -3,7 +3,7 @@
 
     venv\\Scripts\\python.exe experiments\\aerotrack_generalization\\scripts\\diag_training.py
 
-* per-epoch curves of runs/repair_abl_*_e20/results.csv: early lead, final training loss, late-epoch volatility of the
+* per-epoch curves of results/runs/repair_abl_*_e20/results.csv: early lead, final training loss, late-epoch volatility of the
   capped-val metrics that drive best.pt selection;
 * how many PARAMETERS each layout receives from COCO under the registered transfer rule;
 * a numerical check of a function-preserving initialisation (SPDConv mapped from the pretrained stride-2 conv; COCO stem on
@@ -19,7 +19,7 @@ import torch
 from aerotrack_trainer import build_model, transfer_pretrained
 
 RUNS = ("baseline_ctrl", "no_spd", "single_frame", "stock_yolo11n")
-COCO = S.REPO / "c_model" / "yolo11n.pt"
+COCO = S.REPO / "src/model" / "yolo11n.pt"
 DOWN = ("0", "1", "3", "5", "7")
 RMAP = {0: (1, 0), 1: (0, 1), 2: (1, 1)}               # stride tap -> (sub-pixel phase, SPD tap)
 BLK = {(0, 0): 0, (1, 0): 1, (0, 1): 2, (1, 1): 3}     # (row phase, col phase) -> SPDConv.space_to_depth block
@@ -41,7 +41,7 @@ def spd_from_stride(W):
 def curves():
     out = {}
     for r in RUNS:
-        rows = list(csv.DictReader(open(S.REPO / "runs" / f"repair_abl_{r}_e20" / "results.csv", encoding="utf-8")))
+        rows = list(csv.DictReader(open(S.REPO / "results/runs" / f"repair_abl_{r}_e20" / "results.csv", encoding="utf-8")))
         f = lambda k: [float(x[k]) for x in rows]
         loss = [a + b + c for a, b, c in zip(f("box_loss"), f("cls_loss"), f("dfl_loss"))]
         mi, m50 = f("micro_AP50"), f("mAP50")
@@ -60,7 +60,7 @@ def init_audit():
     coco = (coco[0] if isinstance(coco, tuple) else coco).float().state_dict()
     out = {}
     for cfg in ("yolo11-spd.yaml", "yolo11-stride.yaml"):
-        sd = build_model(S.REPO / "c_model" / cfg, ch=9, nc=2).state_dict()
+        sd = build_model(S.REPO / "src/model" / cfg, ch=9, nc=2).state_dict()
         tot = sum(v.numel() for v in sd.values() if v.dtype.is_floating_point)
         same = sum(v.numel() for k, v in sd.items() if v.dtype.is_floating_point and k in coco and coco[k].shape == v.shape)
         down = sum(v.numel() for k, v in sd.items() if v.dtype.is_floating_point and k.split(".")[1] in DOWN)
@@ -68,7 +68,7 @@ def init_audit():
                     "from_coco_pct": round(100 * same / tot, 1), "downsampling_layers_M": round(down / 1e6, 3)}
     # function-preserving init check
     torch.manual_seed(0)
-    stride = build_model(S.REPO / "c_model" / "yolo11-stride.yaml", ch=9, nc=2)
+    stride = build_model(S.REPO / "src/model" / "yolo11-stride.yaml", ch=9, nc=2)
     transfer_pretrained(stride, COCO, verbose=False)
     sd = {k: v.clone() for k, v in stride.state_dict().items()}
     tiled = sd["model.0.conv.weight"].clone()
@@ -76,7 +76,7 @@ def init_audit():
     centre[:, 3:6] = tiled[:, 3:6] * 3.0
     sd["model.0.conv.weight"] = centre
     stride.load_state_dict(sd)
-    spd = build_model(S.REPO / "c_model" / "yolo11-spd.yaml", ch=9, nc=2)
+    spd = build_model(S.REPO / "src/model" / "yolo11-spd.yaml", ch=9, nc=2)
     sp = {k: v.clone() for k, v in spd.state_dict().items()}
     for k, v in sd.items():
         if k in sp and sp[k].shape == v.shape:

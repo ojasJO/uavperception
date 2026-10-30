@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """RTX 5050 deployment gate for one detector checkpoint: latency, memory and accuracy parity of every backend.
 
-    venv\\Scripts\\python.exe experiments\\deployment\\scripts\\deploy_gate.py --weights runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt
+    venv\\Scripts\\python.exe experiments\\deployment\\scripts\\deploy_gate.py --weights results\\runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt
 
 Run on an otherwise idle GPU (the numbers are worthless next to a training job). Sections:
   latency   batch-1 model latency per backend on real VAL inputs: warm-up, then N timed calls, each bracketed by
@@ -140,7 +140,7 @@ def parity(backend, gap, cap, window):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--weights", required=True)
-    ap.add_argument("--onnx", default=None, help="default: artifacts/deploy/<run>/<run>_b1_op18.onnx")
+    ap.add_argument("--onnx", default=None, help="default: results/artifacts/deploy/<run>/<run>_b1_op18.onnx")
     ap.add_argument("--backends", nargs="+", default=["torch_fp32", "torch_bf16", "torch_fp16", "ort_cuda", "trt_fp32", "trt_fp16"])
     ap.add_argument("--iters", type=int, default=500)
     ap.add_argument("--warmup", type=int, default=50)
@@ -150,7 +150,7 @@ def main():
     a = ap.parse_args()
     w = Path(a.weights).resolve()
     run = w.parent.parent.name
-    onnx_path = Path(a.onnx) if a.onnx else REPO / "artifacts" / "deploy" / run / f"{run}_b1_op18.onnx"
+    onnx_path = Path(a.onnx) if a.onnx else REPO / "results/artifacts" / "deploy" / run / f"{run}_b1_op18.onnx"
     meta = json.loads((w.parent.parent / "run_meta.json").read_text(encoding="utf-8"))
     gap = run_gap(w)
     window = meta.get("window") or ("ttt" if gap == 0 else "symmetric")

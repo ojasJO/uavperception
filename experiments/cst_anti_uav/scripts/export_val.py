@@ -3,10 +3,10 @@
 
     venv\\Scripts\\python.exe experiments\\cst_anti_uav\\scripts\\export_val.py --run <run> --params <frozen json> [--key ste]
 
-Reads the run's full CST VAL detection cache (`runs/systems/_cache/<run>/data_unified_v2/val`), runs the STE and argmax trackers
+Reads the run's full CST VAL detection cache (`results/runs/systems/_cache/<run>/data_unified_v2/val`), runs the STE and argmax trackers
 with the given settings (the frozen settings tuned on all of VAL, e.g. experiments/aerotrack_v3/frozen_x1_params.json), writes
-runs/cst_anti_uav/val_predictions/<run>/<tracker>/<official sequence>.txt and prints Track A's mSA. Then:
-    official_eval.py --subset val --tracker <run>-ste=runs/cst_anti_uav/val_predictions/<run>/ste --out ...
+results/runs/cst_anti_uav/val_predictions/<run>/<tracker>/<official sequence>.txt and prints Track A's mSA. Then:
+    official_eval.py --subset val --tracker <run>-ste=results/runs/cst_anti_uav/val_predictions/<run>/ste --out ...
 must give the same mSA (end-to-end check of the export used by the TEST passes). TEST is refused here.
 """
 import argparse
@@ -36,7 +36,7 @@ def main():
     keys = sorted(k for k in seqs if seqs[k]["group"] == "cst_IR")
     if len(keys) != 40:
         raise SystemExit(f"expected the 40 official CST val sequences, found {len(keys)}")
-    out = REPO / "runs" / "cst_anti_uav" / "val_predictions" / a.run
+    out = REPO / "results/runs" / "cst_anti_uav" / "val_predictions" / a.run
     res = {}
     for kind in ("ste", "argmax"):
         sa = {}

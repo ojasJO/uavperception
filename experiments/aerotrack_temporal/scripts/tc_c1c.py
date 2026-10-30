@@ -6,7 +6,7 @@
                                                                                                learned_registry_c1c.json committed)
 Arms: 'domtok' (pooled + 3-way camera-mode token) and 'perdom' (one model per domain), C1's transformer family and recipe, seeds
 0 / 1 / 2. Per domain the arm with the lower seed-mean dev NLL (pixel-space Gaussian NLL on that domain's dev groups) is the C1c
-model. Outputs: runs/aerotrack_temporal/c1/c1c_*.pt + learned_registry_c1c.json; reports/C1c_domain_aware_forecasting.{json,md}.
+model. Outputs: results/runs/aerotrack_temporal/c1/c1c_*.pt + learned_registry_c1c.json; reports/C1c_domain_aware_forecasting.{json,md}.
 """
 import argparse
 import hashlib

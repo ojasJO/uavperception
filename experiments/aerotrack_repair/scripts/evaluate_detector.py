@@ -2,8 +2,8 @@
 """Same-set detector evaluation for every AeroTrack-Net checkpoint (repair items 1, 9, 11, 12).
 
     python experiments/aerotrack_repair/scripts/evaluate_detector.py --split val \
-        --weights runs/aerotrack_spd_v1/weights/best.pt runs/aerotrack_spd_v1/weights/last.pt \
-                  runs/aerotrack_spd_finetuned/weights/best.pt runs/aerotrack_spd_finetuned/weights/last.pt
+        --weights results/runs/aerotrack_spd_v1/weights/best.pt results/runs/aerotrack_spd_v1/weights/last.pt \
+                  results/runs/aerotrack_spd_finetuned/weights/best.pt results/runs/aerotrack_spd_finetuned/weights/last.pt
 
 What it fixes
 -------------
@@ -11,7 +11,7 @@ What it fixes
   (the project's own `subsample`, evenly spread over sequences) and identified by a SHA-256 over
   (dataset, sequence, frame, path). The hash is stored next to every result; a table only ever compares
   results carrying the same hash. `--cap 0` evaluates the full split.
-* The project's own metric code (`c_model/evaluation.py`: size-stratified AP, per-dataset, per-modality,
+* The project's own metric code (`src/model/evaluation.py`: size-stratified AP, per-dataset, per-modality,
   empty-frame FP) PLUS the corrected bird->drone confusion (drone-class predictions on bird-only images,
   GT birds boxed as drone at IoU>=.5) that `evaluation.fp_rate` did not measure.
 * One size definition, stated in pixels per dataset: micro = box area < 0.03 % of the SOURCE frame,
@@ -22,13 +22,13 @@ What it fixes
 * TEST needs --final-eval and is appended to reports/test_evaluation_ledger.jsonl.
 * Input construction follows each model's own definition (grid runner repair): runs whose run_meta.json records
   temporal_gap 0 (the single_frame / stock_yolo11n ablations, trained AND validated on t-1 = t = t+1, see
-  c_model/train.py::build) are scored on that input; every other checkpoint on the t-1/t/t+1 stack. The IMAGE set
+  src/model/train.py::build) are scored on that input; every other checkpoint on the t-1/t/t+1 stack. The IMAGE set
   and its hash are the same for both. `--input-mode` overrides the automatic choice.
 * The summary JSON/MD is updated (atomically) after EACH checkpoint and only then is the TEST ledger line written,
   so a ledger line always means "scored and recorded"; an interrupted invocation loses at most the checkpoint in
   flight.
 
-Outputs: runs/<run>/eval_repair_<split>_<settag>/<ckpt>/evaluation_report.json (+ PR / size plots) and
+Outputs: results/runs/<run>/eval_repair_<split>_<settag>/<ckpt>/evaluation_report.json (+ PR / size plots) and
 experiments/aerotrack_repair/reports/detector_<split>_<settag>.{json,md}.
 """
 from __future__ import annotations
@@ -68,12 +68,12 @@ def input_mode_for(weights: Path, requested: str = "auto"):
     meta = weights.parent.parent / "run_meta.json"
     if meta.exists():
         g = json.loads(meta.read_text(encoding="utf-8")).get("temporal_gap", 1)
-        return ("single_frame" if int(g) == 0 else "temporal"), f"runs/{weights.parent.parent.name}/run_meta.json: temporal_gap={g}"
+        return ("single_frame" if int(g) == 0 else "temporal"), f"results/runs/{weights.parent.parent.name}/run_meta.json: temporal_gap={g}"
     return "temporal", "no run_meta.json: historical run, trained on the t-1/t/t+1 stack"
 
 
 def single_frame_samples(samples):
-    """t-1 = t = t+1, exactly as c_model/train.py::build() rewrites the train and val samples of a temporal_gap-0 run."""
+    """t-1 = t = t+1, exactly as src/model/train.py::build() rewrites the train and val samples of a temporal_gap-0 run."""
     return [dict(s, prev_path=s["cur_path"], next_path=s["cur_path"]) for s in samples]
 
 
@@ -136,7 +136,7 @@ def native_resolutions(samples):
 
 
 def bird_confusion(recs, thresholds=(0.25, 0.5)):
-    """Corrected bird<->drone confusion on Det-Fly records (from audit/bench_bird_confusion.py)."""
+    """Corrected bird<->drone confusion on Det-Fly records (from scripts/audit/bench_bird_confusion.py)."""
     recs = [r for r in recs if r["dataset"] == "det_fly"]
     out = {"det_fly_images": len(recs)}
     for thr in thresholds:
@@ -250,7 +250,7 @@ def main():
             dl, loader_mode = make_loader(mode), mode
             print(f"[input] {INPUT_LABEL[mode]} for the checkpoints below", flush=True)
         run_name = w.parent.parent.name
-        out_dir = REPO_ROOT / "runs" / run_name / f"eval_repair_{a.split}_{settag}" / w.stem
+        out_dir = REPO_ROOT / "results/runs" / run_name / f"eval_repair_{a.split}_{settag}" / w.stem
         if not a.smoke:
             out_dir.mkdir(parents=True, exist_ok=True)
         model, ck = load_checkpoint(w, device, prefer_ema=True)

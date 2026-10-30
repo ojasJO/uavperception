@@ -21,7 +21,7 @@ import analyze_v2 as A  # noqa: E402
 import v2lib as L  # noqa: E402
 import v2series as S2  # noqa: E402
 
-V3_CACHE = REPO / "runs" / "aerotrack_v3" / "_cache"
+V3_CACHE = REPO / "results/runs" / "aerotrack_v3" / "_cache"
 OUT = REPO / "experiments" / "aerotrack_v3" / "reports" / "F1_standard_yolo11n"
 WINDOW_OF = {"causal_g4": "causal_g4", "sym_g4": "sym_g4", "stock": "ttt"}
 

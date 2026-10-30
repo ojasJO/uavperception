@@ -20,7 +20,7 @@
 
 ## 5–6. Experiments and exact configurations
 
-[fact] Pre-registered plan (ledger P1, `scripts/plan_gen.py`): reference `stock`; candidates spd_fp, temporal_fp_g1, temporal_fp_g4; 20 epochs, recipe `c_model/train.py` STAGES['baseline'] (25,000 weighted samples/epoch, batch 32 × acc 2, AdamW 1e-3 cosine); function-preserving init for every configuration; seed = fold index; checkpoint last.pt (no selection); primary cst_drone_AP50 on the held-out DEV fold; non-inferiority anti_uav_drone_AP50; margin 0.02; rules: (1) fold-mean delta > +0.02; (2) delta > 0 in each of the 3 folds; (3) fold-pooled paired sequence bootstrap 95% CI of the mean delta excludes 0; (4) fold-mean Anti-UAV drone AP50 delta > -0.02; futility: a candidate with delta <= 0 on fold 0 is rejected (rule (2) cannot hold); folds 1-2 are run only for survivors.
+[fact] Pre-registered plan (ledger P1, `scripts/plan_gen.py`): reference `stock`; candidates spd_fp, temporal_fp_g1, temporal_fp_g4; 20 epochs, recipe `src/model/train.py` STAGES['baseline'] (25,000 weighted samples/epoch, batch 32 × acc 2, AdamW 1e-3 cosine); function-preserving init for every configuration; seed = fold index; checkpoint last.pt (no selection); primary cst_drone_AP50 on the held-out DEV fold; non-inferiority anti_uav_drone_AP50; margin 0.02; rules: (1) fold-mean delta > +0.02; (2) delta > 0 in each of the 3 folds; (3) fold-pooled paired sequence bootstrap 95% CI of the mean delta excludes 0; (4) fold-mean Anti-UAV drone AP50 delta > -0.02; futility: a candidate with delta <= 0 on fold 0 is rejected (rule (2) cannot hold); folds 1-2 are run only for survivors.
 
 | run | config | fold | seed | epochs | launches | training time | last.pt sha | init check |
 |---|---|---|---|---|---|---|---|---|

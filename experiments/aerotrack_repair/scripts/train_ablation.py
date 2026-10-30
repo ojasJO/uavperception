@@ -12,8 +12,8 @@ The four runs, their evaluations and the final test table run from ONE command: 
 
 Grid rule: every run uses the historical `baseline` stage recipe (same data, sampler, augmentation, optimiser,
 batch, samples/epoch) and the SAME reduced budget (--epochs, cosine schedule completes), differing in exactly
-one factor named by --ablation (see c_model/train.py::ABLATIONS). Runs are named repair_abl_<ablation>_e<epochs>
-and never overwrite an existing directory. `runs/<name>/run_meta.json` records git, environment, command, data
+one factor named by --ablation (see src/model/train.py::ABLATIONS). Runs are named repair_abl_<ablation>_e<epochs>
+and never overwrite an existing directory. `results/runs/<name>/run_meta.json` records git, environment, command, data
 hashes (manifest.csv, splits.json, label_cache.npz), the ablation definition and, at the end, checkpoint hashes.
 Checkpoint policy: both best.pt (fitness) and last.pt are kept and both are evaluated later.
 Resume: --resume continues weights/last.pt (--resume-from names another checkpoint of the same run). The recipe
@@ -68,7 +68,7 @@ def main():
     ap.add_argument("--epochs", type=int, default=20)
     ap.add_argument("--batch", type=int, default=32, help="historical v1/v2 used 32")
     ap.add_argument("--workers", type=int, default=4, help="a ceiling: train.py plans the real count from free RAM/commit")
-    ap.add_argument("--resume", action="store_true", help="resume from runs/<name>/weights/last.pt")
+    ap.add_argument("--resume", action="store_true", help="resume from results/runs/<name>/weights/last.pt")
     ap.add_argument("--resume-from", default=None, help="resume from this checkpoint of the same run instead of last.pt")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--preflight-only", action="store_true",
@@ -77,12 +77,12 @@ def main():
     if a.resume_from:
         a.resume = True
     name = f"repair_abl_{a.ablation}_e{a.epochs}"
-    run_dir = REPO_ROOT / "runs" / name
+    run_dir = REPO_ROOT / "results/runs" / name
     last = run_dir / "weights" / "last.pt"
     if run_dir.exists() and any(run_dir.rglob("*")) and not a.resume and not a.dry_run and not a.preflight_only:
         sys.exit(f"{run_dir} already exists — use --resume, or a different --epochs; historical runs are never overwritten")
     py = sys.executable
-    base = [py, str(REPO_ROOT / "c_model" / "train.py"), "--stage", "baseline", "--ablation", a.ablation,
+    base = [py, str(REPO_ROOT / "src/model" / "train.py"), "--stage", "baseline", "--ablation", a.ablation,
             "--epochs", str(a.epochs), "--batch", str(a.batch), "--workers", str(a.workers)]
     cmd = base + ["--name", name]
     resume_ckpt = Path(a.resume_from) if a.resume_from else (last if a.resume and last.exists() else None)
@@ -110,7 +110,7 @@ def main():
     if a.preflight_only:
         # same command, scratch name: the trainer writes args.json + weights/ when it is built, and a check must
         # leave nothing behind. The `_preflight_` prefix is never a real run name.
-        scratch = REPO_ROOT / "runs" / f"_preflight_{name}"
+        scratch = REPO_ROOT / "results/runs" / f"_preflight_{name}"
         if scratch.exists():
             if any(p.suffix == ".pt" for p in scratch.rglob("*")):
                 sys.exit(f"{scratch} holds checkpoints; refusing to remove it")

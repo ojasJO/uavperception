@@ -10,7 +10,7 @@ mSA by Track A's code; frame-level SA per size bin and CST attribute; located, f
 X1-a (bootstrap CI of our mSA vs the published 35.92), X1-b (tiny-target SA vs 15.83 / 28.20, descriptive) and X1-c (vs the v2
 candidate's CST test result if its own pass exists, descriptive). Output: reports/x1_final_test.{json,md}.
 Amendment X1-A1 (2026-10-12, before the pass): also writes the STE / argmax outputs in the official CST format to
-runs/aerotrack_v3/x1_test_predictions/<tracker>/<official sequence>.txt, the per-sequence SA and the STE wall time; the official
+results/runs/aerotrack_v3/x1_test_predictions/<tracker>/<official sequence>.txt, the per-sequence SA and the STE wall time; the official
 toolkit scoring and the paired comparison with the released GlobalTrack predictions run afterwards on those files
 (experiments/cst_anti_uav/scripts/analyze_test.py).
 """
@@ -33,14 +33,14 @@ import cstlib  # noqa: E402  (official CST result format; amendment X1-A1)
 REG = S.SERIES / "preregistration_X1_cst_protocol_matched.json"
 FROZEN = S.SERIES / "frozen_x1_params.json"
 LEDGER = S.REPORTS / "x1_test_ledger.jsonl"
-PRED_DIR = S.REPO / "runs" / "aerotrack_v3" / "x1_test_predictions"
+PRED_DIR = S.REPO / "results/runs" / "aerotrack_v3" / "x1_test_predictions"
 PUBLISHED = {"GlobalTrack": 35.92, "SiamDT": 35.84, "MixFormer-V2": 29.39}
 PUBLISHED_TINY = {"GlobalTrack": 15.83, "PrDiMP (best tiny)": 28.20}
 
 
 def _sys_module(name):
-    """Explicit-path import of a systems module: after cache_detections is imported, c_model/ is first on sys.path and a plain
-    `import track_eval` loads c_model/track_eval.py (F-05; reproduced for this script on 2026-10-12 before the pass)."""
+    """Explicit-path import of a systems module: after cache_detections is imported, src/model/ is first on sys.path and a plain
+    `import track_eval` loads src/model/track_eval.py (F-05; reproduced for this script on 2026-10-12 before the pass)."""
     import importlib.util
     path = SYS / f"{name}.py"
     spec = importlib.util.spec_from_file_location(f"systems_{name}", path)
@@ -69,7 +69,7 @@ def main():
             sys.exit(f"Refusing: {p.relative_to(S.REPO)} must be committed and unmodified before the test pass")
     frozen = json.loads(FROZEN.read_text(encoding="utf-8"))
     cand = frozen["candidate"]
-    w = S.REPO / "runs" / cand / "weights" / "last.pt"
+    w = S.REPO / "results/runs" / cand / "weights" / "last.pt"
     wsha = file_sha256(w)
     if LEDGER.exists() and any(json.loads(x).get("weights_sha256") == wsha for x in LEDGER.read_text(encoding="utf-8").splitlines() if x.strip()):
         sys.exit("Refusing: X1 already has its single TEST pass")

@@ -64,7 +64,7 @@ Nothing tagged `[INFERRED]`/`[UNSPECIFIED]` may be described as "the paper's set
 | Attribute annotation | per IR sequence: OV, OC, FM (>60 px inter-frame motion), SV (ratio outside [0.66, 1.5]), LI, TC (thermal crossover; split into TC-easy/med/hard by SiamRPN++LT difficulty), LR (<400 px² box) | `[PAPER-EXPLICIT]` Table II; files `data/anti_uav/label_new/{split}.json` `[REPO-DERIVED]` |
 | Annotation process | coarse every 25 frames → fine per frame for 30 pairs → inspection/correction | `[PAPER-EXPLICIT]` §III-B |
 | Tracking start frame | "the first frame of the UAV existence (`exist`==1)", with 4 official corrections: `20190925_130434_1_2` IR → 16; `20190926_134054_1_1` visible → 150; `20190925_194211_1_3` visible → 150; `20190925_194211_1_4` visible → 1 | `[REPO-DERIVED]` ucas-vg/Anti-UAV README |
-| Frames on disk | decoded JPEG (quality 95, sequential `cv2.VideoCapture` read) at `b_pipeline/data_unified/anti_uav/images/antiuav_<split>_<seq>__{IR,RGB}/NNNNNN.jpg` (1-indexed); frame count == label count for all 636 clips | `[REPO-DERIVED]` this repo; the paper reads MP4 directly — JPEG re-encoding is a preprocessing difference we document and accept |
+| Frames on disk | decoded JPEG (quality 95, sequential `cv2.VideoCapture` read) at `data/derived/data_unified/anti_uav/images/antiuav_<split>_<seq>__{IR,RGB}/NNNNNN.jpg` (1-indexed); frame count == label count for all 636 clips | `[REPO-DERIVED]` this repo; the paper reads MP4 directly — JPEG re-encoding is a preprocessing difference we document and accept |
 
 Position/scale statistics (Fig. 3): boxes concentrate near the image centre, horizontal motion
 dominates, mean target size √(wh) < 40 px in all splits. `[PAPER-EXPLICIT]`

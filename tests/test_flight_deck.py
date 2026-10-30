@@ -16,6 +16,7 @@ import numpy as np
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "src"))
 
 from aerolab import analysis, categories, data, evidence, recorded, sequences  # noqa: E402
 from aerolab import benchmark as BM  # noqa: E402
@@ -298,7 +299,7 @@ class Runner(unittest.TestCase):
         seen = {}
         man = FD.run(self.cfg(), R, on_event=lambda e: seen.setdefault(e["slug"], []).append(e["record"]) if e["type"] == "frame" else None)
         self.assertEqual(man["status"], "completed")
-        self.assertEqual(man["schema"], "aerolab/flightdeck_experiment/1")
+        self.assertEqual(man["schema"], "src/aerolab/flightdeck_experiment/1")
         self.assertEqual(man["evaluation_protocol_id"], "studio.sot_smoke.v1")
         for m in man["models"]:
             self.assertEqual(m["status"], "completed")
@@ -378,7 +379,7 @@ class Runner(unittest.TestCase):
     def test_explicit_cuda_refused_without_cuda(self):
         code = ("import sys; sys.path.insert(0, %r); from aerolab import flightdeck as FD; from aerolab.registry import Registry; "
                 "e, _ = FD.validate(FD.build_config('tracking', 'cst2025', 'val', 'IR', ['building_41'], [{'model_id': %r, 'tracker': 'ste'}], device='cuda'), Registry()); "
-                "print('ERR' + '|'.join(e))") % (str(REPO), X1)
+                "print('ERR' + '|'.join(e))") % (str(REPO / "src"), X1)
         p = subprocess.run([sys.executable, "-c", code], env=dict(os.environ, CUDA_VISIBLE_DEVICES="-1"), cwd=REPO, capture_output=True, text=True, timeout=300)
         line = next(x for x in p.stdout.splitlines() if x.startswith("ERR"))
         self.assertIn("CUDA requested but", line)

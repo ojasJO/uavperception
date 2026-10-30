@@ -14,6 +14,7 @@ import numpy as np
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "src"))
 from aerolab import data, schemas  # noqa: E402
 from aerolab.adapters import AdapterError, compatibility, get_adapter  # noqa: E402
 from aerolab.registry import Registry  # noqa: E402
@@ -22,7 +23,7 @@ R = Registry()
 X1 = "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s0_e20@last"
 HAVE_CST = (REPO / "data" / "cst_anti_uav_full" / "CST-AntiUAV" / "CST-AntiUAV" / "val").exists()
 HAVE_AU = (REPO / "data" / "anti_uav" / "val").exists()
-CACHE = sorted(glob.glob(str(REPO / "runs/systems/_cache/v3_n__causal_g4_cst_s0_e20/*/val/index.json")))
+CACHE = sorted(glob.glob(str(REPO / "results/runs/systems/_cache/v3_n__causal_g4_cst_s0_e20/*/val/index.json")))
 
 
 def iou_xyxy(a, b):
@@ -188,7 +189,7 @@ class CpuFallback(unittest.TestCase):
         import os
         import subprocess
         env = dict(os.environ, CUDA_VISIBLE_DEVICES="-1")
-        p = subprocess.run([sys.executable, "-c", CPU_PROBE % (str(REPO), X1)], env=env, cwd=REPO, capture_output=True, text=True,
+        p = subprocess.run([sys.executable, "-c", CPU_PROBE % (str(REPO / "src"), X1)], env=env, cwd=REPO, capture_output=True, text=True,
                            timeout=600)
         line = next((s for s in p.stdout.splitlines() if s.startswith("PROBE")), None)
         self.assertIsNotNone(line, p.stderr[-2000:])

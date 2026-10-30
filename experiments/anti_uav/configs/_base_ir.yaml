@@ -14,7 +14,7 @@ notes: >
 
 data:
   root: data/anti_uav                                    # labels + attribute files (repo-relative)
-  frames_root: b_pipeline/data_unified/anti_uav/images   # decoded frames (repo-relative)
+  frames_root: data/derived/data_unified/anti_uav/images   # decoded frames (repo-relative)
   modality: IR
   train_split: train            # TRAIN: optimisation only
   monitor_split: val            # VAL: training-time monitoring only (no checkpoint selection in Phase A)

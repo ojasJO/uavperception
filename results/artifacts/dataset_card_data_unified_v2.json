@@ -1,0 +1,513 @@
+{
+ "generated": "2026-10-05T11:09:54+0530",
+ "corpus": "data_unified_v2",
+ "manifest": "data\\derived\\data_unified_v2\\manifest.csv",
+ "class_mapping": {
+  "0": "uav_drone (Anti-UAV, CST, Det-Fly 'Drone')",
+  "1": "bird_hard_negative (Det-Fly 'Bird')"
+ },
+ "preprocessing": "YOLO-normalised labels; frames read from the source extraction (Anti-UAV: JPEG decodes of the MP4s); training letterboxes to 640",
+ "sources": {
+  "anti_uav": {
+   "archive": "datasets/1_anti-uav/Anti-UAV-RGBT.zip",
+   "source": "https://github.com/ZhaoJ9014/Anti-UAV (Jiang et al., arXiv:2101.08466)",
+   "terms": "academic research use per the Anti-UAV benchmark; no licence file inside the archive (verify before redistribution)",
+   "notes": "IR 640x512 + RGB 1920x1080 per clip; official 160/67/91 sequences per modality; released box count ~2 % below the paper's Table I; VAL shares all 26 recording sessions with TRAIN"
+  },
+  "cst": {
+   "archive": "datasets/2_cst-antiuav (z01-z07) + datasets/2_cst-antiuav_part2 (z08-z10, .zip)",
+   "source": "https://github.com/PCwenyue/CST-Anti-UAV (Xie et al., ICCVW 2025, arXiv:2507.23473)",
+   "terms": "academic and non-commercial research (dataset README / DATASETS_TERMS)",
+   "notes": "corpus v1 was built from parts z01-z07 only (84/120 train, 0/40 val, 60/60 test sequences); corpus v2 from all 11 parts (CRC-verified). Official release 120/40/60."
+  },
+  "det_fly": {
+   "archive": "datasets/3_det-fly/Det-Fly.v5i.yolov11.zip",
+   "source": "Roboflow export of https://github.com/Jake-WU/Det-Fly (Zheng et al., IEEE RA-L 2021)",
+   "terms": "CC BY 4.0 (Roboflow export), research use only per the export disclaimer; cite the original",
+   "notes": "random image-level export split (VAL frames adjacent to TRAIN frames: 1,224 of 1,469); images stretched to 640x640; the only source of birds"
+  }
+ },
+ "groups": {
+  "anti_uav/IR/test": {
+   "sequences": 91,
+   "frames": 85374,
+   "frames_with_target": 84178,
+   "boxes": {
+    "drone": 84178,
+    "bird": 0
+   },
+   "source_resolution": [
+    640,
+    512
+   ],
+   "box_diag_px": {
+    "median": 55.605674743652344,
+    "p05": 33.83774185180664,
+    "p95": 94.6258773803711
+   },
+   "size_bins_diag_share": {
+    "tiny": 0.00014255506189265603,
+    "small": 0.03293021929720354,
+    "normal": 0.2797286701988643,
+    "large": 0.6871985554420394
+   },
+   "area_bins_share": {
+    "micro": 0.00024947135831214804,
+    "small": 0.9364798403383306,
+    "standard": 0.06327068830335718
+   },
+   "motion_px_per_frame": {
+    "median": 4.03086769442971,
+    "p95": 22.0
+   },
+   "invisible_runs": {
+    "count": 57,
+    "mean_len": 20.982456140350877,
+    "max_len": 217
+   }
+  },
+  "anti_uav/IR/train": {
+   "sequences": 160,
+   "frames": 149528,
+   "frames_with_target": 148189,
+   "boxes": {
+    "drone": 148189,
+    "bird": 0
+   },
+   "source_resolution": [
+    640,
+    512
+   ],
+   "box_diag_px": {
+    "median": 58.59172058105469,
+    "p05": 33.97038269042969,
+    "p95": 99.29753112792969
+   },
+   "size_bins_diag_share": {
+    "tiny": 0.00016195534081477032,
+    "small": 0.017120029151961348,
+    "normal": 0.328607386513169,
+    "large": 0.6541106289940549
+   },
+   "area_bins_share": {
+    "micro": 0.000485866022444311,
+    "small": 0.9356969815573356,
+    "standard": 0.06381715242022012
+   },
+   "motion_px_per_frame": {
+    "median": 3.639598026878414,
+    "p95": 16.530088792455764
+   },
+   "invisible_runs": {
+    "count": 51,
+    "mean_len": 26.254901960784313,
+    "max_len": 229
+   }
+  },
+  "anti_uav/IR/val": {
+   "sequences": 67,
+   "frames": 61999,
+   "frames_with_target": 60548,
+   "boxes": {
+    "drone": 60548,
+    "bird": 0
+   },
+   "source_resolution": [
+    640,
+    512
+   ],
+   "box_diag_px": {
+    "median": 57.38441848754883,
+    "p05": 33.30149459838867,
+    "p95": 106.91674041748047
+   },
+   "size_bins_diag_share": {
+    "tiny": 8.257911078813504e-05,
+    "small": 0.020165818854462576,
+    "normal": 0.26096650591266435,
+    "large": 0.718785096122085
+   },
+   "area_bins_share": {
+    "micro": 0.00014864239941864306,
+    "small": 0.9284699742353174,
+    "standard": 0.07138138336526392
+   },
+   "motion_px_per_frame": {
+    "median": 3.1621232918992077,
+    "p95": 16.498643239017138
+   },
+   "invisible_runs": {
+    "count": 23,
+    "mean_len": 63.08695652173913,
+    "max_len": 901
+   }
+  },
+  "anti_uav/RGB/test": {
+   "sequences": 91,
+   "frames": 85374,
+   "frames_with_target": 79699,
+   "boxes": {
+    "drone": 79699,
+    "bird": 0
+   },
+   "source_resolution": [
+    1920,
+    1080
+   ],
+   "box_diag_px": {
+    "median": 144.10122680664062,
+    "p05": 57.9825553894043,
+    "p95": 247.58229064941406
+   },
+   "size_bins_diag_share": {
+    "tiny": 1.2547208873386115e-05,
+    "small": 0.0012547208873386116,
+    "normal": 0.018005244733309077,
+    "large": 0.980727487170479
+   },
+   "area_bins_share": {
+    "micro": 0.002484347356930451,
+    "small": 0.9382049962985733,
+    "standard": 0.059310656344496164
+   },
+   "motion_px_per_frame": {
+    "median": 9.123867922852984,
+    "p95": 57.10241762917879
+   },
+   "invisible_runs": {
+    "count": 75,
+    "mean_len": 75.66666666666667,
+    "max_len": 770
+   }
+  },
+  "anti_uav/RGB/train": {
+   "sequences": 160,
+   "frames": 149528,
+   "frames_with_target": 142106,
+   "boxes": {
+    "drone": 142106,
+    "bird": 0
+   },
+   "source_resolution": [
+    1920,
+    1080
+   ],
+   "box_diag_px": {
+    "median": 124.67916870117188,
+    "p05": 64.81433868408203,
+    "p95": 253.65377807617188
+   },
+   "size_bins_diag_share": {
+    "tiny": 8.444400658663252e-05,
+    "small": 0.0007459220581819205,
+    "normal": 0.01914767849351892,
+    "large": 0.9800219554417126
+   },
+   "area_bins_share": {
+    "micro": 0.0054747864270333416,
+    "small": 0.9565465216106287,
+    "standard": 0.037978691962337975
+   },
+   "motion_px_per_frame": {
+    "median": 9.012906516077699,
+    "p95": 41.52789845922112
+   },
+   "invisible_runs": {
+    "count": 105,
+    "mean_len": 70.68571428571428,
+    "max_len": 564
+   }
+  },
+  "anti_uav/RGB/val": {
+   "sequences": 67,
+   "frames": 61999,
+   "frames_with_target": 58262,
+   "boxes": {
+    "drone": 58262,
+    "bird": 0
+   },
+   "source_resolution": [
+    1920,
+    1080
+   ],
+   "box_diag_px": {
+    "median": 135.20745849609375,
+    "p05": 65.45975494384766,
+    "p95": 242.15663146972656
+   },
+   "size_bins_diag_share": {
+    "tiny": 1.7163846074628403e-05,
+    "small": 0.00034327692149256807,
+    "normal": 0.004359616902955614,
+    "large": 0.9952799423294771
+   },
+   "area_bins_share": {
+    "micro": 0.001407435378119529,
+    "small": 0.9492636710033985,
+    "standard": 0.04932889361848203
+   },
+   "motion_px_per_frame": {
+    "median": 8.016340766611771,
+    "p95": 40.051031140713825
+   },
+   "invisible_runs": {
+    "count": 32,
+    "mean_len": 116.78125,
+    "max_len": 903
+   }
+  },
+  "cst/IR/test": {
+   "sequences": 60,
+   "frames": 72175,
+   "frames_with_target": 59250,
+   "boxes": {
+    "drone": 59250,
+    "bird": 0
+   },
+   "source_resolution": [
+    640,
+    512
+   ],
+   "box_diag_px": {
+    "median": 14.276308059692383,
+    "p05": 7.812370777130127,
+    "p95": 30.14519691467285
+   },
+   "size_bins_diag_share": {
+    "tiny": 0.17475105485232068,
+    "small": 0.7731983122362869,
+    "normal": 0.04388185654008439,
+    "large": 0.008168776371308016
+   },
+   "area_bins_share": {
+    "micro": 0.5737215189873418,
+    "small": 0.42627848101265825,
+    "standard": 0.0
+   },
+   "motion_px_per_frame": {
+    "median": 0.7622019533982647,
+    "p95": 10.02096924935136
+   },
+   "invisible_runs": {
+    "count": 316,
+    "mean_len": 40.901898734177216,
+    "max_len": 513
+   },
+   "cst_frame_attributes_share": {
+    "OC": 0.08962937305161067,
+    "OV": 0.08742639418081052,
+    "SV": 0.4633875995843436,
+    "TC": 0.5847177000346381,
+    "DBC": 0.11948735711811569,
+    "CDB": 0.1992518184967094,
+    "FM": 0.0012885348112227225
+   },
+   "cst_categories": {
+    "building": 9,
+    "cn_mountains": 9,
+    "cn_sky": 6,
+    "jungle": 13,
+    "urban-areas": 17,
+    "water": 6
+   }
+  },
+  "cst/IR/train": {
+   "sequences": 120,
+   "frames": 127991,
+   "frames_with_target": 109916,
+   "boxes": {
+    "drone": 109916,
+    "bird": 0
+   },
+   "source_resolution": [
+    640,
+    512
+   ],
+   "box_diag_px": {
+    "median": 15.742801666259766,
+    "p05": 6.666261196136475,
+    "p95": 31.74862289428711
+   },
+   "size_bins_diag_share": {
+    "tiny": 0.20534772007714983,
+    "small": 0.7356981695112631,
+    "normal": 0.05889952327231704,
+    "large": 5.458713926998799e-05
+   },
+   "area_bins_share": {
+    "micro": 0.45632119072746463,
+    "small": 0.5436788092725354,
+    "standard": 0.0
+   },
+   "motion_px_per_frame": {
+    "median": 0.5996463623272512,
+    "p95": 5.615332696431169
+   },
+   "invisible_runs": {
+    "count": 255,
+    "mean_len": 70.88235294117646,
+    "max_len": 841
+   },
+   "cst_frame_attributes_share": {
+    "OC": 0.06274659937026822,
+    "OV": 0.08046659530748256,
+    "SV": 0.3368049315967529,
+    "TC": 0.46090740755209353,
+    "DBC": 0.10456985256775866,
+    "CDB": 0.15249509731152971,
+    "FM": 0.0007344266393730809
+   },
+   "cst_categories": {
+    "building": 51,
+    "cn_mountains": 20,
+    "cn_sky": 8,
+    "jungle": 5,
+    "urban-areas": 23,
+    "water": 13
+   }
+  },
+  "cst/IR/val": {
+   "sequences": 40,
+   "frames": 45305,
+   "frames_with_target": 39055,
+   "boxes": {
+    "drone": 39055,
+    "bird": 0
+   },
+   "source_resolution": [
+    640,
+    512
+   ],
+   "box_diag_px": {
+    "median": 15.142707824707031,
+    "p05": 7.051028728485107,
+    "p95": 30.71860694885254
+   },
+   "size_bins_diag_share": {
+    "tiny": 0.2060939700422481,
+    "small": 0.7303802330047369,
+    "normal": 0.05464089105108181,
+    "large": 0.00888490590193317
+   },
+   "area_bins_share": {
+    "micro": 0.514018691588785,
+    "small": 0.48587888874663937,
+    "standard": 0.00010241966457559851
+   },
+   "motion_px_per_frame": {
+    "median": 0.7448444673549958,
+    "p95": 8.282696220282242
+   },
+   "invisible_runs": {
+    "count": 166,
+    "mean_len": 37.65060240963855,
+    "max_len": 544
+   },
+   "cst_frame_attributes_share": {
+    "OC": 0.07125041386160468,
+    "OV": 0.06345877938417394,
+    "SV": 0.4570797925173822,
+    "TC": 0.6518485818342347,
+    "DBC": 0.4286061141154398,
+    "CDB": 0.3911268071956738,
+    "FM": 0.0011919214214766581
+   },
+   "cst_categories": {
+    "building": 14,
+    "cn_mountains": 9,
+    "cn_sky": 2,
+    "jungle": 1,
+    "urban-areas": 8,
+    "water": 6
+   }
+  },
+  "det_fly/RGB/test": {
+   "sequences": 1567,
+   "frames": 1567,
+   "frames_with_target": 1567,
+   "boxes": {
+    "drone": 1470,
+    "bird": 1627
+   },
+   "source_resolution": [
+    640,
+    640
+   ],
+   "box_diag_px": {
+    "median": 33.837669372558594,
+    "p05": 11.335769653320312,
+    "p95": 105.75090789794922
+   },
+   "size_bins_diag_share": {
+    "tiny": 0.04585082337746206,
+    "small": 0.37423312883435583,
+    "normal": 0.28543752018082014,
+    "large": 0.294478527607362
+   },
+   "area_bins_share": {
+    "micro": 0.11333548595414918,
+    "small": 0.8140135615111398,
+    "standard": 0.07265095253471102
+   }
+  },
+  "det_fly/RGB/train": {
+   "sequences": 4698,
+   "frames": 4698,
+   "frames_with_target": 4698,
+   "boxes": {
+    "drone": 4407,
+    "bird": 5006
+   },
+   "source_resolution": [
+    640,
+    640
+   ],
+   "box_diag_px": {
+    "median": 33.0948486328125,
+    "p05": 12.165400505065918,
+    "p95": 108.70601654052734
+   },
+   "size_bins_diag_share": {
+    "tiny": 0.03399553808562626,
+    "small": 0.40539679167109316,
+    "normal": 0.26633379368957827,
+    "large": 0.29427387655370235
+   },
+   "area_bins_share": {
+    "micro": 0.11154785934346118,
+    "small": 0.8176989270158291,
+    "standard": 0.07075321364070966
+   }
+  },
+  "det_fly/RGB/val": {
+   "sequences": 1565,
+   "frames": 1565,
+   "frames_with_target": 1565,
+   "boxes": {
+    "drone": 1468,
+    "bird": 1991
+   },
+   "source_resolution": [
+    640,
+    640
+   ],
+   "box_diag_px": {
+    "median": 29.769872665405273,
+    "p05": 12.04183292388916,
+    "p95": 100.5067138671875
+   },
+   "size_bins_diag_share": {
+    "tiny": 0.03469210754553339,
+    "small": 0.473258167100318,
+    "normal": 0.25874530211043656,
+    "large": 0.23330442324371206
+   },
+   "area_bins_share": {
+    "micro": 0.1237351835790691,
+    "small": 0.8216247470367158,
+    "standard": 0.05464006938421509
+   }
+  }
+ },
+ "seconds": 4.4
+}

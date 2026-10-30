@@ -31,8 +31,8 @@ PROTOCOL = S.SERIES / "final_protocol.json"
 
 
 def _systems_module(name):
-    """Import experiments/systems/scripts/<name>.py by path. c_model/ also contains a track_eval.py, and cache_detections puts
-    c_model/ first on sys.path, so a plain `import track_eval` resolved to the wrong module (F-05, 2026-10-06)."""
+    """Import experiments/systems/scripts/<name>.py by path. src/model/ also contains a track_eval.py, and cache_detections puts
+    src/model/ first on sys.path, so a plain `import track_eval` resolved to the wrong module (F-05, 2026-10-06)."""
     import importlib.util
     spec = importlib.util.spec_from_file_location(f"systems_{name}", SYS / f"{name}.py")
     m = importlib.util.module_from_spec(spec)
@@ -85,7 +85,7 @@ def final(cand, resume=False):
     frozen = json.loads(FROZEN.read_text(encoding="utf-8"))
     if frozen["candidate"] != cand:
         sys.exit(f"Refusing: frozen parameters belong to {frozen['candidate']}, not {cand}")
-    w = S.REPO / "runs" / cand / "weights" / "last.pt"
+    w = S.REPO / "results/runs" / cand / "weights" / "last.pt"
     wsha = file_sha256(w)
     lines = [json.loads(x) for x in S.TEST_LEDGER.read_text(encoding="utf-8").splitlines() if x.strip()] if S.TEST_LEDGER.exists() else []
     mine = [x for x in lines if x.get("weights_sha256") == wsha]
@@ -113,7 +113,7 @@ def final(cand, resume=False):
                                       "reason": "systems part crashed (module shadowing, F-05); detection AP + TEST cache were complete"}
     out["detection"] = next(r for r in rows if r["run"] == cand and r["set"] == "test")["metrics"]
     # (b) full-sequence TEST cache (deterministic inference). On resume, a complete cache of these exact weights is reused.
-    idx = S.REPO / "runs" / "systems" / "_cache" / cand / S.CORPUS / "test" / "index.json"
+    idx = S.REPO / "results/runs" / "systems" / "_cache" / cand / S.CORPUS / "test" / "index.json"
     reuse = False
     if resume and idx.exists():
         ix = json.loads(idx.read_text(encoding="utf-8"))

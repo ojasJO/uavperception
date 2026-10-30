@@ -11,10 +11,10 @@ in this project; which existing artifacts can be reused. Machine-readable compan
 | local repository | `A:\AEROTRACK_OMEN` (git root), branch `research-program`, HEAD `1745604` |
 | SSH alias | `amritahpc` → `y_rajeshwar@172.17.18.100:22`, key `~/.ssh/aerotrack_hpc_ed25519` (BatchMode login works; no password used) |
 | remote project | `~/aerotrack_server/source` (git, branch `research-program`, HEAD `cd433bb`), jobs in `~/aerotrack_server/jobs/<run_id>/` |
-| remote env | `at311` (conda, `~/aerotrack_server/environments/at311`): Python 3.11.13, torch 2.6.0+cu118, numpy 1.26.4, OpenCV 5.0.0, ultralytics 8.4.115; activated by `tools/hpc/job_env.sh` |
+| remote env | `at311` (conda, `~/aerotrack_server/environments/at311`): Python 3.11.13, torch 2.6.0+cu118, numpy 1.26.4, OpenCV 5.0.0, ultralytics 8.4.115; activated by `scripts/hpc/job_env.sh` |
 | scheduler | PBS Pro, queue `workq`; 4 compute nodes × 28 CPUs × 1 V100 (`ngpus` cannot be requested — `RUNBOOK.md`; GPU exclusivity via `gpu_guard.sh`) |
 | storage | `/home` 25 T, **100 % used, 97 G free** (shared by all users) — keep new outputs small |
-| repo instruction files | `HANDOFF.md`, `ENTRY.md`, `CONVENTIONS.md` do **not** exist (local or remote); the project's equivalents are `docs/MASTER_STATE.md`, `docs/SESSION_HANDOFF.md`, `docs/AGENT_CONTEXT.md`, `tools/hpc/RUNBOOK.md` |
+| repo instruction files | `HANDOFF.md`, `ENTRY.md`, `CONVENTIONS.md` do **not** exist (local or remote); the project's equivalents are `docs/MASTER_STATE.md`, `docs/SESSION_HANDOFF.md`, `docs/AGENT_CONTEXT.md`, `scripts/hpc/RUNBOOK.md` |
 
 ### Job 93015.amritahpc (`track_c_pipeline`)
 Live at 02:30 IST: **R**unning on node04 since 01:42 (16 CPUs, 32 GB requested, walltime 03:30:00, CPU-only, `gpu 0`).
@@ -26,7 +26,7 @@ the 32 GB request; PBS does not enforce it). Not touched. Its final state is rec
 Common ancestor `168c27d`. OMEN has 4 commits the HPC lacks (`90a3561`, `3f8c189`, `141577f`, `1745604`); the HPC has 1 commit
 the OMEN lacks (`cd433bb`, made by job 93015). Uncommitted on the HPC: `track_eval.py` (same 2-line label-path fallback as the OMEN
 copy, CRLF line endings), `docs/MASTER_STATE.md`, `docs/SESSION_HANDOFF.md`, Track C files rewritten by the running job
-(`runs/aerotrack_temporal/_data/traj_*.json`, `_c2_runner/events.jsonl`) and several untracked reports. `tools/hpc/sync_code.sh`
+(`results/runs/aerotrack_temporal/_data/traj_*.json`, `_c2_runner/events.jsonl`) and several untracked reports. `scripts/hpc/sync_code.sh`
 fast-forwards only, so code cannot be shipped until `cd433bb` is merged on the OMEN and the HPC-modified files are reconciled —
 which must wait for 93015 (it rewrites those files and spawns fresh processes from the checkout).
 
@@ -58,7 +58,7 @@ which must wait for 93015 (it rewrites those files and spawns fresh processes fr
 | use | split | evidence |
 |---|---|---|
 | detector training, corpus v2 (all 120 CST train sequences, + Anti-UAV + Det-Fly) | train | `experiments/aerotrack_v2/` (v2 campaign) |
-| detector training, CST only (X1) | train | `runs/v3_n__causal_g4_cst_s0_e20` (HPC; last.pt sha256 `e52a5645…`) |
+| detector training, CST only (X1) | train | `results/runs/v3_n__causal_g4_cst_s0_e20` (HPC; last.pt sha256 `e52a5645…`) |
 | window / tracker selection | val (official 40) | v2 decisions, `frozen_ste_params.json`, `frozen_x1_params.json` (HPC, untracked) |
 | corpus v1 generalization TEST (detection AP50 only; CST train truncated to 84 seq) | test | `docs/RESULTS.md` §2.1 (CST AP50 0.521) |
 | v2 final TEST (registered single pass; all-domain causal_g4; SOT STE mSA **56.55** on the 60 CST test sequences) | test | `experiments/aerotrack_v2/hpc/reports/final_test.json` |

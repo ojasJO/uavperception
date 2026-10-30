@@ -11,7 +11,7 @@
  "published_missing_from_archive": [],
  "trackers": {
   "X1-ste": {
-   "path": "runs\\cst_anti_uav\\val_predictions\\v3_n__causal_g4_cst_s0_e20\\ste",
+   "path": "results\\runs\\cst_anti_uav\\val_predictions\\v3_n__causal_g4_cst_s0_e20\\ste",
    "mSA": 64.03370365520725,
    "success_auc": 62.67405146843173,
    "precision_20px": 82.07575027793327,
@@ -174,7 +174,7 @@
    }
   },
   "X1-argmax": {
-   "path": "runs\\cst_anti_uav\\val_predictions\\v3_n__causal_g4_cst_s0_e20\\argmax",
+   "path": "results\\runs\\cst_anti_uav\\val_predictions\\v3_n__causal_g4_cst_s0_e20\\argmax",
    "mSA": 63.41935521526892,
    "success_auc": 62.08364688728819,
    "precision_20px": 81.44096144499849,

@@ -282,7 +282,7 @@
    "water_25": 85.53656177369679
   }
  },
- "predictions_dir": "runs/cst_anti_uav/x2_test_predictions/v3_n__ttt_cst_s1_e20",
+ "predictions_dir": "results/runs/cst_anti_uav/x2_test_predictions/v3_n__ttt_cst_s1_e20",
  "tracker_ms_per_frame": {
   "ste": 0.12563806108467135,
   "argmax": 0.011770067627470428

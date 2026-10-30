@@ -1,5 +1,5 @@
 """Paths + ledger for the AeroTrack generalization investigation (a separate series: the completed repair grid in
-experiments/aerotrack_repair and runs/repair_abl_* is read, never modified).
+experiments/aerotrack_repair and results/runs/repair_abl_* is read, never modified).
 
 Test-set rule for this series: no test image, label or prediction is read. The only test information any script uses
 is split METADATA (sequence names), for leakage/composition checks."""
@@ -12,7 +12,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[3]
 SERIES = REPO / "experiments" / "aerotrack_generalization"
 REPORTS = SERIES / "reports"
-CACHE = REPO / "runs" / "aerotrack_generalization" / "_cache"   # derived bulk data (git-ignored)
+CACHE = REPO / "results/runs" / "aerotrack_generalization" / "_cache"   # derived bulk data (git-ignored)
 def ledger_path():
     """Smoke tests of the machinery (GEN_SMOKE set) log to a separate file; decided at call time, not import time."""
     import os
@@ -20,7 +20,7 @@ def ledger_path():
 
 
 LEDGER = SERIES / "ledger.jsonl"
-for p in (REPO / "c_model", REPO / "b_pipeline", REPO / "experiments" / "aerotrack_repair" / "scripts",
+for p in (REPO / "src/model", REPO / "src/pipeline", REPO / "experiments" / "aerotrack_repair" / "scripts",
           REPO / "experiments" / "anti_uav" / "src"):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))

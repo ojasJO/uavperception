@@ -11,8 +11,8 @@ import v2series as _v2  # noqa: E402  (pins AEROTRACK_CORPUS=data_unified_v2, se
 CORPUS, REPO, git, now, write_json_atomic = _v2.CORPUS, _v2.REPO, _v2.git, _v2.now, _v2.write_json_atomic
 SERIES = REPO / "experiments" / "aerotrack_v3"
 REPORTS = SERIES / "reports"
-CACHE = REPO / "runs" / "aerotrack_v3" / "_cache"
-STATE = REPO / "runs" / "aerotrack_v3" / "_runner"
+CACHE = REPO / "results/runs" / "aerotrack_v3" / "_cache"
+STATE = REPO / "results/runs" / "aerotrack_v3" / "_runner"
 LEDGER = SERIES / "ledger.jsonl"
 TEST_LEDGER = REPORTS / "v3_test_ledger.jsonl"
 

@@ -10,13 +10,13 @@ GPU queue (each step waits for the previous one's sentinel; rebuilt 13:44 on 202
 
 | # | job | state dir | waits for | what | expected |
 |---|---|---|---|---|---|
-| 1 | aerotrack_v2 campaign (Track B), attempt 2 | `runs/aerotrack_v2/_runner/` | — (GPU since 13:31) | smoke OK; v1 reference on v2 VAL; stage 1 (stock / sym_g4 / causal_g4 s0), futility, stage 2, analysis | 7-28 h |
-| 2 | post-v2 chain | `runs/_chains/post_v2/` | v2 runner | export, gate, VAL cache, tracking, forecasting, failures, MOT, freeze STE, report | ~1.5 h |
-| 3 | causal-detector VAL caches (Track C inputs) | `runs/_chains/post_v2_causal_caches/` | post-v2 | v2_stock_s0, v2_causal_g4_s0 full VAL caches | ~1.5 h |
-| 4 | **F1** standard YOLO11n vs as-built (Track B; architecture erratum) | `runs/_chains/f1_std/` | caches | n_std of the v2-selected window, seeds 0 / 1 (futility after seed 0), analyze_f1 | 2.5-9 h |
-| 5 | **X1** CST protocol-matched arm (Track B) | `runs/_chains/x1_cst_only/` | F1 | CST-only training of the v2-selected config on the network F1 adopts (s0), VAL eval, CST VAL cache, tracker cross-fit, frozen TEST settings | 3.5-6 h |
-| 6 | H3 evaluations (Track A) | `runs/_chains/h3_resume_after_v2/` | X1 | consume the pause flag, run_h3 (4 evals + analysis) | >= 6.7 h |
-| 7 | Track C C2 causal windows | `runs/_chains/c2_launch/` -> `runs/aerotrack_temporal/_c2_runner/` | h3_resume_after_v2 (+ v2 decisions guard) | stage 1 g1 / g2 / g8 s0, futility, stage 2, analysis | 7-32 h |
+| 1 | aerotrack_v2 campaign (Track B), attempt 2 | `results/runs/aerotrack_v2/_runner/` | — (GPU since 13:31) | smoke OK; v1 reference on v2 VAL; stage 1 (stock / sym_g4 / causal_g4 s0), futility, stage 2, analysis | 7-28 h |
+| 2 | post-v2 chain | `results/runs/_chains/post_v2/` | v2 runner | export, gate, VAL cache, tracking, forecasting, failures, MOT, freeze STE, report | ~1.5 h |
+| 3 | causal-detector VAL caches (Track C inputs) | `results/runs/_chains/post_v2_causal_caches/` | post-v2 | v2_stock_s0, v2_causal_g4_s0 full VAL caches | ~1.5 h |
+| 4 | **F1** standard YOLO11n vs as-built (Track B; architecture erratum) | `results/runs/_chains/f1_std/` | caches | n_std of the v2-selected window, seeds 0 / 1 (futility after seed 0), analyze_f1 | 2.5-9 h |
+| 5 | **X1** CST protocol-matched arm (Track B) | `results/runs/_chains/x1_cst_only/` | F1 | CST-only training of the v2-selected config on the network F1 adopts (s0), VAL eval, CST VAL cache, tracker cross-fit, frozen TEST settings | 3.5-6 h |
+| 6 | H3 evaluations (Track A) | `results/runs/_chains/h3_resume_after_v2/` | X1 | consume the pause flag, run_h3 (4 evals + analysis) | >= 6.7 h |
+| 7 | Track C C2 causal windows | `results/runs/_chains/c2_launch/` -> `results/runs/aerotrack_temporal/_c2_runner/` | h3_resume_after_v2 (+ v2 decisions guard) | stage 1 g1 / g2 / g8 s0, futility, stage 2, analysis | 7-32 h |
 
 CPU (Windows commit is the binding resource: heavy CPU work runs only in the GPU's no-training window):
 
@@ -25,7 +25,7 @@ CPU (Windows commit is the binding resource: heavy CPU work runs only in the GPU
 | `cpu_trackc_window` (C1c train -> commit registry -> C1c VAL -> C3 x 2 -> C1b x 2) | waits for X1 (= start of the H3 evaluations, inference only) | Track C adoption decisions |
 | C1 VAL pass, Track C tracking evaluation, C3 prep | DONE 2026-10-05 | — |
 | X1 TEST pass script (`x1_final.py`) | ready | after X1's VAL design + frozen settings committed |
-| event waiter (`tools/wait_events.py`) | reaped twice by the memory reaper; not restarted per the reaper notice | the 2-hourly heartbeat covers sentinel checks |
+| event waiter (`scripts/wait_events.py`) | reaped twice by the memory reaper; not restarted per the reaper notice | the 2-hourly heartbeat covers sentinel checks |
 
 ## Milestones
 
@@ -34,7 +34,7 @@ CPU (Windows commit is the binding resource: heavy CPU work runs only in the GPU
 | 2026-10-04 22:5x | context audit; previous sessions' uncommitted repair + generalization work committed unchanged (584846d, 6c840a0); branch `research-program` | `docs/AGENT_CONTEXT.md` |
 | 2026-10-04 23:0x | **CST data defect found**: local archive = z01–z07 of 11 parts; we hold 84/120 train, 0/40 val, 60/60 test CST sequences; no urban-areas / water training scenes | AGENT_CONTEXT §B, D.4; dataset README; arXiv:2507.23473 |
 | 2026-10-04 23:2x | Anti-UAV H4 pre-registered (4e14b97) and launched; evaluate.py --scale (Phase B routing, overwrite guard); aggregator regression byte-identical | `experiments/anti_uav/preregistration/H4_native_scale.json` |
-| 2026-10-04 23:3x | seed-1 TEST results adopted (not re-run) for mission §9.1 P1; Track A ledger with 5 evidence classes | `artifacts/anti_uav_ledger.json` |
+| 2026-10-04 23:3x | seed-1 TEST results adopted (not re-run) for mission §9.1 P1; Track A ledger with 5 evidence classes | `results/artifacts/anti_uav_ledger.json` |
 | 2026-10-04 23:4x | ONNX export of the selected detector: parity 0.005 px / 1.2e-6; SPD-Conv also exports (4.06 M params, 11.7 GFLOPs vs 2.60 M, 6.6) | `experiments/deployment/reports/export_*.json` |
 | 2026-10-04 23:5x | corpus switch (AEROTRACK_CORPUS), split builder uses official CST val when present (v1 reproduced exactly); CST extract/verify/build scripts; novelty audit | 787c7eb; `docs/research/NOVELTY_GAP.md` |
 | 2026-10-05 00:0x | aerotrack_v2 campaign pre-registered (6c645b1): stock / sym_g4 / causal_g4 x seeds 0,1 on corpus v2; causal window verified (no future frame) | `experiments/aerotrack_v2/preregistration.json` |
@@ -50,7 +50,7 @@ CPU (Windows commit is the binding resource: heavy CPU work runs only in the GPU
 
 - Every GPU / long job is a detached process with sentinels and resumable state; none depends on the agent session, so a
   usage-window boundary can only delay the agent's reaction, never lose work.
-- One event waiter (`tools/wait_events.py`, background task, 2 h cap) wakes the agent when ANY job writes DONE / FAILED;
+- One event waiter (`scripts/wait_events.py`, background task, 2 h cap) wakes the agent when ANY job writes DONE / FAILED;
   after handling, `--ack` marks the sentinels as seen and the waiter is re-armed.
 - A session cron (`17 */2 * * *`, auto-expires after 7 days) re-invokes the agent every 2 h as a fallback, so work resumes
   automatically after a usage-window refresh even if a notification was missed. Usage budget itself is not observable from
@@ -97,7 +97,7 @@ CPU (Windows commit is the binding resource: heavy CPU work runs only in the GPU
 | item | waits for | where |
 |---|---|---|
 | final TEST pass of the v2 candidate (detection + SOT + tracking + forecasting, one pass) | v2 decision, post_v2 VAL analyses, commit of `frozen_ste_params.json` | `experiments/aerotrack_v2/final_protocol.json` (registered), `scripts/final_eval.py` |
-| post-v2 VAL follow-up (export, gate, cache, tracking, forecast, failures, MOT, freeze, report) | v2 runner DONE | `tools/chains/post_v2.json` (armed) |
+| post-v2 VAL follow-up (export, gate, cache, tracking, forecast, failures, MOT, freeze, report) | v2 runner DONE | `scripts/chains/post_v2.json` (armed) |
 | v3 capacity allocation: n_p2 (function-preserving P2, exact proof) / s (YOLO11s) / s single-frame around the v2 window | v2 winner -> write + commit `experiments/aerotrack_v3/preregistration.json` | `experiments/aerotrack_v3/scripts/` |
 | cross-dataset generalisation (Anti-UAV only, CST only, no Det-Fly, IR only, RGB only) | same machinery (`--train-domains`), registration after v3 design | `experiments/aerotrack_v3/scripts/` |
 | Anti-UAV H3 (8-GPU regime: accumulate 8, LR 0.02; warm-up 500 optimizer steps = mmdet convention) normal + DFSC arms | H4 verdict, then pre-registration | `experiments/anti_uav/configs/phase_b/` (normal arm config to add) |
@@ -105,10 +105,10 @@ CPU (Windows commit is the binding resource: heavy CPU work runs only in the GPU
 ## Next actions
 
 1. When the CST download reports DONE: `extract_and_verify.py` -> review `reports/extraction.md` -> `build_corpus_v2.py` -> review
-   `reports/corpus_v2.md` (counts 120/40/60, CST test labels identical to v1) -> commit -> `run_v2.py --detach --wait-for runs/_chains/gpu_slot_1`.
+   `reports/corpus_v2.md` (counts 120/40/60, CST test labels identical to v1) -> commit -> `run_v2.py --detach --wait-for results/runs/_chains/gpu_slot_1`.
 2. TensorRT: resumable download of the cu13 11.3 libs + bindings wheels, sha256 check, pip install from file; re-run deploy_gate if
    slot 1 ran before it.
-3. When H4 is DONE: read `experiments/anti_uav/reports/H4_native_scale.md`, rebuild `artifacts/anti_uav_ledger.json` and the registry,
+3. When H4 is DONE: read `experiments/anti_uav/reports/H4_native_scale.md`, rebuild `results/artifacts/anti_uav_ledger.json` and the registry,
    decide/pre-register H3.
 4. Deployment runtime (one-command video inference with the STE overlay) and failure-analysis tooling (deterministic example
    selection) — engineering while the GPU is busy.

@@ -1,0 +1,10 @@
+{
+ "name": "cpu_forecast_eval_g4",
+ "purpose": "CPU-only forecasting + uncertainty-calibration evaluation on the full VAL cache, with the cross-fitted STE parameters",
+ "state_dir": "results/runs/_chains/cpu_forecast_eval_g4",
+ "wait_for": "results/runs/_chains/cpu_track_eval_g4",
+ "jobs": [
+  {"name": "forecast_eval_g4", "required": false,
+   "cmd": ["{python}", "-u", "experiments/systems/scripts/forecast_eval.py", "--run", "gen_temporal_fp_g4_full_e20", "--corpus", "auto"]}
+ ]
+}

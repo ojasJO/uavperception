@@ -36,7 +36,7 @@ def main():
     assert len(seqs) == 67, len(seqs)
     print(f"[2] {len(seqs)} VAL sequences; split constant = {C.SPLIT!r}")
     try:
-        load_sequences("data/anti_uav", "b_pipeline/data_unified/anti_uav/images", "test", "IR", purpose=C.PURPOSE)
+        load_sequences("data/anti_uav", "data/derived/data_unified/anti_uav/images", "test", "IR", purpose=C.PURPOSE)
         raise AssertionError("test split was served with the demo's purpose")
     except TestSplitAccessError:
         print("[3] test split refused for the demo's purpose — OK")

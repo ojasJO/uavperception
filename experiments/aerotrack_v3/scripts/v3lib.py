@@ -5,9 +5,9 @@ The question (mission §30): under an edge budget, where does extra capacity pay
 model on the labelled frame by a verified function-preserving initialisation, and trained with the v2 recipe on corpus v2:
 
     model            yaml                                   init                                                   params
-    n                c_model/yolo11-stride.yaml             COCO yolo11n + centre-frame stem (gen_lib)             2.61 M
-    n_p2             c_model/yolo11-stride-p2fp.yaml        = stock n + inert appended P2 scale (p2fp.init_p2fp)    2.66 M
-    s                c_model/yolo11-stride-scale-s.yaml     COCO yolo11s + centre-frame stem (p2fp)                 9.52 M
+    n                src/model/yolo11-stride.yaml             COCO yolo11n + centre-frame stem (gen_lib)             2.61 M
+    n_p2             src/model/yolo11-stride-p2fp.yaml        = stock n + inert appended P2 scale (p2fp.init_p2fp)    2.66 M
+    s                src/model/yolo11-stride-scale-s.yaml     COCO yolo11s + centre-frame stem (p2fp)                 9.52 M
 
 A configuration = (model, window); windows are v2's (ttt / symmetric / causal, gap 4). The registered set and the comparisons
 are fixed in experiments/aerotrack_v3/preregistration.json once the v2 winner is known; the v2 runs of the same window and
@@ -55,13 +55,13 @@ def build_initialised(model_key, repo):
     import p2fp
     from aerotrack_trainer import build_model, transfer_pretrained
     m = MODELS[model_key]
-    yaml, pre = repo / "c_model" / m["yaml"], repo / "c_model" / m["pretrained"]
+    yaml, pre = repo / "src/model" / m["yaml"], repo / "src/model" / m["pretrained"]
     model = build_model(yaml, ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
     transfer_pretrained(model, pre, verbose=True)
     if m["init"] == "fp_stride":
         check = G.apply_fp_init(model, "stride")
     elif m["init"] == "fp_p2":
-        check = p2fp.init_p2fp(model, build_model, transfer_pretrained, G.apply_fp_init, repo / "c_model" / "yolo11-stride.yaml", pre)
+        check = p2fp.init_p2fp(model, build_model, transfer_pretrained, G.apply_fp_init, repo / "src/model" / "yolo11-stride.yaml", pre)
     else:
         check = p2fp.apply_fp_init_from(model, pre)
     return model, check

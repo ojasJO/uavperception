@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Tracker comparison with the trivial single-target baselines it must beat (repair item 6).
 
-    python experiments/aerotrack_repair/scripts/tracker_repair.py --weights runs/aerotrack_spd_finetuned/weights/best.pt
+    python experiments/aerotrack_repair/scripts/tracker_repair.py --weights results/runs/aerotrack_spd_finetuned/weights/best.pt
 
 Same detections (conf 0.05 so ByteTrack's low band exists), same VAL sequences (rule: the `--sequences` longest
 sequences per dataset — they carry the occlusion events; `track_eval.pick_sequences`), same metric code
@@ -14,8 +14,8 @@ sequences per dataset — they carry the occlusion events; `track_eval.pick_sequ
 
 Every sequence in this corpus holds ONE drone, so a multi-object tracker must at least beat "take the best box".
 Pre-registered rule: ByteTrack stays in the pipeline/README only if it beats argmax@0.25 on BOTH MOTA and IDF1
-on both datasets. Detections are cached in runs/<run>/tracking_repair/dets_val.npz.
-(argmax/greedy implementations from audit/bench_tracker.py.)
+on both datasets. Detections are cached in results/runs/<run>/tracking_repair/dets_val.npz.
+(argmax/greedy implementations from scripts/audit/bench_tracker.py.)
 """
 from __future__ import annotations
 
@@ -93,7 +93,7 @@ def main():
     a = ap.parse_args()
     w = Path(a.weights)
     run = w.parent.parent.name
-    out_dir = REPO_ROOT / "runs" / run / "tracking_repair"
+    out_dir = REPO_ROOT / "results/runs" / run / "tracking_repair"
     out_dir.mkdir(parents=True, exist_ok=True)
     cache_p = out_dir / "dets_val.npz"
     datasets = a.datasets.split(",")

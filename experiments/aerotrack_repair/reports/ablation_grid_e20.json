@@ -6,10 +6,10 @@
     "dirty": true,
     "dirty_files": [
       "EADME.md",
-      "b_pipeline/stacked_dataset.py",
-      "c_model/aerotrack_trainer.py",
-      "c_model/preflight.py",
-      "c_model/train.py",
+      "src/pipeline/stacked_dataset.py",
+      "src/model/aerotrack_trainer.py",
+      "src/model/preflight.py",
+      "src/model/train.py",
       "docs/AEROTRACK_REPAIR_REPORT.md",
       "experiments/aerotrack_repair/README.template.md",
       "experiments/aerotrack_repair/reports/detector_val_cap5000.json",
@@ -25,13 +25,13 @@
       "experiments/aerotrack_repair/reports/test_evaluation_ledger.jsonl",
       "experiments/aerotrack_repair/scripts/grid_report.py",
       "experiments/aerotrack_repair/scripts/run_grid.py",
-      "runs/aerotrack_spd_finetuned/eval_repair_test_cap5000/",
-      "runs/aerotrack_spd_v1/eval_repair_test_cap5000/",
-      "runs/repair_abl_baseline_ctrl_e20/",
-      "runs/repair_abl_no_spd_e20/",
-      "runs/repair_abl_single_frame_e20/",
-      "runs/repair_abl_stock_yolo11n_e20/",
-      "runs/repair_grid_e20/"
+      "results/runs/aerotrack_spd_finetuned/eval_repair_test_cap5000/",
+      "results/runs/aerotrack_spd_v1/eval_repair_test_cap5000/",
+      "results/runs/repair_abl_baseline_ctrl_e20/",
+      "results/runs/repair_abl_no_spd_e20/",
+      "results/runs/repair_abl_single_frame_e20/",
+      "results/runs/repair_abl_stock_yolo11n_e20/",
+      "results/runs/repair_grid_e20/"
     ]
   },
   "epochs": 20,
@@ -146,13 +146,13 @@
         "tiled_stem": []
       },
       "best_pt": {
-        "path": "runs\\repair_abl_baseline_ctrl_e20\\weights\\best.pt",
+        "path": "results\\runs\\repair_abl_baseline_ctrl_e20\\weights\\best.pt",
         "sha256": "815ebed2d9a2ebf70c11cdcc3411f963cb56ce52b16db9c48448cacbd0c541be",
         "epoch": 13,
         "fitness": 0.45778
       },
       "last_pt": {
-        "path": "runs\\repair_abl_baseline_ctrl_e20\\weights\\last.pt",
+        "path": "results\\runs\\repair_abl_baseline_ctrl_e20\\weights\\last.pt",
         "sha256": "2e02ebc5ef232bfcd247f068da3549a4286f975be6e3ce24df292575997d90ed",
         "epoch": 19
       },
@@ -205,13 +205,13 @@
         ]
       },
       "best_pt": {
-        "path": "runs\\repair_abl_no_spd_e20\\weights\\best.pt",
+        "path": "results\\runs\\repair_abl_no_spd_e20\\weights\\best.pt",
         "sha256": "084f1dd8f0f6762023fb55dd7bb724e212ea3759872c01380abd89bd6bf6231f",
         "epoch": 10,
         "fitness": 0.49477
       },
       "last_pt": {
-        "path": "runs\\repair_abl_no_spd_e20\\weights\\last.pt",
+        "path": "results\\runs\\repair_abl_no_spd_e20\\weights\\last.pt",
         "sha256": "2aebbb3bcb6c7f513a1c6897939a6e08c41eb9fcd2ab0a9ff4486e9e2181ee72",
         "epoch": 19
       },
@@ -262,13 +262,13 @@
         "tiled_stem": []
       },
       "best_pt": {
-        "path": "runs\\repair_abl_single_frame_e20\\weights\\best.pt",
+        "path": "results\\runs\\repair_abl_single_frame_e20\\weights\\best.pt",
         "sha256": "deccf5e701054c7c5dbd33009a5fc6f0974fdf6b6e9ae7348e3523d6f6f0537b",
         "epoch": 19,
         "fitness": 0.44365
       },
       "last_pt": {
-        "path": "runs\\repair_abl_single_frame_e20\\weights\\last.pt",
+        "path": "results\\runs\\repair_abl_single_frame_e20\\weights\\last.pt",
         "sha256": "d6138d0944382c4e36da4696deb49c38efe7ecffcb2342570dd25fcf85f1debb",
         "epoch": 19
       },
@@ -321,13 +321,13 @@
         ]
       },
       "best_pt": {
-        "path": "runs\\repair_abl_stock_yolo11n_e20\\weights\\best.pt",
+        "path": "results\\runs\\repair_abl_stock_yolo11n_e20\\weights\\best.pt",
         "sha256": "07744c380618f73a7505c43cb8c76ba633acc3495dc8350b3f7d9f956a44f1fb",
         "epoch": 18,
         "fitness": 0.61604
       },
       "last_pt": {
-        "path": "runs\\repair_abl_stock_yolo11n_e20\\weights\\last.pt",
+        "path": "results\\runs\\repair_abl_stock_yolo11n_e20\\weights\\last.pt",
         "sha256": "eda773e9c1f9e1818e3e70a0f55dde5ec9eac0f5e4839b58f6d992b9f7315c81",
         "epoch": 19
       },
@@ -1288,7 +1288,7 @@
     {
       "t": "2026-09-25T23:52:52+0530",
       "event": "operator_note",
-      "text": "Operator stop of the first baseline_ctrl launch (23:33-23:36): its 4 DataLoader workers grew ~1.7 GB private per 30 s each and the machine reached 98.6 % RAM; the OS killed a worker at 23:33:32 (event above). Reproduced in isolation: training-config loader, 1 worker, +1.25 GB per 10 batches (one batch retained per batch); dataset alone in one process: flat. Fix: b_pipeline/stacked_dataset.py::aerotrack_collate stacks into shared memory inside workers (bit-exact vs the old stack; 4 workers flat at ~1.7 GB over 60 batches). A loader-memory probe was added to the pre-flight; the grid was relaunched with the same command at 23:44 and baseline_ctrl restarted from scratch (no epoch had finished)."
+      "text": "Operator stop of the first baseline_ctrl launch (23:33-23:36): its 4 DataLoader workers grew ~1.7 GB private per 30 s each and the machine reached 98.6 % RAM; the OS killed a worker at 23:33:32 (event above). Reproduced in isolation: training-config loader, 1 worker, +1.25 GB per 10 batches (one batch retained per batch); dataset alone in one process: flat. Fix: src/pipeline/stacked_dataset.py::aerotrack_collate stacks into shared memory inside workers (bit-exact vs the old stack; 4 workers flat at ~1.7 GB over 60 batches). A loader-memory probe was added to the pre-flight; the grid was relaunched with the same command at 23:44 and baseline_ctrl restarted from scratch (no epoch had finished)."
     },
     {
       "t": "2026-09-25T23:53:01+0530",
@@ -1376,7 +1376,7 @@
         "name": "output dirs",
         "ok": true,
         "fatal": true,
-        "detail": "runs\\repair_grid_e20 and experiments\\aerotrack_repair\\reports writable"
+        "detail": "results\\runs\\repair_grid_e20 and experiments\\aerotrack_repair\\reports writable"
       },
       {
         "name": "host memory",
@@ -1722,12 +1722,12 @@
     }
   },
   "changes": [
-    "`c_model/preflight.py` \u2014 T6 required a 36-channel first convolution (the SPD stem). The stride-2 stem of the `no_spd` and `stock_yolo11n` layouts has 9, so both runs would have aborted before epoch 0. T6 now takes the expected width from the live model (and still requires 9 or 36, so a reload that fell back to 3 channels still fails).",
-    "`b_pipeline/stacked_dataset.py::aerotrack_collate` \u2014 inside a DataLoader worker the batch is now stacked straight into shared memory, as torch's own `default_collate` does. On this machine the old stack-then-share path left every batch behind in the worker (+118 MB per batch per worker, measured); the first launch of `baseline_ctrl` ran the machine out of memory 3.5 min in and lost a worker. Verified bit-exact against the old stack, flat memory at 4 workers; a loader-memory probe now guards it in the pre-flight.",
-    "`c_model/aerotrack_trainer.py` \u2014 checkpoints are written to a temporary file and renamed atomically, so an interruption can never leave a truncated `last.pt` (the resume point).",
-    "`c_model/train.py` \u2014 `--preflight-only`: build the exact job and run T1\u2013T8, train nothing (used to check all four jobs up front).",
+    "`src/model/preflight.py` \u2014 T6 required a 36-channel first convolution (the SPD stem). The stride-2 stem of the `no_spd` and `stock_yolo11n` layouts has 9, so both runs would have aborted before epoch 0. T6 now takes the expected width from the live model (and still requires 9 or 36, so a reload that fell back to 3 channels still fails).",
+    "`src/pipeline/stacked_dataset.py::aerotrack_collate` \u2014 inside a DataLoader worker the batch is now stacked straight into shared memory, as torch's own `default_collate` does. On this machine the old stack-then-share path left every batch behind in the worker (+118 MB per batch per worker, measured); the first launch of `baseline_ctrl` ran the machine out of memory 3.5 min in and lost a worker. Verified bit-exact against the old stack, flat memory at 4 workers; a loader-memory probe now guards it in the pre-flight.",
+    "`src/model/aerotrack_trainer.py` \u2014 checkpoints are written to a temporary file and renamed atomically, so an interruption can never leave a truncated `last.pt` (the resume point).",
+    "`src/model/train.py` \u2014 `--preflight-only`: build the exact job and run T1\u2013T8, train nothing (used to check all four jobs up front).",
     "`scripts/train_ablation.py` \u2014 a resumed run keeps ONE `run_meta.json` (first start time, one `attempts` entry per launch, summed training time, workers used) and refuses a changed recipe; `--resume-from`; `--preflight-only`.",
-    "`scripts/evaluate_detector.py` \u2014 runs trained with temporal_gap 0 (`single_frame`, `stock_yolo11n`) are scored on t,t,t, the input they were trained and validated on (`c_model/train.py::build`), instead of the 3-frame stack; the image set and its hash are unchanged and each row records its `input`. The summary is written after every checkpoint and before the test-ledger line; `--smoke`.",
+    "`scripts/evaluate_detector.py` \u2014 runs trained with temporal_gap 0 (`single_frame`, `stock_yolo11n`) are scored on t,t,t, the input they were trained and validated on (`src/model/train.py::build`), instead of the 3-frame stack; the image set and its hash are unchanged and each row records its `input`. The summary is written after every checkpoint and before the test-ledger line; `--smoke`.",
     "`scripts/render_report.py`, `README.template.md` \u2014 grid runs in the run-facts table, an `input` column, verdicts only from finished, hash-matched runs at one budget (rule and target metrics unchanged), plan items 2\u20134 computed from the grid, a test-ledger note, the one-command reproduction, and a corrected sentence on which COCO tensors are transferred.",
     "new `scripts/run_grid.py` (the one command: pre-flight, sequential training with resume/watchdog, evaluations, test once, reports) and `scripts/grid_report.py` (this report).",
     "Not changed: metrics, splits, image sets, caps, thresholds, the training recipe, the epoch budget, the checkpoint-selection rule, the attribution rule, the COCO-transfer rule."

@@ -87,7 +87,7 @@ def main():
 
     L += ["## 5–6. Experiments and exact configurations", "",
           f"[fact] Pre-registered plan (ledger P1, `scripts/plan_gen.py`): reference `{PLAN['reference']}`; candidates {', '.join(PLAN['candidates'])}; "
-          f"{PLAN['epochs']} epochs, recipe `c_model/train.py` STAGES['baseline'] (25,000 weighted samples/epoch, batch 32 × acc 2, AdamW 1e-3 cosine); "
+          f"{PLAN['epochs']} epochs, recipe `src/model/train.py` STAGES['baseline'] (25,000 weighted samples/epoch, batch 32 × acc 2, AdamW 1e-3 cosine); "
           f"function-preserving init for every configuration; seed = fold index; checkpoint {PLAN['checkpoint']}; primary {PLAN['primary_metric']} on the "
           f"held-out DEV fold; non-inferiority {PLAN['noninferiority_metric']}; margin {PLAN['margin_ap50']}; rules: {'; '.join(PLAN['rules'])}; futility: {PLAN['futility']}.", "",
           "| run | config | fold | seed | epochs | launches | training time | last.pt sha | init check |", "|---|---|---|---|---|---|---|---|---|"]
@@ -113,7 +113,7 @@ def main():
               "[measured] training curves (held-out-fold monitoring mAP50 and training loss, slope per epoch over the last 5 epochs): " + "; ".join(
             f"{k.replace('gen_', '').replace('_e20', '')} {v['monitor_mAP50_slope_last5']:+.4f} / {v['train_loss_slope_last5']:+.4f}" for k, v in fa9["training_curves"].items()) + ".", ""]
     L += ["## 9. Decisions and statistical uncertainty", ""]
-    ev = S.REPO / "runs" / "aerotrack_generalization" / f"campaign{t}" / "events.jsonl"
+    ev = S.REPO / "results/runs" / "aerotrack_generalization" / f"campaign{t}" / "events.jsonl"
     skipped = [json.loads(x)["run"] for x in (ev.read_text(encoding="utf-8").splitlines() if ev.exists() else [])
                if '"skipped_time_budget"' in x]
     if dec and dec["budget_h4"]["status"] == "pending" and any("_e40" in s for s in skipped):

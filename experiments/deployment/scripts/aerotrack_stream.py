@@ -3,7 +3,7 @@
 estimator -> forecast with uncertainty -> annotated video + per-frame JSON + latency summary. One command:
 
     venv\\Scripts\\python.exe experiments\\deployment\\scripts\\aerotrack_stream.py --source <video.mp4 | frame folder> ^
-        --weights runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt [--backend trt_fp16] [--ste-params params.json] ^
+        --weights results\\runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt [--backend trt_fp16] [--ste-params params.json] ^
         [--gt <IR_label.json | infrared.json>] [--out out.mp4] [--max-frames N]
 
 * The temporal window is read from the run (run_meta.json): `causal` uses only past frames (output for frame t at time t),
@@ -33,7 +33,7 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
-for p in (HERE, REPO / "experiments" / "systems" / "scripts", REPO / "c_model", REPO / "b_pipeline"):
+for p in (HERE, REPO / "experiments" / "systems" / "scripts", REPO / "src/model", REPO / "src/pipeline"):
     sys.path.insert(0, str(p))
 
 MODE_COLOR = {"track": (0, 220, 0), "init": (0, 220, 0), "reacquired": (0, 200, 255), "coast": (0, 140, 255), "absent": (128, 128, 128)}
@@ -152,7 +152,7 @@ def main():
     cuda = torch.cuda.is_available()
     if not cuda:
         print("[WARN] CUDA not available: running on CPU (correct but slow)")
-    onnx = Path(a.onnx) if a.onnx else REPO / "artifacts" / "deploy" / run / f"{run}_b1_op18.onnx"
+    onnx = Path(a.onnx) if a.onnx else REPO / "results/artifacts" / "deploy" / run / f"{run}_b1_op18.onnx"
     t_start = time.perf_counter()
     backend_name = a.backend
     try:
@@ -167,7 +167,7 @@ def main():
     dev = torch.device("cuda:0" if cuda else "cpu")
     src = FrameSource(a.source)
     gt = load_gt(a.gt)
-    out = Path(a.out) if a.out else REPO / "runs" / "deploy_stream" / f"{run}__{Path(a.source).stem}.mp4"
+    out = Path(a.out) if a.out else REPO / "results/runs" / "deploy_stream" / f"{run}__{Path(a.source).stem}.mp4"
     out.parent.mkdir(parents=True, exist_ok=True)
     writer, jf = None, open(out.with_suffix(".frames.jsonl"), "w", encoding="utf-8")
     if a.tracker == "fste":

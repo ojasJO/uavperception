@@ -5,7 +5,7 @@
                               [--groups anti_uav_IR,anti_uav_RGB,cst_IR]
 
 MOT protocol (no init box), same detections for every tracker (drone class, conf >= 0.05), as experiments/systems/scripts/mot_eval.py:
-    bytetrack, sort            c_model/bytetrack (repair series)
+    bytetrack, sort            src/model/bytetrack (repair series)
     argmax@cf                  per-frame best detection, threshold cross-fitted (track_eval report)
     ste@cf                     the STE, cross-fitted parameters, ONE identity (single-target semantics)
     ste@cf/segments            the same outputs, a NEW identity at every track start (MOT semantics: what a loss costs)
@@ -67,7 +67,7 @@ def main():
     ap.add_argument("--groups", default=None, help="comma list of groups to keep (e.g. exclude the v1 CST holdout)")
     a = ap.parse_args()
     if a.corpus == "auto":
-        base = REPO / "runs" / "systems" / "_cache" / a.run
+        base = REPO / "results/runs" / "systems" / "_cache" / a.run
         a.corpus = "data_unified_v2" if (base / "data_unified_v2" / "val" / "index.json").exists() else "data_unified"
     keep = set(a.groups.split(",")) if a.groups else None
     t0 = time.time()

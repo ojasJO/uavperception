@@ -8,7 +8,7 @@ must exist (experiments/aerotrack_v3/reports/x1_test_ledger.jsonl); each run's w
 in reports/x2_test_ledger.jsonl is not scored again (its saved per-run result is reused, so a crashed pass resumes without
 re-scoring anything). Per run: CST detection AP (eval_v3 --set test --final-eval; skipped if those weights already have their v3 TEST
 row), a full CST TEST detection cache, STE / argmax at the frozen settings, official-format export
-(runs/cst_anti_uav/x2_test_predictions/<run>/<tracker>/), per-sequence SA (Track A) and tracker wall time.
+(results/runs/cst_anti_uav/x2_test_predictions/<run>/<tracker>/), per-sequence SA (Track A) and tracker wall time.
 Output: reports/x2_final_test.json. Official scoring and T1-T4: scripts/analyze_test.py --x2 (OMEN).
 """
 import argparse
@@ -34,7 +34,7 @@ PER_RUN = REPO / "experiments" / "cst_anti_uav" / "reports" / "x2_test_runs"
 
 
 def _sys_module(name):
-    """Explicit-path import of a systems module (c_model/track_eval.py would shadow systems/scripts/track_eval.py: F-05)."""
+    """Explicit-path import of a systems module (src/model/track_eval.py would shadow systems/scripts/track_eval.py: F-05)."""
     import importlib.util
     p = REPO / "experiments" / "systems" / "scripts" / f"{name}.py"
     spec = importlib.util.spec_from_file_location(f"systems_{name}", p)
@@ -116,7 +116,7 @@ def main():
            "predictions_dirs": {}}
     for run in X.new_runs():
         fz = frozen["runs"][run]
-        wsha = file_sha256(REPO / "runs" / run / "weights" / "last.pt")
+        wsha = file_sha256(REPO / "results/runs" / run / "weights" / "last.pt")
         if wsha != fz["weights_sha256"]:
             sys.exit(f"Refusing: {run} weights differ from the frozen sha256")
         saved = PER_RUN / f"{run}.json"

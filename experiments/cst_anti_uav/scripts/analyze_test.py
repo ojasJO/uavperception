@@ -5,7 +5,7 @@
     venv\\Scripts\\python.exe experiments\\cst_anti_uav\\scripts\\analyze_test.py --x2
 
 X1 (amendment X1-A1 of experiments/aerotrack_v3/preregistration_X1_cst_protocol_matched.json): the exported STE / argmax outputs
-(runs/aerotrack_v3/x1_test_predictions/) are scored by the unmodified official toolkit; the toolkit's mSA must equal the pass's Track A
+(results/runs/aerotrack_v3/x1_test_predictions/) are scored by the unmodified official toolkit; the toolkit's mSA must equal the pass's Track A
 value; X1-a2 = paired per-sequence comparison with the released CST-trained GlobalTrack (and SiamDT, descriptive).
 X2 (experiments/cst_anti_uav/preregistration/X2_seeds_single_frame.json): every TEST run of the X2 pass (+ X1's seed 0) scored the
 same way; T1 per-seed exceedance of 35.92, T2 seed-mean paired vs GlobalTrack, T3 temporal vs single-frame (seed-mean, paired).

@@ -4,7 +4,7 @@
     python experiments/aerotrack_generalization/scripts/final_analysis.py
 
 1. uncertainty of the single TEST result of the selected model: sequence-level, dataset-stratified bootstrap (B = 2000) of its
-   recorded per-image predictions (runs/aerotrack_generalization/_cache/gen_records/<run>__test.pkl);
+   recorded per-image predictions (results/runs/aerotrack_generalization/_cache/gen_records/<run>__test.pkl);
 2. CST TEST by scene category (seen in TRAIN vs absent from TRAIN) for the selected model — absolute values only: stock YOLO11n's
    single test evaluation (repair series) kept aggregates, not per-image records, so no paired comparison is possible;
 3. descriptive TEST reference: stock YOLO11n (repair series, evaluated once) on the metrics both series define identically;
@@ -104,7 +104,7 @@ def main():
                                            for mm in ("cst_drone_AP50", "anti_uav_drone_AP50", "drone_AP50")} for k in (0, 1, 2)}
                                    for c in ("spd_fp", "temporal_fp_g1", "temporal_fp_g4")}
     curves = {}
-    for rd in sorted(S.REPO.joinpath("runs").glob("gen_*_e20")):
+    for rd in sorted(S.REPO.joinpath("results/runs").glob("gen_*_e20")):
         rows = list(csv.DictReader(open(rd / "results.csv", encoding="utf-8")))
         m50 = [float(x["mAP50"]) for x in rows]
         loss = [float(x["box_loss"]) + float(x["cls_loss"]) + float(x["dfl_loss"]) for x in rows]

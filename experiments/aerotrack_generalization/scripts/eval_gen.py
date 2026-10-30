@@ -6,7 +6,7 @@
 
 Each set is built with the run's own input (gap 0: t,t,t; gap g: t-g,t,t+g). Official VAL/TEST are the registered image sets
 (identity checked against the repair series' hashes). Protocol = the repair series': conf 0.001, NMS IoU 0.7, max_det 30, bf16.
-Per-image records -> runs/aerotrack_generalization/_cache/gen_records/ (for the paired bootstrap); one row per (run, set) ->
+Per-image records -> results/runs/aerotrack_generalization/_cache/gen_records/ (for the paired bootstrap); one row per (run, set) ->
 reports/gen_results<tag>.json; TEST additionally needs --final-eval and is written once per checkpoint to reports/gen_test_ledger.jsonl."""
 import argparse
 import json
@@ -67,7 +67,7 @@ def main():
     a = ap.parse_args()
     if "test" in a.sets and not a.final_eval:
         sys.exit("Refusing: TEST needs --final-eval (the final, pre-selected candidate only).")
-    run_dir = S.REPO / "runs" / a.run
+    run_dir = S.REPO / "results/runs" / a.run
     meta = json.loads((run_dir / "run_meta.json").read_text(encoding="utf-8"))
     if meta.get("return_code") != 0:
         sys.exit(f"{a.run} is not a finished run (return_code {meta.get('return_code')})")

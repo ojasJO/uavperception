@@ -153,7 +153,7 @@ def main():
     ap.add_argument("--corpus", default="auto")
     a = ap.parse_args()
     if a.corpus == "auto":
-        base = REPO / "runs" / "systems" / "_cache" / a.run
+        base = REPO / "results/runs" / "systems" / "_cache" / a.run
         a.corpus = "data_unified_v2" if (base / "data_unified_v2" / "val" / "index.json").exists() else "data_unified"
     t0 = time.time()
     index, seqs = TE.load(a.run, a.corpus)
@@ -185,7 +185,7 @@ def main():
         if ex:
             tiles = [crop(seqs[e["seq"]]["seq"], e) for e in ex]
             cv2.imwrite(str(out_dir / f"{c}.png"), np.hstack(tiles))
-    cache = f"runs/systems/_cache/{a.run}/{a.corpus}/val"
+    cache = f"results/runs/systems/_cache/{a.run}/{a.corpus}/val"
     rec = {"generated": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "run": a.run, "corpus": a.corpus, "cache": cache,
            "ste_params": "cross-fitted per half from " + rep.name if halves else "defaults", "selection": f"quantiles {QUANTILES} of the severity measure",
            "frames_per_group": dict(frames), "counts": {g: dict(v) for g, v in counts.items()},

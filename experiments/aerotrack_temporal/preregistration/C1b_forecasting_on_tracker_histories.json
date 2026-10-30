@@ -12,8 +12,8 @@
   },
   "samples": "anchor t: tracker associations at t and t-1, target visible at t in the ground truth, >= 1 visible ground-truth frame in t+1..t+24; history t-15..t (causal by construction: tracker outputs at frames <= t, from a zero-look-ahead detector)",
   "forecasters": {
-    "classical": "each domain's C1 reference (TRAIN-tuned) and the TRAIN-calibrated Kalman (runs/aerotrack_temporal/c1/classical_tuning.json)",
-    "learned_clean": "C1 model family, abs inputs, seeds 0 / 1 / 2 (runs/aerotrack_temporal/c1, sha256 in learned_registry.json)",
+    "classical": "each domain's C1 reference (TRAIN-tuned) and the TRAIN-calibrated Kalman (results/runs/aerotrack_temporal/c1/classical_tuning.json)",
+    "learned_clean": "C1 model family, abs inputs, seeds 0 / 1 / 2 (results/runs/aerotrack_temporal/c1, sha256 in learned_registry.json)",
     "learned_aug": "the same family trained on augmented histories (C1 'aug' arm), seeds 0 / 1 / 2"
   },
   "metrics": "as C1 (per domain pooled ADE over h = 1..24, FDE@24, error by horizon, NLL, 50 / 68 / 90 / 95 % coverage, calibration error; cluster bootstrap over sequences, B = 2000)",

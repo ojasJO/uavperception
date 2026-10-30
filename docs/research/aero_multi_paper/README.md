@@ -19,7 +19,7 @@ studio (`studio.bat`, see `docs/workspace/OPERATING_GUIDE.md`).
 | SPD-Conv downsampling | Sunkara & Luo 2022 (citation not recorded in repo) | **adapted**: replaces stride-2 convolutions | **RETIRED as a claim**: no effect once initialisation is fair (`experiments/aerotrack_generalization/reports/GEN_REPORT.md`) |
 | ByteTrack / SORT association | Zhang et al. 2022 / Bewley et al. 2016 (citations not recorded in repo) | faithful re-implementation as MOT trackers | **RETIRED**: lose to single-target argmax (`docs/AEROTRACK_REPAIR_REPORT.md`, `experiments/systems/reports/mot_*`) |
 | Single-target state estimator (STE: Kalman CV state, Mahalanobis gate, coasting, re-acquisition, absence) | classical Kalman filtering; **new** single-target logic | `experiments/systems/scripts/ste.py`; settings chosen on VAL (cross-fitted) | VALIDATED; reports absence (matters under Eq. 1) |
-| LSTM forecaster | Review-2 design | `c_model/lstm_forecaster.py` | **RETIRED** (repair report) |
+| LSTM forecaster | Review-2 design | `src/model/lstm_forecaster.py` | **RETIRED** (repair report) |
 | Learned Gaussian forecasters (mlp / gru / tfm, C1; domain-aware C1c) | **new design** (Track C) | `experiments/aerotrack_temporal/scripts/tc_learned.py` | **MIXED**: better on Anti-UAV, not on CST (`experiments/aerotrack_temporal/reports/TRACK_C_SUMMARY.md`) |
 | Classical forecasters (cp, cv, damped velocity, mean reversion, Kalman) | classical | TRAIN-tuned references (`tc_forecast.py`) | references; damped velocity best on CST |
 | HOTA / CLEAR-MOT metrics | Luiten et al. 2021 (TrackEval) | re-implemented, cross-checked | `experiments/aerotrack_temporal/reports/hota_crosscheck.json` |
@@ -36,7 +36,7 @@ studio (`studio.bat`, see `docs/workspace/OPERATING_GUIDE.md`).
 
 ## Headline results (generated — do not edit by hand)
 
-<!-- BEGIN GENERATED: tools/render_workspace_docs.py -->
+<!-- BEGIN GENERATED: scripts/render_workspace_docs.py -->
 | record | model (checkpoint) | dataset / split | protocol | mSA | 95 % CI | kind |
 |---|---|---|---|---:|---|---|
 | `cst:released:GlobalTrack` | cst_released:GlobalTrack | cst2025 / test | `sot.mSA.cst_official.v1` | 35.92 |  | released_baseline (reproduced_from_released_predictions) |

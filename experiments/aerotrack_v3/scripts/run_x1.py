@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 """X1: the AeroTrack stack under the CST benchmark's own protocol (preregistration_X1_cst_protocol_matched.json) -- VAL design part.
 
-    venv\\Scripts\\python.exe experiments\\aerotrack_v3\\scripts\\run_x1.py            (run by tools/chains/x1_cst_only.json)
+    venv\\Scripts\\python.exe experiments\\aerotrack_v3\\scripts\\run_x1.py            (run by scripts/chains/x1_cst_only.json)
 
 Steps (registered): window from the v2 decisions -> train v3 'n' on CST train only (seed 0, the v2 recipe; v3 runner's train /
 evaluate, resumed once on failure) -> eval_v3 on corpus-v2 VAL -> CST VAL detection cache -> track_eval (cross-fitted + tuned on all
 CST VAL) -> experiments/aerotrack_v3/frozen_x1_params.json (to be committed before the single TEST pass). Never touches TEST.
-State: runs/aerotrack_v3/_x1_runner/ (events, logs); the chain that runs this script owns the RUNNING / DONE / FAILED sentinels.
+State: results/runs/aerotrack_v3/_x1_runner/ (events, logs); the chain that runs this script owns the RUNNING / DONE / FAILED sentinels.
 """
 import json
 import os
@@ -22,7 +22,7 @@ import v3series as S  # noqa: E402
 
 PRE = S.SERIES / "preregistration_X1_cst_protocol_matched.json"
 WINDOW_OF = {"causal_g4": "causal_g4", "sym_g4": "sym_g4", "stock": "ttt"}
-S.STATE = S.REPO / "runs" / "aerotrack_v3" / "_x1_runner"           # R.event / R.sh log here, not in the v3 campaign's dir
+S.STATE = S.REPO / "results/runs" / "aerotrack_v3" / "_x1_runner"           # R.event / R.sh log here, not in the v3 campaign's dir
 
 
 def committed_clean(p):

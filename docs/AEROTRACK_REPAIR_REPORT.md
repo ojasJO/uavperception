@@ -10,22 +10,22 @@
 | 2 | ablations (SPD, temporal, stock YOLO11n) | done — 4 runs × 20 epochs, best.pt and last.pt of each evaluated; verdicts in 'Ablation grid' (`scripts/run_grid.py`, `reports/ablation_grid_e20.md`) |
 | 3 | one change at a time from a converged baseline | done — the grid's `baseline_ctrl` (20 epochs, cosine schedule completed) is the reference and every other grid run changes one factor (`run_meta.json`); v1/v2 presented as a recipe change |
 | 4 | temporal stack contributes nothing (inference ablation) | audit result cited; training ablation `single_frame` done — temporal stack: no measurable effect on CST AP50 and drone AP50 (rule in 'Ablation grid') |
-| 5 | LSTM vs trivial baselines | done — retired by rule (`runs/lstm_forecaster_repair/report.md`) |
+| 5 | LSTM vs trivial baselines | done — retired by rule (`results/runs/lstm_forecaster_repair/report.md`) |
 | 6 | ByteTrack: wire it or drop the claims | done — retired by rule; all ByteTrack captions removed from README/demo |
-| 7 | hand-typed trajectory plot | replaced by `assets/repair_forecast_examples_val.png` (+ JSON); rev2.ipynb kept as the historical submission |
-| 8 | test-set demo cherry-picking | replaced by `assets/repair_demo_val_*.gif` (VAL, label rule, no tracker claims) |
+| 7 | hand-typed trajectory plot | replaced by `docs/assets/repair_forecast_examples_val.png` (+ JSON); rev2.ipynb kept as the historical submission |
+| 8 | test-set demo cherry-picking | replaced by `docs/assets/repair_demo_val_*.gif` (VAL, label rule, no tracker claims) |
 | 9 | bird→drone false-alarm metric | done — corrected metric in the detector table |
 | 10 | latency | done — measured fp32/bf16 with p95 + structural look-ahead |
 | 11 | consistent micro definition / epochs / sampler table | done — 'One definition of every term' section, all values read from code/args.json |
 | 12 | honest checkpoint selection | done — best.pt and last.pt evaluated side by side; last > best for v1 |
 | 13 | reproducible manifests | done — every repair output carries git/env/weights hash/set hash; `train_ablation.py` writes run_meta.json (one record across resumes) |
-| 14 | overwritten v2 eval report in the working tree | superseded: the same-set table replaces `runs/aerotrack_spd_finetuned/eval_val` (that directory was re-generated and committed in `49bc54c`) |
+| 14 | overwritten v2 eval report in the working tree | superseded: the same-set table replaces `results/runs/aerotrack_spd_finetuned/eval_val` (that directory was re-generated and committed in `49bc54c`) |
 
 ## Definitions and run facts
 
 ### One definition of every term
 
-- **Size bins** (code: `c_model/evaluation.py`): relative box area of the *source* frame — micro < 0.03 %, small 0.03–1 %, standard > 1 %. In pixels (side of a square box at the threshold), computed from the evaluated images:
+- **Size bins** (code: `src/model/evaluation.py`): relative box area of the *source* frame — micro < 0.03 %, small 0.03–1 %, standard > 1 %. In pixels (side of a square box at the threshold), computed from the evaluated images:
   anti_uav/IR: micro ≤ 9.9 px, small ≤ 57.2 px; anti_uav/RGB: micro ≤ 24.9 px, small ≤ 144.0 px; cst/IR: micro ≤ 9.9 px, small ≤ 57.2 px; det_fly/RGB: micro ≤ 11.1 px, small ≤ 64.0 px.
 - **Evaluation protocol**: conf 0.001, NMS IoU 0.7, max 30 detections/image; FP-rate style numbers at conf 0.25; AP with all-point interpolation over IoU 0.5:0.95. Each checkpoint is scored on its own training input: the t−1,t,t+1 stack, or t,t,t (three copies of frame t) for the runs trained with temporal_gap 0.
 
@@ -100,7 +100,7 @@ Four runs, same recipe (`baseline` stage), same budget, one factor each; both ch
 - temporal stack (single_frame): cst_AP50: Δ best -0.045, last -0.015 → no measurable effect; drone_AP50: Δ best -0.027, last -0.003 → no measurable effect
 - full recipe vs stock YOLO11n (stock_yolo11n): drone_AP50: Δ best -0.055, last -0.035 → no measurable effect
 
-`single_frame` and `stock_yolo11n` are trained, validated and scored on t,t,t (three copies of frame t — their input definition, `c_model/train.py::build`); `baseline_ctrl` and `no_spd` on t−1,t,t+1. A verdict only uses finished runs whose evaluated checkpoint hashes match `run_meta.json`.
+`single_frame` and `stock_yolo11n` are trained, validated and scored on t,t,t (three copies of frame t — their input definition, `src/model/train.py::build`); `baseline_ctrl` and `no_spd` on t−1,t,t+1. A verdict only uses finished runs whose evaluated checkpoint hashes match `run_meta.json`.
 COCO initialisation, same rule in every run (every tensor whose name and shape match; a 3-channel stem tiled /3 into a 9-channel stride stem): baseline_ctrl 388/649 tensors (59.8 %); no_spd 418/649 tensors (64.4 %); single_frame 388/649 tensors (59.8 %); stock_yolo11n 418/649 tensors (64.4 %). With the installed Ultralytics the C3k2 bottleneck `cv1` convolutions are 1×1 while `yolo11n.pt` holds 3×3 ones, so those and the class head start from scratch in all four runs (and in v1).
 
 Full grid report (training status, runtimes, launches/recoveries, checkpoint hashes, test table): `experiments/aerotrack_repair/reports/ablation_grid_e20.md`.
@@ -124,7 +124,7 @@ Detector `aerotrack_spd_finetuned` (sha `72de9bba9fec`), VAL, 5 longest sequence
 | anti_uav (MOTA / IDF1) | 0.635 / 0.167 | 0.805 / 0.184 | 0.945 / 0.972 | 0.955 / 0.977 | 0.955 / 0.977 | 0.942 / 0.971 | 0.926 / 0.963 |
 | cst (MOTA / IDF1) | 0.551 / 0.450 | 0.463 / 0.430 | 0.497 / 0.659 | 0.588 / 0.747 | 0.578 / 0.761 | 0.588 / 0.747 | 0.566 / 0.754 |
 
-**Rule:** ByteTrack is kept only if it beats argmax@0.25 on MOTA and IDF1 on every dataset. **Verdict: ByteTrack RETIRED (a no-association argmax baseline is at least as good).** The demo and this README therefore make no tracking claim; `c_model/bytetrack.py` remains in the repository as an evaluated-and-rejected component.
+**Rule:** ByteTrack is kept only if it beats argmax@0.25 on MOTA and IDF1 on every dataset. **Verdict: ByteTrack RETIRED (a no-association argmax baseline is at least as good).** The demo and this README therefore make no tracking claim; `src/model/bytetrack.py` remains in the repository as an evaluated-and-rejected component.
 
 ## Forecasting
 
@@ -144,7 +144,7 @@ Does it move? true mean future step 0.0071 (normalised units); lstm_original: 0.
 **Rule:** the LSTM stays only if it beats the best trivial baseline AND the val-tuned Kalman on the CST sudden-jump subset. CST sudden-jump ADE: best LSTM 62.7 vs best trivial 52.4 vs Kalman 64.0 → **LSTM retired.** On gimbal-tracked Anti-UAV footage the best forecaster is 'predict no motion'; the 'sudden jumps' are mostly frame-to-frame discontinuities (gimbal re-slews / label jumps) that no model can anticipate. Caveat: the forecaster's val split contains no CST windows.
 
 ![Forecast examples on VAL, generated from model output](../assets/repair_forecast_examples_val.png)
-*Examples chosen by rule (median LSTM ADE among sudden-jump / smooth VAL windows); every plotted coordinate is in `assets/repair_forecast_examples_val.json`.*
+*Examples chosen by rule (median LSTM ADE among sudden-jump / smooth VAL windows); every plotted coordinate is in `docs/assets/repair_forecast_examples_val.json`.*
 
 ## Latency
 
@@ -166,7 +166,7 @@ Does it move? true mean future step 0.0071 (normalised units); lstm_original: 0.
 
 ![Side-by-side detector demo on a VAL sequence](../assets/repair_demo_val_antiuav_val_20190925_130434_1_2__IR.gif)
 
-Sequence `antiuav_val_20190925_130434_1_2__IR` (VAL), frames 0–239; **rule:** first Anti-UAV IR VAL sequence (sorted) with >= 20 exist=0 frames; clip starts 60 frames before the first absent frame. Both panels show raw NMS output at conf 0.25 — no tracker, no trail, no magnifier; green = ground truth. Per-frame IoUs are in `assets/repair_demo_val_antiuav_val_20190925_130434_1_2__IR.json`.
+Sequence `antiuav_val_20190925_130434_1_2__IR` (VAL), frames 0–239; **rule:** first Anti-UAV IR VAL sequence (sorted) with >= 20 exist=0 frames; clip starts 60 frames before the first absent frame. Both panels show raw NMS output at conf 0.25 — no tracker, no trail, no magnifier; green = ground truth. Per-frame IoUs are in `docs/assets/repair_demo_val_antiuav_val_20190925_130434_1_2__IR.json`.
 
 | panel | run / checkpoint | epoch | hit rate (IoU ≥ .5 on frames with a target) | false alarms on frames labelled absent |
 |---|---|---|---|---|

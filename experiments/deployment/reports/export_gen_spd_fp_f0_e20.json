@@ -1,6 +1,6 @@
 {
   "run": "gen_spd_fp_f0_e20",
-  "weights": "runs\\gen_spd_fp_f0_e20\\weights\\last.pt",
+  "weights": "results\\runs\\gen_spd_fp_f0_e20\\weights\\last.pt",
   "weights_sha256": "83d7710651082da6dc4d98aa27c4f3bb3f1e6ab0a6da273e6c636ebaa2c0c919",
   "checkpoint_epoch": 19,
   "temporal_gap": 0,
@@ -25,7 +25,7 @@
     "content": "xywh (input px) + sigmoid class scores"
   },
   "onnx": {
-    "path": "artifacts\\deploy\\gen_spd_fp_f0_e20\\gen_spd_fp_f0_e20_b1_op18.onnx",
+    "path": "results\\artifacts\\deploy\\gen_spd_fp_f0_e20\\gen_spd_fp_f0_e20_b1_op18.onnx",
     "sha256": "b151804ece824d2a14a759b1db08f6c65bcdef6c8a160cc7c9242857a3df3f0f",
     "bytes": 16407118,
     "opset": 18,

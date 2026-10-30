@@ -2,18 +2,18 @@
 
 Every claim below was checked on this machine. Commands are in `FLIGHT_DECK.md` § Commands.
 
-## Models (counting rule: one registry entry per checkpoint identity `family:run@tag`, `registry/models.json`)
+## Models (counting rule: one registry entry per checkpoint identity `family:run@tag`, `results/registry/models.json`)
 
 | quantity | value | how |
 |---|---:|---|
-| model families | 13 | `registry/catalog/families.json` |
+| model families | 13 | `results/registry/catalog/families.json` |
 | registry entries (checkpoint versions), all kept in the Vault archive | 314 | distinct weights+exports SHA-256: 299 |
 | featured models (curated cards) | 7 | 6 tracking-side (one recorded-only: released GlobalTrack) + 1 forecaster; 14 checkpoint versions |
-| load- and inference-verified entries (runnable here) | 228 | `tools/verify_adapters.py --all` |
+| load- and inference-verified entries (runnable here) | 228 | `scripts/verify_adapters.py --all` |
 | families with verified local inference | 7 | cst_x, f1_std, gen, v2 detectors; C1, C1c forecasters; Direction B GlobalTrack |
-| evaluation-verified (fresh whole-sequence VAL run = recorded per-sequence SA) | 5 | X1/X2 s0 (74.126 vs 74.138, tol 0.5); normal_ir 72.245 vs 72.239, dfsc_ir 72.403 vs 72.409, seed-1 normal 71.595 vs 71.590, seed-1 DFSC 71.658 vs 71.655 (tol 0.05) — `registry/verification/evaluation_checks.json` |
+| evaluation-verified (fresh whole-sequence VAL run = recorded per-sequence SA) | 5 | X1/X2 s0 (74.126 vs 74.138, tol 0.5); normal_ir 72.245 vs 72.239, dfsc_ir 72.403 vs 72.409, seed-1 normal 71.595 vs 71.590, seed-1 DFSC 71.658 vs 71.655 (tol 0.05) — `results/registry/verification/evaluation_checks.json` |
 | not runnable here | 86 | 33 recorded-results-only families (repair grid, historical SPD, LSTM, exports, bases), 29 backup-only checkpoints, 20 smoke, 3 forecaster ONNX exports, 1 invalid — each with its blocker in the Vault |
-| recorded per-frame prediction sources | 41 | `aerolab/recorded.py` |
+| recorded per-frame prediction sources | 41 | `src/aerolab/recorded.py` |
 
 ## Fidelity of the live path
 
@@ -74,7 +74,7 @@ deployment gate (deploy.latency.v1, 3.2 ms model p50) is a different setup and i
   - Results; Vault.
 - Three defects that AppTest cannot see were found in the browser and fixed:
   - "Open the synchronised replay" sat inside a fragment and reran only the fragment; it now reruns the app.
-  - A direct URL on a fresh server took Streamlit's legacy `pages/` route. The directory is now `studio/views/`.
+  - A direct URL on a fresh server took Streamlit's legacy `pages/` route. The directory is now `app/views/`.
   - The status strip rendered empty. It is now drawn as an image.
 
 ## Not tested / limits

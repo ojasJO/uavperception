@@ -1,0 +1,69 @@
+{
+ "model": "v2_causal_g4_s0_e20",
+ "config": "causal_g4",
+ "seed": 0,
+ "series": "aerotrack_v2",
+ "architecture": "YOLO11n stride layout as built by Ultralytics 8.4.115 from src/model/yolo11-stride.yaml (C3k2 c3k=True; erratum experiments/aerotrack_v2/ERRATUM_architecture.md), 9-channel input, 2 classes",
+ "weights_sha256": "1118cf3290ae8bcfdd763bc1f83a1651f5c5bc754fd3e3a92fa2f1b8548d4452",
+ "trained_on": "HPC Tesla V100, fp16 autocast (amendment A1), corpus v2 TRAIN",
+ "corpus": {
+  "corpus": "data_unified_v2",
+  "manifest_sha256": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347",
+  "splits_sha256": "30f0e35f35ca6dfd4ddcf89fa9c9acc907c37f9a846a976ff2300573d1bf8a6e",
+  "train_split": "corpus v2 TRAIN (all three datasets)"
+ },
+ "temporal_window": {
+  "kind": "causal",
+  "gap": 4,
+  "frames": "channels 0-2 = frame t-g, 3-5 = frame t, 6-8 = frame t-2g (experiments/aerotrack_v2/scripts/v2lib.window_samples)",
+  "look_ahead_frames": 0,
+  "sequence_start": "missing past frames are replaced by the earliest available frame (training rule)"
+ },
+ "input": {
+  "shape": [
+   1,
+   9,
+   640,
+   640
+  ],
+  "dtype": "float32 in [0, 1] (uint8 / 255)",
+  "colour": "BGR as read by OpenCV, per frame",
+  "resize": "letterbox to 640 x 640 keeping aspect, pad value 114 (src/pipeline/stacked_dataset.letterbox_image)"
+ },
+ "classes": {
+  "0": "uav_drone",
+  "1": "bird_hard_negative"
+ },
+ "postprocess": {
+  "nms_eval": {
+   "conf": 0.001,
+   "iou": 0.7,
+   "max_det": 30
+  },
+  "nms_stream": {
+   "conf": 0.05,
+   "iou": 0.7
+  },
+  "boxes": "xyxy in letterboxed pixels -> undo letterbox to source pixels"
+ },
+ "tracker": {
+  "kind": "STE (Kalman single-target state estimator)",
+  "params": "tracker/ste_params.json",
+  "frozen": "2026-10-06T14:13:27+0530",
+  "source_report": "experiments/systems/reports/track_v2_causal_g4_s0_e20_data_unified_v2.json"
+ },
+ "evidence": {
+  "val_decisions": "experiments/aerotrack_v2/hpc/reports/v2_decisions.json",
+  "test_single_pass": "experiments/aerotrack_v2/hpc/reports/final_test.json",
+  "deployment_gate": "benchmarks/gate_v2_causal_g4_s0_e20.json"
+ },
+ "runtime": {
+  "recommended_backend": "trt_fp16 (TensorRT 11.3, engines are GPU-specific: rebuild on another GPU)",
+  "fallbacks": [
+   "ort_cuda",
+   "torch_fp16",
+   "torch_fp32"
+  ],
+  "command": "python experiments/deployment/scripts/aerotrack_stream.py --source <video|folder> --weights src/deployment/aerotrack_causal_g4_v2/weights/last.pt --backend trt_fp16 --ste-params src/deployment/aerotrack_causal_g4_v2/tracker/ste_params.json"
+ }
+}

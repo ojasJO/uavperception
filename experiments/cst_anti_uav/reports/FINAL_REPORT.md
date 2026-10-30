@@ -154,9 +154,9 @@ large-target remedy cannot be validated with the available splits.
   archive.
 - The speed numbers mix two devices (V100 for training and caching, RTX 5050 for deployment). The detector latency is that of
   the same architecture with different weights.
-- The X2 prediction files (31 MB) are git-ignored (`runs/cst_anti_uav/x2_test_predictions/`, also on the HPC). Their per-file
+- The X2 prediction files (31 MB) are git-ignored (`results/runs/cst_anti_uav/x2_test_predictions/`, also on the HPC). Their per-file
   sha256 values are recorded in `X2_test_official/official_scores.json`. X1's predictions are committed
-  (`runs/aerotrack_v3/x1_test_predictions/`).
+  (`results/runs/aerotrack_v3/x1_test_predictions/`).
 
 ## 8. Reproduction
 

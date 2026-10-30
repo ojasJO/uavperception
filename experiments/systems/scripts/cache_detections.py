@@ -8,7 +8,7 @@ Per sequence (Anti-UAV IR + RGB and CST; Det-Fly has no sequences): every frame 
 (run_meta: symmetric / causal / t,t,t; neighbours clamped inside the sequence exactly as in training), letterbox 640, bf16
 (the evaluated protocol), NMS conf 0.01 / IoU 0.7 / max_det 10, boxes mapped back to ORIGINAL image pixels (xyxy).
 Ground truth is NOT stored here: the tracker evaluation reads the official annotations itself, so nothing can leak.
-Output: runs/systems/_cache/<run>/<corpus>/<split>/<seq_key>.npz  (+ index.json with set identity, run, weights sha256).
+Output: results/runs/systems/_cache/<run>/<corpus>/<split>/<seq_key>.npz  (+ index.json with set identity, run, weights sha256).
 VAL only; refuses TEST.
 """
 import argparse
@@ -22,7 +22,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parents[3]
-for p in (REPO / "c_model", REPO / "b_pipeline", REPO / "experiments" / "anti_uav" / "src"):
+for p in (REPO / "src/model", REPO / "src/pipeline", REPO / "experiments" / "anti_uav" / "src"):
     sys.path.insert(0, str(p))
 
 
@@ -76,13 +76,13 @@ def cache_split(run, split, datasets=("anti_uav", "cst"), limit_seqs=None, batch
     from stacked_dataset import build_split_samples, letterbox_image, letterbox_params
     from train import MANIFEST, SPLITS
 
-    run_dir = REPO / "runs" / run
+    run_dir = REPO / "results/runs" / run
     meta = json.loads((run_dir / "run_meta.json").read_text(encoding="utf-8"))
     gap = int(meta.get("gap", meta.get("temporal_gap", 1)))
     window = meta.get("window") or ("ttt" if gap == 0 else "symmetric")
     w = run_dir / "weights" / "last.pt"
     wsha = file_sha256(w)
-    out_dir = REPO / "runs" / "systems" / "_cache" / run / corpus.NAME / split
+    out_dir = REPO / "results/runs" / "systems" / "_cache" / run / corpus.NAME / split
     out_dir.mkdir(parents=True, exist_ok=True)
     dev = torch.device("cuda:0")
     from precision import amp_dtype

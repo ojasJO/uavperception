@@ -1,14 +1,14 @@
 # AeroTrack-Net repair — progress log
 
 Branch `aerotrack-repair` (from main d1e4685). Plan: `docs/AEROTRACK_REPAIR_PLAN.md`. Namespace: `experiments/aerotrack_repair/`.
-Historical runs (`runs/aerotrack_spd_v1`, `runs/aerotrack_spd_finetuned`) are never modified; new runs go to `runs/repair_*`.
-The user's pre-existing uncommitted edits (c_model/val.py, track_eval.py, visual_demo.py, run_aerotrack.py, train.ipynb,
-runs/aerotrack_spd_finetuned/eval_val/*) are left untouched and uncommitted.
+Historical runs (`results/runs/aerotrack_spd_v1`, `results/runs/aerotrack_spd_finetuned`) are never modified; new runs go to `results/runs/repair_*`.
+The user's pre-existing uncommitted edits (src/model/val.py, track_eval.py, visual_demo.py, scripts/run_aerotrack.py, train.ipynb,
+results/runs/aerotrack_spd_finetuned/eval_val/*) are left untouched and uncommitted.
 
 ## Inspection findings (2026-09-21, beyond the audit)
 - `train.py::build()` supports `ablation` with `no_spd` (yolo11-stride.yaml == stock YOLO11n layout, 9-ch) and
   `single_frame` (temporal_gap=0). Stock-YOLO11n baseline == stride yaml + single frame + COCO transfer (new entry).
-- `audit/bench_*.py` hold the correct measurements; the repair promotes them into project scripts.
+- `scripts/audit/bench_*.py` hold the correct measurements; the repair promotes them into project scripts.
 - `lstm_forecaster.py`: loss = MSE on cumulative positions of near-zero-mean displacements -> collapse to zero motion.
 - Throughput: 19-28 min/epoch (25k samples) -> 20-epoch run ~6.5-9 h; 40-epoch ~13-19 h.
 
@@ -23,13 +23,13 @@ runs/aerotrack_spd_finetuned/eval_val/*) are left untouched and uncommitted.
 - item 10 `scripts/latency_repair.py`: fp32 (deployed) 14.4 ms ≈ 69 FPS end-to-end without tracker; bf16 slower;
   +40 ms structural look-ahead at 25 FPS -> `reports/latency_aerotrack_spd_finetuned.{json,md}`.
 - item 5 `scripts/lstm_repair.py`: 3 parameterisations x trivial baselines x Kalman, per domain, val selection, one test
-  pass -> `runs/lstm_forecaster_repair/`. **LSTM retired** (loses to mean-vel/Kalman on CST; beats zero-velocity only on
+  pass -> `results/runs/lstm_forecaster_repair/`. **LSTM retired** (loses to mean-vel/Kalman on CST; beats zero-velocity only on
   gimbal-jittered Anti-UAV). Also found: the forecaster val split has no CST windows.
-- item 7 `scripts/plot_forecast_example.py`: model-output figure `assets/repair_forecast_examples_val.png` (+ JSON of
+- item 7 `scripts/plot_forecast_example.py`: model-output figure `docs/assets/repair_forecast_examples_val.png` (+ JSON of
   every plotted coordinate), examples chosen by median-ADE rule on val.
 - item 8 `scripts/make_demo.py`: side-by-side val demo, sequence by label rule (first IR val seq with >=20 absent
-  frames), no tracker/trail/magnifier, per-frame IoU JSON -> `assets/repair_demo_val_<seq>.gif`.
-- items 2/3/13 `scripts/train_ablation.py` + `ABLATIONS[baseline_ctrl, stock_yolo11n]` in `c_model/train.py`;
+  frames), no tracker/trail/magnifier, per-frame IoU JSON -> `docs/assets/repair_demo_val_<seq>.gif`.
+- items 2/3/13 `scripts/train_ablation.py` + `ABLATIONS[baseline_ctrl, stock_yolo11n]` in `src/model/train.py`;
   `transfer_pretrained` tiles the 3-ch COCO stem into 9-ch stride stems (/3, bit-exact on identical frames).
   Dry-run OK (stock: 0 SPDConv, temporal_gap 0, 781 it/epoch @ batch 32, 64 % COCO transfer). NOT trained yet.
 

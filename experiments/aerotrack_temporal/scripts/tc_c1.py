@@ -8,7 +8,7 @@
 Protocol and rules: experiments/aerotrack_temporal/preregistration/C1_trajectory_forecasting.json. TRAIN = non-dev TRAIN groups;
 dev = held-out TRAIN groups (tc_data.is_dev) used only for the learned models' epoch choice and the architecture choice; VAL is
 read only by --stage val; TEST is sealed (tc_data refuses it).
-Outputs: runs/aerotrack_temporal/c1/ (tuning JSON, checkpoints + sha256, logs) and experiments/aerotrack_temporal/reports/C1_*.
+Outputs: results/runs/aerotrack_temporal/c1/ (tuning JSON, checkpoints + sha256, logs) and experiments/aerotrack_temporal/reports/C1_*.
 """
 import argparse
 import itertools
@@ -26,7 +26,7 @@ sys.path.insert(0, str(HERE))
 import tc_data as D  # noqa: E402
 import tc_forecast as F  # noqa: E402
 
-RUN = REPO / "runs" / "aerotrack_temporal" / "c1"
+RUN = REPO / "results/runs" / "aerotrack_temporal" / "c1"
 REPORTS = REPO / "experiments" / "aerotrack_temporal" / "reports"
 PRE = REPO / "experiments" / "aerotrack_temporal" / "preregistration" / "C1_trajectory_forecasting.json"
 CLASSICAL = ("cp", "cv", "mv2", "mv4", "mv8", "mv15", "ca")

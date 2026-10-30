@@ -8,10 +8,10 @@ the rule is applied to the prediction files written by evaluate.py (boxes + scor
 Protocol (two explicit steps, test never used for selection):
     1. sweep:   python phaseb_absence_threshold.py --run dfsc_ir --sweep
                 -> tau grid evaluated on the run's VAL predictions; tau* = argmax val mSA; written to
-                   runs/<run>/phaseB_absence_thr/chosen_tau.json together with the full sweep table
+                   results/runs/<run>/phaseB_absence_thr/chosen_tau.json together with the full sweep table
     2. apply:   python phaseb_absence_threshold.py --run dfsc_ir --apply-test
                 -> tau* applied ONCE to the run's saved TEST predictions; metrics + report + ledger entry
-Outputs live under runs/<run>/phaseB_absence_thr/{val,test}/ and are picked up by aggregate_results.py as
+Outputs live under results/runs/<run>/phaseB_absence_thr/{val,test}/ and are picked up by aggregate_results.py as
 "ADDITIONAL CONTROL" rows — never merged into the reproduction columns.
 """
 from __future__ import annotations

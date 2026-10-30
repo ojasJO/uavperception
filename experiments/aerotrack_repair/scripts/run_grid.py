@@ -27,7 +27,7 @@ What it runs, in this order, and nothing else (plan: docs/AEROTRACK_REPAIR_PLAN.
   3. render_report.py (README.md, docs/AEROTRACK_REPAIR_REPORT.md) + grid_report.py (reports/ablation_grid_e20.{json,md}).
 
 Re-running the same command resumes: every step is checked against the files it produces (hashes), not against
-memory. State, event log, pre-flight record, code snapshot and every step's log: runs/repair_grid_e<epochs>/.
+memory. State, event log, pre-flight record, code snapshot and every step's log: results/runs/repair_grid_e<epochs>/.
 The parent process imports no torch (it stays at a few tens of MB); all GPU work happens in child processes.
 """
 from __future__ import annotations
@@ -51,7 +51,7 @@ REPORTS_DIR = REPO_ROOT / "experiments" / "aerotrack_repair" / "reports"
 VENV_PY = REPO_ROOT / "venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
 
 GRID = ("baseline_ctrl", "no_spd", "single_frame", "stock_yolo11n")
-SINGLE_FRAME = {"single_frame", "stock_yolo11n"}          # temporal_gap 0 in c_model/train.py::ABLATIONS
+SINGLE_FRAME = {"single_frame", "stock_yolo11n"}          # temporal_gap 0 in src/model/train.py::ABLATIONS
 HISTORICAL = [("aerotrack_spd_v1", "best"), ("aerotrack_spd_v1", "last"),
               ("aerotrack_spd_finetuned", "best"), ("aerotrack_spd_finetuned", "last")]
 VAL_CAP = TEST_CAP = 5000                                 # the registered protocol: reports/detector_val_cap5000.*
@@ -60,7 +60,7 @@ TRAIN_ABLATION = HERE / "train_ablation.py"
 EVALUATE = HERE / "evaluate_detector.py"
 RENDER = HERE / "render_report.py"
 GRID_REPORT = HERE / "grid_report.py"
-DATA = REPO_ROOT / "b_pipeline" / "data_unified"
+DATA = REPO_ROOT / "data" / "derived" / "data_unified"
 LEDGER = REPORTS_DIR / "test_evaluation_ledger.jsonl"
 
 MEM_KEYS = ("LoaderWorkerDied", "exited unexpectedly", "Unable to allocate", "ArrayMemoryError", "paging file",
@@ -146,11 +146,11 @@ def hours(s):
 
 
 class Grid:
-    """Paths + logging for one budget (runs/repair_grid_e<epochs>)."""
+    """Paths + logging for one budget (results/runs/repair_grid_e<epochs>)."""
 
     def __init__(self, epochs):
         self.epochs = epochs
-        self.dir = REPO_ROOT / "runs" / f"repair_grid_e{epochs}"
+        self.dir = REPO_ROOT / "results/runs" / f"repair_grid_e{epochs}"
         self.logs = self.dir / "logs"
         self.state_path = self.dir / "grid_state.json"
         self.events_path = self.dir / "events.jsonl"
@@ -180,7 +180,7 @@ class Grid:
         self.log(f"[event] {_event}" + (f": {brief}" if brief else ""))
 
     def run_dir(self, abl):
-        return REPO_ROOT / "runs" / f"repair_abl_{abl}_e{self.epochs}"
+        return REPO_ROOT / "results/runs" / f"repair_abl_{abl}_e{self.epochs}"
 
     def state(self):
         return jload(self.state_path) or {}
@@ -226,7 +226,7 @@ def own_tree_pids():
 def kill_tree(pid, grid, grace_s=90, inner=None):
     """Stop the process tree under `pid`.
 
-    With `inner` (a regex on the command line, e.g. c_model/train.py) the matching processes and their descendants
+    With `inner` (a regex on the command line, e.g. src/model/train.py) the matching processes and their descendants
     (the DataLoader workers) go first, so the launcher above them (train_ablation.py) can record the attempt's end;
     it gets `grace_s` to exit by itself. Everything still alive after that is killed. (On Windows a venv python.exe
     is a launcher whose child is the real interpreter, so "all descendants" would include train_ablation.py itself.)"""
@@ -374,8 +374,8 @@ def inspect_run(grid, abl):
 
 def _inspect_child(run_dir):
     run_dir = Path(run_dir)
-    sys.path.insert(0, str(REPO_ROOT / "c_model"))
-    sys.path.insert(0, str(REPO_ROOT / "b_pipeline"))
+    sys.path.insert(0, str(REPO_ROOT / "src/model"))
+    sys.path.insert(0, str(REPO_ROOT / "src/pipeline"))
     import warnings
     warnings.filterwarnings("ignore")
     import torch
@@ -409,8 +409,8 @@ def _loader_probe_child(workers=2, batches=40):
     """The TRAINING loader configuration (augmentation, pinned memory, persistent workers, prefetch 2, the project's
     collate) on 4,000 train samples: does a worker's private memory grow per batch? It did once -- by one whole batch
     per batch -- and the OS killed a worker minutes into the first run. Prints one JSON line."""
-    sys.path.insert(0, str(REPO_ROOT / "c_model"))
-    sys.path.insert(0, str(REPO_ROOT / "b_pipeline"))
+    sys.path.insert(0, str(REPO_ROOT / "src/model"))
+    sys.path.insert(0, str(REPO_ROOT / "src/pipeline"))
     import warnings
     warnings.filterwarnings("ignore")
     import numpy as np
@@ -484,13 +484,13 @@ def read_ledger():
 
 
 def weights_path(run, ck):
-    return REPO_ROOT / "runs" / run / "weights" / f"{ck}.pt"
+    return REPO_ROOT / "results/runs" / run / "weights" / f"{ck}.pt"
 
 
 # ============================================================================================ pre-flight
-SOURCES = ["c_model/train.py", "c_model/aerotrack_trainer.py", "c_model/preflight.py", "c_model/evaluation.py",
-           "c_model/custom_modules.py", "c_model/yolo11-spd.yaml", "c_model/yolo11-stride.yaml",
-           "b_pipeline/stacked_dataset.py", "b_pipeline/imbalance_sampler.py",
+SOURCES = ["src/model/train.py", "src/model/aerotrack_trainer.py", "src/model/preflight.py", "src/model/evaluation.py",
+           "src/model/custom_modules.py", "src/model/yolo11-spd.yaml", "src/model/yolo11-stride.yaml",
+           "src/pipeline/stacked_dataset.py", "src/pipeline/imbalance_sampler.py",
            "experiments/aerotrack_repair/scripts/train_ablation.py", "experiments/aerotrack_repair/scripts/evaluate_detector.py",
            "experiments/aerotrack_repair/scripts/render_report.py", "experiments/aerotrack_repair/scripts/grid_report.py",
            "experiments/aerotrack_repair/scripts/run_grid.py", "experiments/aerotrack_repair/scripts/_bootstrap.py",
@@ -662,7 +662,7 @@ def preflight(grid, a):
         + (f"; missing e.g. {missing[:3]}" if missing else ""))
 
     # P6 model definitions + COCO weights
-    cfgs = [REPO_ROOT / "c_model" / n for n in ("yolo11-spd.yaml", "yolo11-stride.yaml", "yolo11n.pt")]
+    cfgs = [REPO_ROOT / "src/model" / n for n in ("yolo11-spd.yaml", "yolo11-stride.yaml", "yolo11n.pt")]
     add("model files", all(p.exists() for p in cfgs), ", ".join(f"{p.name}" + (f" {sha256(p)[:12]}" if p.suffix == ".pt" and p.exists() else "")
                                                                   for p in cfgs))
 
@@ -719,7 +719,7 @@ def preflight(grid, a):
     rec["grid_on_disk"] = existing
     add("grid state", True, ", ".join(f"{k}: {'exists (will resume/verify)' if v else 'new'}" for k, v in existing.items())
         + f"; test ledger: {len(led)} entries", fatal=False)
-    other = sorted(d.name for d in (REPO_ROOT / "runs").glob("repair_abl_*_e*") if not d.name.endswith(f"_e{a.epochs}"))
+    other = sorted(d.name for d in (REPO_ROOT / "results/runs").glob("repair_abl_*_e*") if not d.name.endswith(f"_e{a.epochs}"))
     if other:
         add("other budgets", True, f"runs at another budget exist and are left alone: {other}", fatal=False)
 
@@ -994,7 +994,7 @@ def test_todo(grid):
             raise GridFatal(f"{run}/{ck} is in the test ledger but not in detector_test_cap{TEST_CAP}.json — it was scored outside "
                             "this workflow; refusing to score the test split again. Inspect the ledger.")
         if row and not in_led:
-            rep = jload(REPO_ROOT / "runs" / run / f"eval_repair_test_cap{TEST_CAP}" / ck / "evaluation_report.json") or {}
+            rep = jload(REPO_ROOT / "results/runs" / run / f"eval_repair_test_cap{TEST_CAP}" / ck / "evaluation_report.json") or {}
             m = rep.get("_meta", {})
             if m.get("weights_sha256") == s and (m.get("eval_set") or {}).get("sha256") == tset.get("sha256"):
                 with open(LEDGER, "a", encoding="utf-8") as f:

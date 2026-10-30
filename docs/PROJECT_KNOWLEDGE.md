@@ -5,7 +5,7 @@ sources below; numerical cross-checks). Complements — does not repeat — `doc
 and `docs/progress/RESEARCH_PROGRAM_PROGRESS.md` (live job table, decisions). Authority order when sources disagree: append-only ledgers
 and run metadata > generated reports (from JSON) > registrations > hand-written docs > memory notes.*
 
-Sources deep-read in this audit: `00_PROJECT_JOURNAL.md` (timeline, §5 problems, §6–7), `audit/AUDIT_REPORT.md` (§0, §1, §3–6),
+Sources deep-read in this audit: `00_PROJECT_JOURNAL.md` (timeline, §5 problems, §6–7), `docs/audit/AUDIT_REPORT.md` (§0, §1, §3–6),
 `experiments/aerotrack_generalization/REPORT_NOTES.md`, `experiments/anti_uav/reports/POST_SHUTDOWN_BENCHMARK_STATUS.md` (§1),
 `experiments/anti_uav/configs/deferred/README.md`, the four memory notes, every TEST ledger, `README.md` (generated), the run
 metadata of the baseline and candidate runs, the CST benchmark paper (arXiv:2507.23473), and the code paths of model building.
@@ -13,12 +13,12 @@ metadata of the baseline and candidate runs, the CST benchmark paper (arXiv:2507
 ## A. Newly discovered information
 
 1. **Every AeroTrack detector is built as a non-standard "YOLO11n" and loads only 64 % of the COCO weights** (verified 2026-10-05).
-   Our YAMLs (`c_model/yolo11-stride.yaml`, `-spd`, `-stride-p2fp`, `-stride-scale-s`) have flat multipliers and no scale letter;
+   Our YAMLs (`src/model/yolo11-stride.yaml`, `-spd`, `-stride-p2fp`, `-stride-scale-s`) have flat multipliers and no scale letter;
    Ultralytics 8.4.115 resolves `scale = ''` and `parse_model`'s `if scale in "mlx"` is True for the empty string, so every C3k2 is
    built with `c3k=True` (YOLO11 m/l/x block, inner `C3k`) instead of YOLO11n's `Bottleneck`. 417 / 649 tensors of `yolo11n.pt`
    (trained with Ultralytics 8.2.100) load (64.3 %; the C3k2 internals of layers 2, 4, 13, 16, 19 start random). The earlier memory
    note ("cv1 1x1 vs 3x3") described a symptom; the 2026-09-19 audit had already counted "60 % of weights COCO-pretrained (388/649)"
-   without a cause. `c_model/yolo11-stride-std.yaml` (explicit `scales: n`) builds standard YOLO11n: 448 / 499 (89.8 %) load,
+   without a cause. `src/model/yolo11-stride-std.yaml` (explicit `scales: n`) builds standard YOLO11n: 448 / 499 (89.8 %) load,
    function-preserving init exact. Registered test: **F1** (`experiments/aerotrack_v3/preregistration_F1_standard_yolo11n.json`);
    erratum: `experiments/aerotrack_v2/ERRATUM_architecture.md`; regression test pins both builds.
 2. **"stock YOLO11n" in every series is the as-built network on a single frame** (`yolo11-stride.yaml`, t,t,t; repair grid
@@ -71,9 +71,9 @@ metadata of the baseline and candidate runs, the CST benchmark paper (arXiv:2507
 
 ## C. Reconciled facts
 
-- Anti-UAV TEST ledger: the live file (10 lines) begins with the 2026-09-23 snapshot in `benchmark/3_reports_and_ledger/` (8 lines)
+- Anti-UAV TEST ledger: the live file (10 lines) begins with the 2026-09-23 snapshot in `results/benchmark/3_reports_and_ledger/` (8 lines)
   exactly; lines 9–10 are H4. Append-only property holds.
-- TEST-ledger counts in the registry (`artifacts/experiment_registry.json`: anti_uav 10, aerotrack_repair 12, aerotrack_generalization 1,
+- TEST-ledger counts in the registry (`results/artifacts/experiment_registry.json`: anti_uav 10, aerotrack_repair 12, aerotrack_generalization 1,
   aerotrack_v2 0) match the files.
 - The COCO-transfer fraction is consistent across the 2026-09-19 audit (388/649, SPD layout), the repair README (baseline_ctrl
   388/649, no_spd 418/649) and the v2 smoke log (418/649 incl. the tiled stem); A1 supplies the cause.

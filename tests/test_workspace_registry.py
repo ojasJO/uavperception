@@ -10,6 +10,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "src"))
 from aerolab import schemas  # noqa: E402
 from aerolab.compare import compatibility, paired_delta  # noqa: E402
 from aerolab.paths import is_protected  # noqa: E402
@@ -86,7 +87,7 @@ class RegisteredIdentities(unittest.TestCase):
         self.assertIn("CF detector", m["aliases"])
 
     def test_trackc_27_forecasters(self):
-        regs = {**j("runs/aerotrack_temporal/c1/learned_registry.json"), **j("runs/aerotrack_temporal/c1/learned_registry_c1c.json")}
+        regs = {**j("results/runs/aerotrack_temporal/c1/learned_registry.json"), **j("results/runs/aerotrack_temporal/c1/learned_registry_c1c.json")}
         regs = {k: v for k, v in regs.items() if isinstance(v, dict) and "sha256" in v}
         self.assertEqual(len(regs), 27)
         for name, v in regs.items():
@@ -200,12 +201,12 @@ class Locks(unittest.TestCase):
         self.assertTrue(all(x["exists"] for x in locks), [x["ledger"] for x in locks if not x["exists"]])
 
     def test_protected_paths(self):
-        self.assertTrue(is_protected(REPO / "artifacts" / "hpc_recovery_20261013" / "x"))
-        self.assertTrue(is_protected(REPO / "runs" / "v2_causal_g4_s0_e20" / "weights" / "last.pt"))
-        self.assertFalse(is_protected(REPO / "runs" / "studio" / "x"))
+        self.assertTrue(is_protected(REPO / "results/artifacts" / "hpc_recovery_20261013" / "x"))
+        self.assertTrue(is_protected(REPO / "results/runs" / "v2_causal_g4_s0_e20" / "weights" / "last.pt"))
+        self.assertFalse(is_protected(REPO / "results/runs" / "studio" / "x"))
 
     def test_restore_tool_never_targets_protected(self):
-        sys.path.insert(0, str(REPO / "tools"))
+        sys.path.insert(0, str(REPO / "scripts"))
         import restore_from_recovery as RF
         for r in RF.plan():
             self.assertFalse(r["rel"].startswith(RF.PROTECTED), r["rel"])
@@ -214,7 +215,7 @@ class Locks(unittest.TestCase):
 
 class Docs(unittest.TestCase):
     DOCS = ("README.md", "docs/research/aero_multi_paper/README.md", "docs/research/anti_uav_paper_reproduction/README.md",
-            "docs/workspace/ARCHITECTURE.md", "docs/workspace/OPERATING_GUIDE.md", "docs/workspace/INITIAL_AUDIT.md", "registry/README.md")
+            "docs/workspace/ARCHITECTURE.md", "docs/workspace/OPERATING_GUIDE.md", "docs/workspace/INITIAL_AUDIT.md", "results/registry/README.md")
 
     def test_cited_paths_exist(self):
         import re
@@ -222,8 +223,8 @@ class Docs(unittest.TestCase):
         for d in self.DOCS:
             txt = (REPO / d).read_text(encoding="utf-8")
             for p in re.findall(r"`([A-Za-z0-9_.\-]+(?:/[A-Za-z0-9_.\-{}*<>]+)+/?)`", txt):
-                # only repo-rooted paths (first segment exists at the root); schema ids like aerolab/model/1 are not paths
-                if any(c in p for c in "{}*<>") or p.startswith(("runs/studio", "github.com")) or not (REPO / p.split("/")[0]).exists()                         or re.fullmatch(r"aerolab/\w+/\d+", p):
+                # only repo-rooted paths (first segment exists at the root); schema ids like src/aerolab/model/1 are not paths
+                if any(c in p for c in "{}*<>") or p.startswith(("results/runs/studio", "github.com")) or not (REPO / p.split("/")[0]).exists()                         or re.fullmatch(r"src/aerolab/\w+/\d+", p):
                     continue
                 if not (REPO / p.split("#")[0].rstrip("/")).exists():
                     missing.append(f"{d}: {p}")
@@ -231,7 +232,7 @@ class Docs(unittest.TestCase):
 
     def test_generated_tables_current(self):
         import subprocess
-        r = subprocess.run([sys.executable, str(REPO / "tools" / "render_workspace_docs.py"), "--check"], capture_output=True, text=True)
+        r = subprocess.run([sys.executable, str(REPO / "scripts" / "render_workspace_docs.py"), "--check"], capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
 

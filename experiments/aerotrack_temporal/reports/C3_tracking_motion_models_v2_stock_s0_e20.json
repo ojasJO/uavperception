@@ -29,7 +29,7 @@
    "name": "c1_tfm_abs_s0",
    "arch": "tfm",
    "export_rc": 0,
-   "onnx": "runs\\aerotrack_temporal\\c1\\onnx\\c1_tfm_abs_s0.onnx",
+   "onnx": "results\\runs\\aerotrack_temporal\\c1\\onnx\\c1_tfm_abs_s0.onnx",
    "onnx_sha256": "7dac2323054eb0463e4a3e12473761fcc4232ef38bc9201ebfb9e6263b363bbd",
    "parity_ok": true,
    "checkpoint_sha256": "dfd8ee3ad92e90be6a06394d0893759f55968b87aa1ad201f889465301ad986c"

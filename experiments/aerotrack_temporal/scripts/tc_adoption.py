@@ -12,7 +12,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 REPORTS = REPO / "experiments" / "aerotrack_temporal" / "reports"
-RUN = REPO / "runs" / "aerotrack_temporal" / "c1"
+RUN = REPO / "results/runs" / "aerotrack_temporal" / "c1"
 SEEDS = (0, 1, 2)
 
 

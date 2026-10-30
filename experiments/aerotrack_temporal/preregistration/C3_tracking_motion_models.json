@@ -9,15 +9,15 @@
     "TRAIN (C1 tuning): the constant-velocity model is the wrong prior on gimbal footage (constant position 38.8 px vs constant velocity 74.0 px ADE, Anti-UAV IR); CST favours damped mean velocity"
   ],
   "inputs": {
-    "primary": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val (zero look-ahead detector; tools/chains/post_v2_causal_caches.json)",
-    "secondary": "runs/systems/_cache/v2_stock_s0_e20/data_unified_v2/val (single frame)",
+    "primary": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val (zero look-ahead detector; scripts/chains/post_v2_causal_caches.json)",
+    "secondary": "results/runs/systems/_cache/v2_stock_s0_e20/data_unified_v2/val (single frame)",
     "groups": "anti_uav_IR (67), anti_uav_RGB (67), cst_IR (official val, 40)",
     "protocols": "SOT (official start-frame box, then box or 'absent' per frame; Track A's mSA code on the official annotations) and MOT (no init box) for identity / continuity metrics"
   },
   "trackers": {
     "argmax@cf": "per-frame best drone detection above a cross-fitted threshold (GRID_ARGMAX of track_eval.py)",
     "ste_cv@cf": "experiments/systems/scripts/ste.py unchanged (constant-velocity Kalman, size-scaled noise), GRID_STE of track_eval.py (504)",
-    "fste_classical@cf": "forecaster-driven STE (experiments/aerotrack_temporal/scripts/tc_ste.py): the Kalman is replaced by the domain's TRAIN-best classical forecaster from runs/aerotrack_temporal/c1/classical_tuning.json (Anti-UAV: oudcv expected, CST: dcv expected -- whatever the file says) with a per-domain, per-horizon, per-axis variance = mean squared TRAIN residual of that forecaster on oracle histories",
+    "fste_classical@cf": "forecaster-driven STE (experiments/aerotrack_temporal/scripts/tc_ste.py): the Kalman is replaced by the domain's TRAIN-best classical forecaster from results/runs/aerotrack_temporal/c1/classical_tuning.json (Anti-UAV: oudcv expected, CST: dcv expected -- whatever the file says) with a per-domain, per-horizon, per-axis variance = mean squared TRAIN residual of that forecaster on oracle histories",
     "fste_learned@cf": "the same tracker with the C1 model (learned, abs inputs, seed 0 checkpoint, its own predicted variance) -- run ONLY in domains where C1 adopts the learned forecaster (H1 SUPPORTED and H2 not LOSES); elsewhere marked NOT RUN (adoption rule)",
     "fste_mechanics": "per frame: k = frames since the last associated detection; prediction = the forecast made at that detection for horizon k (beyond 24: horizon-24 mean, variance x k/24); gate on d2 = sum over axes (c_det - mu_k)^2 / (var_k + (r_meas * max(size, 10))^2), r_meas = 1/20; best gated drone detection >= det_thr is associated and output (output = detection box); else a detection >= reacq_thr anywhere re-acquires (history restarts there); else coast (predicted box if coast_output) and after max_coast misses the target is declared absent; no track: best detection >= init_thr starts one. The learned forecaster is called when the last two frames are associated detections (its training condition); otherwise the domain's classical forecaster is used",
     "fste_grid": "det_thr {0.05, 0.15, 0.3} x init_thr {0.3, 0.5} x reacq_thr {0.5, 0.7, 0.9} x max_coast {0, 5, 20, 60} x coast_output {True, False} x gate_chi2 {9.21, 25.0}, max_coast 0 without coast_output dropped = 252 settings (the STE grid without its Kalman-only 'output' axis)"
@@ -66,7 +66,7 @@
     "falsifier": "H2 and H3 NO_DIFFERENCE or HARMFUL on every group: the motion model does not matter for tracking with this detector, and the simplest adequate tracker is deployed"
   },
   "run_order": [
-    "after C1's VAL pass (its adoption decision) and after tools/chains/post_v2_causal_caches.json produced the caches",
+    "after C1's VAL pass (its adoption decision) and after scripts/chains/post_v2_causal_caches.json produced the caches",
     "experiments/aerotrack_temporal/scripts/tc_c3.py (CPU, at most 4 worker processes, never alongside another heavy CPU job while a GPU training runs)",
     "reports/C3_tracking_motion_models.{json,md}"
   ],

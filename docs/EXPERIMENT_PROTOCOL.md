@@ -7,8 +7,8 @@ remain in `docs/ANTI_UAV_EXPERIMENT_PROTOCOL.md`; this document adds the program
 
 | rule | enforced by |
 |---|---|
-| Three concepts kept apart: SOURCE (`datasets/` archives, `data/` extractions), DERIVED (`b_pipeline/data_unified*/`), EXPERIMENT (fold files, frozen manifests) | directory layout; `docs/AGENT_CONTEXT.md` §D.4 |
-| A derived corpus is never rewritten; a new version gets a new directory and is selected per process with `AEROTRACK_CORPUS` | `b_pipeline/corpus.py`; `build_corpus_v2.py` refuses to overwrite |
+| Three concepts kept apart: SOURCE (`datasets/` archives, `data/` extractions), DERIVED (`data/derived/data_unified*/`), EXPERIMENT (fold files, frozen manifests) | directory layout; `docs/AGENT_CONTEXT.md` §D.4 |
+| A derived corpus is never rewritten; a new version gets a new directory and is selected per process with `AEROTRACK_CORPUS` | `src/pipeline/corpus.py`; `build_corpus_v2.py` refuses to overwrite |
 | Sequence-level splits; train ∩ val ∩ test = ∅ asserted before every run (roadmap T4) | `3_prepare_training.py`, `stacked_dataset.assert_no_leakage`, preflight |
 | CST val = the official split when the corpus has it, else v1's fixed-seed holdout | `3_prepare_training.build_splits` |
 | Archive integrity by CRC-32 of every member and SHA-256 of every part, never by file size | `extract_and_verify.py`, `fetch_missing_volumes.py` |
@@ -36,7 +36,7 @@ forecasting) in that pass. Existing test results are historical evidence and are
 
 ## 4. Training
 
-- Recipe locked per series (`c_model/train.py` STAGES["baseline"]); a resumed run must match its `run_meta.json`.
+- Recipe locked per series (`src/model/train.py` STAGES["baseline"]); a resumed run must match its `run_meta.json`.
 - Function-preserving initialisation, proved at runtime (the run aborts if the check fails).
 - Pre-flight T1–T8 on the exact job (tensor shape/range, temporal boundaries, labels, leakage, collate, checkpoint round
   trip, throughput, VRAM); a smoke run (2 epochs × 512 samples) before every campaign.
@@ -58,25 +58,25 @@ forecasting) in that pass. Existing test results are historical evidence and are
 
 - Every long job is a detached runner with RUNNING / DONE / FAILED sentinels, an events log and per-job logs; it is never
   polled. Completion is observed through a background waiter's notification and checked once.
-- Short jobs that need an idle GPU run in a chain between campaigns (`tools/chain.py`, `tools/chains/*.json`).
+- Short jobs that need an idle GPU run in a chain between campaigns (`scripts/chain.py`, `scripts/chains/*.json`).
 
 ## 7. Reporting
 
 - Numbers come from generated JSON; Markdown reports are generated from it; README.md is generated
   (`experiments/aerotrack_repair/README.template.md` → `render_report.py`).
-- One registry indexes everything: `artifacts/experiment_registry.json` (`tools/build_registry.py`); Track A's evidence
-  classes are in `artifacts/anti_uav_ledger.json` (`tools/build_anti_uav_ledger.py`).
+- One registry indexes everything: `results/artifacts/experiment_registry.json` (`scripts/build_registry.py`); Track A's evidence
+  classes are in `results/artifacts/anti_uav_ledger.json` (`scripts/build_anti_uav_ledger.py`).
 - Negative and failed results stay in the ledgers and reports.
 
 ## 8. Execution on the HPC (from 2026-10-06; amendment A1, `experiments/AMENDMENT_A1_HPC.json`)
 
 | rule | enforced by |
 |---|---|
-| No training on the OMEN; every training run and multi-hour research evaluation runs as a PBS job on the HPC | `docs/DECISIONS.md` D-2026-10-06-01; `tools/hpc/submit.sh` |
-| One GPU per job; a job refuses to start (GPU_BUSY, exit 75) if any other process is on the node's V100 | `tools/hpc/gpu_guard.sh` |
-| Identical data on both machines: archives sha256-equal, extractions CRC-verified, Anti-UAV frames byte-identical, corpus files sha256-equal; manifests are never rewritten (load-time `AEROTRACK_PATH_MAP`) | `tools/hpc/{push_files.sh,extract_cst.py,verify_antiuav_frames.py,env_gate.py --part data}` |
-| AeroTrack autocast = fp16 on the V100 (bf16 on sm ≥ 8.0); Track A fp32; recorded per run | `c_model/precision.py`; job `env.json`; `run_meta.json` |
+| No training on the OMEN; every training run and multi-hour research evaluation runs as a PBS job on the HPC | `docs/DECISIONS.md` D-2026-10-06-01; `scripts/hpc/submit.sh` |
+| One GPU per job; a job refuses to start (GPU_BUSY, exit 75) if any other process is on the node's V100 | `scripts/hpc/gpu_guard.sh` |
+| Identical data on both machines: archives sha256-equal, extractions CRC-verified, Anti-UAV frames byte-identical, corpus files sha256-equal; manifests are never rewritten (load-time `AEROTRACK_PATH_MAP`) | `scripts/hpc/{push_files.sh,extract_cst.py,verify_antiuav_frames.py,env_gate.py --part data}` |
+| AeroTrack autocast = fp16 on the V100 (bf16 on sm ≥ 8.0); Track A fp32; recorded per run | `src/model/precision.py`; job `env.json`; `run_meta.json` |
 | Every comparison is within one host type; cross-host numbers only appear as labelled host checks (HC1–HC3) | amendment A1 |
-| Every job: unique id, `cmd.txt`, `env.json` (commit, dirty, torch, GPU, env vars), `events.jsonl`, `job.log`, RUNNING/DONE/FAILED sentinel; a DONE id is immutable | `tools/hpc/run_job.pbs` |
-| Code reaches the HPC only as committed history (fast-forward); results return via `pull_results.py` (namespaced; Track A append-only check) | `tools/hpc/sync_code.sh`, `tools/hpc/pull_results.py` |
-| The master ledger is generated, never edited | `tools/build_master_ledger.py` → `docs/EXPERIMENT_LEDGER.{jsonl,csv}` |
+| Every job: unique id, `cmd.txt`, `env.json` (commit, dirty, torch, GPU, env vars), `events.jsonl`, `job.log`, RUNNING/DONE/FAILED sentinel; a DONE id is immutable | `scripts/hpc/run_job.pbs` |
+| Code reaches the HPC only as committed history (fast-forward); results return via `pull_results.py` (namespaced; Track A append-only check) | `scripts/hpc/sync_code.sh`, `scripts/hpc/pull_results.py` |
+| The master ledger is generated, never edited | `scripts/build_master_ledger.py` → `docs/EXPERIMENT_LEDGER.{jsonl,csv}` |

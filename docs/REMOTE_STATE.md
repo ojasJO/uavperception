@@ -57,7 +57,7 @@ Load snapshot 2026-10-06 01:10 (other users): node01 23/28 cpus, node02 27/28, n
 | 2026-10-06 01:04 | public key appended to `~/.ssh/authorized_keys` (backup `authorized_keys.bak_aerotrack_20261006010434`) |
 | 2026-10-06 01:05 | workspace `~/aerotrack_server/` created (layout §5) |
 | 2026-10-06 01:07 | source archives pushed (sha256-verified) → `shared_data/source_archives/` |
-| 2026-10-06 01:09 | env build started: `environments/at311` (conda, Python 3.11) |
+| 2026-10-06 01:09 | env build started: `docs/environments/at311` (conda, Python 3.11) |
 | 2026-10-06 01:11 | probe jobs 92820–92822 (GPU request: held → deleted by us), 92823–92824 (CPU-only: ran) |
 
 ## 5. Workspace layout (`~/aerotrack_server/`)
@@ -65,16 +65,16 @@ Load snapshot 2026-10-06 01:10 (other users): node01 23/28 cpus, node02 27/28, n
 ```text
 source/                 git checkout of this repository (transferred as a git bundle; commit recorded per run)
 shared_data/
-  source_archives/      pristine archives, byte-identical to the OMEN's datasets/ (sha256 in runs/_hpc_sync/*/sha256.tsv)
+  source_archives/      pristine archives, byte-identical to the OMEN's datasets/ (sha256 in results/runs/_hpc_sync/*/sha256.tsv)
   data/                 extractions (Linux; no junctions) mirroring the OMEN's data/ layout
-  derived/              corpus files mirroring b_pipeline/data_unified*/ (labels, manifest, caches, Anti-UAV frames)
-environments/           at311 (conda prefix) + pip freeze
+  derived/              corpus files mirroring data/derived/data_unified*/ (labels, manifest, caches, Anti-UAV frames)
+docs/environments/           at311 (conda prefix) + pip freeze
 holistic/  anti_uav_replication/   per-track run roots (immutable run directories)
-checkpoints/ logs/ reports/ manifests/ deployment/ jobs/
+checkpoints/ logs/ reports/ manifests/ src/deployment/ jobs/
 ```
 Training reads images from a per-node copy in `/local/y_rajeshwar/` (staged by the job; NFS is the source of truth).
 
-## 6. Environment (`environments/at311`, freeze copied to `experiments/hpc/env/at311_freeze.txt`)
+## 6. Environment (`docs/environments/at311`, freeze copied to `experiments/hpc/env/at311_freeze.txt`)
 
 | item | HPC `at311` | OMEN `venv` |
 |---|---|---|
@@ -89,7 +89,7 @@ Training reads images from a per-node copy in `/local/y_rajeshwar/` (staged by t
 Gate M4 core **PASS** (node03, `experiments/hpc/reports/m4_env_gate_core_node03_r3.json`): fp32/fp16 kernels, both detector
 builds with the registered COCO-transfer counts, fp16 GradScaler training steps, checkpoint round trip; GPU-only training
 throughput at batch 32 / 640: **fp16 231 img/s (5.0 GB)**, fp32 172 img/s (8.7 GB). (Two earlier FAILs were test flaws: see
-commits 3379276 and the C3 note in `tools/hpc/env_gate.py`.)
+commits 3379276 and the C3 note in `scripts/hpc/env_gate.py`.)
 
 Side effect: Ultralytics migrated the user's pre-existing `~/.config/Ultralytics/settings.json` to its current schema
 (values preserved, per its own message) on first import.
@@ -97,10 +97,10 @@ Side effect: Ultralytics migrated the user's pre-existing `~/.config/Ultralytics
 ## 7. Checkout specifics
 - `source/data`, `source/b_pipeline/data_unified`, `source/b_pipeline/data_unified_v2` are symlinks into `shared_data/root/`
   (listed in `.git/info/exclude`).
-- Sparse checkout excludes the OMEN's v2 artifacts (`runs/v2_stock_s0_e20/`, `runs/v2_sym_g4_s0_e20/`,
-  `runs/v2_causal_g4_s0_e2_smoke/`, `runs/aerotrack_v2/`, `experiments/aerotrack_v2/{ledger.jsonl,reports/v2_results*.json}`)
+- Sparse checkout excludes the OMEN's v2 artifacts (`results/runs/v2_stock_s0_e20/`, `results/runs/v2_sym_g4_s0_e20/`,
+  `results/runs/v2_causal_g4_s0_e2_smoke/`, `results/runs/aerotrack_v2/`, `experiments/aerotrack_v2/{ledger.jsonl,reports/v2_results*.json}`)
   so the series re-runs from scratch under its registered names (amendment A1). Re-hosted OMEN checkpoints for evaluation only:
-  `runs/laptop_v2_stock_s0_e20/` (HC1), `runs/gen_temporal_fp_g4_full_e20/weights/` (v1 reference).
+  `results/runs/laptop_v2_stock_s0_e20/` (HC1), `results/runs/gen_temporal_fp_g4_full_e20/weights/` (v1 reference).
 
 ## 8. Practical GPU capacity (2026-10-06 ~02:00)
 Of 5 V100s: node03 free; head node GPU used by another user's process (01:55); node04 GPU used by another user's CPU-only job;
@@ -111,6 +111,6 @@ See `docs/MASTER_STATE.md` (live table) and `experiments/hpc/jobs/` (pulled reco
 
 ## 10. Provenance note: `git.dirty` in HPC run records
 `experiments/aerotrack_v2/scripts/v2series.git()` and Track A's run metadata use `git status --porcelain`, which also lists
-untracked files. On the HPC checkout the run outputs (`runs/…`, `experiments/anti_uav/runs/<new evals>`) are untracked, so those
+untracked files. On the HPC checkout the run outputs (`results/runs/…`, `experiments/anti_uav/runs/<new evals>`) are untracked, so those
 records say `dirty: true` even though no tracked file differs. Tracked-file cleanliness is checked separately by
-`tools/hpc/sync_code.sh` (`--untracked-files=no`, refuses otherwise) and recorded per job in `env.json` (`git_dirty`, tracked only).
+`scripts/hpc/sync_code.sh` (`--untracked-files=no`, refuses otherwise) and recorded per job in `env.json` (`git_dirty`, tracked only).

@@ -1,0 +1,10 @@
+{
+ "name": "c2_launch",
+ "purpose": "Track C C2: a tiny waiting chain that starts the C2 runner only when its GPU turn comes (after h3_resume_after_v2); replaces a detached run_c2.py that held 1.6 GB of commit while idle for a day",
+ "state_dir": "results/runs/_chains/c2_launch",
+ "wait_for": "results/runs/_chains/h3_resume_after_v2",
+ "jobs": [
+  {"name": "run_c2", "required": true, "env": {"AEROTRACK_CORPUS": "data_unified_v2"},
+   "cmd": ["{python}", "-u", "experiments/aerotrack_temporal/scripts/run_c2.py"]}
+ ]
+}

@@ -72,7 +72,7 @@ cls
 call :BANNER "1 / 6   ENVIRONMENT AND GPU CHECK"
 echo   Reading the Python, PyTorch, CUDA and GPU this machine will actually use.
 echo.
-"%PY%" tools\show_env.py
+"%PY%" scripts\show_env.py
 echo.
 call :NEXT
 if not defined RUNALL goto MENU
@@ -83,7 +83,7 @@ call :BANNER "2 / 6   DATASET DIRECTORY INFORMATION"
 echo   Every path below is read from the generated registry and then checked
 echo   against this disk, so [ok] means the directory is really there.
 echo.
-"%PY%" tools\show_datasets.py --tree
+"%PY%" scripts\show_datasets.py --tree
 echo.
 call :NEXT
 if not defined RUNALL goto MENU
@@ -94,7 +94,7 @@ call :BANNER "3 / 6   TRAINED MODELS AND CHECKPOINTS"
 echo   Every checkpoint is identified by its SHA-256, so the weights behind a
 echo   published number can be told apart from any other copy.
 echo.
-"%PY%" tools\show_models.py
+"%PY%" scripts\show_models.py
 echo.
 call :NEXT
 if not defined RUNALL goto MENU
@@ -102,7 +102,7 @@ if not defined RUNALL goto MENU
 :S4
 cls
 call :BANNER "4 / 6   ALL RESULTS"
-echo   SUBMISSION\RESULTS_ALL.md holds every existing result in one document:
+echo   docs\RESULTS_ALL.md holds every existing result in one document:
 echo   the CST benchmark headline, the Anti-UAV 2021 reproduction, the detector
 echo   ablation, trajectory forecasting, deployment latency, and the components
 echo   that were measured and retired.
@@ -110,7 +110,7 @@ echo.
 echo   Opening it now. Press space to page through, Q to leave it.
 echo.
 pause
-more "SUBMISSION\RESULTS_ALL.md"
+more "docs\RESULTS_ALL.md"
 echo.
 echo   Also available: docs\RESULTS.md (auto-generated from the evaluation JSON).
 echo.
@@ -130,10 +130,10 @@ echo   In the video window:   SPACE / ENTER  next sequence     G  ground-truth b
 echo                          M  magnifier   S  screenshot     Q or ESC  quit
 echo.
 echo   Sequence list:
-"%PY%" c_model\visual_demo.py --list
+"%PY%" src\model\visual_demo.py --list
 echo.
 pause
-"%PY%" c_model\visual_demo.py --one-button
+"%PY%" src\model\visual_demo.py --one-button
 echo.
 call :NEXT
 if not defined RUNALL goto MENU
@@ -178,8 +178,8 @@ echo     - the research laboratory the whole study was run from
 echo.
 echo   Read next:
 echo     README.md                     how to run everything, step by step
-echo     SUBMISSION\RESULTS_ALL.md     every result in one document
-echo     SUBMISSION\ARCHITECTURE.md    the system architecture, for the slides
+echo     docs\RESULTS_ALL.md     every result in one document
+echo     docs\ARCHITECTURE.md    the system architecture, for the slides
 echo     docs\MASTER_STATE.md          the current state of the research
 echo.
 pause

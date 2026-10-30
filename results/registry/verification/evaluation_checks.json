@@ -1,0 +1,106 @@
+{
+ "schema": "src/aerolab/evaluation_checks/1",
+ "generated": "2026-10-13T23:13:07+05:30",
+ "method": "Evaluation verification: does a fresh, whole-sequence Flight Deck run of a checkpoint reproduce a RECORDED per-sequence VAL result? For every checkpoint with recorded per-frame VAL predictions (aerolab.recorded, VAL sources) the tool runs one Flight Deck experiment",
+ "tolerances": {
+  "aerotrack_detector": 0.5,
+  "globaltrack_repro": 0.05
+ },
+ "checks": [
+  {
+   "model_id": "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s0_e20@last",
+   "status": "passed",
+   "tolerance_SA": 0.5,
+   "recorded_source": "cst:val:x1:ste",
+   "recorded_dir": "results/runs/cst_anti_uav/val_predictions/v3_n__causal_g4_cst_s0_e20/ste",
+   "experiment_id": "fd-20261013T230600-bcbe37",
+   "device": "cuda",
+   "tracker": "ste",
+   "sequences": [
+    {
+     "sequence": "building_41",
+     "fresh_SA": 74.12569086606467,
+     "recorded_SA": 74.13846608113893,
+     "delta": -0.012775215074256607
+    }
+   ],
+   "checked": "2026-10-13T23:06:40+05:30"
+  },
+  {
+   "model_id": "antiuav_repro.globaltrack:normal_ir@last",
+   "status": "passed",
+   "tolerance_SA": 0.05,
+   "recorded_source": "antiuav:val:normal_ir",
+   "recorded_dir": "experiments/anti_uav/runs/normal_ir/eval_val_IR_last/predictions",
+   "experiment_id": "fd-20261013T230640-206aa4",
+   "device": "cuda",
+   "tracker": "globaltrack",
+   "sequences": [
+    {
+     "sequence": "20190925_101846_1_4",
+     "fresh_SA": 72.24520131526334,
+     "recorded_SA": 72.23876981897585,
+     "delta": 0.00643149628749029
+    }
+   ],
+   "checked": "2026-10-13T23:08:34+05:30"
+  },
+  {
+   "model_id": "antiuav_repro.globaltrack:dfsc_ir@last",
+   "status": "passed",
+   "tolerance_SA": 0.05,
+   "recorded_source": "antiuav:val:dfsc_ir",
+   "recorded_dir": "experiments/anti_uav/runs/dfsc_ir/eval_val_IR_last/predictions",
+   "experiment_id": "fd-20261013T230834-c7bfdf",
+   "device": "cuda",
+   "tracker": "globaltrack",
+   "sequences": [
+    {
+     "sequence": "20190925_101846_1_4",
+     "fresh_SA": 72.40297759280054,
+     "recorded_SA": 72.40865509362334,
+     "delta": -0.00567750082279872
+    }
+   ],
+   "checked": "2026-10-13T23:10:04+05:30"
+  },
+  {
+   "model_id": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@last",
+   "status": "passed",
+   "tolerance_SA": 0.05,
+   "recorded_source": "antiuav:val:phaseB_normal_ir_seed1",
+   "recorded_dir": "experiments/anti_uav/runs/phaseB_normal_ir_seed1/eval_val_IR_last/predictions",
+   "experiment_id": "fd-20261013T231004-750cb9",
+   "device": "cuda",
+   "tracker": "globaltrack",
+   "sequences": [
+    {
+     "sequence": "20190925_101846_1_4",
+     "fresh_SA": 71.5947521275295,
+     "recorded_SA": 71.59010186588928,
+     "delta": 0.0046502616402221975
+    }
+   ],
+   "checked": "2026-10-13T23:11:36+05:30"
+  },
+  {
+   "model_id": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@last",
+   "status": "passed",
+   "tolerance_SA": 0.05,
+   "recorded_source": "antiuav:val:phaseB_dfsc_ir_seed1",
+   "recorded_dir": "experiments/anti_uav/runs/phaseB_dfsc_ir_seed1/eval_val_IR_last/predictions",
+   "experiment_id": "fd-20261013T231136-4f7415",
+   "device": "cuda",
+   "tracker": "globaltrack",
+   "sequences": [
+    {
+     "sequence": "20190925_101846_1_4",
+     "fresh_SA": 71.65787529955252,
+     "recorded_SA": 71.65525100462854,
+     "delta": 0.0026242949239758673
+    }
+   ],
+   "checked": "2026-10-13T23:13:07+05:30"
+  }
+ ]
+}

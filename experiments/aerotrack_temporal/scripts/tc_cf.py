@@ -115,14 +115,14 @@ def stage_freeze(workers, smoke=0, out_path=None):
     if f1["status"] != "NOT SUPPORTED":
         raise SystemExit("F1 is SUPPORTED: CF would use the n_std run -- not implemented (the registered branch is not this one)")
     run = f"v2_{window}_s0_e20"
-    meta = rd(REPO / "runs" / "hpc" / run / "run_meta.json")
+    meta = rd(REPO / "results/runs" / "hpc" / run / "run_meta.json")
     c3p = REPORTS / f"C3_tracking_motion_models_{run}.json"
     c1bp = REPORTS / f"C1b_forecasting_on_tracker_histories_{run}.json"
     c3, c1b = rd(c3p), rd(c1bp)
     prep = rd(C3.RUN / "prep.json")
     init_worker(run, "val", prep)
     TE, seqs = W["TE"], W["seqs"]
-    idx = rd(REPO / "runs" / "systems" / "_cache" / run / CORPUS / "val" / "index.json")
+    idx = rd(REPO / "results/runs" / "systems" / "_cache" / run / CORPUS / "val" / "index.json")
     if idx["weights_sha256"] != meta["last_pt_sha256"]:
         raise SystemExit("VAL cache was made with other weights than the run's recorded last.pt")
     by_group = {g: sorted(k for k, it in seqs.items() if it["group"] == g)[:smoke or None] for g in GROUPS}
@@ -187,13 +187,13 @@ def stage_freeze(workers, smoke=0, out_path=None):
             names = [f"c1_{arch}_{fam}_s{s}" for s in (0, 1, 2)] if src.startswith("C1:") else None
             if names is None:
                 raise SystemExit(f"{dom}: C1c-sourced learned arm in C1b ({src}) -- not implemented")
-            book = rd(REPO / "runs" / "aerotrack_temporal" / "c1" / "learned_registry.json")
+            book = rd(REPO / "results/runs" / "aerotrack_temporal" / "c1" / "learned_registry.json")
             fc[dom] = {"kind": "learned", "deployed": names[0], "seeds_reported": names, "variant": fam, "source": src,
                        "checkpoint_sha256": {n: book[n]["sha256"] for n in names}, "rule": {"H1b": h1, "H2b": h2, "H4": h4}}
         else:
             ref = prep["variance_tables"][dom]["reference"]
             fc[dom] = {"kind": "classical", "deployed": ref, "params": prep["variance_tables"][dom]["tables"][ref]["params"],
-                       "variance": "TRAIN residual table (runs/aerotrack_temporal/c3/prep.json)", "rule": {"H1b": h1, "H2b": h2, "H4": h4}}
+                       "variance": "TRAIN residual table (results/runs/aerotrack_temporal/c3/prep.json)", "rule": {"H1b": h1, "H2b": h2, "H4": h4}}
     git = {"commit": subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO, capture_output=True, text=True).stdout.strip(),
            "tc_cf_committed_clean": committed_clean(Path(__file__).resolve())}
     out = {"registration": str(PRE.relative_to(REPO).as_posix()), "amendment": "CF-A2", "written": now(), "git": git,
@@ -230,7 +230,7 @@ def history_of(kind, params, it):
 def forecast_block(fz, prep, seqs, test_traj):
     import tc_c1_val as V
     import tc_learned as M
-    tune = rd(REPO / "runs" / "aerotrack_temporal" / "c1" / "classical_tuning.json")["domains"]
+    tune = rd(REPO / "results/runs" / "aerotrack_temporal" / "c1" / "classical_tuning.json")["domains"]
     out = {}
     for g in GROUPS:
         dom = GROUP_DOMAIN[g]
@@ -248,7 +248,7 @@ def forecast_block(fz, prep, seqs, test_traj):
         f = fz["forecasters"][dom]
         if f["kind"] == "learned":
             for n in f["seeds_reported"]:
-                path = REPO / "runs" / "aerotrack_temporal" / "c1" / f"{n}.pt"
+                path = REPO / "results/runs" / "aerotrack_temporal" / "c1" / f"{n}.pt"
                 if sha(path) != f["checkpoint_sha256"][n]:
                     raise SystemExit(f"{path} does not match its frozen sha256")
                 model, meta = M.load(path)
@@ -302,7 +302,7 @@ def stage_test(final_eval, dry_val=False, frozen_path=None, out_dir=None):
     t0 = time.time()
     init_worker(run, split, prep)
     TE, seqs = W["TE"], W["seqs"]
-    idx = rd(REPO / "runs" / "systems" / "_cache" / run / CORPUS / split / "index.json")
+    idx = rd(REPO / "results/runs" / "systems" / "_cache" / run / CORPUS / split / "index.json")
     if idx["weights_sha256"] != fz["detector"]["weights_sha256"]:
         raise SystemExit(f"{split} cache was made with other weights than the frozen detector")
     want = {"anti_uav_IR": 67, "anti_uav_RGB": 67, "cst_IR": 40} if dry_val else {"anti_uav_IR": 91, "anti_uav_RGB": 91, "cst_IR": 60}

@@ -1,16 +1,16 @@
 #!/usr/bin/env python
-"""Build corpus v2 = corpus v1 with the COMPLETE CST Anti-UAV release, in b_pipeline/data_unified_v2/ (v1 untouched).
+"""Build corpus v2 = corpus v1 with the COMPLETE CST Anti-UAV release, in data/derived/data_unified_v2/ (v1 untouched).
 
     venv\\Scripts\\python.exe experiments\\cst_completion\\scripts\\build_corpus_v2.py
 
 Requires reports/extraction.json with verdict COMPLETE_AND_CONSISTENT (extract_and_verify.py).
 
-* CST: the v1 conversion itself (`b_pipeline/1_standardize_annotations.py::standardize_cst`, same parser, same
+* CST: the v1 conversion itself (`src/pipeline/1_standardize_annotations.py::standardize_cst`, same parser, same
   rect->YOLO rounding, same empty-label rule) is run against data/cst_anti_uav_full and writes labels + image junctions
   under data_unified_v2/cst/. Per-frame CST attribute annotations (exist, OC, OV, SV, TC, DBC, CDB, FM, SIZE), which v1
   ignored, are exported to data_unified_v2/cst_attributes.csv for robustness analysis.
 * Anti-UAV and Det-Fly: their v1 manifest rows are copied verbatim (same label files, same images).
-* Then `b_pipeline/3_prepare_training.py` runs with AEROTRACK_CORPUS=data_unified_v2: label cache, sampler hardness,
+* Then `src/pipeline/3_prepare_training.py` runs with AEROTRACK_CORPUS=data_unified_v2: label cache, sampler hardness,
   and splits -- which now use the official CST val split (40 sequences) instead of v1's 15-sequence holdout.
 * Verification: every CST TEST label file of v2 is byte-identical to v1's (the sealed test split is unchanged), every v1
   CST train sequence keeps identical labels, split counts, T4 leakage (inside 3_prepare_training).
@@ -28,8 +28,8 @@ from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
-V1 = REPO / "b_pipeline" / "data_unified"
-V2 = REPO / "b_pipeline" / "data_unified_v2"
+V1 = REPO / "data" / "derived" / "data_unified"
+V2 = REPO / "data" / "derived" / "data_unified_v2"
 FULL = REPO / "data" / "cst_anti_uav_full"
 REPORTS = REPO / "experiments" / "cst_completion" / "reports"
 HEADER = ["dataset", "seq_key", "modality", "split", "frame_idx", "n_frames", "image_path", "label_path", "has_target",
@@ -62,10 +62,10 @@ def main():
     V2.mkdir(parents=True, exist_ok=True)
 
     # ---- CST through the v1 conversion code, pointed at the complete extraction and the v2 directory
-    sys.path.insert(0, str(REPO / "a_inspection"))
+    sys.path.insert(0, str(REPO / "src/inspection"))
     import eda_common as C
     C.DATASET_DIRS["cst_anti_uav"] = FULL
-    S = load_module("standardize_v1", REPO / "b_pipeline" / "1_standardize_annotations.py")
+    S = load_module("standardize_v1", REPO / "src/pipeline" / "1_standardize_annotations.py")
     S.UNIFIED = V2
     summary = {}
     tmp = V2 / "manifest.csv.tmp"
@@ -104,7 +104,7 @@ def main():
 
     # ---- label cache, hardness, splits (official CST val) via the v1 preparation script
     env = dict(os.environ, AEROTRACK_CORPUS=V2.name)
-    rc = subprocess.call([sys.executable, str(REPO / "b_pipeline" / "3_prepare_training.py")], cwd=str(REPO), env=env)
+    rc = subprocess.call([sys.executable, str(REPO / "src/pipeline" / "3_prepare_training.py")], cwd=str(REPO), env=env)
     if rc != 0:
         sys.exit(f"3_prepare_training.py failed (rc {rc})")
 

@@ -39,7 +39,7 @@ class Campaign(RG.Grid):
         self.epochs = None
         self.smoke = smoke
         self.suffix = self.tag = "_smoke" if smoke else ""
-        self.dir = S.REPO / "runs" / "aerotrack_generalization" / f"campaign{self.suffix}"
+        self.dir = S.REPO / "results/runs" / "aerotrack_generalization" / f"campaign{self.suffix}"
         self.logs = self.dir / "logs"
         self.state_path = self.dir / "state.json"
         self.events_path = self.dir / "events.jsonl"
@@ -80,7 +80,7 @@ def freeze_plan(c):
 
 def repair_fingerprint():
     files = []
-    for d in sorted((S.REPO / "runs").glob("repair_abl_*_e20")):
+    for d in sorted((S.REPO / "results/runs").glob("repair_abl_*_e20")):
         files += [d / n for n in ("run_meta.json", "results.csv", "args.json", "weights/best.pt", "weights/last.pt")]
     files += sorted((S.REPO / "experiments" / "aerotrack_repair" / "reports").glob("*"))
     h = hashlib.sha256()
@@ -99,7 +99,7 @@ def integrity(c, when):
         S.ledger({"id": "INT0", "type": "integrity", "what": "hash of the completed repair experiment (runs + reports)", "files": n, "sha256": fp})
     elif st["repair_fingerprint"] != fp:
         c.event("integrity_changed", when=when, files=n)
-        raise RG.GridFatal("the completed repair experiment changed (runs/repair_abl_* or experiments/aerotrack_repair/reports)")
+        raise RG.GridFatal("the completed repair experiment changed (results/runs/repair_abl_* or experiments/aerotrack_repair/reports)")
     c.event("integrity_ok", when=when, files=n)
 
 
@@ -126,7 +126,7 @@ def inspect(rd):
 
 def ensure_run(c, cfg, fold, epochs, a):
     name = c.run_name(cfg, fold, epochs)
-    rd = S.REPO / "runs" / name
+    rd = S.REPO / "results/runs" / name
     info = inspect(rd) if rd.exists() else {"exists": False}
     if info.get("exists") and RG.run_complete(info, epochs):
         c.log(f"[train] {name}: complete — verified, not re-run")
@@ -190,7 +190,7 @@ def ensure_run(c, cfg, fold, epochs, a):
 
 
 def ensure_eval(c, name, sets, a):
-    w = S.REPO / "runs" / name / "weights" / "last.pt"
+    w = S.REPO / "results/runs" / name / "weights" / "last.pt"
     sha12 = RG.sha256(w)[:12]
     for attempt in range(1, 4):
         have = {(r["run"], r["set"]) for r in results(c)["rows"] if r.get("weights_sha256") == sha12}
@@ -263,7 +263,7 @@ def jobs():
 
 def final_test(c, name, a):
     L = S.REPORTS / "gen_test_ledger.jsonl"
-    sha = RG.sha256(S.REPO / "runs" / name / "weights" / "last.pt")
+    sha = RG.sha256(S.REPO / "results/runs" / name / "weights" / "last.pt")
     if L.exists() and any(json.loads(x).get("weights_sha256") == sha for x in L.read_text(encoding="utf-8").splitlines() if x.strip()):
         c.log(f"[test] {name} already has its single TEST evaluation — not re-run")
         return

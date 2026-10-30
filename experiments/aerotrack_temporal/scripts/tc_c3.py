@@ -6,7 +6,7 @@
 
 prep (TRAIN, non-dev groups, oracle histories): per domain, the per-horizon / per-axis mean squared residual of every classical
 forecaster at its TRAIN-tuned parameters (the variance table used by the forecaster-driven STE); ONNX export + parity of the C1
-model (seed-0 checkpoint of the dev-chosen family, abs inputs). Output: runs/aerotrack_temporal/c3/prep.json.
+model (seed-0 checkpoint of the dev-chosen family, abs inputs). Output: results/runs/aerotrack_temporal/c3/prep.json.
 run (VAL caches of a causal detector, corpus v2): argmax / ste_cv (track_eval's grids) and fste_classical / fste_learned (the
 registered 252-setting grid) scored with Track A's SA code, cross-fitted over the two VAL halves exactly as track_eval.py (objective
 = mean of the group mSAs of the tuning half); fste_learned only in domains where C1 adopts the learned forecaster. Then paired,
@@ -33,8 +33,8 @@ import tc_data as D  # noqa: E402
 import tc_forecast as F  # noqa: E402
 import tc_ste as FS  # noqa: E402
 
-RUN = REPO / "runs" / "aerotrack_temporal" / "c3"
-C1RUN = REPO / "runs" / "aerotrack_temporal" / "c1"
+RUN = REPO / "results/runs" / "aerotrack_temporal" / "c3"
+C1RUN = REPO / "results/runs" / "aerotrack_temporal" / "c1"
 REPORTS = REPO / "experiments" / "aerotrack_temporal" / "reports"
 PRE = REPO / "experiments" / "aerotrack_temporal" / "preregistration" / "C3_tracking_motion_models.json"
 GROUP_DOMAIN = {"anti_uav_IR": "antiuav_IR", "anti_uav_RGB": "antiuav_RGB", "cst_IR": "cst"}

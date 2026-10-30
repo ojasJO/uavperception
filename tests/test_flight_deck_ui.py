@@ -14,8 +14,9 @@ from pathlib import Path
 from streamlit.testing.v1 import AppTest
 
 REPO = Path(__file__).resolve().parents[1]
-APP = str(REPO / "studio" / "app.py")
+APP = str(REPO / "app" / "app.py")
 sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "src"))
 from aerolab import data, jobs  # noqa: E402
 from aerolab.categories import ORDER  # noqa: E402
 from aerolab.paths import STUDIO_INDEX  # noqa: E402

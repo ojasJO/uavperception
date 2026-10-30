@@ -6,7 +6,7 @@
 
 The input window comes from the run's run_meta.json (v2 runs: `window`; generalization runs: gap 0 -> t,t,t, gap g -> t-g,t,t+g).
 Protocol = the repair / generalization series': letterbox 640, conf 0.001, NMS IoU 0.7, max_det 30, bf16, every dataset capped
-at 5,000 images evenly over its sequences. Per-image records -> runs/aerotrack_v2/_cache/ (paired bootstrap); one row per
+at 5,000 images evenly over its sequences. Per-image records -> results/runs/aerotrack_v2/_cache/ (paired bootstrap); one row per
 (run, set) -> experiments/aerotrack_v3/reports/v3_results.json; ledger entry per evaluation.
 """
 import argparse
@@ -46,7 +46,7 @@ def main():
     a = ap.parse_args()
     if a.set == "test" and not a.final_eval:
         sys.exit("Refusing: TEST needs --final-eval (the single evaluation of the pre-selected final candidate).")
-    run_dir = S.REPO / "runs" / a.run
+    run_dir = S.REPO / "results/runs" / a.run
     meta = json.loads((run_dir / "run_meta.json").read_text(encoding="utf-8"))
     if meta.get("return_code") != 0:
         sys.exit(f"{a.run} is not a finished run (return_code {meta.get('return_code')})")

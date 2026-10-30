@@ -444,9 +444,9 @@
           "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.md",
           "experiments/anti_uav/runs/_h4_native_scale/",
           "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/",
-          "runs/_chains/cpu_failures_g4/",
-          "runs/_chains/cpu_forecast_eval_g4/",
-          "runs/_chains/fetch_tensorrt/"
+          "results/runs/_chains/cpu_failures_g4/",
+          "results/runs/_chains/cpu_forecast_eval_g4/",
+          "results/runs/_chains/fetch_tensorrt/"
         ]
       },
       "test_scale": [
@@ -468,15 +468,15 @@
           "xperiments/anti_uav/reports/test_evaluation_ledger.jsonl",
           "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.json",
           "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.md",
-          "runs/_chains/_events_seen.json",
+          "results/runs/_chains/_events_seen.json",
           "experiments/anti_uav/runs/_h4_native_scale/",
           "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/",
           "experiments/cst_completion/reports/",
-          "runs/_chains/cpu_failures_g4/",
-          "runs/_chains/cpu_forecast_eval_g4/",
-          "runs/_chains/cpu_mot_eval_g4/",
-          "runs/_chains/fetch_tensorrt/",
-          "runs/_chains/post_v2/"
+          "results/runs/_chains/cpu_failures_g4/",
+          "results/runs/_chains/cpu_forecast_eval_g4/",
+          "results/runs/_chains/cpu_mot_eval_g4/",
+          "results/runs/_chains/fetch_tensorrt/",
+          "results/runs/_chains/post_v2/"
         ]
       },
       "test_scale": [
@@ -498,16 +498,16 @@
           "xperiments/anti_uav/reports/test_evaluation_ledger.jsonl",
           "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.json",
           "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.md",
-          "runs/_chains/_events_seen.json",
+          "results/runs/_chains/_events_seen.json",
           "experiments/anti_uav/runs/_h4_native_scale/",
           "experiments/anti_uav/runs/dfsc_ir/phaseB_test_scale_640x512/",
           "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/",
           "experiments/cst_completion/reports/",
-          "runs/_chains/cpu_failures_g4/",
-          "runs/_chains/cpu_forecast_eval_g4/",
-          "runs/_chains/cpu_mot_eval_g4/",
-          "runs/_chains/fetch_tensorrt/",
-          "runs/_chains/post_v2/"
+          "results/runs/_chains/cpu_failures_g4/",
+          "results/runs/_chains/cpu_forecast_eval_g4/",
+          "results/runs/_chains/cpu_mot_eval_g4/",
+          "results/runs/_chains/fetch_tensorrt/",
+          "results/runs/_chains/post_v2/"
         ]
       },
       "test_scale": [

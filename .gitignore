@@ -17,7 +17,7 @@ htmlcov/
 # Datasets (Strictly excluded - research data hosted externally)
 data/
 datasets/
-b_pipeline/data_unified/
+data/derived/data_unified/
 *.zip
 *.tar
 *.gz
@@ -40,8 +40,8 @@ run.bat
 pyrightconfig.json
 
 # Local inspection artifacts and intermediate caches
-a_inspection/artifacts/
-a_inspection/logs/
+src/inspection/artifacts/
+src/inspection/logs/
 
 # IDE & Editor Configurations
 .vscode/
@@ -57,17 +57,17 @@ _nbtest.ipynb
 train_executed.ipynb
 
 # Local training background logs and temp directories
-runs/_bg/
-runs/s0_overfit/
-runs/s1_smoke/
-runs/snapshots/
-runs/**/*.log
+results/runs/_bg/
+results/runs/s0_overfit/
+results/runs/s1_smoke/
+results/runs/snapshots/
+results/runs/**/*.log
 logs/
 *.log
 
 # Large weight files (Keep repository lightweight; weights can be hosted via releases)
-runs/**/weights/
-c_model/yolo11n.pt
+results/runs/**/weights/
+src/model/yolo11n.pt
 
 # Anti-UAV reproduction (experiments/anti_uav): keep configs, manifests, provenance + metrics; exclude bulk artefacts
 experiments/anti_uav/runs/_smoke/
@@ -77,74 +77,77 @@ experiments/anti_uav/runs/**/predictions_perturbed/
 experiments/anti_uav/logs/
 
 # AeroTrack repair: bulk artefacts of the repair scripts (reports/JSON are tracked)
-runs/**/tracking_repair/*.npz
-runs/lstm_forecaster_repair/*.pt
+results/runs/**/tracking_repair/*.npz
+results/runs/lstm_forecaster_repair/*.pt
 experiments/anti_uav/demo/cache/
 
 # Exception: keep the Anti-UAV paper-benchmark run logs (small; evidence of how each benchmark evaluation ran)
 !experiments/anti_uav/runs/paper_benchmarks_*/**/*.log
 
 # AeroTrack generalization investigation: derived per-image prediction caches (reports/ + ledger are tracked)
-runs/aerotrack_generalization/_cache/
+results/runs/aerotrack_generalization/_cache/
 
 # Anti-UAV H4 (native-scale) runner: keep its small logs + events as evidence of how each evaluation ran
 !experiments/anti_uav/runs/_h4_native_scale/*.log
 
 # CST completion: downloaded archive parts live under datasets/ (ignored); provenance JSON is tracked in experiments/cst_completion/reports/
-b_pipeline/data_unified_v2/
+data/derived/data_unified_v2/
 
 # Deployment artefacts (ONNX / TensorRT engines; their records + hashes are tracked in experiments/deployment/reports/)
-artifacts/deploy/
+results/artifacts/deploy/
 
 # Systems (tracking / state estimation): cached per-frame detections are derived bulk data (index.json records their identity)
-runs/systems/_cache/
+results/runs/systems/_cache/
 
 # Streaming-runtime outputs (videos, per-frame JSONL)
-runs/deploy_stream/
+results/runs/deploy_stream/
 
-# Downloaded wheels (large; hashes recorded in tools/chains/fetch_tensorrt.json and the chain events)
-environments/wheels/
-runs/tmp_wheels/
+# Downloaded wheels (large; hashes recorded in scripts/chains/fetch_tensorrt.json and the chain events)
+docs/environments/wheels/
+results/runs/tmp_wheels/
 
 # Deployment-gate scratch: parity arrays and the gate log are reproducible from
 # experiments/deployment/reports/, which is tracked
-runs/_deploy/
+results/runs/_deploy/
 
 # Additional COCO checkpoints (Ultralytics assets v8.3.0; sha256 recorded in the model YAML headers)
-c_model/yolo11s.pt
+src/model/yolo11s.pt
 # Track C: derived trajectory arrays and small forecaster checkpoints (sha256 recorded in the JSON next to them)
-runs/aerotrack_temporal/_data/*.npz
-runs/aerotrack_temporal/**/*.pt
-runs/aerotrack_temporal/**/*.onnx
+results/runs/aerotrack_temporal/_data/*.npz
+results/runs/aerotrack_temporal/**/*.pt
+results/runs/aerotrack_temporal/**/*.onnx
 # chain / runner liveness sentinels are transient (events.jsonl keeps the record)
-runs/_chains/*/RUNNING
+results/runs/_chains/*/RUNNING
 
 # Track A data-loading package (was swallowed by the data/ rule until 2026-10-06; see docs/FAILURES_AND_RECOVERY.md F-04)
 !experiments/anti_uav/src/anti_uav_repro/data/
 
 # HPC transfer staging: keep sha256 tables / events (evidence), not the payloads
-runs/_hpc_sync/**/*.bundle
-runs/_hpc_sync/**/*.tar.gz
-runs/_hpc_sync/*.txt
+results/runs/_hpc_sync/**/*.bundle
+results/runs/_hpc_sync/**/*.tar.gz
+results/runs/_hpc_sync/*.txt
 
 # deployment packages: binaries are rebuilt / copied, never committed (checksums + manifest are)
-deployment/**/*.pt
-deployment/**/*.onnx
-deployment/**/*.engine
-deployment/**/*.mp4
-deployment/**/*.frames.jsonl
+src/deployment/**/*.pt
+src/deployment/**/*.onnx
+src/deployment/**/*.engine
+src/deployment/**/*.mp4
+src/deployment/**/*.frames.jsonl
 
 # CST Anti-UAV study: exported per-frame predictions and the official toolkit's intermediate report files (regenerable)
-runs/cst_anti_uav/
+results/runs/cst_anti_uav/
 experiments/cst_anti_uav/reports/**/toolkit_reports/
 experiments/cst_anti_uav/reports/*.log
 
 # HPC recovery backups (16+ GB, local only; never commit, never clean)
-artifacts/hpc_recovery_*/
+results/artifacts/hpc_recovery_*/
 
 # Unified workspace: studio outputs (predictions, manifests, logs) and the registry hash cache (regenerable)
-runs/studio/
-registry/.hash_cache.json
+results/runs/studio/
+results/registry/.hash_cache.json
 
-# Tour renders: large, and rebuildable from tools/video/make_tour.py
-SUBMISSION/video/*.mp4
+# Tour renders: large, and rebuildable from scripts/video/make_tour.py
+docs/video/*.mp4
+
+# Junction to data/derived: the frozen dataset manifests still name b_pipeline/ paths
+/b_pipeline

@@ -1,0 +1,18 @@
+{
+ "schema_version": "directions/1",
+ "directions": [
+  {"id": "aerotrack", "name": "Direction A — AeroTrack multi-source research system",
+   "question": "Can an integrated detection -> single-target state estimation -> forecasting system, assembled from several published components plus new logic, track tiny UAVs in thermal / visible video, and which components actually help?",
+   "nature": "integrated research system (published components, adaptations, new designs); every component claim must be backed by a controlled experiment",
+   "code": ["src/model/", "src/pipeline/", "experiments/aerotrack_repair", "experiments/aerotrack_generalization", "experiments/aerotrack_v2",
+            "experiments/aerotrack_v3", "experiments/systems", "experiments/aerotrack_temporal", "experiments/deployment", "experiments/cst_anti_uav"],
+   "readme": "docs/research/aero_multi_paper/README.md", "color": "#2b6cb0"},
+  {"id": "antiuav_repro", "name": "Direction B — Anti-UAV (2021) paper reproduction: DFSC on GlobalTrack",
+   "question": "Does a faithful re-implementation of the paper's DFSC training on GlobalTrack reproduce the paper's Protocol II IR numbers, and does DFSC beat plain fine-tuning?",
+   "nature": "single-paper reproduction; deviations are tagged S1-S6 in docs/ANTI_UAV_REPRODUCTION_SPEC.md; follow-ups (Phase B, H3, H4, A2 visible) are labelled as such",
+   "code": ["experiments/anti_uav/"], "readme": "docs/research/anti_uav_paper_reproduction/README.md", "color": "#b7791f"},
+  {"id": "shared", "name": "Shared benchmarks, protocols and external baselines",
+   "question": "Not a research direction: benchmarks, protocols, pretrained bases and published / released baselines used by the directions.",
+   "nature": "external or shared assets", "code": [], "readme": "docs/workspace/ARCHITECTURE.md", "color": "#4a5568"}
+ ]
+}

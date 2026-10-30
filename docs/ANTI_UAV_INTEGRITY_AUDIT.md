@@ -42,14 +42,14 @@ Where a static scan was used, its command and result are given so it can be re-r
 
 | # | Finding | Evidence (today's scan) | Status |
 |---|---|---|---|
-| B1 | demo rendered from a **test** sequence with hand-picked frames | `c_model/make_model_comparison_demo.py:104-105` — "Frames 104 to 134 ... where v1 drops track and v2 locks on", sequence `antiuav_test_20190925_111757_1_4__IR`; `c_model/visual_demo.py:146-194` lists `antiuav_test_*` keys | unchanged; to fix in the repair task |
+| B1 | demo rendered from a **test** sequence with hand-picked frames | `src/model/make_model_comparison_demo.py:104-105` — "Frames 104 to 134 ... where v1 drops track and v2 locks on", sequence `antiuav_test_20190925_111757_1_4__IR`; `src/model/visual_demo.py:146-194` lists `antiuav_test_*` keys | unchanged; to fix in the repair task |
 | B2 | hand-typed trajectory plot | `rev2.ipynb` cell 10: literal lists `x_obs, y_obs, x_gt, y_gt, x_kf, y_kf, x_lstm, y_lstm` | unchanged |
-| B3 | "ByteTrack" in captions/HUD without a tracker | `BYTETracker(` instantiated only in `c_model/bytetrack.py` and `c_model/track_eval.py`; `inference.py`, `visual_demo.py`, both demo generators and 6 rev2 cells mention ByteTrack without one | unchanged |
-| B4 | v1/v2 compared on different image sets, unconverged v1, 8 simultaneous changes, checkpoint picked on a noisy metric, latency mislabelled, inconsistent size definitions | `audit/AUDIT_REPORT.md` §1–§4 (independent benchmarks in `runs/audit/`) | unchanged |
-| B5 | split hygiene of the old pipeline | `b_pipeline/3_prepare_training.py:311-312` asserts no train/test and val/test sequence overlap — genuinely good | keep |
+| B3 | "ByteTrack" in captions/HUD without a tracker | `BYTETracker(` instantiated only in `src/model/bytetrack.py` and `src/model/track_eval.py`; `inference.py`, `visual_demo.py`, both demo generators and 6 rev2 cells mention ByteTrack without one | unchanged |
+| B4 | v1/v2 compared on different image sets, unconverged v1, 8 simultaneous changes, checkpoint picked on a noisy metric, latency mislabelled, inconsistent size definitions | `docs/audit/AUDIT_REPORT.md` §1–§4 (independent benchmarks in `results/runs/audit/`) | unchanged |
+| B5 | split hygiene of the old pipeline | `src/pipeline/3_prepare_training.py:311-312` asserts no train/test and val/test sequence overlap — genuinely good | keep |
 
 None of B1–B4 touches the new experiment: the Anti-UAV reproduction does not import, call or read anything
-from `c_model/`, `b_pipeline/*.py`, `run_aerotrack.py` or the notebooks (it only reads the decoded frames and
+from `src/model/`, `src/pipeline/*.py`, `scripts/run_aerotrack.py` or the notebooks (it only reads the decoded frames and
 the official labels). The repair of B1–B4 is a separate task (`docs/AEROTRACK_REPAIR_PLAN.md`).
 
 ## C. Residual risks and how they are contained

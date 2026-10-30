@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """Latency measurement for the README table (repair item 10) — measured, labelled, with p95 and provenance.
 
-    python experiments/aerotrack_repair/scripts/latency_repair.py --weights runs/aerotrack_spd_finetuned/weights/best.pt
+    python experiments/aerotrack_repair/scripts/latency_repair.py --weights results/runs/aerotrack_spd_finetuned/weights/best.pt
 
-Protocol (from audit/bench_latency.py): batch 1, 640x640 letterboxed 9-channel input, fused model, 30 warm-up +
+Protocol (from scripts/audit/bench_latency.py): batch 1, 640x640 letterboxed 9-channel input, fused model, 30 warm-up +
 `--iters` timed iterations; forward timed with CUDA events in both bf16 autocast and fp32; preprocessing (letterbox
 3 frames + stack + upload), CPU NMS at the demo threshold (0.25/0.45) and at the evaluation threshold (0.001/0.7),
 and one tracker update timed with perf_counter. Reports mean / p50 / p95 per stage, the end-to-end sum for the

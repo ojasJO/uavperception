@@ -7,13 +7,13 @@
     "the generalization series supported a motion-matched temporal window (t-4, t, t+4: +0.045 CST drone AP50 on held-out folds) that needs 4 future frames (+160 ms at 25 fps), a real-time liability",
     "the corpus used so far lacks 36 of 120 CST training sequences (every urban-areas and water sequence) and the official 40-sequence CST val split (truncated archive, docs/AGENT_CONTEXT.md); the dominant test failure was exactly those scene types"
   ],
-  "corpus": "b_pipeline/data_unified_v2 (complete CST release; experiments/cst_completion); identity recorded by the runner at campaign start",
+  "corpus": "data/derived/data_unified_v2 (complete CST release; experiments/cst_completion); identity recorded by the runner at campaign start",
   "configurations": {
     "stock": "YOLO11n stride layout, input [t, t, t]",
     "sym_g4": "same network, input [t-4, t, t+4] (the generalization series' supported window)",
     "causal_g4": "same network, input [t-4, t, t-8]: past frames only, zero look-ahead"
   },
-  "held_fixed": "c_model/train.py STAGES['baseline'] recipe (20 epochs x 25,000 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine), letterbox 640, augmentation, sampler, function-preserving initialisation (every configuration starts as COCO YOLO11n on frame t), checkpoint = last.pt",
+  "held_fixed": "src/model/train.py STAGES['baseline'] recipe (20 epochs x 25,000 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine), letterbox 640, augmentation, sampler, function-preserving initialisation (every configuration starts as COCO YOLO11n on frame t), checkpoint = last.pt",
   "seeds": [0, 1],
   "evaluation": "corpus-v2 VAL, every dataset capped at 5,000 images evenly over its sequences (same frames for every configuration), conf 0.001 / NMS IoU 0.7 / max_det 30 / bf16",
   "primary_metric": "cst (CST drone AP50 on the official CST val split)",

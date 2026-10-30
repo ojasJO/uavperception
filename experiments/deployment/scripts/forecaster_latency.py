@@ -27,7 +27,7 @@ def main():
     ap.add_argument("--iters", type=int, default=2000)
     ap.add_argument("--warmup", type=int, default=100)
     a = ap.parse_args()
-    onnx = REPO / "runs" / "aerotrack_temporal" / "c1" / "onnx" / f"{a.name}.onnx"
+    onnx = REPO / "results/runs" / "aerotrack_temporal" / "c1" / "onnx" / f"{a.name}.onnx"
     fc = FS.LearnedForecaster(onnx, True, None)
     inp = {i.name: np.random.default_rng(0).standard_normal([1] + list(i.shape[1:])).astype(np.float32) for i in fc.sess.get_inputs()}
     for _ in range(a.warmup):

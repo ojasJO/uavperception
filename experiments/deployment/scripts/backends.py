@@ -1,5 +1,5 @@
 """Inference backends behind one interface: `backend(x)` with x a float32 CUDA tensor [B, 9, 640, 640] in [0, 1] returns the
-raw prediction tensor [B, 4 + nc, 8400] on the same device -- exactly what `c_model/evaluation.collect_records` hands to NMS, so
+raw prediction tensor [B, 4 + nc, 8400] on the same device -- exactly what `src/model/evaluation.collect_records` hands to NMS, so
 every backend is scored by the identical post-processing and metric code.
 
     torch_fp32 / torch_bf16 / torch_fp16   the checkpoint in PyTorch (bf16 = autocast, the evaluation protocol)
@@ -14,7 +14,7 @@ import time
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
-for p in (REPO / "c_model", REPO / "b_pipeline"):
+for p in (REPO / "src/model", REPO / "src/pipeline"):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 

@@ -7,7 +7,7 @@
 Four native-scale evaluations in the registered order (normal val, normal test, dfsc val, dfsc test), each a separate
 `evaluate.py --scale 640 512` process (TEST with --final-eval, so each lands in the test ledger flagged phase B). An
 evaluation whose full-protocol metrics.json already exists is skipped (re-running the runner resumes); a failed one is
-re-run once from scratch, as registered. State lives in runs/_h4_native_scale/: RUNNING / DONE / FAILED sentinels,
+re-run once from scratch, as registered. State lives in results/runs/_h4_native_scale/: RUNNING / DONE / FAILED sentinels,
 events.jsonl, one log per evaluation. Finally `analyze_h4.py` applies the frozen rule.
 """
 import json

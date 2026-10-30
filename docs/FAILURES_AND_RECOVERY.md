@@ -10,7 +10,7 @@ incidents are summarised at the end with pointers to their full records.*
   (~17:17); the child exited with rc 4294967295 (−1) at 19:20 after 3.51 h; the automatic resume (`--resume`, 19:20) loaded and
   verified the model but logged no step; Windows hung at 19:59 and rebooted at 20:53 with **bugcheck 0x19C** (0x50, …) =
   WIN32K_POWER_WATCHDOG_TIMEOUT (System log events 41 / 6008 / 1001).
-- **Evidence**: `runs/aerotrack_v2/_runner/train_v2_sym_g4_s0_e20.log` (tail), `…_retry.log`, `runs/aerotrack_v2/_runner/events.jsonl`;
+- **Evidence**: `results/runs/aerotrack_v2/_runner/train_v2_sym_g4_s0_e20.log` (tail), `…_retry.log`, `results/runs/aerotrack_v2/_runner/events.jsonl`;
   no other project process wrote any file between 16:06 and 20:00 (C1c had been stopped at 16:05); `last.pt` = epoch 10 (17:17),
   loads cleanly (`epoch 10`, keys model/ema/optimizer).
 - **Root cause**: **undetermined**. Not a project CPU job (none running). The earlier memory-pressure pattern (error 1455 on
@@ -49,8 +49,8 @@ incidents are summarised at the end with pointers to their full records.*
 ### F-05 · 2026-10-06 14:17–15:05 · the single v2 TEST pass crashed after its detection part
 - **Symptom**: `final_eval.py --final-eval` (PBS 92877) finished (a) detection AP (ledger line written 14:23) and (b) the full TEST
   detection cache (242 sequences, 242,923 frames), then raised `AttributeError: module 'track_eval' has no attribute 'load'`.
-- **Root cause**: module shadowing — `cache_detections` (imported in step b) puts `c_model/` first on `sys.path`, and
-  `c_model/track_eval.py` (the old Review-2 evaluator) then won over `experiments/systems/scripts/track_eval.py`. Latent: the
+- **Root cause**: module shadowing — `cache_detections` (imported in step b) puts `src/model/` first on `sys.path`, and
+  `src/model/track_eval.py` (the old Review-2 evaluator) then won over `experiments/systems/scripts/track_eval.py`. Latent: the
   `--final-eval` path had never been executed before (registered, single use).
 - **Fix**: the systems modules are imported by explicit file path (asserted); `--resume-after-crash` finishes the SAME pass: it
   requires exactly one detection ledger record and no systems record for these weights, the protocol and frozen parameters

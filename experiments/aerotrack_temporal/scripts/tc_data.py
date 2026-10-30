@@ -11,7 +11,7 @@ Every sequence keeps its own pixel frame (IR 640x512, RGB 1920x1080, CST 640x512
 (Anti-UAV recording session -- IR and RGB of a clip together; CST sequence), as in experiments/systems/scripts/track_eval.py.
 `dev` marks the TRAIN groups held out for early stopping / recipe choices (md5(group) % 10 == 0): VAL is never used to tune.
 
-Output: runs/aerotrack_temporal/_data/traj_<split>.npz (concatenated arrays + offsets) and traj_<split>.json (per-sequence label
+Output: results/runs/aerotrack_temporal/_data/traj_<split>.npz (concatenated arrays + offsets) and traj_<split>.json (per-sequence label
 sha256, counts, the npz sha256). Loading checks the npz hash against the JSON.
 """
 import hashlib
@@ -26,7 +26,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 sys.path.insert(0, str(REPO / "experiments" / "anti_uav" / "src"))
 
-OUT = REPO / "runs" / "aerotrack_temporal" / "_data"
+OUT = REPO / "results/runs" / "aerotrack_temporal" / "_data"
 CST_ROOT = REPO / "data" / "cst_anti_uav_full" / "CST-AntiUAV" / "CST-AntiUAV"
 ANTIUAV_ROOT = REPO / "data" / "anti_uav"
 SIZES = {"antiuav_IR": (640, 512), "antiuav_RGB": (1920, 1080), "cst": (640, 512)}
@@ -74,7 +74,7 @@ def collect(split, purpose):
     from anti_uav_repro.data.antiuav import load_sequences
     seqs = []
     for mod in ("IR", "RGB"):
-        for s in load_sequences(ANTIUAV_ROOT, REPO / "b_pipeline" / "data_unified" / "anti_uav" / "images", split, mod,
+        for s in load_sequences(ANTIUAV_ROOT, REPO / "data" / "derived" / "data_unified" / "anti_uav" / "images", split, mod,
                                 purpose={"train": "train", "val": "tune", "test": "final_eval"}[split], require_frames=False):
             vis, box = _boxes(s.exist, s.gt_rect, s.n_frames)
             key = f"antiuav_{split}_{s.name}__{mod}"

@@ -2,7 +2,7 @@
  "generated": "2026-10-06T14:04:51+0530",
  "run": "v2_causal_g4_s0_e20",
  "corpus": "data_unified_v2",
- "cache": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val",
+ "cache": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val",
  "ste_params": "cross-fitted per half from track_v2_causal_g4_s0_e20_data_unified_v2.json",
  "selection": "quantiles (0.1, 0.3, 0.5, 0.7, 0.9) of the severity measure",
  "frames_per_group": {
@@ -80,7 +80,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": 0.08992145548287123,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_7__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_7__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_130341_1_5__IR",
@@ -103,7 +103,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.3,
     "severity": 0.13636239076898737,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_130341_1_5__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_130341_1_5__IR.npz"
    },
    {
     "seq": "cst_val_building_49",
@@ -126,7 +126,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 0.17796501544854149,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_49.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_49.npz"
    },
    {
     "seq": "antiuav_val_20190925_194211_1_4__IR",
@@ -149,7 +149,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.7,
     "severity": 0.22867821962475887,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_194211_1_4__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_194211_1_4__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_195921_1_1__IR",
@@ -172,7 +172,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.9,
     "severity": 0.32130101027327573,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_195921_1_1__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_195921_1_1__IR.npz"
    }
   ],
   "false_positive": [
@@ -192,7 +192,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 0.24072265625,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_29.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_29.npz"
    },
    {
     "seq": "antiuav_val_20190926_200510_1_8__RGB",
@@ -210,7 +210,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 0.437744140625,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_200510_1_8__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_200510_1_8__RGB.npz"
    },
    {
     "seq": "cst_val_cn_sky_9",
@@ -228,7 +228,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 0.5498046875,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_sky_9.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_sky_9.npz"
    },
    {
     "seq": "antiuav_val_20190926_195921_1_5__RGB",
@@ -246,7 +246,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 0.63427734375,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_195921_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_195921_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -264,7 +264,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 0.74560546875,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    }
   ],
   "false_negative": [
@@ -284,7 +284,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": -48.0,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_183941_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_183941_1_5__RGB.npz"
    },
    {
     "seq": "cst_val_cn_mountains_24",
@@ -302,7 +302,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": -17.642919540405273,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_24.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_24.npz"
    },
    {
     "seq": "cst_val_urban-areas_32",
@@ -325,7 +325,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": -12.12625789642334,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_32.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_32.npz"
    },
    {
     "seq": "cst_val_urban-areas_28",
@@ -348,7 +348,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": -8.03106689453125,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_28.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_28.npz"
    },
    {
     "seq": "cst_val_building_52",
@@ -366,7 +366,7 @@
     "group": "cst_IR",
     "quantile": 0.9,
     "severity": -5.428401947021484,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_52.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_52.npz"
    }
   ],
   "micro_miss": [
@@ -386,7 +386,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": -0.00025785665493458507,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
    },
    {
     "seq": "cst_val_building_41",
@@ -409,7 +409,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": -0.00018358860397711397,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_41.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_41.npz"
    },
    {
     "seq": "cst_val_building_48",
@@ -427,7 +427,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": -0.00010968947317451239,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_48.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_48.npz"
    },
    {
     "seq": "cst_val_building_45",
@@ -445,7 +445,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": -6.864755414426327e-05,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_45.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_45.npz"
    },
    {
     "seq": "cst_val_building_52",
@@ -463,7 +463,7 @@
     "group": "cst_IR",
     "quantile": 0.9,
     "severity": -4.0541219641454516e-05,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_52.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_52.npz"
    }
   ],
   "occlusion_failure": [
@@ -488,7 +488,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 1,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_33.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_33.npz"
    },
    {
     "seq": "cst_val_urban-areas_30",
@@ -506,7 +506,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": 6,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
    },
    {
     "seq": "cst_val_urban-areas_33",
@@ -529,7 +529,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 11,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_33.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_33.npz"
    },
    {
     "seq": "cst_val_urban-areas_30",
@@ -547,7 +547,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": 18,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
    },
    {
     "seq": "cst_val_building_47",
@@ -565,7 +565,7 @@
     "group": "cst_IR",
     "quantile": 0.9,
     "severity": 26,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_47.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_47.npz"
    }
   ],
   "reacquisition_success": [
@@ -591,7 +591,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": 0,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_213001_1_1__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_213001_1_1__RGB.npz"
    },
    {
     "seq": "cst_val_cn_mountains_25",
@@ -615,7 +615,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": 0,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_25.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_25.npz"
    },
    {
     "seq": "cst_val_water_19",
@@ -639,7 +639,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 0,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_water_19.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_water_19.npz"
    },
    {
     "seq": "cst_val_water_15",
@@ -658,7 +658,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": 2,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_water_15.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_water_15.npz"
    },
    {
     "seq": "antiuav_val_20190925_152412_1_3__RGB",
@@ -682,7 +682,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 5,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_152412_1_3__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_152412_1_3__RGB.npz"
    }
   ],
   "reacquisition_failure": [
@@ -702,7 +702,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 30,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_27.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_27.npz"
    },
    {
     "seq": "cst_val_urban-areas_29",
@@ -720,7 +720,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": 30,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_29.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_29.npz"
    },
    {
     "seq": "cst_val_urban-areas_30",
@@ -743,7 +743,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 30,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
    },
    {
     "seq": "cst_val_urban-areas_33",
@@ -766,7 +766,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": 30,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_33.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_33.npz"
    },
    {
     "seq": "cst_val_urban-areas_34",
@@ -789,7 +789,7 @@
     "group": "cst_IR",
     "quantile": 0.9,
     "severity": 30,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_34.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_34.npz"
    }
   ],
   "identity_failure": [
@@ -814,7 +814,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 0.3603515625,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_29.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_29.npz"
    },
    {
     "seq": "cst_val_urban-areas_30",
@@ -837,7 +837,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": 0.5224609375,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_30.npz"
    },
    {
     "seq": "cst_val_cn_mountains_21",
@@ -860,7 +860,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 0.57666015625,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_21.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_21.npz"
    },
    {
     "seq": "antiuav_val_20190925_143900_1_2__IR",
@@ -883,7 +883,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.7,
     "severity": 0.64892578125,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_143900_1_2__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_143900_1_2__IR.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_7__IR",
@@ -906,7 +906,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.9,
     "severity": 0.783203125,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_7__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_7__IR.npz"
    }
   ],
   "trajectory_overshoot": [
@@ -939,7 +939,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 0.5701609847127765,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_water_19.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_water_19.npz"
    },
    {
     "seq": "antiuav_val_20190925_140917_1_3__IR",
@@ -970,7 +970,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.3,
     "severity": 2.0759435848523604,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_140917_1_3__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_140917_1_3__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_143632_1_4__RGB",
@@ -1001,7 +1001,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.5,
     "severity": 4.563094274375255,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_143632_1_4__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_143632_1_4__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_205804_1_6__RGB",
@@ -1032,7 +1032,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 11.026052851087403,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_205804_1_6__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_205804_1_6__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_130434_1_8__IR",
@@ -1063,7 +1063,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.9,
     "severity": 45.012905631164976,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_130434_1_8__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_130434_1_8__IR.npz"
    }
   ],
   "trajectory_undershoot": [
@@ -1096,7 +1096,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 2.6414534206857807,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_53.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_53.npz"
    },
    {
     "seq": "antiuav_val_20190926_144550_1_4__IR",
@@ -1127,7 +1127,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.3,
     "severity": 12.877404012158017,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_144550_1_4__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_144550_1_4__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_141816_1_6__IR",
@@ -1158,7 +1158,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.5,
     "severity": 37.30687794544804,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_141816_1_6__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_141816_1_6__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_144550_1_1__RGB",
@@ -1189,7 +1189,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 90.17019197900618,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_144550_1_1__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_144550_1_1__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_152412_1_5__IR",
@@ -1220,7 +1220,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.9,
     "severity": 245.6211465802756,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_152412_1_5__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_152412_1_5__IR.npz"
    }
   ],
   "high_uncertainty": [
@@ -1245,7 +1245,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": 85544.83207558873,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_210802_1_8__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_210802_1_8__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_141816_1_4__RGB",
@@ -1268,7 +1268,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 97697.97462109236,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_141816_1_4__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_141816_1_4__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_141816_1_2__IR",
@@ -1291,7 +1291,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.5,
     "severity": 121137.23147608626,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_141816_1_2__IR.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_141816_1_2__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_142435_1_9__RGB",
@@ -1314,7 +1314,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 153535.5632334617,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_142435_1_9__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_142435_1_9__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_141816_1_2__RGB",
@@ -1337,7 +1337,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 226986.0830422409,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_141816_1_2__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190926_141816_1_2__RGB.npz"
    }
   ],
   "low_confidence_correct": [
@@ -1362,7 +1362,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 0.013134765624999989,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_42.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_42.npz"
    },
    {
     "seq": "cst_val_cn_mountains_28",
@@ -1385,7 +1385,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": 0.03876953124999999,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_28.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_cn_mountains_28.npz"
    },
    {
     "seq": "cst_val_urban-areas_32",
@@ -1408,7 +1408,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 0.06770019531249999,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_32.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_32.npz"
    },
    {
     "seq": "cst_val_building_52",
@@ -1431,7 +1431,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": 0.09687499999999999,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_52.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_building_52.npz"
    },
    {
     "seq": "cst_val_urban-areas_29",
@@ -1454,7 +1454,7 @@
     "group": "cst_IR",
     "quantile": 0.9,
     "severity": 0.13056640625,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_29.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/cst_val_urban-areas_29.npz"
    }
   ],
   "high_confidence_wrong": [
@@ -1474,7 +1474,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": 0.71142578125,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_141417_1_1__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_141417_1_1__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -1492,7 +1492,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 0.728515625,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -1510,7 +1510,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.5,
     "severity": 0.7470703125,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -1528,7 +1528,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 0.765625,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -1546,7 +1546,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 0.79638671875,
-    "source": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    }
   ]
  },

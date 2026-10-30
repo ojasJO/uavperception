@@ -11,7 +11,7 @@
  "published_missing_from_archive": [],
  "trackers": {
   "v3_n__causal_g4_cst_s1_e20-ste": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__causal_g4_cst_s1_e20\\ste",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__causal_g4_cst_s1_e20\\ste",
    "mSA": 60.263649428153684,
    "success_auc": 58.72019489115522,
    "precision_20px": 77.61100856281757,
@@ -214,7 +214,7 @@
    }
   },
   "v3_n__causal_g4_cst_s1_e20-argmax": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__causal_g4_cst_s1_e20\\argmax",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__causal_g4_cst_s1_e20\\argmax",
    "mSA": 59.67939679331901,
    "success_auc": 58.11165214140368,
    "precision_20px": 76.154283926611,
@@ -417,7 +417,7 @@
    }
   },
   "v3_n__causal_g4_cst_s2_e20-ste": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__causal_g4_cst_s2_e20\\ste",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__causal_g4_cst_s2_e20\\ste",
    "mSA": 60.598831722795886,
    "success_auc": 59.03162938736062,
    "precision_20px": 77.78996622928403,
@@ -620,7 +620,7 @@
    }
   },
   "v3_n__causal_g4_cst_s2_e20-argmax": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__causal_g4_cst_s2_e20\\argmax",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__causal_g4_cst_s2_e20\\argmax",
    "mSA": 60.4860586872518,
    "success_auc": 58.90008202583902,
    "precision_20px": 77.2475830877627,
@@ -823,7 +823,7 @@
    }
   },
   "v3_n__ttt_cst_s0_e20-ste": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s0_e20\\ste",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s0_e20\\ste",
    "mSA": 46.82549632965603,
    "success_auc": 45.578619948647734,
    "precision_20px": 58.60430778492655,
@@ -1026,7 +1026,7 @@
    }
   },
   "v3_n__ttt_cst_s0_e20-argmax": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s0_e20\\argmax",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s0_e20\\argmax",
    "mSA": 48.68189397353927,
    "success_auc": 47.31642839331956,
    "precision_20px": 60.449005281110615,
@@ -1229,7 +1229,7 @@
    }
   },
   "v3_n__ttt_cst_s1_e20-ste": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s1_e20\\ste",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s1_e20\\ste",
    "mSA": 49.80680279061052,
    "success_auc": 48.48558498176418,
    "precision_20px": 62.326783848326826,
@@ -1432,7 +1432,7 @@
    }
   },
   "v3_n__ttt_cst_s1_e20-argmax": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s1_e20\\argmax",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s1_e20\\argmax",
    "mSA": 51.29435143194831,
    "success_auc": 49.8999733957288,
    "precision_20px": 64.03588199112023,
@@ -1635,7 +1635,7 @@
    }
   },
   "v3_n__ttt_cst_s2_e20-ste": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s2_e20\\ste",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s2_e20\\ste",
    "mSA": 49.78944613663116,
    "success_auc": 48.462513710902364,
    "precision_20px": 61.94269860043583,
@@ -1838,7 +1838,7 @@
    }
   },
   "v3_n__ttt_cst_s2_e20-argmax": {
-   "path": "runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s2_e20\\argmax",
+   "path": "results\\runs\\cst_anti_uav\\x2_test_predictions\\v3_n__ttt_cst_s2_e20\\argmax",
    "mSA": 49.25559789260998,
    "success_auc": 47.87110571361186,
    "precision_20px": 60.91200327087558,
@@ -2041,7 +2041,7 @@
    }
   },
   "v3_n__causal_g4_cst_s0_e20-ste": {
-   "path": "runs\\aerotrack_v3\\x1_test_predictions\\ste",
+   "path": "results\\runs\\aerotrack_v3\\x1_test_predictions\\ste",
    "mSA": 60.081252017353535,
    "success_auc": 58.527833002642794,
    "precision_20px": 77.42253688172175,
@@ -2244,7 +2244,7 @@
    }
   },
   "v3_n__causal_g4_cst_s0_e20-argmax": {
-   "path": "runs\\aerotrack_v3\\x1_test_predictions\\argmax",
+   "path": "results\\runs\\aerotrack_v3\\x1_test_predictions\\argmax",
    "mSA": 59.69530057555016,
    "success_auc": 58.15897494721892,
    "precision_20px": 77.07907902113979,

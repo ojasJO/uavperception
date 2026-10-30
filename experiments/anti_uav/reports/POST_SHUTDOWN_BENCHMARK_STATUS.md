@@ -77,14 +77,14 @@ Outside stated scope (valid artifacts; include them only if you accept that auth
 
 | Run | Historical source | Historical mSA | Recovered mSA | Relationship |
 |---|---|---:|---:|---|
-| normal_ir / val  | `runs/normal_ir/eval_val_IR_last` (2026-09-20) | 79.2874 | 79.2874 | duplicate: same ckpt, 3/67 seqs differ by ≤0.03 px, identical metrics |
-| dfsc_ir / val    | `runs/dfsc_ir/eval_val_IR_last` (2026-09-20) | 79.2559 | 79.2559 | duplicate: same ckpt, Δ = 0.00002 pt |
-| normal_ir / test | `runs/normal_ir/eval_test_IR_last` (2026-09-20) | 70.5796 | 70.5796 | duplicate: same ckpt, Δ = 0.000005 pt; boxes differ ≤1 px |
-| dfsc_ir / test   | `runs/dfsc_ir/eval_test_IR_last` (2026-09-20) | 70.2868 | 70.2866 | duplicate: same ckpt, Δ = 0.00016 pt; a few frames diverge (max 137 px) |
+| normal_ir / val  | `results/runs/normal_ir/eval_val_IR_last` (2026-09-20) | 79.2874 | 79.2874 | duplicate: same ckpt, 3/67 seqs differ by ≤0.03 px, identical metrics |
+| dfsc_ir / val    | `results/runs/dfsc_ir/eval_val_IR_last` (2026-09-20) | 79.2559 | 79.2559 | duplicate: same ckpt, Δ = 0.00002 pt |
+| normal_ir / test | `results/runs/normal_ir/eval_test_IR_last` (2026-09-20) | 70.5796 | 70.5796 | duplicate: same ckpt, Δ = 0.000005 pt; boxes differ ≤1 px |
+| dfsc_ir / test   | `results/runs/dfsc_ir/eval_test_IR_last` (2026-09-20) | 70.2868 | 70.2866 | duplicate: same ckpt, Δ = 0.00016 pt; a few frames diverge (max 137 px) |
 
 The overnight run produced **confirmatory re-measurements** of the historical numbers, not new or different results. Predictions are
 not bit-identical (GPU non-determinism with `cudnn.benchmark=True`), but every metric agrees to within 0.0002 pt. No file under
-`runs/normal_ir/`, `runs/dfsc_ir/`, `runs/phaseB_*_seed1/` or the historical reports was modified after the benchmark started (checked by mtime).
+`results/runs/normal_ir/`, `results/runs/dfsc_ir/`, `results/runs/phaseB_*_seed1/` or the historical reports was modified after the benchmark started (checked by mtime).
 The seed-1 **test** numbers have no historical counterpart.
 
 ## 4. Partial results

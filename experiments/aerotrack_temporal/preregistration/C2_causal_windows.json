@@ -50,5 +50,5 @@
   },
   "estimated_gpu_hours": "6.6 (stage 1) + up to 11 (stage 2)",
   "hardware": "local OMEN RTX 5050 Laptop (HPC access unavailable)",
-  "outputs": "runs/v2_causal_g*_s*_e20/ ; experiments/aerotrack_v2/reports/v2_results.json rows ; experiments/aerotrack_temporal/reports/C2_causal_windows.{json,md}"
+  "outputs": "results/runs/v2_causal_g*_s*_e20/ ; experiments/aerotrack_v2/reports/v2_results.json rows ; experiments/aerotrack_temporal/reports/C2_causal_windows.{json,md}"
 }

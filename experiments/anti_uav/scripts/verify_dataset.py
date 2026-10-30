@@ -33,7 +33,7 @@ from anti_uav_repro.paths import MANIFESTS_DIR, REPORTS_DIR, resolve
 from anti_uav_repro.utils.repro import file_sha256, git_info, write_json
 
 DATA_ROOT = "data/anti_uav"
-FRAMES_ROOT = "b_pipeline/data_unified/anti_uav/images"
+FRAMES_ROOT = "data/derived/data_unified/anti_uav/images"
 VIDEO_RE = re.compile(r"^(\d{8}_\d{6}_\d)_\d+$")   # <video id>_<clip index>
 
 

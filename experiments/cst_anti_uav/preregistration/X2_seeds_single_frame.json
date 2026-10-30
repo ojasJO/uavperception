@@ -37,6 +37,6 @@
     "falsifier": "T1 not 'exceeds' for some seed; T3 NOT DETECTED or OPPOSITE"
   },
   "estimated_gpu_hours": "5 x ~0.75 h training (X1 took 44.7 min on a V100) + 5 x ~0.4 h VAL evaluation / cache + ~1.3 h TEST pass",
-  "execution": "HPC PBS: training jobs in parallel on free GPU nodes (each writes only its own runs/<name>/ and one ledger line), then ONE sequential VAL-design job (eval_v3 rewrites a shared results file), then the TEST pass after X1's pass; scheduler dependencies (afterok)",
-  "outputs": "runs/v3_n__{causal_g4,ttt}_cst_s{0,1,2}_e20/ ; experiments/cst_anti_uav/frozen_x2_params.json ; experiments/cst_anti_uav/reports/{X2_val, x2_final_test, X2_test_official}.{json,md}"
+  "execution": "HPC PBS: training jobs in parallel on free GPU nodes (each writes only its own results/runs/<name>/ and one ledger line), then ONE sequential VAL-design job (eval_v3 rewrites a shared results file), then the TEST pass after X1's pass; scheduler dependencies (afterok)",
+  "outputs": "results/runs/v3_n__{causal_g4,ttt}_cst_s{0,1,2}_e20/ ; experiments/cst_anti_uav/frozen_x2_params.json ; experiments/cst_anti_uav/reports/{X2_val, x2_final_test, X2_test_official}.{json,md}"
 }

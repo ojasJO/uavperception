@@ -33,7 +33,7 @@ registration (`component_gate`).
 
 | file | role |
 |---|---|
-| `scripts/tc_data.py` | ground-truth trajectories (Anti-UAV IR / RGB, complete CST) → `runs/aerotrack_temporal/_data/` (sha256-checked) |
+| `scripts/tc_data.py` | ground-truth trajectories (Anti-UAV IR / RGB, complete CST) → `results/runs/aerotrack_temporal/_data/` (sha256-checked) |
 | `scripts/tc_forecast.py` | causal forecast samples, ten classical forecasters (incl. mean reversion and a vectorised Kalman bank), metrics, cluster bootstrap |
 | `scripts/tc_learned.py` | MLP / GRU / transformer forecasters with diagonal-Gaussian heads, deterministic CPU training |
 | `scripts/tc_c1.py`, `scripts/tc_c1_val.py` | C1 stages: TRAIN tuning, training, the single VAL pass + report |

@@ -61,7 +61,7 @@ def half_of(seq_key):
 
 def load(run, corpus, allow_limited=False, split="val"):
     """split="test" is used only by experiments/aerotrack_v2/scripts/final_eval.py (the single pre-registered pass)."""
-    cdir = REPO / "runs" / "systems" / "_cache" / run / corpus / split
+    cdir = REPO / "results/runs" / "systems" / "_cache" / run / corpus / split
     index = json.loads((cdir / "index.json").read_text(encoding="utf-8"))
     if index.get("limited") and not allow_limited:
         raise SystemExit(f"{cdir} is a development cache (--limit-seqs {index['limited']}), not the full VAL split; refusing to report "
@@ -190,7 +190,7 @@ def main():
     ap.add_argument("--workers", type=int, default=8)
     a = ap.parse_args()
     if a.corpus == "auto":                              # the newest cache of this run: v2 if it exists, else v1
-        base = REPO / "runs" / "systems" / "_cache" / a.run
+        base = REPO / "results/runs" / "systems" / "_cache" / a.run
         a.corpus = "data_unified_v2" if (base / "data_unified_v2" / "val" / "index.json").exists() else "data_unified"
     t0 = time.time()
     index, seqs = load(a.run, a.corpus)

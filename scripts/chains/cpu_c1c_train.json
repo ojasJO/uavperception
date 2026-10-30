@@ -1,0 +1,12 @@
+{
+ "name": "cpu_c1c_train",
+ "purpose": "Track C C1c (registered): camera-mode-aware forecasters (domtok pooled + perdom) x 3 seeds on TRAIN, dev choice; CPU; starts 4 min after the v2 campaign's sym_g4 seed-0 training has sized its loader workers (or when v2 ends)",
+ "state_dir": "results/runs/_chains/cpu_c1c_train",
+ "wait_for": null,
+ "jobs": [
+  {"name": "wait_v2_sym_start", "required": false,
+   "cmd": ["{python}", "-u", "scripts/wait_for_event.py", "--file", "results/runs/aerotrack_v2/_runner/events.jsonl", "--contains", "\"kind\": \"start\"",
+           "--contains", "train_v2_sym_g4_s0", "--after", "240", "--also-done", "results/runs/aerotrack_v2/_runner"]},
+  {"name": "c1c_train", "required": true, "cmd": ["{python}", "-u", "experiments/aerotrack_temporal/scripts/tc_c1c.py", "--stage", "train"]}
+ ]
+}

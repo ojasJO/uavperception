@@ -1,6 +1,6 @@
 # Dataset card — corpus `data_unified`
 
-*Generated 2026-10-05T02:28:47+0530 by `tools/dataset_card.py` from `b_pipeline\data_unified\manifest.csv` and its label cache; never edit by hand.*
+*Generated 2026-10-05T02:28:47+0530 by `scripts/dataset_card.py` from `data\derived\data_unified\manifest.csv` and its label cache; never edit by hand.*
 
 Class mapping: {'0': "uav_drone (Anti-UAV, CST, Det-Fly 'Drone')", '1': "bird_hard_negative (Det-Fly 'Bird')"}. Preprocessing: YOLO-normalised labels; frames read from the source extraction (Anti-UAV: JPEG decodes of the MP4s); training letterboxes to 640.
 

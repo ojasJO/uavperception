@@ -6,10 +6,10 @@
   "question": "For image-plane UAV trajectories (Anti-UAV IR, Anti-UAV RGB, CST complete release), does a learned forecaster beat strong classical forecasters, is its uncertainty better calibrated, and does the absolute image position (camera re-centring) carry forecastable information?",
   "prior_evidence": [
     "experiments/systems/reports/forecast_gen_temporal_fp_g4_full_e20_data_unified.md (VAL, tracker histories, symmetric-window detector): on Anti-UAV IR the Kalman forecast is no better than zero velocity (ADE 28.0 vs 27.8 px) and its 95 % ellipses cover 0.73 (0.35-0.44 on sudden jumps)",
-    "TRAIN-only probe (runs/aerotrack_temporal/c1/classical_tuning_probe0_pooled.json): pooled over domains, constant position (56.0 px) beats damped velocity (60.0), Kalman (60.0), constant velocity (104.9) and constant acceleration (625); the tuned damping / velocity noise sat on the grid edges, so the grids were widened and a mean-reversion (gimbal re-centring) baseline added before this registration"
+    "TRAIN-only probe (results/runs/aerotrack_temporal/c1/classical_tuning_probe0_pooled.json): pooled over domains, constant position (56.0 px) beats damped velocity (60.0), Kalman (60.0), constant velocity (104.9) and constant acceleration (625); the tuned damping / velocity noise sat on the grid edges, so the grids were widened and a mean-reversion (gimbal re-centring) baseline added before this registration"
   ],
   "data": {
-    "builder": "experiments/aerotrack_temporal/scripts/tc_data.py (official annotations; CST from data/cst_anti_uav_full = the complete release; per-sequence label sha256 in runs/aerotrack_temporal/_data/traj_<split>.json)",
+    "builder": "experiments/aerotrack_temporal/scripts/tc_data.py (official annotations; CST from data/cst_anti_uav_full = the complete release; per-sequence label sha256 in results/runs/aerotrack_temporal/_data/traj_<split>.json)",
     "train": "TRAIN groups with md5(group) % 10 != 0 (group = Anti-UAV recording session with IR and RGB together, or CST sequence)",
     "dev": "TRAIN groups with md5(group) % 10 == 0: learned models' epoch choice and the architecture choice only",
     "val": "official VAL: Anti-UAV 67 IR + 67 RGB sequences, CST 40 sequences; read only by tc_c1.py --stage val",
@@ -37,7 +37,7 @@
       ],
       "definitions": "experiments/aerotrack_temporal/scripts/tc_forecast.py docstring",
       "tuning": "per domain on TRAIN: parameters of dcv / ou / oudcv / kalman by pooled TRAIN ADE over the grids in tc_c1.py; the Kalman covariance scale by TRAIN NLL (scaling Q and R together leaves the mean unchanged); a chosen value on a grid edge is flagged in classical_tuning.json",
-      "reference": "per domain, the classical forecaster with the lowest TRAIN ADE (recorded in runs/aerotrack_temporal/c1/classical_tuning.json before --stage val)"
+      "reference": "per domain, the classical forecaster with the lowest TRAIN ADE (recorded in results/runs/aerotrack_temporal/c1/classical_tuning.json before --stage val)"
     },
     "learned": {
       "families": {
@@ -110,13 +110,13 @@
     "commit classical_tuning.json + learned_registry.json (checkpoint sha256) -> tc_c1.py --stage val (one pass) -> reports/C1_trajectory_forecasting.{json,md}"
   ],
   "compute": "CPU only (the GPU stays with the queued GPU campaigns)",
-  "outputs": "runs/aerotrack_temporal/c1/ ; experiments/aerotrack_temporal/reports/C1_trajectory_forecasting.{json,md}",
+  "outputs": "results/runs/aerotrack_temporal/c1/ ; experiments/aerotrack_temporal/reports/C1_trajectory_forecasting.{json,md}",
   "amendments": [
     {
       "when": "2026-10-05, after the first per-domain TRAIN tuning and before any VAL access",
       "what": "classical grids widened: look-back k adds 12 and 15 (15 = the whole 16-frame history; mv15 added), oudcv damping adds 0.98 / 1.0 and k 8 / 15, Kalman q_pos adds 1/160 / 1/80, covariance scale range 0.01-500 (was 0.05-20); natural limits (k 1 / 15, g 0 / 1, rho 1) are no longer flagged as edges",
       "why": "on CST the TRAIN optimum sat on artificial edges (dcv k = 8, Kalman q_pos = 1/40, covariance scale = 20 = grid maximum), i.e. the classical references (and the Kalman calibration baseline for H2) would have been under-tuned; the anti-UAV optimum of the CV Kalman is its constant-position limit (q_pos max, q_vel and r_meas min), reported as such",
-      "first_tuning_kept": "runs/aerotrack_temporal/c1/classical_tuning_v1_grid.json"
+      "first_tuning_kept": "results/runs/aerotrack_temporal/c1/classical_tuning_v1_grid.json"
     }
   ]
 }

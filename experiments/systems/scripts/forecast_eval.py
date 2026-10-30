@@ -118,7 +118,7 @@ def main():
     ap.add_argument("--corpus", default="auto")
     a = ap.parse_args()
     if a.corpus == "auto":
-        base = REPO / "runs" / "systems" / "_cache" / a.run
+        base = REPO / "results/runs" / "systems" / "_cache" / a.run
         a.corpus = "data_unified_v2" if (base / "data_unified_v2" / "val" / "index.json").exists() else "data_unified"
     t0 = time.time()
     index, seqs = TE.load(a.run, a.corpus)

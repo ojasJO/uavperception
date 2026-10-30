@@ -1,6 +1,6 @@
 {
   "run": "v2_causal_g4_s0_e20",
-  "weights": "runs\\hpc\\v2_causal_g4_s0_e20\\weights\\last.pt",
+  "weights": "results\\runs\\hpc\\v2_causal_g4_s0_e20\\weights\\last.pt",
   "weights_sha256": "1118cf3290ae8bcfdd763bc1f83a1651f5c5bc754fd3e3a92fa2f1b8548d4452",
   "checkpoint_epoch": 19,
   "temporal_gap": 4,
@@ -26,7 +26,7 @@
     "content": "xywh (input px) + sigmoid class scores"
   },
   "onnx": {
-    "path": "artifacts\\deploy\\v2_causal_g4_s0_e20\\v2_causal_g4_s0_e20_b1_op18.onnx",
+    "path": "results\\artifacts\\deploy\\v2_causal_g4_s0_e20\\v2_causal_g4_s0_e20_b1_op18.onnx",
     "sha256": "ba0c4b4e732d15c5933ed4cfbac1bc5f428482b24c7dac3d7cbc4552356d7207",
     "bytes": 10683542,
     "opset": 18,

@@ -3,7 +3,7 @@
 
     venv\\Scripts\\python.exe experiments\\aerotrack_v2\\scripts\\report_v2.py
 
-Sources: preregistration.json, runs/<run>/run_meta.json + init_check.json, reports/v2_results.json, reports/v2_decisions.json,
+Sources: preregistration.json, results/runs/<run>/run_meta.json + init_check.json, reports/v2_results.json, reports/v2_decisions.json,
 experiments/cst_completion/reports/corpus_v2.json, and for the selected candidate experiments/deployment/reports/gate_<run>.json
 and experiments/systems/reports/{track,forecast,mot,failures}_<run>_data_unified_v2.json when they exist. Sections whose inputs
 do not exist yet say so. Interpretation is limited to restating the pre-registered rule outcomes.
@@ -52,8 +52,8 @@ def main():
         L += ["*corpus v2 report missing*", ""]
     L += ["## 3. Runs", "", "| run | config | seed | epochs | training h | init check | last.pt sha256 |", "|---|---|---|---:|---:|---|---|"]
     for r in sorted({x["run"] for x in res}):
-        m = rd(S.REPO / "runs" / r / "run_meta.json") or {}
-        ic = rd(S.REPO / "runs" / r / "init_check.json") or {}
+        m = rd(S.REPO / "results/runs" / r / "run_meta.json") or {}
+        ic = rd(S.REPO / "results/runs" / r / "init_check.json") or {}
         L.append(f"| `{r}` | {m.get('config')} | {m.get('seed')} | {m.get('epochs')} | {f((m.get('train_seconds') or 0) / 3600, 2)} | "
                  f"{'ok' if ic.get('ok') else ic.get('ok', '—')} | `{(m.get('last_pt_sha256') or '')[:12]}` |")
     L += ["", "## 4. VAL results (corpus v2, every dataset capped at 5,000 images, same frames for every run)", "",

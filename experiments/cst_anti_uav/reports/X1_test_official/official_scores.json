@@ -11,7 +11,7 @@
  "published_missing_from_archive": [],
  "trackers": {
   "AeroTrack-X1-STE": {
-   "path": "runs\\aerotrack_v3\\x1_test_predictions\\ste",
+   "path": "results\\runs\\aerotrack_v3\\x1_test_predictions\\ste",
    "mSA": 60.081252017353535,
    "success_auc": 58.527833002642794,
    "precision_20px": 77.42253688172175,
@@ -214,7 +214,7 @@
    }
   },
   "AeroTrack-X1-argmax": {
-   "path": "runs\\aerotrack_v3\\x1_test_predictions\\argmax",
+   "path": "results\\runs\\aerotrack_v3\\x1_test_predictions\\argmax",
    "mSA": 59.69530057555016,
    "success_auc": 58.15897494721892,
    "precision_20px": 77.07907902113979,

@@ -8,7 +8,7 @@ The registration lists `runs` ([config, seed, batch] in execution order) and, op
 ({"after": [config, seed], "compare": [config_a, config_b_or_v2_run], "drop_if_delta_le": 0.0, "drop": [[config, seed], ...]}).
 Order: preconditions (corpus v2 verified, registration committed) -> optional wait -> smoke test of the first configuration ->
 each registered run trained (resumed once on failure) and evaluated -> analyze_v3.py. A finished run / evaluation is never redone.
-State: runs/aerotrack_v3/_runner/ (RUNNING / DONE / FAILED, events.jsonl, logs).
+State: results/runs/aerotrack_v3/_runner/ (RUNNING / DONE / FAILED, events.jsonl, logs).
 """
 import json
 import os
@@ -46,7 +46,7 @@ def sh(cmd, name):
 
 
 def trained(name):
-    d = S.REPO / "runs" / name
+    d = S.REPO / "results/runs" / name
     try:
         m = json.loads((d / "run_meta.json").read_text(encoding="utf-8"))
     except FileNotFoundError:
@@ -59,7 +59,7 @@ def evaluated(name, smoke=False):
     p = S.REPORTS / ("v3_results_smoke.json" if smoke else "v3_results.json")
     if not p.exists():
         return False
-    w = S.REPO / "runs" / name / "weights" / "last.pt"
+    w = S.REPO / "results/runs" / name / "weights" / "last.pt"
     sha = file_sha256(w) if w.exists() else None
     return any(r["run"] == name and r["set"] == "val" and r["weights_sha256"] == sha for r in json.loads(p.read_text(encoding="utf-8"))["rows"])
 
@@ -72,7 +72,7 @@ def train(config, seed, batch, smoke=False, domains="all"):
         return name
     base = [PY, "-u", str(HERE / "train_v3.py"), "--config", config, "--seed", str(seed), "--batch", str(batch),
             "--train-domains", ",".join(doms)] + (["--smoke"] if smoke else [])
-    exists = (S.REPO / "runs" / name / "run_meta.json").exists()
+    exists = (S.REPO / "results/runs" / name / "run_meta.json").exists()
     rc = sh(base + (["--resume"] if exists else []), f"train_{name}")
     if rc != 0 and not trained(name):
         event(kind="retry_resume", run=name)

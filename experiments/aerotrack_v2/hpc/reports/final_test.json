@@ -186,7 +186,7 @@
   "resumed": "2026-10-06T15:12:19+0530",
   "reason": "systems part crashed (module shadowing, F-05); detection AP + TEST cache were complete",
   "test_cache_reused": {
-   "index": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/test/index.json",
+   "index": "results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/test/index.json",
    "set_sha256": "7a8672398460401b47ed94bc2385dd39feff2cc4ee06ef78650e2bd469428bfb",
    "sequences": 242
   }

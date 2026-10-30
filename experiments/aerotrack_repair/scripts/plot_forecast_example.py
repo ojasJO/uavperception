@@ -6,8 +6,8 @@
 Example selection rule (fixed, label-based, no cherry-picking): among the VAL windows whose future contains a
 >30 px jump, take the window at the MEDIAN LSTM ADE (i.e. a typical sudden-jump case, not the best one), plus the
 window at the median ADE among smooth VAL windows. Curves: observed positions, ground-truth future, val-tuned Kalman,
-mean-velocity(4) and the retrained LSTM (`runs/lstm_forecaster_repair/forecaster_original.pt`), all in pixels.
-Writes assets/repair_forecast_examples_val.png and the plotted coordinates as JSON next to it.
+mean-velocity(4) and the retrained LSTM (`results/runs/lstm_forecaster_repair/forecaster_original.pt`), all in pixels.
+Writes docs/assets/repair_forecast_examples_val.png and the plotted coordinates as JSON next to it.
 """
 from __future__ import annotations
 
@@ -26,8 +26,8 @@ from anti_uav_repro.utils.repro import git_info, write_json
 
 from _bootstrap import REPO_ROOT
 
-RUN = REPO_ROOT / "runs" / "lstm_forecaster_repair"
-OUT_PNG = REPO_ROOT / "assets" / "repair_forecast_examples_val.png"
+RUN = REPO_ROOT / "results/runs" / "lstm_forecaster_repair"
+OUT_PNG = REPO_ROOT / "docs/assets" / "repair_forecast_examples_val.png"
 
 
 def main():

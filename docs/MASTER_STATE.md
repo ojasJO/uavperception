@@ -2,19 +2,19 @@
 
 **Updated**: 2026-10-13 ~19:30 IST · **branch** `research-program` · OMEN ahead of the HPC checkout (HPC at 6b9415a + untracked reports) · never pushed
 
-**HPC model backup (2026-10-13)**: every trained weight / cache / job record in `~/aerotrack_server` (all but `environments/` and the
-`shared_data` dataset store) is copied to `artifacts/hpc_recovery_20261013/` (git-ignored) with per-file SHA-256 verification;
+**HPC model backup (2026-10-13)**: every trained weight / cache / job record in `~/aerotrack_server` (all but `docs/environments/` and the
+`shared_data` dataset store) is copied to `results/artifacts/hpc_recovery_20261013/` (git-ignored) with per-file SHA-256 verification;
 see its `RECOVERY_README.md` + `ARTIFACT_MANIFEST.csv`. HPC `/home` is 100 % full (57 GB free of 25 TB) -- treat HPC files as at risk.
 
 **AeroTrack Flight Deck (2026-10-14)**: `studio.bat` now opens a local multi-model laboratory (7 experiment categories, live inference with synchronised multi-model replay, recorded TEST replay read-only, controlled speed benchmark, forecasting, paper reproduction); 5 checkpoints evaluation-verified (fresh VAL = recorded); 122 tests. `docs/workspace/FLIGHT_DECK.md`.
 
 **Unified workspace (2026-10-13 evening)**: one registry + one studio for both directions, nothing moved.
 `studio.bat` → http://localhost:8501 (Overview · Models · Datasets · Inference · Compare · Experiments · Failure analysis · Health).
-Registry `registry/` (`tools/build_workspace_registry.py`): 314 checkpoint identities, 13 families, 498 files (workspace + backup), 0
+Registry `results/registry/` (`scripts/build_workspace_registry.py`): 314 checkpoint identities, 13 families, 498 files (workspace + backup), 0
 integrity mismatches, 228 checkpoints load- and inference-verified (all runnable ones in the workspace), 317 historical result records (verbatim, sourced). Shared layer
-`aerolab/` (adapters wrap the experiments' own code; evaluation service VAL/TRAIN only, TEST locked). Backup-only checkpoints restored
-by copy (`registry/migrations/restore_manifest.json`, 137 files); the backup itself is unchanged. **Direction B = the Anti-UAV (2021)
-DFSC/GlobalTrack reproduction; the CST paper is a benchmark/protocol used by Direction A.** Docs: `docs/workspace/` (INITIAL_AUDIT,
+`src/aerolab/` (adapters wrap the experiments' own code; evaluation service VAL/TRAIN only, TEST locked). Backup-only checkpoints restored
+by copy (`results/registry/migrations/restore_manifest.json`, 137 files); the backup itself is unchanged. **Direction B = the Anti-UAV (2021)
+DFSC/GlobalTrack reproduction; the CST paper is a results/benchmark/protocol used by Direction A.** Docs: `docs/workspace/` (INITIAL_AUDIT,
 ARCHITECTURE, OPERATING_GUIDE, FINAL_AUDIT), `research/*/README.md`. Tests: 122 unittest + demo smoke test pass.
 
 ## Where we are
@@ -55,7 +55,7 @@ Two separate workstreams -- never mix their metrics (CST benchmark state accurac
 2. Next justified experiment (not launched; one e20 CST run = ~46 min on a V100 + VAL STE eval): a *learned* absence / presence
    signal (P1 showed the detection score alone cannot separate absent-frame false alarms from correct boxes at the SA level).
    Register on VAL first (pattern: `experiments/cst_anti_uav/preregistration/P1_presence_gate_VAL.json`), then train via
-   `tools/hpc/submit.sh` (see `jobs/x2_train_a/cmd.txt` for the train_v3.py + `--resume` pattern).
+   `scripts/hpc/submit.sh` (see `jobs/x2_train_a/cmd.txt` for the train_v3.py + `--resume` pattern).
 3. HPC disk is full: before any new HPC training, check `df -h ~` (57 GB free on 2026-10-13).
 
 ## Blocked / risks
@@ -72,7 +72,7 @@ Two separate workstreams -- never mix their metrics (CST benchmark state accurac
 - **X1 VAL freeze (`x1_cst_runner`, 92976)**: `experiments/aerotrack_v3/frozen_x1_params.json` (cross-fitted CST VAL mSA STE 63.61,
   argmax 62.60).
 - **A2a (registered) large-scale row, VAL**: IR 72.32 vs paper 72.00 (+0.32, within ±1: conversion faithful); RGB 70.50 vs 67.28 (**+3.22**, outside the band, ABOVE the paper — not explicable by the conversion conventions, which could only lower ours; reported as a discrepancy alongside the IR test surplus).
-- **M11 deployment package** `deployment/aerotrack_causal_g4_v2/` (17 files, sha256-verified): model card (causal window channels [t-4, t, t-8], letterbox 640 / pad 114, BGR, classes), frozen STE params, gate, live smoke on a VAL clip (TensorRT fp16, per-frame compute p99 6.9 ms, 0 ms look-ahead), server (V100 fp16) vs laptop (TRT fp16) parity: presence 100 %, top-1 IoU mean 0.985 (min 0.944), |Δscore| 0.0003.
+- **M11 deployment package** `src/deployment/aerotrack_causal_g4_v2/` (17 files, sha256-verified): model card (causal window channels [t-4, t, t-8], letterbox 640 / pad 114, BGR, classes), frozen STE params, gate, live smoke on a VAL clip (TensorRT fp16, per-frame compute p99 6.9 ms, 0 ms look-ahead), server (V100 fp16) vs laptop (TRT fp16) parity: presence 100 %, top-1 IoU mean 0.985 (min 0.944), |Δscore| 0.0003.
 - Track C causal caches (v2_stock_s0, v2_causal_g4_s0) on full VAL: done (inputs for C1b / C3).
 - **v2 final TEST (single registered pass, causal_g4)**: detection AP50 CST 0.587 / Anti-UAV 0.909 / pooled 0.732; SOT mSA (STE) IR 69.12 / RGB 74.34 / CST 56.55; F1 STE vs our GlobalTrack (IR test 70.58) −1.46 [−3.00, +0.47] no detectable difference; F3 STE vs argmax better on IR / RGB (+0.22 / +0.24), n.d. on CST. Pass crashed after detection and was finished by a guarded resume (F-05). `experiments/aerotrack_v2/hpc/reports/final_test.json`.
 - **post-v2 (HPC)**: causal_g4 VAL SOT mSA (cross-fitted STE / argmax): Anti-UAV IR 80.53 / 80.46, RGB 81.20 / 81.38, CST 63.02 / 62.18; STE − our GlobalTrack on IR VAL +1.24 [−0.44, +4.29] (no detectable difference); `frozen_ste_params.json` committed (e6d5180) before TEST.
@@ -101,7 +101,7 @@ Two separate workstreams -- never mix their metrics (CST benchmark state accurac
 
 ## Next concrete actions (historical, 2026-10-06 -- superseded; kept as record)
 1. HC3 result → if within ±0.05 pt: submit the registered H3 evaluations (VAL ×2, TEST ×2 `--final-eval`, analysis).
-2. CST push done → `tools/hpc/extract_cst.py` (PBS CPU job) → `DATA_VERSION` → env gate data part on the HPC.
+2. CST push done → `scripts/hpc/extract_cst.py` (PBS CPU job) → `DATA_VERSION` → env gate data part on the HPC.
 3. M6 loader benchmark (`train_v2 --preflight-only`, workers 8/12/16) → v2 smoke (causal_g4) → v2 stage 1 (3 runs; GPU-limited:
    run sequentially on node03 + any idle GPU) + v1 reference / HC1 evaluations.
 

@@ -5,11 +5,11 @@
     python experiments/cst_anti_uav/scripts/run_x2.py --val-design                                                  (GPU, sequential)
 
 --train: v3's train() for each named X2 run (resumed once on failure; a finished run is skipped). Each training writes only its own
-runs/<name>/ and one ledger line, so several --train jobs may run on different nodes at once.
+results/runs/<name>/ and one ledger line, so several --train jobs may run on different nodes at once.
 --val-design (ONE job; eval_v3 rewrites a shared results file): for all six runs, eval_v3 on VAL, the full CST VAL detection cache,
 track_eval; then per-sequence cross-fitted STE SA (recomputed with track_eval's per-half settings and checked against its summary),
 experiments/cst_anti_uav/frozen_x2_params.json (settings tuned on all CST VAL, per run) and the V1 analysis
-experiments/cst_anti_uav/reports/X2_val.{json,md}. State / logs: runs/cst_anti_uav/_x2/<mode>/.
+experiments/cst_anti_uav/reports/X2_val.{json,md}. State / logs: results/runs/cst_anti_uav/_x2/<mode>/.
 """
 import argparse
 import json
@@ -35,7 +35,7 @@ B = 10000
 
 
 def _sys_module(name):
-    """Explicit-path import of a systems module (c_model/track_eval.py would shadow systems/scripts/track_eval.py: F-05)."""
+    """Explicit-path import of a systems module (src/model/track_eval.py would shadow systems/scripts/track_eval.py: F-05)."""
     import importlib.util
     p = REPO / "experiments" / "systems" / "scripts" / f"{name}.py"
     spec = importlib.util.spec_from_file_location(f"systems_{name}", p)
@@ -72,12 +72,12 @@ def step(job, cmd):
 
 def cache_ok(run):
     from anti_uav_repro.utils.repro import file_sha256
-    idx = REPO / "runs" / "systems" / "_cache" / run / S.CORPUS / "val" / "index.json"
+    idx = REPO / "results/runs" / "systems" / "_cache" / run / S.CORPUS / "val" / "index.json"
     if not idx.exists():
         return False
     i = json.loads(idx.read_text(encoding="utf-8"))
     n = sum(1 for v in i["sequences"].values() if v["dataset"] == "cst")
-    return n == 40 and not i.get("limited") and i["weights_sha256"] == file_sha256(REPO / "runs" / run / "weights" / "last.pt")
+    return n == 40 and not i.get("limited") and i["weights_sha256"] == file_sha256(REPO / "results/runs" / run / "weights" / "last.pt")
 
 
 def track_report(run):
@@ -88,7 +88,7 @@ def track_ok(run):
     p = track_report(run)
     if not p.exists():
         return False
-    idx = json.loads((REPO / "runs" / "systems" / "_cache" / run / S.CORPUS / "val" / "index.json").read_text(encoding="utf-8"))
+    idx = json.loads((REPO / "results/runs" / "systems" / "_cache" / run / S.CORPUS / "val" / "index.json").read_text(encoding="utf-8"))
     return json.loads(p.read_text(encoding="utf-8"))["cache_set_sha256"] == idx["set_sha256"]
 
 
@@ -143,7 +143,7 @@ def val_design():
         rep = json.loads(track_report(run).read_text(encoding="utf-8"))
         per[run] = cross_fitted_per_sequence(run, rep)
         frozen["runs"][run] = {"arm": parse(run)[0], "seed": parse(run)[1],
-                               "weights_sha256": file_sha256(REPO / "runs" / run / "weights" / "last.pt"),
+                               "weights_sha256": file_sha256(REPO / "results/runs" / run / "weights" / "last.pt"),
                                "ste": rep["trackers"]["ste"]["tuned_on_all_val"]["params"],
                                "argmax": rep["trackers"]["argmax"]["tuned_on_all_val"]["params"],
                                "val_cross_fitted_mSA": {k: rep["trackers"][k]["cross_fitted"]["cst_IR"]["mSA"] for k in ("ste", "argmax")},
@@ -193,7 +193,7 @@ def main():
     a = ap.parse_args()
     if not committed_clean(REPO / X.REGISTRATION):
         raise SystemExit("X2 registration must be committed and unmodified")
-    S.STATE = REPO / "runs" / "cst_anti_uav" / "_x2" / ("val_design" if a.val_design else "train_" + "+".join(parse(r)[0] + str(parse(r)[1]) for r in a.train))
+    S.STATE = REPO / "results/runs" / "cst_anti_uav" / "_x2" / ("val_design" if a.val_design else "train_" + "+".join(parse(r)[0] + str(parse(r)[1]) for r in a.train))
     S.STATE.mkdir(parents=True, exist_ok=True)
     R.event(kind="x2_start", mode="val_design" if a.val_design else "train", runs=a.train, git=S.git())
     if a.train:

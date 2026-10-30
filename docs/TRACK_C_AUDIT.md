@@ -18,7 +18,7 @@ Following the successful completion and verification of **X1** (CST train-only p
 | Task | Requirement | Verified Current State | Missing Work | Training Required? | Evaluation Required? | Dependencies | Status / Active Run ID |
 | :--- | :--- | :--- | :--- | :---: | :---: | :--- | :--- |
 | **C1C** | Camera-mode-aware trajectory forecasting (`domtok` vs `perdom`, 3 seeds) on oracle histories; resolve CST negative transfer. | Preregistration committed; `tc_c1c.py` implemented; dataset `_data/traj_{train,val}.npz` verified; training live on HPC `node04`. | Train 12 transformer models; select dev arm; commit `learned_registry_c1c.json`; execute single VAL pass. | **YES** (12 CPU transformer models, 12 epochs each) | **YES** (1 VAL pass, H1c, H2c, H3c) | None (Prerequisites: C1 classical tuning & trajectory caches present). | **IN PROGRESS** (`93015.amritahpc` on `node04`, `c1c_tfm_domtok_s0` done) |
-| **C3** | Tracking with domain/learned motion models (`argmax@cf`, `ste_cv@cf`, `fste_classical@cf`, `fste_learned@cf`) on causal detection caches. | Preregistration committed; `tc_c3.py` implemented; `runs/aerotrack_temporal/c3/prep.json` complete; causal VAL detection caches for `v2_causal_g4_s0_e20` and `v2_stock_s0_e20` present on HPC. | Execute grid scoring across 174 sequences on primary (`causal_g4`) and secondary (`stock`) caches; compute cross-fitting & bootstrap. | **NO** (Tracking evaluation only) | **YES** (Grid search & cross-fitted evaluation on VAL caches) | C1C VAL pass (provides adopted model for `fste_learned` via `tc_adoption.py`). | **QUEUED in pipeline** (`93015.amritahpc` on `node04`) |
+| **C3** | Tracking with domain/learned motion models (`argmax@cf`, `ste_cv@cf`, `fste_classical@cf`, `fste_learned@cf`) on causal detection caches. | Preregistration committed; `tc_c3.py` implemented; `results/runs/aerotrack_temporal/c3/prep.json` complete; causal VAL detection caches for `v2_causal_g4_s0_e20` and `v2_stock_s0_e20` present on HPC. | Execute grid scoring across 174 sequences on primary (`causal_g4`) and secondary (`stock`) caches; compute cross-fitting & bootstrap. | **NO** (Tracking evaluation only) | **YES** (Grid search & cross-fitted evaluation on VAL caches) | C1C VAL pass (provides adopted model for `fste_learned` via `tc_adoption.py`). | **QUEUED in pipeline** (`93015.amritahpc` on `node04`) |
 | **C1B** | Trajectory forecasting on realistic TRACKER histories (causal detector $\rightarrow$ cross-fitted STE) vs ground-truth futures. | Preregistration committed; `tc_c1b.py` implemented; clean and noise-augmented models (`c1_tfm_abs_*`, `c1_tfm_aug_*`) trained and available. | Execute evaluation on tracker-generated histories using cross-fitted `ste_cv` parameters from C3 for both `v2_causal_g4_s0_e20` and `v2_stock_s0_e20`. | **NO** (Forecasting evaluation using existing checkpoints) | **YES** (Evaluation on tracker histories against ground-truth futures) | C3 completion (specifically `C3_tracking_motion_models_<run>.json` tracker parameters). | **QUEUED in pipeline** (`93015.amritahpc` on `node04`) |
 
 
@@ -84,7 +84,7 @@ Following the successful completion and verification of **X1** (CST train-only p
 ### 3.3 Implementation & Verified State
 * **Scripts**: [`experiments/aerotrack_temporal/scripts/tc_c3.py`](file:///a:/AEROTRACK_OMEN/experiments/aerotrack_temporal/scripts/tc_c3.py), `tc_ste.py`, `tc_track_metrics.py`.
 * **Prerequisites Verified**:
-  * `runs/aerotrack_temporal/c3/prep.json`: Generated and verified on both OMEN and HPC (contains variance tables for all 10 classical forecasters across all 3 domains).
+  * `results/runs/aerotrack_temporal/c3/prep.json`: Generated and verified on both OMEN and HPC (contains variance tables for all 10 classical forecasters across all 3 domains).
   * Detection Caches: Complete VAL detection caches exist on the HPC at:
     * Primary: `~/aerotrack_server/source/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/` (174 sequences).
     * Secondary (Replication): `~/aerotrack_server/source/runs/systems/_cache/v2_stock_s0_e20/data_unified_v2/val/` (174 sequences).
@@ -119,7 +119,7 @@ Following the successful completion and verification of **X1** (CST train-only p
 
 ### 4.3 Implementation & Verified State
 * **Script**: [`experiments/aerotrack_temporal/scripts/tc_c1b.py`](file:///a:/AEROTRACK_OMEN/experiments/aerotrack_temporal/scripts/tc_c1b.py).
-* **Model Checkpoints**: Clean checkpoints (`c1_tfm_abs_s{0,1,2}.pt`) and noise-augmented checkpoints (`c1_tfm_aug_s{0,1,2}.pt`) are verified in `runs/aerotrack_temporal/c1/`.
+* **Model Checkpoints**: Clean checkpoints (`c1_tfm_abs_s{0,1,2}.pt`) and noise-augmented checkpoints (`c1_tfm_aug_s{0,1,2}.pt`) are verified in `results/runs/aerotrack_temporal/c1/`.
 * **Prerequisite Blocker**: Line 62-66 of `tc_c1b.py` strictly requires the output of C3:
   ```python
   c3 = C.REPORTS / f"C3_tracking_motion_models_{a.run}.json"
@@ -175,7 +175,7 @@ flowchart TD
    * Execution target: Can be executed on HPC via a dedicated PBS CPU batch job (`select=1:ncpus=16:mem=32gb`) or locally on the workstation. Running on HPC guarantees dedicated cores and isolates background execution.
 2. **Task C3 Tracking Grid Evaluation**:
    * Compute type: CPU multiprocessing (4 to 8 workers evaluating detection caches).
-   * Dataset requirement: Full detection caches `runs/systems/_cache/{v2_causal_g4_s0_e20, v2_stock_s0_e20}/data_unified_v2/val/` (174 npz files each).
+   * Dataset requirement: Full detection caches `results/runs/systems/_cache/{v2_causal_g4_s0_e20, v2_stock_s0_e20}/data_unified_v2/val/` (174 npz files each).
    * Execution target: **Must execute on HPC**, where both causal detection caches reside.
 3. **Task C1B Tracker History Forecasting**:
    * Compute type: CPU evaluation against ground truth.

@@ -7,10 +7,10 @@
 Order (as registered): train phaseB_normal_ir_lr0.02_accum8 and phaseB_dfsc_ir_lr0.02_accum8 (an interrupted training resumes
 from its last.pt), evaluate both on VAL, then both on TEST once (--final-eval, ledger-recorded), then analyze_h3.py. A finished
 training (final checkpoint hash in run_meta.json) or evaluation (metrics.json present) is never redone. Refuses to start unless the
-registration is committed and unmodified. State: runs/_h3_optimisation/ (RUNNING / DONE / FAILED, events.jsonl, logs).
+registration is committed and unmodified. State: results/runs/_h3_optimisation/ (RUNNING / DONE / FAILED, events.jsonl, logs).
 
-A training that crashes before its first checkpoint is moved (never deleted) to runs/_h3_optimisation/crashed_<run>_<time>/ and
-retried from scratch. Writing runs/_h3_optimisation/PAUSE_AFTER_ARM (text = reason) makes the runner stop at the next arm boundary
+A training that crashes before its first checkpoint is moved (never deleted) to results/runs/_h3_optimisation/crashed_<run>_<time>/ and
+retried from scratch. Writing results/runs/_h3_optimisation/PAUSE_AFTER_ARM (text = reason) makes the runner stop at the next arm boundary
 and write PAUSED instead of DONE (scheduling only: the registered order and every rule are unchanged; a relaunch resumes).
 """
 import json

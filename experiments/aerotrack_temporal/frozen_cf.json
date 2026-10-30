@@ -213,7 +213,7 @@
     "g": 0.98,
     "k": 8
    },
-   "variance": "TRAIN residual table (runs/aerotrack_temporal/c3/prep.json)",
+   "variance": "TRAIN residual table (results/runs/aerotrack_temporal/c3/prep.json)",
    "rule": {
     "H1b": "NOT_SUPPORTED",
     "H2b": "LOSES",

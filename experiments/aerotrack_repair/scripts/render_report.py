@@ -6,9 +6,9 @@
 
 Inputs (all produced by the other repair scripts):
   reports/detector_{val,test}_*.json, reports/test_evaluation_ledger.jsonl, reports/tracker_val_*.json, reports/latency_*.json,
-  runs/lstm_forecaster_repair/forecast_repair_report.json, assets/repair_demo_val_*.json,
-  runs/aerotrack_spd_*/{args.json,results.csv}, runs/repair_abl_*/{run_meta.json,args.json,results.csv},
-  runs/repair_grid_e*/preflight_*.json (COCO-transfer coverage recorded by run_grid.py)
+  results/runs/lstm_forecaster_repair/forecast_repair_report.json, docs/assets/repair_demo_val_*.json,
+  results/runs/aerotrack_spd_*/{args.json,results.csv}, results/runs/repair_abl_*/{run_meta.json,args.json,results.csv},
+  results/runs/repair_grid_e*/preflight_*.json (COCO-transfer coverage recorded by run_grid.py)
 Attribution rule for the ablation grid (pre-registered here): a factor is credited only if the full model beats the
 ablated model by more than 0.02 AP50 on the target metric for BOTH last.pt and best.pt on the same image set;
 otherwise the factor has "no measurable effect at this budget". All four runs are read at ONE epoch budget, and only
@@ -70,8 +70,8 @@ def ep(v):
 
 # ------------------------------------------------------------------------------------------ grid state
 def grid_budget():
-    """The grid's epoch budget: the largest N among runs/repair_abl_*_e<N> (None before the first run)."""
-    ns = [int(m.group(1)) for d in REPO_ROOT.glob("runs/repair_abl_*_e*") if (m := re.search(r"_e(\d+)$", d.name))]
+    """The grid's epoch budget: the largest N among results/runs/repair_abl_*_e<N> (None before the first run)."""
+    ns = [int(m.group(1)) for d in REPO_ROOT.glob("results/runs/repair_abl_*_e*") if (m := re.search(r"_e(\d+)$", d.name))]
     return max(ns) if ns else None
 
 
@@ -81,7 +81,7 @@ def grid_state(det=None, epochs=None):
     E = epochs or grid_budget()
     runs = {}
     for name, desc in GRID:
-        d = REPO_ROOT / "runs" / f"repair_abl_{name}_e{E}" if E else None
+        d = REPO_ROOT / "results/runs" / f"repair_abl_{name}_e{E}" if E else None
         if d is None or not d.exists():
             runs[name] = {"desc": desc, "exists": False, "val": {"best": None, "last": None}}
             continue
@@ -149,7 +149,7 @@ def grid_complete(vs):
 
 def transfer_record(E):
     """COCO-transfer coverage per grid run, as measured by run_grid.py's pre-flight (None if not recorded)."""
-    pf = sorted(REPO_ROOT.glob(f"runs/repair_grid_e{E}/preflight_*.json")) if E else []
+    pf = sorted(REPO_ROOT.glob(f"results/runs/repair_grid_e{E}/preflight_*.json")) if E else []
     for p in reversed(pf):
         j = jload(p) or {}
         tr = {k: v.get("transfer") for k, v in (j.get("ablations") or {}).items() if v.get("transfer")}
@@ -162,7 +162,7 @@ def transfer_record(E):
 def definitions_block(gs):
     det = jload(REPORTS_DIR / "detector_val_cap5000.json")
     L = ["### One definition of every term", "",
-         "- **Size bins** (code: `c_model/evaluation.py`): relative box area of the *source* frame — micro < 0.03 %, small 0.03–1 %, "
+         "- **Size bins** (code: `src/model/evaluation.py`): relative box area of the *source* frame — micro < 0.03 %, small 0.03–1 %, "
          "standard > 1 %. In pixels (side of a square box at the threshold), computed from the evaluated images:"]
     if det:
         L.append("  " + "; ".join(f"{k}: micro ≤ {v['micro_max_side_px']} px, small ≤ {v['small_max_side_px']} px" for k, v in det["size_definition_px"].items()) + ".")
@@ -171,8 +171,8 @@ def definitions_block(gs):
           "or t,t,t (three copies of frame t) for the runs trained with temporal_gap 0.", "",
           "| run | planned epochs | epochs run | best.pt (fitness) | last.pt | batch × accumulate | lr0 → lrf | class weights | sampler weights (bird/micro/small/standard/empty) | init |",
           "|---|---|---|---|---|---|---|---|---|---|"]
-    runs = [(REPO_ROOT / "runs" / "aerotrack_spd_v1", DEFAULT_WEIGHTS, "yolo11n.pt (COCO)"),
-            (REPO_ROOT / "runs" / "aerotrack_spd_finetuned", FINETUNE_WEIGHTS, "aerotrack_spd_v1 best.pt")]
+    runs = [(REPO_ROOT / "results/runs" / "aerotrack_spd_v1", DEFAULT_WEIGHTS, "yolo11n.pt (COCO)"),
+            (REPO_ROOT / "results/runs" / "aerotrack_spd_finetuned", FINETUNE_WEIGHTS, "aerotrack_spd_v1 best.pt")]
     for name, _ in GRID:
         r = gs["runs"][name]
         if r["exists"]:
@@ -282,7 +282,7 @@ def ablation_block(gs, vs):
         return "\n".join(L)
     L += ["", "**Attribution verdicts (rule above):**"] + [verdict_line(v) for v in vs]
     L += ["", "`single_frame` and `stock_yolo11n` are trained, validated and scored on t,t,t (three copies of frame t — their input definition, "
-          "`c_model/train.py::build`); `baseline_ctrl` and `no_spd` on t−1,t,t+1. A verdict only uses finished runs whose evaluated checkpoint "
+          "`src/model/train.py::build`); `baseline_ctrl` and `no_spd` on t−1,t,t+1. A verdict only uses finished runs whose evaluated checkpoint "
           "hashes match `run_meta.json`."]
     tr = transfer_record(E)
     if tr:
@@ -319,12 +319,12 @@ def tracker_block():
     for d, sub in t["per_dataset"].items():
         L.append(f"| {d} (MOTA / IDF1) | " + " | ".join(f"{sub[k]['MOTA']:.3f} / {sub[k]['IDF1_mean_per_sequence']:.3f}" for k in t["aggregate"]) + " |")
     L += ["", f"**Rule:** {t['rule']}. **Verdict: {t['verdict']}.** The demo and this README therefore make no tracking claim; "
-          "`c_model/bytetrack.py` remains in the repository as an evaluated-and-rejected component."]
+          "`src/model/bytetrack.py` remains in the repository as an evaluated-and-rejected component."]
     return "\n".join(L)
 
 
 def forecast_block():
-    rep = jload(REPO_ROOT / "runs" / "lstm_forecaster_repair" / "forecast_repair_report.json")
+    rep = jload(REPO_ROOT / "results/runs" / "lstm_forecaster_repair" / "forecast_repair_report.json")
     if not rep:
         return "*not evaluated yet*"
     tab = rep["test_table"]
@@ -350,8 +350,8 @@ def forecast_block():
           f"CST sudden-jump ADE: best LSTM {f1(lstm_best)} vs best trivial {f1(best_trivial)} vs Kalman {f1(kal)} → **LSTM {verdict}.** "
           "On gimbal-tracked Anti-UAV footage the best forecaster is 'predict no motion'; the 'sudden jumps' are mostly frame-to-frame "
           "discontinuities (gimbal re-slews / label jumps) that no model can anticipate. Caveat: the forecaster's val split contains no CST windows.",
-          "", "![Forecast examples on VAL, generated from model output](assets/repair_forecast_examples_val.png)",
-          "*Examples chosen by rule (median LSTM ADE among sudden-jump / smooth VAL windows); every plotted coordinate is in `assets/repair_forecast_examples_val.json`.*"]
+          "", "![Forecast examples on VAL, generated from model output](docs/assets/repair_forecast_examples_val.png)",
+          "*Examples chosen by rule (median LSTM ADE among sudden-jump / smooth VAL windows); every plotted coordinate is in `docs/assets/repair_forecast_examples_val.json`.*"]
     return "\n".join(L)
 
 
@@ -373,14 +373,14 @@ def latency_block():
 
 
 def demo_block():
-    js = sorted((REPO_ROOT / "assets").glob("repair_demo_val_*.json"))
+    js = sorted((REPO_ROOT / "docs/assets").glob("repair_demo_val_*.json"))
     if not js:
         return "*no demo rendered yet*"
     d = jload(js[-1])
     gif = js[-1].with_suffix(".gif").name
-    L = [f"![Side-by-side detector demo on a VAL sequence](assets/{gif})", "",
+    L = [f"![Side-by-side detector demo on a VAL sequence](docs/assets/{gif})", "",
          f"Sequence `{d['sequence']}` (VAL), frames {d['clip_frames'][0]}–{d['clip_frames'][1]}; **rule:** {d['rule']}. Both panels show raw NMS output at conf "
-         f"{d['conf']} — no tracker, no trail, no magnifier; green = ground truth. Per-frame IoUs are in `assets/{js[-1].name}`.", "",
+         f"{d['conf']} — no tracker, no trail, no magnifier; green = ground truth. Per-frame IoUs are in `docs/assets/{js[-1].name}`.", "",
          "| panel | run / checkpoint | epoch | hit rate (IoU ≥ .5 on frames with a target) | false alarms on frames labelled absent |", "|---|---|---|---|---|"]
     for side in ("left", "right"):
         s = d["summary"][side]
@@ -424,21 +424,21 @@ def plan_status(gs, vs):
         item3 = "grid design: `baseline_ctrl` is the reference trained at the grid budget; v1/v2 presented as a recipe change"
         item4 = "audit result cited; training ablation `single_frame` pending"
     try:
-        c14 = subprocess.run(["git", "log", "-1", "--format=%h", "--", "runs/aerotrack_spd_finetuned/eval_val/evaluation_report.json"],
+        c14 = subprocess.run(["git", "log", "-1", "--format=%h", "--", "results/runs/aerotrack_spd_finetuned/eval_val/evaluation_report.json"],
                              cwd=REPO_ROOT, capture_output=True, text=True, timeout=20).stdout.strip()
     except Exception:  # noqa: BLE001
         c14 = ""
-    item14 = ("superseded: the same-set table replaces `runs/aerotrack_spd_finetuned/eval_val`"
+    item14 = ("superseded: the same-set table replaces `results/runs/aerotrack_spd_finetuned/eval_val`"
               + (f" (that directory was re-generated and committed in `{c14}`)" if c14 else ""))
     return [
         ("1", "same-set v1/v2 evaluation", "done — `scripts/evaluate_detector.py`, `reports/detector_val_cap5000.md`"),
         ("2", "ablations (SPD, temporal, stock YOLO11n)", item2),
         ("3", "one change at a time from a converged baseline", item3),
         ("4", "temporal stack contributes nothing (inference ablation)", item4),
-        ("5", "LSTM vs trivial baselines", "done — retired by rule (`runs/lstm_forecaster_repair/report.md`)"),
+        ("5", "LSTM vs trivial baselines", "done — retired by rule (`results/runs/lstm_forecaster_repair/report.md`)"),
         ("6", "ByteTrack: wire it or drop the claims", "done — retired by rule; all ByteTrack captions removed from README/demo"),
-        ("7", "hand-typed trajectory plot", "replaced by `assets/repair_forecast_examples_val.png` (+ JSON); rev2.ipynb kept as the historical submission"),
-        ("8", "test-set demo cherry-picking", "replaced by `assets/repair_demo_val_*.gif` (VAL, label rule, no tracker claims)"),
+        ("7", "hand-typed trajectory plot", "replaced by `docs/assets/repair_forecast_examples_val.png` (+ JSON); rev2.ipynb kept as the historical submission"),
+        ("8", "test-set demo cherry-picking", "replaced by `docs/assets/repair_demo_val_*.gif` (VAL, label rule, no tracker claims)"),
         ("9", "bird→drone false-alarm metric", "done — corrected metric in the detector table"),
         ("10", "latency", "done — measured fp32/bf16 with p95 + structural look-ahead"),
         ("11", "consistent micro definition / epochs / sampler table", "done — 'One definition of every term' section, all values read from code/args.json"),
@@ -456,7 +456,7 @@ def render_report(blocks, gs, vs, write=True):
     L += [f"| {n} | {item} | {status} |" for n, item, status in plan_status(gs, vs)]
     for title, key in (("Definitions and run facts", "definitions_block"), ("Detector — same image set", "detector_block"), ("Ablation grid", "ablation_block"),
                        ("Tracking", "tracker_block"), ("Forecasting", "forecast_block"), ("Latency", "latency_block"), ("Demo", "demo_block")):
-        L += ["", f"## {title}", "", blocks[key].replace("](assets/", "](../assets/")]
+        L += ["", f"## {title}", "", blocks[key].replace("](docs/assets/", "](../assets/")]
     text = "\n".join(L) + "\n"
     if write:
         (REPO_ROOT / "docs" / "AEROTRACK_REPAIR_REPORT.md").write_text(text, encoding="utf-8")

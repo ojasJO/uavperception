@@ -70,11 +70,11 @@
       "reason": "seed-1 replicate of dfsc_ir; Phase B. Excluded from the authorised scope, as above."
     },
     {
-      "our_name": "runs/_smoke/*",
+      "our_name": "results/runs/_smoke/*",
       "reason": "pipeline smoke test, not a trained model."
     },
     {
-      "our_name": "runs/aerotrack_spd_finetuned and every other runs/ entry at the repository root",
+      "our_name": "results/runs/aerotrack_spd_finetuned and every other results/runs/ entry at the repository root",
       "reason": "AeroTrack-Net is a YOLO DETECTOR with mAP-style metrics. It is not an implementation of this paper and shares no metric with it. Never mixed into these tables."
     }
   ],

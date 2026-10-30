@@ -14,7 +14,7 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parents[1]
-for p in (REPO / "c_model", REPO / "b_pipeline", REPO / "experiments" / "systems" / "scripts",
+for p in (REPO / "src/model", REPO / "src/pipeline", REPO / "experiments" / "systems" / "scripts",
           REPO / "experiments" / "aerotrack_generalization" / "scripts", REPO / "experiments" / "aerotrack_v2" / "scripts",
           REPO / "experiments" / "anti_uav" / "src"):
     if str(p) not in sys.path:
@@ -98,7 +98,7 @@ class TestCausalWindow(unittest.TestCase):
 
 
 class TestPreflightWindow(unittest.TestCase):
-    """c_model/preflight.check_boundary (T2) must accept single / symmetric / causal windows and reject a window that reaches a
+    """src/model/preflight.check_boundary (T2) must accept single / symmetric / causal windows and reject a window that reaches a
     future frame while claiming causality (the 2026-10-05 v2 smoke failed on the old symmetric-only rule)."""
 
     @staticmethod
@@ -150,9 +150,9 @@ class TestInitialisations(unittest.TestCase):
         from aerotrack_trainer import build_model, transfer_pretrained
         from train import PRETRAINED
         torch.manual_seed(0)
-        m = build_model(REPO / "c_model" / "yolo11-stride-p2fp.yaml", ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
+        m = build_model(REPO / "src/model" / "yolo11-stride-p2fp.yaml", ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
         transfer_pretrained(m, PRETRAINED, verbose=False)
-        chk = p2fp.init_p2fp(m, build_model, transfer_pretrained, G.apply_fp_init, REPO / "c_model" / "yolo11-stride.yaml", PRETRAINED)
+        chk = p2fp.init_p2fp(m, build_model, transfer_pretrained, G.apply_fp_init, REPO / "src/model" / "yolo11-stride.yaml", PRETRAINED)
         self.assertEqual(chk["stock_anchor_max_abs_diff"], 0.0)
         self.assertLess(chk["p2_max_class_score"], 1e-6)
 
@@ -160,10 +160,10 @@ class TestInitialisations(unittest.TestCase):
         import ultralytics.nn.tasks as UT
         import p2fp
         from aerotrack_trainer import build_model, transfer_pretrained
-        self.assertEqual(UT.yaml_model_load(str(REPO / "c_model" / "yolo11-stride-scale-s.yaml"))["width_multiple"], 0.5)
-        m = build_model(REPO / "c_model" / "yolo11-stride-scale-s.yaml", ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
-        transfer_pretrained(m, REPO / "c_model" / "yolo11s.pt", verbose=False)
-        self.assertEqual(p2fp.apply_fp_init_from(m, REPO / "c_model" / "yolo11s.pt")["ignores_neighbours_max_abs_diff"], 0.0)
+        self.assertEqual(UT.yaml_model_load(str(REPO / "src/model" / "yolo11-stride-scale-s.yaml"))["width_multiple"], 0.5)
+        m = build_model(REPO / "src/model" / "yolo11-stride-scale-s.yaml", ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
+        transfer_pretrained(m, REPO / "src/model" / "yolo11s.pt", verbose=False)
+        self.assertEqual(p2fp.apply_fp_init_from(m, REPO / "src/model" / "yolo11s.pt")["ignores_neighbours_max_abs_diff"], 0.0)
 
     def test_scale_resolution_c3k2_variant(self):
         """Ultralytics resolves scale '' for our flat-multiplier YAMLs and builds C3k2(c3k=True) (erratum 2026-10-05);
@@ -172,9 +172,9 @@ class TestInitialisations(unittest.TestCase):
         import gen_lib as G
         from aerotrack_trainer import build_model, transfer_pretrained
         from train import PRETRAINED
-        built = build_model(REPO / "c_model" / "yolo11-stride.yaml", ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
+        built = build_model(REPO / "src/model" / "yolo11-stride.yaml", ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
         self.assertEqual(type(built.model[2].m[0]).__name__, "C3k")
-        std = build_model(REPO / "c_model" / "yolo11-stride-std.yaml", ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
+        std = build_model(REPO / "src/model" / "yolo11-stride-std.yaml", ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
         self.assertEqual(type(std.model[2].m[0]).__name__, "Bottleneck")
         ck = torch.load(PRETRAINED, map_location="cpu", weights_only=False)
         src = (ck.get("ema") or ck["model"]).float().state_dict()
@@ -186,22 +186,22 @@ class TestInitialisations(unittest.TestCase):
 
     def test_ultralytics_name_hazard_is_real(self):
         """yolo11<scale>-<x>.yaml is silently mapped to yolo11-<x>.yaml; our files must never use that pattern."""
-        offenders = [p.name for p in (REPO / "c_model").glob("*.yaml") if re.match(r"^yolo\d+[nslmx]-", p.name)]
+        offenders = [p.name for p in (REPO / "src/model").glob("*.yaml") if re.match(r"^yolo\d+[nslmx]-", p.name)]
         self.assertEqual(offenders, [])
 
 
 class TestCorpusAndSplits(unittest.TestCase):
     def test_default_corpus_is_v1_and_switch_works(self):
-        code = "import sys; sys.path.insert(0, r'%s'); import corpus; print(corpus.MANIFEST)" % (REPO / "b_pipeline")
+        code = "import sys; sys.path.insert(0, r'%s'); import corpus; print(corpus.MANIFEST)" % (REPO / "src/pipeline")
         env = {k: v for k, v in os.environ.items() if k != "AEROTRACK_CORPUS"}
         out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, env=env).stdout.strip()
-        self.assertEqual(Path(out), REPO / "b_pipeline" / "data_unified" / "manifest.csv")
+        self.assertEqual(Path(out), REPO / "data" / "derived" / "data_unified" / "manifest.csv")
         out2 = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, env=dict(env, AEROTRACK_CORPUS="data_unified_v2")).stdout.strip()
-        self.assertEqual(Path(out2), REPO / "b_pipeline" / "data_unified_v2" / "manifest.csv")
+        self.assertEqual(Path(out2), REPO / "data" / "derived" / "data_unified_v2" / "manifest.csv")
 
     def test_official_cst_val_replaces_holdout(self):
         import pandas as pd
-        spec = importlib.util.spec_from_file_location("prep", REPO / "b_pipeline" / "3_prepare_training.py")
+        spec = importlib.util.spec_from_file_location("prep", REPO / "src/pipeline" / "3_prepare_training.py")
         P = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(P)
         rows = []

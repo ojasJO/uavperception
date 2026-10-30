@@ -3,7 +3,7 @@
 *First version 2026-10-04, written after the context audit and a targeted literature search (sources at the end). Numbers of
 other works are as reported by their authors (not reproduced here) unless marked otherwise. This document separates what is
 already known from what our evidence could add; a "contribution" below is a candidate until an experiment in
-`artifacts/experiment_registry.json` supports it.*
+`results/artifacts/experiment_registry.json` supports it.*
 
 ## 1. Closest competing systems
 

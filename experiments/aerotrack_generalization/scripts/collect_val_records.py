@@ -4,7 +4,7 @@ evaluate_detector.py (registered set 6fb41d44d45b, conf 0.001, IoU 0.7, max_det 
 
     venv\\Scripts\\python.exe experiments\\aerotrack_generalization\\scripts\\collect_val_records.py
 
-VAL ONLY: the test split is never read. Cache: runs/aerotrack_generalization/_cache/val_records/<run>__<ckpt>.pkl (git-ignored);
+VAL ONLY: the test split is never read. Cache: results/runs/aerotrack_generalization/_cache/val_records/<run>__<ckpt>.pkl (git-ignored);
 existing files are kept. The mAP50 printed per checkpoint must equal reports/detector_val_cap5000.json of the repair series."""
 import pickle
 import time
@@ -27,7 +27,7 @@ OUT = S.CACHE / "val_records"
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    weights = [S.REPO / "runs" / f"repair_abl_{a}_e20" / "weights" / f"{c}.pt" for a in GRID for c in ("best", "last")]
+    weights = [S.REPO / "results/runs" / f"repair_abl_{a}_e20" / "weights" / f"{c}.pt" for a in GRID for c in ("best", "last")]
     samples, setinfo = eval_set("val", 5000, None)
     assert setinfo["sha256"].startswith("6fb41d44d45b"), setinfo["sha256"]
     lc = load_label_cache(LABEL_CACHE_PATH)

@@ -1,6 +1,6 @@
 """C1 VAL pass (called by tc_c1.py --stage val after the registration check): every forecaster once, the registered rules, a report.
 
-Reads the TRAIN tuning (runs/aerotrack_temporal/c1/classical_tuning.json) and the learned checkpoints (learned_registry.json, sha256
+Reads the TRAIN tuning (results/runs/aerotrack_temporal/c1/classical_tuning.json) and the learned checkpoints (learned_registry.json, sha256
 verified); nothing here is tuned. Output: experiments/aerotrack_temporal/reports/C1_trajectory_forecasting.{json,md}.
 """
 import hashlib

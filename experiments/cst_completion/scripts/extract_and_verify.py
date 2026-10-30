@@ -3,7 +3,7 @@
 
     venv\\Scripts\\python.exe experiments\\cst_completion\\scripts\\extract_and_verify.py
 
-1. Extraction: the repository's own CRC-checking streaming extractor (`a_inspection/1_uncompress_datasets.py::
+1. Extraction: the repository's own CRC-checking streaming extractor (`src/inspection/1_uncompress_datasets.py::
    recover_split_zip`, the code that produced the truncated corpus v1 copy) is run over z01..z10 + .zip in order, into
    `data/cst_anti_uav_full/` -- the v1 extraction in `data/cst_anti_uav/` is never written.
 2. Completeness, independently of step 1: the ZIP64 end-of-central-directory in the terminal part is parsed, every
@@ -115,7 +115,7 @@ def crc_file(path):
 def main():
     t0 = time.time()
     vols = volumes()
-    spec = importlib.util.spec_from_file_location("uncompress", REPO / "a_inspection" / "1_uncompress_datasets.py")
+    spec = importlib.util.spec_from_file_location("uncompress", REPO / "src/inspection" / "1_uncompress_datasets.py")
     U = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(U)
     rec = U.recover_split_zip(vols, OUT, "CST-AntiUAV-complete")

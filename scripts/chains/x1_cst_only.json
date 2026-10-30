@@ -1,0 +1,21 @@
+{
+ "name": "x1_cst_only",
+ "purpose": "Track B X1 (registered): the stack under the CST benchmark's own protocol -- CST-only training of the v2-selected configuration (seed 0), VAL evaluation, CST VAL cache, tracker cross-fitting, frozen TEST settings; GPU; after F1 (its network follows F1's verdict), before the H3 evaluations",
+ "state_dir": "results/runs/_chains/x1_cst_only",
+ "wait_for": "results/runs/_chains/f1_std",
+ "jobs": [
+  {
+   "name": "run_x1",
+   "required": true,
+   "env": {
+    "AEROTRACK_CORPUS": "data_unified_v2"
+   },
+   "when_exists": "experiments/aerotrack_v2/reports/v2_decisions.json",
+   "cmd": [
+    "{python}",
+    "-u",
+    "experiments/aerotrack_v3/scripts/run_x1.py"
+   ]
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Track C end-to-end execution pipeline (C1C -> C3 -> C1B)
-# Submitted to PBS via tools/hpc/submit.sh
+# Submitted to PBS via scripts/hpc/submit.sh
 set -euo pipefail
 
 source "$HOME/aerotrack_server/source/tools/hpc/job_env.sh"
@@ -10,7 +10,7 @@ echo "=== [$(date -Iseconds)] STAGE 1: C1C Forecaster Training & Dev Selection =
 python experiments/aerotrack_temporal/scripts/tc_c1c.py --stage train
 
 echo "=== [$(date -Iseconds)] Committing learned_registry_c1c.json ==="
-git add runs/aerotrack_temporal/c1/learned_registry_c1c.json
+git add results/runs/aerotrack_temporal/c1/learned_registry_c1c.json
 git commit -m "c1c: record dev-chosen forecaster models" || true
 
 echo "=== [$(date -Iseconds)] STAGE 2: C1C Validation Pass ==="

@@ -11,7 +11,7 @@ Steps (each a separate process; a failed optional step is recorded and the rest 
   5 forecast_eval.py          forecasting + uncertainty calibration
   6 failure_cases.py          deterministic failure analysis; mot_eval.py: ByteTrack / SORT / argmax / STE under CLEAR-MOT
   7 final_eval.py --freeze-from-val    writes frozen_ste_params.json (NOT committed here; the single TEST pass is run by hand)
-Writes runs/aerotrack_v2/_post/summary.json. Never touches TEST.
+Writes results/runs/aerotrack_v2/_post/summary.json. Never touches TEST.
 """
 import json
 import os
@@ -31,11 +31,11 @@ def main():
     if not cfg:
         sys.exit("no selected candidate in v2_decisions.json (campaign incomplete?)")
     cand = f"v2_{cfg}_s0_e20"
-    w = f"runs/{cand}/weights/last.pt"
+    w = f"results/runs/{cand}/weights/last.pt"
     env = dict(os.environ, AEROTRACK_CORPUS=S.CORPUS)
-    steps = [("export_onnx", [PY, "-u", str(D / "deployment/scripts/export_onnx.py"), "--weights", w], True),
-             ("export_onnx_fp16", [PY, "-u", str(D / "deployment/scripts/export_onnx.py"), "--weights", w, "--fp16"], False),
-             ("deploy_gate", [PY, "-u", str(D / "deployment/scripts/deploy_gate.py"), "--weights", w], False),
+    steps = [("export_onnx", [PY, "-u", str(D / "src/deployment/scripts/export_onnx.py"), "--weights", w], True),
+             ("export_onnx_fp16", [PY, "-u", str(D / "src/deployment/scripts/export_onnx.py"), "--weights", w, "--fp16"], False),
+             ("deploy_gate", [PY, "-u", str(D / "src/deployment/scripts/deploy_gate.py"), "--weights", w], False),
              ("cache_val", [PY, "-u", str(D / "systems/scripts/cache_detections.py"), "--run", cand, "--corpus", S.CORPUS], True),
              ("track_eval", [PY, "-u", str(D / "systems/scripts/track_eval.py"), "--run", cand, "--corpus", S.CORPUS, "--workers", "8"], True),
              ("forecast_eval", [PY, "-u", str(D / "systems/scripts/forecast_eval.py"), "--run", cand, "--corpus", S.CORPUS], False),
@@ -47,7 +47,7 @@ def main():
     # HPC run skips them; they are run on the OMEN with the same weights. Skipped steps are recorded in summary.json.
     skip = {x.strip() for x in os.environ.get("AEROTRACK_POST_SKIP", "").split(",") if x.strip()}
     steps = [s for s in steps if s[0] not in skip]
-    out_dir = S.REPO / "runs" / "aerotrack_v2" / "_post"
+    out_dir = S.REPO / "results/runs" / "aerotrack_v2" / "_post"
     out_dir.mkdir(parents=True, exist_ok=True)
     summary = {"candidate": cand, "started": S.now(), "skipped": sorted(skip), "host": os.uname().nodename if hasattr(os, "uname") else os.environ.get("COMPUTERNAME"), "steps": []}
     for name, cmd, required in steps:

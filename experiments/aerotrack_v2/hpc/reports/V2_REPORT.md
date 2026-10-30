@@ -11,7 +11,7 @@
 
 Configurations: `stock` YOLO11n stride layout, input [t, t, t]; `sym_g4` same network, input [t-4, t, t+4] (the generalization series' supported window); `causal_g4` same network, input [t-4, t, t-8]: past frames only, zero look-ahead
 
-Held fixed: c_model/train.py STAGES['baseline'] recipe (20 epochs x 25,000 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine), letterbox 640, augmentation, sampler, function-preserving initialisation (every configuration starts as COCO YOLO11n on frame t), checkpoint = last.pt
+Held fixed: src/model/train.py STAGES['baseline'] recipe (20 epochs x 25,000 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine), letterbox 640, augmentation, sampler, function-preserving initialisation (every configuration starts as COCO YOLO11n on frame t), checkpoint = last.pt
 
 ## 2. Data: corpus v2
 

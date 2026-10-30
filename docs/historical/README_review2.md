@@ -18,9 +18,9 @@ The animated visualization below demonstrates the empirical tracking improvement
 - **Left**: **Baseline Model (v1, 15 Epochs)** - Demonstrates severe track fragmentation and dropouts (failing to detect the drone across consecutive frames) alongside false positive clutter alarms.
 - **Right**: **Fine-Tuned Model (v2, 25 Epochs)** - Demonstrates 100% continuous lock on the physical drone ($\text{IoU} > 0.80$, $\text{Conf} > 0.75$), smooth ByteTrack trajectory interpolation, and an active **4x target zoom magnifier inset** tracking the physical drone in real time.
 
-![AeroTrack-Net Model Improvement Comparison](assets/model_comparison_demo.gif)
+![AeroTrack-Net Model Improvement Comparison](docs/assets/model_comparison_demo.gif)
 
-*Note: High-definition video render is available in [assets/model_comparison_demo.mp4](assets/model_comparison_demo.mp4).*
+*Note: High-definition video render is available in [docs/assets/model_comparison_demo.mp4](docs/assets/model_comparison_demo.mp4).*
 
 ---
 
@@ -40,7 +40,7 @@ Autonomous detection and continuous tracking of micro-unmanned aerial vehicles (
 
 AeroTrack-Net operates across both visible daylight and long-wave infrared spectrums:
 
-![AeroTrack-Net Multi-Modal Tracking](assets/side_by_side_demo.gif)
+![AeroTrack-Net Multi-Modal Tracking](docs/assets/side_by_side_demo.gif)
 
 *Synchronous paired Daylight RGB (Left) vs. Thermal LWIR (Right) with ByteTrack trajectory smoothing.*
 
@@ -163,28 +163,28 @@ Tracking performance was systematically evaluated on continuous sequence splits 
 ### 1. Training Progression & Fitness Evolution
 Loss curves and metric progression over training epochs:
 
-![Training Progression Curves](assets/training_curves.png)
+![Training Progression Curves](docs/assets/training_curves.png)
 
 ### 2. Precision-Recall Curves
 Precision-Recall characteristics for both classes under sequence-disjoint validation:
 
 | Fine-Tuned Model (v2) | Baseline Model (v1) |
 |:---:|:---:|
-| ![Fine-Tuned PR Curve](assets/pr_curve_finetuned.png) | ![Baseline PR Curve](assets/pr_curve_v1.png) |
+| ![Fine-Tuned PR Curve](docs/assets/pr_curve_finetuned.png) | ![Baseline PR Curve](docs/assets/pr_curve_v1.png) |
 
 ### 3. Precision-Recall Stratified by Target Area
 Performance breakdown highlighting the gain in sub-16px micro target detection:
 
 | Fine-Tuned (v2) Area Stratification | Baseline (v1) Area Stratification |
 |:---:|:---:|
-| ![Fine-Tuned AP by Size](assets/ap_by_size_finetuned.png) | ![Baseline AP by Size](assets/ap_by_size_v1.png) |
+| ![Fine-Tuned AP by Size](docs/assets/ap_by_size_finetuned.png) | ![Baseline AP by Size](docs/assets/ap_by_size_v1.png) |
 
 ### 4. Corpus Scale and Kinematic Hardness
 Corpus-wide bounding box analysis across 723,675 ground-truth annotations:
 
 | Cumulative Target Scale Distribution | Speed vs Scale Hardness Scatter |
 |:---:|:---:|
-| ![Scale CDF](assets/target_scale_cdf.png) | ![Hardness Scatter](assets/speed_vs_scale_hardness_scatter.png) |
+| ![Scale CDF](docs/assets/target_scale_cdf.png) | ![Hardness Scatter](docs/assets/speed_vs_scale_hardness_scatter.png) |
 
 ---
 
@@ -195,11 +195,11 @@ AEROTRACK_OMEN/
 ├── README.md                      # Academic & engineering documentation
 ├── LICENSE                        # Apache 2.0 Open Source License
 ├── requirements.txt               # Core dependencies
-├── run_aerotrack.py               # Master CLI entry point
+├── scripts/run_aerotrack.py               # Master CLI entry point
 ├── rev1.ipynb                     # Review 1: Exploratory data analysis & EDA report
 ├── train.ipynb                    # End-to-end interactive training notebook
 │
-├── a_inspection/                  # Phase A: Data ingestion & structural analysis
+├── src/inspection/                  # Phase A: Data ingestion & structural analysis
 │   ├── eda_common.py              # Unified dataset parsing and metadata indexer
 │   ├── 1_uncompress_datasets.py   # Multi-threaded decompression with zip-slip guards
 │   ├── 2_basic_eda.py             # Integrity scanner & bounding box statistics
@@ -208,7 +208,7 @@ AEROTRACK_OMEN/
 │   ├── 5_generate_report.py       # High-DPI plot generator
 │   └── 00_DATASET_INSPECTION_REPORT.md
 │
-├── b_pipeline/                    # Phase B: Preprocessing, temporal stacking & sampling
+├── src/pipeline/                    # Phase B: Preprocessing, temporal stacking & sampling
 │   ├── 1_standardize_annotations.py # Universal YOLO annotation normalization
 │   ├── 2_verify_pipeline.py       # Tensor shape, value range & boundary verification
 │   ├── 3_prepare_training.py      # Compact sample index & in-memory label caching
@@ -216,7 +216,7 @@ AEROTRACK_OMEN/
 │   ├── imbalance_sampler.py       # Hardness-aware weighted sampling implementation
 │   └── audit_check.py             # Pre-flight data integrity assertions
 │
-├── c_model/                       # Phase C: Architecture, training engine & inference
+├── src/model/                       # Phase C: Architecture, training engine & inference
 │   ├── custom_modules.py          # PyTorch SPDConv space-to-depth implementation
 │   ├── yolo11-spd.yaml            # AeroTrack-Net 9-channel network definition
 │   ├── yolo11-spd-p2.yaml         # P2 micro-head high-resolution architecture
@@ -232,8 +232,8 @@ AEROTRACK_OMEN/
 │   ├── make_side_by_side_demo.py  # Render script for multi-modal demonstration
 │   └── inference.py               # Low-latency streaming video inference
 │
-├── assets/                        # Model comparison demo GIF, MP4, and benchmark plots
-└── runs/                          # Quantitative evaluation reports & metrics
+├── docs/assets/                        # Model comparison demo GIF, MP4, and benchmark plots
+└── results/runs/                          # Quantitative evaluation reports & metrics
     ├── aerotrack_spd_v1/          # Baseline v1 run evaluation reports
     └── aerotrack_spd_finetuned/   # Fine-tuned v2 run evaluation reports
 ```
@@ -278,7 +278,7 @@ AEROTRACK_OMEN/
 
 ## Quick Start & Reproducibility Guide
 
-The master CLI `run_aerotrack.py` provides unified access to all training, evaluation, tracking, and inference pipelines.
+The master CLI `scripts/run_aerotrack.py` provides unified access to all training, evaluation, tracking, and inference pipelines.
 
 ### 1. Exploratory Dataset Analysis (Review 1)
 Launch the standalone Review 1 notebook to inspect the 723,675 annotated bounding boxes, velocity distributions, and spatial heatmaps:
@@ -289,57 +289,57 @@ jupyter notebook rev1.ipynb
 ### 2. Verify Preprocessing & Temporal Stacking
 Verify that the temporal 3-frame pipeline generates valid $[B, 9, 640, 640]$ tensors without boundary leakage:
 ```bash
-python b_pipeline/2_verify_pipeline.py
+python src/pipeline/2_verify_pipeline.py
 ```
 
 ### 3. Model Training
 
 - **Sanity Check (Single-Batch Overfit)**:
   ```bash
-  python run_aerotrack.py train --stages overfit
+  python scripts/run_aerotrack.py train --stages overfit
   ```
 
 - **Plumbing Smoke Run**:
   ```bash
-  python run_aerotrack.py train --stages smoke
+  python scripts/run_aerotrack.py train --stages smoke
   ```
 
 - **Full Baseline Training (v1)**:
   ```bash
-  python run_aerotrack.py train --stages baseline --batch 32 --workers 4
+  python scripts/run_aerotrack.py train --stages baseline --batch 32 --workers 4
   ```
 
 - **Domain-Balanced & Bird-Rejection Fine-Tuning (v2)**:
   ```bash
-  python run_aerotrack.py finetune --batch 32 --workers 4 --epochs 25
+  python scripts/run_aerotrack.py finetune --batch 32 --workers 4 --epochs 25
   ```
 
 ### 4. Size-Stratified Evaluation
 Run complete validation across Micro, Small, and Standard target bins:
 ```bash
 # Evaluate Fine-Tuned Model on Validation Split
-python run_aerotrack.py evaluate --weights runs/aerotrack_spd_finetuned/weights/best.pt --split val
+python scripts/run_aerotrack.py evaluate --weights results/runs/aerotrack_spd_finetuned/weights/best.pt --split val
 
 # Evaluate on Unseen Sequence Test Split
-python run_aerotrack.py evaluate --weights runs/aerotrack_spd_finetuned/weights/best.pt --split test
+python scripts/run_aerotrack.py evaluate --weights results/runs/aerotrack_spd_finetuned/weights/best.pt --split test
 ```
 
 ### 5. Multi-Object Tracking Benchmark
 Run ByteTrack and SORT comparison across continuous validation clips:
 ```bash
-python run_aerotrack.py track --weights runs/aerotrack_spd_finetuned/weights/best.pt --split val
+python scripts/run_aerotrack.py track --weights results/runs/aerotrack_spd_finetuned/weights/best.pt --split val
 ```
 
 ### 6. Streaming Video Inference
 Run low-latency streaming video detection on any arbitrary video file:
 ```bash
-python run_aerotrack.py infer --source path/to/drone_clip.mp4 --weights runs/aerotrack_spd_finetuned/weights/best.pt --out annotated_drone.mp4
+python scripts/run_aerotrack.py infer --source path/to/drone_clip.mp4 --weights results/runs/aerotrack_spd_finetuned/weights/best.pt --out annotated_drone.mp4
 ```
 
 ### 7. Interactive Desktop Visual HUD
 Launch the desktop OpenCV GUI displaying live telemetry, micro-target magnification, and trajectory trails:
 ```bash
-python run_aerotrack.py demo --weights runs/aerotrack_spd_finetuned/weights/best.pt
+python scripts/run_aerotrack.py demo --weights results/runs/aerotrack_spd_finetuned/weights/best.pt
 ```
 
 ---

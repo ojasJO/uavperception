@@ -104,7 +104,7 @@ def main():
              for k in range(K)}
     cst_cats = {k: dict(Counter(strat[g].split(":")[1] for g in fold_of if fold_of[g] == k and ds_of[g] == "cst")) for k in range(K)}
     digest = hashlib.sha256(json.dumps(seq_fold, sort_keys=True).encode()).hexdigest()
-    out = {"k": K, "seed": SEED, "source": "TRAIN split of b_pipeline/data_unified/splits.json only",
+    out = {"k": K, "seed": SEED, "source": "TRAIN split of data/derived/data_unified/splits.json only",
            "grouping": {"anti_uav": "recording session", "cst": "sequence, stratified by scene category", "det_fly": "flight"},
            "inputs": {"manifest_sha256": file_sha256(MANIFEST), "splits_sha256": file_sha256(SPLITS)},
            "stats": stats, "cst_categories_per_fold": cst_cats, "group_fold": fold_of, "seq_fold": seq_fold, "sha256": digest}

@@ -5,7 +5,7 @@
 
 Inputs of the exported graph: seq [n, 16, 4], glob [n, 3 | 1] (tc_learned.features); outputs: mean [n, 24, 2], log sigma [n, 24, 2]
 in percent-of-width units. Parity on TRAIN-dev samples (no VAL), ONNX Runtime CPU; also times batch-1 CPU inference.
-Output: runs/aerotrack_temporal/c1/onnx/<name>.onnx and experiments/aerotrack_temporal/reports/export_forecasters.json (appended).
+Output: results/runs/aerotrack_temporal/c1/onnx/<name>.onnx and experiments/aerotrack_temporal/reports/export_forecasters.json (appended).
 """
 import argparse
 import hashlib
@@ -24,7 +24,7 @@ import tc_data as D  # noqa: E402
 import tc_forecast as F  # noqa: E402
 import tc_learned as M  # noqa: E402
 
-RUN = REPO / "runs" / "aerotrack_temporal" / "c1"
+RUN = REPO / "results/runs" / "aerotrack_temporal" / "c1"
 OUT = REPO / "experiments" / "aerotrack_temporal" / "reports" / "export_forecasters.json"
 
 

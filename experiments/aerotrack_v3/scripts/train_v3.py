@@ -6,7 +6,7 @@
     ... --preflight-only              (T1-T8 on the exact job under a scratch name; nothing trained)
     ... --smoke                       (machinery test: 2 epochs x 512 samples, name suffix _smoke, flagged in run_meta)
 
-Recipe = c_model/train.py STAGES["baseline"] exactly as in the repair grid and the generalization series: 20 epochs x 25,000
+Recipe = src/model/train.py STAGES["baseline"] exactly as in the repair grid and the generalization series: 20 epochs x 25,000
 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine, same sampler / augmentation / letterbox / pre-flight.
 Differences allowed: the configuration's window (v2lib.CONFIGS), the seed, the corpus (v2). Function-preserving init for every
 configuration (runtime-checked; the run aborts if the check fails). Checkpoint scored: weights/last.pt (fixed before any run).
@@ -50,7 +50,7 @@ def child(a):
     device = T.require_gpu()
     stage_cfg = dict(T.STAGES["baseline"])
     kw = {k: v for k, v in stage_cfg.items() if k in T.TrainConfig().to_dict()}
-    kw.update(name=a.name, project=str(S.REPO / "runs"), epochs=a.epochs, batch=a.batch, workers=a.workers, seed=a.seed)
+    kw.update(name=a.name, project=str(S.REPO / "results/runs"), epochs=a.epochs, batch=a.batch, workers=a.workers, seed=a.seed)
     if a.samples_per_epoch:
         kw["samples_per_epoch"] = a.samples_per_epoch
     cfg = T.TrainConfig(**kw)
@@ -114,7 +114,7 @@ def main():
 
     doms = L.parse_domains(a.train_domains)
     name = L.run_name(a.config + L.domain_tag(doms), a.seed, a.epochs) + ("_smoke" if a.smoke else "")
-    run_dir = S.REPO / "runs" / name
+    run_dir = S.REPO / "results/runs" / name
     last = run_dir / "weights" / "last.pt"
     base = [sys.executable, "-u", os.path.abspath(__file__), "--_child", "--config", a.config, "--seed", str(a.seed),
             "--train-domains", ",".join(doms),
@@ -123,7 +123,7 @@ def main():
         if v:
             base += [flag, str(v)]
     if a.preflight_only:
-        scratch = S.REPO / "runs" / f"_preflight_{name}"
+        scratch = S.REPO / "results/runs" / f"_preflight_{name}"
         if scratch.exists():
             shutil.rmtree(scratch)
         rc = subprocess.call(base + ["--name", scratch.name, "--preflight-only"], cwd=str(S.REPO))
@@ -134,14 +134,14 @@ def main():
         sys.exit(f"{run_dir} already exists -- use --resume; earlier runs are never overwritten")
     resume_ckpt = a.resume_from or (str(last) if a.resume and last.exists() else None)
     cmd = base + ["--name", name] + (["--resume-from", resume_ckpt] if resume_ckpt else [])
-    corpus_dir = S.REPO / "b_pipeline" / S.CORPUS
+    corpus_dir = S.REPO / "src/pipeline" / S.CORPUS
     mk, wn = L.parse(a.config)
     meta = {"run_name": name, "series": "aerotrack_v3", "config": a.config, "model": mk, "model_definition": L.MODELS[mk],
-            "pretrained_sha256": file_sha256(S.REPO / "c_model" / L.MODELS[mk]["pretrained"]),
+            "pretrained_sha256": file_sha256(S.REPO / "src/model" / L.MODELS[mk]["pretrained"]),
             "window": L.WINDOW_KIND[wn], "window_name": wn, "gap": L.WINDOWS[wn], "layout": L.MODELS[mk]["yaml"],
             "train_domains": list(doms),
             "seed": a.seed, "epochs": a.epochs, "batch": a.batch, "init": "function_preserving",
-            "recipe": "c_model/train.py STAGES['baseline']", "smoke": bool(a.smoke),
+            "recipe": "src/model/train.py STAGES['baseline']", "smoke": bool(a.smoke),
             "overrides": {"samples_per_epoch": a.samples_per_epoch, "monitor_cap": a.monitor_cap},
             "data": {"corpus": S.CORPUS, "manifest_sha256": file_sha256(corpus_dir / "manifest.csv"),
                      "splits_sha256": file_sha256(corpus_dir / "splits.json"), "train_split": "corpus v2 TRAIN (all three datasets)"},

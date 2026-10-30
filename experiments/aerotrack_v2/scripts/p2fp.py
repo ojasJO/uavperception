@@ -1,4 +1,4 @@
-"""Function-preserving initialisation of the P2 layout (c_model/yolo11-stride-p2fp.yaml) and its runtime proof.
+"""Function-preserving initialisation of the P2 layout (src/model/yolo11-stride-p2fp.yaml) and its runtime proof.
 
 The P2 model starts as a copy of a stock stride model initialised by the series' own procedure (COCO transfer by name and
 shape + gen_lib.apply_fp_init: COCO stem on the centre frame): layers 0-22 by identical name, the stock Detect branches

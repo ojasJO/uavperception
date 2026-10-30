@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-"""F1: standard YOLO11n blocks vs the as-built network (preregistration_F1_standard_yolo11n.json) -- run by tools/chains/f1_std.json.
+"""F1: standard YOLO11n blocks vs the as-built network (preregistration_F1_standard_yolo11n.json) -- run by scripts/chains/f1_std.json.
 
 Window from the v2 decisions -> train v3 'n_std' seed 0 (v3 runner's train / evaluate, resumed once on failure) -> futility (seed-0
 CST delta vs v2's own seed-0 run of the same configuration <= 0 stops here) -> seed 1 -> scripts/analyze_f1.py (registered rule).
-State: runs/aerotrack_v3/_f1_runner/ (events, logs); the chain owns RUNNING / DONE / FAILED. VAL only.
+State: results/runs/aerotrack_v3/_f1_runner/ (events, logs); the chain owns RUNNING / DONE / FAILED. VAL only.
 """
 import json
 import subprocess
@@ -17,7 +17,7 @@ import v3series as S  # noqa: E402
 
 PRE = S.SERIES / "preregistration_F1_standard_yolo11n.json"
 WINDOW_OF = {"causal_g4": "causal_g4", "sym_g4": "sym_g4", "stock": "ttt"}
-S.STATE = S.REPO / "runs" / "aerotrack_v3" / "_f1_runner"
+S.STATE = S.REPO / "results/runs" / "aerotrack_v3" / "_f1_runner"
 
 
 def committed_clean(p):

@@ -51,7 +51,7 @@ Paper Table VII (IR precision / success, split not stated in the paper): normal 
 | Implementation | `experiments/anti_uav/src/anti_uav_repro/`: torchvision re-implementation of GlobalTrack QG-RCNN (R50-FPN) + DFSC |
 | Configs | `configs/normal_ir.yaml` (DFSC α = 0) and `configs/dfsc_ir.yaml` (α = 1). Both inherit `configs/_base_ir.yaml` and differ only in α |
 | Training | 18 epochs, LR ×0.1 at epochs 12 and 15 (paper-explicit); 1 GPU × batch 2, LR 0.0025 (inferred linear scaling of 0.02; spec S3); SGD; COCO Faster R-CNN init (torchvision COCO_V1, spec S2); seed 0 |
-| Checkpoints | final epoch, no selection. `runs/normal_ir/weights/last.pt` (epoch 18, SHA-256 `ab9890d52684730e…`); `runs/dfsc_ir/weights/last.pt` (epoch 18, `1e8219c56d4b9bfe…`) |
+| Checkpoints | final epoch, no selection. `results/runs/normal_ir/weights/last.pt` (epoch 18, SHA-256 `ab9890d52684730e…`); `results/runs/dfsc_ir/weights/last.pt` (epoch 18, `1e8219c56d4b9bfe…`) |
 | Input | IR 640×512 rescaled to 1000×800 (GlobalTrack 1333×800 rule); JPEG-decoded frames (spec S4) |
 | Data | official Anti-UAV IR splits, frozen manifests: val `a688bf92c46dfc52…` (67 seq), test `1fc351c74f4b29cc…` (91 seq). Label files re-hashed on 2026-09-23: unchanged |
 | Metric | mSA = paper Eq. (1), scored from the official start frame; precision@20 px and success AUC over exist = 1 frames (OTB convention; the paper does not specify) |
@@ -194,7 +194,7 @@ artifacts and are likewise not primary results.
 DFSC-all training was completed, but its test evaluation was interrupted before completion and therefore produces no valid
 final test benchmark result.
 
-- **Training:** `runs/phaseB_dfsc_ir_ism_cross/`, config `configs/phase_b/dfsc_ir_ism_cross.yaml` (ISM modulation =
+- **Training:** `results/runs/phaseB_dfsc_ir_ism_cross/`, config `configs/phase_b/dfsc_ir_ism_cross.yaml` (ISM modulation =
   cross), 18/18 epochs, 2026-09-23 14:00–16:33, rc = 0, `last.pt` SHA-256 `708ce9666ff84f18…`. It was outside the authorised
   scope, and no authorisation record was found.
 - **Test evaluation:** started 16:33:26 with `--final-eval`. It completed 54 of 91 sequences (51,009 of 85,374 frames;
@@ -203,7 +203,7 @@ final test benchmark result.
   `report.md` and no ledger entry was written.
 - **Status:** `NOT A VALID FINAL TEST RESULT`. The 54 prediction files pass the integrity checks and are preserved
   unmodified as an **incomplete/aborted artifact** in
-  `runs/paper_benchmarks_20260922T193853/ablation/phaseB_dfsc_ir_ism_cross__test_IR/`. They cover a non-random prefix of
+  `results/runs/paper_benchmarks_20260922T193853/ablation/phaseB_dfsc_ir_ism_cross__test_IR/`. They cover a non-random prefix of
   the test split and must not be scored, quoted or compared.
 - **Paper Table VI therefore has no reproduced row.** The paper's DFSC-all value (63.99 IR test) has no counterpart here.
 
@@ -286,8 +286,8 @@ No hypothesis is declared to be the cause.
 ## 15. Reproducibility notes
 
 - Exact commands, environment, timestamps and hashes for each evaluation: `PAPER_BENCHMARK_RESULTS.md` §I and each
-  `runs/paper_benchmarks_20260922T193853/<run>__<split>_IR/eval_meta.json`.
-- Driver script for the four authorised evaluations: `runs/paper_benchmarks_20260922T193853/run_benchmarks.sh`
+  `results/runs/paper_benchmarks_20260922T193853/<run>__<split>_IR/eval_meta.json`.
+- Driver script for the four authorised evaluations: `results/runs/paper_benchmarks_20260922T193853/run_benchmarks.sh`
   (≈ 7.9 GPU-hours measured).
 - Rescoring without the model: `evaluate.py --predictions <dir>/predictions --split <split> --checkpoint <same ckpt>`.
   This is a CPU-only rescore and was **not** run for this report. Verification used the forensic scripts described in

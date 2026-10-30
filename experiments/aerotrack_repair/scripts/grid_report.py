@@ -3,8 +3,8 @@
 
     python experiments/aerotrack_repair/scripts/grid_report.py [--epochs 20]
 
-Reads runs/repair_abl_*_e<E>/{run_meta.json,args.json,results.csv}, reports/detector_{val,test}_cap5000.json,
-reports/test_evaluation_ledger.jsonl and runs/repair_grid_e<E>/{events.jsonl,preflight_*.json}; writes
+Reads results/runs/repair_abl_*_e<E>/{run_meta.json,args.json,results.csv}, reports/detector_{val,test}_cap5000.json,
+reports/test_evaluation_ledger.jsonl and results/runs/repair_grid_e<E>/{events.jsonl,preflight_*.json}; writes
 experiments/aerotrack_repair/reports/ablation_grid_e<E>.{json,md}. The attribution rule and target metrics are the
 pre-registered ones in render_report.py (imported, not restated): a factor is credited only if the full model beats
 the ablated model by > 0.02 AP50 on the target metric for BOTH best.pt and last.pt, on the validation set.
@@ -32,21 +32,21 @@ from _bootstrap import REPO_ROOT, REPORTS_DIR
 ONE_COMMAND = r"venv\Scripts\python.exe experiments\aerotrack_repair\scripts\run_grid.py"
 # what this task changed in the code (kept in step with the code; the numbers below all come from files)
 CHANGES = [
-    "`c_model/preflight.py` — T6 required a 36-channel first convolution (the SPD stem). The stride-2 stem of the `no_spd` and "
+    "`src/model/preflight.py` — T6 required a 36-channel first convolution (the SPD stem). The stride-2 stem of the `no_spd` and "
     "`stock_yolo11n` layouts has 9, so both runs would have aborted before epoch 0. T6 now takes the expected width from the live model "
     "(and still requires 9 or 36, so a reload that fell back to 3 channels still fails).",
-    "`b_pipeline/stacked_dataset.py::aerotrack_collate` — inside a DataLoader worker the batch is now stacked straight into shared "
+    "`src/pipeline/stacked_dataset.py::aerotrack_collate` — inside a DataLoader worker the batch is now stacked straight into shared "
     "memory, as torch's own `default_collate` does. On this machine the old stack-then-share path left every batch behind in the "
     "worker (+118 MB per batch per worker, measured); the first launch of `baseline_ctrl` ran the machine out of memory 3.5 min in "
     "and lost a worker. Verified bit-exact against the old stack, flat memory at 4 workers; a loader-memory probe now guards it in the "
     "pre-flight.",
-    "`c_model/aerotrack_trainer.py` — checkpoints are written to a temporary file and renamed atomically, so an interruption can never "
+    "`src/model/aerotrack_trainer.py` — checkpoints are written to a temporary file and renamed atomically, so an interruption can never "
     "leave a truncated `last.pt` (the resume point).",
-    "`c_model/train.py` — `--preflight-only`: build the exact job and run T1–T8, train nothing (used to check all four jobs up front).",
+    "`src/model/train.py` — `--preflight-only`: build the exact job and run T1–T8, train nothing (used to check all four jobs up front).",
     "`scripts/train_ablation.py` — a resumed run keeps ONE `run_meta.json` (first start time, one `attempts` entry per launch, summed "
     "training time, workers used) and refuses a changed recipe; `--resume-from`; `--preflight-only`.",
     "`scripts/evaluate_detector.py` — runs trained with temporal_gap 0 (`single_frame`, `stock_yolo11n`) are scored on t,t,t, the input "
-    "they were trained and validated on (`c_model/train.py::build`), instead of the 3-frame stack; the image set and its hash are unchanged "
+    "they were trained and validated on (`src/model/train.py::build`), instead of the 3-frame stack; the image set and its hash are unchanged "
     "and each row records its `input`. The summary is written after every checkpoint and before the test-ledger line; `--smoke`.",
     "`scripts/render_report.py`, `README.template.md` — grid runs in the run-facts table, an `input` column, verdicts only from finished, "
     "hash-matched runs at one budget (rule and target metrics unchanged), plan items 2–4 computed from the grid, a test-ledger note, the "
@@ -84,7 +84,7 @@ def main():
     test = R.jload(REPORTS_DIR / "detector_test_cap5000.json")
     gs = R.grid_state(det, epochs=E)
     vs = R.verdicts(gs)
-    gdir = REPO_ROOT / "runs" / f"repair_grid_e{E}"
+    gdir = REPO_ROOT / "results/runs" / f"repair_grid_e{E}"
     events = []
     if (gdir / "events.jsonl").exists():
         events = [json.loads(x) for x in (gdir / "events.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]
@@ -186,7 +186,7 @@ def main():
     L = [f"# AeroTrack-Net controlled ablation grid — final report ({E} epochs)", "",
          f"*Generated {time.strftime('%Y-%m-%d %H:%M')} by `experiments/aerotrack_repair/scripts/grid_report.py` from run_meta.json / args.json / "
          f"results.csv, `reports/detector_val_cap5000.json`, `reports/detector_test_cap5000.json`, the test ledger and "
-         f"`runs/repair_grid_e{E}/` (events, pre-flight). No number in this file is typed by hand. Machine-readable twin: `{jpath.name}`.*", "",
+         f"`results/runs/repair_grid_e{E}/` (events, pre-flight). No number in this file is typed by hand. Machine-readable twin: `{jpath.name}`.*", "",
          "## Outcome", "",
          f"- **Workflow: {'COMPLETE' if complete else 'INCOMPLETE'}** — {sum(1 for n, _ in R.GRID if gs['runs'][n].get('finished'))}/4 runs finished, "
          f"{grid_val_done}/8 grid checkpoints evaluated on validation, {grid_test_done}/8 grid checkpoints (+ "
@@ -291,11 +291,11 @@ def main():
     L += ["", "## 6. Generated artefacts", "",
           "- this report: `experiments/aerotrack_repair/reports/ablation_grid_e{0}.md` and `.json`".format(E),
           "- validation / test tables: `experiments/aerotrack_repair/reports/detector_val_cap5000.{json,md}`, `detector_test_cap5000.{json,md}`; "
-          "per-checkpoint reports + PR / size plots in `runs/<run>/eval_repair_<split>_cap5000/<ckpt>/`",
+          "per-checkpoint reports + PR / size plots in `results/runs/<run>/eval_repair_<split>_cap5000/<ckpt>/`",
           "- test ledger: `experiments/aerotrack_repair/reports/test_evaluation_ledger.jsonl`",
           "- regenerated `README.md` and `docs/AEROTRACK_REPAIR_REPORT.md` (`scripts/render_report.py`)",
-          f"- runs: `runs/repair_abl_<ablation>_e{E}/` (run_meta.json, args.json, results.csv, training_curves.png; weights are git-ignored)",
-          f"- grid runner: `runs/repair_grid_e{E}/` — events.jsonl, grid_state.json, preflight_*.json, provenance/ (code diff + copies of "
+          f"- runs: `results/runs/repair_abl_<ablation>_e{E}/` (run_meta.json, args.json, results.csv, training_curves.png; weights are git-ignored)",
+          f"- grid runner: `results/runs/repair_grid_e{E}/` — events.jsonl, grid_state.json, preflight_*.json, provenance/ (code diff + copies of "
           "untracked sources), logs/ (every step's full log; git-ignored by the repository's `*.log` rule)"]
 
     L += ["", "## 7. Errors, interruptions and recoveries", ""]
@@ -321,7 +321,7 @@ def main():
     L += ["", "## 8. What changed in this task", ""] + [f"- {c}" for c in CHANGES]
     L += ["", "## 9. Reproduce", "", "```bat", ONE_COMMAND, "```", "",
           "It re-verifies instead of re-running: finished runs are checked by checkpoint hash, evaluated checkpoints by their rows, and a "
-          "checkpoint with a test-ledger line is never scored on test again. To retrain from scratch, move `runs/repair_abl_*_e20/` aside first."]
+          "checkpoint with a test-ledger line is never scored on test again. To retrain from scratch, move `results/runs/repair_abl_*_e20/` aside first."]
     mpath = REPORTS_DIR / f"ablation_grid_e{E}.md"
     mpath.write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"wrote {mpath} and {jpath} (workflow complete: {complete})")

@@ -1,6 +1,6 @@
 {
   "run": "gen_temporal_fp_g4_full_e20",
-  "weights": "runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt",
+  "weights": "results\\runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt",
   "weights_sha256": "d26641b2cedb77fffc547689eca0d75c62c5ffaeb4601472a9d2c2625766ea5f",
   "checkpoint_epoch": 19,
   "temporal_gap": 4,
@@ -26,7 +26,7 @@
     "content": "xywh (input px) + sigmoid class scores"
   },
   "onnx": {
-    "path": "artifacts\\deploy\\gen_temporal_fp_g4_full_e20\\gen_temporal_fp_g4_full_e20_b1_op18_fp16.onnx",
+    "path": "results\\artifacts\\deploy\\gen_temporal_fp_g4_full_e20\\gen_temporal_fp_g4_full_e20_b1_op18_fp16.onnx",
     "sha256": "901d700a33a250af5100faf785933e83104cd617fef0aa02b33877f37ff87224",
     "bytes": 5389632,
     "opset": 18,

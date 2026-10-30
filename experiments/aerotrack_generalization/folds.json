@@ -1,7 +1,7 @@
 {
  "k": 3,
  "seed": 20260926,
- "source": "TRAIN split of b_pipeline/data_unified/splits.json only",
+ "source": "TRAIN split of data/derived/data_unified/splits.json only",
  "grouping": {
   "anti_uav": "recording session",
   "cst": "sequence, stratified by scene category",

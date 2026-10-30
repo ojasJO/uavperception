@@ -14,11 +14,11 @@
  "changes": {
   "hardware": "registered 'local OMEN RTX 5050 Laptop' -> HPC amritahpc PBS cluster, one Tesla V100-PCIE-16GB per run (sm_70, driver 510.47, CUDA 11.8 runtime); OMEN = deployment / inference only (user directive 2026-10-06)",
   "software": "torch 2.6.0+cu118 / torchvision 0.21.0 / Python 3.11 / Ultralytics 8.4.115 (same) on RHEL 7.9; exact freeze in ~/aerotrack_server/environments/at311_freeze.txt (copied to experiments/hpc/env/ on the OMEN)",
-  "precision_aerotrack": "training and evaluation autocast bf16 -> fp16 (+ GradScaler in training): the V100 has no native bf16 (c_model/precision.py; AEROTRACK_AMP=fp16 recorded in each job's env.json and run_meta)",
+  "precision_aerotrack": "training and evaluation autocast bf16 -> fp16 (+ GradScaler in training): the V100 has no native bf16 (src/model/precision.py; AEROTRACK_AMP=fp16 recorded in each job's env.json and run_meta)",
   "precision_anti_uav": "unchanged (amp: none = fp32)",
   "data_access": "identical corpus files (manifest sha256 f842d039..., splits 30f0e35f...) read through AEROTRACK_PATH_MAP from a byte-verified Linux copy (docs/REMOTE_STATE.md); Anti-UAV frames verified byte-identical before use",
   "concurrency": "runs of the SAME registered stage may train concurrently on different nodes; stage order and every futility / stopping rule are kept exactly as registered (stage 2 is decided only after all stage-1 VAL results exist)",
-  "namespacing": "the v2 series is executed from scratch on the HPC under the registered run names; the HPC checkout excludes the OMEN's v2 artifacts (sparse checkout), and HPC outputs are copied back to the OMEN under experiments/aerotrack_v2/hpc/ and runs/hpc/ (never over the OMEN files)"
+  "namespacing": "the v2 series is executed from scratch on the HPC under the registered run names; the HPC checkout excludes the OMEN's v2 artifacts (sparse checkout), and HPC outputs are copied back to the OMEN under experiments/aerotrack_v2/hpc/ and results/runs/hpc/ (never over the OMEN files)"
  },
  "aerotrack_v2_specifics": {
   "all_runs_retrained": "stock / sym_g4 / causal_g4 x seeds (0, 1 per the futility rule) are trained on the HPC; the OMEN runs v2_stock_s0_e20 (complete, VAL-scored) and v2_sym_g4_s0_e20 (interrupted at epoch 10/20, never scored) are historical evidence and enter no registered comparison",

@@ -1,6 +1,6 @@
 # AeroTrack Flight Deck — user guide
 
-The Flight Deck is the local research laboratory on top of the unified workspace (`registry/`, `aerolab/`). It covers both research
+The Flight Deck is the local research laboratory on top of the unified workspace (`results/registry/`, `src/aerolab/`). It covers both research
 directions:
 - Direction A, the AeroTrack multi-source system.
 - Direction B, the Anti-UAV (2021) DFSC / GlobalTrack paper reproduction.
@@ -13,7 +13,7 @@ Design notes: `FLIGHT_DECK_IMPLEMENTATION_PLAN.md`. Layout: `ARCHITECTURE.md`. V
 studio.bat                    :: http://localhost:8501 (localhost only); studio.bat 8600 for another port
 ```
 
-The same thing without the launcher: `venv\Scripts\python.exe -m streamlit run studio\app.py --server.address localhost`.
+The same thing without the launcher: `venv\Scripts\python.exe -m streamlit run app\app.py --server.address localhost`.
 Stop it with Ctrl+C in that window.
 
 ## First experiment, then a comparison
@@ -53,7 +53,7 @@ Stop it with Ctrl+C in that window.
 ## Presets: what each one is based on
 
 Every preset shows its **basis**. Nothing is invented to fill a preset: a preset with no qualifying sequence says why
-(`aerolab/sequences.py`).
+(`src/aerolab/sequences.py`).
 
 | basis | presets |
 |---|---|
@@ -91,9 +91,9 @@ boxes and shows |Δ| against the registered record (0 on every check).
   - Differences are in percentage points, paired by sequence.
   - A bootstrap CI is shown only with at least 5 sequences, and no significance claim is made from short runs.
   - A cross-direction pair is labelled as such (different training data and provenance).
-- **Outputs.** Each experiment writes `runs/studio/evals/<fd|bench|fc>-<timestamp>-<id>/`: `config.json`, `manifest.json`,
+- **Outputs.** Each experiment writes `results/runs/studio/evals/<fd|bench|fc>-<timestamp>-<id>/`: `config.json`, `manifest.json`,
   `per_sequence.json`, `timing.json`, `log.txt`, and `predictions/<model>/<sequence>.json`. Each model also gets one line in
-  `runs/studio/index.jsonl`.
+  `results/runs/studio/index.jsonl`.
   - Historical files are never rewritten.
   - A cancelled sequence is saved with `complete: false` and no metric.
 - **Resources.**
@@ -107,8 +107,8 @@ boxes and shows |Δ| against the registered record (0 on every check).
 From weakest to strongest claim:
 - **registered**: the checkpoint is the identity of a reported, pre-registered result.
 - **integrity-verified**: its SHA-256 equals an independent record.
-- **load-verified** and **inference-verified**: `tools/verify_adapters.py` loaded it and ran a small VAL inference on this machine.
-- **evaluation-verified**: `tools/verify_evaluations.py` ran a fresh whole-sequence evaluation that reproduces a recorded per-sequence VAL SA within tolerance.
+- **load-verified** and **inference-verified**: `scripts/verify_adapters.py` loaded it and ran a small VAL inference on this machine.
+- **evaluation-verified**: `scripts/verify_evaluations.py` ran a fresh whole-sequence evaluation that reproduces a recorded per-sequence VAL SA within tolerance.
 - **historical results**: the checkpoint has imported result records.
 - **recorded results only**: no inference adapter exists.
 - **not runnable locally**: the Vault shows the exact blocker.
@@ -116,7 +116,7 @@ From weakest to strongest claim:
 ## Commands
 
 ```bat
-venv\Scripts\python.exe tools\verify_evaluations.py            :: fresh vs recorded VAL per checkpoint -> registry/verification/evaluation_checks.json
+venv\Scripts\python.exe scripts\verify_evaluations.py            :: fresh vs recorded VAL per checkpoint -> results/registry/verification/evaluation_checks.json
 venv\Scripts\python.exe -m unittest tests.test_flight_deck -v
 venv\Scripts\python.exe -m unittest tests.test_flight_deck_ui -v
 ```

@@ -10,7 +10,7 @@ with the v2 campaign. Order (as registered): stage 1 = causal_g1 / g2 / g8 at se
 v2 campaign did not produce them) -> futility (seed-0 CST delta vs stock <= 0 drops a window) -> stage 2 = seed 1 of the
 surviving windows (+ stock_s1, and sym_g4_s1 when W3 needs it) -> scripts/analyze_c2.py. Finished trainings / evaluations are
 never redone. Refuses to start unless the registration is committed and unmodified and corpus v2 is verified.
-State: runs/aerotrack_temporal/_c2_runner/ (RUNNING / DONE / FAILED / PAUSED-compatible waiting, events.jsonl, logs).
+State: results/runs/aerotrack_temporal/_c2_runner/ (RUNNING / DONE / FAILED / PAUSED-compatible waiting, events.jsonl, logs).
 """
 import json
 import os
@@ -22,7 +22,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 V2 = REPO / "experiments" / "aerotrack_v2" / "scripts"
-STATE = REPO / "runs" / "aerotrack_temporal" / "_c2_runner"
+STATE = REPO / "results/runs" / "aerotrack_temporal" / "_c2_runner"
 PRE = REPO / "experiments" / "aerotrack_temporal" / "preregistration" / "C2_causal_windows.json"
 CORPUS_REPORT = REPO / "experiments" / "cst_completion" / "reports" / "corpus_v2.json"
 PY = sys.executable
@@ -64,7 +64,7 @@ def train(config, seed):
         event(kind="skip_trained", run=name)
         return name
     base = [PY, "-u", str(V2 / "train_v2.py"), "--config", config, "--seed", str(seed)]
-    exists = (REPO / "runs" / name / "run_meta.json").exists()
+    exists = (REPO / "results/runs" / name / "run_meta.json").exists()
     rc = sh(base + (["--resume"] if exists else []), f"train_{name}")
     if rc != 0 and not R.trained(name):
         event(kind="retry_resume", run=name)

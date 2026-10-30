@@ -4,7 +4,7 @@ that cannot collapse to "no motion", per-domain, selection on VAL, one pass on T
 
     python experiments/aerotrack_repair/scripts/lstm_repair.py [--epochs 30]
 
-Audit finding: `c_model/lstm_forecaster.py` trains on MSE over cumulative positions of near-zero-mean
+Audit finding: `src/model/lstm_forecaster.py` trains on MSE over cumulative positions of near-zero-mean
 displacements; the trained model outputs ~0 regardless of input (ADE == zero-velocity baseline to 3 s.f.)
 and its "+26 % over Kalman" is the margin by which *predicting no motion* beats constant velocity on
 gimbal-jittered footage. This script keeps the model, data, windows and metric (`ade_fde`) of the original
@@ -14,10 +14,10 @@ and changes ONE thing per variant:
     residual_lv   TrajLSTM, output = last observed displacement + f(x) (constant-velocity prior; f learns deviations)
     residual_mv4  TrajLSTM, output = mean of last 4 displacements + f(x)
 
-Baselines (audit/bench_forecaster.py): zero_vel, last_vel, mean_vel_4/8/16, project Kalman, Kalman tuned on VAL.
+Baselines (scripts/audit/bench_forecaster.py): zero_vel, last_vel, mean_vel_4/8/16, project Kalman, Kalman tuned on VAL.
 Checkpoint selection: best VAL ADE per variant (as the original). The TEST table is produced once, at the end,
 for the selected checkpoints and all baselines. Per-domain (Anti-UAV / CST) and sudden-jump / smooth subsets.
-Outputs: runs/lstm_forecaster_repair/{forecaster_<variant>.pt, forecast_repair_report.json, report.md}
+Outputs: results/runs/lstm_forecaster_repair/{forecaster_<variant>.pt, forecast_repair_report.json, report.md}
 """
 from __future__ import annotations
 
@@ -38,7 +38,7 @@ from anti_uav_repro.utils.repro import env_snapshot, git_info, write_json
 
 from _bootstrap import REPO_ROOT
 
-OUT_DIR = REPO_ROOT / "runs" / "lstm_forecaster_repair"
+OUT_DIR = REPO_ROOT / "results/runs" / "lstm_forecaster_repair"
 VARIANTS = ("original", "residual_lv", "residual_mv4")
 
 

@@ -2,7 +2,7 @@
 """Honest side-by-side demo on a VAL sequence chosen by a label-based rule (repair item 8).
 
     python experiments/aerotrack_repair/scripts/make_demo.py \
-        --left runs/aerotrack_spd_v1/weights/last.pt --right runs/aerotrack_spd_finetuned/weights/best.pt
+        --left results/runs/aerotrack_spd_v1/weights/last.pt --right results/runs/aerotrack_spd_finetuned/weights/best.pt
 
 Sequence rule (no model output involved): among Anti-UAV **IR VAL** sequences, the first in sorted order whose labels
 contain at least `--min-occluded` exist=0 frames (i.e. a genuine out-of-view event). The clip starts `--before` frames
@@ -128,7 +128,7 @@ def main():
                 canvas = cv2.resize(canvas, None, fx=a.scale, fy=a.scale, interpolation=cv2.INTER_AREA)
             gif_frames.append(canvas[:, :, ::-1])
         per_frame.append(rec)
-    out = REPO_ROOT / "assets" / f"repair_demo_val_{key}.gif"
+    out = REPO_ROOT / "docs/assets" / f"repair_demo_val_{key}.gif"
     try:
         import imageio.v2 as imageio
         imageio.mimsave(out, gif_frames, duration=1.0 / a.fps, loop=0)

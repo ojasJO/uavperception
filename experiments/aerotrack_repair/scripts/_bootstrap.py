@@ -6,7 +6,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[3]
 REPAIR_DIR = REPO_ROOT / "experiments" / "aerotrack_repair"
 REPORTS_DIR = REPAIR_DIR / "reports"
-for p in (REPO_ROOT / "c_model", REPO_ROOT / "b_pipeline", REPO_ROOT / "experiments" / "anti_uav" / "src"):
+for p in (REPO_ROOT / "src/model", REPO_ROOT / "src/pipeline", REPO_ROOT / "experiments" / "anti_uav" / "src"):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 

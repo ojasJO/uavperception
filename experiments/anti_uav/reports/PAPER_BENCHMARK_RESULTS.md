@@ -234,7 +234,7 @@ Even so, **one variant, DFSC-all, was trained**: `phaseB_dfsc_ir_ism_cross`, 18/
 `last.pt` SHA-256 `708ce966…`. That was done without a recorded authorisation. DFSC-all training was completed, but its test
 evaluation was interrupted before completion and therefore produces no valid final test benchmark result: the machine shut
 down after 54 of 91 test sequences. No `metrics.json`, `report.md` or ledger entry exists for it. The 54 partial prediction
-files are kept in `runs/paper_benchmarks_20260922T193853/ablation/phaseB_dfsc_ir_ism_cross__test_IR/` as an
+files are kept in `results/runs/paper_benchmarks_20260922T193853/ablation/phaseB_dfsc_ir_ism_cross__test_IR/` as an
 **incomplete/aborted artifact**. They must not be scored or quoted as a result. The other five variants were not trained.
 Every variant is reachable through existing config switches and needs no new code.
 
@@ -570,12 +570,12 @@ Benchmark run directory: `experiments\anti_uav\runs\paper_benchmarks_20260922T19
 | `metric_independent_audit.json` | the from-scratch metric re-computation and its diff |
 | `curve_data.json` | the plotted success/precision curves as numbers |
 | `seed_variance/` | the seed-1 test evaluations (predictions, metrics, logs). *[corrected]* Supplementary / unscoped. |
-| `ablation/` | *[corrected]* the `DFSC-all` training log (training complete; checkpoints in `runs/phaseB_dfsc_ir_ism_cross/`) and an **incomplete, interrupted** test evaluation (54/91 prediction files, no metrics, no report, no ledger entry; not a result) |
+| `ablation/` | *[corrected]* the `DFSC-all` training log (training complete; checkpoints in `results/runs/phaseB_dfsc_ir_ism_cross/`) and an **incomplete, interrupted** test evaluation (54/91 prediction files, no metrics, no report, no ledger entry; not a result) |
 | `run_benchmarks.sh`, `run_seed_variance.sh`, `run_ablation_dfsc_all.sh` | the exact driver scripts |
 
 Every TEST evaluation is additionally recorded in the append-only ledger `reports/test_evaluation_ledger.jsonl`. Earlier evaluations were not modified or overwritten. *[corrected]* Output of the authorised evaluations is confined to the
 benchmark run directory plus the generated files in `reports/`. The unscoped DFSC-all training also wrote
-`runs/phaseB_dfsc_ir_ism_cross/` and `configs/phase_b/dfsc_ir_ism_cross.yaml`.
+`results/runs/phaseB_dfsc_ir_ism_cross/` and `configs/phase_b/dfsc_ir_ism_cross.yaml`.
 
 ### Scope actually executed *[corrected]*
 

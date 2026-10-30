@@ -10,7 +10,7 @@ from pathlib import Path
 from streamlit.testing.v1 import AppTest
 
 REPO = Path(__file__).resolve().parents[1]
-APP = str(REPO / "studio" / "app.py")
+APP = str(REPO / "app" / "app.py")
 HAVE_CST = (REPO / "data" / "cst_anti_uav_full" / "CST-AntiUAV" / "CST-AntiUAV" / "val").exists()
 
 

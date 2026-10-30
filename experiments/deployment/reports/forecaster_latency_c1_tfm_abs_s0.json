@@ -1,7 +1,7 @@
 {
  "generated": "2026-10-12T14:40:15+0530",
  "name": "c1_tfm_abs_s0",
- "onnx": "runs/aerotrack_temporal/c1/onnx/c1_tfm_abs_s0.onnx",
+ "onnx": "results/runs/aerotrack_temporal/c1/onnx/c1_tfm_abs_s0.onnx",
  "host": "Togo",
  "cpu": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
  "iters": 2000,

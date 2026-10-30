@@ -1,6 +1,6 @@
 """Shared definitions for the generalization series: configurations, initialisation, fold samples, metrics.
 
-The recipe is the repair grid's (`c_model/train.py` STAGES["baseline"], 20 epochs x 25,000 samples, batch 32 x acc 2); a
+The recipe is the repair grid's (`src/model/train.py` STAGES["baseline"], 20 epochs x 25,000 samples, batch 32 x acc 2); a
 configuration changes exactly one factor relative to `stock`, and every configuration starts from the SAME function
 (COCO YOLO11n on frame t) thanks to the function-preserving initialisation (verified in reports/diag_training.json)."""
 import hashlib
@@ -92,7 +92,7 @@ def equivalence_check(model, layout):
         y_ttt = model(torch.cat([t, t, t], 1).to(dev))[0].cpu()
         out = {"ignores_neighbours_max_abs_diff": float((y - y_ttt).abs().max())}
         if layout == "spd":
-            ref = build_model(S.REPO / "c_model" / YAML["stride"], ch=9, nc=2)
+            ref = build_model(S.REPO / "src/model" / YAML["stride"], ch=9, nc=2)
             rs = ref.state_dict()
             ms = model.state_dict()
             for k in rs:

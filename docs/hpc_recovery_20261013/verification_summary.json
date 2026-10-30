@@ -120,189 +120,189 @@
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "019748daf9a353bf6ab81c1de878c5d3fe7fc90629af1964fe42dd923196c219",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_abs_s1.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "19dda45ae779af596749741a05b4137905ff2826e043fc8c6b21ee9dbb62c5c2",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_noabs_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "1b51b507cc80b6d77d49d170716d321df6e421928c6270d2b7c3043625e666b6",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_abs_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "22669917f4e89057501af3a87afcedbbd7363bb02708a25a52ce02fb0d98345c",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_gru_abs_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "26e6a4faa2b32f2d9d16e54e5773b796cb045a17b11c0b8f1e837db750a19f51",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_mlp_abs_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "3b4baf92ea557949b952ee133a21460ede32aab0269d5a9d57d31cd440fc8222",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_mlp_abs_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "6426cffb464380832123c42f5ef0e0f962e08a9a49f30bdb167760565755cce9",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_noabs_s1.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "8c763505df1a6ede95c1c317df8ecc7f1c9acbd06a9a930f4db591530430d476",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_mlp_abs_s1.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "97bb961c47c0183f397d3f96ce3cf0f29c8e30aa556bcf25433bd093b1997655",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_gru_abs_s1.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "982349662b96a89cf1239adcf66a29f9b980afd90c1550aa0268d53d3c21e86e",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_aug_s1.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "ac8d40c82e76fdf7d2d7e0a2a785521dc115b35ab5933499bb407011a5fc123d",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_aug_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "d61379956f34c2e705411623dac5146f7af88e34cfbb7e547b2a1a345825ec05",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_aug_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "dfd8ee3ad92e90be6a06394d0893759f55968b87aa1ad201f889465301ad986c",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_abs_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "e4adbbf7d372dfb61a1ddda5102164482f8c959d5d859841c369270e56489414",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_tfm_noabs_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry.json",
    "sha256": "f56398093130a3c91500b92660b2cc5c36f164d5a02fe2b48d266c479a7f4ab6",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1_gru_abs_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "623809734a60668db7d424981b53805a0eab7e03a656491498c0f87a9e767072",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_cst_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "72b131c20ac917846c80f7944eacc4f5dbaf9d515744494994c8d7962d5a1c7b",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_antiuav_IR_s1.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "80458020a7a9500ddef50ebb046e2bb385e8c9570041f03fd29f184055a4b224",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_cst_s1.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "8104ca5a1e6f14e1ab0c6bd8bf2f9a839233b3f8af0ecf1bdfd2ca9cbaca9887",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_cst_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "978c7323b4bd89e9ece6366a15ce83ebe01cbde0ab07e2e106888cec2171de17",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_domtok_s1.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "9b6a33dec9c6e10da69488ba94fed861d1d832b114fce193decf409f83a46a58",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_antiuav_RGB_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "a1f2e63c74c92ad70d1c55ae69f5747d5dbf80376cd40222c6698ff9278b53c9",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_domtok_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "b9e12f6c91857f74b95b9f9439cbaccd1707810aa8d508c77bd8fe0d04eb2734",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_antiuav_IR_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "d0ca597f40bab2e667ffac4a78deeddd1b1e6da569f70de9e2b16e425abdee18",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_domtok_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "e185a379ed8d514ee17cb9397099df150c1e08cf0c0cb2b01a8db0a34af369e2",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_antiuav_IR_s2.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "e9cb3d191ca8a73ed5c82474bb7b484c78315d10e282daa8b45712f6b6aa8c63",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_antiuav_RGB_s0.pt"
    ]
   },
   {
-   "registry": "runs/aerotrack_temporal/c1/learned_registry_c1c.json",
+   "registry": "results/runs/aerotrack_temporal/c1/learned_registry_c1c.json",
    "sha256": "fb2c6782a2f55b12f603fc2ab8d6699bea3a1385f7954db2be3afa0c520de6d5",
    "backup_files": [
     "source/runs/aerotrack_temporal/c1/c1c_tfm_perdom_antiuav_RGB_s1.pt"

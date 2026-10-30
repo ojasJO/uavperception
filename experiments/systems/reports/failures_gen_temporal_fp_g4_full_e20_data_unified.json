@@ -2,7 +2,7 @@
  "generated": "2026-10-05T07:19:41+0530",
  "run": "gen_temporal_fp_g4_full_e20",
  "corpus": "data_unified",
- "cache": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val",
+ "cache": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val",
  "ste_params": "cross-fitted per half from track_gen_temporal_fp_g4_full_e20_data_unified.json",
  "selection": "quantiles (0.1, 0.3, 0.5, 0.7, 0.9) of the severity measure",
  "frames_per_group": {
@@ -79,7 +79,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": 0.0867687480296343,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_103046_1_2__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_103046_1_2__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_7__RGB",
@@ -102,7 +102,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 0.1318142826506541,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_7__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_7__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_144550_1_7__IR",
@@ -125,7 +125,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.5,
     "severity": 0.17129965607547404,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_7__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_7__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_144550_1_4__RGB",
@@ -148,7 +148,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 0.22010274148278974,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_4__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_4__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_183400_1_1__RGB",
@@ -171,7 +171,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 0.3088409490818538,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183400_1_1__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183400_1_1__RGB.npz"
    }
   ],
   "false_positive": [
@@ -191,7 +191,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": 0.1484375,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_152412_1_3__RGB",
@@ -209,7 +209,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 0.453125,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -227,7 +227,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.5,
     "severity": 0.578125,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -245,7 +245,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 0.6640625,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -263,7 +263,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 0.75390625,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    }
   ],
   "false_negative": [
@@ -283,7 +283,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": -93.0,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_2__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_2__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_183941_1_5__RGB",
@@ -301,7 +301,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": -51.0,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183941_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183941_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_133630_1_9__IR",
@@ -319,7 +319,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.5,
     "severity": -30.0,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_133630_1_9__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_133630_1_9__IR.npz"
    },
    {
     "seq": "cst_train_cn_mountains_9",
@@ -342,7 +342,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": -16.257204055786133,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_9.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_9.npz"
    },
    {
     "seq": "cst_train_building_1",
@@ -365,7 +365,7 @@
     "group": "cst_IR",
     "quantile": 0.9,
     "severity": -6.480923652648926,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_1.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_1.npz"
    }
   ],
   "micro_miss": [
@@ -390,7 +390,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": -0.000267826858907938,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_18.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_18.npz"
    },
    {
     "seq": "antiuav_val_20190926_195921_1_6__RGB",
@@ -408,7 +408,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": -0.0002126736111111111,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_6__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_6__RGB.npz"
    },
    {
     "seq": "cst_train_building_20",
@@ -426,7 +426,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": -0.00010350667871534824,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_20.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_20.npz"
    },
    {
     "seq": "cst_train_building_4",
@@ -444,7 +444,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": -6.326364818960428e-05,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_4.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_4.npz"
    },
    {
     "seq": "antiuav_val_20190925_213001_1_1__IR",
@@ -462,7 +462,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.9,
     "severity": -0.0,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_1__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_1__IR.npz"
    }
   ],
   "occlusion_failure": [
@@ -482,7 +482,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 0,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_8.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_8.npz"
    },
    {
     "seq": "cst_train_building_38",
@@ -500,7 +500,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": 3,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_38.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_38.npz"
    },
    {
     "seq": "cst_train_cn_mountains_8",
@@ -518,7 +518,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 6,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_8.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_8.npz"
    },
    {
     "seq": "cst_train_building_34",
@@ -536,7 +536,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": 10,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
    },
    {
     "seq": "cst_train_building_34",
@@ -554,7 +554,7 @@
     "group": "cst_IR",
     "quantile": 0.9,
     "severity": 20,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
    }
   ],
   "reacquisition_success": [
@@ -580,7 +580,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.1,
     "severity": 0,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_195921_1_5__RGB",
@@ -604,7 +604,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 0,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_5__RGB.npz"
    },
    {
     "seq": "cst_train_cn_mountains_17",
@@ -628,7 +628,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 0,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_17.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_17.npz"
    },
    {
     "seq": "cst_train_building_34",
@@ -647,7 +647,7 @@
     "group": "cst_IR",
     "quantile": 0.7,
     "severity": 1,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
    },
    {
     "seq": "antiuav_val_20190925_152412_1_3__RGB",
@@ -671,7 +671,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 6,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__RGB.npz"
    }
   ],
   "reacquisition_failure": [
@@ -696,7 +696,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 30,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_7.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_7.npz"
    }
   ],
   "identity_failure": [
@@ -721,7 +721,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.1,
     "severity": 0.484375,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_1__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_1__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_195921_1_6__RGB",
@@ -744,7 +744,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 0.53125,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_6__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_6__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_141816_1_6__IR",
@@ -767,7 +767,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.5,
     "severity": 0.63671875,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_6__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_6__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_183941_1_3__IR",
@@ -790,7 +790,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.7,
     "severity": 0.6796875,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183941_1_3__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183941_1_3__IR.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_7__IR",
@@ -813,7 +813,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.9,
     "severity": 0.7890625,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_7__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_7__IR.npz"
    }
   ],
   "trajectory_overshoot": [
@@ -846,7 +846,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.1,
     "severity": 0.6374304657327996,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_7__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_7__IR.npz"
    },
    {
     "seq": "cst_train_building_11",
@@ -877,7 +877,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": 2.294349925161315,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_11.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_11.npz"
    },
    {
     "seq": "antiuav_val_20190925_205804_1_5__IR",
@@ -908,7 +908,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.5,
     "severity": 5.205188380171961,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_205804_1_5__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_205804_1_5__IR.npz"
    },
    {
     "seq": "antiuav_val_20190925_183946_1_3__IR",
@@ -939,7 +939,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.7,
     "severity": 12.367111426943707,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_183946_1_3__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_183946_1_3__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_195921_1_1__RGB",
@@ -970,7 +970,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 45.42619553421381,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_1__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_1__RGB.npz"
    }
   ],
   "trajectory_undershoot": [
@@ -1003,7 +1003,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.1,
     "severity": 3.151199799220046,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_133516_1_2__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_133516_1_2__IR.npz"
    },
    {
     "seq": "antiuav_val_20190925_210802_1_3__RGB",
@@ -1034,7 +1034,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 15.291361558144404,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_210802_1_3__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_210802_1_3__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_141816_1_2__IR",
@@ -1065,7 +1065,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.5,
     "severity": 42.418627084039166,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_2__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_2__IR.npz"
    },
    {
     "seq": "antiuav_val_20190926_183400_1_4__RGB",
@@ -1096,7 +1096,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 101.66471759747854,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183400_1_4__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183400_1_4__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_213001_1_3__IR",
@@ -1127,7 +1127,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.9,
     "severity": 260.4445816528798,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_3__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_3__IR.npz"
    }
   ],
   "high_uncertainty": [
@@ -1152,7 +1152,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.1,
     "severity": 98263.65794652746,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_7__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_7__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_130434_1_1__RGB",
@@ -1175,7 +1175,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 114627.96692542954,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_130434_1_1__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_130434_1_1__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_142435_1_9__RGB",
@@ -1198,7 +1198,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.5,
     "severity": 144989.10434967768,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_142435_1_9__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_142435_1_9__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_130434_1_5__RGB",
@@ -1221,7 +1221,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.7,
     "severity": 172536.62405470878,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_130434_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_130434_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190926_141816_1_2__RGB",
@@ -1244,7 +1244,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 234555.12983799304,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_2__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_2__RGB.npz"
    }
   ],
   "low_confidence_correct": [
@@ -1269,7 +1269,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 0.02460937499999999,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_38.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_38.npz"
    },
    {
     "seq": "cst_train_cn_mountains_9",
@@ -1292,7 +1292,7 @@
     "group": "cst_IR",
     "quantile": 0.3,
     "severity": 0.08222656249999999,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_9.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_9.npz"
    },
    {
     "seq": "cst_train_building_1",
@@ -1315,7 +1315,7 @@
     "group": "cst_IR",
     "quantile": 0.5,
     "severity": 0.1271484375,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_1.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_1.npz"
    },
    {
     "seq": "antiuav_val_20190925_133630_1_9__IR",
@@ -1338,7 +1338,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.7,
     "severity": 0.17744140625,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_133630_1_9__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_133630_1_9__IR.npz"
    },
    {
     "seq": "antiuav_val_20190925_140917_1_3__RGB",
@@ -1361,7 +1361,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 0.22822265625,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_140917_1_3__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_140917_1_3__RGB.npz"
    }
   ],
   "high_confidence_wrong": [
@@ -1381,7 +1381,7 @@
     "group": "cst_IR",
     "quantile": 0.1,
     "severity": 0.70703125,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_15.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_15.npz"
    },
    {
     "seq": "antiuav_val_20190925_101846_1_4__RGB",
@@ -1404,7 +1404,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.3,
     "severity": 0.7421875,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_101846_1_4__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_101846_1_4__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -1422,7 +1422,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.5,
     "severity": 0.75390625,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    },
    {
     "seq": "antiuav_val_20190925_143900_1_2__IR",
@@ -1445,7 +1445,7 @@
     "group": "anti_uav_IR",
     "quantile": 0.7,
     "severity": 0.77734375,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_2__IR.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_2__IR.npz"
    },
    {
     "seq": "antiuav_val_20190925_222534_1_5__RGB",
@@ -1463,7 +1463,7 @@
     "group": "anti_uav_RGB",
     "quantile": 0.9,
     "severity": 0.796875,
-    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+    "source": "results/runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
    }
   ]
  },

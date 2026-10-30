@@ -9,7 +9,7 @@ superseded below. Format: id · date · decision · evidence · alternatives · 
 ### D-2026-10-06-01 · No training on the OMEN; the HPC is the sole training host
 - **Decision**: from 2026-10-06 every training run (and every multi-hour research evaluation) runs on the HPC. The OMEN RTX 5050
   is used only for deployment, export, inference benchmarks and smoke tests. The local GPU queue of 2026-10-05
-  (`runs/aerotrack_v2/_runner`, chains `post_v2`, `post_v2_causal_caches`, `f1_std`, `x1_cst_only`, `h3_resume_after_v2`,
+  (`results/runs/aerotrack_v2/_runner`, chains `post_v2`, `post_v2_causal_caches`, `f1_std`, `x1_cst_only`, `h3_resume_after_v2`,
   `c2_launch`, `cpu_trackc_window`) is **retired, not relaunched**; its stale `RUNNING` sentinels are left untouched as evidence.
 - **Evidence**: user directive (mission brief 2026-10-06, rules 9–10); the OMEN hung with bugcheck 0x19C at 19:59 on 2026-10-05
   after `v2_sym_g4_s0_e20`'s throughput fell from ~61 to ~0.5 img/s at ~17:17 (see `docs/FAILURES_AND_RECOVERY.md` F-01).
@@ -17,12 +17,12 @@ superseded below. Format: id · date · decision · evidence · alternatives · 
 
 ### D-2026-10-06-02 · Data reach the HPC as pristine archives and are rebuilt there; nothing derived is trusted without a check
 - **Decision**: push `datasets/` archives (Anti-UAV-RGBT.zip 6.0 GB, CST z01–z10 + .zip 23.3 GB, Det-Fly 0.33 GB) with
-  `tools/hpc/push_files.sh` (resumable append, sha256 on both sides); extract on Linux into a layout mirroring the OMEN's
+  `scripts/hpc/push_files.sh` (resumable append, sha256 on both sides); extract on Linux into a layout mirroring the OMEN's
   `data/`; transfer the small derived files (manifest, splits, label/hardness caches, label txt) as a tar; obtain Anti-UAV frames
   by re-running the project's own decode on the HPC **only if** a byte comparison against OMEN frames passes, else transfer them.
 - **Evidence**: OMEN→HPC throughput 5.7 MB/s (≈ 20 GB/h); archives 30 GB vs ~1.07 M decoded frames; manifest rows are keyed by
   row number in the label cache (path-independent); CST/Det-Fly images are read directly from `data/` (no junction in any
-  manifest path); Windows junctions (`b_pipeline/data_unified*/{cst,det_fly}`) are therefore never copied.
+  manifest path); Windows junctions (`data/derived/data_unified*/{cst,det_fly}`) are therefore never copied.
 - **Alternatives**: rsync the derived tree (no rsync on the OMEN; ~10× the bytes; junction hazards); download from the original
   hosts on the HPC (possible, but bytes would still have to be compared with ours). **Why**: least bytes, exact provenance.
 
@@ -42,7 +42,7 @@ superseded below. Format: id · date · decision · evidence · alternatives · 
   precision and software. The OMEN runs (`v2_stock_s0_e20` complete; `v2_sym_g4_s0_e20` interrupted at epoch 10/20) are historical
   evidence, never mixed into the comparison; `v2_stock_s0_e20` (OMEN) vs its HPC twin is reported as a host/precision
   reproducibility check. The amendment is committed before the first HPC run (`experiments/aerotrack_v2/amendment_A1_hpc.json`).
-- **Evidence**: `c_model/aerotrack_trainer.py:246` defaults to `amp_dtype="bf16"`; the V100 has no native bf16 (emulation is
+- **Evidence**: `src/model/aerotrack_trainer.py:246` defaults to `amp_dtype="bf16"`; the V100 has no native bf16 (emulation is
   slow and numerically different); torch on the HPC is 2.6.0+cu118 vs 2.13.0+cu130 on the OMEN (driver 510 cannot run cu13).
 - **Alternatives**: resume `sym_g4_s0` from its OMEN epoch-10 checkpoint on the HPC (rejected: one run would span two hosts and
   precisions); fp32 on the V100 (rejected: ~3–5× slower, and still differs from the bf16 runs). **Why**: comparisons stay

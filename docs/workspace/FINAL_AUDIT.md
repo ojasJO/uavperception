@@ -8,27 +8,27 @@ Companion to `INITIAL_AUDIT.md` (state before) and `ARCHITECTURE.md` / `OPERATIN
 
 | path | what |
 |---|---|
-| `aerolab/` | shared layer: `paths`, `hashing`, `schemas` (versioned JSON schemas), `registry`, `test_lock`, `compare`, `data`, `adapters/` (`aerotrack_detector`, `globaltrack`, `forecaster`), `evaluation`, `failures`, `health` |
-| `studio/` + `studio.bat` | Streamlit studio, 8 pages, localhost-only launcher |
-| `registry/catalog/*.json` | hand-curated provenance: directions, papers (citation status), 13 model families + run roles, 7 protocols, 7 datasets, findings / limitations |
-| `registry/*.json, *.csv, *.jsonl` | generated registry (models, files, lineage, duplicates, datasets, experiments, build summary), adapter evidence, restore ledger |
-| `tools/build_workspace_registry.py`, `tools/verify_adapters.py`, `tools/restore_from_recovery.py`, `tools/render_workspace_docs.py` | registry build, adapter verification, backup restore (copy-only), generated README tables |
+| `src/aerolab/` | shared layer: `paths`, `hashing`, `schemas` (versioned JSON schemas), `registry`, `test_lock`, `compare`, `data`, `adapters/` (`aerotrack_detector`, `globaltrack`, `forecaster`), `evaluation`, `failures`, `health` |
+| `app/` + `studio.bat` | Streamlit studio, 8 pages, localhost-only launcher |
+| `results/registry/catalog/*.json` | hand-curated provenance: directions, papers (citation status), 13 model families + run roles, 7 protocols, 7 datasets, findings / limitations |
+| `results/registry/*.json, *.csv, *.jsonl` | generated registry (models, files, lineage, duplicates, datasets, experiments, build summary), adapter evidence, restore ledger |
+| `scripts/build_workspace_registry.py`, `scripts/verify_adapters.py`, `scripts/restore_from_recovery.py`, `scripts/render_workspace_docs.py` | registry build, adapter verification, backup restore (copy-only), generated README tables |
 | `tests/test_workspace_registry.py` (30), `tests/test_workspace_adapters.py` (12), `tests/test_studio_ui.py` (10) | new tests |
 | `docs/research/aero_multi_paper/README.md`, `docs/research/anti_uav_paper_reproduction/README.md` | per-direction READMEs (provenance matrix; generated result tables) |
-| `docs/workspace/{INITIAL_AUDIT,ARCHITECTURE,OPERATING_GUIDE,FINAL_AUDIT}.md`, `registry/README.md` | documentation |
-| `runs/<18 restored run dirs>/{args.json, init_check.json, results.csv, run_meta.json, training_curves.png}` | run metadata copied from the backup (2.7 MB; tracked like every other run's metadata; weights git-ignored) |
+| `docs/workspace/{INITIAL_AUDIT,ARCHITECTURE,OPERATING_GUIDE,FINAL_AUDIT}.md`, `results/registry/README.md` | documentation |
+| `results/runs/<18 restored run dirs>/{args.json, init_check.json, results.csv, run_meta.json, training_curves.png}` | run metadata copied from the backup (2.7 MB; tracked like every other run's metadata; weights git-ignored) |
 
 **Modified**
 
 | path | change |
 |---|---|
-| `tools/hpc/recovery_manifest.py` | optional `--out DIR` (default behaviour unchanged) so the backup can be verified without writing into it |
+| `scripts/hpc/recovery_manifest.py` | optional `--out DIR` (default behaviour unchanged) so the backup can be verified without writing into it |
 | `README.md` + `experiments/aerotrack_repair/README.template.md` | identical "Start here: the unified research workspace" block (no numbers), so a future `render_report.py` run keeps it |
-| `.gitignore` | `runs/studio/`, `registry/.hash_cache.json` |
+| `.gitignore` | `results/runs/studio/`, `results/registry/.hash_cache.json` |
 | `docs/MASTER_STATE.md`, `docs/SESSION_HANDOFF.md` | current state; the stale 2026-10-06 trailing sections of MASTER_STATE are now labelled historical (text kept) |
 
 **Copied out of the recovery backup (git-ignored weights)**: 137 files, 2.32 GB, each SHA-256-verified before being moved into place
-(`registry/migrations/restore_manifest.json`). This covers the X1 / X2 / F1 `v3_*` runs, 10 v2-campaign runs, `laptop_v2_stock_s0_e20`, 15
+(`results/registry/migrations/restore_manifest.json`). This covers the X1 / X2 / F1 `v3_*` runs, 10 v2-campaign runs, `laptop_v2_stock_s0_e20`, 15
 C1c forecasters, 3 ONNX exports, and the `normal_rgb` / `dfsc_rgb` / `largescale_globaltrack` final checkpoints. Nothing was moved,
 renamed or deleted anywhere.
 
@@ -45,19 +45,19 @@ renamed or deleted anywhere.
 
 | quantity | value | counting rule |
 |---|---:|---|
-| physical files registered | 498 | `.pt .pth .ckpt .safetensors .onnx .engine .bin .joblib .pkl` under runs/, experiments/, deployment/, c_model/, artifacts/deploy/ + the backup; `.npz` arrays excluded (1,193 in the backup) |
+| physical files registered | 498 | `.pt .pth .ckpt .safetensors .onnx .engine .bin .joblib .pkl` under results/runs/, experiments/, src/deployment/, src/model/, results/artifacts/deploy/ + the backup; `.npz` arrays excluded (1,193 in the backup) |
 | — workspace / backup copies | 343 / 155 | a file present in both places counts twice |
 | — model weights / exports / detection caches | 372 / 20 / 106 | |
 | distinct SHA-256 (all files / weights + exports) | 373 / 299 | byte identity |
 | **model entries** (checkpoint identities) | **314** | one per `family:run@tag`; workspace and backup copies of identical bytes are one entry; different bytes at one path = two entries (`~hpc`) |
-| model families | 13 | `registry/catalog/families.json` |
+| model families | 13 | `results/registry/catalog/families.json` |
 | integrity verified against an independent record | 131 | SHA-256 equals run metadata / frozen config / learned registry / export record / ledger / HPC hash |
 | hashed, no independent record | 183 | mostly intermediate epoch checkpoints (hash recorded now) |
 | not verified | 29 | exactly the backup-only entries without a workspace copy (24 RGB epochs, `v2_causal_g4_s0_e20@best`, 4 `~hpc` re-runs) |
 | integrity mismatches | 0 | the 6 apparent mismatches were same-name different-weight re-runs, now separate `~hpc` entries |
-| load + inference verified | 228 | `tools/verify_adapters.py --all` (2 identical runs, structure checks): every runnable checkpoint in the workspace, incl. 126 intermediate epochs |
+| load + inference verified | 228 | `scripts/verify_adapters.py --all` (2 identical runs, structure checks): every runnable checkpoint in the workspace, incl. 126 intermediate epochs |
 | not applicable | 57 | no adapter (repair, historical, LSTM, exports, bases), smoke, invalid, forecaster ONNX |
-| duplicate-content groups | 31 | listed in `registry/duplicates.json`, nothing deleted (e.g. `normal_ir@last` = `@epoch_18`; CF detector = deployment copy) |
+| duplicate-content groups | 31 | listed in `results/registry/duplicates.json`, nothing deleted (e.g. `normal_ir@last` = `@epoch_18`; CF detector = deployment copy) |
 | backup-only model entries | 32 | 24 intermediate RGB epochs, 6 `~hpc` re-runs, `v2_causal_g4_s0_e20@best` (protected dir), official GlobalTrack weights |
 | historical result records | 317 | 179 master-ledger rows verbatim + CST official / released / paper, CF, P1, Track C verdicts, Anti-UAV paper Table V |
 
@@ -96,15 +96,15 @@ The Phase 0 inventory (2026-10-13 12:13 UTC, `ssh amritahpc`) ran `pip freeze` f
 `/tmp/yr_freeze_<env>.txt`. One temporary file was written outside the project: **`/tmp/yr_freeze_at311.txt`**. Nothing under
 `~/aerotrack_server/` was modified or deleted. The file was never copied to the OMEN. It is left in place by decision (2026-10-13), and
 no further HPC-modifying commands are allowed. The package list of the `at311` environment is preserved locally at
-`artifacts/hpc_recovery_20261013/aerotrack_server/environments/at311_freeze.txt` (written on the HPC 2026-10-06; SHA-256
+`results/artifacts/hpc_recovery_20261013/aerotrack_server/environments/at311_freeze.txt` (written on the HPC 2026-10-06; SHA-256
 `6733a996…5d61`, matches the HPC-side hash in `_verification/remote_sha_tier3_small.txt`). That local copy was not compared byte for
 byte with the `/tmp` file.
 
 ## 6. Open issues
 
 - 5 backup-only model entries (non-epoch) are not runnable without a deliberate restore decision. The `~hpc` re-runs would collide
-  with OMEN files of different content, and `runs/v2_causal_g4_s0_e20/` is pre-existing untracked work left untouched.
-- `runs/v2_causal_g4_s0_e20/` lacks `run_meta.json`; the CF detector runs from the byte-identical deployment copy instead.
+  with OMEN files of different content, and `results/runs/v2_causal_g4_s0_e20/` is pre-existing untracked work left untouched.
+- `results/runs/v2_causal_g4_s0_e20/` lacks `run_meta.json`; the CF detector runs from the byte-identical deployment copy instead.
 - 183 entries have no independent hash record (their hash is recorded from now on).
 - Citations for SPD-Conv, ByteTrack, SORT, HOTA and GlobalTrack are recorded by title only (`citation_status: not_recorded_in_repo`).
 - Studio evaluations are single-process. A whole-split VAL evaluation of GlobalTrack takes hours (~10 fps) and belongs in

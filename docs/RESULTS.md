@@ -1,4 +1,4 @@
-# RESULTS (generated 2026-10-13 17:48 +0530 by `tools/render_results.py` — do not edit)
+# RESULTS (generated 2026-10-13 17:48 +0530 by `scripts/render_results.py` — do not edit)
 
 Every number below is read from the artifact named next to it. Status of running work: `docs/MASTER_STATE.md`.
 

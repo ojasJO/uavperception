@@ -30,12 +30,12 @@ Both are the **final-epoch** checkpoint (`last.pt == epoch_18.pt`). No checkpoin
 |---|---|
 | `phaseB_normal_ir_seed1` | seed-1 replicate of normal_ir; Phase B. Explicitly excluded from the authorised scope of this task (it answers a seed-variance question, not a paper-benchmark question). |
 | `phaseB_dfsc_ir_seed1` | seed-1 replicate of dfsc_ir; Phase B. Excluded from the authorised scope, as above. |
-| `runs/_smoke/*` | pipeline smoke test, not a trained model. |
+| `results/runs/_smoke/*` | pipeline smoke test, not a trained model. |
 
 *[corrected]* Despite the exclusion above, both seed-1 checkpoints **were** later evaluated on TEST (2026-09-23
 09:26–13:59, ledger lines 7–8) under the "follow-up" heading in §3, and no authorisation record was found. Those results are
 supplementary / unscoped and are not part of the primary benchmark.
-| `runs/aerotrack_spd_finetuned and every other runs/ entry at the repository root` | AeroTrack-Net is a YOLO DETECTOR with mAP-style metrics. It is not an implementation of this paper and shares no metric with it. Never mixed into these tables. |
+| `results/runs/aerotrack_spd_finetuned and every other results/runs/ entry at the repository root` | AeroTrack-Net is a YOLO DETECTOR with mAP-style metrics. It is not an implementation of this paper and shares no metric with it. Never mixed into these tables. |
 
 ## 2. Benchmark matrix
 
@@ -106,7 +106,7 @@ Precision/success (Table VII) and the attribute breakdown (Table V columns) are 
 All six variants are implementable with **existing code** - only a YAML config and a training run are missing. Training was excluded from this task's authorised scope, so each is recorded below with everything needed to launch it later. **None of these was executed.**
 
 *[corrected]* The table below lists five variants. The sixth, **DFSC-all**, is absent from it because it was planned as a
-follow-up. Its actual state: training completed (`runs/phaseB_dfsc_ir_ism_cross/`, 18/18 epochs), but the test evaluation
+follow-up. Its actual state: training completed (`results/runs/phaseB_dfsc_ir_ism_cross/`, 18/18 epochs), but the test evaluation
 was interrupted before completion and therefore produces no valid final test benchmark result. So **no Table VI variant has
 a valid result.**
 

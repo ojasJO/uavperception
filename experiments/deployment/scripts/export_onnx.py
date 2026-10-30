@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 """Export an AeroTrack detector checkpoint to ONNX and prove the graph computes the same function.
 
-    venv\\Scripts\\python.exe experiments\\deployment\\scripts\\export_onnx.py --weights runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt
+    venv\\Scripts\\python.exe experiments\\deployment\\scripts\\export_onnx.py --weights results\\runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt
 
 What is exported is exactly what the evaluation scores: the EMA weights (`load_checkpoint(prefer_ema=True)`), Conv+BN fused,
 Ultralytics Detect head in export mode -> one output [B, 4 + nc, 8400] (xywh in input pixels, sigmoid class scores), the
-tensor `c_model/evaluation.collect_records` hands to NMS. Input: [B, 9, 640, 640] float in [0, 1] (three letterboxed RGB
+tensor `src/model/evaluation.collect_records` hands to NMS. Input: [B, 9, 640, 640] float in [0, 1] (three letterboxed RGB
 frames stacked as the run's temporal input). Pre/post-processing stay outside the graph, identical for every backend.
 
 Checks (all recorded in <out>/export_record.json):
@@ -13,7 +13,7 @@ Checks (all recorded in <out>/export_record.json):
   * PyTorch fp32 vs ONNX Runtime CPU fp32 on REAL validation inputs (registered VAL set, first images per dataset),
     max |diff| of boxes (px) and class scores
   * parameter count, GFLOPs at 640 (thop), file sizes, SHA-256 of checkpoint and ONNX file
-Output goes to artifacts/deploy/<run>/ (ignored by git; the record JSON is copied to experiments/deployment/reports/).
+Output goes to results/artifacts/deploy/<run>/ (ignored by git; the record JSON is copied to experiments/deployment/reports/).
 """
 import argparse
 import hashlib
@@ -23,7 +23,7 @@ import time
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
-for p in (REPO / "c_model", REPO / "b_pipeline", REPO / "experiments" / "anti_uav" / "src"):
+for p in (REPO / "src/model", REPO / "src/pipeline", REPO / "experiments" / "anti_uav" / "src"):
     sys.path.insert(0, str(p))
 
 import numpy as np  # noqa: E402
@@ -86,7 +86,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--weights", required=True)
     ap.add_argument("--opset", type=int, default=18)
-    ap.add_argument("--out-dir", default=None, help="default artifacts/deploy/<run>")
+    ap.add_argument("--out-dir", default=None, help="default results/artifacts/deploy/<run>")
     ap.add_argument("--dynamic-batch", action="store_true", help="export a dynamic batch axis (default: static batch 1)")
     ap.add_argument("--fp16", action="store_true", help="export a half-precision graph (TensorRT >= 11 builds FP16 engines only "
                                                          "from FP16-typed networks); traced on the GPU, parity vs PyTorch fp16")
@@ -99,7 +99,7 @@ def main():
 
     w = Path(a.weights).resolve()
     run = w.parent.parent.name
-    out = Path(a.out_dir) if a.out_dir else REPO / "artifacts" / "deploy" / run
+    out = Path(a.out_dir) if a.out_dir else REPO / "results/artifacts" / "deploy" / run
     out.mkdir(parents=True, exist_ok=True)
     gap = run_gap(w)
     model, ck = load_checkpoint(w, torch.device("cpu"), prefer_ema=True, fuse=True)

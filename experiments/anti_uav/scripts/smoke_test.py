@@ -68,7 +68,7 @@ def t02():
     from anti_uav_repro.data.antiuav import load_manifest, load_sequences, manifest_path, verify_against_manifest
     out = []
     for split in ("train", "val"):
-        seqs = load_sequences("data/anti_uav", "b_pipeline/data_unified/anti_uav/images", split, "IR", purpose="verify")
+        seqs = load_sequences("data/anti_uav", "data/derived/data_unified/anti_uav/images", split, "IR", purpose="verify")
         mp = manifest_path(MANIFESTS_DIR, split, "IR")
         assert mp.exists(), f"missing frozen manifest {mp} — run verify_dataset.py first"
         problems = verify_against_manifest(seqs, load_manifest(mp))
@@ -287,7 +287,7 @@ def t12():
     from anti_uav_repro.eval.metrics import iou_xywh
     out = _state["eval_out"]
     m = json.loads((out / "metrics.json").read_text())
-    seqs = {s.name: s for s in load_sequences("data/anti_uav", "b_pipeline/data_unified/anti_uav/images", "val", "IR", purpose="tune")}
+    seqs = {s.name: s for s in load_sequences("data/anti_uav", "data/derived/data_unified/anti_uav/images", "val", "IR", purpose="tune")}
     # (a) recompute SA of every evaluated sequence straight from prediction files with an independent loop
     for pf in (out / "predictions").glob("*.json"):
         pred = json.loads(pf.read_text()); s = seqs[pred["sequence"]]
@@ -331,7 +331,7 @@ def t13():
     from anti_uav_repro.data.antiuav import TestSplitAccessError, load_sequences
     for purpose in ("train", "tune", "monitor"):
         try:
-            load_sequences("data/anti_uav", "b_pipeline/data_unified/anti_uav/images", "test", "IR", purpose=purpose)
+            load_sequences("data/anti_uav", "data/derived/data_unified/anti_uav/images", "test", "IR", purpose=purpose)
             raise AssertionError(f"test split was served for purpose={purpose}")
         except TestSplitAccessError:
             pass

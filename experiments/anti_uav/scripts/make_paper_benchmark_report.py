@@ -6,7 +6,7 @@
 
 Reads ONLY machine-generated inputs:
   <bench>/<run>__<split>_IR/{metrics.json,eval_meta.json}   this task's LIVE executions   (column C)
-  runs/<run>/eval_<split>_IR_last/metrics.json              the earlier reproduction evals (column B)
+  results/runs/<run>/eval_<split>_IR_last/metrics.json              the earlier reproduction evals (column B)
   reports/paper_reported_results.json                       the paper's transcribed numbers (column A)
   reports/benchmark_execution_plan.json                     the inventory + classifications
 

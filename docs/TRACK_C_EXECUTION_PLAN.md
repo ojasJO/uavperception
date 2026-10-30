@@ -30,7 +30,7 @@ This execution plan operationalizes the findings of [`docs/TRACK_C_AUDIT.md`](fi
   * Script: `experiments/aerotrack_temporal/scripts/tc_c1c.py`
   * Preregistration: `experiments/aerotrack_temporal/preregistration/C1c_domain_aware_forecasting.json`
 * **Dataset & Splits**:
-  * Training: `runs/aerotrack_temporal/_data/traj_train.npz` (368,533 samples, non-dev TRAIN groups).
+  * Training: `results/runs/aerotrack_temporal/_data/traj_train.npz` (368,533 samples, non-dev TRAIN groups).
   * Early stopping / model selection: `traj_train.npz` dev groups (10% held-out groups, md5 group % 10 == 0).
   * Evaluation split: `traj_val.npz` (144,817 samples, 174 VAL sequences).
 * **Seeds**: `0, 1, 2` (required by protocol).
@@ -38,12 +38,12 @@ This execution plan operationalizes the findings of [`docs/TRACK_C_AUDIT.md`](fi
   * Step 1 (Training & dev selection):  
     `python experiments/aerotrack_temporal/scripts/tc_c1c.py --stage train`
   * Step 2 (Git record step required by protocol):  
-    `git add runs/aerotrack_temporal/c1/learned_registry_c1c.json && git commit -m "c1c: record dev-chosen forecaster models"`
+    `git add results/runs/aerotrack_temporal/c1/learned_registry_c1c.json && git commit -m "c1c: record dev-chosen forecaster models"`
   * Step 3 (Validation pass):  
     `python experiments/aerotrack_temporal/scripts/tc_c1c.py --stage val`
 * **Expected Artifacts & Metrics**:
-  * Checkpoints: `runs/aerotrack_temporal/c1/c1c_tfm_domtok_s{0,1,2}.pt` (3 models), `runs/aerotrack_temporal/c1/c1c_tfm_perdom_{dom}_s{0,1,2}.pt` (9 models).
-  * Model Registry: `runs/aerotrack_temporal/c1/learned_registry_c1c.json` with `_choice` mapping per domain.
+  * Checkpoints: `results/runs/aerotrack_temporal/c1/c1c_tfm_domtok_s{0,1,2}.pt` (3 models), `results/runs/aerotrack_temporal/c1/c1c_tfm_perdom_{dom}_s{0,1,2}.pt` (9 models).
+  * Model Registry: `results/runs/aerotrack_temporal/c1/learned_registry_c1c.json` with `_choice` mapping per domain.
   * Report: `experiments/aerotrack_temporal/reports/C1c_domain_aware_forecasting.{json,md}`.
   * Metrics: ADE@1–24 (px), FDE@24 (px), Gaussian NLL, calibration error, and hypothesis verdicts for $H_{1c}, H_{2c}, H_{3c}$.
 * **Resource Allocation**:
@@ -66,9 +66,9 @@ This execution plan operationalizes the findings of [`docs/TRACK_C_AUDIT.md`](fi
   * Script: `experiments/aerotrack_temporal/scripts/tc_c3.py`
   * Preregistration: `experiments/aerotrack_temporal/preregistration/C3_tracking_motion_models.json`
 * **Dataset & Inputs**:
-  * Causal detection cache: `runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/` (174 sequences).
+  * Causal detection cache: `results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/` (174 sequences).
   * Annotation files: Anti-UAV `infrared.json`, `visible.json`, and CST `IR_label.json`.
-  * Precomputed variance tables: `runs/aerotrack_temporal/c3/prep.json`.
+  * Precomputed variance tables: `results/runs/aerotrack_temporal/c3/prep.json`.
   * Adopted learned model: Output of `tc_adoption.py` using C1C findings.
 * **Commands**:
   * Execution:  
@@ -95,7 +95,7 @@ This execution plan operationalizes the findings of [`docs/TRACK_C_AUDIT.md`](fi
 * **Task Identifier**: `C3_tracking_motion_models_secondary`
 * **Research Objective**: Secondary replication on the single-frame detector cache (`v2_stock_s0_e20`) to confirm motion-model conclusions independently of temporal frame stacking.
 * **Dataset & Inputs**:
-  * Detection cache: `runs/systems/_cache/v2_stock_s0_e20/data_unified_v2/val/` (174 sequences).
+  * Detection cache: `results/runs/systems/_cache/v2_stock_s0_e20/data_unified_v2/val/` (174 sequences).
 * **Commands**:
   * Execution:  
     `python experiments/aerotrack_temporal/scripts/tc_c3.py --stage run --run v2_stock_s0_e20 --workers 4`
@@ -115,7 +115,7 @@ This execution plan operationalizes the findings of [`docs/TRACK_C_AUDIT.md`](fi
   * Script: `experiments/aerotrack_temporal/scripts/tc_c1b.py`
   * Preregistration: `experiments/aerotrack_temporal/preregistration/C1b_forecasting_on_tracker_histories.json`
 * **Inputs**:
-  * Causal detection cache: `runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/`.
+  * Causal detection cache: `results/runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/`.
   * Cross-fitted tracker parameters from Run 2: `experiments/aerotrack_temporal/reports/C3_tracking_motion_models_v2_causal_g4_s0_e20.json`.
   * Clean & noise-augmented forecasters: `c1_tfm_abs_*`, `c1_tfm_aug_*`, and adopted C1C models.
 * **Commands**:
@@ -139,7 +139,7 @@ This execution plan operationalizes the findings of [`docs/TRACK_C_AUDIT.md`](fi
 * **Task Identifier**: `C1B_forecasting_on_tracker_histories_secondary`
 * **Research Objective**: Secondary replication on tracker histories generated from single-frame detector detections (`v2_stock_s0_e20`).
 * **Inputs**:
-  * Detection cache: `runs/systems/_cache/v2_stock_s0_e20/data_unified_v2/val/`.
+  * Detection cache: `results/runs/systems/_cache/v2_stock_s0_e20/data_unified_v2/val/`.
   * Cross-fitted tracker parameters from Run 3: `experiments/aerotrack_temporal/reports/C3_tracking_motion_models_v2_stock_s0_e20.json`.
 * **Commands**:
   * Execution:  

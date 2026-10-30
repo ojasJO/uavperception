@@ -109,7 +109,7 @@ def discover_runs(runs_dir: Path = RUNS_DIR) -> list[RunInfo]:
 def load_val_sequences(cfg_data: dict | None = None) -> list[Sequence]:
     """The 67 IR VAL sequences. Data paths come from any run config (all runs share them) or the defaults."""
     root = (cfg_data or {}).get("root", "data/anti_uav")
-    frames_root = (cfg_data or {}).get("frames_root", "b_pipeline/data_unified/anti_uav/images")
+    frames_root = (cfg_data or {}).get("frames_root", "data/derived/data_unified/anti_uav/images")
     return load_sequences(root, frames_root, SPLIT, MODALITY, purpose=PURPOSE)
 
 

@@ -6,12 +6,12 @@
     (--fold full: all three folds = the whole TRAIN split, monitored on the official VAL; --preflight-only: T1-T8 on the exact
      job under a scratch name, nothing trained)
 
-Recipe = c_model/train.py STAGES["baseline"] (the repair grid's), identical for every configuration: 20 epochs x 25,000
+Recipe = src/model/train.py STAGES["baseline"] (the repair grid's), identical for every configuration: 20 epochs x 25,000
 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine, same sampler / augmentation / preflight. Differences allowed:
 the configuration's single factor (gen_lib.CONFIGS), the fold's training sequences, seed = fold index (0 for 'full'),
 function-preserving initialisation for every configuration, torch/numpy seeded before the model is built.
 
-Launcher (default) writes runs/<name>/run_meta.json -- one record across resumes (attempts appended, recipe locked) -- and runs
+Launcher (default) writes results/runs/<name>/run_meta.json -- one record across resumes (attempts appended, recipe locked) -- and runs
 the training in a `--_child` process, so a watchdog can stop training while the launcher still records the attempt.
 Checkpoints: weights/last.pt every epoch (atomic), best.pt by the recipe's fitness (NOT used: the series scores last.pt)."""
 import argparse
@@ -65,7 +65,7 @@ def child(a):
     folds = L.load_folds()
     stage_cfg = dict(T.STAGES["baseline"])
     kw = {k: v for k, v in stage_cfg.items() if k in T.TrainConfig().to_dict()}
-    kw.update(name=a.name, project=str(S.REPO / "runs"), epochs=a.epochs, batch=a.batch, workers=a.workers, seed=a.seed)
+    kw.update(name=a.name, project=str(S.REPO / "results/runs"), epochs=a.epochs, batch=a.batch, workers=a.workers, seed=a.seed)
     if a.samples_per_epoch:
         kw["samples_per_epoch"] = a.samples_per_epoch
     cfg = T.TrainConfig(**kw)
@@ -80,7 +80,7 @@ def child(a):
           f"{len(val_s):,} monitoring samples", flush=True)
     train_ds, val_ds, train_loader, val_loader = T.build_loaders(train_s, val_s, cfg, stage_cfg, label_cache=cache, augment_kwargs=None,
                                                                  sampler_weights=None, letterbox=True, verbose=True)
-    model = build_model(S.REPO / "c_model" / L.YAML[layout], ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
+    model = build_model(S.REPO / "src/model" / L.YAML[layout], ch=9, nc=2, verbose=False, hyp=None, class_weights=None)
     transfer_pretrained(model, T.PRETRAINED, verbose=True)
     check = L.apply_fp_init(model, layout)
     print(f"[init] function-preserving: {json.dumps(check)}", flush=True)
@@ -131,7 +131,7 @@ def main():
         return child(a)
 
     name = L.run_name(a.config, a.fold, a.epochs, a.name_suffix)
-    run_dir = S.REPO / "runs" / name
+    run_dir = S.REPO / "results/runs" / name
     last = run_dir / "weights" / "last.pt"
     base = [sys.executable, "-u", os.path.abspath(__file__), "--_child", "--config", a.config, "--fold", a.fold, "--epochs", str(a.epochs),
             "--batch", str(a.batch), "--workers", str(a.workers), "--seed", str(a.seed)]
@@ -139,7 +139,7 @@ def main():
         if v:
             base += [flag, str(v)]
     if a.preflight_only:
-        scratch = S.REPO / "runs" / f"_preflight_{name}"
+        scratch = S.REPO / "results/runs" / f"_preflight_{name}"
         if scratch.exists():
             shutil.rmtree(scratch)
         rc = subprocess.call(base + ["--name", scratch.name, "--preflight-only"], cwd=str(S.REPO))
@@ -153,11 +153,11 @@ def main():
     folds = L.load_folds()
     meta = {"run_name": name, "series": "aerotrack_generalization", "config": a.config, "config_definition": L.CONFIGS[a.config],
             "gap": L.CONFIGS[a.config]["gap"], "layout": L.CONFIGS[a.config]["layout"], "fold": a.fold, "seed": a.seed,
-            "epochs": a.epochs, "batch": a.batch, "init": "function_preserving", "recipe": "c_model/train.py STAGES['baseline']",
+            "epochs": a.epochs, "batch": a.batch, "init": "function_preserving", "recipe": "src/model/train.py STAGES['baseline']",
             "folds_sha256": folds["sha256"], "smoke": bool(a.name_suffix or a.samples_per_epoch or a.monitor_cap),
             "overrides": {"samples_per_epoch": a.samples_per_epoch, "monitor_cap": a.monitor_cap},
-            "data": {"manifest_sha256": file_sha256(S.REPO / "b_pipeline" / "data_unified" / "manifest.csv"),
-                     "splits_sha256": file_sha256(S.REPO / "b_pipeline" / "data_unified" / "splits.json")},
+            "data": {"manifest_sha256": file_sha256(S.REPO / "data" / "derived" / "data_unified" / "manifest.csv"),
+                     "splits_sha256": file_sha256(S.REPO / "data" / "derived" / "data_unified" / "splits.json")},
             "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used"}
     run_dir.mkdir(parents=True, exist_ok=True)
     meta_path = run_dir / "run_meta.json"
