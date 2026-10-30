@@ -39,7 +39,7 @@ FEAT_OF = {v: f for f in FEATURED for v in f["versions"]}
 def model_label(mid):
     m = R.model(mid)
     f = FEAT_OF.get(mid)
-    star = "★ " if f else ""
+    star = "* " if f else ""
     return f"{star}[{'A' if m['direction'] == 'aerotrack' else 'B' if m['direction'] == 'antiuav_repro' else 'S'}] {short_name(mid)} — " \
            f"{m['run_id']} @{m['checkpoint_tag']} · {m['status']}" + (f" · {', '.join(m['aliases'])}" if m.get("aliases") else "")
 
@@ -205,7 +205,7 @@ DEFAULTS = {"tracking": {"cst2025": ["aerotrack.detector.cst_x:v3_n__causal_g4_c
 ids = [m["model_id"] for m in el]
 dflt = [m for m in DEFAULTS.get(cat, {}).get(did, []) if m in ids]
 allow_many = st.toggle("Extended comparison (up to 6 models)", value=False, key=f"tb_many_{cat}", help="more GPU memory in lockstep; more time in sequential")
-mids = st.multiselect("Models (★ = featured)", ids, default=dflt, format_func=model_label, key=f"tb_models_{cat}_{did}_{direction}",
+mids = st.multiselect("Models (* = featured)", ids, default=dflt, format_func=model_label, key=f"tb_models_{cat}_{did}_{direction}",
                       max_selections=FD.MAX_MODELS_EXTENDED if allow_many else FD.MAX_MODELS)
 pairs = []
 for mid in mids:

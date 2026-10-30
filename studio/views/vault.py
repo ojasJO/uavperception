@@ -19,7 +19,7 @@ LADDER_HELP = {"registered": "the identity of a reported, pre-registered result"
                "inference-verified": "ran a small VAL inference here, deterministic", "evaluation-verified": "fresh full-sequence SA equals a recorded value",
                "historical results": "has imported result records", "recorded results only": "no inference adapter", "not runnable locally": "see the blocker"}
 
-tab_f, tab_a = st.tabs(["★ Featured models", "Complete archive"])
+tab_f, tab_a = st.tabs(["Featured models", "Complete archive"])
 
 with tab_f:
     FS = featured()

@@ -33,13 +33,13 @@ to find it in one frame, we show it three.
 
 Scored with the benchmark authors' **official toolkit**, unmodified, on the official 60-sequence TEST split.
 
-| | method | **mSA** | success AUC | P@20px | tiny-target SA |
-|---|---|---:|---:|---:|---:|
-| | PrDiMP | 29.76 | 29.28 | 42.55 | 28.21 |
-| | SiamDT | 35.84 | 35.28 | 57.96 | 14.98 |
-| 🥈 | GlobalTrack — *best published* | 35.92 | 35.38 | 58.72 | 15.83 |
-| | AeroTrack, single frame *(control)* | 48.81 | 45.58 – 48.49 | 58.60 – 62.33 | 31.03 – 31.38 |
-| 🥇 | **AeroTrack, temporal window** | **60.31** | 58.53 – 59.03 | 77.42 – 77.79 | 39.88 – 42.45 |
+| method | **mSA** | success AUC | P@20px | tiny-target SA |
+|---|---:|---:|---:|---:|
+| PrDiMP | 29.76 | 29.28 | 42.55 | 28.21 |
+| SiamDT | 35.84 | 35.28 | 57.96 | 14.98 |
+| GlobalTrack — *best published* | 35.92 | 35.38 | 58.72 | 15.83 |
+| AeroTrack, single frame *(control)* | 48.81 | 45.58 – 48.49 | 58.60 – 62.33 | 31.03 – 31.38 |
+| **AeroTrack, temporal window** | **60.31** | 58.53 – 59.03 | 77.42 – 77.79 | 39.88 – 42.45 |
 
 All methods trained on CST train only. Ranges are over three seeds.
 
@@ -158,14 +158,31 @@ GlobalTrack fine-tuned on Anti-UAV IR, with and without the paper's DFSC module.
 
 | | split | paper | ours (2 seeds) | Δ |
 |---|---|---:|---:|---:|
-| normal | val | 79.60 | 79.33 | −0.27 ✓ |
+| normal | val | 79.60 | 79.33 | −0.27 |
 | normal | test | 65.36 | 70.40 | +5.04 |
-| DFSC | val | 80.09 | 79.34 | −0.75 ✓ |
+| DFSC | val | 80.09 | 79.34 | −0.75 |
 | DFSC | test | 66.04 | 70.21 | +4.17 |
 
 Validation reproduces within a point. Test comes out about five points *above* the paper in both arms,
 and the paper's DFSC gain doesn't show up — both reported as found.
-Details: [`research/anti_uav_paper_reproduction/`](research/anti_uav_paper_reproduction/)
+Details: [`docs/research/anti_uav_paper_reproduction/`](docs/research/anti_uav_paper_reproduction/)
+
+## What we set out to do, and what happened
+
+The first version of this project (Review 2) promised four techniques. Each one was tested against
+a control under a fixed protocol. Two held up, two didn't.
+
+| original plan | outcome |
+|---|---|
+| temporal stacking of frames t−1, t, t+1 | **kept, in a different form.** Adjacent frames didn't help; frames four apart did. The final window uses only past frames (t−8, t−4, t) so it can run live. Worth +11.5 mSA over a single frame. |
+| SPD-Conv lossless downsampling | **dropped.** No measurable gain over the same network without it. |
+| ByteTrack association | **dropped.** It was never properly wired in. Replaced by a Kalman estimator with an explicit absent state. |
+| hardness-aware, domain-balanced sampling | **partly kept.** Birds are a second class in the model, but the sampling scheme's own effect hasn't been isolated in a separate experiment. |
+| 85 FPS | **beaten:** 170 FPS end to end. |
+| 79.04 % mAP@50 | **withdrawn.** The Review 2 audit found it compared checkpoints on different image sets. Current detector numbers use a larger corpus and aren't comparable with it. |
+
+Not done: **scene understanding.** The system answers one question per frame — drone, bird, or
+nothing — and doesn't model the scene around the target.
 
 ## Where it still fails
 
@@ -179,16 +196,27 @@ Same test evidence, reported alongside the wins:
 ## Repository map
 
 ```
-b_pipeline/        dataset cleaning, label conversion, splits, temporal stacks
-c_model/           detector config, training, evaluation, the live demo
-experiments/       one folder per study: cst_anti_uav, anti_uav, aerotrack_v2/v3, temporal, deployment …
+DEMO.bat  studio.bat  run_aerotrack.py      entry points
+
+a_inspection/      stage A: dataset inspection and EDA
+b_pipeline/        stage B: cleaning, label conversion, splits, temporal stacks
+c_model/           stage C: detector config, training, evaluation, the live demo
 deployment/        ONNX / TensorRT export and the runtime pipeline
 studio/ aerolab/   the Flight Deck and the library behind it
+
+experiments/       one folder per study: cst_anti_uav, anti_uav, aerotrack_v2/v3, temporal, deployment
+runs/              training and evaluation run records
+benchmark/         benchmark tables and model statistics
 registry/          every checkpoint, dataset and result, indexed by SHA-256
-runs/ benchmark/   run records and benchmark tables
-tools/hpc/         cluster job submission
+artifacts/         ledgers and dataset cards the tools read
+audit/             the Review 2 audit and its benchmark scripts
+
 SUBMISSION/        reviewer's guide, all results, architecture
-docs/              protocols, the experiment ledger, earlier reports
+docs/              protocols, the experiment ledger, per-direction write-ups, progress logs
+notebooks/         Review 1 and 2 notebooks, the interactive training notebook
+environments/      pinned package versions
+tools/             registry builders, report renderers, HPC job submission
+tests/             unit tests
 ```
 
 <div align="center">

@@ -21,7 +21,7 @@ Stop it with Ctrl+C in that window.
 1. **Flight Deck** (home) → *A · Tracking performance* → **Open in Test Bench**.
 2. **Data.** CST Anti-UAV / VAL / IR, preset *Standard quick set*. Keep one or two sequences (e.g. `building_41`).
    - The preview shows the start frame with the GT box used for initialisation.
-3. **Models.** The defaults are ★ X1 / X2 temporal seed 0 and ★ the single-frame control, both with STE.
+3. **Models.** The defaults are X1 / X2 temporal seed 0 and the single-frame control, both with STE.
    - Add or remove models (2–4; up to 6 with *Extended comparison*).
 4. **Execution.**
    - *Frames after the init frame*: e.g. 150. *Whole sequences* gives full Eq. 1 mSA.
@@ -57,10 +57,10 @@ Every preset shows its **basis**. Nothing is invented to fill a preset: a preset
 
 | basis | presets |
 |---|---|
-| 🟢 official annotation | target absent (`exist`), occlusion & reappearance (exist transitions + CST OC / OV, Anti-UAV OC / OV), clutter (CST DBC / CDB), thermal crossover (CST TC, Anti-UAV TC) |
-| 🔵 derived from ground truth (rule shown) | small targets (≥ 25 % of visible frames with diagonal ≤ 10 px), large targets (≥ 20 frames > 50 px), fast motion (fastest quarter by 95th-percentile GT-centre speed, plus official FM) |
-| 🟣 recorded results | confusing objects (≥ 20 recorded wrong-object frames), difficult cases (8 lowest recorded VAL SA of a named model) |
-| ⚪ fixed rule | standard (the whole official split), standard quick (one per CST scene category / 8 evenly spaced Anti-UAV), long sequences (≥ max(Q3, 1.2 × median)) |
+| official annotation | target absent (`exist`), occlusion & reappearance (exist transitions + CST OC / OV, Anti-UAV OC / OV), clutter (CST DBC / CDB), thermal crossover (CST TC, Anti-UAV TC) |
+| derived from ground truth (rule shown) | small targets (≥ 25 % of visible frames with diagonal ≤ 10 px), large targets (≥ 20 frames > 50 px), fast motion (fastest quarter by 95th-percentile GT-centre speed, plus official FM) |
+| recorded results | confusing objects (≥ 20 recorded wrong-object frames), difficult cases (8 lowest recorded VAL SA of a named model) |
+| fixed rule | standard (the whole official split), standard quick (one per CST scene category / 8 evenly spaced Anti-UAV), long sequences (≥ max(Q3, 1.2 × median)) |
 
 Unavailable by design:
 - Anti-UAV clutter: no such attribute is shipped.
@@ -71,9 +71,9 @@ Frame rate: Anti-UAV 25 FPS is paper-explicit. CST reports none, so CST timestam
 ## Modes: live, saved, recorded
 
 Every view says which mode it is in:
-- **🔴 LIVE INFERENCE.** The loaded checkpoint produces each box now.
-- **💾 SAVED RUN.** A Flight Deck run's predictions, replayed from disk.
-- **📼 RECORDED PREDICTIONS.** Earlier registered evaluations or authors' releases, replayed read-only.
+- **LIVE INFERENCE.** The loaded checkpoint produces each box now.
+- **SAVED RUN.** A Flight Deck run's predictions, replayed from disk.
+- **RECORDED PREDICTIONS.** Earlier registered evaluations or authors' releases, replayed read-only.
 
 Recorded sources (41): X1 and X2 seeds / single-frame controls on CST TEST, 21 released CST-trained trackers on CST TEST, X1 on CST
 VAL, and Direction B normal / DFSC / seed-1 on Anti-UAV VAL / TEST. The replay table recomputes each sequence's SA from the recorded

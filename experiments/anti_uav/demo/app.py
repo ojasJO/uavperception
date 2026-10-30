@@ -251,7 +251,7 @@ for col, r in zip(scols, targets):
     key = "DFSC" if r.alpha else "normal"
     pv = paper.get(key)
     col.markdown(f"**{r.name}** — {r.method}, seed {r.seed}, phase `{r.phase}`, checkpoint `{(r.checkpoint_sha256 or '?')[:12]}`"
-                 + ("" if r.saved_predictions_match_checkpoint in (None, True) else "  ⚠ saved predictions were made with a different checkpoint"))
+                 + ("" if r.saved_predictions_match_checkpoint in (None, True) else "  warning: saved predictions were made with a different checkpoint"))
     a, b, c = col.columns(3)
     a.metric("this sequence SA", f"{s['SA_percent']:.2f} %", help=s["scoring"])
     b.metric("run mSA over 67 val seqs", "—" if r.val_mSA_percent is None else f"{r.val_mSA_percent:.2f} %", help="eval_val_IR_last/metrics.json")

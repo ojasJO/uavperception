@@ -74,7 +74,7 @@ class FlightDeckUI(unittest.TestCase):
     def test_presence_excludes_globaltrack_with_reason(self):
         at = app("test_bench", {"tb_category": "presence", "tb_dir_presence": "both"})
         self.clean(at)
-        ids = widget(at.multiselect, "Models (★ = featured)").options
+        ids = widget(at.multiselect, "Models (* = featured)").options
         self.assertFalse(any("normal_ir" in o for o in ids))
         df = at.dataframe[-1].value
         row = df[df["model"] == "antiuav_repro.globaltrack:normal_ir@last"]
@@ -92,7 +92,7 @@ class FlightDeckUI(unittest.TestCase):
     def test_full_journey_live_to_synchronised_replay(self):
         n0 = index_lines()
         at = app("test_bench", {"tb_category": "tracking"})
-        self.assertEqual(len(widget(at.multiselect, "Models (★ = featured)").value), 2)        # X1 + single-frame control by default
+        self.assertEqual(len(widget(at.multiselect, "Models (* = featured)").value), 2)        # X1 + single-frame control by default
         widget(at.number_input, "Frames after the init frame").set_value(12).run()
         for _ in range(3):                                                                        # rerenders never start a run
             at.run()
