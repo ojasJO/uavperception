@@ -6565,7 +6565,7 @@
      "sha256": "5bba24c8dece77a1657605b68d63bbdd29dc4f37200391649c9360269f6d7bc1"
     },
     {
-     "path": "artifacts/hpc_recovery_20261013/aerotrack_server/source/runs/laptop_v2_stock_s0_e20/weights/last.pt",
+     "path": "artifacts/hpc_recovery_20261013/aerotrack_server/source/runs/omen_v2_stock_s0_e20/weights/last.pt",
      "location": "recovery_backup",
      "sha256": "5bba24c8dece77a1657605b68d63bbdd29dc4f37200391649c9360269f6d7bc1"
     }

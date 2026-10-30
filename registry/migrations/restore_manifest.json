@@ -151,7 +151,7 @@
     },
     {
      "rel": "runs/laptop_v2_stock_s0_e20/args.json",
-     "src": "artifacts/hpc_recovery_20261013/aerotrack_server/source/runs/laptop_v2_stock_s0_e20/args.json",
+     "src": "artifacts/hpc_recovery_20261013/aerotrack_server/source/runs/omen_v2_stock_s0_e20/args.json",
      "sha256": "28d96ee4e072485baa1a1ba1beb8e7e290d74f53b8a2367562c8520f0749011b",
      "bytes": 1029,
      "reason": "HPC-trained detector run present only in the backup",
@@ -159,7 +159,7 @@
     },
     {
      "rel": "runs/laptop_v2_stock_s0_e20/run_meta.json",
-     "src": "artifacts/hpc_recovery_20261013/aerotrack_server/source/runs/laptop_v2_stock_s0_e20/run_meta.json",
+     "src": "artifacts/hpc_recovery_20261013/aerotrack_server/source/runs/omen_v2_stock_s0_e20/run_meta.json",
      "sha256": "9432a9710cbab5ca00a729c4216d8f389b3ecf908c0ab45892cb960d687fffd7",
      "bytes": 2248,
      "reason": "HPC-trained detector run present only in the backup",
@@ -167,7 +167,7 @@
     },
     {
      "rel": "runs/laptop_v2_stock_s0_e20/weights/last.pt",
-     "src": "artifacts/hpc_recovery_20261013/aerotrack_server/source/runs/laptop_v2_stock_s0_e20/weights/last.pt",
+     "src": "artifacts/hpc_recovery_20261013/aerotrack_server/source/runs/omen_v2_stock_s0_e20/weights/last.pt",
      "sha256": "5bba24c8dece77a1657605b68d63bbdd29dc4f37200391649c9360269f6d7bc1",
      "bytes": 32338079,
      "reason": "HPC-trained detector run present only in the backup",
