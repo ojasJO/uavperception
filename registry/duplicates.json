@@ -1,0 +1,332 @@
+{
+ "generated": "2026-10-13T19:06:46+05:30",
+ "generator": "tools/build_workspace_registry.py",
+ "git_head": "7f84f55c792905dfcc21b81edd424c4563d7c71d",
+ "groups": [
+  {
+   "sha256": "ba0c4b4e732d15c5933ed4cfbac1bc5f428482b24c7dac3d7cbc4552356d7207",
+   "logical_paths": [
+    "artifacts/deploy/v2_causal_g4_s0_e20/v2_causal_g4_s0_e20_b1_op18.onnx",
+    "deployment/aerotrack_causal_g4_v2/weights/v2_causal_g4_s0_e20_b1_op18.onnx"
+   ],
+   "model_ids": [
+    "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18.onnx",
+    "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18.onnx"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "0b7e1c6567af20d971a3ea7388bc172e7a62d0890117cefc33a65cdc232b1aa6",
+   "logical_paths": [
+    "artifacts/deploy/v2_causal_g4_s0_e20/v2_causal_g4_s0_e20_b1_op18_fp16.onnx",
+    "deployment/aerotrack_causal_g4_v2/weights/v2_causal_g4_s0_e20_b1_op18_fp16.onnx"
+   ],
+   "model_ids": [
+    "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_fp16.onnx",
+    "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_fp16.onnx"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "2b4d75671770fcacb2c8c34959c968f121ccef2d6dfe33d12de7106bce856ee1",
+   "logical_paths": [
+    "artifacts/deploy/v2_causal_g4_s0_e20/v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+    "deployment/aerotrack_causal_g4_v2/weights/v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine"
+   ],
+   "model_ids": [
+    "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+    "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "26bf1d45b8fd0c15e85922def52d0b8ac16aaeb950455ed63649a859c9a9081e",
+   "logical_paths": [
+    "artifacts/deploy/v2_causal_g4_s0_e20/v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine",
+    "deployment/aerotrack_causal_g4_v2/weights/v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine"
+   ],
+   "model_ids": [
+    "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine",
+    "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "1118cf3290ae8bcfdd763bc1f83a1651f5c5bc754fd3e3a92fa2f1b8548d4452",
+   "logical_paths": [
+    "deployment/aerotrack_causal_g4_v2/weights/last.pt",
+    "runs/hpc/v2_causal_g4_s0_e20/weights/last.pt",
+    "runs/v2_causal_g4_s0_e20/weights/last.pt"
+   ],
+   "model_ids": [
+    "aerotrack.deploy:aerotrack_causal_g4_v2@last.pt",
+    "aerotrack.detector.v2:v2_causal_g4_s0_e20@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "logical_paths": [
+    "experiments/anti_uav/runs/dfsc_ir/weights/epoch_18.pt",
+    "experiments/anti_uav/runs/dfsc_ir/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:dfsc_ir@epoch_18",
+    "antiuav_repro.globaltrack:dfsc_ir@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "05479d27b4962ccecf3883774faecf49f06f62880350f04cd0a192543b245e00",
+   "logical_paths": [
+    "experiments/anti_uav/runs/dfsc_rgb/weights/epoch_12.pt",
+    "experiments/anti_uav/runs/dfsc_rgb/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:dfsc_rgb@epoch_12",
+    "antiuav_repro.globaltrack:dfsc_rgb@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "logical_paths": [
+    "experiments/anti_uav/runs/normal_ir/weights/epoch_18.pt",
+    "experiments/anti_uav/runs/normal_ir/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:normal_ir@epoch_18",
+    "antiuav_repro.globaltrack:normal_ir@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "9a8dd58e858617eccd16ad531c2534bae4d13c498efec87e8dd9f83dae9ce016",
+   "logical_paths": [
+    "experiments/anti_uav/runs/normal_rgb/weights/epoch_12.pt",
+    "experiments/anti_uav/runs/normal_rgb/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:normal_rgb@epoch_12",
+    "antiuav_repro.globaltrack:normal_rgb@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "708ce9666ff84f1856b0a9d4fe6d213cc32215c50bb8ee968e908a897840bb5f",
+   "logical_paths": [
+    "experiments/anti_uav/runs/phaseB_dfsc_ir_ism_cross/weights/epoch_18.pt",
+    "experiments/anti_uav/runs/phaseB_dfsc_ir_ism_cross/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_18",
+    "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "acebb60a1fc21dcbe9f99143befc3d1eedeaa0351a8dae39985f604d9341c682",
+   "logical_paths": [
+    "experiments/anti_uav/runs/phaseB_dfsc_ir_lr0.02_accum8/weights/epoch_18.pt",
+    "experiments/anti_uav/runs/phaseB_dfsc_ir_lr0.02_accum8/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_18",
+    "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "dc0b3e643b53222bc7f24a65a4104b08a4cf748306f082ca535c9269b4899542",
+   "logical_paths": [
+    "experiments/anti_uav/runs/phaseB_dfsc_ir_seed1/weights/epoch_18.pt",
+    "experiments/anti_uav/runs/phaseB_dfsc_ir_seed1/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_18",
+    "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "785caff254c159beb8867938bbb2d2231e523c1b8afdd002c107395543f23d54",
+   "logical_paths": [
+    "experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/weights/epoch_18.pt",
+    "experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_18",
+    "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "414ef0164e2bfc6520fb19b2e1d487fbb5df14836433da4923223b24f5032b13",
+   "logical_paths": [
+    "experiments/anti_uav/runs/phaseB_normal_ir_seed1/weights/epoch_18.pt",
+    "experiments/anti_uav/runs/phaseB_normal_ir_seed1/weights/last.pt"
+   ],
+   "model_ids": [
+    "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_18",
+    "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "95b1e0f9a75e5d2a6b7d6776c2afbcb5c68c3e82f3e88ad2e0d5cb036c0905a1",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/gen_temporal_fp_g4_full_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/gen_temporal_fp_g4_full_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "1862525272f9d3c706021ea5ccf7737d80447e4d0760608cd9e58c84c0d22c82",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/omen_v2_stock_s0_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/omen_v2_stock_s0_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "213b306875e6e9101cd012063037fa4aa372ad6a5aabafcfea1c6c528b1a0d9e",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/smoke/v2_causal_g4_s0_e2_smoke__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/smoke/v2_causal_g4_s0_e2_smoke__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "5b73647a463cc418652f8dd85e874b4d712a73e6d5f621949285390057332d3f",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g1_s0_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g1_s0_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "4dd3357702c874bc56cfec850d76471ccbdb138ab9fb2c202d2c8e1bb01d6f5b",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g1_s1_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g1_s1_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "38a1ee8d24263b6aeaba118c3517903bb40010d326bc47b32f66c2fc3fb4f3e1",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g2_s0_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g2_s0_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "1110fb1e093ab0a9975c6a87ccb233f717c1bc031d21782c0f099b57d0ac9171",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g2_s1_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g2_s1_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "480f78cf92c6f9f50a0df97031347c760972b1eac913db5496a60ad3d4da690b",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g4_s0_e20__test.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g4_s0_e20__test.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "5a876421db8dbf2da6b0b413d0d2c79be7b300c5d9e3544e73be9e391bf62dd9",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g4_s0_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g4_s0_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "d44ebf81d0609257d37538405fc9b51855ac7896b0bbf05a8d616f9b3a4dda5d",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g4_s1_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g4_s1_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "85662107627032739f0b7818532cea5cbf22a9b42d0e402182e05dc71054bd0b",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g8_s0_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g8_s0_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "5a1978fbcef002637afd628d766ace7e616ba17fb0cec3c2e57c6aaa591e66b3",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_causal_g8_s1_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_causal_g8_s1_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "2ef09eb2ddec0aa92aca8c522b40a135f0e7b9fa73b14ab98012308e93d5f3c1",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_stock_s0_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_stock_s0_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "2222436965430d6ccf6edf4f84d92695f65578f30847310962686fa94ba9bd2f",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_stock_s1_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_stock_s1_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "2822e75eb736195819df409ece6600f41e934ed1b1990c563863ff6a74103cc5",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_sym_g4_s0_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_sym_g4_s0_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "983d9b1927185c9c838575a324039fc4afbc8c4461bcc3152ceeb001da8d368d",
+   "logical_paths": [
+    "runs/aerotrack_v2/_cache/v2_sym_g4_s1_e20__val.pkl",
+    "runs/hpc/aerotrack_v2/_cache/v2_sym_g4_s1_e20__val.pkl"
+   ],
+   "model_ids": [],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  },
+  {
+   "sha256": "5bba24c8dece77a1657605b68d63bbdd29dc4f37200391649c9360269f6d7bc1",
+   "logical_paths": [
+    "runs/omen_v2_stock_s0_e20/weights/last.pt",
+    "runs/v2_stock_s0_e20/weights/last.pt"
+   ],
+   "model_ids": [
+    "aerotrack.detector.v2:omen_v2_stock_s0_e20@last",
+    "aerotrack.detector.v2:v2_stock_s0_e20@last"
+   ],
+   "note": "identical bytes; NOT deleted. Different logical paths may still carry different roles."
+  }
+ ]
+}

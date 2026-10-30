@@ -1,0 +1,1390 @@
+{
+ "generated": "2026-10-13T19:06:46+05:30",
+ "generator": "tools/build_workspace_registry.py",
+ "git_head": "7f84f55c792905dfcc21b81edd424c4563d7c71d",
+ "schema": "aerolab/lineage/1",
+ "families": {
+  "aerotrack.deploy": [
+   "aerotrack.deploy:aerotrack_causal_g4_v2@last.pt",
+   "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18.onnx",
+   "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_fp16.onnx",
+   "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+   "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine",
+   "aerotrack.deploy:gen_spd_fp_f0_e20@gen_spd_fp_f0_e20_b1_op18.onnx",
+   "aerotrack.deploy:gen_temporal_fp_g4_full_e20@gen_temporal_fp_g4_full_e20_b1_op18.onnx",
+   "aerotrack.deploy:gen_temporal_fp_g4_full_e20@gen_temporal_fp_g4_full_e20_b1_op18_fp16.onnx",
+   "aerotrack.deploy:gen_temporal_fp_g4_full_e20@gen_temporal_fp_g4_full_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+   "aerotrack.deploy:gen_temporal_fp_g4_full_e20@gen_temporal_fp_g4_full_e20_b1_op18_trt11.3.0.99_fp32.engine",
+   "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18.onnx",
+   "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_fp16.onnx",
+   "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+   "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine"
+  ],
+  "aerotrack.detector.cst_x": [
+   "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s0_e20@best",
+   "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s0_e20@last",
+   "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s1_e20@best",
+   "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s1_e20@last",
+   "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s2_e20@best",
+   "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s2_e20@last",
+   "aerotrack.detector.cst_x:v3_n__ttt_cst_s0_e20@best",
+   "aerotrack.detector.cst_x:v3_n__ttt_cst_s0_e20@last",
+   "aerotrack.detector.cst_x:v3_n__ttt_cst_s1_e20@best",
+   "aerotrack.detector.cst_x:v3_n__ttt_cst_s1_e20@last",
+   "aerotrack.detector.cst_x:v3_n__ttt_cst_s2_e20@best",
+   "aerotrack.detector.cst_x:v3_n__ttt_cst_s2_e20@last"
+  ],
+  "aerotrack.detector.f1_std": [
+   "aerotrack.detector.f1_std:v3_n_std__causal_g4_s0_e20@best",
+   "aerotrack.detector.f1_std:v3_n_std__causal_g4_s0_e20@last",
+   "aerotrack.detector.f1_std:v3_n_std__causal_g4_s1_e20@best",
+   "aerotrack.detector.f1_std:v3_n_std__causal_g4_s1_e20@last"
+  ],
+  "aerotrack.detector.gen": [
+   "aerotrack.detector.gen:gen_spd_fp_f0_e1_smoke@best",
+   "aerotrack.detector.gen:gen_spd_fp_f0_e1_smoke@last",
+   "aerotrack.detector.gen:gen_spd_fp_f0_e20@best",
+   "aerotrack.detector.gen:gen_spd_fp_f0_e20@last",
+   "aerotrack.detector.gen:gen_spd_fp_f1_e20@best",
+   "aerotrack.detector.gen:gen_spd_fp_f1_e20@last",
+   "aerotrack.detector.gen:gen_spd_fp_f2_e20@best",
+   "aerotrack.detector.gen:gen_spd_fp_f2_e20@last",
+   "aerotrack.detector.gen:gen_stock_f0_e1_smoke@best",
+   "aerotrack.detector.gen:gen_stock_f0_e1_smoke@last",
+   "aerotrack.detector.gen:gen_stock_f0_e20@best",
+   "aerotrack.detector.gen:gen_stock_f0_e20@last",
+   "aerotrack.detector.gen:gen_stock_f0_e2_smoke@best",
+   "aerotrack.detector.gen:gen_stock_f0_e2_smoke@last",
+   "aerotrack.detector.gen:gen_stock_f1_e20@best",
+   "aerotrack.detector.gen:gen_stock_f1_e20@last",
+   "aerotrack.detector.gen:gen_stock_f1_e2_smoke@best",
+   "aerotrack.detector.gen:gen_stock_f1_e2_smoke@last",
+   "aerotrack.detector.gen:gen_stock_f2_e20@best",
+   "aerotrack.detector.gen:gen_stock_f2_e20@last",
+   "aerotrack.detector.gen:gen_stock_f2_e3_smoke@best",
+   "aerotrack.detector.gen:gen_stock_f2_e3_smoke@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g1_f0_e1_smoke@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g1_f0_e1_smoke@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g1_f0_e20@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g1_f0_e20@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g1_f1_e20@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g1_f1_e20@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g1_f2_e20@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g1_f2_e20@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f0_e1_smoke@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f0_e1_smoke@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f0_e20@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f0_e20@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f1_e20@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f1_e20@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f2_e20@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f2_e20@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f2_e3_smoke@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_f2_e3_smoke@last",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_full_e20@best",
+   "aerotrack.detector.gen:gen_temporal_fp_g4_full_e20@last"
+  ],
+  "aerotrack.detector.historical": [
+   "aerotrack.detector.historical:aerotrack_spd_finetuned@best",
+   "aerotrack.detector.historical:aerotrack_spd_finetuned@last",
+   "aerotrack.detector.historical:aerotrack_spd_v1@best",
+   "aerotrack.detector.historical:aerotrack_spd_v1@last"
+  ],
+  "aerotrack.detector.repair": [
+   "aerotrack.detector.repair:repair_abl_baseline_ctrl_e20@best",
+   "aerotrack.detector.repair:repair_abl_baseline_ctrl_e20@last",
+   "aerotrack.detector.repair:repair_abl_no_spd_e20@best",
+   "aerotrack.detector.repair:repair_abl_no_spd_e20@last",
+   "aerotrack.detector.repair:repair_abl_single_frame_e20@best",
+   "aerotrack.detector.repair:repair_abl_single_frame_e20@last",
+   "aerotrack.detector.repair:repair_abl_stock_yolo11n_e20@best",
+   "aerotrack.detector.repair:repair_abl_stock_yolo11n_e20@last"
+  ],
+  "aerotrack.detector.v2": [
+   "aerotrack.detector.v2:omen_v2_stock_s0_e20@last",
+   "aerotrack.detector.v2:v2_causal_g1_s0_e20@best",
+   "aerotrack.detector.v2:v2_causal_g1_s0_e20@last",
+   "aerotrack.detector.v2:v2_causal_g1_s1_e20@best",
+   "aerotrack.detector.v2:v2_causal_g1_s1_e20@last",
+   "aerotrack.detector.v2:v2_causal_g2_s0_e20@best",
+   "aerotrack.detector.v2:v2_causal_g2_s0_e20@last",
+   "aerotrack.detector.v2:v2_causal_g2_s1_e20@best",
+   "aerotrack.detector.v2:v2_causal_g2_s1_e20@last",
+   "aerotrack.detector.v2:v2_causal_g4_s0_e20@best",
+   "aerotrack.detector.v2:v2_causal_g4_s0_e20@last",
+   "aerotrack.detector.v2:v2_causal_g4_s0_e2_smoke@best",
+   "aerotrack.detector.v2:v2_causal_g4_s0_e2_smoke@best~hpc",
+   "aerotrack.detector.v2:v2_causal_g4_s0_e2_smoke@last",
+   "aerotrack.detector.v2:v2_causal_g4_s0_e2_smoke@last~hpc",
+   "aerotrack.detector.v2:v2_causal_g4_s1_e20@best",
+   "aerotrack.detector.v2:v2_causal_g4_s1_e20@last",
+   "aerotrack.detector.v2:v2_causal_g8_s0_e20@best",
+   "aerotrack.detector.v2:v2_causal_g8_s0_e20@last",
+   "aerotrack.detector.v2:v2_causal_g8_s1_e20@best",
+   "aerotrack.detector.v2:v2_causal_g8_s1_e20@last",
+   "aerotrack.detector.v2:v2_stock_s0_e20@best",
+   "aerotrack.detector.v2:v2_stock_s0_e20@best~hpc",
+   "aerotrack.detector.v2:v2_stock_s0_e20@last",
+   "aerotrack.detector.v2:v2_stock_s0_e20@last~hpc",
+   "aerotrack.detector.v2:v2_stock_s1_e20@best",
+   "aerotrack.detector.v2:v2_stock_s1_e20@last",
+   "aerotrack.detector.v2:v2_sym_g4_s0_e20@best",
+   "aerotrack.detector.v2:v2_sym_g4_s0_e20@best~hpc",
+   "aerotrack.detector.v2:v2_sym_g4_s0_e20@last",
+   "aerotrack.detector.v2:v2_sym_g4_s0_e20@last~hpc",
+   "aerotrack.detector.v2:v2_sym_g4_s1_e20@best",
+   "aerotrack.detector.v2:v2_sym_g4_s1_e20@last"
+  ],
+  "aerotrack.forecaster.c1": [
+   "aerotrack.forecaster.c1:c1_gru_abs_s0@onnx",
+   "aerotrack.forecaster.c1:c1_gru_abs_s0@weights",
+   "aerotrack.forecaster.c1:c1_gru_abs_s1@weights",
+   "aerotrack.forecaster.c1:c1_gru_abs_s2@weights",
+   "aerotrack.forecaster.c1:c1_mlp_abs_s0@onnx",
+   "aerotrack.forecaster.c1:c1_mlp_abs_s0@weights",
+   "aerotrack.forecaster.c1:c1_mlp_abs_s1@weights",
+   "aerotrack.forecaster.c1:c1_mlp_abs_s2@weights",
+   "aerotrack.forecaster.c1:c1_tfm_abs_s0@onnx",
+   "aerotrack.forecaster.c1:c1_tfm_abs_s0@weights",
+   "aerotrack.forecaster.c1:c1_tfm_abs_s1@weights",
+   "aerotrack.forecaster.c1:c1_tfm_abs_s2@weights",
+   "aerotrack.forecaster.c1:c1_tfm_aug_s0@weights",
+   "aerotrack.forecaster.c1:c1_tfm_aug_s1@weights",
+   "aerotrack.forecaster.c1:c1_tfm_aug_s2@weights",
+   "aerotrack.forecaster.c1:c1_tfm_noabs_s0@weights",
+   "aerotrack.forecaster.c1:c1_tfm_noabs_s1@weights",
+   "aerotrack.forecaster.c1:c1_tfm_noabs_s2@weights"
+  ],
+  "aerotrack.forecaster.c1c": [
+   "aerotrack.forecaster.c1c:c1c_tfm_domtok_s0@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_domtok_s1@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_domtok_s2@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_antiuav_IR_s0@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_antiuav_IR_s1@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_antiuav_IR_s2@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_antiuav_RGB_s0@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_antiuav_RGB_s1@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_antiuav_RGB_s2@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_cst_s0@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_cst_s1@weights",
+   "aerotrack.forecaster.c1c:c1c_tfm_perdom_cst_s2@weights"
+  ],
+  "aerotrack.forecaster.lstm": [
+   "aerotrack.forecaster.lstm:lstm_forecaster@forecaster",
+   "aerotrack.forecaster.lstm:lstm_forecaster_repair@forecaster_original",
+   "aerotrack.forecaster.lstm:lstm_forecaster_repair@forecaster_residual_lv",
+   "aerotrack.forecaster.lstm:lstm_forecaster_repair@forecaster_residual_mv4"
+  ],
+  "antiuav_repro.globaltrack": [
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_01",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_02",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_03",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_04",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_05",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_06",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_07",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_08",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_09",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_10",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_11",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_12",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_13",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_14",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_15",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_16",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_17",
+   "antiuav_repro.globaltrack:dfsc_ir@epoch_18",
+   "antiuav_repro.globaltrack:dfsc_ir@last",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_01",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_02",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_03",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_04",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_05",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_06",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_07",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_08",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_09",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_10",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_11",
+   "antiuav_repro.globaltrack:dfsc_rgb@epoch_12",
+   "antiuav_repro.globaltrack:dfsc_rgb@last",
+   "antiuav_repro.globaltrack:largescale_globaltrack@last",
+   "antiuav_repro.globaltrack:normal_ir@epoch_01",
+   "antiuav_repro.globaltrack:normal_ir@epoch_02",
+   "antiuav_repro.globaltrack:normal_ir@epoch_03",
+   "antiuav_repro.globaltrack:normal_ir@epoch_04",
+   "antiuav_repro.globaltrack:normal_ir@epoch_05",
+   "antiuav_repro.globaltrack:normal_ir@epoch_06",
+   "antiuav_repro.globaltrack:normal_ir@epoch_07",
+   "antiuav_repro.globaltrack:normal_ir@epoch_08",
+   "antiuav_repro.globaltrack:normal_ir@epoch_09",
+   "antiuav_repro.globaltrack:normal_ir@epoch_10",
+   "antiuav_repro.globaltrack:normal_ir@epoch_11",
+   "antiuav_repro.globaltrack:normal_ir@epoch_12",
+   "antiuav_repro.globaltrack:normal_ir@epoch_13",
+   "antiuav_repro.globaltrack:normal_ir@epoch_14",
+   "antiuav_repro.globaltrack:normal_ir@epoch_15",
+   "antiuav_repro.globaltrack:normal_ir@epoch_16",
+   "antiuav_repro.globaltrack:normal_ir@epoch_17",
+   "antiuav_repro.globaltrack:normal_ir@epoch_18",
+   "antiuav_repro.globaltrack:normal_ir@last",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_01",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_02",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_03",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_04",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_05",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_06",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_07",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_08",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_09",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_10",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_11",
+   "antiuav_repro.globaltrack:normal_rgb@epoch_12",
+   "antiuav_repro.globaltrack:normal_rgb@last",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_01",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_02",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_03",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_04",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_05",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_06",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_07",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_08",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_09",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_10",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_11",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_12",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_13",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_14",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_15",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_16",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_17",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_18",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@last",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_01",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_02",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_03",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_04",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_05",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_06",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_07",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_08",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_09",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_10",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_11",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_12",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_13",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_14",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_15",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_16",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_17",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_18",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@last",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_01",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_02",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_03",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_04",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_05",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_06",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_07",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_08",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_09",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_10",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_11",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_12",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_13",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_14",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_15",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_16",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_17",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_18",
+   "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@last",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_01",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_02",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_03",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_04",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_05",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_06",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_07",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_08",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_09",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_10",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_11",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_12",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_13",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_14",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_15",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_16",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_17",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_18",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@last",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_01",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_02",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_03",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_04",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_05",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_06",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_07",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_08",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_09",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_10",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_11",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_12",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_13",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_14",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_15",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_16",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_17",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_18",
+   "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@last"
+  ],
+  "shared.globaltrack_pretrained": [
+   "shared.globaltrack_pretrained:globaltrack_qgrcnn_torchvision@weights"
+  ],
+  "shared.pretrained.yolo11": [
+   "shared.pretrained.yolo11:yolo11n@weights",
+   "shared.pretrained.yolo11:yolo11s@weights"
+  ]
+ },
+ "edges": [
+  {
+   "from": "aerotrack.deploy:aerotrack_causal_g4_v2@last.pt",
+   "to": "aerotrack.detector.v2:v2_causal_g4_s0_e20@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18.onnx",
+   "to": "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18.onnx",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_fp16.onnx",
+   "to": "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_fp16.onnx",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+   "to": "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "aerotrack.deploy:aerotrack_causal_g4_v2@v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine",
+   "to": "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s0_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s0_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s1_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s1_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s2_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__causal_g4_cst_s2_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__ttt_cst_s0_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__ttt_cst_s0_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__ttt_cst_s1_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__ttt_cst_s1_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__ttt_cst_s2_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.cst_x:v3_n__ttt_cst_s2_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.f1_std:v3_n_std__causal_g4_s0_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.f1_std:v3_n_std__causal_g4_s0_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.f1_std:v3_n_std__causal_g4_s1_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.f1_std:v3_n_std__causal_g4_s1_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.repair:repair_abl_baseline_ctrl_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.repair:repair_abl_baseline_ctrl_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.repair:repair_abl_no_spd_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.repair:repair_abl_no_spd_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.repair:repair_abl_single_frame_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.repair:repair_abl_single_frame_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.repair:repair_abl_stock_yolo11n_e20@best",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "shared.pretrained.yolo11:yolo11n@weights",
+   "to": "aerotrack.detector.repair:repair_abl_stock_yolo11n_e20@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "aerotrack.detector.v2:omen_v2_stock_s0_e20@last",
+   "to": "aerotrack.detector.v2:v2_stock_s0_e20@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_13",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_14",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_15",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_16",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_17",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@epoch_18",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:dfsc_ir@epoch_18",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_ir@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:dfsc_rgb@epoch_12",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:dfsc_rgb@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:largescale_globaltrack@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_13",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_14",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_15",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_16",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_17",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@epoch_18",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:normal_ir@epoch_18",
+   "to": "antiuav_repro.globaltrack:normal_ir@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_ir@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:normal_rgb@epoch_12",
+   "to": "antiuav_repro.globaltrack:normal_rgb@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:normal_rgb@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_13",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_14",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_15",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_16",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_17",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_18",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@epoch_18",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_ism_cross@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_13",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_14",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_15",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_16",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_17",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_18",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@epoch_18",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_lr0.02_accum8@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_13",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_14",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_15",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_16",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_17",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_18",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@epoch_18",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_dfsc_ir_seed1@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_13",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_14",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_15",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_16",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_17",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_18",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@epoch_18",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_lr0.02_accum8@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_01",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_02",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_03",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_04",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_05",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_06",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_07",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_08",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_09",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_10",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_11",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_12",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_13",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_14",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_15",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_16",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_17",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_18",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@epoch_18",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@last",
+   "relation": "same_bytes"
+  },
+  {
+   "from": "external:torchvision_coco_fasterrcnn_r50_fpn_v1 (config model.init; spec substitution)",
+   "to": "antiuav_repro.globaltrack:phaseB_normal_ir_seed1@last",
+   "relation": "initialised_from"
+  },
+  {
+   "from": "aerotrack.detector.gen:gen_spd_fp_f0_e20@last",
+   "to": "aerotrack.deploy:gen_spd_fp_f0_e20@gen_spd_fp_f0_e20_b1_op18.onnx",
+   "relation": "exported_from"
+  },
+  {
+   "from": "aerotrack.detector.gen:gen_temporal_fp_g4_full_e20@last",
+   "to": "aerotrack.deploy:gen_temporal_fp_g4_full_e20@gen_temporal_fp_g4_full_e20_b1_op18.onnx",
+   "relation": "exported_from"
+  },
+  {
+   "from": "aerotrack.detector.gen:gen_temporal_fp_g4_full_e20@last",
+   "to": "aerotrack.deploy:gen_temporal_fp_g4_full_e20@gen_temporal_fp_g4_full_e20_b1_op18_fp16.onnx",
+   "relation": "exported_from"
+  },
+  {
+   "from": "aerotrack.detector.gen:gen_temporal_fp_g4_full_e20@last",
+   "to": "aerotrack.deploy:gen_temporal_fp_g4_full_e20@gen_temporal_fp_g4_full_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+   "relation": "exported_from"
+  },
+  {
+   "from": "aerotrack.detector.gen:gen_temporal_fp_g4_full_e20@last",
+   "to": "aerotrack.deploy:gen_temporal_fp_g4_full_e20@gen_temporal_fp_g4_full_e20_b1_op18_trt11.3.0.99_fp32.engine",
+   "relation": "exported_from"
+  },
+  {
+   "from": "aerotrack.detector.v2:v2_causal_g4_s0_e20@last",
+   "to": "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18.onnx",
+   "relation": "exported_from"
+  },
+  {
+   "from": "aerotrack.detector.v2:v2_causal_g4_s0_e20@last",
+   "to": "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_fp16.onnx",
+   "relation": "exported_from"
+  },
+  {
+   "from": "aerotrack.detector.v2:v2_causal_g4_s0_e20@last",
+   "to": "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_fp16_trt11.3.0.99_fp16.engine",
+   "relation": "exported_from"
+  },
+  {
+   "from": "aerotrack.detector.v2:v2_causal_g4_s0_e20@last",
+   "to": "aerotrack.deploy:v2_causal_g4_s0_e20@v2_causal_g4_s0_e20_b1_op18_trt11.3.0.99_fp32.engine",
+   "relation": "exported_from"
+  }
+ ]
+}
