@@ -11,7 +11,7 @@
 [![speed](https://img.shields.io/badge/RTX%205050-170%20FPS-2f9e44?style=for-the-badge)](#deployment)
 [![params](https://img.shields.io/badge/params-2.6M-1c7ed6?style=for-the-badge)](#how-it-works)
 
-<img src="assets/temporal_motion_demo.gif" width="88%" alt="Thermal frame, three-frame temporal motion, and the micro-target track"/>
+<img src="docs/assets/temporal_motion_demo.gif" width="88%" alt="Thermal frame, three-frame temporal motion, and the micro-target track"/>
 
 <sub>left: the raw thermal frame · middle: what three stacked frames reveal — static clutter cancels, the drone pops · right: the tracked target at 6×</sub>
 
@@ -63,7 +63,7 @@ All methods trained on CST train only. Ranges are over three seeds.
 - TEST was opened by two pre-registered passes and is now locked.
 
 Full write-up: [`experiments/cst_anti_uav/reports/FINAL_REPORT.md`](experiments/cst_anti_uav/reports/FINAL_REPORT.md) ·
-every number in one place: [`SUBMISSION/RESULTS_ALL.md`](SUBMISSION/RESULTS_ALL.md)
+every number in one place: [`docs/RESULTS_ALL.md`](docs/RESULTS_ALL.md)
 
 </details>
 
@@ -82,7 +82,7 @@ every number in one place: [`SUBMISSION/RESULTS_ALL.md`](SUBMISSION/RESULTS_ALL.
   first frame's box. Most trackers always output a box; this one stops when the drone leaves the frame,
   which the benchmark scores — and which matters in a real alarm system.
 
-Architecture in detail: [`SUBMISSION/ARCHITECTURE.md`](SUBMISSION/ARCHITECTURE.md)
+Architecture in detail: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 
 ## The Flight Deck
 
@@ -94,24 +94,24 @@ studio.bat
 
 <table>
 <tr>
-<td width="50%"><img src="assets/flight_deck/flight_deck.png" alt="Flight Deck home"/></td>
-<td width="50%"><img src="assets/flight_deck/test_bench.png" alt="Test Bench"/></td>
+<td width="50%"><img src="docs/assets/flight_deck/flight_deck.png" alt="Flight Deck home"/></td>
+<td width="50%"><img src="docs/assets/flight_deck/test_bench.png" alt="Test Bench"/></td>
 </tr>
 <tr>
 <td><b>Home</b> — both research directions and their headline numbers, read live from the result files</td>
 <td><b>Test Bench</b> — pick a category, a dataset and a scenario preset; sequences are chosen by a stated rule, not by hand</td>
 </tr>
 <tr>
-<td><img src="assets/flight_deck/live_comparison.png" alt="Live Comparison"/></td>
-<td><img src="assets/flight_deck/live_iou_trace.png" alt="IoU trace"/></td>
+<td><img src="docs/assets/flight_deck/live_comparison.png" alt="Live Comparison"/></td>
+<td><img src="docs/assets/flight_deck/live_iou_trace.png" alt="IoU trace"/></td>
 </tr>
 <tr>
 <td><b>Live Comparison</b> — models side by side on the same frames; step through or play</td>
 <td><b>Per-frame IoU</b> against ground truth, every frame classed: tracked, missed, wrong object, false alarm</td>
 </tr>
 <tr>
-<td><img src="assets/flight_deck/results.png" alt="Results"/></td>
-<td><img src="assets/flight_deck/model_vault.png" alt="Model Vault"/></td>
+<td><img src="docs/assets/flight_deck/results.png" alt="Results"/></td>
+<td><img src="docs/assets/flight_deck/model_vault.png" alt="Model Vault"/></td>
 </tr>
 <tr>
 <td><b>Results & Failures</b> — your runs and the published evidence, kept in separate tables</td>
@@ -142,13 +142,13 @@ In `DEMO.bat`, press **A** to run the whole walkthrough in order. Everything it 
 | [CST Anti-UAV](https://github.com/PCwenyue/CST-Anti-UAV) | thermal IR | 144 sequences | 162,187 | 120 / 40 / 60 |
 | [Det-Fly](https://github.com/Jake-WU/Det-Fly) | daylight RGB | 7,830 images | — | — |
 
-Directory layout, label formats and how the corpus is built: [`SUBMISSION/README.md`](SUBMISSION/README.md) §4.
+Directory layout, label formats and how the corpus is built: [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) §4.
 The data itself isn't in the repo.
 
 ## Deployment
 
 The full pipeline — window assembly, detector, estimator — runs at **170 FPS end to end** on a laptop
-RTX 5050 with TensorRT fp16. Engines, parity checks and latency tables are in [`deployment/`](deployment/)
+RTX 5050 with TensorRT fp16. Engines, parity checks and latency tables are in [`src/deployment/`](src/deployment/)
 and [`experiments/deployment/reports/`](experiments/deployment/reports/).
 
 ## Also here: reproducing *Anti-UAV* (2021)
@@ -196,27 +196,27 @@ Same test evidence, reported alongside the wins:
 ## Repository map
 
 ```
-DEMO.bat  studio.bat  run_aerotrack.py      entry points
+DEMO.bat · studio.bat       guided walkthrough · the Flight Deck
 
-a_inspection/      stage A: dataset inspection and EDA
-b_pipeline/        stage B: cleaning, label conversion, splits, temporal stacks
-c_model/           stage C: detector config, training, evaluation, the live demo
-deployment/        ONNX / TensorRT export and the runtime pipeline
-studio/ aerolab/   the Flight Deck and the library behind it
+src/
+  inspection/               dataset inspection and EDA
+  pipeline/                 cleaning, label conversion, splits, temporal stacks
+  model/                    detector config, training, evaluation, the live demo
+  deployment/               ONNX / TensorRT export and the runtime pipeline
+  aerolab/                  shared library: registry, adapters, evaluation, the test lock
+app/                        the Flight Deck (Streamlit)
+experiments/                one folder per study: cst_anti_uav, anti_uav, aerotrack_v2/v3, temporal, deployment
+scripts/                    run_aerotrack.py, registry builders, report renderers, audit benchmarks, HPC jobs
+notebooks/                  Review 1 and 2 notebooks, the interactive training notebook
+tests/                      unit tests
+results/
+  runs/                     training and evaluation run records
+  benchmark/                benchmark tables and model statistics
+  registry/                 every checkpoint, dataset and result, indexed by SHA-256
+  artifacts/                ledgers and dataset cards
+docs/                       reviewer's guide, all results, architecture, protocols, audit, write-ups
 
-experiments/       one folder per study: cst_anti_uav, anti_uav, aerotrack_v2/v3, temporal, deployment
-runs/              training and evaluation run records
-benchmark/         benchmark tables and model statistics
-registry/          every checkpoint, dataset and result, indexed by SHA-256
-artifacts/         ledgers and dataset cards the tools read
-audit/             the Review 2 audit and its benchmark scripts
-
-SUBMISSION/        reviewer's guide, all results, architecture
-docs/              protocols, the experiment ledger, per-direction write-ups, progress logs
-notebooks/         Review 1 and 2 notebooks, the interactive training notebook
-environments/      pinned package versions
-tools/             registry builders, report renderers, HPC job submission
-tests/             unit tests
+data/                       datasets (local only, not in the repo)
 ```
 
 <div align="center">
