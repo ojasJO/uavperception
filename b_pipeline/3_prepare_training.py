@@ -47,14 +47,17 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-UNIFIED = HERE / "data_unified"
-MANIFEST = UNIFIED / "manifest.csv"
+sys.path.insert(0, str(HERE))
+import corpus as _corpus  # noqa: E402  (AEROTRACK_CORPUS selects the corpus; default b_pipeline/data_unified)
+
+UNIFIED = _corpus.UNIFIED
+MANIFEST = _corpus.MANIFEST
 LOGS = HERE / "logs"
 LOGS.mkdir(parents=True, exist_ok=True)
 
-LABEL_CACHE = UNIFIED / "label_cache.npz"
-SPLITS_JSON = UNIFIED / "splits.json"
-HARDNESS_CSV = UNIFIED / "sample_hardness.csv"
+LABEL_CACHE = _corpus.LABEL_CACHE
+SPLITS_JSON = _corpus.SPLITS
+HARDNESS_CSV = _corpus.HARDNESS_CSV
 
 MICRO_THR = 0.0003
 SMALL_THR = 0.01
@@ -172,19 +175,26 @@ def build_splits(df):
         raise SystemExit(f"[ABORT] {len(bad)} seq_keys span multiple splits: "
                          f"{list(bad.index[:5])}")
 
-    # -- CST has no official val split -> carve one out of cst[train] ----- #
-    cst_train = seq[(seq.dataset == "cst") & (seq.split == "train")]
-    cst_train = cst_train.sort_values("seq_key").reset_index(drop=True)
-    rng = np.random.default_rng(CST_HOLDOUT_SEED)
-    order = rng.permutation(len(cst_train))
-    target = CST_VAL_FRACTION * cst_train["materialized"].sum()
-    holdout, acc = [], 0
-    for j in order:
-        if acc >= target:
-            break
-        holdout.append(str(cst_train.at[int(j), "seq_key"]))
-        acc += int(cst_train.at[int(j), "materialized"])
-    holdout = sorted(holdout)
+    # -- CST val: the official split when the corpus has it, else a holdout -- #
+    # The complete CST release has an official 40-sequence val split. Corpus v1
+    # was built from a truncated archive (parts z01-z07 of 11) that lacked it,
+    # so v1 carved a fixed-seed holdout out of cst[train]; that path is kept
+    # byte-for-byte for v1 (its manifest has no cst/val rows).
+    official_cst_val = bool(((seq.dataset == "cst") & (seq.split == "val")).any())
+    holdout = []
+    if not official_cst_val:
+        cst_train = seq[(seq.dataset == "cst") & (seq.split == "train")]
+        cst_train = cst_train.sort_values("seq_key").reset_index(drop=True)
+        rng = np.random.default_rng(CST_HOLDOUT_SEED)
+        order = rng.permutation(len(cst_train))
+        target = CST_VAL_FRACTION * cst_train["materialized"].sum()
+        acc = 0
+        for j in order:
+            if acc >= target:
+                break
+            holdout.append(str(cst_train.at[int(j), "seq_key"]))
+            acc += int(cst_train.at[int(j), "materialized"])
+        holdout = sorted(holdout)
 
     spec = {
         "generated": datetime.datetime.now().isoformat(),
@@ -192,14 +202,18 @@ def build_splits(df):
         "rationale": (
             "Sequence-level splits. Consecutive video frames are near-identical "
             "(median inter-frame motion 5.10 px Anti-UAV / 0.64 px CST), so a "
-            "frame-level split leaks. CST ships no val split; a fixed-seed "
-            "holdout is carved from cst[train]. cst[test] is NEVER used for "
+            "frame-level split leaks. " + (
+                "CST val = the official CST val split (complete release). " if official_cst_val else
+                "CST ships no val split; a fixed-seed "
+                "holdout is carved from cst[train]. ") +
+            "cst[test] is NEVER used for "
             "model selection -- it is the cross-domain generalisation probe."),
         "train": {"anti_uav": ["train"], "cst": ["train"], "det_fly": ["train"]},
-        "val": {"anti_uav": ["val"], "cst": ["train"], "det_fly": ["val"]},
+        "val": {"anti_uav": ["val"], "cst": ["val" if official_cst_val else "train"], "det_fly": ["val"]},
         "test": {"anti_uav": ["test"], "cst": ["test"], "det_fly": ["test"]},
         "cst_val_holdout_seqs": holdout,
-        "notes": ("`val.cst` reads the *train* split but is restricted to "
+        "notes": ("official CST val split; no holdout" if official_cst_val else
+                  "`val.cst` reads the *train* split but is restricted to "
                   "cst_val_holdout_seqs; `train.cst` excludes exactly those "
                   "sequences. Apply both filters or the split leaks."),
     }
@@ -211,7 +225,7 @@ def build_splits(df):
         rows = []
         for dk, sps in sp.items():
             g = seq[(seq.dataset == dk) & (seq.split.isin(sps))]
-            if dk == "cst":
+            if dk == "cst" and holdout:            # an empty holdout means the official val split: no filter
                 g = (g[g.seq_key.isin(holdout)] if name == "val"
                      else g[~g.seq_key.isin(holdout)] if name == "train" else g)
             rows.append((dk, len(g), int(g.frames.sum()), int(g.materialized.sum())))
@@ -228,7 +242,7 @@ def seq_keys_for(seq_table, spec, phase):
     for dk, sps in spec[phase].items():
         g = seq_table[(seq_table.dataset == dk) & (seq_table.split.isin(sps))]
         k = set(g.seq_key.astype(str))
-        if dk == "cst":
+        if dk == "cst" and holdout:                # empty holdout = official val split, no filter
             if phase == "val":
                 k &= holdout
             elif phase == "train":

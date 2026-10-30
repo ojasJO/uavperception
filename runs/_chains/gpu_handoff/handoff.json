@@ -1,0 +1,35 @@
+{
+ "started": "2026-10-05T11:10:24+0530",
+ "steps": [
+  {
+   "pause_flag": "not needed",
+   "h3_state": [
+    "PAUSED",
+    "PAUSE_AFTER_ARM"
+   ]
+  },
+  {
+   "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe experiments/aerotrack_v2/scripts/run_v2.py --detach",
+   "rc": 0,
+   "out": "v2 runner detached, pid 15192; state in A:\\AEROTRACK_OMEN\\runs\\aerotrack_v2\\_runner"
+  },
+  {
+   "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe tools/chain.py --spec tools/chains/post_v2_causal_caches.json --detach",
+   "rc": 0,
+   "out": "chain 'post_v2_causal_caches' detached, pid 22120; state in A:\\AEROTRACK_OMEN\\runs\\_chains\\post_v2_causal_caches"
+  },
+  {
+   "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe tools/chain.py --spec tools/chains/h3_resume.json --detach",
+   "rc": 0,
+   "out": "chain 'h3_resume' detached, pid 13132; state in A:\\AEROTRACK_OMEN\\runs\\_chains\\h3_resume"
+  },
+  {
+   "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe experiments/aerotrack_temporal/scripts/run_c2.py --detach --wait-for runs/_chains/h3_resume",
+   "rc": 0,
+   "out": "C2 runner detached, pid 18460; state in A:\\AEROTRACK_OMEN\\runs\\aerotrack_temporal\\_c2_runner"
+  }
+ ],
+ "corpus_v2_verdict": "OK",
+ "result": "launched",
+ "finished": "2026-10-05T11:10:29+0530"
+}

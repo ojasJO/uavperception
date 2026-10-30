@@ -1,0 +1,42 @@
+{
+  "forward_bf16": {
+    "mean_ms": 12.48,
+    "p50_ms": 10.86,
+    "p95_ms": 20.02
+  },
+  "forward_fp32": {
+    "mean_ms": 8.91,
+    "p50_ms": 7.88,
+    "p95_ms": 14.83
+  },
+  "preprocess_3frame_letterbox": {
+    "mean_ms": 5.68,
+    "p50_ms": 5.63,
+    "p95_ms": 6.18
+  },
+  "nms_cpu_conf.25": {
+    "mean_ms": 0.34,
+    "p50_ms": 0.3,
+    "p95_ms": 0.42
+  },
+  "nms_cpu_conf.001(eval)": {
+    "mean_ms": 6.7,
+    "p50_ms": 5.14,
+    "p95_ms": 9.65
+  },
+  "bytetrack_update": {
+    "mean_ms": 0.17,
+    "p50_ms": 0.17,
+    "p95_ms": 0.2
+  },
+  "end_to_end_sum_bf16_ms": 18.67,
+  "end_to_end_fps": 53.6,
+  "README_claim": {
+    "total_ms": 11.8,
+    "fps": 84.7,
+    "forward_ms": 8.4,
+    "preprocess_ms": 1.8,
+    "nms_ms": 0.9,
+    "bytetrack_ms": 0.7
+  }
+}

@@ -1,0 +1,4 @@
+{"t": "2026-10-06T12:43:13+0530", "job": "trackc_causal_caches", "kind": "submitted", "pbs_job": "92871.amritahpc", "host": "node03", "ncpus": 6, "mem_gb": 48, "walltime": "06:00:00", "gpu": 1, "stage": 1, "depend": "afterany:92866.amritahpc", "commit": "ae370f1fd199133cc82138ef80acb54f624190d4"}
+{"t": "2026-10-06T14:13:35+0530", "job": "trackc_causal_caches", "kind": "start", "pbs_job": "92871.amritahpc", "host": "node03"}
+{"t": "2026-10-06T14:13:38+0530", "job": "trackc_causal_caches", "kind": "run", "cmd": "python -u experiments/systems/scripts/cache_detections.py --run v2_stock_s0_e20 --corpus data_unified_v2 && python -u experiments/systems/scripts/cache_detections.py --run v2_causal_g4_s0_e20 --corpus data_unified_v2"}
+{"t": "2026-10-06T15:14:02+0530", "job": "trackc_causal_caches", "kind": "end", "rc": 0, "minutes": 60}

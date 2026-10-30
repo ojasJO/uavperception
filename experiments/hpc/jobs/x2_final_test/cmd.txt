@@ -1,0 +1,1 @@
+export AEROTRACK_WORKERS=12; python -u experiments/cst_anti_uav/scripts/x2_final.py --final-eval

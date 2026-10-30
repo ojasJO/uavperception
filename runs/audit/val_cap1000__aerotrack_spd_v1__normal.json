@@ -1,0 +1,97 @@
+{
+  "n_images": 3000,
+  "overall": {
+    "map50": 0.56617,
+    "map5095": 0.26648,
+    "per_class_ap50": {
+      "uav_drone": 0.69917,
+      "bird_hard_negative": 0.43317
+    },
+    "per_class_ap5095": {
+      "uav_drone": 0.39358,
+      "bird_hard_negative": 0.13938
+    },
+    "precision": {
+      "uav_drone": 0.86972,
+      "bird_hard_negative": 0.63646
+    },
+    "recall": {
+      "uav_drone": 0.64061,
+      "bird_hard_negative": 0.49594
+    }
+  },
+  "by_size": {
+    "micro": {
+      "map50": 0.25661,
+      "map5095": 0.09956,
+      "n_gt": 558
+    },
+    "small": {
+      "map50": 0.57547,
+      "map5095": 0.27963,
+      "n_gt": 3180
+    },
+    "standard": {
+      "map50": 0.42068,
+      "map5095": 0.27273,
+      "n_gt": 193
+    }
+  },
+  "by_dataset": {
+    "anti_uav": {
+      "map50": 0.97612,
+      "map5095": 0.62049,
+      "n_images": 1000,
+      "micro_ap50": 0.0
+    },
+    "cst": {
+      "map50": 0.67293,
+      "map5095": 0.34671,
+      "n_images": 1000,
+      "micro_ap50": 0.68188
+    },
+    "det_fly": {
+      "map50": 0.39655,
+      "map5095": 0.14864,
+      "n_images": 1000,
+      "micro_ap50": 0.13248
+    }
+  },
+  "by_modality": {
+    "IR": {
+      "map50": 0.97744,
+      "map5095": 0.60332,
+      "n_images": 502
+    },
+    "RGB": {
+      "map50": 0.97437,
+      "map5095": 0.63986,
+      "n_images": 498
+    }
+  },
+  "bird_fp": {
+    "images": 62,
+    "false_positives": 1169,
+    "fp_per_image": 18.85483870967742,
+    "conf_thres": 0.25
+  },
+  "empty_frame_fp": {
+    "images": 239,
+    "false_positives": 10,
+    "fp_per_image": 0.04184100418410042,
+    "conf_thres": 0.25
+  },
+  "_meta": {
+    "weights": "runs\\aerotrack_spd_v1\\weights\\best.pt",
+    "run": "aerotrack_spd_v1",
+    "epoch": 15,
+    "split": "val",
+    "cap": 1000,
+    "mode": "normal",
+    "n_images": 3000,
+    "seconds": 61.8,
+    "conf": 0.001,
+    "iou": 0.7,
+    "max_det": 30
+  }
+}

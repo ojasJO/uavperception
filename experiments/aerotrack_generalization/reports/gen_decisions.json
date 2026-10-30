@@ -1,0 +1,238 @@
+{
+ "generated": "2026-09-27T09:33:51+0530",
+ "rule": "Pre-registered decisions of the generalization series (the runner calls this; the rules below are fixed before any run).\n\n    python experiments/aerotrack_generalization/scripts/analyze_gen.py [--tag _smoke]\n\nPrimary metric: CST drone AP50 on the held-out DEV fold (drone class only; last.pt). Non-inferiority: Anti-UAV drone AP50.\nA candidate is SUPPORTED versus `stock` (same fold, same seed) only if\n  (1) fold-mean delta > +0.02, (2) delta > 0 in every one of the 3 folds, (3) the fold-pooled paired sequence bootstrap 95 % CI\n  of the mean delta excludes 0, and (4) the fold-mean Anti-UAV delta > -0.02.\nFutility: a candidate not ahead on fold 0 (delta <= 0) cannot satisfy (2) and is REJECTED without running folds 1-2.\nBudget check (H4): `stock` at 40 epochs vs `stock` at 20 epochs under the same rule.",
+ "candidates": {
+  "spd_fp": {
+   "candidate": "spd_fp",
+   "reference": "stock",
+   "primary": "cst_drone_AP50",
+   "folds": {
+    "0": {
+     "candidate": 0.7415457396464924,
+     "reference": 0.7263647147256749,
+     "delta": 0.01518102492081752,
+     "relative_pct": 2.0900003280791135,
+     "anti_uav_delta": -0.007398320131501213,
+     "secondary_deltas": {
+      "drone_AP50": -0.0029169475725793204,
+      "anti_uav_drone_AP50": -0.007398320131501213,
+      "cst_drone_AP50": 0.01518102492081752,
+      "det_fly_drone_AP50": 0.0244877055213093,
+      "cst_drone_micro_AP50": 0.01961871791180303,
+      "reg_micro_AP50": 0.032871567886921305,
+      "reg_cst_AP50": 0.01518102492081752,
+      "reg_cst_micro_AP50": 0.01961871791180303,
+      "mAP50": 0.02553594314136609
+     }
+    },
+    "1": {
+     "candidate": 0.7548640874120924,
+     "reference": 0.738370683693572,
+     "delta": 0.016493403718520483,
+     "relative_pct": 2.233756578202032,
+     "anti_uav_delta": 0.004360059440163377,
+     "secondary_deltas": {
+      "drone_AP50": 0.016616211860310037,
+      "anti_uav_drone_AP50": 0.004360059440163377,
+      "cst_drone_AP50": 0.016493403718520483,
+      "det_fly_drone_AP50": 0.007805798889404303,
+      "cst_drone_micro_AP50": 0.0413599033904164,
+      "reg_micro_AP50": 0.020918524642902725,
+      "reg_cst_AP50": 0.016493403718520483,
+      "reg_cst_micro_AP50": 0.0413599033904164,
+      "mAP50": 0.01947068433394894
+     }
+    },
+    "2": {
+     "candidate": 0.7223281347025498,
+     "reference": 0.7124034773293613,
+     "delta": 0.009924657373188484,
+     "relative_pct": 1.3931230951305529,
+     "anti_uav_delta": -0.02252152634732807,
+     "secondary_deltas": {
+      "drone_AP50": -0.006113974840679881,
+      "anti_uav_drone_AP50": -0.02252152634732807,
+      "cst_drone_AP50": 0.009924657373188484,
+      "det_fly_drone_AP50": 0.027282638226764966,
+      "cst_drone_micro_AP50": 0.01620277814826987,
+      "reg_micro_AP50": -0.008173710630404285,
+      "reg_cst_AP50": 0.009924657373188484,
+      "reg_cst_micro_AP50": 0.01620277814826987,
+      "mAP50": -0.0031650978661673657
+     }
+    }
+   },
+   "mean_delta": 0.013866362004175495,
+   "sd_delta": 0.003476112926189742,
+   "ci95_mean_delta": [
+    -0.004638887900299059,
+    0.033670416189286144
+   ],
+   "anti_uav_mean_delta": -0.008519929012888635,
+   "rules": {
+    "(1) mean delta > 0.02": false,
+    "(2) delta > 0 in every fold": true,
+    "(3) bootstrap CI excludes 0": false,
+    "(4) Anti-UAV non-inferior": true
+   },
+   "status": "not supported: (1) mean delta > 0.02, (3) bootstrap CI excludes 0"
+  },
+  "temporal_fp_g1": {
+   "candidate": "temporal_fp_g1",
+   "reference": "stock",
+   "primary": "cst_drone_AP50",
+   "folds": {
+    "0": {
+     "candidate": 0.7367031128369563,
+     "reference": 0.7263647147256749,
+     "delta": 0.010338398111281455,
+     "relative_pct": 1.4233067633504117,
+     "anti_uav_delta": 0.002255169490618214,
+     "secondary_deltas": {
+      "drone_AP50": -0.01869205728500689,
+      "anti_uav_drone_AP50": 0.002255169490618214,
+      "cst_drone_AP50": 0.010338398111281455,
+      "det_fly_drone_AP50": -0.07433310915609881,
+      "cst_drone_micro_AP50": 0.0033796179035081586,
+      "reg_micro_AP50": -0.030523190978300196,
+      "reg_cst_AP50": 0.010338398111281455,
+      "reg_cst_micro_AP50": 0.0033796179035081586,
+      "mAP50": -0.010175325939687396
+     }
+    },
+    "1": {
+     "candidate": 0.7511389644683231,
+     "reference": 0.738370683693572,
+     "delta": 0.012768280774751117,
+     "relative_pct": 1.729250775623972,
+     "anti_uav_delta": -0.007247994847209727,
+     "secondary_deltas": {
+      "drone_AP50": 0.00988753039226542,
+      "anti_uav_drone_AP50": -0.007247994847209727,
+      "cst_drone_AP50": 0.012768280774751117,
+      "det_fly_drone_AP50": 0.019314164757250007,
+      "cst_drone_micro_AP50": 0.03905505511355223,
+      "reg_micro_AP50": 0.011932936622095602,
+      "reg_cst_AP50": 0.012768280774751117,
+      "reg_cst_micro_AP50": 0.03905505511355223,
+      "mAP50": -0.0024519264787645767
+     }
+    },
+    "2": {
+     "candidate": 0.7159453553558053,
+     "reference": 0.7124034773293613,
+     "delta": 0.003541878026444012,
+     "relative_pct": 0.49717304016000985,
+     "anti_uav_delta": 0.0046632971487424735,
+     "secondary_deltas": {
+      "drone_AP50": -0.002556030824912181,
+      "anti_uav_drone_AP50": 0.0046632971487424735,
+      "cst_drone_AP50": 0.003541878026444012,
+      "det_fly_drone_AP50": -0.044879633748963754,
+      "cst_drone_micro_AP50": -0.009224316337178462,
+      "reg_micro_AP50": -0.0042203779467966385,
+      "reg_cst_AP50": 0.003541878026444012,
+      "reg_cst_micro_AP50": -0.009224316337178462,
+      "mAP50": -0.018912473498747695
+     }
+    }
+   },
+   "mean_delta": 0.008882852304158861,
+   "sd_delta": 0.0047823202648888275,
+   "ci95_mean_delta": [
+    -0.005424381058128284,
+    0.0232088725374253
+   ],
+   "anti_uav_mean_delta": -0.00010984273594967971,
+   "rules": {
+    "(1) mean delta > 0.02": false,
+    "(2) delta > 0 in every fold": true,
+    "(3) bootstrap CI excludes 0": false,
+    "(4) Anti-UAV non-inferior": true
+   },
+   "status": "not supported: (1) mean delta > 0.02, (3) bootstrap CI excludes 0"
+  },
+  "temporal_fp_g4": {
+   "candidate": "temporal_fp_g4",
+   "reference": "stock",
+   "primary": "cst_drone_AP50",
+   "folds": {
+    "0": {
+     "candidate": 0.7709321116378021,
+     "reference": 0.7263647147256749,
+     "delta": 0.04456739691212719,
+     "relative_pct": 6.1356775747234495,
+     "anti_uav_delta": -0.004271897630731991,
+     "secondary_deltas": {
+      "drone_AP50": 0.014811068304377728,
+      "anti_uav_drone_AP50": -0.004271897630731991,
+      "cst_drone_AP50": 0.04456739691212719,
+      "det_fly_drone_AP50": 0.016114792515088905,
+      "cst_drone_micro_AP50": 0.03819972744844724,
+      "reg_micro_AP50": 0.020648974964616096,
+      "reg_cst_AP50": 0.04456739691212719,
+      "reg_cst_micro_AP50": 0.03819972744844724,
+      "mAP50": 0.026506123545325444
+     }
+    },
+    "1": {
+     "candidate": 0.7745664880938645,
+     "reference": 0.738370683693572,
+     "delta": 0.036195804400292575,
+     "relative_pct": 4.902118299067523,
+     "anti_uav_delta": -6.775709013873144e-05,
+     "secondary_deltas": {
+      "drone_AP50": 0.025253169560171207,
+      "anti_uav_drone_AP50": -6.775709013873144e-05,
+      "cst_drone_AP50": 0.036195804400292575,
+      "det_fly_drone_AP50": 0.028227149767272086,
+      "cst_drone_micro_AP50": 0.08209099551813714,
+      "reg_micro_AP50": 0.030605529672779963,
+      "reg_cst_AP50": 0.036195804400292575,
+      "reg_cst_micro_AP50": 0.08209099551813714,
+      "mAP50": 0.013349720025507827
+     }
+    },
+    "2": {
+     "candidate": 0.7660151468567328,
+     "reference": 0.7124034773293613,
+     "delta": 0.05361166952737151,
+     "relative_pct": 7.525464323721365,
+     "anti_uav_delta": -4.804649865086663e-05,
+     "secondary_deltas": {
+      "drone_AP50": 0.013262629314783947,
+      "anti_uav_drone_AP50": -4.804649865086663e-05,
+      "cst_drone_AP50": 0.05361166952737151,
+      "det_fly_drone_AP50": -0.06933587234982191,
+      "cst_drone_micro_AP50": 0.03231763340500682,
+      "reg_micro_AP50": -0.006565443466050314,
+      "reg_cst_AP50": 0.05361166952737151,
+      "reg_cst_micro_AP50": 0.03231763340500682,
+      "mAP50": -0.04375438738861781
+     }
+    }
+   },
+   "mean_delta": 0.044791623613263755,
+   "sd_delta": 0.008710097458770365,
+   "ci95_mean_delta": [
+    0.020806759447175013,
+    0.07168092420223794
+   ],
+   "anti_uav_mean_delta": -0.0014625670731738631,
+   "rules": {
+    "(1) mean delta > 0.02": true,
+    "(2) delta > 0 in every fold": true,
+    "(3) bootstrap CI excludes 0": true,
+    "(4) Anti-UAV non-inferior": true
+   },
+   "status": "supported"
+  }
+ },
+ "budget_h4": {
+  "candidate": "stock_e40",
+  "reference": "stock",
+  "primary": "cst_drone_AP50",
+  "folds": {},
+  "status": "pending"
+ }
+}

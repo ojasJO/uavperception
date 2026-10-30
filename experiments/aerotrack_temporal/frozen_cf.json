@@ -1,0 +1,231 @@
+{
+ "registration": "experiments/aerotrack_temporal/preregistration/CF_final_causal_system.json",
+ "amendment": "CF-A2",
+ "written": "2026-10-12T14:26:38+0530",
+ "git": {
+  "commit": "6b9415a9562e7a1a518769151abad74ecb430ce7",
+  "tc_cf_committed_clean": true
+ },
+ "split_used": "val (VAL cache + VAL-only C2 / C3 / C1b / F1 reports; no TEST input)",
+ "smoke": null,
+ "detector": {
+  "run": "v2_causal_g4_s0_e20",
+  "window": "causal_g4",
+  "network": "X1 and CF stay on the as-built network",
+  "weights_sha256": "1118cf3290ae8bcfdd763bc1f83a1651f5c5bc754fd3e3a92fa2f1b8548d4452",
+  "val_cache_set_sha256": "12711ffc0083c74eaaec9a499948f6913697cc805d9fcee0fa5009d0fed40d76"
+ },
+ "groups": {
+  "anti_uav_IR": {
+   "tracker": "argmax",
+   "params": {
+    "thr": 0.3
+   },
+   "tuning": {
+    "params": {
+     "thr": 0.3
+    },
+    "objective_mean_group_mSA_pct": 80.9178432191481,
+    "grid_size": 11,
+    "groups": [
+     "anti_uav_IR",
+     "anti_uav_RGB"
+    ],
+    "group_mSA_pct": {
+     "anti_uav_IR": 80.45632892116951,
+     "anti_uav_RGB": 81.37935751712669
+    }
+   },
+   "argmax_baseline": {
+    "params": {
+     "thr": 0.3
+    },
+    "objective_mean_group_mSA_pct": 80.9178432191481,
+    "grid_size": 11,
+    "groups": [
+     "anti_uav_IR",
+     "anti_uav_RGB"
+    ],
+    "group_mSA_pct": {
+     "anti_uav_IR": 80.45632892116951,
+     "anti_uav_RGB": 81.37935751712669
+    }
+   }
+  },
+  "anti_uav_RGB": {
+   "tracker": "argmax",
+   "params": {
+    "thr": 0.3
+   },
+   "tuning": {
+    "params": {
+     "thr": 0.3
+    },
+    "objective_mean_group_mSA_pct": 80.9178432191481,
+    "grid_size": 11,
+    "groups": [
+     "anti_uav_IR",
+     "anti_uav_RGB"
+    ],
+    "group_mSA_pct": {
+     "anti_uav_IR": 80.45632892116951,
+     "anti_uav_RGB": 81.37935751712669
+    }
+   },
+   "argmax_baseline": {
+    "params": {
+     "thr": 0.3
+    },
+    "objective_mean_group_mSA_pct": 80.9178432191481,
+    "grid_size": 11,
+    "groups": [
+     "anti_uav_IR",
+     "anti_uav_RGB"
+    ],
+    "group_mSA_pct": {
+     "anti_uav_IR": 80.45632892116951,
+     "anti_uav_RGB": 81.37935751712669
+    }
+   }
+  },
+  "cst_IR": {
+   "tracker": "ste",
+   "params": {
+    "det_thr": 0.15,
+    "init_thr": 0.5,
+    "reacq_thr": 0.5,
+    "max_coast": 60,
+    "output": "det",
+    "coast_output": false,
+    "gate_chi2": 25.0
+   },
+   "tuning": {
+    "params": {
+     "det_thr": 0.15,
+     "init_thr": 0.5,
+     "reacq_thr": 0.5,
+     "max_coast": 60,
+     "output": "det",
+     "coast_output": false,
+     "gate_chi2": 25.0
+    },
+    "objective_mean_group_mSA_pct": 63.186088828176004,
+    "grid_size": 504,
+    "groups": [
+     "cst_IR"
+    ],
+    "group_mSA_pct": {
+     "cst_IR": 63.186088828176004
+    }
+   },
+   "argmax_baseline": {
+    "params": {
+     "thr": 0.3
+    },
+    "objective_mean_group_mSA_pct": 62.18092928169747,
+    "grid_size": 11,
+    "groups": [
+     "cst_IR"
+    ],
+    "group_mSA_pct": {
+     "cst_IR": 62.18092928169747
+    }
+   }
+  }
+ },
+ "adoption_checks": {
+  "anti_uav_IR": {
+   "fste_classical_minus_argmax_cross_fitted": {
+    "n": 67,
+    "mean_delta": 0.07237746490097054,
+    "ci95": [
+     -0.04139672612441311,
+     0.2548957571102445
+    ],
+    "wins": 11,
+    "losses": 10,
+    "verdict": "NO_DIFFERENCE"
+   },
+   "source": "C3 params_per_half; C3 boot / verdict"
+  },
+  "anti_uav_RGB": {
+   "fste_classical_minus_argmax_cross_fitted": {
+    "n": 67,
+    "mean_delta": -0.1566586372873687,
+    "ci95": [
+     -0.3959716279162816,
+     0.03925011646467634
+    ],
+    "wins": 11,
+    "losses": 9,
+    "verdict": "NO_DIFFERENCE"
+   },
+   "source": "C3 params_per_half; C3 boot / verdict"
+  }
+ },
+ "forecasters": {
+  "antiuav_IR": {
+   "kind": "learned",
+   "deployed": "c1_tfm_abs_s0",
+   "seeds_reported": [
+    "c1_tfm_abs_s0",
+    "c1_tfm_abs_s1",
+    "c1_tfm_abs_s2"
+   ],
+   "variant": "abs",
+   "source": "C1:pooled",
+   "checkpoint_sha256": {
+    "c1_tfm_abs_s0": "dfd8ee3ad92e90be6a06394d0893759f55968b87aa1ad201f889465301ad986c",
+    "c1_tfm_abs_s1": "019748daf9a353bf6ab81c1de878c5d3fe7fc90629af1964fe42dd923196c219",
+    "c1_tfm_abs_s2": "1b51b507cc80b6d77d49d170716d321df6e421928c6270d2b7c3043625e666b6"
+   },
+   "rule": {
+    "H1b": "SUPPORTED",
+    "H2b": "SUPPORTED",
+    "H4": "REVERSED"
+   }
+  },
+  "antiuav_RGB": {
+   "kind": "learned",
+   "deployed": "c1_tfm_abs_s0",
+   "seeds_reported": [
+    "c1_tfm_abs_s0",
+    "c1_tfm_abs_s1",
+    "c1_tfm_abs_s2"
+   ],
+   "variant": "abs",
+   "source": "C1:pooled",
+   "checkpoint_sha256": {
+    "c1_tfm_abs_s0": "dfd8ee3ad92e90be6a06394d0893759f55968b87aa1ad201f889465301ad986c",
+    "c1_tfm_abs_s1": "019748daf9a353bf6ab81c1de878c5d3fe7fc90629af1964fe42dd923196c219",
+    "c1_tfm_abs_s2": "1b51b507cc80b6d77d49d170716d321df6e421928c6270d2b7c3043625e666b6"
+   },
+   "rule": {
+    "H1b": "SUPPORTED",
+    "H2b": "NOT_SUPPORTED",
+    "H4": "REVERSED"
+   }
+  },
+  "cst": {
+   "kind": "classical",
+   "deployed": "dcv",
+   "params": {
+    "g": 0.98,
+    "k": 8
+   },
+   "variance": "TRAIN residual table (runs/aerotrack_temporal/c3/prep.json)",
+   "rule": {
+    "H1b": "NOT_SUPPORTED",
+    "H2b": "LOSES",
+    "H4": "NOT_SUPPORTED"
+   }
+  }
+ },
+ "sources_git_blob": {
+  "C2_causal_windows.json": "2b3579fda3474a5d1e0daad5cb50c0ceec82b840",
+  "C3_tracking_motion_models_v2_causal_g4_s0_e20.json": "6294d71bfee15ed13479d6633e6c15463ff20eae",
+  "C1b_forecasting_on_tracker_histories_v2_causal_g4_s0_e20.json": "2b12b86596c7e29ab06df743fcb390797565ab7f",
+  "prep.json": "8afa2488140f443ab0980b52b632df857cc9e32a",
+  "F1_standard_yolo11n.json": "eb7b401184cdf691d2e7f365d2b3cfa6840c3b4d"
+ }
+}

@@ -1,0 +1,4 @@
+{"t": "2026-10-06T01:48:48+05:30", "kind": "push", "file": "last.pt", "from_byte": 0, "size": 32338079, "attempt": 1}
+{"t": "2026-10-06T01:49:10+05:30", "kind": "pushed", "file": "last.pt", "seconds": 22}
+{"t": "2026-10-06T01:49:14+05:30", "kind": "verified", "file": "last.pt", "sha256": "d26641b2cedb77fffc547689eca0d75c62c5ffaeb4601472a9d2c2625766ea5f"}
+{"t": "2026-10-06T01:49:14+05:30", "kind": "done"}

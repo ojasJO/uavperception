@@ -49,10 +49,12 @@ from aerotrack_trainer import (AeroTrackTrainer, TrainConfig, build_model,
                                transfer_pretrained, LoaderWorkerDied)
 
 
-UNIFIED = ROOT / "b_pipeline" / "data_unified"
-MANIFEST = UNIFIED / "manifest.csv"
-SPLITS = UNIFIED / "splits.json"
-LABEL_CACHE_PATH = UNIFIED / "label_cache.npz"
+import corpus as _corpus  # noqa: E402  (b_pipeline/corpus.py; AEROTRACK_CORPUS selects the corpus, default v1)
+
+UNIFIED = _corpus.UNIFIED                 # b_pipeline/data_unified unless AEROTRACK_CORPUS says otherwise
+MANIFEST = _corpus.MANIFEST
+SPLITS = _corpus.SPLITS
+LABEL_CACHE_PATH = _corpus.LABEL_CACHE
 MODEL_CFG = HERE / "yolo11-spd.yaml"
 MODEL_CFG_P2 = HERE / "yolo11-spd-p2.yaml"
 PRETRAINED = HERE / "yolo11n.pt"
@@ -119,6 +121,14 @@ STAGES = {
 
 
 ABLATIONS = {
+    # Repair (2026-09-21): the controlled grid the audit asked for. All four run through the SAME
+    # code path with the SAME recipe/budget (experiments/aerotrack_repair/scripts/train_ablation.py):
+    #   baseline_ctrl  the full AeroTrack recipe (SPD + 9-ch stack), re-trained at the grid budget
+    #   no_spd         SPDConv -> stride-2 Conv, everything else identical
+    #   single_frame   t-1 == t == t+1 (no motion), everything else identical
+    #   stock_yolo11n  stride-2 Conv AND single frame: stock YOLO11n layout with COCO transfer
+    "baseline_ctrl": dict(name="abl_baseline"),
+    "stock_yolo11n": dict(model_cfg="yolo11-stride.yaml", temporal_gap=0, name="abl_stock_yolo11n"),
     "no_spd":      dict(model_cfg="yolo11-stride.yaml", name="abl_no_spd"),
     "single_frame": dict(temporal_gap=0, name="abl_single_frame"),
     "no_sampler":  dict(weighted_sampler=False, name="abl_no_sampler"),
@@ -654,7 +664,7 @@ def build(stage="baseline", ablation=None, device=None, overrides=None,
         print(f"[engine] batch {cfg.batch} x accumulate {trainer.accumulate} "
               f"= effective {cfg.batch*trainer.accumulate} | "
               f"{len(train_loader):,} iters/epoch | "
-              f"{'bf16' if trainer.amp_dtype is torch.bfloat16 else 'fp32'}")
+              f"{'bf16' if trainer.amp_dtype is torch.bfloat16 else ('fp16' if trainer.amp_dtype is torch.float16 else 'fp32')}")
     return trainer, ctx
 
 
@@ -1181,6 +1191,9 @@ def main():
     ap.add_argument("--name", default=None)
     ap.add_argument("--resume", default=None)
     ap.add_argument("--no-preflight", action="store_true")
+    ap.add_argument("--preflight-only", action="store_true",
+                    help="build the job, run the T1-T8 pre-flight on it, then exit "
+                         "without training (single --stage / --ablation path)")
     ap.add_argument("--tuning", default=None,
                     help="JSON file with {augment, sampler_weights, "
                          "temporal_gap} — how train.ipynb hands its config "
@@ -1218,6 +1231,10 @@ def main():
     unknown = [s for s in stages if s not in STAGES]
     if unknown:
         raise SystemExit(f"unknown stage(s) {unknown}; pick from {list(STAGES)}")
+    if args.preflight_only and (args.no_preflight or args.background
+                                or not (args.ablation or (args.stage and not args.stages))):
+        raise SystemExit("--preflight-only needs the single --stage / --ablation path, "
+                         "in the foreground, with the pre-flight enabled")
 
     tuning = {}
     if args.tuning:
@@ -1278,6 +1295,11 @@ def main():
                 P.check_throughput(ctx["train_loader"]),
                 P.check_vram(trainer, ctx["train_ds"], ctx["cfg"].batch, ctx["device"]),
             ], allow_fail=("T4",) if ctx["stage_cfg"].get("val_from_train") else ())
+        if args.preflight_only:
+            release(trainer, ctx, free_manifest=True, verbose=False)
+            print("[preflight-only] every check passed on this exact job; nothing "
+                  "was trained", flush=True)
+            return
         trainer.train(resume_from=args.resume)
         return
 

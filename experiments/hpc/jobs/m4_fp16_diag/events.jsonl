@@ -1,0 +1,4 @@
+{"t": "2026-10-06T01:40:51+0530", "job": "m4_fp16_diag", "kind": "submitted", "pbs_job": "92829.amritahpc", "host": "node03", "ncpus": 4, "mem_gb": 16, "walltime": "00:20:00", "gpu": 1, "stage": 0, "commit": "1d7dc68d1cffd81f5e04e47a4d0e9c935ba056f7"}
+{"t": "2026-10-06T01:40:55+0530", "job": "m4_fp16_diag", "kind": "start", "pbs_job": "92829.amritahpc", "host": "node03"}
+{"t": "2026-10-06T01:41:06+0530", "job": "m4_fp16_diag", "kind": "run", "cmd": "python tools/hpc/fp16_diag.py"}
+{"t": "2026-10-06T01:41:15+0530", "job": "m4_fp16_diag", "kind": "end", "rc": 1, "minutes": 0}

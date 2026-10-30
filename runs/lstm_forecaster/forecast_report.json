@@ -1,0 +1,133 @@
+{
+  "config": {
+    "obs": 16,
+    "pred": 12,
+    "stride": 4,
+    "hidden": 128,
+    "layers": 1,
+    "epochs": 10,
+    "lr": 0.001,
+    "jump_px": 30.0,
+    "device": "cuda:0"
+  },
+  "n_params": 166242,
+  "windows": {
+    "train": 89699,
+    "val": 29229,
+    "test": 54651
+  },
+  "history": [
+    {
+      "epoch": 0,
+      "train_mse": 0.00597497707181729,
+      "val_ADE_px": 52.87588356046336,
+      "val_FDE_px": 85.23553229891883
+    },
+    {
+      "epoch": 1,
+      "train_mse": 0.0019357067409625259,
+      "val_ADE_px": 50.39409098885874,
+      "val_FDE_px": 79.20954558298905
+    },
+    {
+      "epoch": 2,
+      "train_mse": 0.0019316964176530683,
+      "val_ADE_px": 54.146594109390605,
+      "val_FDE_px": 86.64864715964195
+    },
+    {
+      "epoch": 3,
+      "train_mse": 0.0019306493313522566,
+      "val_ADE_px": 56.552957054825086,
+      "val_FDE_px": 91.07359553976589
+    },
+    {
+      "epoch": 4,
+      "train_mse": 0.00193018018799843,
+      "val_ADE_px": 53.147593333546155,
+      "val_FDE_px": 86.03292941898148
+    },
+    {
+      "epoch": 5,
+      "train_mse": 0.0019242119227793485,
+      "val_ADE_px": 49.88830655974587,
+      "val_FDE_px": 78.90932988703024
+    },
+    {
+      "epoch": 6,
+      "train_mse": 0.0019233408138732554,
+      "val_ADE_px": 51.36962205074917,
+      "val_FDE_px": 81.32412337235229
+    },
+    {
+      "epoch": 7,
+      "train_mse": 0.001918792541377143,
+      "val_ADE_px": 49.78737209803922,
+      "val_FDE_px": 78.7340493417027
+    },
+    {
+      "epoch": 8,
+      "train_mse": 0.0019141132811626971,
+      "val_ADE_px": 50.25708955080908,
+      "val_FDE_px": 79.71382150941027
+    },
+    {
+      "epoch": 9,
+      "train_mse": 0.0019134935519846653,
+      "val_ADE_px": 49.75321322067337,
+      "val_FDE_px": 78.698232248017
+    }
+  ],
+  "results": [
+    {
+      "subset": "all test windows",
+      "n": 54651,
+      "LSTM_ADE_px": 41.8479,
+      "LSTM_FDE_px": 65.5774,
+      "Kalman_ADE_px": 56.5002,
+      "Kalman_FDE_px": 106.009,
+      "ADE_improvement_pct": 25.93,
+      "FDE_improvement_pct": 38.14
+    },
+    {
+      "subset": "SUDDEN-JUMP windows (>30 px in horizon)",
+      "n": 10752,
+      "LSTM_ADE_px": 109.7947,
+      "LSTM_FDE_px": 160.5935,
+      "Kalman_ADE_px": 149.1642,
+      "Kalman_FDE_px": 281.4042,
+      "ADE_improvement_pct": 26.39,
+      "FDE_improvement_pct": 42.93
+    },
+    {
+      "subset": "smooth windows",
+      "n": 43899,
+      "LSTM_ADE_px": 25.206,
+      "LSTM_FDE_px": 42.3055,
+      "Kalman_ADE_px": 33.8044,
+      "Kalman_FDE_px": 63.0501,
+      "ADE_improvement_pct": 25.44,
+      "FDE_improvement_pct": 32.9
+    },
+    {
+      "subset": "Anti-UAV",
+      "n": 40314,
+      "LSTM_ADE_px": 52.2467,
+      "LSTM_FDE_px": 80.8538,
+      "Kalman_ADE_px": 73.6923,
+      "Kalman_FDE_px": 138.3884,
+      "ADE_improvement_pct": 29.1,
+      "FDE_improvement_pct": 41.57
+    },
+    {
+      "subset": "CST Anti-UAV",
+      "n": 14337,
+      "LSTM_ADE_px": 12.6077,
+      "LSTM_FDE_px": 22.6221,
+      "Kalman_ADE_px": 8.1578,
+      "Kalman_FDE_px": 14.9618,
+      "ADE_improvement_pct": -54.55,
+      "FDE_improvement_pct": -51.2
+    }
+  ]
+}

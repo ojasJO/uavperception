@@ -1,0 +1,11 @@
+{
+ "name": "f1_std",
+ "purpose": "Track B F1 (registered): standard YOLO11n blocks (explicit scale n, 89.8 % COCO transfer) vs the as-built network (C3k2 c3k=True, 64.3 %), v2-selected window, seeds 0 / 1 (futility after seed 0); GPU; before X1, whose network follows the verdict",
+ "state_dir": "runs/_chains/f1_std",
+ "wait_for": "runs/_chains/post_v2_causal_caches",
+ "jobs": [
+  {"name": "run_f1", "required": false, "env": {"AEROTRACK_CORPUS": "data_unified_v2"},
+   "when_exists": "experiments/aerotrack_v2/reports/v2_decisions.json",
+   "cmd": ["{python}", "-u", "experiments/aerotrack_v3/scripts/run_f1.py"]}
+ ]
+}

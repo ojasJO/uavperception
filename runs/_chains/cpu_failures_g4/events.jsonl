@@ -1,0 +1,4 @@
+{"kind": "waiting", "dir": "A:\\AEROTRACK_OMEN\\runs\\_chains\\cpu_forecast_eval_g4", "t": "2026-10-05T00:18:16+0530"}
+{"kind": "go", "sentinel": "DONE", "t": "2026-10-05T07:18:16+0530"}
+{"kind": "start", "job": "failure_cases_g4", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/systems/scripts/failure_cases.py --run gen_temporal_fp_g4_full_e20 --corpus auto", "t": "2026-10-05T07:18:16+0530"}
+{"kind": "end", "job": "failure_cases_g4", "rc": 0, "minutes": 1.4, "t": "2026-10-05T07:19:42+0530"}

@@ -1,0 +1,280 @@
+{
+ "generated": "2026-10-06T11:32:37+0530",
+ "B": 1000,
+ "preregistration": "experiments/aerotrack_v2/preregistration.json",
+ "runs": [
+  "gen_temporal_fp_g4_full_e20",
+  "omen_v2_stock_s0_e20",
+  "v2_causal_g4_s0_e20",
+  "v2_causal_g4_s1_e20",
+  "v2_stock_s0_e20",
+  "v2_stock_s1_e20",
+  "v2_sym_g4_s0_e20",
+  "v2_sym_g4_s1_e20"
+ ],
+ "frame_set_sha256": "8cff3a4bb0726cb4602149147656994310b726e7c0187435402a2fa077f1423f",
+ "point": {
+  "gen_temporal_fp_g4_full_e20": {
+   "cst": 0.5991870965888382,
+   "anti_uav": 0.9801257975599875,
+   "pooled": 0.7838900782161132,
+   "cst_building": 0.5796195861469937,
+   "cst_cn_mountains": 0.732051090396619,
+   "cst_cn_sky": 0.7516272920001514,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.23802467162507362,
+   "cst_water": 0.887049156708289
+  },
+  "omen_v2_stock_s0_e20": {
+   "cst": 0.5661788113107267,
+   "anti_uav": 0.9768482787024589,
+   "pooled": 0.7578976662598792,
+   "cst_building": 0.544629415421551,
+   "cst_cn_mountains": 0.5984764964164541,
+   "cst_cn_sky": 0.7497747140473354,
+   "cst_jungle": 0.9997629208155433,
+   "cst_urban-areas": 0.28509222753907193,
+   "cst_water": 0.9573360625226944
+  },
+  "v2_causal_g4_s0_e20": {
+   "cst": 0.675958446492513,
+   "anti_uav": 0.981955695109066,
+   "pooled": 0.8053918464378987,
+   "cst_building": 0.6382058151723259,
+   "cst_cn_mountains": 0.787575189491135,
+   "cst_cn_sky": 0.823843693719888,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.3766548285297158,
+   "cst_water": 0.950823293562008
+  },
+  "v2_causal_g4_s1_e20": {
+   "cst": 0.6857264006813876,
+   "anti_uav": 0.9799545202546769,
+   "pooled": 0.8124275903665701,
+   "cst_building": 0.6433139936397689,
+   "cst_cn_mountains": 0.8398830980143617,
+   "cst_cn_sky": 0.7225837461087955,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.3635155615451634,
+   "cst_water": 0.9410897591057189
+  },
+  "v2_stock_s0_e20": {
+   "cst": 0.5635891034610527,
+   "anti_uav": 0.9787211583523645,
+   "pooled": 0.7552043060827143,
+   "cst_building": 0.5469883266412756,
+   "cst_cn_mountains": 0.6112703268447439,
+   "cst_cn_sky": 0.7605723009503694,
+   "cst_jungle": 0.9984536775581461,
+   "cst_urban-areas": 0.2763537775957386,
+   "cst_water": 0.942626201289191
+  },
+  "v2_stock_s1_e20": {
+   "cst": 0.5761010585118655,
+   "anti_uav": 0.9813539915803116,
+   "pooled": 0.767846383098881,
+   "cst_building": 0.5593622052068684,
+   "cst_cn_mountains": 0.5968362655410191,
+   "cst_cn_sky": 0.7164569529994391,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.2840860763705694,
+   "cst_water": 0.9420260254855933
+  },
+  "v2_sym_g4_s0_e20": {
+   "cst": 0.6780477823549913,
+   "anti_uav": 0.9791010748379456,
+   "pooled": 0.80304918559054,
+   "cst_building": 0.6479232426336108,
+   "cst_cn_mountains": 0.7971193502115308,
+   "cst_cn_sky": 0.7854645302167116,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.353488880653641,
+   "cst_water": 0.9557075841950652
+  },
+  "v2_sym_g4_s1_e20": {
+   "cst": 0.6688999147710245,
+   "anti_uav": 0.981446400088198,
+   "pooled": 0.8056048094663466,
+   "cst_building": 0.6334023621651104,
+   "cst_cn_mountains": 0.8001317598540029,
+   "cst_cn_sky": 0.7772780614383417,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.3429263606586885,
+   "cst_water": 0.9495622125541114
+  }
+ },
+ "decisions": [
+  {
+   "id": "C1",
+   "question": "causal window vs single frame",
+   "metric": "cst",
+   "pairs_available": [
+    [
+     "v2_causal_g4_s0_e20",
+     "v2_stock_s0_e20"
+    ],
+    [
+     "v2_causal_g4_s1_e20",
+     "v2_stock_s1_e20"
+    ]
+   ],
+   "pairs_registered": [
+    [
+     "v2_causal_g4_s0_e20",
+     "v2_stock_s0_e20"
+    ],
+    [
+     "v2_causal_g4_s1_e20",
+     "v2_stock_s1_e20"
+    ]
+   ],
+   "per_pair": [
+    0.11236934303146029,
+    0.10962534216952202
+   ],
+   "mean_delta": 0.11099734260049116,
+   "ci95": [
+    0.07102087386232038,
+    0.15456924649508857
+   ],
+   "anti_uav_mean_delta": 0.000917532715533409,
+   "per_category": {
+    "building": 0.0875846384819754,
+    "cn_mountains": 0.20967584755986685,
+    "cn_sky": 0.03469909293943746,
+    "jungle": 0.0007731612209224137,
+    "urban-areas": 0.08986526805428563,
+    "water": 0.0036304129464713175
+   },
+   "status": "SUPPORTED",
+   "failed": []
+  },
+  {
+   "id": "C2",
+   "question": "symmetric window vs single frame (replication on complete data)",
+   "metric": "cst",
+   "pairs_available": [
+    [
+     "v2_sym_g4_s0_e20",
+     "v2_stock_s0_e20"
+    ],
+    [
+     "v2_sym_g4_s1_e20",
+     "v2_stock_s1_e20"
+    ]
+   ],
+   "pairs_registered": [
+    [
+     "v2_sym_g4_s0_e20",
+     "v2_stock_s0_e20"
+    ],
+    [
+     "v2_sym_g4_s1_e20",
+     "v2_stock_s1_e20"
+    ]
+   ],
+   "per_pair": [
+    0.11445867889393857,
+    0.09279885625915896
+   ],
+   "mean_delta": 0.10362876757654876,
+   "ci95": [
+    0.06497836092030175,
+    0.14621002476454292
+   ],
+   "anti_uav_mean_delta": 0.00023616249673374945,
+   "per_category": {
+    "building": 0.08748753647528856,
+    "cn_mountains": 0.19457225883988533,
+    "cn_sky": 0.04285666885262235,
+    "jungle": 0.0007731612209224137,
+    "urban-areas": 0.06798769367301075,
+    "water": 0.010308784987196173
+   },
+   "status": "SUPPORTED",
+   "failed": []
+  },
+  {
+   "id": "C3",
+   "question": "causal vs symmetric window (cost of removing the look-ahead)",
+   "metric": "cst",
+   "pairs_available": [
+    [
+     "v2_causal_g4_s0_e20",
+     "v2_sym_g4_s0_e20"
+    ],
+    [
+     "v2_causal_g4_s1_e20",
+     "v2_sym_g4_s1_e20"
+    ]
+   ],
+   "pairs_registered": [
+    [
+     "v2_causal_g4_s0_e20",
+     "v2_sym_g4_s0_e20"
+    ],
+    [
+     "v2_causal_g4_s1_e20",
+     "v2_sym_g4_s1_e20"
+    ]
+   ],
+   "per_pair": [
+    -0.002089335862478281,
+    0.016826485910363065
+   ],
+   "mean_delta": 0.007368575023942392,
+   "ci95": [
+    -0.00022470399621119517,
+    0.01606524874674916
+   ],
+   "anti_uav_mean_delta": 0.0006813702187996595,
+   "per_category": {
+    "building": 9.710200668683333e-05,
+    "cn_mountains": 0.01510358871998152,
+    "cn_sky": -0.008157575913184889,
+    "jungle": 0.0,
+    "urban-areas": 0.021877574381274884,
+    "water": -0.006678372040724856
+   },
+   "status": "NON-INFERIOR (conclusive)"
+  },
+  {
+   "id": "C4",
+   "question": "data effect: complete vs truncated CST training data (same window, seed 0; n = 1 seed, CI = sampling noise only)",
+   "metric": "cst",
+   "pairs_available": [
+    [
+     "v2_sym_g4_s0_e20",
+     "gen_temporal_fp_g4_full_e20"
+    ]
+   ],
+   "pairs_registered": [
+    [
+     "v2_sym_g4_s0_e20",
+     "gen_temporal_fp_g4_full_e20"
+    ]
+   ],
+   "per_pair": [
+    0.07886068576615313
+   ],
+   "mean_delta": 0.07886068576615313,
+   "ci95": [
+    0.05620523359608043,
+    0.10179243449429301
+   ],
+   "anti_uav_mean_delta": -0.0010247227220419042,
+   "per_category": {
+    "building": 0.06830365648661707,
+    "cn_mountains": 0.06506825981491182,
+    "cn_sky": 0.03383723821656015,
+    "jungle": 0.0,
+    "urban-areas": 0.11546420902856736,
+    "water": 0.0686584274867762
+   },
+   "status": "SUPPORTED",
+   "failed": []
+  }
+ ],
+ "selected_candidate": "causal_g4",
+ "caveat": "bootstrap = sampling noise over VAL sequences; seed noise enters only through the per-seed deltas (2 seeds)"
+}

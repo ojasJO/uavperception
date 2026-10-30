@@ -1,0 +1,25 @@
+{
+ "generated": "2026-10-06T02:59:47+0530",
+ "volumes": [
+  "CST-AntiUAV.z01",
+  "CST-AntiUAV.z02",
+  "CST-AntiUAV.z03",
+  "CST-AntiUAV.z04",
+  "CST-AntiUAV.z05",
+  "CST-AntiUAV.z06",
+  "CST-AntiUAV.z07",
+  "CST-AntiUAV.z08",
+  "CST-AntiUAV.z09",
+  "CST-AntiUAV.z10",
+  "CST-AntiUAV.zip"
+ ],
+ "recover": "{'skipped': False, 'files': 246131, 'dirs': 226, 'crc_ok': 246131, 'crc_bad': 0, 'bytes_read': 23226837133, 'bytes_total': 23259867449, 'seconds': 1063.9, 'truncated_member': None, 'method_counts': {8: 246131}, 'ext_counts': {'.jpg': 245471, '.txt': 440, '.json': 220}, 'flag_samples': [{'name': 'CST-AntiUAV/', 'flag': 0, 'method': 0, 'comp': 0, 'uncomp': 0}, {'name': 'CST-AntiUAV/CST-AntiUAV/', 'flag': 0, 'method': 0, 'comp': 0, 'uncomp': 0}, {'name': 'CST-AntiUAV/CST-AntiUAV/test/', 'flag': 0, ",
+ "central_directory_files": 246131,
+ "missing": 0,
+ "bad_size": 0,
+ "bad_crc": 0,
+ "omen_report_files": 246131,
+ "examples": [],
+ "seconds": 1235,
+ "ok": true
+}

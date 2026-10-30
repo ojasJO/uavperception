@@ -1,0 +1,33 @@
+{
+  "id": "C1c_domain_aware_forecasting",
+  "track": "C (future path prediction)",
+  "registered": "see the git commit that added this file (2026-10-05): after C1's single VAL pass (whose CST result motivates it) and before any C1c training",
+  "class": "follow-up controlled experiment; TRAIN fitting, TRAIN-dev choices, ONE VAL pass; TEST sealed",
+  "motivation": "C1 (reports/C1_trajectory_forecasting.md): the pooled transformer beats the TRAIN-best classical forecaster on Anti-UAV IR (-8 to -10 % ADE) and RGB (-7 to -9 %) but LOSES on CST (+44 to +48 % vs damped mean velocity). Hypothesis (stated before any C1c run): training pooled over gimbal (mean-reverting) and static (inertial) footage without telling the model which camera it is fitted to imposes re-centring dynamics on CST. A deployed system knows its camera mode (tracking gimbal vs static mount), so conditioning on it is legitimate.",
+  "data_and_samples": "exactly C1's (tc_data trajectories, TRAIN non-dev / dev / VAL, L = 16, H = 24, oracle histories, every eligible anchor)",
+  "arms": {
+    "domtok": "C1's family (transformer, abs inputs, clean, C1's recipe) trained pooled with a 3-way camera-mode token in the global input (antiuav_IR / antiuav_RGB / cst); seeds 0, 1, 2",
+    "perdom": "the same family trained on ONE domain's TRAIN only (dev = that domain's dev groups), one model per domain; seeds 0, 1, 2"
+  },
+  "choice_on_dev": "per domain, the arm with the lower seed-mean dev NLL on that domain's dev groups is the C1c model of that domain (decided before --stage val)",
+  "comparisons_on_val": {
+    "H1c_point": {"what": "the domain's C1c model vs the domain's TRAIN-chosen classical reference (C1's), each seed", "rule": "C1's H1 rule (SUPPORTED / LOSES / NOT_SUPPORTED)"},
+    "H2c_vs_pooled": {"what": "the domain's C1c model vs C1's pooled model (seed i vs seed i)", "SUPPORTED": "all 3 pairs: relative ADE change <= -5 % and CI upper < 0", "WORSE": "all 3 pairs: CI lower > 0", "else": "NOT_SUPPORTED"},
+    "H3c_uncertainty": {"what": "the domain's C1c model vs the TRAIN-calibrated Kalman", "rule": "C1's H2 rule"},
+    "a_priori_expectation": "H2c SUPPORTED on CST; no directional expectation on Anti-UAV (C1 already beats the classical reference there)"
+  },
+  "adoption_rule": "per domain, the learned forecaster offered to C1b / C3 / CF = the C1c model if H1c is SUPPORTED and (H2c is SUPPORTED or C1's H1 was not SUPPORTED in that domain); else C1's pooled model if C1 adopted it there; else none (classical reference). Pre-run amendments to C1b and C3 record that they use this adoption.",
+  "component_gate": {
+    "measured_failure": "pooled learned forecaster +44-48 % ADE on CST (C1, VAL)",
+    "why": "conflicting dynamics across camera modes in one model without a mode input",
+    "baseline": "the domain's TRAIN-chosen classical reference and C1's pooled model",
+    "novelty": "camera-mode-aware forecasting for anti-UAV tracking (gimbal re-centring vs static-camera inertia), with calibrated uncertainty",
+    "cost": "same network (+3 input features for domtok); CPU training minutes",
+    "isolating_ablation": "domtok vs pooled (same data, one input added); perdom vs pooled (data restricted)",
+    "rtx5050": "CPU-side",
+    "exportable": "ONNX (same graph family as C1)",
+    "falsifier": "H1c NOT_SUPPORTED / LOSES on CST for the dev-chosen arm"
+  },
+  "run_order": ["tc_c1c.py --stage train (gated to start just after a GPU training has sized its loader workers)", "dev choice", "commit learned_registry_c1c.json", "tc_c1c.py --stage val (one pass)", "reports/C1c_domain_aware_forecasting.{json,md}"],
+  "compute": "CPU only"
+}

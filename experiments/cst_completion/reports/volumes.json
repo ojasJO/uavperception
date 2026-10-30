@@ -1,0 +1,113 @@
+{
+  "dataset": "CST Anti-UAV (Xie et al., ICCVW 2025, arXiv:2507.23473)",
+  "source": "https://github.com/PCwenyue/CST-Anti-UAV",
+  "terms": "academic and non-commercial research use (dataset README / DATASET_TERMS.md)",
+  "official_splits_sequences": {
+    "train": 120,
+    "val": 40,
+    "test": 60
+  },
+  "generated": "2026-10-05T01:17:07+0530",
+  "parts": [
+    {
+      "part": "CST-AntiUAV.z01",
+      "bytes": 2147483648,
+      "sha256": "e05f31068443380474f4f157f3f7b141c7d8fce28302bfe670e5e4448e32b553",
+      "local_dir": "datasets\\2_cst-antiuav",
+      "drive_file_id": "12il79A75af_ahfQEakKtzrA3LEqWTn2G",
+      "drive_folder": "https://drive.google.com/drive/folders/13DIRzt1pC2c4Dhyi6yFhHBeMFoKPQtxU",
+      "acquired": "2026-08-04 (original download)"
+    },
+    {
+      "part": "CST-AntiUAV.z02",
+      "bytes": 2147483648,
+      "sha256": "3af80de8e56023224aeefa0cab975e7d370a676ab273e960aacde1a450726b43",
+      "local_dir": "datasets\\2_cst-antiuav",
+      "drive_file_id": "1bWscp-86dgeZ8mLUNQkoLCzLZGA7wvkt",
+      "drive_folder": "https://drive.google.com/drive/folders/13DIRzt1pC2c4Dhyi6yFhHBeMFoKPQtxU",
+      "acquired": "2026-08-04 (original download)"
+    },
+    {
+      "part": "CST-AntiUAV.z03",
+      "bytes": 2147483648,
+      "sha256": "970b4c6d361acb95eedc67a50cb9d43b2fb6e6c8b3dc2863301e8e60abc3bae6",
+      "local_dir": "datasets\\2_cst-antiuav",
+      "drive_file_id": "1V6jql4Kiq6ReTv61sEh3Rx8Yxi2ZYcJw",
+      "drive_folder": "https://drive.google.com/drive/folders/13DIRzt1pC2c4Dhyi6yFhHBeMFoKPQtxU",
+      "acquired": "2026-08-04 (original download)"
+    },
+    {
+      "part": "CST-AntiUAV.z04",
+      "bytes": 2147483648,
+      "sha256": "47ce7042b5bf92746a313b128fff9a0d9c8d8ca36d7b2f181f3007f1117cacd3",
+      "local_dir": "datasets\\2_cst-antiuav",
+      "drive_file_id": "1pq7XRB34DI3oMANx1HqU8M3Ah11VJESa",
+      "drive_folder": "https://drive.google.com/drive/folders/13DIRzt1pC2c4Dhyi6yFhHBeMFoKPQtxU",
+      "acquired": "2026-08-04 (original download)"
+    },
+    {
+      "part": "CST-AntiUAV.z05",
+      "bytes": 2147483648,
+      "sha256": "cd88eea91de7cd814e7478eec3e044f634941095f4e64e5ce706091c38381a80",
+      "local_dir": "datasets\\2_cst-antiuav",
+      "drive_file_id": "1XRkXugzW7Aije4vy6dEZHs1fIy6-b5i9",
+      "drive_folder": "https://drive.google.com/drive/folders/13DIRzt1pC2c4Dhyi6yFhHBeMFoKPQtxU",
+      "acquired": "2026-08-04 (original download)"
+    },
+    {
+      "part": "CST-AntiUAV.z06",
+      "bytes": 2147483648,
+      "sha256": "07b3419ed293bf52e8d558b7a5ccec9bcf4d12c61096d18d2c5a611ef43504c1",
+      "local_dir": "datasets\\2_cst-antiuav",
+      "drive_file_id": "1PJgfgMbQpQ5kmYaGw51qwdOAUxc03Wt9",
+      "drive_folder": "https://drive.google.com/drive/folders/13DIRzt1pC2c4Dhyi6yFhHBeMFoKPQtxU",
+      "acquired": "2026-08-04 (original download)"
+    },
+    {
+      "part": "CST-AntiUAV.z07",
+      "bytes": 2147483648,
+      "sha256": "e603ac26ea4670c03b22d4b99a5482245304bbf78f33495d846ee35f8524055b",
+      "local_dir": "datasets\\2_cst-antiuav",
+      "drive_file_id": "1HMfUlGTOhinMPKRwmt9gYfPZq8OV28dl",
+      "drive_folder": "https://drive.google.com/drive/folders/13DIRzt1pC2c4Dhyi6yFhHBeMFoKPQtxU",
+      "acquired": "2026-08-04 (original download)"
+    },
+    {
+      "part": "CST-AntiUAV.z08",
+      "bytes": 2147483648,
+      "sha256": "b90ce8e25656c35dd257f3ee0cfc7c12db1e58c5a16f4e1ce3fba3e0f029e636",
+      "local_dir": "datasets\\2_cst-antiuav_part2",
+      "drive_file_id": "1YlL527rZ6SYgIj-8IN-Mb1vhqJe_kvG5",
+      "drive_folder": "https://drive.google.com/drive/folders/132CBS47zNjQemhBXGKTEsHdTgwiGzMub",
+      "acquired": "2026-10-05T01:17:01+0530"
+    },
+    {
+      "part": "CST-AntiUAV.z09",
+      "bytes": 2147483648,
+      "sha256": "e4df1b99519087ad12a3663e7813da3c29ee027b12c309c162b0882db51690d9",
+      "local_dir": "datasets\\2_cst-antiuav_part2",
+      "drive_file_id": "1QvqlSLm_XuPBnpYDcFDBJxY7UG0MKoZ_",
+      "drive_folder": "https://drive.google.com/drive/folders/132CBS47zNjQemhBXGKTEsHdTgwiGzMub",
+      "acquired": "2026-10-05T01:17:03+0530"
+    },
+    {
+      "part": "CST-AntiUAV.z10",
+      "bytes": 2147483648,
+      "sha256": "b8d3a68b7a5fb2b81a52a676690723a8cf40c049486bce0c27c326edbeff9ae6",
+      "local_dir": "datasets\\2_cst-antiuav_part2",
+      "drive_file_id": "1zCALY_qU2KI8NZF_pQ-kSNVP0nCNpR4l",
+      "drive_folder": "https://drive.google.com/drive/folders/132CBS47zNjQemhBXGKTEsHdTgwiGzMub",
+      "acquired": "2026-10-05T01:17:06+0530"
+    },
+    {
+      "part": "CST-AntiUAV.zip",
+      "bytes": 1785030969,
+      "sha256": "52a9dc84f00c703987611ef1dcb1071faaea8bdf7b689725dda4462164d49d4c",
+      "local_dir": "datasets\\2_cst-antiuav_part2",
+      "drive_file_id": "14zO4bcudHkY2DxmbLyiRKlHpUg6vIv0d",
+      "drive_folder": "https://drive.google.com/drive/folders/132CBS47zNjQemhBXGKTEsHdTgwiGzMub",
+      "acquired": "2026-10-05T01:17:07+0530"
+    }
+  ],
+  "note": "SHA-256 of the archive parts as received; per-member CRC-32 integrity is checked by verify_archive.py"
+}

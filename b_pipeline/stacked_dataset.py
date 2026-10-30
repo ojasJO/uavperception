@@ -43,6 +43,7 @@ signature for the Review-1 scripts that call it.
 """
 
 import json
+import os
 from pathlib import Path
 
 import cv2
@@ -315,6 +316,30 @@ def _feather_mask(h, w, border=2):
 _MANIFEST_CACHE = {}
 
 
+def remap_manifest_paths(df):
+    """Rewrite the absolute paths of a manifest for another machine, in place.
+
+    Manifests store the OMEN's absolute Windows paths and are never rewritten (their hashes are recorded in every run). On
+    another machine set ``AEROTRACK_PATH_MAP="A:\\AEROTRACK_OMEN=>/path/to/root"`` (several maps separated by ``;``): every
+    ``image_path`` / ``label_path`` that starts with an old prefix gets the new one and forward slashes. Unset -> no-op."""
+    spec = os.environ.get("AEROTRACK_PATH_MAP", "").strip()
+    if not spec:
+        return df
+    maps = []
+    for part in spec.split(";"):
+        old, sep, new = part.partition("=>")
+        if not sep or not old:
+            raise ValueError(f"AEROTRACK_PATH_MAP entry must be 'old=>new', got {part!r}")
+        maps.append((old.replace("/", "\\").rstrip("\\") + "\\", new.rstrip("/") + "/"))
+    for col in ("image_path", "label_path"):
+        s = df[col].fillna("").astype(str)
+        for old, new in maps:
+            hit = s.str.startswith(old)
+            s = s.where(~hit, new + s.str.slice(len(old)).str.replace("\\", "/", regex=False))
+        df[col] = s
+    return df
+
+
 def load_manifest(manifest_csv):
     """Read manifest.csv once per process and memoise it.
 
@@ -335,6 +360,7 @@ def load_manifest(manifest_csv):
                          dtype={"image_path": str, "label_path": str,
                                 "seq_key": str, "split": str, "modality": str})
         df["_row"] = np.arange(len(df), dtype=np.int64)
+        remap_manifest_paths(df)
         _MANIFEST_CACHE.clear()          # only ever one manifest in play
         _MANIFEST_CACHE[key] = df
     return df
@@ -630,7 +656,9 @@ def _resolve_labels(samples, rows, label_cache):
     return off, box
 
 
-DEFAULT_LABEL_CACHE = Path(__file__).resolve().parent / "data_unified" / "label_cache.npz"
+import corpus as _corpus  # noqa: E402  (AEROTRACK_CORPUS selects the corpus; default b_pipeline/data_unified)
+
+DEFAULT_LABEL_CACHE = _corpus.LABEL_CACHE
 _LABEL_CACHE_MEMO = {}
 
 
@@ -756,9 +784,23 @@ class AeroTrackDataset(Dataset):
 #  Collate (variable-length targets) + convenience loader
 # --------------------------------------------------------------------------- #
 def aerotrack_collate(batch):
-    """Stack the fixed-shape 9ch tensors; keep targets as a list of [Ni,5]."""
+    """Stack the fixed-shape 9ch tensors; keep targets as a list of [Ni,5].
+
+    Inside a DataLoader worker the stack is written straight into shared memory,
+    exactly as torch's own default_collate does. Repair (grid runner, 2026-09-25):
+    stacking into ordinary memory and leaving the hand-off to shared memory to the
+    result queue left every batch behind in the worker on this machine -- measured
+    +118 MB per batch per worker (32 x 9 x 640 x 640 uint8), i.e. 6.6 -> 10 GB per
+    worker within minutes, until the OS killed one. With the stack in shared
+    memory the worker stays flat. The values are identical either way."""
     has_meta = len(batch[0]) == 3
-    imgs = torch.stack([b[0] for b in batch], dim=0)      # [B,9,640,640]
+    elems = [b[0] for b in batch]
+    out = None
+    if torch.utils.data.get_worker_info() is not None:
+        e = elems[0]
+        storage = e._typed_storage()._new_shared(len(elems) * e.numel(), device=e.device)
+        out = e.new(storage).resize_(len(elems), *e.shape)
+    imgs = torch.stack(elems, dim=0, out=out)             # [B,9,640,640]
     targets = [b[1] for b in batch]
     if has_meta:
         return imgs, targets, [b[2] for b in batch]
@@ -776,7 +818,7 @@ def make_dataloader(samples, batch_size=4, img_size=(640, 640), shuffle=True,
 
 
 if __name__ == "__main__":
-    mani = Path(__file__).resolve().parent / "data_unified" / "manifest.csv"
+    mani = _corpus.MANIFEST
     if mani.exists():
         smp = build_samples_from_manifest(mani, datasets=["cst"], max_per_seq=3)
         print(f"built {len(smp)} sample records from CST")

@@ -1,0 +1,1 @@
+python -u experiments/aerotrack_v2/scripts/final_eval.py --final-eval --candidate v2_causal_g4_s0_e20

@@ -1,0 +1,1 @@
+2026-10-05T15:59:56+0530 stopped by the agent (C1c training, ~5 min in, first model): system commit free had fallen to 1.6 GB with the v2 sym_g4_s0 GPU training running (the condition that crashed H3 at 06:56); C1c is deterministic and restartable (registry skips finished models); rescheduled after a memory investigation

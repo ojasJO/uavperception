@@ -1,0 +1,6 @@
+{"t": "2026-10-09T16:49:59+0530", "job": "a2c_visible_test_eval", "kind": "submitted", "pbs_job": "92975.amritahpc", "host": "dynamic", "ncpus": 16, "mem_gb": 64, "walltime": "06:00:00", "gpu": 1, "stage": 1, "commit": "168c27ddc618919cc92a352b73da19ec113f4580"}
+{"t": "2026-10-09T16:50:20+0530", "job": "a2c_visible_test_eval", "kind": "start", "pbs_job": "92975.amritahpc", "host": "node02"}
+{"t": "2026-10-09T16:50:21+0530", "job": "a2c_visible_test_eval", "kind": "gpu_busy"}
+{"t": "2026-10-09T16:53:23+0530", "job": "a2c_visible_test_eval", "kind": "submitted", "pbs_job": "92978.amritahpc", "host": "node04", "depend": "afterany:92977.amritahpc", "ncpus": 16, "mem_gb": 64, "walltime": "06:00:00", "gpu": 1, "stage": 1, "commit": "168c27ddc618919cc92a352b73da19ec113f4580"}
+{"t": "2026-10-10T13:26:09+0530", "job": "a2c_visible_test_eval", "kind": "start", "pbs_job": "92978.amritahpc", "host": "node04"}
+{"t": "2026-10-10T13:26:20+0530", "job": "a2c_visible_test_eval", "kind": "run", "cmd": "python experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/normal_rgb/weights/last.pt --split test --final-eval && python experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/dfsc_rgb/weights/last.pt --split test --final-eval"}

@@ -1,0 +1,73 @@
+{
+  "run_name": "gen_stock_f2_e20",
+  "series": "aerotrack_generalization",
+  "config": "stock",
+  "config_definition": {
+    "layout": "stride",
+    "gap": 0,
+    "question": "reference: stock YOLO11n layout, single frame, COCO"
+  },
+  "gap": 0,
+  "layout": "stride",
+  "fold": "2",
+  "seed": 2,
+  "epochs": 20,
+  "batch": 32,
+  "init": "function_preserving",
+  "recipe": "c_model/train.py STAGES['baseline']",
+  "folds_sha256": "ea48bbd1e1f652ae4a6590375fb7a26f87a9f76112a07c6ce3730a3c02bcaf29",
+  "smoke": false,
+  "overrides": {
+    "samples_per_epoch": null,
+    "monitor_cap": null
+  },
+  "data": {
+    "manifest_sha256": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+    "splits_sha256": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586"
+  },
+  "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+  "attempts": [
+    {
+      "timestamp_start": "2026-09-27T01:54:31+0530",
+      "command": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_generalization\\scripts\\train_gen.py --_child --config stock --fold 2 --epochs 20 --batch 32 --workers 4 --seed 2 --name gen_stock_f2_e20",
+      "resumed_from": null,
+      "epochs_on_disk_at_start": 0,
+      "workers_requested": 4,
+      "git": {
+        "commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+        "dirty": true
+      },
+      "env": {
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "torch": "2.13.0+cu130",
+        "cuda_available": true,
+        "cuda_version": "13.0",
+        "cudnn_version": 92000,
+        "cudnn_benchmark": false,
+        "torchvision": "0.28.0+cu130",
+        "numpy": "2.4.6",
+        "cv2": "5.0.0",
+        "PIL": "12.3.0",
+        "yaml": "6.0.3",
+        "gpu": {
+          "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+          "total_memory_gb": 8.55,
+          "compute_capability": "12.0",
+          "driver": "592.19"
+        }
+      },
+      "attempt": 1,
+      "timestamp_end": "2026-09-27T03:29:18+0530",
+      "seconds": 5686.7,
+      "return_code": 0,
+      "epochs_on_disk_at_end": 20,
+      "workers_used": 4
+    }
+  ],
+  "timestamp_end": "2026-09-27T03:29:18+0530",
+  "return_code": 0,
+  "train_seconds": 5686.7,
+  "best_pt_sha256": "a0333d4aa3bbcb481cf3a20c0ba81c19b8d83d9ed332502ad608940cfd90f9ea",
+  "last_pt_sha256": "e40b569c734485bd0de3964515f7f18d552b6fb5dfb6656be7faf2bd0b9b1425"
+}

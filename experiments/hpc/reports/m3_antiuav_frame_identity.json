@@ -1,0 +1,9 @@
+{
+ "ok": true,
+ "sequences": 636,
+ "boundary_hashes": 1908,
+ "sample_hashes": 2000,
+ "sample_mismatch": 0,
+ "problems": [],
+ "n_problems": 0
+}

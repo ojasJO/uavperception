@@ -1,0 +1,26 @@
+[data] windows train 89,699 | val 29,229 | test 54,651 (obs 16 -> pred 12); sudden-jump share: val 20.8 %, test 19.7 %
+[kalman] val sweep best q=1 r=1e-05 (val ADE 65.13 px on a 6000-window subset)
+  [original] ep   0 train_mse 0.005975 val ADE  52.876 px FDE  85.236 px
+  [original] ep   5 train_mse 0.001936 val ADE  51.872 px FDE  83.412 px
+  [original] ep  10 train_mse 0.001788 val ADE  51.022 px FDE  82.631 px
+  [original] ep  15 train_mse 0.001756 val ADE  47.292 px FDE  75.768 px
+  [original] ep  20 train_mse 0.001723 val ADE  49.580 px FDE  81.566 px
+  [original] ep  25 train_mse 0.001716 val ADE  47.793 px FDE  77.250 px
+  [original] ep  29 train_mse 0.001707 val ADE  45.941 px FDE  74.357 px
+[original] selected epoch 26 (val ADE 45.840 px) in 122s
+  [residual_lv] ep   0 train_mse 0.014649 val ADE  76.884 px FDE 141.114 px
+  [residual_lv] ep   5 train_mse 0.002442 val ADE  73.533 px FDE 135.187 px
+  [residual_lv] ep  10 train_mse 0.002052 val ADE  52.747 px FDE  87.907 px
+  [residual_lv] ep  15 train_mse 0.001894 val ADE  52.438 px FDE  88.321 px
+  [residual_lv] ep  20 train_mse 0.001800 val ADE  50.766 px FDE  81.730 px
+  [residual_lv] ep  25 train_mse 0.001775 val ADE  49.134 px FDE  77.221 px
+  [residual_lv] ep  29 train_mse 0.001759 val ADE  47.637 px FDE  75.005 px
+[residual_lv] selected epoch 28 (val ADE 47.603 px) in 121s
+  [residual_mv4] ep   0 train_mse 0.009945 val ADE  77.997 px FDE 140.671 px
+  [residual_mv4] ep   5 train_mse 0.002293 val ADE  56.948 px FDE  95.323 px
+  [residual_mv4] ep  10 train_mse 0.001985 val ADE  53.975 px FDE  90.362 px
+  [residual_mv4] ep  15 train_mse 0.001815 val ADE  50.117 px FDE  81.684 px
+  [residual_mv4] ep  20 train_mse 0.001761 val ADE  51.002 px FDE  82.655 px
+  [residual_mv4] ep  25 train_mse 0.001749 val ADE  48.942 px FDE  78.566 px
+  [residual_mv4] ep  29 train_mse 0.001737 val ADE  47.392 px FDE  75.663 px
+[residual_mv4] selected epoch 28 (val ADE 47.348 px) in 119s

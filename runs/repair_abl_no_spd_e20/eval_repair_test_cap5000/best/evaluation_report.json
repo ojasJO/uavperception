@@ -1,0 +1,281 @@
+{
+  "n_images": 11567,
+  "overall": {
+    "map50": 0.55672,
+    "map5095": 0.25146,
+    "per_class_ap50": {
+      "uav_drone": 0.65276,
+      "bird_hard_negative": 0.46068
+    },
+    "per_class_ap5095": {
+      "uav_drone": 0.33532,
+      "bird_hard_negative": 0.16761
+    },
+    "precision": {
+      "uav_drone": 0.81069,
+      "bird_hard_negative": 0.61252
+    },
+    "recall": {
+      "uav_drone": 0.61885,
+      "bird_hard_negative": 0.50522
+    }
+  },
+  "by_size": {
+    "micro": {
+      "map50": 0.20333,
+      "map5095": 0.07702,
+      "n_gt": 2722
+    },
+    "small": {
+      "map50": 0.57232,
+      "map5095": 0.26855,
+      "n_gt": 8762
+    },
+    "standard": {
+      "map50": 0.51112,
+      "map5095": 0.27452,
+      "n_gt": 530
+    }
+  },
+  "by_dataset": {
+    "anti_uav": {
+      "map50": 0.89916,
+      "map5095": 0.48713,
+      "n_images": 5000,
+      "micro_ap50": 0.00732
+    },
+    "cst": {
+      "map50": 0.43652,
+      "map5095": 0.20769,
+      "n_images": 5000,
+      "micro_ap50": 0.3422
+    },
+    "det_fly": {
+      "map50": 0.40264,
+      "map5095": 0.15892,
+      "n_images": 1567,
+      "micro_ap50": 0.14075
+    }
+  },
+  "by_modality": {
+    "IR": {
+      "map50": 0.87646,
+      "map5095": 0.45902,
+      "n_images": 2497
+    },
+    "RGB": {
+      "map50": 0.92312,
+      "map5095": 0.51721,
+      "n_images": 2503
+    }
+  },
+  "bird_fp": {
+    "images": 97,
+    "false_positives": 1563,
+    "fp_per_image": 16.11340206185567,
+    "conf_thres": 0.25
+  },
+  "empty_frame_fp": {
+    "images": 1083,
+    "false_positives": 753,
+    "fp_per_image": 0.6952908587257618,
+    "conf_thres": 0.25
+  },
+  "bird_confusion_corrected": {
+    "det_fly_images": 1567,
+    "conf>=0.25": {
+      "bird_only_images": 97,
+      "drone_alarms_per_bird_only_image": 0.2268041237113402,
+      "bird_only_images_with_drone_alarm_pct": 15.463917525773196,
+      "drone_only_images": 1470,
+      "bird_preds_per_drone_only_image": 0.004081632653061225,
+      "gt_birds": 1627,
+      "gt_birds_boxed_as_drone_pct": 0.6146281499692686,
+      "gt_drones": 1470,
+      "gt_drones_boxed_as_bird_pct": 0.06802721088435375
+    },
+    "conf>=0.5": {
+      "bird_only_images": 97,
+      "drone_alarms_per_bird_only_image": 0.08247422680412371,
+      "bird_only_images_with_drone_alarm_pct": 8.24742268041237,
+      "drone_only_images": 1470,
+      "bird_preds_per_drone_only_image": 0.0,
+      "gt_birds": 1627,
+      "gt_birds_boxed_as_drone_pct": 0.3073140749846343,
+      "gt_drones": 1470,
+      "gt_drones_boxed_as_bird_pct": 0.0
+    }
+  },
+  "empty_frame_fp_by_class": {
+    "images": 1083,
+    "conf_thres": 0.25,
+    "drone_fp_per_image": 0.6952908587257618,
+    "any_class_fp_per_image": 0.6952908587257618
+  },
+  "size_definition": {
+    "rule": "relative area of the SOURCE frame: micro < 0.03 %, small 0.03-1 %, standard > 1 %",
+    "pixel_equivalents_by_dataset": {
+      "anti_uav/IR": {
+        "width": 640,
+        "height": 512,
+        "micro_max_side_px": 9.9,
+        "small_max_side_px": 57.2
+      },
+      "anti_uav/RGB": {
+        "width": 1920,
+        "height": 1080,
+        "micro_max_side_px": 24.9,
+        "small_max_side_px": 144.0
+      },
+      "cst/IR": {
+        "width": 640,
+        "height": 512,
+        "micro_max_side_px": 9.9,
+        "small_max_side_px": 57.2
+      },
+      "det_fly/RGB": {
+        "width": 640,
+        "height": 640,
+        "micro_max_side_px": 11.1,
+        "small_max_side_px": 64.0
+      }
+    }
+  },
+  "_meta": {
+    "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\weights\\best.pt",
+    "weights_sha256": "084f1dd8f0f6762023fb55dd7bb724e212ea3759872c01380abd89bd6bf6231f",
+    "run": "repair_abl_no_spd_e20",
+    "checkpoint": "best",
+    "epoch": 10,
+    "best_fitness": 0.49476714786757225,
+    "train_args": {
+      "epochs": 20,
+      "iters_per_epoch": null,
+      "samples_per_epoch": 25000,
+      "warmup_epochs": 3.0,
+      "lr0": 0.001,
+      "lrf": 0.01,
+      "momentum": 0.937,
+      "weight_decay": 0.0005,
+      "optimizer": "AdamW",
+      "cos_lr": true,
+      "patience": 30,
+      "batch": 32,
+      "nbs": 64,
+      "workers": 4,
+      "prefetch_factor": 4,
+      "persistent_workers": true,
+      "train_inflight_gb": 1.0,
+      "val_inflight_gb": 0.35,
+      "val_workers": 2,
+      "imgsz": 640,
+      "amp": true,
+      "amp_dtype": "bf16",
+      "grad_clip": 10.0,
+      "max_consecutive_oom": 8,
+      "channels_last": true,
+      "cudnn_benchmark": true,
+      "compile": false,
+      "ema": true,
+      "ema_decay": 0.9999,
+      "ema_tau": 2000,
+      "val_interval": 1,
+      "val_max_images": 6000,
+      "val_conf": 0.005,
+      "val_iou": 0.7,
+      "val_max_det": 30,
+      "fitness_weights": [
+        0.3,
+        0.35,
+        0.35
+      ],
+      "class_weights": null,
+      "reset_epochs": false,
+      "project": "A:\\AEROTRACK_OMEN\\runs",
+      "name": "repair_abl_no_spd_e20",
+      "seed": 0,
+      "save_period": -1,
+      "log_interval": 50
+    },
+    "eval_set": {
+      "split": "test",
+      "cap": 5000,
+      "datasets": [
+        "anti_uav",
+        "cst",
+        "det_fly"
+      ],
+      "n_images": 11567,
+      "per_dataset": {
+        "anti_uav": 5000,
+        "cst": 5000,
+        "det_fly": 1567
+      },
+      "n_sequences": 1809,
+      "sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "manifest_csv_sha256": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+      "splits_json_sha256": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586"
+    },
+    "conf": 0.001,
+    "iou": 0.7,
+    "max_det": 30,
+    "report_conf": 0.25,
+    "seconds": 127.9,
+    "input_mode": "temporal",
+    "input_frames": "t-1,t,t+1",
+    "input_mode_source": "runs/repair_abl_no_spd_e20/run_meta.json: temporal_gap=1",
+    "git": {
+      "commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+      "branch": "aerotrack-repair",
+      "dirty": true,
+      "dirty_files": [
+        "EADME.md",
+        "b_pipeline/stacked_dataset.py",
+        "c_model/aerotrack_trainer.py",
+        "c_model/preflight.py",
+        "c_model/train.py",
+        "docs/AEROTRACK_REPAIR_REPORT.md",
+        "experiments/aerotrack_repair/README.template.md",
+        "experiments/aerotrack_repair/reports/detector_val_cap5000.json",
+        "experiments/aerotrack_repair/reports/detector_val_cap5000.md",
+        "experiments/aerotrack_repair/scripts/evaluate_detector.py",
+        "experiments/aerotrack_repair/scripts/render_report.py",
+        "experiments/aerotrack_repair/scripts/train_ablation.py",
+        "experiments/aerotrack_repair/reports/detector_test_cap5000.json",
+        "experiments/aerotrack_repair/reports/detector_test_cap5000.md",
+        "experiments/aerotrack_repair/reports/test_evaluation_ledger.jsonl",
+        "experiments/aerotrack_repair/scripts/grid_report.py",
+        "experiments/aerotrack_repair/scripts/run_grid.py",
+        "runs/aerotrack_spd_finetuned/eval_repair_test_cap5000/",
+        "runs/aerotrack_spd_v1/eval_repair_test_cap5000/",
+        "runs/repair_abl_baseline_ctrl_e20/",
+        "runs/repair_abl_no_spd_e20/",
+        "runs/repair_abl_single_frame_e20/",
+        "runs/repair_abl_stock_yolo11n_e20/",
+        "runs/repair_grid_e20/"
+      ]
+    },
+    "env": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.13.0+cu130",
+      "cuda_available": true,
+      "cuda_version": "13.0",
+      "cudnn_version": 92000,
+      "cudnn_benchmark": false,
+      "torchvision": "0.28.0+cu130",
+      "numpy": "2.4.6",
+      "cv2": "5.0.0",
+      "PIL": "12.3.0",
+      "yaml": "6.0.3",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+        "total_memory_gb": 8.55,
+        "compute_capability": "12.0",
+        "driver": "592.19"
+      }
+    },
+    "command": "A:\\AEROTRACK_OMEN\\experiments\\aerotrack_repair\\scripts\\evaluate_detector.py --split test --final-eval --cap 5000 --weights A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_v1\\weights\\best.pt A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_v1\\weights\\last.pt A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\weights\\best.pt A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\weights\\last.pt A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\weights\\best.pt A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\weights\\last.pt A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\weights\\best.pt A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\weights\\last.pt A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\weights\\best.pt A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\weights\\last.pt A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\weights\\best.pt A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\weights\\last.pt",
+    "timestamp": "2026-09-26T08:58:45+0530"
+  }
+}

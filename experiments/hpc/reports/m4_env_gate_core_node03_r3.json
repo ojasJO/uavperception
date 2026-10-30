@@ -1,0 +1,110 @@
+{
+ "part": "core",
+ "host": "node03",
+ "t": "2026-10-06T01:43:41+0530",
+ "ok": true,
+ "checks": [
+  {
+   "check": "C1 cuda kernel",
+   "ok": true,
+   "detail": {
+    "gpu": "Tesla V100-PCIE-16GB",
+    "cap": [
+     7,
+     0
+    ],
+    "arch_in_wheel": true,
+    "torch": "2.6.0+cu118",
+    "cuda_build": "11.8",
+    "max_err_fp32": 6.103515625e-05,
+    "max_err_fp16": 0.05425262451171875,
+    "bf16_reported": true
+   },
+   "seconds": 2.62
+  },
+  {
+   "check": "C2 model builds + COCO transfer",
+   "ok": true,
+   "detail": {
+    "as_built": {
+     "yaml": "yolo11-stride.yaml",
+     "params": 2613126,
+     "transfer": [
+      418,
+      649
+     ],
+     "expected_loaded": [
+      418,
+      649
+     ]
+    },
+    "standard": {
+     "yaml": "yolo11-stride-std.yaml",
+     "params": 2591094,
+     "transfer": [
+      448,
+      499
+     ],
+     "expected_loaded": [
+      448,
+      499
+     ]
+    }
+   },
+   "seconds": 1.89
+  },
+  {
+   "check": "C3 fp16 forward/backward/GradScaler",
+   "ok": true,
+   "detail": {
+    "losses": [
+     304.239,
+     304.239,
+     304.239,
+     228.8,
+     236.74,
+     206.457,
+     181.831,
+     145.753
+    ],
+    "scales": [
+     32768.0,
+     1024.0,
+     64.0,
+     32.0,
+     32.0,
+     32.0,
+     32.0,
+     32.0,
+     32.0
+    ],
+    "tensors_updated": 330
+   },
+   "seconds": 6.79
+  },
+  {
+   "check": "C4 checkpoint save/load round trip",
+   "ok": true,
+   "detail": {
+    "tensors": 649,
+    "mismatched": []
+   },
+   "seconds": 0.15
+  },
+  {
+   "check": "C5 synthetic train-step throughput (batch 32, 640)",
+   "ok": true,
+   "detail": {
+    "fp16": {
+     "img_per_s_gpu_only": 231.4,
+     "max_mem_gb": 5.04
+    },
+    "fp32": {
+     "img_per_s_gpu_only": 171.6,
+     "max_mem_gb": 8.72
+    }
+   },
+   "seconds": 8.26
+  }
+ ]
+}

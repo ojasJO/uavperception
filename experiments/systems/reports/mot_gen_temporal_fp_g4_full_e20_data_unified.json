@@ -1,0 +1,216 @@
+{
+ "generated": "2026-10-05T07:22:16+0530",
+ "run": "gen_temporal_fp_g4_full_e20",
+ "corpus": "data_unified",
+ "cache_set_sha256": "3b15c413bed5bee560955df5755faf8af38305035e7145cf124c61e9a2fd6644",
+ "protocol": "MOT (no init box); detections conf >= 0.05, drone class; pooled CLEAR-MOT, IDF1 mean per sequence",
+ "cross_fitted_source": "track_gen_temporal_fp_g4_full_e20_data_unified.json",
+ "results": {
+  "bytetrack": {
+   "anti_uav_IR": {
+    "MOTA": 0.9257,
+    "IDF1_mean_per_sequence": 0.60416,
+    "id_switches": 1391,
+    "id_switches_at_occlusion_reentry": 1,
+    "fragmentations": 908,
+    "false_positives": 1102,
+    "false_negatives": 2011,
+    "n_gt_boxes": 60620,
+    "n_gt_ids": 67,
+    "n_pred_ids": 1029,
+    "n_sequences": 67
+   },
+   "anti_uav_RGB": {
+    "MOTA": 0.85242,
+    "IDF1_mean_per_sequence": 0.5615,
+    "id_switches": 2011,
+    "id_switches_at_occlusion_reentry": 11,
+    "fragmentations": 1135,
+    "false_positives": 4077,
+    "false_negatives": 2516,
+    "n_gt_boxes": 58302,
+    "n_gt_ids": 67,
+    "n_pred_ids": 1232,
+    "n_sequences": 67
+   },
+   "cst_IR": {
+    "MOTA": 0.71049,
+    "IDF1_mean_per_sequence": 0.5953,
+    "id_switches": 296,
+    "id_switches_at_occlusion_reentry": 3,
+    "fragmentations": 450,
+    "false_positives": 1772,
+    "false_negatives": 1411,
+    "n_gt_boxes": 12017,
+    "n_gt_ids": 15,
+    "n_pred_ids": 96,
+    "n_sequences": 15
+   }
+  },
+  "sort": {
+   "anti_uav_IR": {
+    "MOTA": 0.9325,
+    "IDF1_mean_per_sequence": 0.60543,
+    "id_switches": 1339,
+    "id_switches_at_occlusion_reentry": 2,
+    "fragmentations": 908,
+    "false_positives": 566,
+    "false_negatives": 2187,
+    "n_gt_boxes": 60620,
+    "n_gt_ids": 67,
+    "n_pred_ids": 980,
+    "n_sequences": 67
+   },
+   "anti_uav_RGB": {
+    "MOTA": 0.88208,
+    "IDF1_mean_per_sequence": 0.54997,
+    "id_switches": 1965,
+    "id_switches_at_occlusion_reentry": 10,
+    "fragmentations": 1232,
+    "false_positives": 1827,
+    "false_negatives": 3083,
+    "n_gt_boxes": 58302,
+    "n_gt_ids": 67,
+    "n_pred_ids": 1267,
+    "n_sequences": 67
+   },
+   "cst_IR": {
+    "MOTA": 0.75709,
+    "IDF1_mean_per_sequence": 0.61155,
+    "id_switches": 113,
+    "id_switches_at_occlusion_reentry": 4,
+    "fragmentations": 463,
+    "false_positives": 483,
+    "false_negatives": 2323,
+    "n_gt_boxes": 12017,
+    "n_gt_ids": 15,
+    "n_pred_ids": 101,
+    "n_sequences": 15
+   }
+  },
+  "argmax@0.25": {
+   "anti_uav_IR": {
+    "MOTA": 0.97649,
+    "IDF1_mean_per_sequence": 0.98113,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 279,
+    "false_positives": 639,
+    "false_negatives": 786,
+    "n_gt_boxes": 60620,
+    "n_gt_ids": 67,
+    "n_pred_ids": 67,
+    "n_sequences": 67
+   },
+   "anti_uav_RGB": {
+    "MOTA": 0.94896,
+    "IDF1_mean_per_sequence": 0.96857,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 427,
+    "false_positives": 1870,
+    "false_negatives": 1106,
+    "n_gt_boxes": 58302,
+    "n_gt_ids": 67,
+    "n_pred_ids": 67,
+    "n_sequences": 67
+   },
+   "cst_IR": {
+    "MOTA": 0.79055,
+    "IDF1_mean_per_sequence": 0.88128,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 365,
+    "false_positives": 1015,
+    "false_negatives": 1502,
+    "n_gt_boxes": 12017,
+    "n_gt_ids": 15,
+    "n_pred_ids": 15,
+    "n_sequences": 15
+   }
+  },
+  "argmax@cf": {
+   "anti_uav_IR": {
+    "MOTA": 0.97699,
+    "IDF1_mean_per_sequence": 0.98159,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 289,
+    "false_positives": 538,
+    "false_negatives": 857,
+    "n_gt_boxes": 60620,
+    "n_gt_ids": 67,
+    "n_pred_ids": 67,
+    "n_sequences": 67
+   },
+   "anti_uav_RGB": {
+    "MOTA": 0.95064,
+    "IDF1_mean_per_sequence": 0.96925,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 454,
+    "false_positives": 1646,
+    "false_negatives": 1232,
+    "n_gt_boxes": 58302,
+    "n_gt_ids": 67,
+    "n_pred_ids": 67,
+    "n_sequences": 67
+   },
+   "cst_IR": {
+    "MOTA": 0.80702,
+    "IDF1_mean_per_sequence": 0.88436,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 365,
+    "false_positives": 578,
+    "false_negatives": 1741,
+    "n_gt_boxes": 12017,
+    "n_gt_ids": 15,
+    "n_pred_ids": 15,
+    "n_sequences": 15
+   }
+  },
+  "ste@cf": {
+   "anti_uav_IR": {
+    "MOTA": 0.97709,
+    "IDF1_mean_per_sequence": 0.98218,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 286,
+    "false_positives": 564,
+    "false_negatives": 825,
+    "n_gt_boxes": 60620,
+    "n_gt_ids": 67,
+    "n_pred_ids": 67,
+    "n_sequences": 67
+   },
+   "anti_uav_RGB": {
+    "MOTA": 0.9404,
+    "IDF1_mean_per_sequence": 0.96435,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 438,
+    "false_positives": 1929,
+    "false_negatives": 1546,
+    "n_gt_boxes": 58302,
+    "n_gt_ids": 67,
+    "n_pred_ids": 67,
+    "n_sequences": 67
+   },
+   "cst_IR": {
+    "MOTA": 0.81709,
+    "IDF1_mean_per_sequence": 0.89717,
+    "id_switches": 0,
+    "id_switches_at_occlusion_reentry": 0,
+    "fragmentations": 378,
+    "false_positives": 767,
+    "false_negatives": 1431,
+    "n_gt_boxes": 12017,
+    "n_gt_ids": 15,
+    "n_pred_ids": 15,
+    "n_sequences": 15
+   }
+  }
+ },
+ "seconds": 122.3
+}

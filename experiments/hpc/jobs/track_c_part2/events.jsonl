@@ -1,0 +1,4 @@
+{"t": "2026-10-12T07:24:17+0530", "job": "track_c_part2", "kind": "submitted", "pbs_job": "93021.amritahpc", "host": "node01", "ncpus": 16, "mem_gb": 64, "walltime": "04:30:00", "gpu": 0, "stage": 0, "depend": "", "commit": "f9bbd3afe9fada2f7b4bd6e4a14910aad549e651"}
+{"t": "2026-10-12T07:24:19+0530", "job": "track_c_part2", "kind": "start", "pbs_job": "93021.amritahpc", "host": "node01"}
+{"t": "2026-10-12T07:24:32+0530", "job": "track_c_part2", "kind": "run", "cmd": "bash experiments/aerotrack_temporal/scripts/run_track_c_part2.sh"}
+{"t": "2026-10-12T09:54:14+0530", "job": "track_c_part2", "kind": "end", "rc": 0, "minutes": 149}

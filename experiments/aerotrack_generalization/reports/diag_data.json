@@ -1,0 +1,249 @@
+{
+ "anti_uav": {
+  "sequences": {
+   "train": 320,
+   "val": 134,
+   "test": 182
+  },
+  "recording_sessions": {
+   "train": 27,
+   "val": 26,
+   "test": 10
+  },
+  "sessions_shared": {
+   "train&val": 26,
+   "train&test": 0,
+   "val&test": 0
+  }
+ },
+ "cst": {
+  "sequences": {
+   "train": 69,
+   "val": 15,
+   "test": 60
+  },
+  "scene_categories": {
+   "train": {
+    "cn_sky": 8,
+    "building": 42,
+    "cn_mountains": 15,
+    "jungle": 4
+   },
+   "val": {
+    "cn_mountains": 5,
+    "building": 9,
+    "jungle": 1
+   },
+   "test": {
+    "building": 9,
+    "jungle": 13,
+    "water": 6,
+    "urban-areas": 17,
+    "cn_sky": 6,
+    "cn_mountains": 9
+   }
+  },
+  "test_categories_absent_from_train": [
+   "urban-areas",
+   "water"
+  ]
+ },
+ "drone_size_at_network_input_px": {
+  "anti_uav/IR/train": {
+   "n": 148189,
+   "median": 51.0,
+   "p10": 28.0,
+   "frac_lt8px": 0.0,
+   "frac_lt16px": 0.004
+  },
+  "anti_uav/RGB/train": {
+   "n": 142106,
+   "median": 36.3,
+   "p10": 21.3,
+   "frac_lt8px": 0.001,
+   "frac_lt16px": 0.038
+  },
+  "cst/IR/train": {
+   "n": 63457,
+   "median": 11.9,
+   "p10": 5.8,
+   "frac_lt8px": 0.274,
+   "frac_lt16px": 0.75
+  },
+  "det_fly/RGB/train": {
+   "n": 4407,
+   "median": 24.5,
+   "p10": 9.5,
+   "frac_lt8px": 0.072,
+   "frac_lt16px": 0.265
+  },
+  "anti_uav/IR/val": {
+   "n": 60548,
+   "median": 49.0,
+   "p10": 28.0,
+   "frac_lt8px": 0.0,
+   "frac_lt16px": 0.001
+  },
+  "anti_uav/RGB/val": {
+   "n": 58262,
+   "median": 38.3,
+   "p10": 21.7,
+   "frac_lt8px": 0.0,
+   "frac_lt16px": 0.029
+  },
+  "cst/IR/val": {
+   "n": 12017,
+   "median": 14.5,
+   "p10": 6.5,
+   "frac_lt8px": 0.242,
+   "frac_lt16px": 0.642
+  },
+  "det_fly/RGB/val": {
+   "n": 1468,
+   "median": 24.0,
+   "p10": 9.0,
+   "frac_lt8px": 0.077,
+   "frac_lt16px": 0.277
+  }
+ },
+ "target_motion_per_frame_px": {
+  "anti_uav/IR/train": {
+   "n": 147982,
+   "median": 3.64,
+   "p90": 10.05,
+   "median_motion_over_size": 0.074,
+   "frac_lt_1px": 0.166
+  },
+  "anti_uav/RGB/train": {
+   "n": 141859,
+   "median": 3.0,
+   "p90": 8.46,
+   "median_motion_over_size": 0.082,
+   "frac_lt_1px": 0.208
+  },
+  "cst/IR/train": {
+   "n": 63233,
+   "median": 0.53,
+   "p90": 2.5,
+   "median_motion_over_size": 0.046,
+   "frac_lt_1px": 0.68
+  },
+  "anti_uav/IR/val": {
+   "n": 60464,
+   "median": 3.16,
+   "p90": 9.5,
+   "median_motion_over_size": 0.071,
+   "frac_lt_1px": 0.193
+  },
+  "anti_uav/RGB/val": {
+   "n": 58172,
+   "median": 2.67,
+   "p90": 8.17,
+   "median_motion_over_size": 0.073,
+   "frac_lt_1px": 0.252
+  },
+  "cst/IR/val": {
+   "n": 11981,
+   "median": 0.62,
+   "p90": 2.78,
+   "median_motion_over_size": 0.049,
+   "frac_lt_1px": 0.649
+  }
+ },
+ "neighbour_frame_gaps": {
+  "train": {
+   "anti_uav:1": 298736,
+   "cst:1": 74936
+  },
+  "val": {
+   "anti_uav:1": 123864,
+   "cst:1": 14992
+  }
+ },
+ "label_flicker_isolated_frames": {
+  "train": {
+   "anti_uav": "18/298416",
+   "cst": "6/74867"
+  },
+  "val": {
+   "anti_uav": "7/123730",
+   "cst": "3/14977"
+  }
+ },
+ "native_resolution": {
+  "anti_uav/IR": [
+   640,
+   512
+  ],
+  "anti_uav/RGB": [
+   1920,
+   1080
+  ],
+  "cst/IR": [
+   640,
+   512
+  ],
+  "det_fly/RGB": [
+   640,
+   640
+  ]
+ },
+ "camera_global_shift_per_frame_px": {
+  "anti_uav/IR": {
+   "n": 250,
+   "median": 0.31,
+   "p90": 1.12
+  },
+  "anti_uav/RGB": {
+   "n": 250,
+   "median": 0.35,
+   "p90": 1.0
+  },
+  "cst/IR": {
+   "n": 250,
+   "median": 0.02,
+   "p90": 0.12
+  }
+ },
+ "det_fly": {
+  "images": {
+   "train": 4698,
+   "val": 1565
+  },
+  "source": "Roboflow export, stretched to 640x640, split by Roboflow",
+  "val_nearest_train_dhash_bits": {
+   "<=2": 1478,
+   "<=6": 1526,
+   "median": 0.0
+  },
+  "val_frame_id_distance_to_nearest_train_frame": {
+   "==1": 1224,
+   "<=3": 1463,
+   "n": 1469
+  },
+  "flights": {
+   "train": 5,
+   "val": 2,
+   "shared": 2
+  }
+ },
+ "registered_val_micro_gt": {
+  "drone_gt": {
+   "anti_uav": 4789,
+   "cst": 4003,
+   "det_fly": 1468
+  },
+  "drone_micro_gt": {
+   "anti_uav": 1,
+   "cst": 1579,
+   "det_fly": 280
+  },
+  "bird_micro_gt": 148,
+  "sequences_with_drone_micro": {
+   "det_fly": 280,
+   "cst": 14,
+   "anti_uav": 1
+  },
+  "note": "micro AP50 = mean over classes present of (drone-micro AP50, bird-micro AP50) -- evaluation.score"
+ }
+}

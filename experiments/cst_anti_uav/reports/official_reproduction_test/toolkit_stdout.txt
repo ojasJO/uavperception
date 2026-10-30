@@ -1,0 +1,296 @@
+Evaluating AiATrack
+Evaluating AQATrack
+Evaluating ARTrack_256
+Evaluating ARTrack_384
+Evaluating DropTrack
+Evaluating GlobalTrack
+Evaluating GRM
+Evaluating HIPTrack
+Evaluating KYS
+Evaluating Mixformer
+Evaluating MixformerV2
+Evaluating OSTrack_256
+Evaluating OSTrack_384
+Evaluating PrDiMP
+Evaluating Refocus-TIR
+Evaluating RomTrack
+Evaluating SeqTrack
+Evaluating SiamDT
+Evaluating Stark_s
+Evaluating Stark_st
+Evaluating Tomp
+[Overall]         Tracker name   Experiments metric: Scores
+[Overall]             AiATrack       State accuracy: 0.2683
+[Overall]             AQATrack       State accuracy: 0.2760
+[Overall]          ARTrack_256       State accuracy: 0.2514
+[Overall]          ARTrack_384       State accuracy: 0.2519
+[Overall]            DropTrack       State accuracy: 0.2689
+[Overall]          GlobalTrack       State accuracy: 0.3592
+[Overall]                  GRM       State accuracy: 0.2696
+[Overall]             HIPTrack       State accuracy: 0.2562
+[Overall]                  KYS       State accuracy: 0.2628
+[Overall]            Mixformer       State accuracy: 0.2646
+[Overall]          MixformerV2       State accuracy: 0.2939
+[Overall]          OSTrack_256       State accuracy: 0.2634
+[Overall]          OSTrack_384       State accuracy: 0.2525
+[Overall]               PrDiMP       State accuracy: 0.2976
+[Overall]          Refocus-TIR       State accuracy: 0.2651
+[Overall]             RomTrack       State accuracy: 0.2743
+[Overall]             SeqTrack       State accuracy: 0.2653
+[Overall]               SiamDT       State accuracy: 0.3584
+[Overall]              Stark_s       State accuracy: 0.2327
+[Overall]             Stark_st       State accuracy: 0.2563
+[Overall]                 Tomp       State accuracy: 0.2284
+[Attribute]             AiATrack            Occlusion: 0.2141
+[Attribute]             AiATrack          Out-of-View: 0.1872
+[Attribute]             AiATrack      Scale Variation: 0.2683
+[Attribute]             AiATrack    Thermal Crossover: 0.2669
+[Attribute]             AiATrack Dynamic Background Clutter: 0.2036
+[Attribute]             AiATrack Complex Dynamic Background: 0.2452
+[Attribute]             AiATrack          Fast Motion: 0.1530
+[Attribute]             AiATrack            Tiny Size: 0.2438
+[Attribute]             AiATrack           Small Size: 0.2683
+[Attribute]             AiATrack          Medium Size: 0.2232
+[Attribute]             AiATrack          Normal Size: 0.2621
+[Attribute]             AQATrack            Occlusion: 0.2005
+[Attribute]             AQATrack          Out-of-View: 0.1908
+[Attribute]             AQATrack      Scale Variation: 0.2760
+[Attribute]             AQATrack    Thermal Crossover: 0.2745
+[Attribute]             AQATrack Dynamic Background Clutter: 0.1879
+[Attribute]             AQATrack Complex Dynamic Background: 0.2078
+[Attribute]             AQATrack          Fast Motion: 0.1120
+[Attribute]             AQATrack            Tiny Size: 0.2495
+[Attribute]             AQATrack           Small Size: 0.2760
+[Attribute]             AQATrack          Medium Size: 0.1972
+[Attribute]             AQATrack          Normal Size: 0.2447
+[Attribute]          ARTrack_256            Occlusion: 0.1762
+[Attribute]          ARTrack_256          Out-of-View: 0.1653
+[Attribute]          ARTrack_256      Scale Variation: 0.2514
+[Attribute]          ARTrack_256    Thermal Crossover: 0.2492
+[Attribute]          ARTrack_256 Dynamic Background Clutter: 0.1688
+[Attribute]          ARTrack_256 Complex Dynamic Background: 0.2158
+[Attribute]          ARTrack_256          Fast Motion: 0.1008
+[Attribute]          ARTrack_256            Tiny Size: 0.2227
+[Attribute]          ARTrack_256           Small Size: 0.2514
+[Attribute]          ARTrack_256          Medium Size: 0.1849
+[Attribute]          ARTrack_256          Normal Size: 0.2625
+[Attribute]          ARTrack_384            Occlusion: 0.1963
+[Attribute]          ARTrack_384          Out-of-View: 0.1745
+[Attribute]          ARTrack_384      Scale Variation: 0.2519
+[Attribute]          ARTrack_384    Thermal Crossover: 0.2497
+[Attribute]          ARTrack_384 Dynamic Background Clutter: 0.1847
+[Attribute]          ARTrack_384 Complex Dynamic Background: 0.2039
+[Attribute]          ARTrack_384          Fast Motion: 0.1250
+[Attribute]          ARTrack_384            Tiny Size: 0.2268
+[Attribute]          ARTrack_384           Small Size: 0.2519
+[Attribute]          ARTrack_384          Medium Size: 0.1821
+[Attribute]          ARTrack_384          Normal Size: 0.2455
+[Attribute]            DropTrack            Occlusion: 0.1883
+[Attribute]            DropTrack          Out-of-View: 0.1802
+[Attribute]            DropTrack      Scale Variation: 0.2689
+[Attribute]            DropTrack    Thermal Crossover: 0.2671
+[Attribute]            DropTrack Dynamic Background Clutter: 0.1703
+[Attribute]            DropTrack Complex Dynamic Background: 0.2129
+[Attribute]            DropTrack          Fast Motion: 0.1182
+[Attribute]            DropTrack            Tiny Size: 0.2440
+[Attribute]            DropTrack           Small Size: 0.2689
+[Attribute]            DropTrack          Medium Size: 0.1865
+[Attribute]            DropTrack          Normal Size: 0.2580
+[Attribute]          GlobalTrack            Occlusion: 0.3138
+[Attribute]          GlobalTrack          Out-of-View: 0.3161
+[Attribute]          GlobalTrack      Scale Variation: 0.3592
+[Attribute]          GlobalTrack    Thermal Crossover: 0.3553
+[Attribute]          GlobalTrack Dynamic Background Clutter: 0.3141
+[Attribute]          GlobalTrack Complex Dynamic Background: 0.3340
+[Attribute]          GlobalTrack          Fast Motion: 0.2964
+[Attribute]          GlobalTrack            Tiny Size: 0.3379
+[Attribute]          GlobalTrack           Small Size: 0.3592
+[Attribute]          GlobalTrack          Medium Size: 0.3450
+[Attribute]          GlobalTrack          Normal Size: 0.4007
+[Attribute]                  GRM            Occlusion: 0.1973
+[Attribute]                  GRM          Out-of-View: 0.1854
+[Attribute]                  GRM      Scale Variation: 0.2696
+[Attribute]                  GRM    Thermal Crossover: 0.2679
+[Attribute]                  GRM Dynamic Background Clutter: 0.1700
+[Attribute]                  GRM Complex Dynamic Background: 0.2036
+[Attribute]                  GRM          Fast Motion: 0.0979
+[Attribute]                  GRM            Tiny Size: 0.2471
+[Attribute]                  GRM           Small Size: 0.2696
+[Attribute]                  GRM          Medium Size: 0.1719
+[Attribute]                  GRM          Normal Size: 0.2341
+[Attribute]             HIPTrack            Occlusion: 0.1826
+[Attribute]             HIPTrack          Out-of-View: 0.1730
+[Attribute]             HIPTrack      Scale Variation: 0.2562
+[Attribute]             HIPTrack    Thermal Crossover: 0.2541
+[Attribute]             HIPTrack Dynamic Background Clutter: 0.1669
+[Attribute]             HIPTrack Complex Dynamic Background: 0.1915
+[Attribute]             HIPTrack          Fast Motion: 0.1182
+[Attribute]             HIPTrack            Tiny Size: 0.2309
+[Attribute]             HIPTrack           Small Size: 0.2562
+[Attribute]             HIPTrack          Medium Size: 0.1920
+[Attribute]             HIPTrack          Normal Size: 0.2555
+[Attribute]                  KYS            Occlusion: 0.1569
+[Attribute]                  KYS          Out-of-View: 0.1468
+[Attribute]                  KYS      Scale Variation: 0.2628
+[Attribute]                  KYS    Thermal Crossover: 0.2574
+[Attribute]                  KYS Dynamic Background Clutter: 0.1415
+[Attribute]                  KYS Complex Dynamic Background: 0.1775
+[Attribute]                  KYS          Fast Motion: 0.0873
+[Attribute]                  KYS            Tiny Size: 0.2519
+[Attribute]                  KYS           Small Size: 0.2628
+[Attribute]                  KYS          Medium Size: 0.1060
+[Attribute]                  KYS          Normal Size: 0.1628
+[Attribute]            Mixformer            Occlusion: 0.2179
+[Attribute]            Mixformer          Out-of-View: 0.1902
+[Attribute]            Mixformer      Scale Variation: 0.2646
+[Attribute]            Mixformer    Thermal Crossover: 0.2628
+[Attribute]            Mixformer Dynamic Background Clutter: 0.1987
+[Attribute]            Mixformer Complex Dynamic Background: 0.2065
+[Attribute]            Mixformer          Fast Motion: 0.1575
+[Attribute]            Mixformer            Tiny Size: 0.2405
+[Attribute]            Mixformer           Small Size: 0.2646
+[Attribute]            Mixformer          Medium Size: 0.1979
+[Attribute]            Mixformer          Normal Size: 0.2600
+[Attribute]          MixformerV2            Occlusion: 0.2387
+[Attribute]          MixformerV2          Out-of-View: 0.2210
+[Attribute]          MixformerV2      Scale Variation: 0.2939
+[Attribute]          MixformerV2    Thermal Crossover: 0.2931
+[Attribute]          MixformerV2 Dynamic Background Clutter: 0.2134
+[Attribute]          MixformerV2 Complex Dynamic Background: 0.2453
+[Attribute]          MixformerV2          Fast Motion: 0.1782
+[Attribute]          MixformerV2            Tiny Size: 0.2747
+[Attribute]          MixformerV2           Small Size: 0.2939
+[Attribute]          MixformerV2          Medium Size: 0.2466
+[Attribute]          MixformerV2          Normal Size: 0.2995
+[Attribute]          OSTrack_256            Occlusion: 0.1850
+[Attribute]          OSTrack_256          Out-of-View: 0.1783
+[Attribute]          OSTrack_256      Scale Variation: 0.2634
+[Attribute]          OSTrack_256    Thermal Crossover: 0.2616
+[Attribute]          OSTrack_256 Dynamic Background Clutter: 0.1638
+[Attribute]          OSTrack_256 Complex Dynamic Background: 0.2065
+[Attribute]          OSTrack_256          Fast Motion: 0.0960
+[Attribute]          OSTrack_256            Tiny Size: 0.2382
+[Attribute]          OSTrack_256           Small Size: 0.2634
+[Attribute]          OSTrack_256          Medium Size: 0.1677
+[Attribute]          OSTrack_256          Normal Size: 0.2090
+[Attribute]          OSTrack_384            Occlusion: 0.1855
+[Attribute]          OSTrack_384          Out-of-View: 0.1721
+[Attribute]          OSTrack_384      Scale Variation: 0.2525
+[Attribute]          OSTrack_384    Thermal Crossover: 0.2502
+[Attribute]          OSTrack_384 Dynamic Background Clutter: 0.1700
+[Attribute]          OSTrack_384 Complex Dynamic Background: 0.2017
+[Attribute]          OSTrack_384          Fast Motion: 0.1132
+[Attribute]          OSTrack_384            Tiny Size: 0.2271
+[Attribute]          OSTrack_384           Small Size: 0.2525
+[Attribute]          OSTrack_384          Medium Size: 0.1697
+[Attribute]          OSTrack_384          Normal Size: 0.2166
+[Attribute]               PrDiMP            Occlusion: 0.2312
+[Attribute]               PrDiMP          Out-of-View: 0.2094
+[Attribute]               PrDiMP      Scale Variation: 0.2976
+[Attribute]               PrDiMP    Thermal Crossover: 0.2925
+[Attribute]               PrDiMP Dynamic Background Clutter: 0.2041
+[Attribute]               PrDiMP Complex Dynamic Background: 0.2401
+[Attribute]               PrDiMP          Fast Motion: 0.1486
+[Attribute]               PrDiMP            Tiny Size: 0.2762
+[Attribute]               PrDiMP           Small Size: 0.2976
+[Attribute]               PrDiMP          Medium Size: 0.2063
+[Attribute]               PrDiMP          Normal Size: 0.2695
+[Attribute]          Refocus-TIR            Occlusion: 0.1916
+[Attribute]          Refocus-TIR          Out-of-View: 0.1705
+[Attribute]          Refocus-TIR      Scale Variation: 0.2651
+[Attribute]          Refocus-TIR    Thermal Crossover: 0.2633
+[Attribute]          Refocus-TIR Dynamic Background Clutter: 0.1770
+[Attribute]          Refocus-TIR Complex Dynamic Background: 0.2031
+[Attribute]          Refocus-TIR          Fast Motion: 0.1234
+[Attribute]          Refocus-TIR            Tiny Size: 0.2389
+[Attribute]          Refocus-TIR           Small Size: 0.2651
+[Attribute]          Refocus-TIR          Medium Size: 0.2063
+[Attribute]          Refocus-TIR          Normal Size: 0.2539
+[Attribute]             RomTrack            Occlusion: 0.2053
+[Attribute]             RomTrack          Out-of-View: 0.1949
+[Attribute]             RomTrack      Scale Variation: 0.2743
+[Attribute]             RomTrack    Thermal Crossover: 0.2729
+[Attribute]             RomTrack Dynamic Background Clutter: 0.1804
+[Attribute]             RomTrack Complex Dynamic Background: 0.1973
+[Attribute]             RomTrack          Fast Motion: 0.1245
+[Attribute]             RomTrack            Tiny Size: 0.2488
+[Attribute]             RomTrack           Small Size: 0.2743
+[Attribute]             RomTrack          Medium Size: 0.1984
+[Attribute]             RomTrack          Normal Size: 0.2292
+[Attribute]             SeqTrack            Occlusion: 0.1941
+[Attribute]             SeqTrack          Out-of-View: 0.1687
+[Attribute]             SeqTrack      Scale Variation: 0.2653
+[Attribute]             SeqTrack    Thermal Crossover: 0.2637
+[Attribute]             SeqTrack Dynamic Background Clutter: 0.1853
+[Attribute]             SeqTrack Complex Dynamic Background: 0.2171
+[Attribute]             SeqTrack          Fast Motion: 0.1079
+[Attribute]             SeqTrack            Tiny Size: 0.2414
+[Attribute]             SeqTrack           Small Size: 0.2653
+[Attribute]             SeqTrack          Medium Size: 0.1752
+[Attribute]             SeqTrack          Normal Size: 0.2383
+[Attribute]               SiamDT            Occlusion: 0.3179
+[Attribute]               SiamDT          Out-of-View: 0.3179
+[Attribute]               SiamDT      Scale Variation: 0.3584
+[Attribute]               SiamDT    Thermal Crossover: 0.3546
+[Attribute]               SiamDT Dynamic Background Clutter: 0.3212
+[Attribute]               SiamDT Complex Dynamic Background: 0.3436
+[Attribute]               SiamDT          Fast Motion: 0.3128
+[Attribute]               SiamDT            Tiny Size: 0.3372
+[Attribute]               SiamDT           Small Size: 0.3584
+[Attribute]               SiamDT          Medium Size: 0.3665
+[Attribute]               SiamDT          Normal Size: 0.4235
+[Attribute]              Stark_s            Occlusion: 0.1717
+[Attribute]              Stark_s          Out-of-View: 0.1711
+[Attribute]              Stark_s      Scale Variation: 0.2327
+[Attribute]              Stark_s    Thermal Crossover: 0.2299
+[Attribute]              Stark_s Dynamic Background Clutter: 0.1608
+[Attribute]              Stark_s Complex Dynamic Background: 0.1915
+[Attribute]              Stark_s          Fast Motion: 0.1260
+[Attribute]              Stark_s            Tiny Size: 0.2017
+[Attribute]              Stark_s           Small Size: 0.2327
+[Attribute]              Stark_s          Medium Size: 0.1942
+[Attribute]              Stark_s          Normal Size: 0.2408
+[Attribute]             Stark_st            Occlusion: 0.1987
+[Attribute]             Stark_st          Out-of-View: 0.1864
+[Attribute]             Stark_st      Scale Variation: 0.2563
+[Attribute]             Stark_st    Thermal Crossover: 0.2544
+[Attribute]             Stark_st Dynamic Background Clutter: 0.1842
+[Attribute]             Stark_st Complex Dynamic Background: 0.2071
+[Attribute]             Stark_st          Fast Motion: 0.1348
+[Attribute]             Stark_st            Tiny Size: 0.2335
+[Attribute]             Stark_st           Small Size: 0.2563
+[Attribute]             Stark_st          Medium Size: 0.1956
+[Attribute]             Stark_st          Normal Size: 0.2633
+[Attribute]                 Tomp            Occlusion: 0.1573
+[Attribute]                 Tomp          Out-of-View: 0.1527
+[Attribute]                 Tomp      Scale Variation: 0.2284
+[Attribute]                 Tomp    Thermal Crossover: 0.2250
+[Attribute]                 Tomp Dynamic Background Clutter: 0.1599
+[Attribute]                 Tomp Complex Dynamic Background: 0.1943
+[Attribute]                 Tomp          Fast Motion: 0.1251
+[Attribute]                 Tomp            Tiny Size: 0.2055
+[Attribute]                 Tomp           Small Size: 0.2284
+[Attribute]                 Tomp          Medium Size: 0.1663
+[Attribute]                 Tomp          Normal Size: 0.2433
+Saving state accuracy scores to A:\AEROTRACK_OMEN\experiments\cst_anti_uav\reports\official_reproduction_test\toolkit_reports\CSTAntiUAV\test\state_accuracy_scores.txt
+Evaluating AiATrack
+Evaluating AQATrack
+Evaluating ARTrack_256
+Evaluating ARTrack_384
+Evaluating DropTrack
+Evaluating GlobalTrack
+Evaluating GRM
+Evaluating HIPTrack
+Evaluating KYS
+Evaluating Mixformer
+Evaluating MixformerV2
+Evaluating OSTrack_256
+Evaluating OSTrack_384
+Evaluating PrDiMP
+Evaluating Refocus-TIR
+Evaluating RomTrack
+Evaluating SeqTrack
+Evaluating SiamDT
+Evaluating Stark_s
+Evaluating Stark_st
+Evaluating Tomp

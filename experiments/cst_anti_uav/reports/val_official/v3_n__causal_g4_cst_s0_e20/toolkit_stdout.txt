@@ -1,0 +1,30 @@
+Evaluating X1-ste
+Evaluating X1-argmax
+[Overall]         Tracker name   Experiments metric: Scores
+[Overall]               X1-ste       State accuracy: 0.6403
+[Overall]            X1-argmax       State accuracy: 0.6342
+[Attribute]               X1-ste            Occlusion: 0.5743
+[Attribute]               X1-ste          Out-of-View: 0.6028
+[Attribute]               X1-ste      Scale Variation: 0.6403
+[Attribute]               X1-ste    Thermal Crossover: 0.6290
+[Attribute]               X1-ste Dynamic Background Clutter: 0.5961
+[Attribute]               X1-ste Complex Dynamic Background: 0.5562
+[Attribute]               X1-ste          Fast Motion: 0.6054
+[Attribute]               X1-ste            Tiny Size: 0.6185
+[Attribute]               X1-ste           Small Size: 0.6403
+[Attribute]               X1-ste          Medium Size: 0.6234
+[Attribute]               X1-ste          Normal Size: 0.5271
+[Attribute]            X1-argmax            Occlusion: 0.5682
+[Attribute]            X1-argmax          Out-of-View: 0.5950
+[Attribute]            X1-argmax      Scale Variation: 0.6342
+[Attribute]            X1-argmax    Thermal Crossover: 0.6233
+[Attribute]            X1-argmax Dynamic Background Clutter: 0.5881
+[Attribute]            X1-argmax Complex Dynamic Background: 0.5479
+[Attribute]            X1-argmax          Fast Motion: 0.5968
+[Attribute]            X1-argmax            Tiny Size: 0.6106
+[Attribute]            X1-argmax           Small Size: 0.6342
+[Attribute]            X1-argmax          Medium Size: 0.6188
+[Attribute]            X1-argmax          Normal Size: 0.5243
+Saving state accuracy scores to A:\AEROTRACK_OMEN\experiments\cst_anti_uav\reports\val_official\v3_n__causal_g4_cst_s0_e20\toolkit_reports\CSTAntiUAV\val\state_accuracy_scores.txt
+Evaluating X1-ste
+Evaluating X1-argmax

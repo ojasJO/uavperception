@@ -1,0 +1,1 @@
+﻿2026-10-05T16:05:19.2983700+05:30 stopped while waiting (no work done): superseded by tools/chains/cpu_trackc_window.json (the gate on X1's training start would have run C3's workers beside a GPU training)

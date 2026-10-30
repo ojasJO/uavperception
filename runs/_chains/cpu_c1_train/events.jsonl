@@ -1,0 +1,4 @@
+{"kind": "start", "job": "c1_train_main", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/aerotrack_temporal/scripts/tc_c1.py --stage train --archs mlp,gru,tfm --variants abs", "t": "2026-10-05T08:46:13+0530"}
+{"kind": "end", "job": "c1_train_main", "rc": 0, "minutes": 44.0, "t": "2026-10-05T09:30:15+0530"}
+{"kind": "start", "job": "c1_train_ablations", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/aerotrack_temporal/scripts/tc_c1.py --stage train --archs auto --variants noabs,aug", "t": "2026-10-05T09:30:15+0530"}
+{"kind": "end", "job": "c1_train_ablations", "rc": 0, "minutes": 64.0, "t": "2026-10-05T10:34:15+0530"}

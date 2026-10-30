@@ -1,0 +1,24 @@
+{"kind": "campaign_start", "corpus_manifest_sha256": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347", "preregistration_sha256": "67ad5ea8885a01f5b2188d30a84f2f3629421d35269c852adc46b4b58f4993a9", "git": {"commit": "6843f0a47518e5d56daafab960141b64cd286898", "dirty": true}, "t": "2026-10-05T11:10:28+0530"}
+{"kind": "start", "job": "train_v2_causal_g4_s0_e2_smoke", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\train_v2.py --config causal_g4 --seed 0 --smoke", "t": "2026-10-05T11:10:28+0530"}
+{"kind": "end", "job": "train_v2_causal_g4_s0_e2_smoke", "rc": 1, "minutes": 1.1, "t": "2026-10-05T11:11:33+0530"}
+{"kind": "retry_resume", "run": "v2_causal_g4_s0_e2_smoke", "t": "2026-10-05T11:11:33+0530"}
+{"kind": "start", "job": "train_v2_causal_g4_s0_e2_smoke_retry", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\train_v2.py --config causal_g4 --seed 0 --smoke --resume", "t": "2026-10-05T11:11:33+0530"}
+{"kind": "end", "job": "train_v2_causal_g4_s0_e2_smoke_retry", "rc": 1, "minutes": 0.8, "t": "2026-10-05T11:12:19+0530"}
+{"kind": "failed", "error": "RuntimeError: training v2_causal_g4_s0_e2_smoke did not finish (rc 1)", "t": "2026-10-05T11:12:19+0530"}
+{"kind": "campaign_start", "corpus_manifest_sha256": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347", "preregistration_sha256": "67ad5ea8885a01f5b2188d30a84f2f3629421d35269c852adc46b4b58f4993a9", "git": {"commit": "244587ff0292ad920ab660c433c1da2d46a80690", "dirty": true}, "t": "2026-10-05T12:27:30+0530"}
+{"kind": "waiting_for_gpu_job", "dir": "experiments\\anti_uav\\runs\\_h3_optimisation", "t": "2026-10-05T12:27:30+0530"}
+{"kind": "gpu_free", "sentinel": "PAUSED", "t": "2026-10-05T13:31:30+0530"}
+{"kind": "start", "job": "train_v2_causal_g4_s0_e2_smoke", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\train_v2.py --config causal_g4 --seed 0 --smoke", "t": "2026-10-05T13:31:30+0530"}
+{"kind": "end", "job": "train_v2_causal_g4_s0_e2_smoke", "rc": 0, "minutes": 1.7, "t": "2026-10-05T13:33:09+0530"}
+{"kind": "start", "job": "eval_v2_causal_g4_s0_e2_smoke", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\eval_v2.py --run v2_causal_g4_s0_e2_smoke --cap 50", "t": "2026-10-05T13:33:09+0530"}
+{"kind": "end", "job": "eval_v2_causal_g4_s0_e2_smoke", "rc": 0, "minutes": 0.4, "t": "2026-10-05T13:33:35+0530"}
+{"kind": "start", "job": "eval_gen_temporal_fp_g4_full_e20", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\eval_v2.py --run gen_temporal_fp_g4_full_e20", "t": "2026-10-05T13:33:35+0530"}
+{"kind": "end", "job": "eval_gen_temporal_fp_g4_full_e20", "rc": 0, "minutes": 4.6, "t": "2026-10-05T13:38:10+0530"}
+{"kind": "start", "job": "train_v2_stock_s0_e20", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\train_v2.py --config stock --seed 0", "t": "2026-10-05T13:38:10+0530"}
+{"kind": "end", "job": "train_v2_stock_s0_e20", "rc": 0, "minutes": 128.2, "t": "2026-10-05T15:46:23+0530"}
+{"kind": "start", "job": "eval_v2_stock_s0_e20", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\eval_v2.py --run v2_stock_s0_e20", "t": "2026-10-05T15:46:23+0530"}
+{"kind": "end", "job": "eval_v2_stock_s0_e20", "rc": 0, "minutes": 3.7, "t": "2026-10-05T15:50:02+0530"}
+{"kind": "start", "job": "train_v2_sym_g4_s0_e20", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\train_v2.py --config sym_g4 --seed 0", "t": "2026-10-05T15:50:02+0530"}
+{"kind": "end", "job": "train_v2_sym_g4_s0_e20", "rc": 4294967295, "minutes": 210.5, "t": "2026-10-05T19:20:33+0530"}
+{"kind": "retry_resume", "run": "v2_sym_g4_s0_e20", "t": "2026-10-05T19:20:33+0530"}
+{"kind": "start", "job": "train_v2_sym_g4_s0_e20_retry", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\train_v2.py --config sym_g4 --seed 0 --resume", "t": "2026-10-05T19:20:33+0530"}

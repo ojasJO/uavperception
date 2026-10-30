@@ -1,0 +1,1 @@
+﻿2026-10-05T12:26:47.5563771+05:30 stopped while still waiting (no GPU work done): the v2 runner failed its smoke pre-flight (T2 rule did not know causal windows), so C2 would have run before v2; relaunched after the v2 chain instead

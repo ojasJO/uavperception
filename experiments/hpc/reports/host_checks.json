@@ -1,0 +1,61 @@
+{
+ "HC1": [
+  {
+   "weights": "5bba24c8dece",
+   "omen_run": "v2_stock_s0_e20",
+   "hpc_run": "omen_v2_stock_s0_e20",
+   "omen": {
+    "cst_drone_AP50": 0.5672566631130314,
+    "anti_uav_drone_AP50": 0.9763810525310054,
+    "drone_AP50": 0.7583507258245225
+   },
+   "hpc": {
+    "cst_drone_AP50": 0.5661788113107267,
+    "anti_uav_drone_AP50": 0.9768482787024589,
+    "drone_AP50": 0.7578976662598792
+   },
+   "delta": {
+    "cst_drone_AP50": -0.0010778518023046857,
+    "anti_uav_drone_AP50": 0.0004672261714535608,
+    "drone_AP50": -0.0004530595646432545
+   },
+   "pass": true
+  },
+  {
+   "weights": "d26641b2cedb",
+   "omen_run": "gen_temporal_fp_g4_full_e20",
+   "hpc_run": "gen_temporal_fp_g4_full_e20",
+   "omen": {
+    "cst_drone_AP50": 0.6006629977049048,
+    "anti_uav_drone_AP50": 0.9805377935657177,
+    "drone_AP50": 0.784375581360039
+   },
+   "hpc": {
+    "cst_drone_AP50": 0.5991870965888382,
+    "anti_uav_drone_AP50": 0.9801257975599875,
+    "drone_AP50": 0.7838900782161132
+   },
+   "delta": {
+    "cst_drone_AP50": -0.001475901116066658,
+    "anti_uav_drone_AP50": -0.00041199600573016415,
+    "drone_AP50": -0.00048550314392581395
+   },
+   "pass": true
+  }
+ ],
+ "HC2": {
+  "descriptive_only": true,
+  "delta_hpc_trained_minus_omen_trained": {
+   "cst_drone_AP50": -0.002589707849673939,
+   "anti_uav_drone_AP50": 0.0018728796499055678,
+   "drone_AP50": -0.0026933601771649274
+  }
+ },
+ "HC3": {
+  "hpc": 79.28739345794662,
+  "omen": 79.28741311433669,
+  "delta": -1.9656390065847518e-05,
+  "pass": true
+ },
+ "all_pass": true
+}

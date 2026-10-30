@@ -1,0 +1,15 @@
+{
+  "stages": [
+    "finetune"
+  ],
+  "finished": "20260906_100133",
+  "results": {
+    "finetune": {
+      "run_dir": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned",
+      "best": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\weights\\best.pt",
+      "best_fitness": 0.6683129433390469,
+      "best_epoch": 23,
+      "epochs_run": 25
+    }
+  }
+}

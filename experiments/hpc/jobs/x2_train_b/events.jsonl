@@ -1,0 +1,7 @@
+{"t": "2026-10-12T03:20:58+0530", "job": "x2_train_b", "kind": "submitted", "pbs_job": "93017.amritahpc", "host": "node01", "ncpus": 16, "mem_gb": 96, "walltime": "05:00:00", "gpu": 1, "stage": 1, "depend": "", "commit": "cd433bb458cd93862bcfc3e8663ba64ad40e7919"}
+{"t": "2026-10-12T03:21:00+0530", "job": "x2_train_b", "kind": "start", "pbs_job": "93017.amritahpc", "host": "node01"}
+{"t": "2026-10-12T03:21:01+0530", "job": "x2_train_b", "kind": "gpu_busy"}
+{"t": "2026-10-12T03:21:21+0530", "job": "x2_train_b", "kind": "submitted", "pbs_job": "93018.amritahpc", "host": "node02", "ncpus": 16, "mem_gb": 96, "walltime": "03:30:00", "gpu": 1, "stage": 1, "depend": "93016.amritahpc", "commit": "cd433bb458cd93862bcfc3e8663ba64ad40e7919"}
+{"t": "2026-10-12T07:42:48+0530", "job": "x2_train_b", "kind": "start", "pbs_job": "93018.amritahpc", "host": "node02"}
+{"t": "2026-10-12T07:42:57+0530", "job": "x2_train_b", "kind": "run", "cmd": "export AEROTRACK_WORKERS=12; (python -u experiments/aerotrack_v3/scripts/train_v3.py --batch 32 --train-domains cst --config n__ttt --seed 1 || python -u experiments/aerotrack_v3/scripts/train_v3.py --batch 32 --train-domains cst --config n__ttt --seed 1 --resume) && (python -u experiments/aerotrack_v3/scripts/train_v3.py --batch 32 --train-domains cst --config n__causal_g4 --seed 2 || python -u experiments/aerotrack_v3/scripts/train_v3.py --batch 32 --train-domains cst --config n__causal_g4 --seed 2 --resume)"}
+{"t": "2026-10-12T09:10:01+0530", "job": "x2_train_b", "kind": "end", "rc": 0, "minutes": 87}

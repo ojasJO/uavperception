@@ -1,0 +1,52 @@
+{"t": "2026-09-25T23:24:34+0530", "event": "start", "pid": 3576, "argv": "experiments/aerotrack_repair/scripts/run_grid.py --preflight-only", "epochs": 20, "batch": 32, "workers": 4}
+{"t": "2026-09-25T23:24:46+0530", "event": "preflight", "ok": false, "record": "preflight_20260925_232446.json"}
+{"t": "2026-09-25T23:25:07+0530", "event": "start", "pid": 15880, "argv": "experiments/aerotrack_repair/scripts/run_grid.py --preflight-only", "epochs": 20, "batch": 32, "workers": 4}
+{"t": "2026-09-25T23:29:17+0530", "event": "preflight", "ok": true, "record": "preflight_20260925_232917.json"}
+{"t": "2026-09-25T23:29:44+0530", "event": "start", "pid": 22452, "argv": "A:\\AEROTRACK_OMEN\\experiments\\aerotrack_repair\\scripts\\run_grid.py", "epochs": 20, "batch": 32, "workers": 4}
+{"t": "2026-09-25T23:29:51+0530", "event": "preflight", "ok": true, "record": "preflight_20260925_232951.json"}
+{"t": "2026-09-25T23:29:51+0530", "event": "code_snapshot", "patch": "provenance/code_20260925_232951.patch"}
+{"t": "2026-09-25T23:29:51+0530", "event": "train_launch", "run": "repair_abl_baseline_ctrl_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-25T23:33:32+0530", "event": "train_failed", "run": "repair_abl_baseline_ctrl_e20", "launch": 1, "rc": 1, "kind": "host_memory", "detail": "LoaderWorkerDied", "epochs_before": 0, "epochs_after": 0, "log": "train_baseline_ctrl_launch1_20260925_232951.log"}
+{"t": "2026-09-25T23:33:32+0530", "event": "train_recover", "run": "repair_abl_baseline_ctrl_e20", "action": "resume after 180s", "workers": 2, "kind": "host_memory"}
+{"t": "2026-09-25T23:36:32+0530", "event": "stopped", "reason": "STOP requested"}
+{"t": "2026-09-25T23:44:35+0530", "event": "start", "pid": 16996, "argv": "A:\\AEROTRACK_OMEN\\experiments\\aerotrack_repair\\scripts\\run_grid.py", "epochs": 20, "batch": 32, "workers": 4}
+{"t": "2026-09-25T23:48:25+0530", "event": "preflight", "ok": true, "record": "preflight_20260925_234825.json"}
+{"t": "2026-09-25T23:48:25+0530", "event": "code_snapshot", "patch": "provenance/code_20260925_234825.patch"}
+{"t": "2026-09-25T23:48:27+0530", "event": "train_launch", "run": "repair_abl_baseline_ctrl_e20", "launch": 1, "workers": 4, "mode": "restart in the existing dir (no checkpoint yet)"}
+{"t": "2026-09-25T23:52:52+0530", "event": "operator_note", "text": "Operator stop of the first baseline_ctrl launch (23:33-23:36): its 4 DataLoader workers grew ~1.7 GB private per 30 s each and the machine reached 98.6 % RAM; the OS killed a worker at 23:33:32 (event above). Reproduced in isolation: training-config loader, 1 worker, +1.25 GB per 10 batches (one batch retained per batch); dataset alone in one process: flat. Fix: b_pipeline/stacked_dataset.py::aerotrack_collate stacks into shared memory inside workers (bit-exact vs the old stack; 4 workers flat at ~1.7 GB over 60 batches). A loader-memory probe was added to the pre-flight; the grid was relaunched with the same command at 23:44 and baseline_ctrl restarted from scratch (no epoch had finished)."}
+{"t": "2026-09-25T23:53:01+0530", "event": "operator_note", "text": "The pre-flight at 23:24:46 (ok: False) failed only its 'no other GPU job' check: on Windows the venv python.exe is a launcher whose child is the real interpreter, and the check flagged the runner's own launcher (its parent) as a foreign job. Fixed in run_grid.py (ancestors count as the runner's own tree) before any training; the next pre-flight passed every check."}
+{"t": "2026-09-26T01:56:15+0530", "event": "operator_note", "text": "The runner started at 23:44:35 (pid 16996) was killed externally between 01:50:50 and 01:51:52 (no traceback, no event; its console log simply stops). Its training child kept running and finished baseline_ctrl cleanly at 01:53:32 (20/20 epochs, rc 0, recorded by train_ablation.py). Most likely the agent tool that launched the runner cleaned up the process it had started. Mitigations: --detach now starts the runner through a short-lived spawner (never a process of the calling shell), and a relaunched runner first waits for any still-running step of an earlier runner (orphan adoption). Relaunched with the same command; baseline_ctrl is verified from its files, not retrained."}
+{"t": "2026-09-26T01:56:36+0530", "event": "start", "pid": 28476, "argv": "A:\\AEROTRACK_OMEN\\experiments\\aerotrack_repair\\scripts\\run_grid.py", "epochs": 20, "batch": 32, "workers": 4}
+{"t": "2026-09-26T02:00:43+0530", "event": "preflight", "ok": true, "record": "preflight_20260926_020043.json"}
+{"t": "2026-09-26T02:00:43+0530", "event": "code_snapshot", "patch": "provenance/code_20260926_020043.patch"}
+{"t": "2026-09-26T02:00:45+0530", "event": "val_eval_start", "run": "repair_abl_baseline_ctrl_e20", "attempt": 1, "weights": ["best.pt", "last.pt"]}
+{"t": "2026-09-26T02:07:17+0530", "event": "val_eval_done", "run": "repair_abl_baseline_ctrl_e20", "attempt": 1}
+{"t": "2026-09-26T02:07:19+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T02:07:19+0530", "event": "train_launch", "run": "repair_abl_no_spd_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T04:34:42+0530", "event": "train_complete", "run": "repair_abl_no_spd_e20", "launch": 1, "epochs": 20, "seconds": 8843, "train_seconds_total": 8837.8, "best_epoch": 10}
+{"t": "2026-09-26T04:34:42+0530", "event": "val_eval_start", "run": "repair_abl_no_spd_e20", "attempt": 1, "weights": ["best.pt", "last.pt"]}
+{"t": "2026-09-26T04:42:06+0530", "event": "val_eval_done", "run": "repair_abl_no_spd_e20", "attempt": 1}
+{"t": "2026-09-26T04:42:08+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T04:42:08+0530", "event": "train_launch", "run": "repair_abl_single_frame_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T06:35:30+0530", "event": "train_complete", "run": "repair_abl_single_frame_e20", "launch": 1, "epochs": 20, "seconds": 6802, "train_seconds_total": 6797.4, "best_epoch": 19}
+{"t": "2026-09-26T06:35:30+0530", "event": "val_eval_start", "run": "repair_abl_single_frame_e20", "attempt": 1, "weights": ["best.pt", "last.pt"]}
+{"t": "2026-09-26T06:41:40+0530", "event": "val_eval_done", "run": "repair_abl_single_frame_e20", "attempt": 1}
+{"t": "2026-09-26T06:41:42+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T06:41:42+0530", "event": "train_launch", "run": "repair_abl_stock_yolo11n_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T08:33:28+0530", "event": "train_complete", "run": "repair_abl_stock_yolo11n_e20", "launch": 1, "epochs": 20, "seconds": 6706, "train_seconds_total": 6700.8, "best_epoch": 18}
+{"t": "2026-09-26T08:33:28+0530", "event": "val_eval_start", "run": "repair_abl_stock_yolo11n_e20", "attempt": 1, "weights": ["best.pt", "last.pt"]}
+{"t": "2026-09-26T08:39:23+0530", "event": "val_eval_done", "run": "repair_abl_stock_yolo11n_e20", "attempt": 1}
+{"t": "2026-09-26T08:39:24+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T08:39:32+0530", "event": "test_eval_start", "attempt": 1, "n": 12, "weights": ["runs\\aerotrack_spd_v1\\weights\\best.pt", "runs\\aerotrack_spd_v1\\weights\\last.pt", "runs\\aerotrack_spd_finetuned\\weights\\best.pt", "runs\\aerotrack_spd_finetuned\\weights\\last.pt", "runs\\repair_abl_baseline_ctrl_e20\\weights\\best.pt", "runs\\repair_abl_baseline_ctrl_e20\\weights\\last.pt", "runs\\repair_abl_no_spd_e20\\weights\\best.pt", "runs\\repair_abl_no_spd_e20\\weights\\last.pt", "runs\\repair_abl_single_frame_e20\\weights\\best.pt", "runs\\repair_abl_single_frame_e20\\weights\\last.pt", "runs\\repair_abl_stock_yolo11n_e20\\weights\\best.pt", "runs\\repair_abl_stock_yolo11n_e20\\weights\\last.pt"]}
+{"t": "2026-09-26T09:10:30+0530", "event": "test_eval_done", "attempt": 1}
+{"t": "2026-09-26T09:10:32+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T09:10:33+0530", "event": "complete", "hours": 7.23, "report": "experiments\\aerotrack_repair\\reports\\ablation_grid_e20.md"}
+{"t": "2026-09-26T09:13:00+0530", "event": "start", "pid": 2468, "argv": "A:\\AEROTRACK_OMEN\\experiments\\aerotrack_repair\\scripts\\run_grid.py", "epochs": 20, "batch": 32, "workers": 4}
+{"t": "2026-09-26T09:17:03+0530", "event": "preflight", "ok": true, "record": "preflight_20260926_091703.json"}
+{"t": "2026-09-26T09:17:03+0530", "event": "code_snapshot", "patch": "provenance/code_20260926_091703.patch"}
+{"t": "2026-09-26T09:17:07+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T09:17:10+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T09:17:13+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T09:17:16+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T09:17:27+0530", "event": "rendered", "files": "README.md, docs/AEROTRACK_REPAIR_REPORT.md"}
+{"t": "2026-09-26T09:17:27+0530", "event": "complete", "hours": 0.07, "report": "experiments\\aerotrack_repair\\reports\\ablation_grid_e20.md"}

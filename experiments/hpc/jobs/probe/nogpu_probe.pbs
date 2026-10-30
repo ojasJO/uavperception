@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -N at_nogpu_probe
+#PBS -q workq
+#PBS -l select=1:ncpus=2:mem=4gb
+#PBS -l walltime=00:05:00
+#PBS -j oe
+#PBS -o /home/y_rajeshwar/aerotrack_server/logs/pbs/at_nogpu_probe.out
+echo "host $(hostname) date $(date -Iseconds) jobid $PBS_JOBID"
+echo "CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
+nvidia-smi --query-gpu=name,memory.used,memory.total,utilization.gpu --format=csv
+df -hT /home /tmp /scratch /local /var/tmp 2>/dev/null
+mount | grep -E " /home " ; nproc; free -g | head -2
+ls -d /scratch* /local* /data* 2>/dev/null

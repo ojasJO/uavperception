@@ -1,0 +1,1 @@
+{"timestamp": "2026-10-12T14:35:11+0530", "event": "pass", "frozen_sha256": "6c5c83b8378e862ed62d89ef0bc457c5db14ed30df99b07fcddd05fa84b20002", "test_cache_set_sha256": "7a8672398460401b47ed94bc2385dd39feff2cc4ee06ef78650e2bd469428bfb", "mSA": {"anti_uav_IR": 68.89189681332068, "anti_uav_RGB": 74.10459505756704, "cst_IR": 56.554081545589575}, "CF_a": "no detectable difference"}

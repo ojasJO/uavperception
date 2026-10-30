@@ -1,0 +1,12 @@
+{
+  "phase": "done",
+  "outcome": "complete",
+  "epochs": 20,
+  "updated": "2026-09-26T09:17:27+0530",
+  "current": null,
+  "done_baseline_ctrl": "2026-09-26T09:17:07+0530",
+  "done_no_spd": "2026-09-26T09:17:10+0530",
+  "done_single_frame": "2026-09-26T09:17:13+0530",
+  "done_stock_yolo11n": "2026-09-26T09:17:16+0530",
+  "final_report": "A:\\AEROTRACK_OMEN\\experiments\\aerotrack_repair\\reports\\ablation_grid_e20.md"
+}

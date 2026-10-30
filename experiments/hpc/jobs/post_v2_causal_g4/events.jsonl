@@ -1,0 +1,4 @@
+{"t": "2026-10-06T12:40:54+0530", "job": "post_v2_causal_g4", "kind": "submitted", "pbs_job": "92866.amritahpc", "host": "node03", "ncpus": 12, "mem_gb": 64, "walltime": "24:00:00", "gpu": 1, "stage": 1, "depend": "", "commit": "ae370f1fd199133cc82138ef80acb54f624190d4"}
+{"t": "2026-10-06T12:40:56+0530", "job": "post_v2_causal_g4", "kind": "start", "pbs_job": "92866.amritahpc", "host": "node03"}
+{"t": "2026-10-06T12:41:00+0530", "job": "post_v2_causal_g4", "kind": "run", "cmd": "AEROTRACK_POST_SKIP=export_onnx,export_onnx_fp16,deploy_gate python -u experiments/aerotrack_v2/scripts/post_v2.py"}
+{"t": "2026-10-06T14:13:28+0530", "job": "post_v2_causal_g4", "kind": "end", "rc": 0, "minutes": 92}

@@ -1,0 +1,99 @@
+{
+  "generated": "2026-10-05T10:13:06+0530",
+  "volumes": [
+    "datasets\\2_cst-antiuav\\CST-AntiUAV.z01",
+    "datasets\\2_cst-antiuav\\CST-AntiUAV.z02",
+    "datasets\\2_cst-antiuav\\CST-AntiUAV.z03",
+    "datasets\\2_cst-antiuav\\CST-AntiUAV.z04",
+    "datasets\\2_cst-antiuav\\CST-AntiUAV.z05",
+    "datasets\\2_cst-antiuav\\CST-AntiUAV.z06",
+    "datasets\\2_cst-antiuav\\CST-AntiUAV.z07",
+    "datasets\\2_cst-antiuav_part2\\CST-AntiUAV.z08",
+    "datasets\\2_cst-antiuav_part2\\CST-AntiUAV.z09",
+    "datasets\\2_cst-antiuav_part2\\CST-AntiUAV.z10",
+    "datasets\\2_cst-antiuav_part2\\CST-AntiUAV.zip"
+  ],
+  "extract_dir": "data\\cst_anti_uav_full",
+  "streaming_extraction": {
+    "skipped": true
+  },
+  "central_directory": {
+    "entries": 246357,
+    "files": 246131,
+    "missing": 0,
+    "size_mismatch": 0,
+    "crc_mismatch": 0,
+    "examples": []
+  },
+  "v1_consistency": {
+    "v1_files": 163275,
+    "absent_in_complete": [],
+    "n_absent": 0,
+    "different_bytes": [],
+    "n_different": 0
+  },
+  "inventory": {
+    "root": "data\\cst_anti_uav_full\\CST-AntiUAV\\CST-AntiUAV",
+    "categories": {
+      "train": {
+        "building": 51,
+        "cn_mountains": 20,
+        "cn_sky": 8,
+        "jungle": 5,
+        "urban-areas": 23,
+        "water": 13
+      },
+      "val": {
+        "building": 14,
+        "cn_mountains": 9,
+        "cn_sky": 2,
+        "jungle": 1,
+        "urban-areas": 8,
+        "water": 6
+      },
+      "test": {
+        "building": 9,
+        "cn_mountains": 9,
+        "cn_sky": 6,
+        "jungle": 13,
+        "urban-areas": 17,
+        "water": 6
+      }
+    },
+    "counts": {
+      "train": {
+        "sequences": 120,
+        "frames": 127991,
+        "with_IR_label_json": 120
+      },
+      "val": {
+        "sequences": 40,
+        "frames": 45305,
+        "with_IR_label_json": 40
+      },
+      "test": {
+        "sequences": 60,
+        "frames": 72175,
+        "with_IR_label_json": 60
+      }
+    },
+    "annotation_keys_sample": {
+      "exist": 220,
+      "gt": 220,
+      "OC": 220,
+      "OV": 220,
+      "SV": 220,
+      "TC": 220,
+      "DBC": 220,
+      "CDB": 220,
+      "FM": 220,
+      "SIZE": 219,
+      "TS": 1,
+      "SS": 1,
+      "MS": 1,
+      "NS": 1
+    }
+  },
+  "seconds": 6868.9,
+  "verdict": "COMPLETE_AND_CONSISTENT"
+}

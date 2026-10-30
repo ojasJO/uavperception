@@ -1,0 +1,8 @@
+{"t": "2026-10-06T12:43:13+0530", "job": "x1_cst_runner", "kind": "submitted", "pbs_job": "92873.amritahpc", "host": "node03", "ncpus": 16, "mem_gb": 96, "walltime": "40:00:00", "gpu": 1, "stage": 1, "depend": "afterany:92872.amritahpc", "commit": "ae370f1fd199133cc82138ef80acb54f624190d4"}
+{"t": "2026-10-09T16:49:59+0530", "job": "x1_cst_runner", "kind": "resubmitted", "pbs_job": "92973.amritahpc", "prev_pbs_job": "92873.amritahpc", "host": "dynamic", "ncpus": 16, "mem_gb": 96, "walltime": "40:00:00", "gpu": 1, "stage": 1, "commit": "168c27ddc618919cc92a352b73da19ec113f4580"}
+{"t": "2026-10-09T16:50:04+0530", "job": "x1_cst_runner", "kind": "start", "pbs_job": "92973.amritahpc", "host": "node02"}
+{"t": "2026-10-09T16:50:05+0530", "job": "x1_cst_runner", "kind": "gpu_busy"}
+{"t": "2026-10-09T16:53:23+0530", "job": "x1_cst_runner", "kind": "resubmitted", "pbs_job": "92976.amritahpc", "prev_pbs_job": "92873.amritahpc", "host": "node04", "ncpus": 16, "mem_gb": 96, "walltime": "40:00:00", "gpu": 1, "stage": 1, "commit": "168c27ddc618919cc92a352b73da19ec113f4580"}
+{"t": "2026-10-10T04:12:40+0530", "job": "x1_cst_runner", "kind": "start", "pbs_job": "92976.amritahpc", "host": "node04"}
+{"t": "2026-10-10T06:22:24+0530", "job": "x1_cst_runner", "kind": "run", "cmd": "AEROTRACK_WORKERS=12 python -u experiments/aerotrack_v3/scripts/run_x1.py"}
+{"t": "2026-10-10T07:30:38+0530", "job": "x1_cst_runner", "kind": "end", "rc": 0, "minutes": 68}

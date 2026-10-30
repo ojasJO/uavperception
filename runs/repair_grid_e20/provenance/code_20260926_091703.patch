@@ -1,0 +1,1669 @@
+diff --git a/README.md b/README.md
+index 755e114..bd9a4ab 100644
+--- a/README.md
++++ b/README.md
+@@ -15,7 +15,7 @@ now tied to a generated file, evaluated on one fixed image set, with the trivial
+ | Review-2 claim | What the controlled measurement says | Where |
+ |---|---|---|
+ | "+43 % mAP from fine-tuning" | On the same images the drone-class AP moves by about a point; the mAP jump is the bird class. v2 is *below* v1-last on drone AP, CST and Anti-UAV. | detector table below |
+-| SPD-Conv / temporal stack "empirically verified" | Untested until the ablation grid runs (commands below). Inference-time ablation in the audit: removing motion costs â‰¤ 0.005 mAP. | ablation table (pending) |
++| SPD-Conv / temporal stack "empirically verified" | Controlled 20-epoch grid, pre-registered rule (> 0.02 AP50 on best.pt AND last.pt) â€” SPD-Conv: no measurable effect on micro AP50 and CST micro AP50; temporal stack: no measurable effect on CST AP50 and drone AP50; full recipe vs stock YOLO11n: no measurable effect on drone AP50. | ablation table |
+ | "ByteTrack occlusion recovery" | A no-association argmax box beats ByteTrack on MOTA and IDF1 on every dataset. ByteTrack is retired. | tracker table |
+ | "LSTM beats Kalman by 26 %" | Predicting no motion beats Kalman by the same margin on gimbal footage; the LSTM loses to mean-velocity/Kalman on CST. LSTM retired. | forecasting table |
+ | "11.8 ms / 85 FPS bf16" | Measured fp32 (the deployed precision) end-to-end with p95, plus the +1-frame structural latency of the 3-frame stack. | latency table |
+@@ -25,8 +25,9 @@ now tied to a generated file, evaluated on one fixed image set, with the trivial
+ 
+ Detector: YOLO11n layout (Ultralytics 8.4) with the five stride-2 downsampling convolutions replaced by
+ space-to-depth convolutions (`c_model/yolo11-spd.yaml`, `custom_modules.SPDConv`), taking a 9-channel input made of
+-frames *tâˆ’1, t, t+1* letterboxed to 640Ã—640. COCO-pretrained `yolo11n.pt` initialises every tensor whose shape
+-matches (the SPD stems and the 2-class head start from scratch). Two classes: `uav_drone`, `bird_hard_negative`.
++frames *tâˆ’1, t, t+1* letterboxed to 640Ã—640. COCO-pretrained `yolo11n.pt` initialises every tensor whose name and
++shape match (the SPD stems, the class head and â€” with the installed Ultralytics, whose C3k2 bottlenecks use a 1Ã—1 `cv1`
++where the checkpoint has 3Ã—3 â€” those `cv1` convolutions start from scratch). Two classes: `uav_drone`, `bird_hard_negative`.
+ 
+ Components that were evaluated and **retired** by pre-registered rules (kept in the repo for the record):
+ `c_model/bytetrack.py` (tracking) and `c_model/lstm_forecaster.py` (forecasting) â€” see the tables below.
+@@ -44,45 +45,81 @@ hardness-aware weighted sampler.
+ 
+ - **Size bins** (code: `c_model/evaluation.py`): relative box area of the *source* frame â€” micro < 0.03 %, small 0.03â€“1 %, standard > 1 %. In pixels (side of a square box at the threshold), computed from the evaluated images:
+   anti_uav/IR: micro â‰¤ 9.9 px, small â‰¤ 57.2 px; anti_uav/RGB: micro â‰¤ 24.9 px, small â‰¤ 144.0 px; cst/IR: micro â‰¤ 9.9 px, small â‰¤ 57.2 px; det_fly/RGB: micro â‰¤ 11.1 px, small â‰¤ 64.0 px.
+-- **Evaluation protocol**: conf 0.001, NMS IoU 0.7, max 30 detections/image; FP-rate style numbers at conf 0.25; AP with all-point interpolation over IoU 0.5:0.95.
++- **Evaluation protocol**: conf 0.001, NMS IoU 0.7, max 30 detections/image; FP-rate style numbers at conf 0.25; AP with all-point interpolation over IoU 0.5:0.95. Each checkpoint is scored on its own training input: the tâˆ’1,t,t+1 stack, or t,t,t (three copies of frame t) for the runs trained with temporal_gap 0.
+ 
+ | run | planned epochs | epochs run | best.pt (fitness) | last.pt | batch Ã— accumulate | lr0 â†’ lrf | class weights | sampler weights (bird/micro/small/standard/empty) | init |
+ |---|---|---|---|---|---|---|---|---|---|
+ | aerotrack_spd_v1 | 150 | 22 (last epoch index 21) | epoch 15 | epoch 21 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO) |
+ | aerotrack_spd_finetuned | 25 | 25 (last epoch index 24) | epoch 23 | epoch 24 | 32 Ã— 2 | 0.0002 â†’ Ã—0.02 | [1.0, 4.5] | 35.0/8.0/4.0/1.0/0.8 | aerotrack_spd_v1 best.pt |
++| repair_abl_baseline_ctrl_e20 | 20 | 20 (last epoch index 19) | epoch 13 | epoch 19 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO), shape-matched |
++| repair_abl_no_spd_e20 | 20 | 20 (last epoch index 19) | epoch 10 | epoch 19 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO), shape-matched + 3-ch stem tiled /3 |
++| repair_abl_single_frame_e20 | 20 | 20 (last epoch index 19) | epoch 19 | epoch 19 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO), shape-matched |
++| repair_abl_stock_yolo11n_e20 | 20 | 20 (last epoch index 19) | epoch 18 | epoch 19 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO), shape-matched + 3-ch stem tiled /3 |
+ 
+ The v1 run was stopped at epoch index 21 of a planned 150 (its cosine schedule never completed); the fine-tune changed the sampler weights, class weights, loss weights, batch, learning-rate schedule and augmentation at once, so its gains are a **recipe change**, not an architectural effect.
++The `repair_abl_*` runs use v1's recipe (`baseline` stage, default augmentation and sampler weights â€” the values v1 was launched with) at a 20-epoch budget whose cosine schedule completes, and differ from each other in one factor.
+ 
+ ## Detector results â€” one image set for every checkpoint
+ 
+ **Validation** â€” image set `6fb41d44d45b`: 11,565 images (anti_uav 5,000, cst 5,000, det_fly 1,565), 1714 sequences. Every row uses exactly these images.
+ 
+-| run | ckpt | epoch | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n GT) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs raising a drone alarm | GT birds boxed as drone | empty-frame drone FP / img |
+-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+-| aerotrack_spd_v1 | best | 15 | 0.6074 | 0.2991 | 0.7925 | 0.4224 | 0.2929 (2008) | 0.6240 | 0.4932 | 0.9775 | 0.6767 | 0.6594 | 0.3974 | 20.6 % | 0.8 % | 0.0704 |
+-| aerotrack_spd_v1 | last | 21 | 0.6505 | 0.3188 | 0.8286 | 0.4724 | 0.3293 (2008) | 0.6602 | 0.5358 | 0.9813 | 0.7420 | 0.6846 | 0.4454 | 3.1 % | 0.2 % | 0.0778 |
+-| aerotrack_spd_finetuned | best | 23 | 0.7788 | 0.4140 | 0.8027 | 0.7548 | 0.4078 (2008) | 0.7933 | 0.8454 | 0.9534 | 0.6392 | 0.6091 | 0.7388 | 0.0 % | 0.0 % | 0.0869 |
+-| aerotrack_spd_finetuned | last | 24 | 0.7799 | 0.4158 | 0.8049 | 0.7549 | 0.4062 (2008) | 0.7943 | 0.8547 | 0.9533 | 0.6436 | 0.6112 | 0.7407 | 0.0 % | 0.0 % | 0.0877 |
+-
+-*Test set: not evaluated yet â€” it is used once, for the final table, after the ablation grid.*
++| run | ckpt | epoch | input | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n GT) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs raising a drone alarm | GT birds boxed as drone | empty-frame drone FP / img |
++|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
++| aerotrack_spd_v1 | best | 15 | t-1,t,t+1 | 0.6074 | 0.2991 | 0.7925 | 0.4224 | 0.2929 (2008) | 0.6240 | 0.4932 | 0.9775 | 0.6767 | 0.6594 | 0.3974 | 20.6 % | 0.8 % | 0.0704 |
++| aerotrack_spd_v1 | last | 21 | t-1,t,t+1 | 0.6505 | 0.3188 | 0.8286 | 0.4724 | 0.3293 (2008) | 0.6602 | 0.5358 | 0.9813 | 0.7420 | 0.6846 | 0.4454 | 3.1 % | 0.2 % | 0.0778 |
++| aerotrack_spd_finetuned | best | 23 | t-1,t,t+1 | 0.7788 | 0.4140 | 0.8027 | 0.7548 | 0.4078 (2008) | 0.7933 | 0.8454 | 0.9534 | 0.6392 | 0.6091 | 0.7388 | 0.0 % | 0.0 % | 0.0869 |
++| aerotrack_spd_finetuned | last | 24 | t-1,t,t+1 | 0.7799 | 0.4158 | 0.8049 | 0.7549 | 0.4062 (2008) | 0.7943 | 0.8547 | 0.9533 | 0.6436 | 0.6112 | 0.7407 | 0.0 % | 0.0 % | 0.0877 |
++| repair_abl_baseline_ctrl_e20 | best | 13 | t-1,t,t+1 | 0.6052 | 0.3009 | 0.7791 | 0.4313 | 0.2790 (2008) | 0.6170 | 0.5105 | 0.9751 | 0.6374 | 0.6187 | 0.4095 | 4.1 % | 0.1 % | 0.1200 |
++| repair_abl_baseline_ctrl_e20 | last | 19 | t-1,t,t+1 | 0.6409 | 0.3233 | 0.8030 | 0.4788 | 0.2804 (2008) | 0.6585 | 0.6494 | 0.9816 | 0.6677 | 0.6269 | 0.4650 | 4.1 % | 0.1 % | 0.1018 |
++| repair_abl_no_spd_e20 | best | 10 | t-1,t,t+1 | 0.6279 | 0.3055 | 0.7975 | 0.4582 | 0.2949 (2008) | 0.6452 | 0.4780 | 0.9718 | 0.7098 | 0.6579 | 0.3908 | 16.5 % | 0.4 % | 0.2409 |
++| repair_abl_no_spd_e20 | last | 19 | t-1,t,t+1 | 0.6996 | 0.3453 | 0.8415 | 0.5576 | 0.3588 (2008) | 0.7114 | 0.5387 | 0.9815 | 0.7621 | 0.7288 | 0.5163 | 4.1 % | 0.2 % | 0.1316 |
++| repair_abl_single_frame_e20 | best | 19 | t,t,t | 0.6533 | 0.3244 | 0.8065 | 0.5002 | 0.2873 (2008) | 0.6707 | 0.5609 | 0.9807 | 0.6825 | 0.6119 | 0.4559 | 7.2 % | 0.1 % | 0.0778 |
++| repair_abl_single_frame_e20 | last | 19 | t,t,t | 0.6533 | 0.3244 | 0.8065 | 0.5002 | 0.2873 (2008) | 0.6707 | 0.5609 | 0.9807 | 0.6825 | 0.6119 | 0.4559 | 7.2 % | 0.1 % | 0.0778 |
++| repair_abl_stock_yolo11n_e20 | best | 18 | t,t,t | 0.6708 | 0.3371 | 0.8337 | 0.5079 | 0.3182 (2008) | 0.6837 | 0.5894 | 0.9820 | 0.7305 | 0.7078 | 0.5208 | 1.0 % | 0.0 % | 0.1167 |
++| repair_abl_stock_yolo11n_e20 | last | 19 | t,t,t | 0.6790 | 0.3415 | 0.8379 | 0.5200 | 0.3184 (2008) | 0.6937 | 0.5879 | 0.9828 | 0.7327 | 0.7091 | 0.5336 | 3.1 % | 0.1 % | 0.1126 |
++
++**Test (final, once per model)** â€” image set `37e944793773`: 11,567 images (anti_uav 5,000, cst 5,000, det_fly 1,567), 1809 sequences. Every row uses exactly these images.
++
++| run | ckpt | epoch | input | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n GT) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs raising a drone alarm | GT birds boxed as drone | empty-frame drone FP / img |
++|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
++| aerotrack_spd_v1 | best | 15 | t-1,t,t+1 | 0.5491 | 0.2428 | 0.6590 | 0.4391 | 0.2049 (2722) | 0.5693 | 0.4997 | 0.9015 | 0.4471 | 0.3950 | 0.4145 | 18.6 % | 0.7 % | 0.2696 |
++| aerotrack_spd_v1 | last | 21 | t-1,t,t+1 | 0.5858 | 0.2629 | 0.6861 | 0.4855 | 0.2543 (2722) | 0.6007 | 0.5630 | 0.9064 | 0.4876 | 0.4236 | 0.4613 | 0.0 % | 0.0 % | 0.4700 |
++| aerotrack_spd_finetuned | best | 23 | t-1,t,t+1 | 0.7344 | 0.3776 | 0.6745 | 0.7944 | 0.2862 (2722) | 0.7678 | 0.9079 | 0.8787 | 0.3933 | 0.3174 | 0.7685 | 2.1 % | 0.1 % | 0.4349 |
++| aerotrack_spd_finetuned | last | 24 | t-1,t,t+1 | 0.7339 | 0.3774 | 0.6755 | 0.7924 | 0.2877 (2722) | 0.7676 | 0.9073 | 0.8816 | 0.3931 | 0.3182 | 0.7668 | 2.1 % | 0.1 % | 0.4377 |
++| repair_abl_baseline_ctrl_e20 | best | 13 | t-1,t,t+1 | 0.5396 | 0.2402 | 0.6557 | 0.4234 | 0.1726 (2722) | 0.5636 | 0.5429 | 0.9012 | 0.4245 | 0.3399 | 0.4017 | 5.2 % | 0.1 % | 0.3878 |
++| repair_abl_baseline_ctrl_e20 | last | 19 | t-1,t,t+1 | 0.5693 | 0.2584 | 0.6607 | 0.4779 | 0.1641 (2722) | 0.5982 | 0.6250 | 0.9087 | 0.4118 | 0.3290 | 0.4692 | 4.1 % | 0.0 % | 0.6362 |
++| repair_abl_no_spd_e20 | best | 10 | t-1,t,t+1 | 0.5567 | 0.2515 | 0.6528 | 0.4607 | 0.2033 (2722) | 0.5723 | 0.5111 | 0.8992 | 0.4365 | 0.3422 | 0.4026 | 15.5 % | 0.6 % | 0.6953 |
++| repair_abl_no_spd_e20 | last | 19 | t-1,t,t+1 | 0.6124 | 0.2776 | 0.6679 | 0.5570 | 0.2129 (2722) | 0.6260 | 0.4870 | 0.9175 | 0.4384 | 0.3353 | 0.5293 | 11.3 % | 0.6 % | 0.7091 |
++| repair_abl_single_frame_e20 | best | 19 | t,t,t | 0.5838 | 0.2642 | 0.6740 | 0.4937 | 0.2045 (2722) | 0.6064 | 0.5641 | 0.9012 | 0.4672 | 0.4055 | 0.4688 | 5.2 % | 0.0 % | 0.5891 |
++| repair_abl_single_frame_e20 | last | 19 | t,t,t | 0.5838 | 0.2642 | 0.6740 | 0.4937 | 0.2045 (2722) | 0.6064 | 0.5641 | 0.9012 | 0.4672 | 0.4055 | 0.4688 | 5.2 % | 0.0 % | 0.5891 |
++| repair_abl_stock_yolo11n_e20 | best | 18 | t,t,t | 0.5778 | 0.2692 | 0.6738 | 0.4819 | 0.2147 (2722) | 0.5860 | 0.6019 | 0.9078 | 0.4508 | 0.3987 | 0.5190 | 1.0 % | 0.1 % | 0.5476 |
++| repair_abl_stock_yolo11n_e20 | last | 19 | t,t,t | 0.5913 | 0.2756 | 0.6837 | 0.4988 | 0.2131 (2722) | 0.6061 | 0.6152 | 0.9105 | 0.4561 | 0.3996 | 0.5345 | 2.1 % | 0.1 % | 0.5503 |
++
++*Test split: scored once per checkpoint after the ablation grid finished; `reports/test_evaluation_ledger.jsonl` holds 12 entries for 12 distinct checkpoints. The test table is not used for any checkpoint choice or attribution (the rule is applied on validation).*
+ 
+ **Reading (computed from the table):**
+ - checkpoint selection: v1 *last* (epoch 21) beats v1 *best* (epoch 15, chosen by the fitness metric) on drone AP50 (0.829 vs 0.792), CST (0.742 vs 0.677) and micro AP50 (0.329 vs 0.293); the fitness metric picked a worse checkpoint.
+ - fine-tune vs v1-last: drone AP50 -0.026, CST AP50 -0.103, Anti-UAV AP50 -0.028, bird AP50 +0.282, Det-Fly AP50 +0.293; bird-only images raising a drone alarm 3.1 % â†’ 0.0 %.
+-- so the fine-tune bought bird rejection and paid for it on the thermal drone datasets; nothing in this table attributes anything to SPD-Conv or the temporal stack.
++- so the fine-tune bought bird rejection and paid for it on the thermal drone datasets; the v1/v2 comparison attributes nothing to SPD-Conv or the temporal stack â€” that is what the controlled ablation grid below is for.
+ 
+ ## Controlled ablation grid
+ 
+ Four runs, same recipe (`baseline` stage), same budget, one factor each; both checkpoints evaluated on the same image set as above. **Attribution rule (pre-registered):** a factor is credited only if the full model beats the ablated model by > 0.02 AP50 on the target metric for BOTH last.pt and best.pt; otherwise it has no measurable effect at this budget. Target metrics: SPD â†’ micro AP50 and CST micro AP50; temporal stack â†’ CST AP50 (motion cue) and drone AP50; stock baseline â†’ drone AP50 overall.
+ 
+-| ablation | changes | status | epochs | best.pt drone AP50 / micro / CST micro | last.pt drone AP50 / micro / CST micro |
+-|---|---|---|---|---|---|
+-| baseline_ctrl | full recipe (SPD + 9-ch stack) | **pending** | â€” | â€” | â€” |
+-| no_spd | SPDConv â†’ stride-2 Conv | **pending** | â€” | â€” | â€” |
+-| single_frame | tâˆ’1 = t = t+1 (no motion) | **pending** | â€” | â€” | â€” |
+-| stock_yolo11n | stride-2 AND single frame (stock YOLO11n) | **pending** | â€” | â€” | â€” |
++| ablation | changes | input | status | epochs | best.pt drone AP50 / micro / CST / CST micro | last.pt drone AP50 / micro / CST / CST micro |
++|---|---|---|---|---|---|---|
++| baseline_ctrl | full recipe (SPD + 9-ch stack) | tâˆ’1,t,t+1 | finished, 2 launches (`repair_abl_baseline_ctrl_e20`) | 20/20 | 0.7791 / 0.2790 / 0.6374 / 0.6187 | 0.8030 / 0.2804 / 0.6677 / 0.6269 |
++| no_spd | SPDConv â†’ stride-2 Conv | tâˆ’1,t,t+1 | finished (`repair_abl_no_spd_e20`) | 20/20 | 0.7975 / 0.2949 / 0.7098 / 0.6579 | 0.8415 / 0.3588 / 0.7621 / 0.7288 |
++| single_frame | tâˆ’1 = t = t+1 (no motion) | t,t,t | finished (`repair_abl_single_frame_e20`) | 20/20 | 0.8065 / 0.2873 / 0.6825 / 0.6119 | 0.8065 / 0.2873 / 0.6825 / 0.6119 |
++| stock_yolo11n | stride-2 AND single frame (stock YOLO11n) | t,t,t | finished (`repair_abl_stock_yolo11n_e20`) | 20/20 | 0.8337 / 0.3182 / 0.7305 / 0.7078 | 0.8379 / 0.3184 / 0.7327 / 0.7091 |
++
++**Attribution verdicts (rule above):**
++- SPD-Conv (no_spd): micro_AP50: Î” best -0.016, last -0.078 â†’ no measurable effect; cst_micro_AP50: Î” best -0.039, last -0.102 â†’ no measurable effect
++- temporal stack (single_frame): cst_AP50: Î” best -0.045, last -0.015 â†’ no measurable effect; drone_AP50: Î” best -0.027, last -0.003 â†’ no measurable effect
++- full recipe vs stock YOLO11n (stock_yolo11n): drone_AP50: Î” best -0.055, last -0.035 â†’ no measurable effect
+ 
+-No grid run has been trained yet (â‰ˆ 6.5â€“9 h each at 20 epochs on the RTX 5050; see the commands at the end of this file). Until then **no claim about SPD-Conv or the temporal stack is made.**
++`single_frame` and `stock_yolo11n` are trained, validated and scored on t,t,t (three copies of frame t â€” their input definition, `c_model/train.py::build`); `baseline_ctrl` and `no_spd` on tâˆ’1,t,t+1. A verdict only uses finished runs whose evaluated checkpoint hashes match `run_meta.json`.
++COCO initialisation, same rule in every run (every tensor whose name and shape match; a 3-channel stem tiled /3 into a 9-channel stride stem): baseline_ctrl 388/649 tensors (59.8 %); no_spd 418/649 tensors (64.4 %); single_frame 388/649 tensors (59.8 %); stock_yolo11n 418/649 tensors (64.4 %). With the installed Ultralytics the C3k2 bottleneck `cv1` convolutions are 1Ã—1 while `yolo11n.pt` holds 3Ã—3 ones, so those and the class head start from scratch in all four runs (and in v1).
+ 
+ ## Tracking â€” does a tracker help at all?
+ 
+@@ -157,6 +194,12 @@ Labels are taken as given; in this sequence the target is marked absent for most
+ ## Reproducing every number in this file
+ 
+ ```bat
++:: ONE command for the ablation grid and everything after it: preflight -> 4 training runs (sequential, one GPU,
++:: auto-resume) -> val evaluation of best.pt AND last.pt after each run -> the TEST split once per checkpoint ->
++:: this README, docs/AEROTRACK_REPAIR_REPORT.md and reports/ablation_grid_e20.md. Re-run it to resume; --detach runs it in
++:: the background, --status / --stop inspect or stop it.
++venv\Scripts\python.exe experiments\aerotrack_repair\scripts\run_grid.py
++:: the individual steps it runs:
+ :: same-set detector evaluation (val; add --split test --final-eval only for the final table)
+ venv\Scripts\python.exe experiments\aerotrack_repair\scripts\evaluate_detector.py --split val --cap 5000 --weights runs\aerotrack_spd_v1\weights\best.pt runs\aerotrack_spd_v1\weights\last.pt runs\aerotrack_spd_finetuned\weights\best.pt runs\aerotrack_spd_finetuned\weights\last.pt
+ :: ablation grid (one run each; same recipe and budget, one factor changed)
+@@ -175,8 +218,11 @@ venv\Scripts\python.exe experiments\aerotrack_repair\scripts\render_report.py
+ ```
+ 
+ Historical pipeline (data preparation, training engine, original evaluation code): `a_inspection/`, `b_pipeline/`,
+-`c_model/`, `run_aerotrack.py` â€” unchanged except for the two ablation entries in `c_model/train.py` and the
+-3â†’9-channel stem transfer rule in `c_model/aerotrack_trainer.py`.
++`c_model/`, `run_aerotrack.py` â€” unchanged except for the two ablation entries and `--preflight-only` in `c_model/train.py`,
++the 3â†’9-channel stem transfer rule and atomic checkpoint writes in `c_model/aerotrack_trainer.py`, and the T6 pre-flight
++check in `c_model/preflight.py`, which now accepts the stride-2 stem of the `no_spd` / `stock_yolo11n` layouts, and the
++batch collate in `b_pipeline/stacked_dataset.py`, which now stacks into shared memory inside DataLoader workers (same values;
++the old path leaked one batch per batch per worker on this machine).
+ 
+ ## Repository structure
+ 
+@@ -185,7 +231,7 @@ experiments/aerotrack_repair/   repair scripts, README template, reports (JSON +
+ experiments/anti_uav/           separate project: reproduction of the Anti-UAV (DFSC/GlobalTrack) paper
+ audit/                          independent audit of Review 2 (scripts + report)
+ docs/                           AEROTRACK_REPAIR_REPORT.md, AEROTRACK_REPAIR_PLAN.md, historical/README_review2.md, Anti-UAV docs
+-runs/                           aerotrack_spd_v1, aerotrack_spd_finetuned (historical, untouched), repair_abl_* (grid), lstm_forecaster_repair
++runs/                           aerotrack_spd_v1, aerotrack_spd_finetuned (historical, untouched), repair_abl_* (grid), repair_grid_e* (grid runner state + logs), lstm_forecaster_repair
+ c_model/ b_pipeline/ a_inspection/   the original pipeline
+ ```
+ 
+diff --git a/b_pipeline/stacked_dataset.py b/b_pipeline/stacked_dataset.py
+index 59d8e93..a72983b 100644
+--- a/b_pipeline/stacked_dataset.py
++++ b/b_pipeline/stacked_dataset.py
+@@ -756,9 +756,23 @@ class AeroTrackDataset(Dataset):
+ #  Collate (variable-length targets) + convenience loader
+ # --------------------------------------------------------------------------- #
+ def aerotrack_collate(batch):
+-    """Stack the fixed-shape 9ch tensors; keep targets as a list of [Ni,5]."""
++    """Stack the fixed-shape 9ch tensors; keep targets as a list of [Ni,5].
++
++    Inside a DataLoader worker the stack is written straight into shared memory,
++    exactly as torch's own default_collate does. Repair (grid runner, 2026-09-25):
++    stacking into ordinary memory and leaving the hand-off to shared memory to the
++    result queue left every batch behind in the worker on this machine -- measured
++    +118 MB per batch per worker (32 x 9 x 640 x 640 uint8), i.e. 6.6 -> 10 GB per
++    worker within minutes, until the OS killed one. With the stack in shared
++    memory the worker stays flat. The values are identical either way."""
+     has_meta = len(batch[0]) == 3
+-    imgs = torch.stack([b[0] for b in batch], dim=0)      # [B,9,640,640]
++    elems = [b[0] for b in batch]
++    out = None
++    if torch.utils.data.get_worker_info() is not None:
++        e = elems[0]
++        storage = e._typed_storage()._new_shared(len(elems) * e.numel(), device=e.device)
++        out = e.new(storage).resize_(len(elems), *e.shape)
++    imgs = torch.stack(elems, dim=0, out=out)             # [B,9,640,640]
+     targets = [b[1] for b in batch]
+     if has_meta:
+         return imgs, targets, [b[2] for b in batch]
+diff --git a/c_model/aerotrack_trainer.py b/c_model/aerotrack_trainer.py
+index e858b77..63a80ac 100644
+--- a/c_model/aerotrack_trainer.py
++++ b/c_model/aerotrack_trainer.py
+@@ -21,6 +21,7 @@ import csv
+ import gc
+ import json
+ import math
++import os
+ import time
+ import inspect
+ import datetime
+@@ -564,7 +565,7 @@ class AeroTrackTrainer:
+         }
+         if extra:
+             ck.update(extra)
+-        torch.save(ck, path)
++        _atomic_torch_save(ck, path)
+ 
+     # ---- the loop -------------------------------------------------------- #
+     def train(self, resume_from=None):
+@@ -762,6 +763,33 @@ def _isnum(v):
+         return False
+ 
+ 
++def _atomic_torch_save(obj, path, retries=20, wait_s=0.5):
++    """`torch.save` to a sibling temp file, then `os.replace` it over `path`.
++
++    Repair (grid runner): writing `last.pt` in place meant a crash, a killed
++    process or a power cut DURING the save left a truncated file -- and with it
++    an unresumable run. `os.replace` is atomic on NTFS and POSIX, so `path` is
++    always either the previous complete checkpoint or the new one. On Windows a
++    reader (an antivirus scan of the file just written, say) can hold the target
++    for a moment; retry, and only as a last resort write in place, which is
++    exactly the old behaviour."""
++    path = Path(path)
++    tmp = path.with_name(path.name + ".tmp")
++    torch.save(obj, tmp)
++    for _ in range(retries):
++        try:
++            os.replace(tmp, path)
++            return
++        except PermissionError:
++            time.sleep(wait_s)
++    print(f"[checkpoint] could not replace {path.name} atomically; writing in place", flush=True)
++    torch.save(obj, path)
++    try:
++        tmp.unlink()
++    except OSError:
++        pass
++
++
+ def _detached_copy(model):
+     """A deep copy, detached from autograd, ready to pickle into a checkpoint.
+ 
+diff --git a/c_model/preflight.py b/c_model/preflight.py
+index 7e601e2..61d3674 100644
+--- a/c_model/preflight.py
++++ b/c_model/preflight.py
+@@ -247,8 +247,13 @@ def check_checkpoint_roundtrip(trainer, device, tmp_dir=None, imgsz=640, ch=9,
+         # 2. geometry: the first SPDConv folds each 2x2 into channels, so a
+         #    9-channel input reaches its convolution as 36 channels. If the
+         #    reload had rebuilt from YAML with the default ch=3, this reads 12.
++        #    Repair (grid runner): a stride-2 stem (the no_spd / stock_yolo11n
++        #    ablations, yolo11-stride.yaml) sees the 9 channels directly, so the
++        #    expected width is taken from the live model -- the old `== 4 * ch`
++        #    failed T6 and aborted every stride-layout run before epoch 0.
+         first_conv = next(m for m in m1.modules() if isinstance(m, torch.nn.Conv2d))
+-        ch_ok = first_conv.in_channels == 4 * ch
++        want_in = next(m for m in m0.modules() if isinstance(m, torch.nn.Conv2d)).in_channels
++        ch_ok = first_conv.in_channels == want_in and want_in in (ch, 4 * ch)
+ 
+         # 3. forward
+         x = torch.randn(1, ch, imgsz, imgsz, device=device)
+@@ -272,7 +277,8 @@ def check_checkpoint_roundtrip(trainer, device, tmp_dir=None, imgsz=640, ch=9,
+         return (ok,
+                 f"weights: {len(sd0)} tensors, {len(bad)} mismatched, "
+                 f"{len(missing)} missing | first conv in_channels="
+-                f"{first_conv.in_channels} (expect {4*ch}) | out {tuple(a.shape)} "
++                f"{first_conv.in_channels} (expect {want_in}: "
++                f"{'SPD 4 x' if want_in == 4 * ch else 'stride, 1 x'} ch={ch}) | out {tuple(a.shape)} "
+                 f"| max|dscore|={d_cls:.2e} (tol {score_tol}) "
+                 f"max|dbox|={d_box:.3f} px (tol {tol_px:.1f} = stride/4) "
+                 f"[weights are exact; the box delta is fp16 DFL sensitivity]")
+diff --git a/c_model/train.py b/c_model/train.py
+index ad5b3be..23931ab 100644
+--- a/c_model/train.py
++++ b/c_model/train.py
+@@ -1189,6 +1189,9 @@ def main():
+     ap.add_argument("--name", default=None)
+     ap.add_argument("--resume", default=None)
+     ap.add_argument("--no-preflight", action="store_true")
++    ap.add_argument("--preflight-only", action="store_true",
++                    help="build the job, run the T1-T8 pre-flight on it, then exit "
++                         "without training (single --stage / --ablation path)")
+     ap.add_argument("--tuning", default=None,
+                     help="JSON file with {augment, sampler_weights, "
+                          "temporal_gap} â€” how train.ipynb hands its config "
+@@ -1226,6 +1229,10 @@ def main():
+     unknown = [s for s in stages if s not in STAGES]
+     if unknown:
+         raise SystemExit(f"unknown stage(s) {unknown}; pick from {list(STAGES)}")
++    if args.preflight_only and (args.no_preflight or args.background
++                                or not (args.ablation or (args.stage and not args.stages))):
++        raise SystemExit("--preflight-only needs the single --stage / --ablation path, "
++                         "in the foreground, with the pre-flight enabled")
+ 
+     tuning = {}
+     if args.tuning:
+@@ -1286,6 +1293,11 @@ def main():
+                 P.check_throughput(ctx["train_loader"]),
+                 P.check_vram(trainer, ctx["train_ds"], ctx["cfg"].batch, ctx["device"]),
+             ], allow_fail=("T4",) if ctx["stage_cfg"].get("val_from_train") else ())
++        if args.preflight_only:
++            release(trainer, ctx, free_manifest=True, verbose=False)
++            print("[preflight-only] every check passed on this exact job; nothing "
++                  "was trained", flush=True)
++            return
+         trainer.train(resume_from=args.resume)
+         return
+ 
+diff --git a/docs/AEROTRACK_REPAIR_REPORT.md b/docs/AEROTRACK_REPAIR_REPORT.md
+index d250e08..66320d1 100644
+--- a/docs/AEROTRACK_REPAIR_REPORT.md
++++ b/docs/AEROTRACK_REPAIR_REPORT.md
+@@ -1,15 +1,15 @@
+ # AeroTrack-Net repair report
+ 
+-*Generated 2026-09-21 16:52 by `render_report.py` on branch `aerotrack-repair` commit `b65d2692fd` (dirty: True). Plan: `AEROTRACK_REPAIR_PLAN.md`; audit: `../audit/AUDIT_REPORT.md`.*
++*Generated 2026-09-26 09:10 by `render_report.py` on branch `aerotrack-repair` commit `9268640bdb` (dirty: True). Plan: `AEROTRACK_REPAIR_PLAN.md`; audit: `../audit/AUDIT_REPORT.md`.*
+ 
+ ## Plan items
+ 
+ | # | item | status |
+ |---|---|---|
+ | 1 | same-set v1/v2 evaluation | done â€” `scripts/evaluate_detector.py`, `reports/detector_val_cap5000.md` |
+-| 2 | ablations (SPD, temporal, stock YOLO11n) | infrastructure done (`scripts/train_ablation.py`, `ABLATIONS`); runs pending â€” see grid table |
+-| 3 | one change at a time from a converged baseline | grid design: `baseline_ctrl` is the converged reference; v1/v2 presented as a recipe change |
+-| 4 | temporal stack contributes nothing (inference ablation) | audit result cited; training ablation `single_frame` pending |
++| 2 | ablations (SPD, temporal, stock YOLO11n) | done â€” 4 runs Ã— 20 epochs, best.pt and last.pt of each evaluated; verdicts in 'Ablation grid' (`scripts/run_grid.py`, `reports/ablation_grid_e20.md`) |
++| 3 | one change at a time from a converged baseline | done â€” the grid's `baseline_ctrl` (20 epochs, cosine schedule completed) is the reference and every other grid run changes one factor (`run_meta.json`); v1/v2 presented as a recipe change |
++| 4 | temporal stack contributes nothing (inference ablation) | audit result cited; training ablation `single_frame` done â€” temporal stack: no measurable effect on CST AP50 and drone AP50 (rule in 'Ablation grid') |
+ | 5 | LSTM vs trivial baselines | done â€” retired by rule (`runs/lstm_forecaster_repair/report.md`) |
+ | 6 | ByteTrack: wire it or drop the claims | done â€” retired by rule; all ByteTrack captions removed from README/demo |
+ | 7 | hand-typed trajectory plot | replaced by `assets/repair_forecast_examples_val.png` (+ JSON); rev2.ipynb kept as the historical submission |
+@@ -18,8 +18,8 @@
+ | 10 | latency | done â€” measured fp32/bf16 with p95 + structural look-ahead |
+ | 11 | consistent micro definition / epochs / sampler table | done â€” 'One definition of every term' section, all values read from code/args.json |
+ | 12 | honest checkpoint selection | done â€” best.pt and last.pt evaluated side by side; last > best for v1 |
+-| 13 | reproducible manifests | done â€” every repair output carries git/env/weights hash/set hash; `train_ablation.py` writes run_meta.json |
+-| 14 | overwritten v2 eval report in the working tree | superseded: the same-set table replaces `runs/aerotrack_spd_finetuned/eval_val`; file left as the user's pending change |
++| 13 | reproducible manifests | done â€” every repair output carries git/env/weights hash/set hash; `train_ablation.py` writes run_meta.json (one record across resumes) |
++| 14 | overwritten v2 eval report in the working tree | superseded: the same-set table replaces `runs/aerotrack_spd_finetuned/eval_val` (that directory was re-generated and committed in `49bc54c`) |
+ 
+ ## Definitions and run facts
+ 
+@@ -27,45 +27,81 @@
+ 
+ - **Size bins** (code: `c_model/evaluation.py`): relative box area of the *source* frame â€” micro < 0.03 %, small 0.03â€“1 %, standard > 1 %. In pixels (side of a square box at the threshold), computed from the evaluated images:
+   anti_uav/IR: micro â‰¤ 9.9 px, small â‰¤ 57.2 px; anti_uav/RGB: micro â‰¤ 24.9 px, small â‰¤ 144.0 px; cst/IR: micro â‰¤ 9.9 px, small â‰¤ 57.2 px; det_fly/RGB: micro â‰¤ 11.1 px, small â‰¤ 64.0 px.
+-- **Evaluation protocol**: conf 0.001, NMS IoU 0.7, max 30 detections/image; FP-rate style numbers at conf 0.25; AP with all-point interpolation over IoU 0.5:0.95.
++- **Evaluation protocol**: conf 0.001, NMS IoU 0.7, max 30 detections/image; FP-rate style numbers at conf 0.25; AP with all-point interpolation over IoU 0.5:0.95. Each checkpoint is scored on its own training input: the tâˆ’1,t,t+1 stack, or t,t,t (three copies of frame t) for the runs trained with temporal_gap 0.
+ 
+ | run | planned epochs | epochs run | best.pt (fitness) | last.pt | batch Ã— accumulate | lr0 â†’ lrf | class weights | sampler weights (bird/micro/small/standard/empty) | init |
+ |---|---|---|---|---|---|---|---|---|---|
+ | aerotrack_spd_v1 | 150 | 22 (last epoch index 21) | epoch 15 | epoch 21 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO) |
+ | aerotrack_spd_finetuned | 25 | 25 (last epoch index 24) | epoch 23 | epoch 24 | 32 Ã— 2 | 0.0002 â†’ Ã—0.02 | [1.0, 4.5] | 35.0/8.0/4.0/1.0/0.8 | aerotrack_spd_v1 best.pt |
++| repair_abl_baseline_ctrl_e20 | 20 | 20 (last epoch index 19) | epoch 13 | epoch 19 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO), shape-matched |
++| repair_abl_no_spd_e20 | 20 | 20 (last epoch index 19) | epoch 10 | epoch 19 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO), shape-matched + 3-ch stem tiled /3 |
++| repair_abl_single_frame_e20 | 20 | 20 (last epoch index 19) | epoch 19 | epoch 19 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO), shape-matched |
++| repair_abl_stock_yolo11n_e20 | 20 | 20 (last epoch index 19) | epoch 18 | epoch 19 | 32 Ã— 2 | 0.001 â†’ Ã—0.01 | [1, 1] | 8.0/6.0/3.0/1.0/0.5 | yolo11n.pt (COCO), shape-matched + 3-ch stem tiled /3 |
+ 
+ The v1 run was stopped at epoch index 21 of a planned 150 (its cosine schedule never completed); the fine-tune changed the sampler weights, class weights, loss weights, batch, learning-rate schedule and augmentation at once, so its gains are a **recipe change**, not an architectural effect.
++The `repair_abl_*` runs use v1's recipe (`baseline` stage, default augmentation and sampler weights â€” the values v1 was launched with) at a 20-epoch budget whose cosine schedule completes, and differ from each other in one factor.
+ 
+ ## Detector â€” same image set
+ 
+ **Validation** â€” image set `6fb41d44d45b`: 11,565 images (anti_uav 5,000, cst 5,000, det_fly 1,565), 1714 sequences. Every row uses exactly these images.
+ 
+-| run | ckpt | epoch | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n GT) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs raising a drone alarm | GT birds boxed as drone | empty-frame drone FP / img |
+-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+-| aerotrack_spd_v1 | best | 15 | 0.6074 | 0.2991 | 0.7925 | 0.4224 | 0.2929 (2008) | 0.6240 | 0.4932 | 0.9775 | 0.6767 | 0.6594 | 0.3974 | 20.6 % | 0.8 % | 0.0704 |
+-| aerotrack_spd_v1 | last | 21 | 0.6505 | 0.3188 | 0.8286 | 0.4724 | 0.3293 (2008) | 0.6602 | 0.5358 | 0.9813 | 0.7420 | 0.6846 | 0.4454 | 3.1 % | 0.2 % | 0.0778 |
+-| aerotrack_spd_finetuned | best | 23 | 0.7788 | 0.4140 | 0.8027 | 0.7548 | 0.4078 (2008) | 0.7933 | 0.8454 | 0.9534 | 0.6392 | 0.6091 | 0.7388 | 0.0 % | 0.0 % | 0.0869 |
+-| aerotrack_spd_finetuned | last | 24 | 0.7799 | 0.4158 | 0.8049 | 0.7549 | 0.4062 (2008) | 0.7943 | 0.8547 | 0.9533 | 0.6436 | 0.6112 | 0.7407 | 0.0 % | 0.0 % | 0.0877 |
+-
+-*Test set: not evaluated yet â€” it is used once, for the final table, after the ablation grid.*
++| run | ckpt | epoch | input | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n GT) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs raising a drone alarm | GT birds boxed as drone | empty-frame drone FP / img |
++|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
++| aerotrack_spd_v1 | best | 15 | t-1,t,t+1 | 0.6074 | 0.2991 | 0.7925 | 0.4224 | 0.2929 (2008) | 0.6240 | 0.4932 | 0.9775 | 0.6767 | 0.6594 | 0.3974 | 20.6 % | 0.8 % | 0.0704 |
++| aerotrack_spd_v1 | last | 21 | t-1,t,t+1 | 0.6505 | 0.3188 | 0.8286 | 0.4724 | 0.3293 (2008) | 0.6602 | 0.5358 | 0.9813 | 0.7420 | 0.6846 | 0.4454 | 3.1 % | 0.2 % | 0.0778 |
++| aerotrack_spd_finetuned | best | 23 | t-1,t,t+1 | 0.7788 | 0.4140 | 0.8027 | 0.7548 | 0.4078 (2008) | 0.7933 | 0.8454 | 0.9534 | 0.6392 | 0.6091 | 0.7388 | 0.0 % | 0.0 % | 0.0869 |
++| aerotrack_spd_finetuned | last | 24 | t-1,t,t+1 | 0.7799 | 0.4158 | 0.8049 | 0.7549 | 0.4062 (2008) | 0.7943 | 0.8547 | 0.9533 | 0.6436 | 0.6112 | 0.7407 | 0.0 % | 0.0 % | 0.0877 |
++| repair_abl_baseline_ctrl_e20 | best | 13 | t-1,t,t+1 | 0.6052 | 0.3009 | 0.7791 | 0.4313 | 0.2790 (2008) | 0.6170 | 0.5105 | 0.9751 | 0.6374 | 0.6187 | 0.4095 | 4.1 % | 0.1 % | 0.1200 |
++| repair_abl_baseline_ctrl_e20 | last | 19 | t-1,t,t+1 | 0.6409 | 0.3233 | 0.8030 | 0.4788 | 0.2804 (2008) | 0.6585 | 0.6494 | 0.9816 | 0.6677 | 0.6269 | 0.4650 | 4.1 % | 0.1 % | 0.1018 |
++| repair_abl_no_spd_e20 | best | 10 | t-1,t,t+1 | 0.6279 | 0.3055 | 0.7975 | 0.4582 | 0.2949 (2008) | 0.6452 | 0.4780 | 0.9718 | 0.7098 | 0.6579 | 0.3908 | 16.5 % | 0.4 % | 0.2409 |
++| repair_abl_no_spd_e20 | last | 19 | t-1,t,t+1 | 0.6996 | 0.3453 | 0.8415 | 0.5576 | 0.3588 (2008) | 0.7114 | 0.5387 | 0.9815 | 0.7621 | 0.7288 | 0.5163 | 4.1 % | 0.2 % | 0.1316 |
++| repair_abl_single_frame_e20 | best | 19 | t,t,t | 0.6533 | 0.3244 | 0.8065 | 0.5002 | 0.2873 (2008) | 0.6707 | 0.5609 | 0.9807 | 0.6825 | 0.6119 | 0.4559 | 7.2 % | 0.1 % | 0.0778 |
++| repair_abl_single_frame_e20 | last | 19 | t,t,t | 0.6533 | 0.3244 | 0.8065 | 0.5002 | 0.2873 (2008) | 0.6707 | 0.5609 | 0.9807 | 0.6825 | 0.6119 | 0.4559 | 7.2 % | 0.1 % | 0.0778 |
++| repair_abl_stock_yolo11n_e20 | best | 18 | t,t,t | 0.6708 | 0.3371 | 0.8337 | 0.5079 | 0.3182 (2008) | 0.6837 | 0.5894 | 0.9820 | 0.7305 | 0.7078 | 0.5208 | 1.0 % | 0.0 % | 0.1167 |
++| repair_abl_stock_yolo11n_e20 | last | 19 | t,t,t | 0.6790 | 0.3415 | 0.8379 | 0.5200 | 0.3184 (2008) | 0.6937 | 0.5879 | 0.9828 | 0.7327 | 0.7091 | 0.5336 | 3.1 % | 0.1 % | 0.1126 |
++
++**Test (final, once per model)** â€” image set `37e944793773`: 11,567 images (anti_uav 5,000, cst 5,000, det_fly 1,567), 1809 sequences. Every row uses exactly these images.
++
++| run | ckpt | epoch | input | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n GT) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs raising a drone alarm | GT birds boxed as drone | empty-frame drone FP / img |
++|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
++| aerotrack_spd_v1 | best | 15 | t-1,t,t+1 | 0.5491 | 0.2428 | 0.6590 | 0.4391 | 0.2049 (2722) | 0.5693 | 0.4997 | 0.9015 | 0.4471 | 0.3950 | 0.4145 | 18.6 % | 0.7 % | 0.2696 |
++| aerotrack_spd_v1 | last | 21 | t-1,t,t+1 | 0.5858 | 0.2629 | 0.6861 | 0.4855 | 0.2543 (2722) | 0.6007 | 0.5630 | 0.9064 | 0.4876 | 0.4236 | 0.4613 | 0.0 % | 0.0 % | 0.4700 |
++| aerotrack_spd_finetuned | best | 23 | t-1,t,t+1 | 0.7344 | 0.3776 | 0.6745 | 0.7944 | 0.2862 (2722) | 0.7678 | 0.9079 | 0.8787 | 0.3933 | 0.3174 | 0.7685 | 2.1 % | 0.1 % | 0.4349 |
++| aerotrack_spd_finetuned | last | 24 | t-1,t,t+1 | 0.7339 | 0.3774 | 0.6755 | 0.7924 | 0.2877 (2722) | 0.7676 | 0.9073 | 0.8816 | 0.3931 | 0.3182 | 0.7668 | 2.1 % | 0.1 % | 0.4377 |
++| repair_abl_baseline_ctrl_e20 | best | 13 | t-1,t,t+1 | 0.5396 | 0.2402 | 0.6557 | 0.4234 | 0.1726 (2722) | 0.5636 | 0.5429 | 0.9012 | 0.4245 | 0.3399 | 0.4017 | 5.2 % | 0.1 % | 0.3878 |
++| repair_abl_baseline_ctrl_e20 | last | 19 | t-1,t,t+1 | 0.5693 | 0.2584 | 0.6607 | 0.4779 | 0.1641 (2722) | 0.5982 | 0.6250 | 0.9087 | 0.4118 | 0.3290 | 0.4692 | 4.1 % | 0.0 % | 0.6362 |
++| repair_abl_no_spd_e20 | best | 10 | t-1,t,t+1 | 0.5567 | 0.2515 | 0.6528 | 0.4607 | 0.2033 (2722) | 0.5723 | 0.5111 | 0.8992 | 0.4365 | 0.3422 | 0.4026 | 15.5 % | 0.6 % | 0.6953 |
++| repair_abl_no_spd_e20 | last | 19 | t-1,t,t+1 | 0.6124 | 0.2776 | 0.6679 | 0.5570 | 0.2129 (2722) | 0.6260 | 0.4870 | 0.9175 | 0.4384 | 0.3353 | 0.5293 | 11.3 % | 0.6 % | 0.7091 |
++| repair_abl_single_frame_e20 | best | 19 | t,t,t | 0.5838 | 0.2642 | 0.6740 | 0.4937 | 0.2045 (2722) | 0.6064 | 0.5641 | 0.9012 | 0.4672 | 0.4055 | 0.4688 | 5.2 % | 0.0 % | 0.5891 |
++| repair_abl_single_frame_e20 | last | 19 | t,t,t | 0.5838 | 0.2642 | 0.6740 | 0.4937 | 0.2045 (2722) | 0.6064 | 0.5641 | 0.9012 | 0.4672 | 0.4055 | 0.4688 | 5.2 % | 0.0 % | 0.5891 |
++| repair_abl_stock_yolo11n_e20 | best | 18 | t,t,t | 0.5778 | 0.2692 | 0.6738 | 0.4819 | 0.2147 (2722) | 0.5860 | 0.6019 | 0.9078 | 0.4508 | 0.3987 | 0.5190 | 1.0 % | 0.1 % | 0.5476 |
++| repair_abl_stock_yolo11n_e20 | last | 19 | t,t,t | 0.5913 | 0.2756 | 0.6837 | 0.4988 | 0.2131 (2722) | 0.6061 | 0.6152 | 0.9105 | 0.4561 | 0.3996 | 0.5345 | 2.1 % | 0.1 % | 0.5503 |
++
++*Test split: scored once per checkpoint after the ablation grid finished; `reports/test_evaluation_ledger.jsonl` holds 12 entries for 12 distinct checkpoints. The test table is not used for any checkpoint choice or attribution (the rule is applied on validation).*
+ 
+ **Reading (computed from the table):**
+ - checkpoint selection: v1 *last* (epoch 21) beats v1 *best* (epoch 15, chosen by the fitness metric) on drone AP50 (0.829 vs 0.792), CST (0.742 vs 0.677) and micro AP50 (0.329 vs 0.293); the fitness metric picked a worse checkpoint.
+ - fine-tune vs v1-last: drone AP50 -0.026, CST AP50 -0.103, Anti-UAV AP50 -0.028, bird AP50 +0.282, Det-Fly AP50 +0.293; bird-only images raising a drone alarm 3.1 % â†’ 0.0 %.
+-- so the fine-tune bought bird rejection and paid for it on the thermal drone datasets; nothing in this table attributes anything to SPD-Conv or the temporal stack.
++- so the fine-tune bought bird rejection and paid for it on the thermal drone datasets; the v1/v2 comparison attributes nothing to SPD-Conv or the temporal stack â€” that is what the controlled ablation grid below is for.
+ 
+ ## Ablation grid
+ 
+ Four runs, same recipe (`baseline` stage), same budget, one factor each; both checkpoints evaluated on the same image set as above. **Attribution rule (pre-registered):** a factor is credited only if the full model beats the ablated model by > 0.02 AP50 on the target metric for BOTH last.pt and best.pt; otherwise it has no measurable effect at this budget. Target metrics: SPD â†’ micro AP50 and CST micro AP50; temporal stack â†’ CST AP50 (motion cue) and drone AP50; stock baseline â†’ drone AP50 overall.
+ 
+-| ablation | changes | status | epochs | best.pt drone AP50 / micro / CST micro | last.pt drone AP50 / micro / CST micro |
+-|---|---|---|---|---|---|
+-| baseline_ctrl | full recipe (SPD + 9-ch stack) | **pending** | â€” | â€” | â€” |
+-| no_spd | SPDConv â†’ stride-2 Conv | **pending** | â€” | â€” | â€” |
+-| single_frame | tâˆ’1 = t = t+1 (no motion) | **pending** | â€” | â€” | â€” |
+-| stock_yolo11n | stride-2 AND single frame (stock YOLO11n) | **pending** | â€” | â€” | â€” |
++| ablation | changes | input | status | epochs | best.pt drone AP50 / micro / CST / CST micro | last.pt drone AP50 / micro / CST / CST micro |
++|---|---|---|---|---|---|---|
++| baseline_ctrl | full recipe (SPD + 9-ch stack) | tâˆ’1,t,t+1 | finished, 2 launches (`repair_abl_baseline_ctrl_e20`) | 20/20 | 0.7791 / 0.2790 / 0.6374 / 0.6187 | 0.8030 / 0.2804 / 0.6677 / 0.6269 |
++| no_spd | SPDConv â†’ stride-2 Conv | tâˆ’1,t,t+1 | finished (`repair_abl_no_spd_e20`) | 20/20 | 0.7975 / 0.2949 / 0.7098 / 0.6579 | 0.8415 / 0.3588 / 0.7621 / 0.7288 |
++| single_frame | tâˆ’1 = t = t+1 (no motion) | t,t,t | finished (`repair_abl_single_frame_e20`) | 20/20 | 0.8065 / 0.2873 / 0.6825 / 0.6119 | 0.8065 / 0.2873 / 0.6825 / 0.6119 |
++| stock_yolo11n | stride-2 AND single frame (stock YOLO11n) | t,t,t | finished (`repair_abl_stock_yolo11n_e20`) | 20/20 | 0.8337 / 0.3182 / 0.7305 / 0.7078 | 0.8379 / 0.3184 / 0.7327 / 0.7091 |
++
++**Attribution verdicts (rule above):**
++- SPD-Conv (no_spd): micro_AP50: Î” best -0.016, last -0.078 â†’ no measurable effect; cst_micro_AP50: Î” best -0.039, last -0.102 â†’ no measurable effect
++- temporal stack (single_frame): cst_AP50: Î” best -0.045, last -0.015 â†’ no measurable effect; drone_AP50: Î” best -0.027, last -0.003 â†’ no measurable effect
++- full recipe vs stock YOLO11n (stock_yolo11n): drone_AP50: Î” best -0.055, last -0.035 â†’ no measurable effect
+ 
+-No grid run has been trained yet (â‰ˆ 6.5â€“9 h each at 20 epochs on the RTX 5050; see the commands at the end of this file). Until then **no claim about SPD-Conv or the temporal stack is made.**
++`single_frame` and `stock_yolo11n` are trained, validated and scored on t,t,t (three copies of frame t â€” their input definition, `c_model/train.py::build`); `baseline_ctrl` and `no_spd` on tâˆ’1,t,t+1. A verdict only uses finished runs whose evaluated checkpoint hashes match `run_meta.json`.
++COCO initialisation, same rule in every run (every tensor whose name and shape match; a 3-channel stem tiled /3 into a 9-channel stride stem): baseline_ctrl 388/649 tensors (59.8 %); no_spd 418/649 tensors (64.4 %); single_frame 388/649 tensors (59.8 %); stock_yolo11n 418/649 tensors (64.4 %). With the installed Ultralytics the C3k2 bottleneck `cv1` convolutions are 1Ã—1 while `yolo11n.pt` holds 3Ã—3 ones, so those and the class head start from scratch in all four runs (and in v1).
+ 
+ ## Tracking
+ 
+diff --git a/experiments/aerotrack_repair/README.template.md b/experiments/aerotrack_repair/README.template.md
+index 7f827cc..7f5c749 100644
+--- a/experiments/aerotrack_repair/README.template.md
++++ b/experiments/aerotrack_repair/README.template.md
+@@ -15,7 +15,7 @@ now tied to a generated file, evaluated on one fixed image set, with the trivial
+ | Review-2 claim | What the controlled measurement says | Where |
+ |---|---|---|
+ | "+43 % mAP from fine-tuning" | On the same images the drone-class AP moves by about a point; the mAP jump is the bird class. v2 is *below* v1-last on drone AP, CST and Anti-UAV. | detector table below |
+-| SPD-Conv / temporal stack "empirically verified" | Untested until the ablation grid runs (commands below). Inference-time ablation in the audit: removing motion costs â‰¤ 0.005 mAP. | ablation table (pending) |
++| SPD-Conv / temporal stack "empirically verified" | {{ablation_claim}} |
+ | "ByteTrack occlusion recovery" | A no-association argmax box beats ByteTrack on MOTA and IDF1 on every dataset. ByteTrack is retired. | tracker table |
+ | "LSTM beats Kalman by 26 %" | Predicting no motion beats Kalman by the same margin on gimbal footage; the LSTM loses to mean-velocity/Kalman on CST. LSTM retired. | forecasting table |
+ | "11.8 ms / 85 FPS bf16" | Measured fp32 (the deployed precision) end-to-end with p95, plus the +1-frame structural latency of the 3-frame stack. | latency table |
+@@ -25,8 +25,9 @@ now tied to a generated file, evaluated on one fixed image set, with the trivial
+ 
+ Detector: YOLO11n layout (Ultralytics 8.4) with the five stride-2 downsampling convolutions replaced by
+ space-to-depth convolutions (`c_model/yolo11-spd.yaml`, `custom_modules.SPDConv`), taking a 9-channel input made of
+-frames *tâˆ’1, t, t+1* letterboxed to 640Ã—640. COCO-pretrained `yolo11n.pt` initialises every tensor whose shape
+-matches (the SPD stems and the 2-class head start from scratch). Two classes: `uav_drone`, `bird_hard_negative`.
++frames *tâˆ’1, t, t+1* letterboxed to 640Ã—640. COCO-pretrained `yolo11n.pt` initialises every tensor whose name and
++shape match (the SPD stems, the class head and â€” with the installed Ultralytics, whose C3k2 bottlenecks use a 1Ã—1 `cv1`
++where the checkpoint has 3Ã—3 â€” those `cv1` convolutions start from scratch). Two classes: `uav_drone`, `bird_hard_negative`.
+ 
+ Components that were evaluated and **retired** by pre-registered rules (kept in the repo for the record):
+ `c_model/bytetrack.py` (tracking) and `c_model/lstm_forecaster.py` (forecasting) â€” see the tables below.
+@@ -69,6 +70,12 @@ hardness-aware weighted sampler.
+ ## Reproducing every number in this file
+ 
+ ```bat
++:: ONE command for the ablation grid and everything after it: preflight -> 4 training runs (sequential, one GPU,
++:: auto-resume) -> val evaluation of best.pt AND last.pt after each run -> the TEST split once per checkpoint ->
++:: this README, docs/AEROTRACK_REPAIR_REPORT.md and reports/ablation_grid_e20.md. Re-run it to resume; --detach runs it in
++:: the background, --status / --stop inspect or stop it.
++venv\Scripts\python.exe experiments\aerotrack_repair\scripts\run_grid.py
++:: the individual steps it runs:
+ :: same-set detector evaluation (val; add --split test --final-eval only for the final table)
+ venv\Scripts\python.exe experiments\aerotrack_repair\scripts\evaluate_detector.py --split val --cap 5000 --weights runs\aerotrack_spd_v1\weights\best.pt runs\aerotrack_spd_v1\weights\last.pt runs\aerotrack_spd_finetuned\weights\best.pt runs\aerotrack_spd_finetuned\weights\last.pt
+ :: ablation grid (one run each; same recipe and budget, one factor changed)
+@@ -87,8 +94,11 @@ venv\Scripts\python.exe experiments\aerotrack_repair\scripts\render_report.py
+ ```
+ 
+ Historical pipeline (data preparation, training engine, original evaluation code): `a_inspection/`, `b_pipeline/`,
+-`c_model/`, `run_aerotrack.py` â€” unchanged except for the two ablation entries in `c_model/train.py` and the
+-3â†’9-channel stem transfer rule in `c_model/aerotrack_trainer.py`.
++`c_model/`, `run_aerotrack.py` â€” unchanged except for the two ablation entries and `--preflight-only` in `c_model/train.py`,
++the 3â†’9-channel stem transfer rule and atomic checkpoint writes in `c_model/aerotrack_trainer.py`, and the T6 pre-flight
++check in `c_model/preflight.py`, which now accepts the stride-2 stem of the `no_spd` / `stock_yolo11n` layouts, and the
++batch collate in `b_pipeline/stacked_dataset.py`, which now stacks into shared memory inside DataLoader workers (same values;
++the old path leaked one batch per batch per worker on this machine).
+ 
+ ## Repository structure
+ 
+@@ -97,7 +107,7 @@ experiments/aerotrack_repair/   repair scripts, README template, reports (JSON +
+ experiments/anti_uav/           separate project: reproduction of the Anti-UAV (DFSC/GlobalTrack) paper
+ audit/                          independent audit of Review 2 (scripts + report)
+ docs/                           AEROTRACK_REPAIR_REPORT.md, AEROTRACK_REPAIR_PLAN.md, historical/README_review2.md, Anti-UAV docs
+-runs/                           aerotrack_spd_v1, aerotrack_spd_finetuned (historical, untouched), repair_abl_* (grid), lstm_forecaster_repair
++runs/                           aerotrack_spd_v1, aerotrack_spd_finetuned (historical, untouched), repair_abl_* (grid), repair_grid_e* (grid runner state + logs), lstm_forecaster_repair
+ c_model/ b_pipeline/ a_inspection/   the original pipeline
+ ```
+ 
+diff --git a/experiments/aerotrack_repair/reports/detector_val_cap5000.json b/experiments/aerotrack_repair/reports/detector_val_cap5000.json
+index c1b0c26..91e6625 100644
+--- a/experiments/aerotrack_repair/reports/detector_val_cap5000.json
++++ b/experiments/aerotrack_repair/reports/detector_val_cap5000.json
+@@ -44,7 +44,7 @@
+       "small_max_side_px": 64.0
+     }
+   },
+-  "generated": "2026-09-21T16:30:51",
++  "generated": "2026-09-26T08:39:21",
+   "rows": [
+     {
+       "run": "aerotrack_spd_v1",
+@@ -145,6 +145,214 @@
+       "empty_frame_drone_FP/img@.25": 0.08774834437086093,
+       "seconds": 228.3,
+       "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\eval_repair_val_cap5000\\last\\evaluation_report.json"
++    },
++    {
++      "run": "repair_abl_baseline_ctrl_e20",
++      "checkpoint": "best",
++      "epoch": 13,
++      "weights_sha256": "815ebed2d9a2",
++      "set_sha256": "6fb41d44d45b",
++      "n_images": 11565,
++      "mAP50": 0.60516,
++      "mAP50-95": 0.30086,
++      "drone_AP50": 0.77905,
++      "bird_AP50": 0.43127,
++      "micro_AP50": 0.27902,
++      "micro_n_gt": 2008,
++      "small_AP50": 0.61701,
++      "standard_AP50": 0.51046,
++      "anti_uav_AP50": 0.97515,
++      "cst_AP50": 0.63736,
++      "cst_micro_AP50": 0.61872,
++      "det_fly_AP50": 0.40949,
++      "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
++      "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
++      "empty_frame_drone_FP/img@.25": 0.12003311258278146,
++      "input": "t-1,t,t+1",
++      "seconds": 256.4,
++      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\eval_repair_val_cap5000\\best\\evaluation_report.json"
++    },
++    {
++      "run": "repair_abl_baseline_ctrl_e20",
++      "checkpoint": "last",
++      "epoch": 19,
++      "weights_sha256": "2e02ebc5ef23",
++      "set_sha256": "6fb41d44d45b",
++      "n_images": 11565,
++      "mAP50": 0.64088,
++      "mAP50-95": 0.32329,
++      "drone_AP50": 0.80299,
++      "bird_AP50": 0.47878,
++      "micro_AP50": 0.28041,
++      "micro_n_gt": 2008,
++      "small_AP50": 0.65848,
++      "standard_AP50": 0.6494,
++      "anti_uav_AP50": 0.98157,
++      "cst_AP50": 0.6677,
++      "cst_micro_AP50": 0.62693,
++      "det_fly_AP50": 0.46501,
++      "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
++      "gt_birds_boxed_as_drone_pct@.25": 0.050226017076845805,
++      "empty_frame_drone_FP/img@.25": 0.10182119205298014,
++      "input": "t-1,t,t+1",
++      "seconds": 114.0,
++      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\eval_repair_val_cap5000\\last\\evaluation_report.json"
++    },
++    {
++      "run": "repair_abl_no_spd_e20",
++      "checkpoint": "best",
++      "epoch": 10,
++      "weights_sha256": "084f1dd8f0f6",
++      "set_sha256": "6fb41d44d45b",
++      "n_images": 11565,
++      "mAP50": 0.62786,
++      "mAP50-95": 0.30546,
++      "drone_AP50": 0.79752,
++      "bird_AP50": 0.4582,
++      "micro_AP50": 0.29491,
++      "micro_n_gt": 2008,
++      "small_AP50": 0.6452,
++      "standard_AP50": 0.47802,
++      "anti_uav_AP50": 0.97184,
++      "cst_AP50": 0.70985,
++      "cst_micro_AP50": 0.65794,
++      "det_fly_AP50": 0.39077,
++      "bird_only_img_drone_alarm_pct@.25": 16.49484536082474,
++      "gt_birds_boxed_as_drone_pct@.25": 0.3515821195379206,
++      "empty_frame_drone_FP/img@.25": 0.24089403973509935,
++      "input": "t-1,t,t+1",
++      "seconds": 279.9,
++      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\eval_repair_val_cap5000\\best\\evaluation_report.json"
++    },
++    {
++      "run": "repair_abl_no_spd_e20",
++      "checkpoint": "last",
++      "epoch": 19,
++      "weights_sha256": "2aebbb3bcb6c",
++      "set_sha256": "6fb41d44d45b",
++      "n_images": 11565,
++      "mAP50": 0.69956,
++      "mAP50-95": 0.34526,
++      "drone_AP50": 0.84147,
++      "bird_AP50": 0.55765,
++      "micro_AP50": 0.35879,
++      "micro_n_gt": 2008,
++      "small_AP50": 0.71142,
++      "standard_AP50": 0.53873,
++      "anti_uav_AP50": 0.98145,
++      "cst_AP50": 0.76209,
++      "cst_micro_AP50": 0.72883,
++      "det_fly_AP50": 0.51627,
++      "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
++      "gt_birds_boxed_as_drone_pct@.25": 0.20090406830738322,
++      "empty_frame_drone_FP/img@.25": 0.1316225165562914,
++      "input": "t-1,t,t+1",
++      "seconds": 129.0,
++      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\eval_repair_val_cap5000\\last\\evaluation_report.json"
++    },
++    {
++      "run": "repair_abl_single_frame_e20",
++      "checkpoint": "best",
++      "epoch": 19,
++      "weights_sha256": "deccf5e70105",
++      "set_sha256": "6fb41d44d45b",
++      "n_images": 11565,
++      "mAP50": 0.65333,
++      "mAP50-95": 0.32444,
++      "drone_AP50": 0.80648,
++      "bird_AP50": 0.50018,
++      "micro_AP50": 0.28733,
++      "micro_n_gt": 2008,
++      "small_AP50": 0.67074,
++      "standard_AP50": 0.56089,
++      "anti_uav_AP50": 0.98074,
++      "cst_AP50": 0.68246,
++      "cst_micro_AP50": 0.61191,
++      "det_fly_AP50": 0.45589,
++      "bird_only_img_drone_alarm_pct@.25": 7.216494845360824,
++      "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
++      "empty_frame_drone_FP/img@.25": 0.07781456953642384,
++      "input": "t,t,t",
++      "seconds": 202.9,
++      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\eval_repair_val_cap5000\\best\\evaluation_report.json"
++    },
++    {
++      "run": "repair_abl_single_frame_e20",
++      "checkpoint": "last",
++      "epoch": 19,
++      "weights_sha256": "d6138d094438",
++      "set_sha256": "6fb41d44d45b",
++      "n_images": 11565,
++      "mAP50": 0.65333,
++      "mAP50-95": 0.32444,
++      "drone_AP50": 0.80648,
++      "bird_AP50": 0.50018,
++      "micro_AP50": 0.28733,
++      "micro_n_gt": 2008,
++      "small_AP50": 0.67074,
++      "standard_AP50": 0.56089,
++      "anti_uav_AP50": 0.98074,
++      "cst_AP50": 0.68246,
++      "cst_micro_AP50": 0.61191,
++      "det_fly_AP50": 0.45589,
++      "bird_only_img_drone_alarm_pct@.25": 7.216494845360824,
++      "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
++      "empty_frame_drone_FP/img@.25": 0.07781456953642384,
++      "input": "t,t,t",
++      "seconds": 128.3,
++      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\eval_repair_val_cap5000\\last\\evaluation_report.json"
++    },
++    {
++      "run": "repair_abl_stock_yolo11n_e20",
++      "checkpoint": "best",
++      "epoch": 18,
++      "weights_sha256": "07744c380618",
++      "set_sha256": "6fb41d44d45b",
++      "n_images": 11565,
++      "mAP50": 0.67083,
++      "mAP50-95": 0.33714,
++      "drone_AP50": 0.83375,
++      "bird_AP50": 0.50792,
++      "micro_AP50": 0.31824,
++      "micro_n_gt": 2008,
++      "small_AP50": 0.68373,
++      "standard_AP50": 0.58939,
++      "anti_uav_AP50": 0.98198,
++      "cst_AP50": 0.73051,
++      "cst_micro_AP50": 0.70784,
++      "det_fly_AP50": 0.52076,
++      "bird_only_img_drone_alarm_pct@.25": 1.0309278350515463,
++      "gt_birds_boxed_as_drone_pct@.25": 0.0,
++      "empty_frame_drone_FP/img@.25": 0.11672185430463576,
++      "input": "t,t,t",
++      "seconds": 187.7,
++      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\eval_repair_val_cap5000\\best\\evaluation_report.json"
++    },
++    {
++      "run": "repair_abl_stock_yolo11n_e20",
++      "checkpoint": "last",
++      "epoch": 19,
++      "weights_sha256": "eda773e9c1f9",
++      "set_sha256": "6fb41d44d45b",
++      "n_images": 11565,
++      "mAP50": 0.67898,
++      "mAP50-95": 0.34147,
++      "drone_AP50": 0.83793,
++      "bird_AP50": 0.52003,
++      "micro_AP50": 0.31843,
++      "micro_n_gt": 2008,
++      "small_AP50": 0.69374,
++      "standard_AP50": 0.58794,
++      "anti_uav_AP50": 0.98278,
++      "cst_AP50": 0.73267,
++      "cst_micro_AP50": 0.70915,
++      "det_fly_AP50": 0.53357,
++      "bird_only_img_drone_alarm_pct@.25": 3.0927835051546393,
++      "gt_birds_boxed_as_drone_pct@.25": 0.050226017076845805,
++      "empty_frame_drone_FP/img@.25": 0.11258278145695365,
++      "input": "t,t,t",
++      "seconds": 129.0,
++      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\eval_repair_val_cap5000\\last\\evaluation_report.json"
+     }
+   ]
+ }
+\ No newline at end of file
+diff --git a/experiments/aerotrack_repair/reports/detector_val_cap5000.md b/experiments/aerotrack_repair/reports/detector_val_cap5000.md
+index d9e80d8..e1cb776 100644
+--- a/experiments/aerotrack_repair/reports/detector_val_cap5000.md
++++ b/experiments/aerotrack_repair/reports/detector_val_cap5000.md
+@@ -1,10 +1,18 @@
+ # Detector comparison â€” val set `6fb41d44d45b` (11,565 images: {'anti_uav': 5000, 'cst': 5000, 'det_fly': 1565}, 1714 sequences)
+ 
+-Every row is scored on exactly this image set (hash above) with conf 0.001 / IoU 0.7 / max_det 30; numbers come from `evaluation_report.json` files written by `evaluate_detector.py`. Size bins: micro < 0.03 % of source-frame area, small 0.03â€“1 %, standard > 1 %; pixel equivalents: anti_uav/IR micro â‰¤ 9.9 px, anti_uav/RGB micro â‰¤ 24.9 px, cst/IR micro â‰¤ 9.9 px, det_fly/RGB micro â‰¤ 11.1 px.
++Every row is scored on exactly this image set (hash above) with conf 0.001 / IoU 0.7 / max_det 30; numbers come from `evaluation_report.json` files written by `evaluate_detector.py`. Size bins: micro < 0.03 % of source-frame area, small 0.03â€“1 %, standard > 1 %; pixel equivalents: anti_uav/IR micro â‰¤ 9.9 px, anti_uav/RGB micro â‰¤ 24.9 px, cst/IR micro â‰¤ 9.9 px, det_fly/RGB micro â‰¤ 11.1 px. Input: each checkpoint is scored on its own training input (t,t,t for temporal_gap-0 runs; rows without the field predate input modes and are 3-frame t-1,t,t+1).
+ 
+-| run | ckpt | epoch | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs w/ drone alarm @.25 | GT birds boxed as drone @.25 | empty-frame drone FP/img @.25 |
+-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+-| aerotrack_spd_finetuned | best | 23 | 0.7788 | 0.4140 | 0.8027 | 0.7548 | 0.4078 (2008) | 0.7933 | 0.8454 | 0.9534 | 0.6392 | 0.6091 | 0.7388 | 0.0000 % | 0.0000 % | 0.0869 |
+-| aerotrack_spd_finetuned | last | 24 | 0.7799 | 0.4158 | 0.8049 | 0.7549 | 0.4062 (2008) | 0.7943 | 0.8547 | 0.9533 | 0.6436 | 0.6112 | 0.7407 | 0.0000 % | 0.0000 % | 0.0877 |
+-| aerotrack_spd_v1 | best | 15 | 0.6074 | 0.2991 | 0.7925 | 0.4224 | 0.2929 (2008) | 0.6240 | 0.4932 | 0.9775 | 0.6767 | 0.6594 | 0.3974 | 20.6 % | 0.8036 % | 0.0704 |
+-| aerotrack_spd_v1 | last | 21 | 0.6505 | 0.3188 | 0.8286 | 0.4724 | 0.3293 (2008) | 0.6602 | 0.5358 | 0.9813 | 0.7420 | 0.6846 | 0.4454 | 3.1 % | 0.1507 % | 0.0778 |
++| run | ckpt | epoch | input | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs w/ drone alarm @.25 | GT birds boxed as drone @.25 | empty-frame drone FP/img @.25 |
++|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
++| aerotrack_spd_finetuned | best | 23 | t-1,t,t+1 | 0.7788 | 0.4140 | 0.8027 | 0.7548 | 0.4078 (2008) | 0.7933 | 0.8454 | 0.9534 | 0.6392 | 0.6091 | 0.7388 | 0.0000 % | 0.0000 % | 0.0869 |
++| aerotrack_spd_finetuned | last | 24 | t-1,t,t+1 | 0.7799 | 0.4158 | 0.8049 | 0.7549 | 0.4062 (2008) | 0.7943 | 0.8547 | 0.9533 | 0.6436 | 0.6112 | 0.7407 | 0.0000 % | 0.0000 % | 0.0877 |
++| aerotrack_spd_v1 | best | 15 | t-1,t,t+1 | 0.6074 | 0.2991 | 0.7925 | 0.4224 | 0.2929 (2008) | 0.6240 | 0.4932 | 0.9775 | 0.6767 | 0.6594 | 0.3974 | 20.6 % | 0.8036 % | 0.0704 |
++| aerotrack_spd_v1 | last | 21 | t-1,t,t+1 | 0.6505 | 0.3188 | 0.8286 | 0.4724 | 0.3293 (2008) | 0.6602 | 0.5358 | 0.9813 | 0.7420 | 0.6846 | 0.4454 | 3.1 % | 0.1507 % | 0.0778 |
++| repair_abl_baseline_ctrl_e20 | best | 13 | t-1,t,t+1 | 0.6052 | 0.3009 | 0.7791 | 0.4313 | 0.2790 (2008) | 0.6170 | 0.5105 | 0.9751 | 0.6374 | 0.6187 | 0.4095 | 4.1 % | 0.1005 % | 0.1200 |
++| repair_abl_baseline_ctrl_e20 | last | 19 | t-1,t,t+1 | 0.6409 | 0.3233 | 0.8030 | 0.4788 | 0.2804 (2008) | 0.6585 | 0.6494 | 0.9816 | 0.6677 | 0.6269 | 0.4650 | 4.1 % | 0.0502 % | 0.1018 |
++| repair_abl_no_spd_e20 | best | 10 | t-1,t,t+1 | 0.6279 | 0.3055 | 0.7975 | 0.4582 | 0.2949 (2008) | 0.6452 | 0.4780 | 0.9718 | 0.7098 | 0.6579 | 0.3908 | 16.5 % | 0.3516 % | 0.2409 |
++| repair_abl_no_spd_e20 | last | 19 | t-1,t,t+1 | 0.6996 | 0.3453 | 0.8415 | 0.5576 | 0.3588 (2008) | 0.7114 | 0.5387 | 0.9815 | 0.7621 | 0.7288 | 0.5163 | 4.1 % | 0.2009 % | 0.1316 |
++| repair_abl_single_frame_e20 | best | 19 | t,t,t | 0.6533 | 0.3244 | 0.8065 | 0.5002 | 0.2873 (2008) | 0.6707 | 0.5609 | 0.9807 | 0.6825 | 0.6119 | 0.4559 | 7.2 % | 0.1005 % | 0.0778 |
++| repair_abl_single_frame_e20 | last | 19 | t,t,t | 0.6533 | 0.3244 | 0.8065 | 0.5002 | 0.2873 (2008) | 0.6707 | 0.5609 | 0.9807 | 0.6825 | 0.6119 | 0.4559 | 7.2 % | 0.1005 % | 0.0778 |
++| repair_abl_stock_yolo11n_e20 | best | 18 | t,t,t | 0.6708 | 0.3371 | 0.8337 | 0.5079 | 0.3182 (2008) | 0.6837 | 0.5894 | 0.9820 | 0.7305 | 0.7078 | 0.5208 | 1.0309 % | 0.0000 % | 0.1167 |
++| repair_abl_stock_yolo11n_e20 | last | 19 | t,t,t | 0.6790 | 0.3415 | 0.8379 | 0.5200 | 0.3184 (2008) | 0.6937 | 0.5879 | 0.9828 | 0.7327 | 0.7091 | 0.5336 | 3.1 % | 0.0502 % | 0.1126 |
+diff --git a/experiments/aerotrack_repair/scripts/evaluate_detector.py b/experiments/aerotrack_repair/scripts/evaluate_detector.py
+index 758fb8a..c04e1b6 100644
+--- a/experiments/aerotrack_repair/scripts/evaluate_detector.py
++++ b/experiments/aerotrack_repair/scripts/evaluate_detector.py
+@@ -20,6 +20,13 @@ What it fixes
+ * `best.pt` and `last.pt` are evaluated side by side so checkpoint selection on the noisy fitness metric
+   is visible.
+ * TEST needs --final-eval and is appended to reports/test_evaluation_ledger.jsonl.
++* Input construction follows each model's own definition (grid runner repair): runs whose run_meta.json records
++  temporal_gap 0 (the single_frame / stock_yolo11n ablations, trained AND validated on t-1 = t = t+1, see
++  c_model/train.py::build) are scored on that input; every other checkpoint on the t-1/t/t+1 stack. The IMAGE set
++  and its hash are the same for both. `--input-mode` overrides the automatic choice.
++* The summary JSON/MD is updated (atomically) after EACH checkpoint and only then is the TEST ledger line written,
++  so a ledger line always means "scored and recorded"; an interrupted invocation loses at most the checkpoint in
++  flight.
+ 
+ Outputs: runs/<run>/eval_repair_<split>_<settag>/<ckpt>/evaluation_report.json (+ PR / size plots) and
+ experiments/aerotrack_repair/reports/detector_<split>_<settag>.{json,md}.
+@@ -28,6 +35,7 @@ from __future__ import annotations
+ 
+ import argparse
+ import json
++import os
+ import sys
+ import time
+ from collections import Counter
+@@ -44,11 +52,58 @@ from aerotrack_trainer import load_checkpoint
+ from stacked_dataset import AeroTrackDataset, aerotrack_collate, build_split_samples, load_label_cache
+ from train import LABEL_CACHE_PATH, MANIFEST, SPLITS, subsample
+ 
+-from anti_uav_repro.utils.repro import env_snapshot, file_sha256, git_info, json_sha256, write_json
++from anti_uav_repro.utils.repro import env_snapshot, file_sha256, git_info, json_sha256
+ 
+ from _bootstrap import REPO_ROOT, REPORTS_DIR
+ 
+ LEDGER = REPORTS_DIR / "test_evaluation_ledger.jsonl"
++INPUT_LABEL = {"temporal": "t-1,t,t+1", "single_frame": "t,t,t"}
++
++
++def input_mode_for(weights: Path, requested: str = "auto"):
++    """-> (mode, source). The run's own provenance decides; historical runs predate run_meta.json and were trained
++    on the 3-frame stack (docs/historical/early_training_launch_records/train_tuning.json: temporal_gap 1)."""
++    if requested != "auto":
++        return requested, f"--input-mode {requested}"
++    meta = weights.parent.parent / "run_meta.json"
++    if meta.exists():
++        g = json.loads(meta.read_text(encoding="utf-8")).get("temporal_gap", 1)
++        return ("single_frame" if int(g) == 0 else "temporal"), f"runs/{weights.parent.parent.name}/run_meta.json: temporal_gap={g}"
++    return "temporal", "no run_meta.json: historical run, trained on the t-1/t/t+1 stack"
++
++
++def single_frame_samples(samples):
++    """t-1 = t = t+1, exactly as c_model/train.py::build() rewrites the train and val samples of a temporal_gap-0 run."""
++    return [dict(s, prev_path=s["cur_path"], next_path=s["cur_path"]) for s in samples]
++
++
++def _write_text_atomic(path: Path, text: str):
++    tmp = path.with_name(path.name + ".tmp")
++    tmp.write_text(text, encoding="utf-8")
++    os.replace(tmp, path)
++
++
++def _np_default(o):
++    if isinstance(o, np.integer):
++        return int(o)
++    if isinstance(o, np.floating):
++        return float(o)
++    if isinstance(o, np.ndarray):
++        return o.tolist()
++    if isinstance(o, Path):
++        return str(o)
++    raise TypeError(f"not JSON serializable: {type(o)}")
++
++
++def merge_summary(summary_path: Path, setinfo, res_px, new_rows):
++    """Replace rows for the same run/checkpoint, keep the others (all rows share the set hash by construction)."""
++    existing = json.loads(summary_path.read_text(encoding="utf-8")) if summary_path.exists() else {"rows": []}
++    keep = [r for r in existing.get("rows", []) if r.get("set_sha256") == setinfo["sha256"][:12]
++            and (r["run"], r["checkpoint"]) not in {(x["run"], x["checkpoint"]) for x in new_rows}]
++    out = {"eval_set": setinfo, "size_definition_px": res_px, "generated": time.strftime("%Y-%m-%dT%H:%M:%S"), "rows": keep + new_rows}
++    _write_text_atomic(summary_path, json.dumps(out, indent=2, default=_np_default))
++    _write_text_atomic(summary_path.with_suffix(".md"), render_md(out))
++    return out
+ 
+ 
+ def eval_set(split: str, cap: int, datasets):
+@@ -148,35 +203,68 @@ def main():
+     ap.add_argument("--max-det", type=int, default=30)
+     ap.add_argument("--report-conf", type=float, default=0.25)
+     ap.add_argument("--tag", default=None, help="set tag; default cap<cap>")
++    ap.add_argument("--input-mode", default="auto", choices=["auto", "temporal", "single_frame"],
++                    help="auto: t-1 = t = t+1 for runs whose run_meta.json records temporal_gap 0, else the 3-frame stack")
++    ap.add_argument("--smoke", type=int, default=0,
++                    help="pipeline check: score only the first N images of the VAL set and write nothing")
+     a = ap.parse_args()
+     if a.split == "test" and not a.final_eval:
+         sys.exit("Refusing: --split test requires --final-eval (final evaluation of finished models only).")
++    if a.smoke and (a.split != "val" or a.final_eval):
++        sys.exit("Refusing: --smoke is a VAL-only pipeline check.")
+ 
+     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+     datasets = a.datasets.split(",") if a.datasets else None
+     samples, setinfo = eval_set(a.split, a.cap, datasets)
+     settag = a.tag or (f"cap{a.cap}" if a.cap else "full")
+     print(f"[set] {a.split} {settag}: {setinfo['n_images']:,} images {setinfo['per_dataset']} from {setinfo['n_sequences']} sequences | sha256 {setinfo['sha256'][:12]}")
++    if a.smoke:
++        samples = samples[:a.smoke]
++        print(f"[smoke] scoring the first {len(samples)} images only; nothing is written")
+     res_px = native_resolutions(samples)
+-    ds = AeroTrackDataset(samples, img_size=(640, 640), augment=None, letterbox=True, out_dtype="uint8",
+-                          return_meta=True, label_cache=load_label_cache(LABEL_CACHE_PATH))
+-    dl = DataLoader(ds, batch_size=a.batch, shuffle=False, num_workers=a.workers, pin_memory=(device.type == "cuda"),
+-                    collate_fn=aerotrack_collate, persistent_workers=a.workers > 0)
++    label_cache = load_label_cache(LABEL_CACHE_PATH)
+     amp = torch.bfloat16 if (device.type == "cuda" and torch.cuda.is_bf16_supported()) else None
+     if a.split == "test":
+         print("!" * 100 + "\n!!  FINAL TEST EVALUATION â€” recorded in " + str(LEDGER) + "\n" + "!" * 100)
++    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
++    summary_path = REPORTS_DIR / f"detector_{a.split}_{settag}.json"
++
++    # one loader per input mode, built when first needed; checkpoints are grouped by mode (order kept within a
++    # group) so at most one worker pool is alive at a time
++    jobs = [(Path(w),) + input_mode_for(Path(w), a.input_mode) for w in a.weights]
++    jobs = [j for m in ("temporal", "single_frame") for j in jobs if j[1] == m]
++    loader_mode, dl = None, None
++
++    def make_loader(mode):
++        ss = single_frame_samples(samples) if mode == "single_frame" else samples
++        ds = AeroTrackDataset(ss, img_size=(640, 640), augment=None, letterbox=True, out_dtype="uint8",
++                              return_meta=True, label_cache=label_cache)
++        return DataLoader(ds, batch_size=a.batch, shuffle=False, num_workers=a.workers, pin_memory=(device.type == "cuda"),
++                          collate_fn=aerotrack_collate, persistent_workers=a.workers > 0)
+ 
+     rows = []
+-    for w in a.weights:
+-        w = Path(w)
++    for w, mode, mode_src in jobs:
++        if mode != loader_mode:
++            if dl is not None and getattr(dl, "_iterator", None) is not None:
++                dl._iterator._shutdown_workers()
++            dl, loader_mode = make_loader(mode), mode
++            print(f"[input] {INPUT_LABEL[mode]} for the checkpoints below", flush=True)
+         run_name = w.parent.parent.name
+         out_dir = REPO_ROOT / "runs" / run_name / f"eval_repair_{a.split}_{settag}" / w.stem
+-        out_dir.mkdir(parents=True, exist_ok=True)
++        if not a.smoke:
++            out_dir.mkdir(parents=True, exist_ok=True)
+         model, ck = load_checkpoint(w, device, prefer_ema=True)
+         model.eval()
+         t0 = time.time()
+         recs = E.collect_records(model, dl, device, imgsz=640, conf=a.conf, iou=a.iou, max_det=a.max_det, amp_dtype=amp, progress=False)
+         el = time.time() - t0
++        if a.smoke:
++            o = E.score(recs)
++            print(f"[smoke {run_name}/{w.stem} ep{ck.get('epoch')} input {INPUT_LABEL[mode]} ({mode_src})] {len(recs)} images, "
++                  f"{sum(len(r['pred']) for r in recs)} predictions, mAP50 {o['map50'] if o else float('nan'):.4f} ({el:.0f}s)", flush=True)
++            del model
++            torch.cuda.empty_cache()
++            continue
+         rep = E.full_report(recs, save_dir=out_dir, conf_thres=a.report_conf)
+         rep["bird_confusion_corrected"] = bird_confusion(recs)
+         rep["empty_frame_fp_by_class"] = empty_frame_fp_by_class(recs, a.report_conf)
+@@ -186,9 +274,10 @@ def main():
+                         "epoch": ck.get("epoch"), "best_fitness": ck.get("best_fitness"),
+                         "train_args": ck.get("train_args"), "eval_set": setinfo, "conf": a.conf, "iou": a.iou,
+                         "max_det": a.max_det, "report_conf": a.report_conf, "seconds": round(el, 1),
++                        "input_mode": mode, "input_frames": INPUT_LABEL[mode], "input_mode_source": mode_src,
+                         "git": git_info(), "env": env_snapshot(), "command": " ".join(sys.argv),
+                         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
+-        (out_dir / "evaluation_report.json").write_text(json.dumps(rep, indent=2), encoding="utf-8")
++        _write_text_atomic(out_dir / "evaluation_report.json", json.dumps(rep, indent=2))
+         o, bs, bd = rep["overall"], rep["by_size"], rep["by_dataset"]
+         bc = rep["bird_confusion_corrected"].get("conf>=0.25", {})
+         row = {"run": run_name, "checkpoint": w.stem, "epoch": ck.get("epoch"), "weights_sha256": rep["_meta"]["weights_sha256"][:12],
+@@ -202,28 +291,30 @@ def main():
+                "bird_only_img_drone_alarm_pct@.25": bc.get("bird_only_images_with_drone_alarm_pct"),
+                "gt_birds_boxed_as_drone_pct@.25": bc.get("gt_birds_boxed_as_drone_pct"),
+                "empty_frame_drone_FP/img@.25": rep["empty_frame_fp_by_class"]["drone_fp_per_image"],
++               "input": INPUT_LABEL[mode],
+                "seconds": round(el, 1), "report": str(out_dir / "evaluation_report.json")}
+         rows.append(row)
+-        print(f"[{run_name}/{w.stem} ep{ck.get('epoch')}] mAP50 {o['map50']:.4f} drone {row['drone_AP50']:.4f} bird {row['bird_AP50']:.4f} "
++        print(f"[{run_name}/{w.stem} ep{ck.get('epoch')} input {INPUT_LABEL[mode]}] mAP50 {o['map50']:.4f} drone {row['drone_AP50']:.4f} bird {row['bird_AP50']:.4f} "
+               f"micro {row['micro_AP50']:.4f} (n={row['micro_n_gt']}) cst {row['cst_AP50']} det_fly {row['det_fly_AP50']} "
+               f"bird-alarm {row['bird_only_img_drone_alarm_pct@.25']} % ({el:.0f}s)", flush=True)
++        # persist this checkpoint's row BEFORE the ledger line: a ledger line always means "scored and recorded"
++        out = merge_summary(summary_path, setinfo, res_px, [row])
+         if a.split == "test":
+             LEDGER.parent.mkdir(parents=True, exist_ok=True)
+             with open(LEDGER, "a", encoding="utf-8") as f:
+                 f.write(json.dumps({"timestamp": rep["_meta"]["timestamp"], "weights": str(w), "weights_sha256": rep["_meta"]["weights_sha256"],
+-                                    "set_sha256": setinfo["sha256"], "mAP50": o["map50"], "git_commit": rep["_meta"]["git"]["commit"]}) + "\n")
++                                    "set_sha256": setinfo["sha256"], "mAP50": o["map50"], "input": INPUT_LABEL[mode],
++                                    "git_commit": rep["_meta"]["git"]["commit"]}) + "\n")
++                f.flush()
++                os.fsync(f.fileno())
+         del model
+         torch.cuda.empty_cache()
+ 
+-    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+-    summary_path = REPORTS_DIR / f"detector_{a.split}_{settag}.json"
+-    existing = json.loads(summary_path.read_text(encoding="utf-8")) if summary_path.exists() else {"rows": []}
+-    # merge: replace rows for the same run/checkpoint, keep others (all rows share the set hash by construction)
+-    keep = [r for r in existing.get("rows", []) if r.get("set_sha256") == setinfo["sha256"][:12]
+-            and (r["run"], r["checkpoint"]) not in {(x["run"], x["checkpoint"]) for x in rows}]
+-    out = {"eval_set": setinfo, "size_definition_px": res_px, "generated": time.strftime("%Y-%m-%dT%H:%M:%S"), "rows": keep + rows}
+-    write_json(out, summary_path)
+-    (REPORTS_DIR / f"detector_{a.split}_{settag}.md").write_text(render_md(out), encoding="utf-8")
++    if dl is not None and getattr(dl, "_iterator", None) is not None:
++        dl._iterator._shutdown_workers()
++    if a.smoke:
++        print(f"[smoke] OK: {len(jobs)} checkpoint(s) scored on {len(samples)} images; nothing written")
++        return
+     print(f"wrote {summary_path} ({len(out['rows'])} rows on set {setinfo['sha256'][:12]})")
+ 
+ 
+@@ -233,12 +324,14 @@ def render_md(out):
+          "Every row is scored on exactly this image set (hash above) with conf 0.001 / IoU 0.7 / max_det 30; numbers come from "
+          "`evaluation_report.json` files written by `evaluate_detector.py`. Size bins: micro < 0.03 % of source-frame area, "
+          "small 0.03â€“1 %, standard > 1 %; pixel equivalents: " +
+-         ", ".join(f"{k} micro â‰¤ {v['micro_max_side_px']} px" for k, v in out["size_definition_px"].items()) + ".", "",
+-         "| run | ckpt | epoch | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs w/ drone alarm @.25 | GT birds boxed as drone @.25 | empty-frame drone FP/img @.25 |",
+-         "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
++         ", ".join(f"{k} micro â‰¤ {v['micro_max_side_px']} px" for k, v in out["size_definition_px"].items()) + ". "
++         "Input: each checkpoint is scored on its own training input (t,t,t for temporal_gap-0 runs; rows without the field predate "
++         "input modes and are 3-frame t-1,t,t+1).", "",
++         "| run | ckpt | epoch | input | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs w/ drone alarm @.25 | GT birds boxed as drone @.25 | empty-frame drone FP/img @.25 |",
++         "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+     fm = lambda v: "â€”" if v is None else (f"{v:.4f}" if isinstance(v, float) and abs(v) <= 1.5 else f"{v:.1f}" if isinstance(v, float) else str(v))
+     for r in sorted(out["rows"], key=lambda r: (r["run"], r["checkpoint"])):
+-        L.append(f"| {r['run']} | {r['checkpoint']} | {r['epoch']} | {fm(r['mAP50'])} | {fm(r['mAP50-95'])} | {fm(r['drone_AP50'])} | {fm(r['bird_AP50'])} | "
++        L.append(f"| {r['run']} | {r['checkpoint']} | {r['epoch']} | {r.get('input', 't-1,t,t+1')} | {fm(r['mAP50'])} | {fm(r['mAP50-95'])} | {fm(r['drone_AP50'])} | {fm(r['bird_AP50'])} | "
+                  f"{fm(r['micro_AP50'])} ({r['micro_n_gt']}) | {fm(r['small_AP50'])} | {fm(r['standard_AP50'])} | {fm(r['anti_uav_AP50'])} | {fm(r['cst_AP50'])} | "
+                  f"{fm(r['cst_micro_AP50'])} | {fm(r['det_fly_AP50'])} | {fm(r['bird_only_img_drone_alarm_pct@.25'])} % | {fm(r['gt_birds_boxed_as_drone_pct@.25'])} % | "
+                  f"{fm(r['empty_frame_drone_FP/img@.25'])} |")
+diff --git a/experiments/aerotrack_repair/scripts/render_report.py b/experiments/aerotrack_repair/scripts/render_report.py
+index 1960a12..1e2a539 100644
+--- a/experiments/aerotrack_repair/scripts/render_report.py
++++ b/experiments/aerotrack_repair/scripts/render_report.py
+@@ -1,21 +1,26 @@
+ #!/usr/bin/env python
+ """Render README.md and docs/AEROTRACK_REPAIR_REPORT.md from the repair JSON files â€” no hand-typed numbers.
+ 
+-    python experiments/aerotrack_repair/scripts/render_report.py
++    python experiments/aerotrack_repair/scripts/render_report.py            (write both files)
++    python experiments/aerotrack_repair/scripts/render_report.py --check    (render in memory, write nothing)
+ 
+ Inputs (all produced by the other repair scripts):
+-  reports/detector_{val,test}_*.json, reports/tracker_val_*.json, reports/latency_*.json,
++  reports/detector_{val,test}_*.json, reports/test_evaluation_ledger.jsonl, reports/tracker_val_*.json, reports/latency_*.json,
+   runs/lstm_forecaster_repair/forecast_repair_report.json, assets/repair_demo_val_*.json,
+-  runs/aerotrack_spd_*/{args.json,results.csv}, runs/repair_abl_*/{run_meta.json,results.csv}
++  runs/aerotrack_spd_*/{args.json,results.csv}, runs/repair_abl_*/{run_meta.json,args.json,results.csv},
++  runs/repair_grid_e*/preflight_*.json (COCO-transfer coverage recorded by run_grid.py)
+ Attribution rule for the ablation grid (pre-registered here): a factor is credited only if the full model beats the
+ ablated model by more than 0.02 AP50 on the target metric for BOTH last.pt and best.pt on the same image set;
+-otherwise the factor has "no measurable effect at this budget".
++otherwise the factor has "no measurable effect at this budget". All four runs are read at ONE epoch budget, and only
++finished runs whose evaluated checkpoint hashes match their run_meta.json enter a verdict.
+ """
+ from __future__ import annotations
+ 
++import argparse
+ import csv
+ import json
+ import re
++import subprocess
+ import time
+ from pathlib import Path
+ 
+@@ -30,6 +35,12 @@ from _bootstrap import REPAIR_DIR, REPO_ROOT, REPORTS_DIR
+ ATTRIB_MARGIN = 0.02
+ GRID = [("baseline_ctrl", "full recipe (SPD + 9-ch stack)"), ("no_spd", "SPDConv â†’ stride-2 Conv"),
+         ("single_frame", "tâˆ’1 = t = t+1 (no motion)"), ("stock_yolo11n", "stride-2 AND single frame (stock YOLO11n)")]
++# factor, ablated run, target metrics -- pre-registered together with the rule above
++FACTORS = (("SPD-Conv", "no_spd", ("micro_AP50", "cst_micro_AP50")),
++           ("temporal stack", "single_frame", ("cst_AP50", "drone_AP50")),
++           ("full recipe vs stock YOLO11n", "stock_yolo11n", ("drone_AP50",)))
++METRIC_LABEL = {"micro_AP50": "micro AP50", "cst_micro_AP50": "CST micro AP50", "cst_AP50": "CST AP50", "drone_AP50": "drone AP50"}
++INPUT_OF = {"baseline_ctrl": "tâˆ’1,t,t+1", "no_spd": "tâˆ’1,t,t+1", "single_frame": "t,t,t", "stock_yolo11n": "t,t,t"}
+ 
+ 
+ def jload(p):
+@@ -45,8 +56,110 @@ def f1(v):
+     return "â€”" if v is None else f"{v:.1f}"
+ 
+ 
++def results_rows(d):
++    p = Path(d) / "results.csv"
++    if not p.exists():
++        return []
++    with open(p, encoding="utf-8", newline="") as f:
++        return list(csv.DictReader(f))
++
++
++def ep(v):
++    return int(float(v))
++
++
++# ------------------------------------------------------------------------------------------ grid state
++def grid_budget():
++    """The grid's epoch budget: the largest N among runs/repair_abl_*_e<N> (None before the first run)."""
++    ns = [int(m.group(1)) for d in REPO_ROOT.glob("runs/repair_abl_*_e*") if (m := re.search(r"_e(\d+)$", d.name))]
++    return max(ns) if ns else None
++
++
++def grid_state(det=None, epochs=None):
++    """Every grid run at ONE budget, with the val rows that may enter a verdict (finished run, hash-matched checkpoint)."""
++    det = det if det is not None else (jload(REPORTS_DIR / "detector_val_cap5000.json") or {"rows": []})
++    E = epochs or grid_budget()
++    runs = {}
++    for name, desc in GRID:
++        d = REPO_ROOT / "runs" / f"repair_abl_{name}_e{E}" if E else None
++        if d is None or not d.exists():
++            runs[name] = {"desc": desc, "exists": False, "val": {"best": None, "last": None}}
++            continue
++        meta = jload(d / "run_meta.json") or {}
++        rows = results_rows(d)
++        finished = bool(meta.get("timestamp_end")) and meta.get("return_code") == 0 and len(rows) >= int(meta.get("epochs") or E)
++        val, stale = {}, []
++        for ck in ("best", "last"):
++            r = next((x for x in det["rows"] if x["run"] == d.name and x["checkpoint"] == ck), None)
++            if r is not None and (meta.get(f"{ck}_pt_sha256") or "")[:12] != r["weights_sha256"]:
++                stale.append(ck)
++                r = None
++            val[ck] = r if finished else None
++        runs[name] = {"desc": desc, "exists": True, "dir": d, "meta": meta, "rows": rows, "finished": finished, "val": val,
++                      "stale": stale, "launches": len(meta.get("attempts") or []) or (1 if meta else 0)}
++    return {"epochs": E, "runs": runs}
++
++
++def verdicts(gs):
++    """The pre-registered attribution rule, per factor and target metric."""
++    out = []
++    for factor, abl, keys in FACTORS:
++        mets = []
++        for key in keys:
++            pairs = []
++            for ck in ("best", "last"):
++                a, b = gs["runs"]["baseline_ctrl"]["val"][ck], gs["runs"][abl]["val"][ck]
++                pairs.append((a.get(key) if a else None, b.get(key) if b else None))
++            if any(x is None or y is None for x, y in pairs):
++                mets.append({"metric": key, "evaluated": False})
++            else:
++                mets.append({"metric": key, "evaluated": True,
++                             "full_best": pairs[0][0], "ablated_best": pairs[0][1], "delta_best": pairs[0][0] - pairs[0][1],
++                             "full_last": pairs[1][0], "ablated_last": pairs[1][1], "delta_last": pairs[1][0] - pairs[1][1],
++                             "credited": all(x - y > ATTRIB_MARGIN for x, y in pairs)})
++        out.append({"factor": factor, "ablation": abl, "metrics": mets})
++    return out
++
++
++def verdict_line(v):
++    parts = []
++    for m in v["metrics"]:
++        if not m["evaluated"]:
++            parts.append(f"{m['metric']}: not evaluated")
++        else:
++            parts.append(f"{m['metric']}: Î” best {m['delta_best']:+.3f}, last {m['delta_last']:+.3f} â†’ "
++                         f"{'credited' if m['credited'] else 'no measurable effect'}")
++    return f"- {v['factor']} ({v['ablation']}): " + "; ".join(parts)
++
++
++def verdict_summary(v):
++    cr = [METRIC_LABEL[m["metric"]] for m in v["metrics"] if m["evaluated"] and m["credited"]]
++    nc = [METRIC_LABEL[m["metric"]] for m in v["metrics"] if m["evaluated"] and not m["credited"]]
++    s = []
++    if cr:
++        s.append("credited on " + " and ".join(cr))
++    if nc:
++        s.append("no measurable effect on " + " and ".join(nc))
++    return f"{v['factor']}: " + "; ".join(s)
++
++
++def grid_complete(vs):
++    return all(m["evaluated"] for v in vs for m in v["metrics"])
++
++
++def transfer_record(E):
++    """COCO-transfer coverage per grid run, as measured by run_grid.py's pre-flight (None if not recorded)."""
++    pf = sorted(REPO_ROOT.glob(f"runs/repair_grid_e{E}/preflight_*.json")) if E else []
++    for p in reversed(pf):
++        j = jload(p) or {}
++        tr = {k: v.get("transfer") for k, v in (j.get("ablations") or {}).items() if v.get("transfer")}
++        if tr:
++            return tr
++    return None
++
++
+ # ------------------------------------------------------------------------------------------ blocks
+-def definitions_block():
++def definitions_block(gs):
+     det = jload(REPORTS_DIR / "detector_val_cap5000.json")
+     L = ["### One definition of every term", "",
+          "- **Size bins** (code: `c_model/evaluation.py`): relative box area of the *source* frame â€” micro < 0.03 %, small 0.03â€“1 %, "
+@@ -54,19 +167,31 @@ def definitions_block():
+     if det:
+         L.append("  " + "; ".join(f"{k}: micro â‰¤ {v['micro_max_side_px']} px, small â‰¤ {v['small_max_side_px']} px" for k, v in det["size_definition_px"].items()) + ".")
+     L += ["- **Evaluation protocol**: conf 0.001, NMS IoU 0.7, max 30 detections/image; FP-rate style numbers at conf 0.25; "
+-          "AP with all-point interpolation over IoU 0.5:0.95.", "",
++          "AP with all-point interpolation over IoU 0.5:0.95. Each checkpoint is scored on its own training input: the tâˆ’1,t,t+1 stack, "
++          "or t,t,t (three copies of frame t) for the runs trained with temporal_gap 0.", "",
+           "| run | planned epochs | epochs run | best.pt (fitness) | last.pt | batch Ã— accumulate | lr0 â†’ lrf | class weights | sampler weights (bird/micro/small/standard/empty) | init |",
+           "|---|---|---|---|---|---|---|---|---|---|"]
+-    for run, sw, init in (("aerotrack_spd_v1", DEFAULT_WEIGHTS, "yolo11n.pt (COCO)"), ("aerotrack_spd_finetuned", FINETUNE_WEIGHTS, "aerotrack_spd_v1 best.pt")):
+-        a = jload(REPO_ROOT / "runs" / run / "args.json") or {}
+-        rows = list(csv.DictReader(open(REPO_ROOT / "runs" / run / "results.csv", encoding="utf-8")))
+-        best = max(rows, key=lambda r: float(r["fitness"]))["epoch"] if rows else "â€”"
+-        L.append(f"| {run} | {a.get('epochs')} | {len(rows)} (last epoch index {rows[-1]['epoch'] if rows else 'â€”'}) | epoch {best} | epoch {rows[-1]['epoch'] if rows else 'â€”'} | "
++    runs = [(REPO_ROOT / "runs" / "aerotrack_spd_v1", DEFAULT_WEIGHTS, "yolo11n.pt (COCO)"),
++            (REPO_ROOT / "runs" / "aerotrack_spd_finetuned", FINETUNE_WEIGHTS, "aerotrack_spd_v1 best.pt")]
++    for name, _ in GRID:
++        r = gs["runs"][name]
++        if r["exists"]:
++            stride = "stride" in str(r["meta"].get("model_cfg", ""))
++            runs.append((r["dir"], DEFAULT_WEIGHTS, "yolo11n.pt (COCO), shape-matched" + (" + 3-ch stem tiled /3" if stride else "")))
++    for d, sw, init in runs:
++        a = jload(d / "args.json") or {}
++        rows = results_rows(d)
++        best = ep(max(rows, key=lambda r: float(r["fitness"]))["epoch"]) if rows else "â€”"
++        last = ep(rows[-1]["epoch"]) if rows else "â€”"
++        L.append(f"| {d.name} | {a.get('epochs')} | {len(rows)} (last epoch index {last}) | epoch {best} | epoch {last} | "
+                  f"{a.get('batch')} Ã— {max(1, int(a.get('nbs', 64)) // int(a.get('batch', 32)))} | {a.get('lr0')} â†’ Ã—{a.get('lrf')} | {a.get('class_weights') or '[1, 1]'} | "
+                  f"{sw['bird']}/{sw['micro']}/{sw['small']}/{sw['standard']}/{sw['empty']} | {init} |")
+     L += ["", "The v1 run was stopped at epoch index 21 of a planned 150 (its cosine schedule never completed); the fine-tune changed the "
+           "sampler weights, class weights, loss weights, batch, learning-rate schedule and augmentation at once, so its gains are a "
+           "**recipe change**, not an architectural effect."]
++    if any(gs["runs"][n]["exists"] for n, _ in GRID):
++        L += ["The `repair_abl_*` runs use v1's recipe (`baseline` stage, default augmentation and sampler weights â€” the values v1 was "
++              f"launched with) at a {gs['epochs']}-epoch budget whose cosine schedule completes, and differ from each other in one factor."]
+     return "\n".join(L)
+ 
+ 
+@@ -76,23 +201,38 @@ def detector_table(js, title):
+     s = js["eval_set"]
+     L = [f"**{title}** â€” image set `{s['sha256'][:12]}`: {s['n_images']:,} images ({', '.join(f'{k} {v:,}' for k, v in s['per_dataset'].items())}), "
+          f"{s['n_sequences']} sequences. Every row uses exactly these images.", "",
+-         "| run | ckpt | epoch | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n GT) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs raising a drone alarm | GT birds boxed as drone | empty-frame drone FP / img |",
+-         "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
++         "| run | ckpt | epoch | input | mAP50 | mAP50-95 | drone AP50 | bird AP50 | micro AP50 (n GT) | small | standard | Anti-UAV | CST | CST micro | Det-Fly | bird-only imgs raising a drone alarm | GT birds boxed as drone | empty-frame drone FP / img |",
++         "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+     order = {"aerotrack_spd_v1": 0, "aerotrack_spd_finetuned": 1}
+-    for r in sorted(js["rows"], key=lambda r: (order.get(r["run"], 9), r["run"], r["checkpoint"] != "best")):
+-        L.append(f"| {r['run']} | {r['checkpoint']} | {r['epoch']} | {f4(r['mAP50'])} | {f4(r['mAP50-95'])} | {f4(r['drone_AP50'])} | {f4(r['bird_AP50'])} | "
++    order.update({f"repair_abl_{n}": 2 + i for i, (n, _) in enumerate(GRID)})
++    key = lambda r: (order.get(re.sub(r"_e\d+$", "", r["run"]), 9), r["run"], r["checkpoint"] != "best")
++    for r in sorted(js["rows"], key=key):
++        L.append(f"| {r['run']} | {r['checkpoint']} | {r['epoch']} | {r.get('input', 't-1,t,t+1')} | {f4(r['mAP50'])} | {f4(r['mAP50-95'])} | {f4(r['drone_AP50'])} | {f4(r['bird_AP50'])} | "
+                  f"{f4(r['micro_AP50'])} ({r['micro_n_gt']}) | {f4(r['small_AP50'])} | {f4(r['standard_AP50'])} | {f4(r['anti_uav_AP50'])} | {f4(r['cst_AP50'])} | "
+                  f"{f4(r['cst_micro_AP50'])} | {f4(r['det_fly_AP50'])} | {f1(r['bird_only_img_drone_alarm_pct@.25'])} % | {f1(r['gt_birds_boxed_as_drone_pct@.25'])} % | "
+                  f"{f4(r['empty_frame_drone_FP/img@.25'])} |")
+     return "\n".join(L)
+ 
+ 
++def ledger_lines():
++    p = REPORTS_DIR / "test_evaluation_ledger.jsonl"
++    if not p.exists():
++        return []
++    return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()]
++
++
+ def detector_block():
+     val = jload(REPORTS_DIR / "detector_val_cap5000.json")
+     L = [detector_table(val, "Validation")]
+     tests = sorted(REPORTS_DIR.glob("detector_test_*.json"))
+     if tests:
+-        L += ["", detector_table(jload(tests[-1]), "Test (final, once per model)")]
++        tj = jload(tests[-1])
++        led = ledger_lines()
++        shas = {x["weights_sha256"][:12] for x in led}
++        L += ["", detector_table(tj, "Test (final, once per model)"),
++              "", f"*Test split: scored once per checkpoint after the ablation grid finished; `reports/test_evaluation_ledger.jsonl` holds "
++                  f"{len(led)} entries for {len(shas)} distinct checkpoints. The test table is not used for any checkpoint choice or attribution "
++                  "(the rule is applied on validation).*"]
+     else:
+         L += ["", "*Test set: not evaluated yet â€” it is used once, for the final table, after the ablation grid.*"]
+     if val:
+@@ -107,59 +247,64 @@ def detector_block():
+                   f"Anti-UAV AP50 {v2b['anti_uav_AP50'] - v1l['anti_uav_AP50']:+.3f}, bird AP50 {v2b['bird_AP50'] - v1l['bird_AP50']:+.3f}, "
+                   f"Det-Fly AP50 {v2b['det_fly_AP50'] - v1l['det_fly_AP50']:+.3f}; bird-only images raising a drone alarm "
+                   f"{v1l['bird_only_img_drone_alarm_pct@.25']:.1f} % â†’ {v2b['bird_only_img_drone_alarm_pct@.25']:.1f} %.",
+-                  "- so the fine-tune bought bird rejection and paid for it on the thermal drone datasets; nothing in this table attributes anything to SPD-Conv or the temporal stack."]
++                  "- so the fine-tune bought bird rejection and paid for it on the thermal drone datasets; the v1/v2 comparison attributes nothing "
++                  "to SPD-Conv or the temporal stack â€” that is what the controlled ablation grid below is for."]
+     return "\n".join(L)
+ 
+ 
+-def ablation_block():
+-    det = jload(REPORTS_DIR / "detector_val_cap5000.json") or {"rows": []}
++def ablation_block(gs, vs):
++    E = gs["epochs"]
+     L = [f"Four runs, same recipe (`baseline` stage), same budget, one factor each; both checkpoints evaluated on the same image set as above. "
+          f"**Attribution rule (pre-registered):** a factor is credited only if the full model beats the ablated model by > {ATTRIB_MARGIN:.2f} AP50 on the target "
+          "metric for BOTH last.pt and best.pt; otherwise it has no measurable effect at this budget. Target metrics: SPD â†’ micro AP50 and CST micro AP50; "
+          "temporal stack â†’ CST AP50 (motion cue) and drone AP50; stock baseline â†’ drone AP50 overall.", "",
+-         "| ablation | changes | status | epochs | best.pt drone AP50 / micro / CST micro | last.pt drone AP50 / micro / CST micro |", "|---|---|---|---|---|---|"]
++         "| ablation | changes | input | status | epochs | best.pt drone AP50 / micro / CST / CST micro | last.pt drone AP50 / micro / CST / CST micro |",
++         "|---|---|---|---|---|---|---|"]
+     any_run = False
+     for name, desc in GRID:
+-        dirs = sorted(REPO_ROOT.glob(f"runs/repair_abl_{name}_e*"))
+-        if not dirs:
+-            L.append(f"| {name} | {desc} | **pending** | â€” | â€” | â€” |")
++        r = gs["runs"][name]
++        if not r["exists"]:
++            L.append(f"| {name} | {desc} | {INPUT_OF[name]} | **pending** | â€” | â€” | â€” |")
+             continue
+         any_run = True
+-        d = dirs[-1]
+-        meta = jload(d / "run_meta.json") or {}
+-        rows = list(csv.DictReader(open(d / "results.csv", encoding="utf-8"))) if (d / "results.csv").exists() else []
+-        status = "finished" if meta.get("timestamp_end") and meta.get("return_code") == 0 else ("running/incomplete" if rows else "started")
++        status = "finished" if r["finished"] else ("running/incomplete" if r["rows"] else "started")
++        if r["launches"] > 1:
++            status += f", {r['launches']} launches"
+         cells = []
+         for ck in ("best", "last"):
+-            r = next((x for x in det["rows"] if x["run"] == d.name and x["checkpoint"] == ck), None)
+-            cells.append(f"{f4(r['drone_AP50'])} / {f4(r['micro_AP50'])} / {f4(r['cst_micro_AP50'])}" if r else "not evaluated")
+-        L.append(f"| {name} | {desc} | {status} ({d.name}) | {len(rows)}/{meta.get('epochs', '?')} | {cells[0]} | {cells[1]} |")
++            v = r["val"][ck]
++            cells.append(f"{f4(v['drone_AP50'])} / {f4(v['micro_AP50'])} / {f4(v['cst_AP50'])} / {f4(v['cst_micro_AP50'])}" if v else
++                         ("stale evaluation (hash mismatch)" if ck in r["stale"] else "not evaluated"))
++        L.append(f"| {name} | {desc} | {INPUT_OF[name]} | {status} (`{r['dir'].name}`) | {len(r['rows'])}/{r['meta'].get('epochs', '?')} | {cells[0]} | {cells[1]} |")
+     if not any_run:
+-        L += ["", "No grid run has been trained yet (â‰ˆ 6.5â€“9 h each at 20 epochs on the RTX 5050; see the commands at the end of this file). "
+-              "Until then **no claim about SPD-Conv or the temporal stack is made.**"]
+-    else:
+-        # attribution verdicts where both sides exist
+-        def get(name, ck, key):
+-            dirs = sorted(REPO_ROOT.glob(f"runs/repair_abl_{name}_e*"))
+-            if not dirs:
+-                return None
+-            r = next((x for x in det["rows"] if x["run"] == dirs[-1].name and x["checkpoint"] == ck), None)
+-            return r[key] if r else None
+-        L += ["", "**Attribution verdicts (rule above):**"]
+-        for factor, abl, keys in (("SPD-Conv", "no_spd", ("micro_AP50", "cst_micro_AP50")), ("temporal stack", "single_frame", ("cst_AP50", "drone_AP50")),
+-                                  ("full recipe vs stock YOLO11n", "stock_yolo11n", ("drone_AP50",))):
+-            verdicts = []
+-            for key in keys:
+-                ds = [(get("baseline_ctrl", ck, key), get(abl, ck, key)) for ck in ("best", "last")]
+-                if any(a is None or b is None for a, b in ds):
+-                    verdicts.append(f"{key}: not evaluated")
+-                else:
+-                    ok = all(a - b > ATTRIB_MARGIN for a, b in ds)
+-                    verdicts.append(f"{key}: Î” best {ds[0][0]-ds[0][1]:+.3f}, last {ds[1][0]-ds[1][1]:+.3f} â†’ {'credited' if ok else 'no measurable effect'}")
+-            L.append(f"- {factor} ({abl}): " + "; ".join(verdicts))
++        L += ["", "No grid run has been trained yet (all four, with their evaluations and the final test table, run from one command: "
++              "`scripts/run_grid.py`, see the end of this file). Until then **no claim about SPD-Conv or the temporal stack is made.**"]
++        return "\n".join(L)
++    L += ["", "**Attribution verdicts (rule above):**"] + [verdict_line(v) for v in vs]
++    L += ["", "`single_frame` and `stock_yolo11n` are trained, validated and scored on t,t,t (three copies of frame t â€” their input definition, "
++          "`c_model/train.py::build`); `baseline_ctrl` and `no_spd` on tâˆ’1,t,t+1. A verdict only uses finished runs whose evaluated checkpoint "
++          "hashes match `run_meta.json`."]
++    tr = transfer_record(E)
++    if tr:
++        L += ["COCO initialisation, same rule in every run (every tensor whose name and shape match; a 3-channel stem tiled /3 into a 9-channel "
++              "stride stem): " + "; ".join(f"{k} {v['copied']}/{v['total']} tensors ({v['pct']:.1f} %)" for k, v in tr.items()) +
++              ". With the installed Ultralytics the C3k2 bottleneck `cv1` convolutions are 1Ã—1 while `yolo11n.pt` holds 3Ã—3 ones, so those and "
++              "the class head start from scratch in all four runs (and in v1)."]
++    if (REPORTS_DIR / f"ablation_grid_e{E}.md").exists():
++        L += ["", f"Full grid report (training status, runtimes, launches/recoveries, checkpoint hashes, test table): "
++                  f"`experiments/aerotrack_repair/reports/ablation_grid_e{E}.md`."]
+     return "\n".join(L)
+ 
+ 
++def ablation_claim(gs, vs):
++    """Middle + last cell of the README's Review-2 claim row for SPD-Conv / the temporal stack."""
++    if not gs["epochs"] or not grid_complete(vs):
++        return ("Untested until the ablation grid runs (one command, below). Inference-time ablation in the audit: removing motion costs "
++                "â‰¤ 0.005 mAP. | ablation table (pending)")
++    return (f"Controlled {gs['epochs']}-epoch grid, pre-registered rule (> {ATTRIB_MARGIN:.2f} AP50 on best.pt AND last.pt) â€” "
++            + "; ".join(verdict_summary(v) for v in vs) + ". | ablation table")
++
++
+ def tracker_block():
+     js = sorted(REPORTS_DIR.glob("tracker_val_*.json"))
+     if not js:
+@@ -245,22 +390,51 @@ def demo_block():
+     return "\n".join(L)
+ 
+ 
+-def render_readme():
++def render_readme(write=True):
++    gs = grid_state()
++    vs = verdicts(gs)
+     tmpl = (REPAIR_DIR / "README.template.md").read_text(encoding="utf-8")
+-    blocks = {"definitions_block": definitions_block(), "detector_block": detector_block(), "ablation_block": ablation_block(),
+-              "tracker_block": tracker_block(), "forecast_block": forecast_block(), "latency_block": latency_block(), "demo_block": demo_block()}
++    blocks = {"definitions_block": definitions_block(gs), "detector_block": detector_block(), "ablation_block": ablation_block(gs, vs),
++              "ablation_claim": ablation_claim(gs, vs), "tracker_block": tracker_block(), "forecast_block": forecast_block(),
++              "latency_block": latency_block(), "demo_block": demo_block()}
+     out = re.sub(r"\{\{(\w+)\}\}", lambda m: blocks[m.group(1)], tmpl)
+-    (REPO_ROOT / "README.md").write_text(out, encoding="utf-8")
+-    return blocks
+-
+-
+-def render_report(blocks):
+-    g = git_info()
+-    plan_status = [
++    if write:
++        (REPO_ROOT / "README.md").write_text(out, encoding="utf-8")
++    return blocks, gs, vs, out
++
++
++def plan_status(gs, vs):
++    E = gs["epochs"]
++    runs = [gs["runs"][n] for n, _ in GRID]
++    n_fin = sum(1 for r in runs if r.get("finished"))
++    n_eval = sum(1 for r in runs for ck in ("best", "last") if r["val"][ck])
++    if E and grid_complete(vs):
++        item2 = (f"done â€” 4 runs Ã— {E} epochs, best.pt and last.pt of each evaluated; verdicts in 'Ablation grid' "
++                 f"(`scripts/run_grid.py`, `reports/ablation_grid_e{E}.md`)")
++        item3 = (f"done â€” the grid's `baseline_ctrl` ({E} epochs, cosine schedule completed) is the reference and every other grid run changes one "
++                 "factor (`run_meta.json`); v1/v2 presented as a recipe change")
++        sf = next(v for v in vs if v["ablation"] == "single_frame")
++        item4 = f"audit result cited; training ablation `single_frame` done â€” {verdict_summary(sf)} (rule in 'Ablation grid')"
++    elif E:
++        item2 = f"in progress â€” {n_fin}/4 runs finished, {n_eval}/8 checkpoints evaluated (`scripts/run_grid.py`); see grid table"
++        item3 = "grid design: `baseline_ctrl` is the reference trained at the grid budget; v1/v2 presented as a recipe change"
++        item4 = "audit result cited; training ablation `single_frame` " + ("evaluated" if gs["runs"]["single_frame"]["val"]["last"] else "pending")
++    else:
++        item2 = "infrastructure done (`scripts/train_ablation.py`, `scripts/run_grid.py`, `ABLATIONS`); runs pending â€” see grid table"
++        item3 = "grid design: `baseline_ctrl` is the reference trained at the grid budget; v1/v2 presented as a recipe change"
++        item4 = "audit result cited; training ablation `single_frame` pending"
++    try:
++        c14 = subprocess.run(["git", "log", "-1", "--format=%h", "--", "runs/aerotrack_spd_finetuned/eval_val/evaluation_report.json"],
++                             cwd=REPO_ROOT, capture_output=True, text=True, timeout=20).stdout.strip()
++    except Exception:  # noqa: BLE001
++        c14 = ""
++    item14 = ("superseded: the same-set table replaces `runs/aerotrack_spd_finetuned/eval_val`"
++              + (f" (that directory was re-generated and committed in `{c14}`)" if c14 else ""))
++    return [
+         ("1", "same-set v1/v2 evaluation", "done â€” `scripts/evaluate_detector.py`, `reports/detector_val_cap5000.md`"),
+-        ("2", "ablations (SPD, temporal, stock YOLO11n)", "infrastructure done (`scripts/train_ablation.py`, `ABLATIONS`); runs pending â€” see grid table"),
+-        ("3", "one change at a time from a converged baseline", "grid design: `baseline_ctrl` is the converged reference; v1/v2 presented as a recipe change"),
+-        ("4", "temporal stack contributes nothing (inference ablation)", "audit result cited; training ablation `single_frame` pending"),
++        ("2", "ablations (SPD, temporal, stock YOLO11n)", item2),
++        ("3", "one change at a time from a converged baseline", item3),
++        ("4", "temporal stack contributes nothing (inference ablation)", item4),
+         ("5", "LSTM vs trivial baselines", "done â€” retired by rule (`runs/lstm_forecaster_repair/report.md`)"),
+         ("6", "ByteTrack: wire it or drop the claims", "done â€” retired by rule; all ByteTrack captions removed from README/demo"),
+         ("7", "hand-typed trajectory plot", "replaced by `assets/repair_forecast_examples_val.png` (+ JSON); rev2.ipynb kept as the historical submission"),
+@@ -269,22 +443,39 @@ def render_report(blocks):
+         ("10", "latency", "done â€” measured fp32/bf16 with p95 + structural look-ahead"),
+         ("11", "consistent micro definition / epochs / sampler table", "done â€” 'One definition of every term' section, all values read from code/args.json"),
+         ("12", "honest checkpoint selection", "done â€” best.pt and last.pt evaluated side by side; last > best for v1"),
+-        ("13", "reproducible manifests", "done â€” every repair output carries git/env/weights hash/set hash; `train_ablation.py` writes run_meta.json"),
+-        ("14", "overwritten v2 eval report in the working tree", "superseded: the same-set table replaces `runs/aerotrack_spd_finetuned/eval_val`; file left as the user's pending change"),
++        ("13", "reproducible manifests", "done â€” every repair output carries git/env/weights hash/set hash; `train_ablation.py` writes run_meta.json (one record across resumes)"),
++        ("14", "overwritten v2 eval report in the working tree", item14),
+     ]
++
++
++def render_report(blocks, gs, vs, write=True):
++    g = git_info()
+     L = [f"# AeroTrack-Net repair report", "", f"*Generated {time.strftime('%Y-%m-%d %H:%M')} by `render_report.py` on branch `{g.get('branch')}` commit "
+          f"`{(g.get('commit') or '')[:10]}` (dirty: {g.get('dirty')}). Plan: `AEROTRACK_REPAIR_PLAN.md`; audit: `../audit/AUDIT_REPORT.md`.*", "",
+          "## Plan items", "", "| # | item | status |", "|---|---|---|"]
+-    L += [f"| {n} | {item} | {status} |" for n, item, status in plan_status]
++    L += [f"| {n} | {item} | {status} |" for n, item, status in plan_status(gs, vs)]
+     for title, key in (("Definitions and run facts", "definitions_block"), ("Detector â€” same image set", "detector_block"), ("Ablation grid", "ablation_block"),
+                        ("Tracking", "tracker_block"), ("Forecasting", "forecast_block"), ("Latency", "latency_block"), ("Demo", "demo_block")):
+         L += ["", f"## {title}", "", blocks[key].replace("](assets/", "](../assets/")]
+-    (REPO_ROOT / "docs" / "AEROTRACK_REPAIR_REPORT.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    text = "\n".join(L) + "\n"
++    if write:
++        (REPO_ROOT / "docs" / "AEROTRACK_REPAIR_REPORT.md").write_text(text, encoding="utf-8")
++    return text
+ 
+ 
+ def main():
+-    blocks = render_readme()
+-    render_report(blocks)
++    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
++    ap.add_argument("--check", action="store_true", help="render in memory and report; write nothing")
++    a = ap.parse_args()
++    blocks, gs, vs, readme = render_readme(write=not a.check)
++    report = render_report(blocks, gs, vs, write=not a.check)
++    if a.check:
++        left = re.findall(r"\{\{\w+\}\}", readme)
++        print(f"[check] README {len(readme):,} chars, report {len(report):,} chars; grid budget {gs['epochs']}; "
++              f"unfilled placeholders: {left or 'none'}; nothing written")
++        if left:
++            raise SystemExit(1)
++        return
+     print("wrote README.md and docs/AEROTRACK_REPAIR_REPORT.md")
+ 
+ 
+diff --git a/experiments/aerotrack_repair/scripts/train_ablation.py b/experiments/aerotrack_repair/scripts/train_ablation.py
+index d3566c0..7cf7c69 100644
+--- a/experiments/aerotrack_repair/scripts/train_ablation.py
++++ b/experiments/aerotrack_repair/scripts/train_ablation.py
+@@ -5,7 +5,10 @@
+     python experiments/aerotrack_repair/scripts/train_ablation.py --ablation no_spd        --epochs 20
+     python experiments/aerotrack_repair/scripts/train_ablation.py --ablation single_frame  --epochs 20
+     python experiments/aerotrack_repair/scripts/train_ablation.py --ablation stock_yolo11n --epochs 20
+-    (--dry-run builds the job and prints the exact train.py command without training)
++    (--dry-run builds the job and prints the exact train.py command without training;
++     --preflight-only runs train.py's T1-T8 pre-flight on that exact job under a scratch name, then removes it)
++
++The four runs, their evaluations and the final test table run from ONE command: scripts/run_grid.py.
+ 
+ Grid rule: every run uses the historical `baseline` stage recipe (same data, sampler, augmentation, optimiser,
+ batch, samples/epoch) and the SAME reduced budget (--epochs, cosine schedule completes), differing in exactly
+@@ -13,11 +16,17 @@ one factor named by --ablation (see c_model/train.py::ABLATIONS). Runs are named
+ and never overwrite an existing directory. `runs/<name>/run_meta.json` records git, environment, command, data
+ hashes (manifest.csv, splits.json, label_cache.npz), the ablation definition and, at the end, checkpoint hashes.
+ Checkpoint policy: both best.pt (fitness) and last.pt are kept and both are evaluated later.
++Resume: --resume continues weights/last.pt (--resume-from names another checkpoint of the same run). The recipe
++(ablation, epochs, batch) must match the recorded one; run_meta.json keeps the first start time and appends each
++launch to `attempts`, so an interrupted-and-resumed run still has ONE provenance record.
+ """
+ from __future__ import annotations
+ 
+ import argparse
++import csv
+ import json
++import os
++import shutil
+ import subprocess
+ import sys
+ import time
+@@ -27,32 +36,60 @@ import _bootstrap  # noqa: F401
+ 
+ import train as T
+ 
+-from anti_uav_repro.utils.repro import env_snapshot, file_sha256, git_info, write_json
++from anti_uav_repro.utils.repro import env_snapshot, file_sha256, git_info
+ 
+ from _bootstrap import REPO_ROOT
+ 
+ GRID = ("baseline_ctrl", "no_spd", "single_frame", "stock_yolo11n")
+ 
+ 
++def _now():
++    return time.strftime("%Y-%m-%dT%H:%M:%S%z")
++
++
++def _write_json_atomic(obj, path):
++    path = Path(path)
++    tmp = path.with_name(path.name + ".tmp")
++    tmp.write_text(json.dumps(obj, indent=2, default=str), encoding="utf-8")
++    os.replace(tmp, path)
++
++
++def _epochs_on_disk(run_dir):
++    p = run_dir / "results.csv"
++    if not p.exists():
++        return 0
++    with open(p, encoding="utf-8", newline="") as f:
++        return sum(1 for _ in csv.DictReader(f))
++
++
+ def main():
+     ap = argparse.ArgumentParser()
+     ap.add_argument("--ablation", required=True, choices=GRID)
+     ap.add_argument("--epochs", type=int, default=20)
+     ap.add_argument("--batch", type=int, default=32, help="historical v1/v2 used 32")
+-    ap.add_argument("--workers", type=int, default=4)
++    ap.add_argument("--workers", type=int, default=4, help="a ceiling: train.py plans the real count from free RAM/commit")
+     ap.add_argument("--resume", action="store_true", help="resume from runs/<name>/weights/last.pt")
++    ap.add_argument("--resume-from", default=None, help="resume from this checkpoint of the same run instead of last.pt")
+     ap.add_argument("--dry-run", action="store_true")
++    ap.add_argument("--preflight-only", action="store_true",
++                    help="run train.py's T1-T8 pre-flight on this exact job (scratch run name), then remove it")
+     a = ap.parse_args()
++    if a.resume_from:
++        a.resume = True
+     name = f"repair_abl_{a.ablation}_e{a.epochs}"
+     run_dir = REPO_ROOT / "runs" / name
+     last = run_dir / "weights" / "last.pt"
+-    if run_dir.exists() and any(run_dir.rglob("*")) and not a.resume and not a.dry_run:
++    if run_dir.exists() and any(run_dir.rglob("*")) and not a.resume and not a.dry_run and not a.preflight_only:
+         sys.exit(f"{run_dir} already exists â€” use --resume, or a different --epochs; historical runs are never overwritten")
+     py = sys.executable
+-    cmd = [py, str(REPO_ROOT / "c_model" / "train.py"), "--stage", "baseline", "--ablation", a.ablation,
+-           "--epochs", str(a.epochs), "--batch", str(a.batch), "--workers", str(a.workers), "--name", name]
+-    if a.resume and last.exists():
+-        cmd += ["--resume", str(last)]
++    base = [py, str(REPO_ROOT / "c_model" / "train.py"), "--stage", "baseline", "--ablation", a.ablation,
++            "--epochs", str(a.epochs), "--batch", str(a.batch), "--workers", str(a.workers)]
++    cmd = base + ["--name", name]
++    resume_ckpt = Path(a.resume_from) if a.resume_from else (last if a.resume and last.exists() else None)
++    if resume_ckpt is not None and not resume_ckpt.exists():
++        sys.exit(f"--resume-from {resume_ckpt} does not exist")
++    if resume_ckpt is not None:
++        cmd += ["--resume", str(resume_ckpt)]
+     abl = dict(T.ABLATIONS[a.ablation])
+     meta = {
+         "run_name": name, "ablation": a.ablation, "ablation_definition": abl, "grid": list(GRID),
+@@ -64,12 +101,26 @@ def main():
+         "data": {"manifest_csv_sha256": file_sha256(T.MANIFEST), "splits_json_sha256": file_sha256(T.SPLITS),
+                  "label_cache_sha256": file_sha256(T.LABEL_CACHE_PATH), "val_caps": T.VAL_CAPS},
+         "git": git_info(), "env": env_snapshot(), "command": " ".join(cmd), "launcher_command": " ".join(sys.argv),
+-        "timestamp_start": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
++        "timestamp_start": _now(),
+         "checkpoint_policy": "best.pt = max fitness (0.30 mAP50 + 0.35 mAP50-95 + 0.35 micro AP50 on the capped val set); last.pt = final epoch; BOTH are evaluated by evaluate_detector.py",
+         "split_policy": "train = splits.json train; per-epoch validation on the capped VAL set (selection only); TEST untouched until the final table",
+     }
+     print(json.dumps({k: meta[k] for k in ("run_name", "ablation", "ablation_definition", "model_cfg", "temporal_gap", "epochs", "batch")}, indent=2))
+-    print("train.py command:\n  " + meta["command"])
++    print("train.py command:\n  " + meta["command"], flush=True)
++    if a.preflight_only:
++        # same command, scratch name: the trainer writes args.json + weights/ when it is built, and a check must
++        # leave nothing behind. The `_preflight_` prefix is never a real run name.
++        scratch = REPO_ROOT / "runs" / f"_preflight_{name}"
++        if scratch.exists():
++            if any(p.suffix == ".pt" for p in scratch.rglob("*")):
++                sys.exit(f"{scratch} holds checkpoints; refusing to remove it")
++            shutil.rmtree(scratch)
++        pcmd = base + ["--name", scratch.name, "--preflight-only"]
++        print("pre-flight command:\n  " + " ".join(pcmd), flush=True)
++        rc = subprocess.call(pcmd, cwd=str(REPO_ROOT))
++        if scratch.exists() and not any(p.suffix == ".pt" for p in scratch.rglob("*")):
++            shutil.rmtree(scratch, ignore_errors=True)
++        sys.exit(rc)
+     if a.dry_run:
+         # build the job (dataset + model) without training, to prove the command is valid
+         device = T.require_gpu()
+@@ -80,22 +131,52 @@ def main():
+               f"{len(ctx['train_loader']):,} iters/epoch; nothing trained; run dir removed again")
+         T.release(trainer, ctx, free_manifest=True, verbose=False)
+         # the trainer writes args.json + weights/ on construction; a dry run must leave nothing behind
+-        import shutil
+         if run_dir.exists() and not any(p.suffix == ".pt" for p in run_dir.rglob("*")):
+             shutil.rmtree(run_dir)
+         return
++
+     run_dir.mkdir(parents=True, exist_ok=True)
+-    write_json(meta, run_dir / "run_meta.json")
++    meta_path = run_dir / "run_meta.json"
++    attempt = {"timestamp_start": meta["timestamp_start"], "command": meta["command"], "launcher_command": meta["launcher_command"],
++               "resumed_from": str(resume_ckpt) if resume_ckpt else None, "epochs_on_disk_at_start": _epochs_on_disk(run_dir),
++               "workers_requested": a.workers, "git": meta["git"], "env": meta["env"]}
++    if a.resume and meta_path.exists():
++        prior = json.loads(meta_path.read_text(encoding="utf-8"))
++        changed = {k: (prior.get(k), meta[k]) for k in ("ablation", "epochs", "batch", "model_cfg", "temporal_gap")
++                   if prior.get(k) != meta[k]}
++        if changed:
++            sys.exit(f"refusing to resume {name} with a different recipe: {changed}")
++        attempts = prior.get("attempts") or [{k: prior.get(k) for k in ("timestamp_start", "timestamp_end", "command", "return_code")}]
++        for p in attempts:
++            if p.get("timestamp_end") is None:
++                p["outcome"] = "no end record: the launcher was killed with train.py"
++        meta = prior
++        meta["attempts"] = attempts
++    else:
++        meta["attempts"] = []
++    attempt["attempt"] = len(meta["attempts"]) + 1
++    meta["attempts"].append(attempt)
++    meta.pop("timestamp_end", None)
++    meta.pop("return_code", None)
++    _write_json_atomic(meta, meta_path)
++
+     t0 = time.time()
+     rc = subprocess.call(cmd, cwd=str(REPO_ROOT))
+-    meta["timestamp_end"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+-    meta["train_seconds"] = round(time.time() - t0, 1)
++    attempt.update({"timestamp_end": _now(), "seconds": round(time.time() - t0, 1), "return_code": rc,
++                    "epochs_on_disk_at_end": _epochs_on_disk(run_dir)})
++    try:
++        attempt["workers_used"] = json.loads((run_dir / "args.json").read_text(encoding="utf-8")).get("workers")
++    except Exception:  # noqa: BLE001
++        attempt["workers_used"] = None
++    meta["timestamp_end"] = attempt["timestamp_end"]
+     meta["return_code"] = rc
++    meta["train_seconds"] = round(sum(x.get("seconds") or 0 for x in meta["attempts"]), 1)
+     for tag in ("best", "last"):
+         p = run_dir / "weights" / f"{tag}.pt"
+         meta[f"{tag}_pt_sha256"] = file_sha256(p) if p.exists() else None
+-    write_json(meta, run_dir / "run_meta.json")
+-    print(f"[launcher] train.py exited with {rc} after {meta['train_seconds']/3600:.2f} h; provenance in {run_dir / 'run_meta.json'}")
++    _write_json_atomic(meta, meta_path)
++    print(f"[launcher] train.py exited with {rc} after {attempt['seconds']/3600:.2f} h (attempt {attempt['attempt']}, "
++          f"{meta['train_seconds']/3600:.2f} h in total); provenance in {meta_path}", flush=True)
+     sys.exit(rc)
+ 
+ 
+diff --git a/progress/AEROTRACK_REPAIR_PROGRESS.md b/progress/AEROTRACK_REPAIR_PROGRESS.md
+index 1071f13..a801ed3 100644
+--- a/progress/AEROTRACK_REPAIR_PROGRESS.md
++++ b/progress/AEROTRACK_REPAIR_PROGRESS.md
+@@ -37,8 +37,16 @@ runs/aerotrack_spd_finetuned/eval_val/*) are left untouched and uncommitted.
+   `docs/historical/README_review2.md`); `docs/AEROTRACK_REPAIR_REPORT.md` lists the 14 plan items with status.
+   Attribution rule for the grid pre-registered in the script (> 0.02 AP50 on both best.pt and last.pt).
+ 
++## Done (2026-09-25 â†’ 26): ablation grid + final test, one command
++- `scripts/run_grid.py` runs everything that was pending, unattended and resumable: pre-flight â†’ baseline_ctrl, no_spd,
++  single_frame, stock_yolo11n (20 epochs, batch 32, sequential) â†’ val eval of best.pt AND last.pt after each â†’ TEST once
++  per checkpoint (v1/v2 + the grid's 8, ledger-guarded) â†’ `render_report.py` + `grid_report.py`. Completed 2026-09-26 09:10.
++- Result (numbers only in the generated `reports/ablation_grid_e20.md`): under the pre-registered rule none of SPD-Conv,
++  the temporal stack, or the full recipe vs stock YOLO11n is credited â€” "no measurable effect at this budget".
++- Needed on the way (details in Â§7/Â§8 of that report): T6 pre-flight rejected stride-2 stems (would have aborted two runs);
++  `aerotrack_collate` leaked one batch per batch per DataLoader worker (fixed: shared-memory stacking; first launch lost to
++  it); single-frame runs are scored on their own t,t,t input; atomic checkpoints; one run_meta.json across resumes; the
++  runner itself was once killed externally and is now started through a detached spawner and adopts orphaned steps.
++
+ ## Next
+-- User launches the 4-run ablation grid (`train_ablation.py`, 20 epochs each â‰ˆ 6.5â€“9 h) â€” sequentially, one GPU.
+-- After each run: `evaluate_detector.py --split val --cap 5000 --weights runs/repair_abl_<x>_e20/weights/best.pt ...last.pt`
+-  then `render_report.py`. Test once, at the very end, for the final table.
+-- Optional: Review-3 notebook built from the generated report.
++- Review-3 write-up from the generated report. All code/report changes of 2026-09-25/26 are uncommitted.

@@ -1,0 +1,1 @@
+python -u experiments/systems/scripts/cache_detections.py --run v2_stock_s0_e20 --corpus data_unified_v2 && python -u experiments/systems/scripts/cache_detections.py --run v2_causal_g4_s0_e20 --corpus data_unified_v2

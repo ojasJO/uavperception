@@ -1,0 +1,54 @@
+{
+  "id": "C2_causal_windows",
+  "track": "C (temporal perception: the detector's input window); detector code and recipe are Track B's (experiments/aerotrack_v2), runs are named by their window",
+  "registered": "see the git commit that added this file (2026-10-05), before the v2 campaign's first training and before any C2 training",
+  "class": "controlled experiment on corpus-v2 VAL; TEST untouched (C2 does not change the v2 campaign's registered selection; the program's final candidate is fixed in a separate final-protocol registration before any further TEST pass)",
+  "question": "How far back should a zero-look-ahead (causal) 3-frame window reach? Does any causal window beat the single-frame detector, and how close does the best one come to the symmetric window that needs future frames?",
+  "motivation": [
+    "the generalization series (corpus v1) supported the symmetric window [t-4, t, t+4] (+0.045 CST drone AP50) but not [t-1, t, t+1]; the supported window needs 4 future frames (+160 ms at 25 fps), a real-time liability (deployment gate: the look-ahead dominates end-to-end latency)",
+    "the v2 campaign tests one causal window ([t-8, t-4, t]); the gap dependence of causal windows is untested"
+  ],
+  "windows": {
+    "definition": "experiments/aerotrack_v2/scripts/v2lib.py window_samples(window='causal', gap=g): channels (prev, cur, next) = (t-g, t, t-2g); frames before the sequence start are clamped to its first frame (no future frame ever: unit-tested for g = 4)",
+    "arms": {
+      "causal_g1": "[t-2, t-1, t]   reach 2 frames  (80 ms at 25 fps)",
+      "causal_g2": "[t-4, t-2, t]   reach 4 frames  (160 ms)",
+      "causal_g4": "[t-8, t-4, t]   reach 8 frames  (320 ms)  -- the v2 campaign's causal_g4 runs, shared",
+      "causal_g8": "[t-16, t-8, t]  reach 16 frames (640 ms)"
+    },
+    "references": {"stock": "[t, t, t] (v2_stock runs, shared)", "sym_g4": "[t-4, t, t+4] (v2_sym_g4 runs, shared; needs 4 future frames)"},
+    "longer_stacks": "windows of more than 3 frames ([t-k .. t] with k+1 channels-of-3) change the stem and are deferred to C4, only if C2 finds a temporal signal"
+  },
+  "held_fixed": "everything in the v2 registration's held_fixed (recipe, corpus v2, letterbox, augmentation, sampler, function-preserving init so every arm starts as COCO YOLO11n on frame t, checkpoint = last.pt, evaluation protocol and caps)",
+  "runs": "v2_causal_g{1,2,8}_s{0,1}_e20 (new; train_v2.py --config causal_g<g>), shared v2_stock_s{0,1}_e20, v2_causal_g4_s{0,1}_e20, v2_sym_g4_s{0,1}_e20; any shared run the v2 campaign skipped (futility) is trained by C2 if C2's own rules need it",
+  "seeds": [0, 1],
+  "primary_metric": "CST drone AP50 on the official corpus-v2 CST val split (as v2)",
+  "secondary": ["Anti-UAV drone AP50 (non-inferiority, margin 0.02)", "CST drone AP50 per scene category", "CST drone-micro AP50", "pooled drone AP50", "detector cost: latency is identical across windows (same network); the look-ahead is 0 for every causal arm"],
+  "rules": {
+    "W1_superiority_vs_stock": "per causal window, the v2 superiority rule: seed-mean delta > 0.02; delta > 0 for every seed; paired, dataset-stratified, sequence-level bootstrap 95 % CI of the seed-mean delta excludes 0 (B = 1000); seed-mean Anti-UAV delta > -0.02",
+    "W2_gap_dependence": "descriptive: seed-mean CST AP50 and its CI for g = 1, 2, 4, 8, with stock and sym_g4 as reference lines",
+    "W3_cost_of_causality": "the best causal window (highest seed-mean CST AP50 among the W1-superior ones) vs sym_g4: v2 non-inferiority rule (margin 0.02, conclusive only if the CI lower bound >= -0.02)",
+    "selection_for_the_causal_system": "the W1-superior causal window with the highest seed-mean CST AP50; if none is W1-superior, the causal system uses the single-frame detector (stock). Winner's-curse note: the selected window's VAL delta is optimistic; only a TEST pass can confirm it"
+  },
+  "run_order": [
+    "after the v2 campaign, its post-v2 chain and the Anti-UAV H3 remainder (GPU queue)",
+    "stage 1: v2_causal_g1_s0, v2_causal_g2_s0, v2_causal_g8_s0 (train, evaluate on corpus-v2 VAL)",
+    "futility after stage 1: a window whose seed-0 CST delta vs v2_stock_s0 is <= 0 cannot satisfy W1 rule (2) and is not run at seed 1",
+    "stage 2: seed 1 of the surviving windows (and of any shared run the rules need that v2 skipped)",
+    "analysis: experiments/aerotrack_temporal/scripts/analyze_c2.py (rule-driven) -> reports/C2_causal_windows.{json,md}"
+  ],
+  "component_gate": {
+    "measured_failure": "the only supported temporal gain (symmetric g4) costs 160 ms of look-ahead; the single-frame detector misses tiny / low-contrast targets (CST micro, urban-areas / water failures in the v1 test)",
+    "why": "a tiny target's appearance in one frame is weak; its motion against the background over several frames is the signal, and the useful reach depends on target speed and camera motion",
+    "baseline": "stock single frame (same network, same recipe); the symmetric window as the non-causal upper reference",
+    "novelty": "a controlled gap sweep of zero-look-ahead windows for tiny-UAV detection on a complete corpus, with seeds and paired CIs (input stacking itself is standard)",
+    "cost": "zero extra parameters except the 6 extra stem input channels already present in every 9-channel arm; latency identical to stock apart from frame buffering; no look-ahead",
+    "isolating_ablation": "the window is the only factor that changes between arms",
+    "rtx5050": "yes (same network as the deployed g4 detector: TensorRT fp16 model p99 5.5 ms)",
+    "exportable": "yes (same ONNX graph as the exported g4 detector)",
+    "falsifier": "no causal window satisfies W1 (then the deployable causal system is single-frame and the temporal gain needs look-ahead or a different mechanism)"
+  },
+  "estimated_gpu_hours": "6.6 (stage 1) + up to 11 (stage 2)",
+  "hardware": "local OMEN RTX 5050 Laptop (HPC access unavailable)",
+  "outputs": "runs/v2_causal_g*_s*_e20/ ; experiments/aerotrack_v2/reports/v2_results.json rows ; experiments/aerotrack_temporal/reports/C2_causal_windows.{json,md}"
+}

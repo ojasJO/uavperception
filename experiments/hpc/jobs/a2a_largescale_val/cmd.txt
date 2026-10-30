@@ -1,0 +1,1 @@
+python experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt --split val --modality IR && python experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt --split val --modality RGB

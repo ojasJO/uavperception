@@ -1,0 +1,1 @@
+python tools/hpc/extract_cst.py --archives /home/y_rajeshwar/aerotrack_server/shared_data/source_archives/2_cst-antiuav --out /home/y_rajeshwar/aerotrack_server/reports/hpc/m3_cst_extraction.json

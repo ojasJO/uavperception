@@ -1,0 +1,170 @@
+Evaluating v3_n__causal_g4_cst_s1_e20-ste
+Evaluating v3_n__causal_g4_cst_s1_e20-argmax
+Evaluating v3_n__causal_g4_cst_s2_e20-ste
+Evaluating v3_n__causal_g4_cst_s2_e20-argmax
+Evaluating v3_n__ttt_cst_s0_e20-ste
+Evaluating v3_n__ttt_cst_s0_e20-argmax
+Evaluating v3_n__ttt_cst_s1_e20-ste
+Evaluating v3_n__ttt_cst_s1_e20-argmax
+Evaluating v3_n__ttt_cst_s2_e20-ste
+Evaluating v3_n__ttt_cst_s2_e20-argmax
+Evaluating v3_n__causal_g4_cst_s0_e20-ste
+Evaluating v3_n__causal_g4_cst_s0_e20-argmax
+[Overall]         Tracker name   Experiments metric: Scores
+[Overall] v3_n__causal_g4_cst_s1_e20-ste       State accuracy: 0.6026
+[Overall] v3_n__causal_g4_cst_s1_e20-argmax       State accuracy: 0.5968
+[Overall] v3_n__causal_g4_cst_s2_e20-ste       State accuracy: 0.6060
+[Overall] v3_n__causal_g4_cst_s2_e20-argmax       State accuracy: 0.6049
+[Overall] v3_n__ttt_cst_s0_e20-ste       State accuracy: 0.4683
+[Overall] v3_n__ttt_cst_s0_e20-argmax       State accuracy: 0.4868
+[Overall] v3_n__ttt_cst_s1_e20-ste       State accuracy: 0.4981
+[Overall] v3_n__ttt_cst_s1_e20-argmax       State accuracy: 0.5129
+[Overall] v3_n__ttt_cst_s2_e20-ste       State accuracy: 0.4979
+[Overall] v3_n__ttt_cst_s2_e20-argmax       State accuracy: 0.4926
+[Overall] v3_n__causal_g4_cst_s0_e20-ste       State accuracy: 0.6008
+[Overall] v3_n__causal_g4_cst_s0_e20-argmax       State accuracy: 0.5970
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste            Occlusion: 0.5781
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste          Out-of-View: 0.5937
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste      Scale Variation: 0.6026
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste    Thermal Crossover: 0.5997
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste Dynamic Background Clutter: 0.5676
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste Complex Dynamic Background: 0.5428
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste          Fast Motion: 0.5533
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste            Tiny Size: 0.5928
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste           Small Size: 0.6026
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste          Medium Size: 0.5615
+[Attribute] v3_n__causal_g4_cst_s1_e20-ste          Normal Size: 0.5857
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax            Occlusion: 0.5790
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax          Out-of-View: 0.5911
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax      Scale Variation: 0.5968
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax    Thermal Crossover: 0.5940
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax Dynamic Background Clutter: 0.5671
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax Complex Dynamic Background: 0.5373
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax          Fast Motion: 0.5605
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax            Tiny Size: 0.5885
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax           Small Size: 0.5968
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax          Medium Size: 0.5576
+[Attribute] v3_n__causal_g4_cst_s1_e20-argmax          Normal Size: 0.5814
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste            Occlusion: 0.5841
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste          Out-of-View: 0.5950
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste      Scale Variation: 0.6060
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste    Thermal Crossover: 0.6037
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste Dynamic Background Clutter: 0.5688
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste Complex Dynamic Background: 0.5470
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste          Fast Motion: 0.5592
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste            Tiny Size: 0.5982
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste           Small Size: 0.6060
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste          Medium Size: 0.5637
+[Attribute] v3_n__causal_g4_cst_s2_e20-ste          Normal Size: 0.6242
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax            Occlusion: 0.5891
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax          Out-of-View: 0.5971
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax      Scale Variation: 0.6049
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax    Thermal Crossover: 0.6025
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax Dynamic Background Clutter: 0.5712
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax Complex Dynamic Background: 0.5551
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax          Fast Motion: 0.5646
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax            Tiny Size: 0.5980
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax           Small Size: 0.6049
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax          Medium Size: 0.5638
+[Attribute] v3_n__causal_g4_cst_s2_e20-argmax          Normal Size: 0.6182
+[Attribute] v3_n__ttt_cst_s0_e20-ste            Occlusion: 0.4571
+[Attribute] v3_n__ttt_cst_s0_e20-ste          Out-of-View: 0.4556
+[Attribute] v3_n__ttt_cst_s0_e20-ste      Scale Variation: 0.4683
+[Attribute] v3_n__ttt_cst_s0_e20-ste    Thermal Crossover: 0.4693
+[Attribute] v3_n__ttt_cst_s0_e20-ste Dynamic Background Clutter: 0.4359
+[Attribute] v3_n__ttt_cst_s0_e20-ste Complex Dynamic Background: 0.3810
+[Attribute] v3_n__ttt_cst_s0_e20-ste          Fast Motion: 0.4645
+[Attribute] v3_n__ttt_cst_s0_e20-ste            Tiny Size: 0.4598
+[Attribute] v3_n__ttt_cst_s0_e20-ste           Small Size: 0.4683
+[Attribute] v3_n__ttt_cst_s0_e20-ste          Medium Size: 0.3864
+[Attribute] v3_n__ttt_cst_s0_e20-ste          Normal Size: 0.4613
+[Attribute] v3_n__ttt_cst_s0_e20-argmax            Occlusion: 0.4721
+[Attribute] v3_n__ttt_cst_s0_e20-argmax          Out-of-View: 0.4799
+[Attribute] v3_n__ttt_cst_s0_e20-argmax      Scale Variation: 0.4868
+[Attribute] v3_n__ttt_cst_s0_e20-argmax    Thermal Crossover: 0.4881
+[Attribute] v3_n__ttt_cst_s0_e20-argmax Dynamic Background Clutter: 0.4468
+[Attribute] v3_n__ttt_cst_s0_e20-argmax Complex Dynamic Background: 0.4101
+[Attribute] v3_n__ttt_cst_s0_e20-argmax          Fast Motion: 0.4876
+[Attribute] v3_n__ttt_cst_s0_e20-argmax            Tiny Size: 0.4841
+[Attribute] v3_n__ttt_cst_s0_e20-argmax           Small Size: 0.4868
+[Attribute] v3_n__ttt_cst_s0_e20-argmax          Medium Size: 0.4082
+[Attribute] v3_n__ttt_cst_s0_e20-argmax          Normal Size: 0.4631
+[Attribute] v3_n__ttt_cst_s1_e20-ste            Occlusion: 0.4799
+[Attribute] v3_n__ttt_cst_s1_e20-ste          Out-of-View: 0.4792
+[Attribute] v3_n__ttt_cst_s1_e20-ste      Scale Variation: 0.4981
+[Attribute] v3_n__ttt_cst_s1_e20-ste    Thermal Crossover: 0.4940
+[Attribute] v3_n__ttt_cst_s1_e20-ste Dynamic Background Clutter: 0.4613
+[Attribute] v3_n__ttt_cst_s1_e20-ste Complex Dynamic Background: 0.4543
+[Attribute] v3_n__ttt_cst_s1_e20-ste          Fast Motion: 0.4881
+[Attribute] v3_n__ttt_cst_s1_e20-ste            Tiny Size: 0.4932
+[Attribute] v3_n__ttt_cst_s1_e20-ste           Small Size: 0.4981
+[Attribute] v3_n__ttt_cst_s1_e20-ste          Medium Size: 0.4169
+[Attribute] v3_n__ttt_cst_s1_e20-ste          Normal Size: 0.4873
+[Attribute] v3_n__ttt_cst_s1_e20-argmax            Occlusion: 0.5046
+[Attribute] v3_n__ttt_cst_s1_e20-argmax          Out-of-View: 0.5015
+[Attribute] v3_n__ttt_cst_s1_e20-argmax      Scale Variation: 0.5129
+[Attribute] v3_n__ttt_cst_s1_e20-argmax    Thermal Crossover: 0.5104
+[Attribute] v3_n__ttt_cst_s1_e20-argmax Dynamic Background Clutter: 0.4810
+[Attribute] v3_n__ttt_cst_s1_e20-argmax Complex Dynamic Background: 0.4727
+[Attribute] v3_n__ttt_cst_s1_e20-argmax          Fast Motion: 0.4999
+[Attribute] v3_n__ttt_cst_s1_e20-argmax            Tiny Size: 0.5098
+[Attribute] v3_n__ttt_cst_s1_e20-argmax           Small Size: 0.5129
+[Attribute] v3_n__ttt_cst_s1_e20-argmax          Medium Size: 0.4325
+[Attribute] v3_n__ttt_cst_s1_e20-argmax          Normal Size: 0.4992
+[Attribute] v3_n__ttt_cst_s2_e20-ste            Occlusion: 0.4842
+[Attribute] v3_n__ttt_cst_s2_e20-ste          Out-of-View: 0.4829
+[Attribute] v3_n__ttt_cst_s2_e20-ste      Scale Variation: 0.4979
+[Attribute] v3_n__ttt_cst_s2_e20-ste    Thermal Crossover: 0.4926
+[Attribute] v3_n__ttt_cst_s2_e20-ste Dynamic Background Clutter: 0.4673
+[Attribute] v3_n__ttt_cst_s2_e20-ste Complex Dynamic Background: 0.4591
+[Attribute] v3_n__ttt_cst_s2_e20-ste          Fast Motion: 0.4892
+[Attribute] v3_n__ttt_cst_s2_e20-ste            Tiny Size: 0.4954
+[Attribute] v3_n__ttt_cst_s2_e20-ste           Small Size: 0.4979
+[Attribute] v3_n__ttt_cst_s2_e20-ste          Medium Size: 0.4048
+[Attribute] v3_n__ttt_cst_s2_e20-ste          Normal Size: 0.4467
+[Attribute] v3_n__ttt_cst_s2_e20-argmax            Occlusion: 0.4886
+[Attribute] v3_n__ttt_cst_s2_e20-argmax          Out-of-View: 0.4888
+[Attribute] v3_n__ttt_cst_s2_e20-argmax      Scale Variation: 0.4926
+[Attribute] v3_n__ttt_cst_s2_e20-argmax    Thermal Crossover: 0.4920
+[Attribute] v3_n__ttt_cst_s2_e20-argmax Dynamic Background Clutter: 0.4599
+[Attribute] v3_n__ttt_cst_s2_e20-argmax Complex Dynamic Background: 0.4405
+[Attribute] v3_n__ttt_cst_s2_e20-argmax          Fast Motion: 0.4996
+[Attribute] v3_n__ttt_cst_s2_e20-argmax            Tiny Size: 0.4907
+[Attribute] v3_n__ttt_cst_s2_e20-argmax           Small Size: 0.4926
+[Attribute] v3_n__ttt_cst_s2_e20-argmax          Medium Size: 0.4086
+[Attribute] v3_n__ttt_cst_s2_e20-argmax          Normal Size: 0.4487
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste            Occlusion: 0.5834
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste          Out-of-View: 0.5901
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste      Scale Variation: 0.6008
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste    Thermal Crossover: 0.5994
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste Dynamic Background Clutter: 0.5756
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste Complex Dynamic Background: 0.5424
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste          Fast Motion: 0.5668
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste            Tiny Size: 0.5880
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste           Small Size: 0.6008
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste          Medium Size: 0.5845
+[Attribute] v3_n__causal_g4_cst_s0_e20-ste          Normal Size: 0.6415
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax            Occlusion: 0.5809
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax          Out-of-View: 0.5885
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax      Scale Variation: 0.5970
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax    Thermal Crossover: 0.5965
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax Dynamic Background Clutter: 0.5666
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax Complex Dynamic Background: 0.5387
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax          Fast Motion: 0.5638
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax            Tiny Size: 0.5858
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax           Small Size: 0.5970
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax          Medium Size: 0.5730
+[Attribute] v3_n__causal_g4_cst_s0_e20-argmax          Normal Size: 0.6307
+Saving state accuracy scores to A:\AEROTRACK_OMEN\experiments\cst_anti_uav\reports\X2_test_official\toolkit_reports\CSTAntiUAV\test\state_accuracy_scores.txt
+Evaluating v3_n__causal_g4_cst_s1_e20-ste
+Evaluating v3_n__causal_g4_cst_s1_e20-argmax
+Evaluating v3_n__causal_g4_cst_s2_e20-ste
+Evaluating v3_n__causal_g4_cst_s2_e20-argmax
+Evaluating v3_n__ttt_cst_s0_e20-ste
+Evaluating v3_n__ttt_cst_s0_e20-argmax
+Evaluating v3_n__ttt_cst_s1_e20-ste
+Evaluating v3_n__ttt_cst_s1_e20-argmax
+Evaluating v3_n__ttt_cst_s2_e20-ste
+Evaluating v3_n__ttt_cst_s2_e20-argmax
+Evaluating v3_n__causal_g4_cst_s0_e20-ste
+Evaluating v3_n__causal_g4_cst_s0_e20-argmax

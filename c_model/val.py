@@ -77,7 +77,16 @@ def main():
             "cross-domain\n  measurement. Spend it once, at the end, on the "
             "final model — not while tuning.\n")
 
-    device = require_gpu()
+    if torch.cuda.is_available():
+        device = require_gpu()
+    else:
+        print("\n" + "=" * 78)
+        print("[NOTICE] No active CUDA GPU detected.")
+        print("         HP OMEN laptops disable the RTX 5050 when running on battery (Eco Mode).")
+        print("         -> PLUG IN YOUR LAPTOP CHARGER (AC adapter) to run on NVIDIA RTX 5050 GPU.")
+        print("         Continuing evaluation on CPU...")
+        print("=" * 78 + "\n")
+        device = torch.device("cpu")
     w = Path(args.weights)
     if not w.exists():
         raise SystemExit(f"\n[ABORT] weights not found: {w}\n"
@@ -100,7 +109,7 @@ def main():
     safe_workers = min(args.workers, 2) if os.name == "nt" else args.workers
     val_workers = plan_workers(safe_workers, reserve_gb=6.0, verbose=False)
     dl = DataLoader(ds, batch_size=args.batch, shuffle=False,
-                    num_workers=val_workers, pin_memory=True,
+                    num_workers=val_workers, pin_memory=(device.type == "cuda"),
                     collate_fn=aerotrack_collate, worker_init_fn=_worker_init)
 
     model, ck = load_checkpoint(w, device, prefer_ema=not args.no_ema)
@@ -111,7 +120,8 @@ def main():
     print(f"[val] split={args.split}  {len(ds):,} images  "
           f"{dict(Counter(s['dataset'] for s in samples))}")
 
-    amp = torch.bfloat16 if torch.cuda.is_bf16_supported() else None
+    from precision import amp_dtype as _amp_dtype
+    amp = _amp_dtype()          # bf16 on sm>=8.0, fp16 on the V100 (D-2026-10-06-04)
     try:
         recs = E.collect_records(model, dl, device, imgsz=args.imgsz, conf=args.conf,
                                  iou=args.iou, max_det=args.max_det, amp_dtype=amp)

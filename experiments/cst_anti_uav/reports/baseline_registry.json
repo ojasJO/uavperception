@@ -1,0 +1,102 @@
+{
+  "purpose": "every method that appears in a CST Anti-UAV table of this study: what it is, what it was trained on, how it is initialised and scored, and which file pins it",
+  "protocol": "one-pass evaluation from the GT box of frame 0; state accuracy (paper Eq. 1) by the official toolkit github.com/PCwenyue/CST-Anti-UAV @ bd92b984 (experiments/cst_anti_uav/scripts/official_eval.py); 60 CST test sequences",
+  "released_baselines": {
+    "source": "authors' released CST-trained predictions TrainedCST.zip (Google Drive file 1APnukttZsoeFzRrsTYQY0aWxAlqU3QQU), 17,436,199 bytes, sha256 1c886465697be55d0a9ee3f7682ad37fb6afb367ab2cb4eae2ede51b577fbccd; per-file sha256 in official_reproduction_test/official_scores.json",
+    "training_data": "CST train (120 sequences), official implementations, pre-trained models and default configurations (paper section 4.1); checkpoints not released",
+    "initialisation": "GT box of frame 0 (OPE)",
+    "trackers": [
+      "GlobalTrack",
+      "SiamDT",
+      "PrDiMP",
+      "MixformerV2",
+      "AQATrack",
+      "RomTrack",
+      "GRM",
+      "DropTrack",
+      "AiATrack",
+      "SeqTrack",
+      "Refocus-TIR",
+      "Mixformer",
+      "OSTrack_256",
+      "KYS",
+      "Stark_st",
+      "HIPTrack",
+      "OSTrack_384",
+      "ARTrack_384",
+      "ARTrack_256",
+      "Stark_s",
+      "Tomp"
+    ],
+    "missing_from_archive": [
+      "ARTrackV2 (Table 3: 22.14)",
+      "STFTrack (listed in utils/trackers.py, not in the paper's tables)"
+    ],
+    "evaluation_command": "venv\\Scripts\\python.exe experiments\\cst_anti_uav\\scripts\\official_eval.py --published --subset test --out experiments\\cst_anti_uav\\reports\\official_reproduction_test",
+    "verified": "all 21 reproduce Table 3 mSA / P / S to rounding (report_reproduction.py exits non-zero otherwise)"
+  },
+  "aerotrack": {
+    "common": {
+      "tracker": "experiments/systems/scripts/ste.py (single-target state estimator: constant-velocity Kalman filter on cached detections, Mahalanobis gate, coasting, re-acquisition, absence) and argmax (best detection >= thr, else absent); experiments/systems/scripts/track_eval.py::run_tracker",
+      "detector": "YOLO11n as built in this project (network 'n', 9-channel window stem, function-preserving init from COCO yolo11n.pt), letterbox 640, fp16 on the V100; detections cached with conf >= 0.01, NMS IoU 0.7, max_det 10 (experiments/systems/scripts/cache_detections.py)",
+      "initialisation": "STE.reset(GT box of frame 0); no later GT; causal window frames (t-4, t, t-8) or the single frame (t, t, t)",
+      "settings": "tuned on CST VAL (official 40 sequences), frozen and committed before TEST"
+    },
+    "runs": {
+      "v3_n__causal_g4_cst_s0_e20": {
+        "role": "X1 candidate (protocol-matched, CST train only)",
+        "weights_sha256": "e52a5645b8520c62e1f8c05775049aadc56bd3ab0717e17135bab131ac66f69b",
+        "trained": "HPC node02, PBS 92973, commit 168c27d, 2026-10-10 (44.7 min)",
+        "frozen_settings": "experiments/aerotrack_v3/frozen_x1_params.json (sha256 c534211b...)",
+        "registration": "experiments/aerotrack_v3/preregistration_X1_cst_protocol_matched.json (+ amendment X1-A1)",
+        "test_command": "python experiments/aerotrack_v3/scripts/x1_final.py --final-eval; then (OMEN) analyze_test.py --x1",
+        "test": "X1 single pass PBS 93019: official STE mSA 60.08 (argmax 59.70); reused as X2 seed 0, never re-scored"
+      },
+      "v3_n__causal_g4_cst_s1_e20": {
+        "role": "X2 seed",
+        "weights_sha256": "b716d1aeccd754a10e97b15718d4f601cccfb57b3448a90eceb141d24fb08ebf",
+        "trained": "HPC node02, PBS 93016, 2026-10-12, one attempt, exit 0",
+        "frozen_settings": "experiments/cst_anti_uav/frozen_x2_params.json (commit 3ffee11)",
+        "registration": "experiments/cst_anti_uav/preregistration/X2_seeds_single_frame.json",
+        "test": "X2 single pass PBS 93029: official STE mSA 60.26 (argmax 59.68)"
+      },
+      "v3_n__causal_g4_cst_s2_e20": {
+        "role": "X2 seed",
+        "weights_sha256": "5f5c9e400d5b6b8c7369ebc354833dbae25b4af7a72de238056ab8a1be71f1cb",
+        "trained": "HPC node02, PBS 93018, 2026-10-12, one attempt, exit 0",
+        "frozen_settings": "experiments/cst_anti_uav/frozen_x2_params.json (commit 3ffee11)",
+        "registration": "experiments/cst_anti_uav/preregistration/X2_seeds_single_frame.json",
+        "test": "X2 single pass PBS 93029: official STE mSA 60.60 (argmax 60.49)"
+      },
+      "v3_n__ttt_cst_s0_e20": {
+        "role": "X2 single-frame control",
+        "weights_sha256": "c04cba2654878b84be4b0c53641fd2fcad78289d678e8765408d4c2eb4b3c1af",
+        "trained": "HPC node02, PBS 93016, 2026-10-12, one attempt, exit 0",
+        "frozen_settings": "experiments/cst_anti_uav/frozen_x2_params.json (commit 3ffee11)",
+        "registration": "experiments/cst_anti_uav/preregistration/X2_seeds_single_frame.json",
+        "test": "X2 single pass PBS 93029: official STE mSA 46.83 (argmax 48.68)"
+      },
+      "v3_n__ttt_cst_s1_e20": {
+        "role": "X2 single-frame control",
+        "weights_sha256": "ee3da997f79cc0c3335d1085ede610cccde7c6cb613df0e113e1b432f8d0161b",
+        "trained": "HPC node02, PBS 93018, 2026-10-12, one attempt, exit 0",
+        "frozen_settings": "experiments/cst_anti_uav/frozen_x2_params.json (commit 3ffee11)",
+        "registration": "experiments/cst_anti_uav/preregistration/X2_seeds_single_frame.json",
+        "test": "X2 single pass PBS 93029: official STE mSA 49.81 (argmax 51.29)"
+      },
+      "v3_n__ttt_cst_s2_e20": {
+        "role": "X2 single-frame control",
+        "weights_sha256": "3b062e497f47282b92441dc89cc4f284c8ec13e699b393f4c226b0bbe123e675",
+        "trained": "HPC node02, PBS 93016, 2026-10-12, one attempt, exit 0",
+        "frozen_settings": "experiments/cst_anti_uav/frozen_x2_params.json (commit 3ffee11)",
+        "registration": "experiments/cst_anti_uav/preregistration/X2_seeds_single_frame.json",
+        "test": "X2 single pass PBS 93029: official STE mSA 49.79 (argmax 49.26)"
+      },
+      "v2_causal_g4_s0_e20": {
+        "role": "NOT protocol-matched (trained on CST + Anti-UAV + Det-Fly); system experiment only",
+        "weights_sha256": "1118cf3290ae8bcfdd763bc1f83a1651f5c5bc754fd3e3a92fa2f1b8548d4452",
+        "test": "v2 final TEST, CST STE mSA 56.55 (experiments/aerotrack_v2/hpc/reports/final_test.json)"
+      }
+    }
+  }
+}

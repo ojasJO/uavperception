@@ -1,0 +1,1 @@
+export AEROTRACK_WORKERS=12; python -u experiments/cst_anti_uav/scripts/run_x2.py --val-design

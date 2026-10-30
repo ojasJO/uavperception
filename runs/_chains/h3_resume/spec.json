@@ -1,0 +1,26 @@
+{
+ "name": "h3_resume",
+ "purpose": "Track A: resume the registered H3 runner (DFSC arm, 4 evaluations, analysis) after it yielded the GPU to the v2 campaign at the arm boundary; the pause flag is kept (renamed), not deleted",
+ "state_dir": "runs/_chains/h3_resume",
+ "wait_for": "runs/_chains/post_v2_causal_caches",
+ "jobs": [
+  {
+   "name": "consume_pause_flag",
+   "required": true,
+   "cmd": [
+    "{python}",
+    "-c",
+    "import pathlib,time; d=pathlib.Path('experiments/anti_uav/runs/_h3_optimisation'); f=d/'PAUSE_AFTER_ARM'; f.exists() and f.rename(d/('PAUSE_AFTER_ARM.consumed_'+time.strftime('%Y%m%dT%H%M%S'))); print('pause flag consumed' if not f.exists() else 'flag still present')"
+   ]
+  },
+  {
+   "name": "run_h3",
+   "required": true,
+   "cmd": [
+    "{python}",
+    "-u",
+    "experiments/anti_uav/scripts/run_h3.py"
+   ]
+  }
+ ]
+}

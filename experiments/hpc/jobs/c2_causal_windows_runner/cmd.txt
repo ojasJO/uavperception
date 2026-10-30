@@ -1,0 +1,1 @@
+AEROTRACK_WORKERS=12 python -u experiments/aerotrack_temporal/scripts/run_c2.py

@@ -1,0 +1,325 @@
+{
+ "c1c_tfm_domtok_s0": {
+  "variant": "domtok",
+  "seed": 0,
+  "dom_tok": true,
+  "domains": [
+   "antiuav_IR",
+   "antiuav_RGB",
+   "cst"
+  ],
+  "best_epoch": 11,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T01:47:51+0530",
+  "dev_px": {
+   "antiuav_IR": {
+    "nll": 9.600793690066633,
+    "ade_px": 45.16812816800751
+   },
+   "antiuav_RGB": {
+    "nll": 10.808455062840247,
+    "ade_px": 91.68185782416053
+   },
+   "cst": {
+    "nll": 5.16516011004789,
+    "ade_px": 5.581285545126447
+   }
+  },
+  "sha256": "d0ca597f40bab2e667ffac4a78deeddd1b1e6da569f70de9e2b16e425abdee18"
+ },
+ "c1c_tfm_domtok_s1": {
+  "variant": "domtok",
+  "seed": 1,
+  "dom_tok": true,
+  "domains": [
+   "antiuav_IR",
+   "antiuav_RGB",
+   "cst"
+  ],
+  "best_epoch": 10,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T01:53:17+0530",
+  "dev_px": {
+   "antiuav_IR": {
+    "nll": 9.551356181577175,
+    "ade_px": 45.366312627726764
+   },
+   "antiuav_RGB": {
+    "nll": 10.791841948341967,
+    "ade_px": 92.30459725140103
+   },
+   "cst": {
+    "nll": 5.269889030011498,
+    "ade_px": 5.648133460884072
+   }
+  },
+  "sha256": "978c7323b4bd89e9ece6366a15ce83ebe01cbde0ab07e2e106888cec2171de17"
+ },
+ "c1c_tfm_domtok_s2": {
+  "variant": "domtok",
+  "seed": 2,
+  "dom_tok": true,
+  "domains": [
+   "antiuav_IR",
+   "antiuav_RGB",
+   "cst"
+  ],
+  "best_epoch": 9,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T01:58:45+0530",
+  "dev_px": {
+   "antiuav_IR": {
+    "nll": 9.482456561390276,
+    "ade_px": 45.089266486245904
+   },
+   "antiuav_RGB": {
+    "nll": 10.787494697132706,
+    "ade_px": 92.83772070814791
+   },
+   "cst": {
+    "nll": 5.2480232807452465,
+    "ade_px": 5.651188442011503
+   }
+  },
+  "sha256": "a1f2e63c74c92ad70d1c55ae69f5747d5dbf80376cd40222c6698ff9278b53c9"
+ },
+ "c1c_tfm_perdom_antiuav_IR_s0": {
+  "variant": "perdom",
+  "seed": 0,
+  "dom_tok": false,
+  "domains": [
+   "antiuav_IR"
+  ],
+  "best_epoch": 5,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:00:46+0530",
+  "dev_px": {
+   "antiuav_IR": {
+    "nll": 9.581696822852136,
+    "ade_px": 48.37716009624503
+   }
+  },
+  "sha256": "b9e12f6c91857f74b95b9f9439cbaccd1707810aa8d508c77bd8fe0d04eb2734"
+ },
+ "c1c_tfm_perdom_antiuav_IR_s1": {
+  "variant": "perdom",
+  "seed": 1,
+  "dom_tok": false,
+  "domains": [
+   "antiuav_IR"
+  ],
+  "best_epoch": 8,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:02:45+0530",
+  "dev_px": {
+   "antiuav_IR": {
+    "nll": 9.528639116790451,
+    "ade_px": 46.16324581366391
+   }
+  },
+  "sha256": "72b131c20ac917846c80f7944eacc4f5dbaf9d515744494994c8d7962d5a1c7b"
+ },
+ "c1c_tfm_perdom_antiuav_IR_s2": {
+  "variant": "perdom",
+  "seed": 2,
+  "dom_tok": false,
+  "domains": [
+   "antiuav_IR"
+  ],
+  "best_epoch": 5,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:04:45+0530",
+  "dev_px": {
+   "antiuav_IR": {
+    "nll": 9.363314197354214,
+    "ade_px": 47.60355880089709
+   }
+  },
+  "sha256": "e185a379ed8d514ee17cb9397099df150c1e08cf0c0cb2b01a8db0a34af369e2"
+ },
+ "c1c_tfm_perdom_antiuav_RGB_s0": {
+  "variant": "perdom",
+  "seed": 0,
+  "dom_tok": false,
+  "domains": [
+   "antiuav_RGB"
+  ],
+  "best_epoch": 9,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:06:41+0530",
+  "dev_px": {
+   "antiuav_RGB": {
+    "nll": 10.870960920363096,
+    "ade_px": 94.14539489068373
+   }
+  },
+  "sha256": "e9cb3d191ca8a73ed5c82474bb7b484c78315d10e282daa8b45712f6b6aa8c63"
+ },
+ "c1c_tfm_perdom_antiuav_RGB_s1": {
+  "variant": "perdom",
+  "seed": 1,
+  "dom_tok": false,
+  "domains": [
+   "antiuav_RGB"
+  ],
+  "best_epoch": 11,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:08:36+0530",
+  "dev_px": {
+   "antiuav_RGB": {
+    "nll": 10.834400522903415,
+    "ade_px": 93.39640779065968
+   }
+  },
+  "sha256": "fb2c6782a2f55b12f603fc2ab8d6699bea3a1385f7954db2be3afa0c520de6d5"
+ },
+ "c1c_tfm_perdom_antiuav_RGB_s2": {
+  "variant": "perdom",
+  "seed": 2,
+  "dom_tok": false,
+  "domains": [
+   "antiuav_RGB"
+  ],
+  "best_epoch": 9,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:10:30+0530",
+  "dev_px": {
+   "antiuav_RGB": {
+    "nll": 10.831912416145213,
+    "ade_px": 93.09884029945444
+   }
+  },
+  "sha256": "9b6a33dec9c6e10da69488ba94fed861d1d832b114fce193decf409f83a46a58"
+ },
+ "c1c_tfm_perdom_cst_s0": {
+  "variant": "perdom",
+  "seed": 0,
+  "dom_tok": false,
+  "domains": [
+   "cst"
+  ],
+  "best_epoch": 6,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:12:00+0530",
+  "dev_px": {
+   "cst": {
+    "nll": 5.177004386406331,
+    "ade_px": 5.54980201101519
+   }
+  },
+  "sha256": "623809734a60668db7d424981b53805a0eab7e03a656491498c0f87a9e767072"
+ },
+ "c1c_tfm_perdom_cst_s1": {
+  "variant": "perdom",
+  "seed": 1,
+  "dom_tok": false,
+  "domains": [
+   "cst"
+  ],
+  "best_epoch": 12,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:13:30+0530",
+  "dev_px": {
+   "cst": {
+    "nll": 5.179325058726333,
+    "ade_px": 5.471961400728727
+   }
+  },
+  "sha256": "80458020a7a9500ddef50ebb046e2bb385e8c9570041f03fd29f184055a4b224"
+ },
+ "c1c_tfm_perdom_cst_s2": {
+  "variant": "perdom",
+  "seed": 2,
+  "dom_tok": false,
+  "domains": [
+   "cst"
+  ],
+  "best_epoch": 9,
+  "L": 16,
+  "H": 24,
+  "epochs": 12,
+  "arch": "tfm",
+  "abs_pos": true,
+  "aug": false,
+  "trained": "2026-10-12T02:14:59+0530",
+  "dev_px": {
+   "cst": {
+    "nll": 5.230589876674812,
+    "ade_px": 5.5169276250114
+   }
+  },
+  "sha256": "8104ca5a1e6f14e1ab0c6bd8bf2f9a839233b3f8af0ecf1bdfd2ca9cbaca9887"
+ },
+ "_choice": {
+  "antiuav_IR": {
+   "arm": "perdom",
+   "dev_nll_domtok": 9.54486881101136,
+   "dev_nll_perdom": 9.491216712332267
+  },
+  "antiuav_RGB": {
+   "arm": "domtok",
+   "dev_nll_domtok": 10.795930569438307,
+   "dev_nll_perdom": 10.845757953137243
+  },
+  "cst": {
+   "arm": "perdom",
+   "dev_nll_domtok": 5.227690806934878,
+   "dev_nll_perdom": 5.195639773935825
+  }
+ }
+}

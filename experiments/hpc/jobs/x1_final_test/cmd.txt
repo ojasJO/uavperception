@@ -1,0 +1,1 @@
+export AEROTRACK_WORKERS=12; python -u experiments/aerotrack_v3/scripts/x1_final.py --final-eval

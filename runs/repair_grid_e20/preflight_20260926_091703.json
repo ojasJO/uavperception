@@ -1,0 +1,470 @@
+{
+  "timestamp": "2026-09-26T09:13:00+0530",
+  "epochs": 20,
+  "batch": 32,
+  "workers": 4,
+  "checks": [
+    {
+      "name": "python/venv",
+      "ok": true,
+      "fatal": true,
+      "detail": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe (Python 3.11.9)"
+    },
+    {
+      "name": "packages",
+      "ok": true,
+      "fatal": true,
+      "detail": "torch 2.13.0+cu130, torchvision 0.28.0+cu130, ultralytics 8.4.115, numpy 2.4.6, cv2 5.0.0, psutil 7.2.2, matplotlib 3.11.1, pandas 3.0.5, yaml 6.0.3, PIL 12.3.0"
+    },
+    {
+      "name": "CUDA",
+      "ok": true,
+      "fatal": true,
+      "detail": "NVIDIA GeForce RTX 5050 Laptop GPU sm_120 (in wheel: True), CUDA 13.0, kernel launch ok: True, bf16: True"
+    },
+    {
+      "name": "VRAM",
+      "ok": true,
+      "fatal": true,
+      "detail": "6.84 GB free of 7.96 GB (batch-32 peak ~4.8 GB; T8 wants 1.5 GB headroom on real batches); nvidia-smi: 592.19, 981 MiB, 8151 MiB, 45, 27.33 W, P0"
+    },
+    {
+      "name": "no other GPU job",
+      "ok": true,
+      "fatal": true,
+      "detail": "none"
+    },
+    {
+      "name": "jupyter kernels",
+      "ok": true,
+      "fatal": false,
+      "detail": "2 running (not GPU clients now, but one could claim VRAM mid-run)"
+    },
+    {
+      "name": "data files",
+      "ok": true,
+      "fatal": true,
+      "detail": "manifest bd7c1ec29ba8 / splits 893026dfbc1a match the registered val set 6fb41d44d45b (cap 5000, 11565 images)"
+    },
+    {
+      "name": "image files",
+      "ok": true,
+      "fatal": true,
+      "detail": "767/767 sampled image paths exist {'test': 246, 'train': 394, 'val': 127}"
+    },
+    {
+      "name": "model files",
+      "ok": true,
+      "fatal": true,
+      "detail": "yolo11-spd.yaml, yolo11-stride.yaml, yolo11n.pt 0ebbc80d4a76"
+    },
+    {
+      "name": "historical checkpoints",
+      "ok": true,
+      "fatal": true,
+      "detail": "v1 + v2 best/last present and hash-identical to their val rows"
+    },
+    {
+      "name": "disk",
+      "ok": true,
+      "fatal": true,
+      "detail": "156 GB free on A:\\ (need >= 20; the grid writes < 2 GB)"
+    },
+    {
+      "name": "output dirs",
+      "ok": true,
+      "fatal": true,
+      "detail": "runs\\repair_grid_e20 and experiments\\aerotrack_repair\\reports writable"
+    },
+    {
+      "name": "host memory",
+      "ok": true,
+      "fatal": true,
+      "detail": "13.6 of 23.6 GB RAM free, 33.3 GB commit free -> train.py would plan 4 of 4 loader workers now (it re-plans at every launch)"
+    },
+    {
+      "name": "scripts",
+      "ok": true,
+      "fatal": true,
+      "detail": "all compile; render_report.py --check OK"
+    },
+    {
+      "name": "grid state",
+      "ok": true,
+      "fatal": false,
+      "detail": "baseline_ctrl: exists (will resume/verify), no_spd: exists (will resume/verify), single_frame: exists (will resume/verify), stock_yolo11n: exists (will resume/verify); test ledger: 12 entries"
+    },
+    {
+      "name": "power",
+      "ok": true,
+      "fatal": false,
+      "detail": "on AC"
+    },
+    {
+      "name": "pending reboot",
+      "ok": true,
+      "fatal": false,
+      "detail": "none"
+    },
+    {
+      "name": "eval smoke (temporal)",
+      "ok": true,
+      "fatal": true,
+      "detail": "[smoke aerotrack_spd_v1/last ep21 input t-1,t,t+1 (--input-mode temporal)] 64 images, 243 predictions, mAP50 0.8199 (4s)"
+    },
+    {
+      "name": "eval smoke (single_frame)",
+      "ok": true,
+      "fatal": true,
+      "detail": "[smoke aerotrack_spd_v1/last ep21 input t,t,t (--input-mode single_frame)] 64 images, 238 predictions, mAP50 0.8336 (4s)"
+    },
+    {
+      "name": "loader memory",
+      "ok": true,
+      "fatal": true,
+      "detail": "train loader, 2 workers x 40 batches: worker private [1.6675605773925781, 1.6860618591308594] -> [1.6583328247070312, 1.6570968627929688] GB, max growth -0.009227752685546875 GB (limit 0.5), 33.3 img/s"
+    },
+    {
+      "name": "T1-T8 baseline_ctrl",
+      "ok": true,
+      "fatal": true,
+      "detail": "yolo11-spd.yaml 5 SPDConv, batch 32 x acc 2, 781 it/epoch, 4 workers, COCO transfer 388/649 (59.8 %), T6 first conv 36 ch, VRAM peak 4.77 GB (headroom 2.0), loader 62.2 samples/s"
+    },
+    {
+      "name": "T1-T8 no_spd",
+      "ok": true,
+      "fatal": true,
+      "detail": "yolo11-stride.yaml 0 SPDConv, batch 32 x acc 2, 781 it/epoch, 4 workers, COCO transfer 418/649 (64.4 %), T6 first conv 9 ch, VRAM peak 4.76 GB (headroom 2.02), loader 110.5 samples/s"
+    },
+    {
+      "name": "T1-T8 single_frame",
+      "ok": true,
+      "fatal": true,
+      "detail": "yolo11-spd.yaml 5 SPDConv, batch 32 x acc 2, 781 it/epoch, 4 workers, COCO transfer 388/649 (59.8 %), T6 first conv 36 ch, VRAM peak 4.77 GB (headroom 2.01), loader 116.1 samples/s"
+    },
+    {
+      "name": "T1-T8 stock_yolo11n",
+      "ok": true,
+      "fatal": true,
+      "detail": "yolo11-stride.yaml 0 SPDConv, batch 32 x acc 2, 781 it/epoch, 4 workers, COCO transfer 418/649 (64.4 %), T6 first conv 9 ch, VRAM peak 4.76 GB (headroom 2.02), loader 126.4 samples/s"
+    }
+  ],
+  "environment": {
+    "versions": {
+      "torch": "2.13.0+cu130",
+      "torchvision": "0.28.0+cu130",
+      "ultralytics": "8.4.115",
+      "numpy": "2.4.6",
+      "cv2": "5.0.0",
+      "psutil": "7.2.2",
+      "matplotlib": "3.11.1",
+      "pandas": "3.0.5",
+      "yaml": "6.0.3",
+      "PIL": "12.3.0"
+    },
+    "cuda": true,
+    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "sm": "sm_120",
+    "arch_ok": true,
+    "bf16": true,
+    "cuda_version": "13.0",
+    "kernel_ok": true,
+    "free_gb": 6.84,
+    "total_gb": 7.96
+  },
+  "nvidia_smi": "592.19, 981 MiB, 8151 MiB, 45, 27.33 W, P0",
+  "data": {
+    "manifest_csv_sha256": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+    "splits_json_sha256": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+    "label_cache_sha256": "020bb0983b41461b6a4c2d0828d01dccec67bb7d5c7b297f22c624828e683df3"
+  },
+  "host_memory": {
+    "ram_total_gb": 23.6,
+    "ram_available_gb": 13.6,
+    "commit_free_gb": 33.3,
+    "reserve_gb": 4.0,
+    "workers_estimate": 4
+  },
+  "grid_on_disk": {
+    "baseline_ctrl": true,
+    "no_spd": true,
+    "single_frame": true,
+    "stock_yolo11n": true
+  },
+  "fingerprint": "230b870e8079285a18dfe9e74a3319dc1e34817bdeb0131934bdf0a8c1f6961b",
+  "ablations": {
+    "baseline_ctrl": {
+      "passed": true,
+      "transfer": {
+        "copied": 388,
+        "total": 649,
+        "pct": 59.8,
+        "tiled_stem": []
+      },
+      "model_cfg": "yolo11-spd.yaml",
+      "params_m": 4.07,
+      "n_spdconv": 5,
+      "batch": 32,
+      "accumulate": 2,
+      "iters_per_epoch": 781,
+      "precision": "bf16",
+      "train_workers_planned": 4,
+      "train_samples": 378759,
+      "val_samples": 2000,
+      "t6_first_conv_in": 36,
+      "loader_samples_per_s": 62.2,
+      "loader_epoch_min_estimate": 6.7,
+      "vram_peak_gb": 4.77,
+      "vram_headroom_gb": 2.0,
+      "checks": [
+        [
+          "PASS",
+          "E0"
+        ],
+        [
+          "PASS",
+          "T1/T3"
+        ],
+        [
+          "PASS",
+          "T2"
+        ],
+        [
+          "PASS",
+          "T4"
+        ],
+        [
+          "PASS",
+          "T5"
+        ],
+        [
+          "PASS",
+          "T6"
+        ],
+        [
+          "PASS",
+          "T7"
+        ],
+        [
+          "PASS",
+          "T8"
+        ]
+      ],
+      "rc": 0,
+      "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_baseline_ctrl_20260926_091411.log"
+    },
+    "no_spd": {
+      "passed": true,
+      "transfer": {
+        "copied": 418,
+        "total": 649,
+        "pct": 64.4,
+        "tiled_stem": [
+          "model.0.conv.weight"
+        ]
+      },
+      "model_cfg": "yolo11-stride.yaml",
+      "params_m": 2.61,
+      "n_spdconv": 0,
+      "batch": 32,
+      "accumulate": 2,
+      "iters_per_epoch": 781,
+      "precision": "bf16",
+      "train_workers_planned": 4,
+      "train_samples": 378759,
+      "val_samples": 2000,
+      "t6_first_conv_in": 9,
+      "loader_samples_per_s": 110.5,
+      "loader_epoch_min_estimate": 3.8,
+      "vram_peak_gb": 4.76,
+      "vram_headroom_gb": 2.02,
+      "checks": [
+        [
+          "PASS",
+          "E0"
+        ],
+        [
+          "PASS",
+          "T1/T3"
+        ],
+        [
+          "PASS",
+          "T2"
+        ],
+        [
+          "PASS",
+          "T4"
+        ],
+        [
+          "PASS",
+          "T5"
+        ],
+        [
+          "PASS",
+          "T6"
+        ],
+        [
+          "PASS",
+          "T7"
+        ],
+        [
+          "PASS",
+          "T8"
+        ]
+      ],
+      "rc": 0,
+      "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_no_spd_20260926_091501.log"
+    },
+    "single_frame": {
+      "passed": true,
+      "transfer": {
+        "copied": 388,
+        "total": 649,
+        "pct": 59.8,
+        "tiled_stem": []
+      },
+      "model_cfg": "yolo11-spd.yaml",
+      "params_m": 4.07,
+      "n_spdconv": 5,
+      "batch": 32,
+      "accumulate": 2,
+      "iters_per_epoch": 781,
+      "precision": "bf16",
+      "train_workers_planned": 4,
+      "train_samples": 378759,
+      "val_samples": 2000,
+      "t6_first_conv_in": 36,
+      "loader_samples_per_s": 116.1,
+      "loader_epoch_min_estimate": 3.6,
+      "vram_peak_gb": 4.77,
+      "vram_headroom_gb": 2.01,
+      "checks": [
+        [
+          "PASS",
+          "E0"
+        ],
+        [
+          "PASS",
+          "T1/T3"
+        ],
+        [
+          "PASS",
+          "T2"
+        ],
+        [
+          "PASS",
+          "T4"
+        ],
+        [
+          "PASS",
+          "T5"
+        ],
+        [
+          "PASS",
+          "T6"
+        ],
+        [
+          "PASS",
+          "T7"
+        ],
+        [
+          "PASS",
+          "T8"
+        ]
+      ],
+      "rc": 0,
+      "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_single_frame_20260926_091541.log"
+    },
+    "stock_yolo11n": {
+      "passed": true,
+      "transfer": {
+        "copied": 418,
+        "total": 649,
+        "pct": 64.4,
+        "tiled_stem": [
+          "model.0.conv.weight"
+        ]
+      },
+      "model_cfg": "yolo11-stride.yaml",
+      "params_m": 2.61,
+      "n_spdconv": 0,
+      "batch": 32,
+      "accumulate": 2,
+      "iters_per_epoch": 781,
+      "precision": "bf16",
+      "train_workers_planned": 4,
+      "train_samples": 378759,
+      "val_samples": 2000,
+      "t6_first_conv_in": 9,
+      "loader_samples_per_s": 126.4,
+      "loader_epoch_min_estimate": 3.3,
+      "vram_peak_gb": 4.76,
+      "vram_headroom_gb": 2.02,
+      "checks": [
+        [
+          "PASS",
+          "E0"
+        ],
+        [
+          "PASS",
+          "T1/T3"
+        ],
+        [
+          "PASS",
+          "T2"
+        ],
+        [
+          "PASS",
+          "T4"
+        ],
+        [
+          "PASS",
+          "T5"
+        ],
+        [
+          "PASS",
+          "T6"
+        ],
+        [
+          "PASS",
+          "T7"
+        ],
+        [
+          "PASS",
+          "T8"
+        ]
+      ],
+      "rc": 0,
+      "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_stock_yolo11n_20260926_091623.log"
+    }
+  },
+  "eval_smoke": {
+    "temporal": {
+      "rc": 0,
+      "line": "[smoke aerotrack_spd_v1/last ep21 input t-1,t,t+1 (--input-mode temporal)] 64 images, 243 predictions, mAP50 0.8199 (4s)",
+      "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_eval_smoke_temporal_20260926_091308.log"
+    },
+    "single_frame": {
+      "rc": 0,
+      "line": "[smoke aerotrack_spd_v1/last ep21 input t,t,t (--input-mode single_frame)] 64 images, 238 predictions, mAP50 0.8336 (4s)",
+      "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_eval_smoke_single_frame_20260926_091317.log"
+    }
+  },
+  "loader_memory": {
+    "workers": 2,
+    "batches": 40,
+    "worker_private_gb_at_10": [
+      1.6675605773925781,
+      1.6860618591308594
+    ],
+    "worker_private_gb_at_end": [
+      1.6583328247070312,
+      1.6570968627929688
+    ],
+    "max_growth_gb": -0.009227752685546875,
+    "img_per_s": 33.3,
+    "ok": true
+  },
+  "heavy_ok": true,
+  "ok": true
+}

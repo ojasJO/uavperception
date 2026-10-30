@@ -1,0 +1,2 @@
+{"t": "2026-10-06T01:45:56+0530", "job": "hc3_antiuav_normal_ir_val", "kind": "submitted", "pbs_job": "92832.amritahpc", "host": "node01", "ncpus": 4, "mem_gb": 24, "walltime": "06:00:00", "gpu": 1, "stage": 0, "depend": "92828.amritahpc", "commit": "fefbf4a7ae1d651baa8e8c8521d08050e7e814c5"}
+{"t": "2026-10-06T01:55:13+0530", "kind": "withdrawn", "reason": "node01 memory fully reserved by another user (250 GB); moved to amritahpc"}

@@ -1,0 +1,727 @@
+{
+ "source_passes": [
+  "experiments/cst_anti_uav/reports/x2_final_test.json",
+  "experiments/aerotrack_v3/reports/x1_final_test.json"
+ ],
+ "note": "descriptive; X1 = causal_g4 seed 0 (its own single TEST pass, reused, not re-scored)",
+ "runs": {
+  "v3_n__causal_g4_cst_s1_e20": {
+   "mSA": 60.263649428153684,
+   "absence_neutral_mSA": 50.035748330811174,
+   "pct": {
+    "vis_no_box": 11.362025316455696,
+    "vis_iou0": 10.384810126582279,
+    "vis_low": 5.810970464135021,
+    "vis_good": 72.44219409282701,
+    "abs_correct": 62.336557059961315,
+    "abs_false_alarm": 37.663442940038685
+   },
+   "reappearance": {
+    "events": 314,
+    "recovered_within_1s_pct": 61.46496815286624,
+    "never_within_10s": 21,
+    "median_frames_when_recovered": 10.0
+   },
+   "size": {
+    "tiny": {
+     "SA": 40.886394235391904,
+     "frames": 10354,
+     "sequences": 52,
+     "ci95": [
+      31.38606952035608,
+      49.868396451668275
+     ]
+    },
+    "small": {
+     "SA": 61.39113965545666,
+     "frames": 45812,
+     "sequences": 60,
+     "ci95": [
+      56.235771623049956,
+      66.31086415863888
+     ]
+    },
+    "normal": {
+     "SA": 69.92490086343732,
+     "frames": 2600,
+     "sequences": 17,
+     "ci95": [
+      62.89499180845243,
+      75.39517488274178
+     ]
+    },
+    "large": {
+     "SA": 27.076911309901575,
+     "frames": 484,
+     "sequences": 8,
+     "ci95": [
+      4.817004758202452,
+      76.83022226374534
+     ]
+    }
+   },
+   "jungle_18": {
+    "SA": 44.5913001104453,
+    "absence_neutral_SA": 41.40948192862713,
+    "vis_no_box_pct": 0.3898635477582846,
+    "vis_iou0_pct": 11.11111111111111,
+    "vis_good_pct": 88.4990253411306,
+    "abs_false_alarm_pct": 92.37057220708446
+   },
+   "large_target_sequences": {
+    "building_74": 51.21964163866646,
+    "cn_mountains_32": 6.450610235004336,
+    "cn_sky_16": 83.4554496324182,
+    "urban-areas_38": 0.0
+   },
+   "absence_neutral_vs_GlobalTrack_paired": {
+    "n": 60,
+    "mean_delta": 14.11204716381967,
+    "ci95": [
+     11.737710542941766,
+     16.5048632310113
+    ],
+    "wins": 58,
+    "losses": 2,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 2.0976628064088716e-11
+   },
+   "tracker_ms_per_frame": {
+    "ste": 0.13273161951133772,
+    "argmax": 0.013725350720270472
+   },
+   "SA_minus_X1_paired": {
+    "n": 60,
+    "mean_delta": 0.18239741080015015,
+    "ci95": [
+     -1.5798793014647075,
+     1.840789360514156
+    ],
+    "wins": 26,
+    "losses": 34,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 0.8771416661021247
+   }
+  },
+  "v3_n__causal_g4_cst_s2_e20": {
+   "mSA": 60.59883172279589,
+   "absence_neutral_mSA": 49.6921212994889,
+   "pct": {
+    "vis_no_box": 12.428691983122363,
+    "vis_iou0": 10.064135021097046,
+    "vis_low": 5.945991561181435,
+    "vis_good": 71.56118143459915,
+    "abs_correct": 69.28433268858801,
+    "abs_false_alarm": 30.71566731141199
+   },
+   "reappearance": {
+    "events": 314,
+    "recovered_within_1s_pct": 59.23566878980892,
+    "never_within_10s": 21,
+    "median_frames_when_recovered": 12.0
+   },
+   "size": {
+    "tiny": {
+     "SA": 42.448920255622205,
+     "frames": 10354,
+     "sequences": 52,
+     "ci95": [
+      33.26375962498435,
+      50.95458782284854
+     ]
+    },
+    "small": {
+     "SA": 60.41295655134263,
+     "frames": 45812,
+     "sequences": 60,
+     "ci95": [
+      54.94328029066742,
+      65.66162496328725
+     ]
+    },
+    "normal": {
+     "SA": 67.99845564484419,
+     "frames": 2600,
+     "sequences": 17,
+     "ci95": [
+      60.43072355589042,
+      73.65324528295834
+     ]
+    },
+    "large": {
+     "SA": 25.97447269897828,
+     "frames": 484,
+     "sequences": 8,
+     "ci95": [
+      11.760913131155496,
+      73.17118012454826
+     ]
+    }
+   },
+   "jungle_18": {
+    "SA": 39.79363593066509,
+    "absence_neutral_SA": 39.79363593066509,
+    "vis_no_box_pct": 0.0,
+    "vis_iou0_pct": 16.764132553606238,
+    "vis_good_pct": 83.04093567251462,
+    "abs_false_alarm_pct": 100.0
+   },
+   "large_target_sequences": {
+    "building_74": 36.79993498149818,
+    "cn_mountains_32": 13.082715676873983,
+    "cn_sky_16": 79.41694712035388,
+    "urban-areas_38": 7.7593252844923875
+   },
+   "absence_neutral_vs_GlobalTrack_paired": {
+    "n": 60,
+    "mean_delta": 13.768420132497399,
+    "ci95": [
+     10.962980847470716,
+     16.525819971938184
+    ],
+    "wins": 54,
+    "losses": 6,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 2.8103691851533563e-10
+   },
+   "tracker_ms_per_frame": {
+    "ste": 0.1378687866261809,
+    "argmax": 0.01677526994006709
+   },
+   "SA_minus_X1_paired": {
+    "n": 60,
+    "mean_delta": 0.5175797054423658,
+    "ci95": [
+     -0.7453526245693046,
+     1.8414802810484507
+    ],
+    "wins": 31,
+    "losses": 29,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 0.6114879827471462
+   }
+  },
+  "v3_n__ttt_cst_s0_e20": {
+   "mSA": 46.825496329656026,
+   "absence_neutral_mSA": 37.71112250333235,
+   "pct": {
+    "vis_no_box": 16.40337552742616,
+    "vis_iou0": 26.931645569620255,
+    "vis_low": 2.691983122362869,
+    "vis_good": 53.972995780590715,
+    "abs_correct": 56.541586073500966,
+    "abs_false_alarm": 43.458413926499034
+   },
+   "reappearance": {
+    "events": 314,
+    "recovered_within_1s_pct": 38.53503184713376,
+    "never_within_10s": 65,
+    "median_frames_when_recovered": 31.0
+   },
+   "size": {
+    "tiny": {
+     "SA": 31.260127504547157,
+     "frames": 10354,
+     "sequences": 52,
+     "ci95": [
+      19.887095057257284,
+      42.39860862677618
+     ]
+    },
+    "small": {
+     "SA": 45.3781443372327,
+     "frames": 45812,
+     "sequences": 60,
+     "ci95": [
+      38.91773987460212,
+      52.04116071190382
+     ]
+    },
+    "normal": {
+     "SA": 52.53257379748124,
+     "frames": 2600,
+     "sequences": 17,
+     "ci95": [
+      31.46900309199126,
+      65.83120285694797
+     ]
+    },
+    "large": {
+     "SA": 15.337853510361507,
+     "frames": 484,
+     "sequences": 8,
+     "ci95": [
+      0.6851877427659749,
+      65.33447086745255
+     ]
+    }
+   },
+   "jungle_18": {
+    "SA": 5.864622175375168,
+    "absence_neutral_SA": 5.864622175375168,
+    "vis_no_box_pct": 0.0,
+    "vis_iou0_pct": 87.32943469785575,
+    "vis_good_pct": 12.670565302144249,
+    "abs_false_alarm_pct": 100.0
+   },
+   "large_target_sequences": {
+    "building_74": 24.930243119583913,
+    "cn_mountains_32": 1.026004785257974,
+    "cn_sky_16": 78.9062514357688,
+    "urban-areas_38": 0.0
+   },
+   "absence_neutral_vs_GlobalTrack_paired": {
+    "n": 60,
+    "mean_delta": 1.7874213363408655,
+    "ci95": [
+     -1.6335976081094064,
+     5.131711845515595
+    ],
+    "wins": 35,
+    "losses": 25,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 0.18759507374323436
+   },
+   "tracker_ms_per_frame": {
+    "ste": 0.14508916332848062,
+    "argmax": 0.016897581349948634
+   },
+   "SA_minus_X1_paired": {
+    "n": 60,
+    "mean_delta": -13.255755687697494,
+    "ci95": [
+     -17.220350958919642,
+     -9.354305153417512
+    ],
+    "wins": 14,
+    "losses": 46,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 1.868005162193947e-07
+   }
+  },
+  "v3_n__ttt_cst_s1_e20": {
+   "mSA": 49.80680279061051,
+   "absence_neutral_mSA": 40.280809230013496,
+   "pct": {
+    "vis_no_box": 17.765400843881856,
+    "vis_iou0": 21.372151898734177,
+    "vis_low": 2.4725738396624473,
+    "vis_good": 58.38987341772152,
+    "abs_correct": 60.59574468085106,
+    "abs_false_alarm": 39.40425531914894
+   },
+   "reappearance": {
+    "events": 314,
+    "recovered_within_1s_pct": 35.35031847133758,
+    "never_within_10s": 76,
+    "median_frames_when_recovered": 31.0
+   },
+   "size": {
+    "tiny": {
+     "SA": 31.028604253814727,
+     "frames": 10354,
+     "sequences": 52,
+     "ci95": [
+      19.374292229421354,
+      42.46086301668067
+     ]
+    },
+    "small": {
+     "SA": 49.4964639815379,
+     "frames": 45812,
+     "sequences": 60,
+     "ci95": [
+      43.251881803550106,
+      55.71786786946367
+     ]
+    },
+    "normal": {
+     "SA": 55.73069068613904,
+     "frames": 2600,
+     "sequences": 17,
+     "ci95": [
+      34.81931208402698,
+      68.20522720884121
+     ]
+    },
+    "large": {
+     "SA": 14.070925476785698,
+     "frames": 484,
+     "sequences": 8,
+     "ci95": [
+      0.0,
+      66.86199998814774
+     ]
+    }
+   },
+   "jungle_18": {
+    "SA": 27.193309238971704,
+    "absence_neutral_SA": 27.193309238971704,
+    "vis_no_box_pct": 0.0,
+    "vis_iou0_pct": 40.93567251461988,
+    "vis_good_pct": 59.06432748538012,
+    "abs_false_alarm_pct": 100.0
+   },
+   "large_target_sequences": {
+    "building_74": 22.00741555449377,
+    "cn_mountains_32": 0.0,
+    "cn_sky_16": 79.64444116235246,
+    "urban-areas_38": 0.0
+   },
+   "absence_neutral_vs_GlobalTrack_paired": {
+    "n": 60,
+    "mean_delta": 4.357108063022005,
+    "ci95": [
+     1.7974550300432035,
+     6.8916251830333435
+    ],
+    "wins": 36,
+    "losses": 24,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 0.003471707482786656
+   },
+   "tracker_ms_per_frame": {
+    "ste": 0.12563806108467135,
+    "argmax": 0.011770067627470428
+   },
+   "SA_minus_X1_paired": {
+    "n": 60,
+    "mean_delta": -10.27444922674301,
+    "ci95": [
+     -13.878510235579698,
+     -7.030576506393582
+    ],
+    "wins": 15,
+    "losses": 45,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 1.868005162193947e-07
+   }
+  },
+  "v3_n__ttt_cst_s2_e20": {
+   "mSA": 49.78944613663115,
+   "absence_neutral_mSA": 39.66295912170374,
+   "pct": {
+    "vis_no_box": 16.546835443037974,
+    "vis_iou0": 23.940928270042193,
+    "vis_low": 2.5215189873417723,
+    "vis_good": 56.99071729957806,
+    "abs_correct": 64.19342359767892,
+    "abs_false_alarm": 35.806576402321085
+   },
+   "reappearance": {
+    "events": 314,
+    "recovered_within_1s_pct": 35.35031847133758,
+    "never_within_10s": 77,
+    "median_frames_when_recovered": 34.0
+   },
+   "size": {
+    "tiny": {
+     "SA": 31.38352024598045,
+     "frames": 10354,
+     "sequences": 52,
+     "ci95": [
+      19.898149815599023,
+      42.584528868482614
+     ]
+    },
+    "small": {
+     "SA": 48.845319834760936,
+     "frames": 45812,
+     "sequences": 60,
+     "ci95": [
+      42.33369819801749,
+      55.380056149939996
+     ]
+    },
+    "normal": {
+     "SA": 45.17263800450696,
+     "frames": 2600,
+     "sequences": 17,
+     "ci95": [
+      27.647561078071654,
+      57.84547491419578
+     ]
+    },
+    "large": {
+     "SA": 14.739863917334675,
+     "frames": 484,
+     "sequences": 8,
+     "ci95": [
+      1.478745435872595,
+      76.46175996594613
+     ]
+    }
+   },
+   "jungle_18": {
+    "SA": 5.821449453297065,
+    "absence_neutral_SA": 5.821449453297065,
+    "vis_no_box_pct": 0.0,
+    "vis_iou0_pct": 87.32943469785575,
+    "vis_good_pct": 12.670565302144249,
+    "abs_false_alarm_pct": 100.0
+   },
+   "large_target_sequences": {
+    "building_74": 20.605715249096455,
+    "cn_mountains_32": 0.7189703456365413,
+    "cn_sky_16": 83.28767648798406,
+    "urban-areas_38": 0.0
+   },
+   "absence_neutral_vs_GlobalTrack_paired": {
+    "n": 60,
+    "mean_delta": 3.739257954712261,
+    "ci95": [
+     0.825384671441334,
+     6.614663846012802
+    ],
+    "wins": 37,
+    "losses": 23,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 0.014822355953141709
+   },
+   "tracker_ms_per_frame": {
+    "ste": 0.12578123192659993,
+    "argmax": 0.011660157601891978
+   },
+   "SA_minus_X1_paired": {
+    "n": 60,
+    "mean_delta": -10.291805880722364,
+    "ci95": [
+     -14.211092559621628,
+     -6.553028413232618
+    ],
+    "wins": 13,
+    "losses": 47,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 2.1037302037925465e-07
+   }
+  },
+  "v3_n__causal_g4_cst_s0_e20": {
+   "mSA": 60.08125201735352,
+   "absence_neutral_mSA": 48.92732600296394,
+   "pct": {
+    "vis_no_box": 13.468354430379748,
+    "vis_iou0": 9.616877637130802,
+    "vis_low": 6.060759493670886,
+    "vis_good": 70.85400843881857,
+    "abs_correct": 71.02514506769826,
+    "abs_false_alarm": 28.974854932301742
+   },
+   "reappearance": {
+    "events": 314,
+    "recovered_within_1s_pct": 56.36942675159236,
+    "never_within_10s": 25,
+    "median_frames_when_recovered": 13.0
+   },
+   "size": {
+    "tiny": {
+     "SA": 39.87929854412538,
+     "frames": 10354,
+     "sequences": 52,
+     "ci95": [
+      30.108022479038507,
+      48.958951859579145
+     ]
+    },
+    "small": {
+     "SA": 60.21295355218722,
+     "frames": 45812,
+     "sequences": 60,
+     "ci95": [
+      54.940335322617784,
+      65.28424083895389
+     ]
+    },
+    "normal": {
+     "SA": 67.24368488855498,
+     "frames": 2600,
+     "sequences": 17,
+     "ci95": [
+      59.34904269229996,
+      72.7211357451983
+     ]
+    },
+    "large": {
+     "SA": 23.377900909141704,
+     "frames": 484,
+     "sequences": 8,
+     "ci95": [
+      10.549369464012218,
+      72.99607013929628
+     ]
+    }
+   },
+   "jungle_18": {
+    "SA": 22.807930338995554,
+    "absence_neutral_SA": 22.46702124808646,
+    "vis_no_box_pct": 0.0,
+    "vis_iou0_pct": 48.34307992202729,
+    "vis_good_pct": 51.461988304093566,
+    "abs_false_alarm_pct": 99.1825613079019
+   },
+   "large_target_sequences": {
+    "building_74": 28.896827070584674,
+    "cn_mountains_32": 7.199616860964521,
+    "cn_sky_16": 76.22577934244019,
+    "urban-areas_38": 20.52591398442441
+   },
+   "absence_neutral_vs_GlobalTrack_paired": {
+    "n": 60,
+    "mean_delta": 13.003624835972449,
+    "ci95": [
+     10.470646261525696,
+     15.521609293856253
+    ],
+    "wins": 56,
+    "losses": 4,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 1.1837438456805457e-10
+   },
+   "tracker_ms_per_frame": {
+    "ste": 0.12636477974797353,
+    "argmax": 0.01312163223908936
+   }
+  }
+ },
+ "arms": {
+  "causal_g4": {
+   "runs": [
+    "v3_n__causal_g4_cst_s0_e20",
+    "v3_n__causal_g4_cst_s1_e20",
+    "v3_n__causal_g4_cst_s2_e20"
+   ],
+   "seed_mean_mSA": 60.314577722767694,
+   "seed_mean_absence_neutral_mSA": 49.551731877754655,
+   "absence_neutral_vs_GlobalTrack_paired": {
+    "n": 60,
+    "mean_delta": 13.628030710763168,
+    "ci95": [
+     11.104483779362258,
+     16.135200634351026
+    ],
+    "wins": 56,
+    "losses": 4,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 6.272166049929201e-11
+   },
+   "seed_mean_minus_X1_paired": {
+    "n": 60,
+    "mean_delta": 0.23332570541417189,
+    "ci95": [
+     -0.6582085021753276,
+     1.1387758363182525
+    ],
+    "wins": 32,
+    "losses": 28,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 0.7128134714257682
+   },
+   "large_SA_per_seed": {
+    "v3_n__causal_g4_cst_s0_e20": 23.377900909141704,
+    "v3_n__causal_g4_cst_s1_e20": 27.076911309901575,
+    "v3_n__causal_g4_cst_s2_e20": 25.97447269897828
+   },
+   "jungle_18_SA_per_seed": {
+    "v3_n__causal_g4_cst_s0_e20": 22.807930338995554,
+    "v3_n__causal_g4_cst_s1_e20": 44.5913001104453,
+    "v3_n__causal_g4_cst_s2_e20": 39.79363593066509
+   }
+  },
+  "ttt": {
+   "runs": [
+    "v3_n__ttt_cst_s0_e20",
+    "v3_n__ttt_cst_s1_e20",
+    "v3_n__ttt_cst_s2_e20"
+   ],
+   "seed_mean_mSA": 48.807248418965905,
+   "seed_mean_absence_neutral_mSA": 39.218296951683215,
+   "absence_neutral_vs_GlobalTrack_paired": {
+    "n": 60,
+    "mean_delta": 3.2945957846917104,
+    "ci95": [
+     0.6633212475691412,
+     5.953061558102369
+    ],
+    "wins": 34,
+    "losses": 26,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 0.05285525991418617
+   },
+   "seed_mean_minus_X1_paired": {
+    "n": 60,
+    "mean_delta": -11.274003598387623,
+    "ci95": [
+     -14.805181508765395,
+     -7.899905559460577
+    ],
+    "wins": 14,
+    "losses": 46,
+    "ties": 0,
+    "wilcoxon_p_two_sided": 7.393677151173435e-08
+   },
+   "large_SA_per_seed": {
+    "v3_n__ttt_cst_s0_e20": 15.337853510361507,
+    "v3_n__ttt_cst_s1_e20": 14.070925476785698,
+    "v3_n__ttt_cst_s2_e20": 14.739863917334675
+   },
+   "jungle_18_SA_per_seed": {
+    "v3_n__ttt_cst_s0_e20": 5.864622175375168,
+    "v3_n__ttt_cst_s1_e20": 27.193309238971704,
+    "v3_n__ttt_cst_s2_e20": 5.821449453297065
+   }
+  }
+ },
+ "GlobalTrack": {
+  "size": {
+   "tiny": {
+    "SA": 15.828220001862414,
+    "frames": 10354,
+    "sequences": 52,
+    "ci95": [
+     9.818063149707736,
+     21.859866716101024
+    ]
+   },
+   "small": {
+    "SA": 46.13379181197524,
+    "frames": 45812,
+    "sequences": 60,
+    "ci95": [
+     40.93935326394485,
+     51.132309812137386
+    ]
+   },
+   "normal": {
+    "SA": 59.515015202407206,
+    "frames": 2600,
+    "sequences": 17,
+    "ci95": [
+     43.10278804985844,
+     73.57924741545534
+    ]
+   },
+   "large": {
+    "SA": 34.51503032825441,
+    "frames": 484,
+    "sequences": 8,
+    "ci95": [
+     4.072271489859387,
+     62.38659210383141
+    ]
+   }
+  },
+  "jungle_18": {
+   "SA": 28.866738133752868,
+   "absence_neutral_SA": 28.866738133752868,
+   "vis_no_box_pct": 0.0,
+   "vis_iou0_pct": 7.60233918128655,
+   "vis_good_pct": 75.63352826510722,
+   "abs_false_alarm_pct": 100.0
+  },
+  "large_target_sequences": {
+   "building_74": 61.02741226528329,
+   "cn_mountains_32": 0.0,
+   "cn_sky_16": 66.33905223307666,
+   "urban-areas_38": 45.10004391760282
+  }
+ }
+}

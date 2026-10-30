@@ -1,0 +1,74 @@
+{
+ "run_name": "v2_causal_g1_s0_e20",
+ "series": "aerotrack_v2",
+ "config": "causal_g1",
+ "config_definition": {
+  "layout": "stride",
+  "gap": 1,
+  "window": "causal"
+ },
+ "window": "causal",
+ "gap": 1,
+ "layout": "stride",
+ "seed": 0,
+ "epochs": 20,
+ "batch": 32,
+ "init": "function_preserving",
+ "recipe": "c_model/train.py STAGES['baseline']",
+ "smoke": false,
+ "precision": "fp16",
+ "host": "node04",
+ "overrides": {
+  "samples_per_epoch": null,
+  "monitor_cap": null
+ },
+ "data": {
+  "corpus": "data_unified_v2",
+  "manifest_sha256": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347",
+  "splits_sha256": "30f0e35f35ca6dfd4ddcf89fa9c9acc907c37f9a846a976ff2300573d1bf8a6e",
+  "train_split": "corpus v2 TRAIN (all three datasets)"
+ },
+ "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+ "attempts": [
+  {
+   "timestamp_start": "2026-10-10T07:31:15+0530",
+   "command": "/home/y_rajeshwar/aerotrack_server/environments/at311/bin/python -u /home/y_rajeshwar/aerotrack_server/source/experiments/aerotrack_v2/scripts/train_v2.py --_child --config causal_g1 --seed 0 --epochs 20 --batch 32 --workers 12 --name v2_causal_g1_s0_e20",
+   "resumed_from": null,
+   "epochs_on_disk_at_start": 0,
+   "git": {
+    "commit": "168c27ddc618919cc92a352b73da19ec113f4580",
+    "dirty": true
+   },
+   "env": {
+    "python": "3.11.13",
+    "platform": "Linux-3.10.0-693.el7.x86_64-x86_64-with-glibc2.17",
+    "torch": "2.6.0+cu118",
+    "cuda_available": true,
+    "cuda_version": "11.8",
+    "cudnn_version": 90100,
+    "cudnn_benchmark": false,
+    "torchvision": "0.21.0+cu118",
+    "numpy": "2.2.6",
+    "cv2": "5.0.0",
+    "PIL": "12.2.0",
+    "yaml": "6.0.3",
+    "gpu": {
+     "name": "Tesla V100-PCIE-16GB",
+     "total_memory_gb": 16.95,
+     "compute_capability": "7.0",
+     "driver": "510.47.03"
+    }
+   },
+   "attempt": 1,
+   "timestamp_end": "2026-10-10T08:18:34+0530",
+   "seconds": 2836.5,
+   "return_code": 0,
+   "epochs_on_disk_at_end": 20
+  }
+ ],
+ "timestamp_end": "2026-10-10T08:18:34+0530",
+ "return_code": 0,
+ "train_seconds": 2836.5,
+ "best_pt_sha256": "b802fb50e90ec507dbe63c9ccf8ae0299e6ce2e54dbf1f5e47df470a1fc7639a",
+ "last_pt_sha256": "2a201d57bf285b1a5a268ce8c1fba2638993eb66990c682ded45d2b9d92e8010"
+}

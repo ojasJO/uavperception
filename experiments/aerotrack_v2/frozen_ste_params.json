@@ -1,0 +1,178 @@
+{
+ "candidate": "v2_causal_g4_s0_e20",
+ "source_report": "experiments/systems/reports/track_v2_causal_g4_s0_e20_data_unified_v2.json",
+ "source_report_sha256": "044197e43b76741be70524e6edd16415718e4977101927eba810e067f5004388",
+ "cache_set_sha256": "12711ffc0083c74eaaec9a499948f6913697cc805d9fcee0fa5009d0fed40d76",
+ "selection": "maximum mean group mSA over ALL corpus-v2 VAL sequences",
+ "ste": {
+  "det_thr": 0.15,
+  "init_thr": 0.5,
+  "reacq_thr": 0.5,
+  "max_coast": 60,
+  "output": "det",
+  "coast_output": false,
+  "gate_chi2": 25.0
+ },
+ "argmax": {
+  "thr": 0.3
+ },
+ "val_cross_fitted": {
+  "argmax": {
+   "anti_uav_IR": {
+    "n_sequences": 67,
+    "mSA": 80.45632892116951,
+    "located_rate": 0.9852319978879281,
+    "false_alarm_rate": 0.13546160483175151,
+    "n_invisible_frames": 1159,
+    "reappearances": 9,
+    "recover_frames_median": 1.0,
+    "recover_frames_mean": 3.5555555555555554
+   },
+   "anti_uav_RGB": {
+    "n_sequences": 67,
+    "mSA": 81.37935751712669,
+    "located_rate": 0.9824155086635786,
+    "false_alarm_rate": 0.26388480752277405,
+    "n_invisible_frames": 3403,
+    "reappearances": 21,
+    "recover_frames_median": 0.0,
+    "recover_frames_mean": 1.3333333333333333
+   },
+   "cst_IR": {
+    "n_sequences": 40,
+    "mSA": 62.18092928169747,
+    "located_rate": 0.7326078607092562,
+    "false_alarm_rate": 0.20192,
+    "n_invisible_frames": 6250,
+    "reappearances": 166,
+    "recover_frames_median": 14.0,
+    "recover_frames_mean": 48.04819277108434,
+    "frame_attr_SA": {
+     "CDB": {
+      "SA": 54.466604596947576,
+      "n_frames": 17720
+     },
+     "DBC": {
+      "SA": 55.22222642519524,
+      "n_frames": 19418
+     },
+     "FM": {
+      "SA": 24.11963591560812,
+      "n_frames": 54
+     },
+     "OC": {
+      "SA": 73.8410648499492,
+      "n_frames": 3228
+     },
+     "OV": {
+      "SA": 87.47826086956522,
+      "n_frames": 2875
+     },
+     "SV": {
+      "SA": 50.75278708417693,
+      "n_frames": 20708
+     },
+     "TC": {
+      "SA": 52.36633091063778,
+      "n_frames": 29532
+     },
+     "size_large": {
+      "SA": 15.055739890836131,
+      "n_frames": 347
+     },
+     "size_normal": {
+      "SA": 56.79993326334559,
+      "n_frames": 2134
+     },
+     "size_small": {
+      "SA": 63.22130432336243,
+      "n_frames": 28525
+     },
+     "size_tiny": {
+      "SA": 40.39685699309717,
+      "n_frames": 8049
+     }
+    }
+   }
+  },
+  "ste": {
+   "anti_uav_IR": {
+    "n_sequences": 67,
+    "mSA": 80.52756937111616,
+    "located_rate": 0.9847039799353178,
+    "false_alarm_rate": 0.09836065573770492,
+    "n_invisible_frames": 1159,
+    "reappearances": 9,
+    "recover_frames_median": 1.0,
+    "recover_frames_mean": 3.6666666666666665
+   },
+   "anti_uav_RGB": {
+    "n_sequences": 67,
+    "mSA": 81.19540232326733,
+    "located_rate": 0.9794990564419283,
+    "false_alarm_rate": 0.258007640317367,
+    "n_invisible_frames": 3403,
+    "reappearances": 21,
+    "recover_frames_median": 1.0,
+    "recover_frames_mean": 2.9047619047619047
+   },
+   "cst_IR": {
+    "n_sequences": 40,
+    "mSA": 63.017027713643884,
+    "located_rate": 0.736986301369863,
+    "false_alarm_rate": 0.16992,
+    "n_invisible_frames": 6250,
+    "reappearances": 166,
+    "recover_frames_median": 18.0,
+    "recover_frames_mean": 71.03614457831326,
+    "frame_attr_SA": {
+     "CDB": {
+      "SA": 55.81152642046361,
+      "n_frames": 17720
+     },
+     "DBC": {
+      "SA": 56.84366467595453,
+      "n_frames": 19418
+     },
+     "FM": {
+      "SA": 15.125249034451386,
+      "n_frames": 54
+     },
+     "OC": {
+      "SA": 77.06986964322226,
+      "n_frames": 3228
+     },
+     "OV": {
+      "SA": 89.87826086956522,
+      "n_frames": 2875
+     },
+     "SV": {
+      "SA": 51.08481661482619,
+      "n_frames": 20708
+     },
+     "TC": {
+      "SA": 52.857367593217425,
+      "n_frames": 29532
+     },
+     "size_large": {
+      "SA": 16.94998937770534,
+      "n_frames": 347
+     },
+     "size_normal": {
+      "SA": 57.082218231618626,
+      "n_frames": 2134
+     },
+     "size_small": {
+      "SA": 63.614741576359805,
+      "n_frames": 28525
+     },
+     "size_tiny": {
+      "SA": 41.18215642573965,
+      "n_frames": 8049
+     }
+    }
+   }
+  }
+ },
+ "frozen": "2026-10-06T14:13:27+0530"
+}

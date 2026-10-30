@@ -1,0 +1,29 @@
+{
+  "id": "aerotrack_v2_final_test",
+  "registered": "see the git commit that added this file (2026-10-05), before the v2 campaign selected a candidate and before any v2 TEST access",
+  "candidate": "the seed-0 run of the configuration selected by experiments/aerotrack_v2/reports/v2_decisions.json (selection rule in preregistration.json)",
+  "test_split": "corpus-v2 TEST: Anti-UAV test (91 IR + 91 RGB sequences), CST test (60), Det-Fly test (1,567 images); CST TEST labels verified byte-identical to corpus v1",
+  "single_pass": "every metric below is computed in ONE pass; final_eval.py refuses a second pass (reports/v2_test_ledger.jsonl)",
+  "frozen_before_test": {
+    "detector": "candidate's weights/last.pt (sha256 recorded at the end of training)",
+    "tracker": "experiments/aerotrack_v2/frozen_ste_params.json: STE and argmax parameters tuned on ALL of corpus-v2 VAL by systems/scripts/track_eval.py (maximum mean group mSA), committed before the pass",
+    "nothing_else": "no threshold, parameter or checkpoint is chosen after the pass"
+  },
+  "metrics": {
+    "detection": "eval_v2.py protocol (cap 5,000 images per dataset): drone AP50 overall / per dataset, CST drone-micro AP50, CST per scene category, mAP50",
+    "sot": "single-object-tracking protocol on every Anti-UAV IR / RGB and CST test sequence: mSA = Anti-UAV paper Eq. (1) by Track A's code on the official annotations, per-attribute mSA (Anti-UAV), located rate, false-alarm rate on invisible frames, frames to recover after reappearance; trackers: STE (frozen) and argmax (frozen threshold)",
+    "forecast": "systems/scripts/forecast_eval.py metrics on test windows (Kalman vs zero / last / mean velocity; 68 / 95 % ellipse coverage)"
+  },
+  "comparisons": [
+    {"id": "F1", "what": "STE mSA vs our faithful GlobalTrack (Track A normal_ir seed 0, test mSA 70.58) on the same 91 Anti-UAV IR test sequences",
+     "analysis": "paired per-sequence difference, sequence bootstrap 95 % CI (B = 2000)",
+     "claim_rule": "'better than GlobalTrack' only if the CI excludes 0 with a positive mean; 'worse' only if it excludes 0 with a negative mean; else 'no detectable difference'",
+     "caveat": "training data differ: AeroTrack also trains on CST, Det-Fly and Anti-UAV RGB; GlobalTrack on Anti-UAV IR only"},
+    {"id": "F2", "what": "STE mSA on CST test vs the CST benchmark's best published tracker (GlobalTrack retrained on CST, mSA 35.92, arXiv:2507.23473 Table 3)",
+     "analysis": "descriptive only (different implementation, training data and protocol details); no claim beyond the numbers"},
+    {"id": "F3", "what": "STE vs argmax on the same test sequences", "analysis": "paired per-sequence bootstrap, as F1"},
+    {"id": "F4", "what": "detection AP of the candidate vs the generalization series' single test result (gen_temporal_fp_g4_full_e20: CST 0.521, Anti-UAV 0.919, pooled 0.718)",
+     "analysis": "descriptive, unpaired (different training corpus and possibly window)"}
+  ],
+  "deployment": "the candidate's latency / memory / parity are measured by experiments/deployment/scripts/deploy_gate.py on VAL inputs, never on TEST"
+}

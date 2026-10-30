@@ -1,0 +1,268 @@
+{
+ "selected": "gen_temporal_fp_g4_full_e20",
+ "test_set": {
+  "split": "test",
+  "cap": 5000,
+  "n_images": 11567,
+  "per_dataset": {
+   "anti_uav": 5000,
+   "cst": 5000,
+   "det_fly": 1567
+  },
+  "n_sequences": 1809,
+  "sha256": "a859a6bb6f6561f5cc7576ca4e4b769f494234c3d53d53af2c1a2d24b8650d78",
+  "registered_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349"
+ },
+ "test_bootstrap": {
+  "cst_drone_AP50": {
+   "point": 0.5208829979452316,
+   "ci95": [
+    0.44150837162354434,
+    0.5972663660063424
+   ],
+   "sequences": 60
+  },
+  "cst_drone_micro_AP50": {
+   "point": 0.4254994829417115,
+   "ci95": [
+    0.3283393396519279,
+    0.5143871002710421
+   ],
+   "sequences": 60
+  },
+  "anti_uav_drone_AP50": {
+   "point": 0.9185276472709225,
+   "ci95": [
+    0.8938755657200124,
+    0.9419419065974991
+   ],
+   "sequences": 182
+  },
+  "pooled_drone_AP50": {
+   "point": 0.7182552808758924,
+   "ci95": [
+    0.6847553708075298,
+    0.7522524121200309
+   ],
+   "sequences": 1809
+  }
+ },
+ "test_cst_by_category": {
+  "building": {
+   "seen_in_train": true,
+   "sequences": 9,
+   "drone_AP50": 0.39115678071617
+  },
+  "cn_mountains": {
+   "seen_in_train": true,
+   "sequences": 9,
+   "drone_AP50": 0.6259148770444077
+  },
+  "cn_sky": {
+   "seen_in_train": true,
+   "sequences": 6,
+   "drone_AP50": 0.8837981504614922
+  },
+  "jungle": {
+   "seen_in_train": true,
+   "sequences": 13,
+   "drone_AP50": 0.7229549799785028
+  },
+  "urban-areas": {
+   "seen_in_train": false,
+   "sequences": 17,
+   "drone_AP50": 0.24243417136072531
+  },
+  "water": {
+   "seen_in_train": false,
+   "sequences": 6,
+   "drone_AP50": 0.8286100566030246
+  }
+ },
+ "test_cst_seen_vs_unseen": {
+  "seen_categories_AP50": 0.6171908405783118,
+  "seen_sequences": 37,
+  "unseen_categories_AP50": 0.3723649512422484,
+  "unseen_sequences": 23
+ },
+ "test_reference_stock_yolo11n": {
+  "source": "experiments/aerotrack_repair/reports/detector_test_cap5000.json (evaluated once, 2026-09-26)",
+  "selected": {
+   "drone_AP50": 0.7182552808758924,
+   "cst_drone_AP50": 0.5208829979452316,
+   "cst_drone_micro_AP50": 0.4254994829417115,
+   "anti_uav_drone_AP50": 0.9185276472709225,
+   "mAP50": 0.6326945583969084
+  },
+  "stock": {
+   "best": {
+    "drone_AP50": 0.67378,
+    "cst_drone_AP50": 0.45079,
+    "cst_drone_micro_AP50": 0.39871,
+    "anti_uav_drone_AP50": 0.90779,
+    "mAP50": 0.57783
+   },
+   "last": {
+    "drone_AP50": 0.68372,
+    "cst_drone_AP50": 0.45608,
+    "cst_drone_micro_AP50": 0.39963,
+    "anti_uav_drone_AP50": 0.91055,
+    "mAP50": 0.59126
+   }
+  },
+  "delta_vs_stock_last": {
+   "drone_AP50": 0.034535280875892416,
+   "cst_drone_AP50": 0.06480299794523164,
+   "cst_drone_micro_AP50": 0.02586948294171154,
+   "anti_uav_drone_AP50": 0.007977647270922539,
+   "mAP50": 0.04143455839690835
+  },
+  "note": "different training runs of the same recipe (not seed-paired); descriptive only"
+ },
+ "val_secondary_deltas": {
+  "spd_fp": {
+   "0": {
+    "cst_drone_AP50": -0.00516711863251984,
+    "anti_uav_drone_AP50": 0.006925636440218597,
+    "drone_AP50": -0.0018804795591291779
+   },
+   "1": {
+    "cst_drone_AP50": 0.03175183634605516,
+    "anti_uav_drone_AP50": 5.385744162578199e-05,
+    "drone_AP50": 0.0126779788615905
+   },
+   "2": {
+    "cst_drone_AP50": -0.020595883801216464,
+    "anti_uav_drone_AP50": -0.00470194680298508,
+    "drone_AP50": -0.00838394364172046
+   }
+  },
+  "temporal_fp_g1": {
+   "0": {
+    "cst_drone_AP50": 0.020074127310163892,
+    "anti_uav_drone_AP50": 0.011522583604128167,
+    "drone_AP50": -0.007057553903417446
+   },
+   "1": {
+    "cst_drone_AP50": 0.025610007704384152,
+    "anti_uav_drone_AP50": -0.004932873773447866,
+    "drone_AP50": 0.009616118112977134
+   },
+   "2": {
+    "cst_drone_AP50": -0.0020752486361577116,
+    "anti_uav_drone_AP50": 0.0024936981571346273,
+    "drone_AP50": -0.004501046242819107
+   }
+  },
+  "temporal_fp_g4": {
+   "0": {
+    "cst_drone_AP50": 0.0940993465081833,
+    "anti_uav_drone_AP50": 0.009858404951966881,
+    "drone_AP50": 0.03873805836430555
+   },
+   "1": {
+    "cst_drone_AP50": 0.09211330694137954,
+    "anti_uav_drone_AP50": -0.0015924224018316613,
+    "drone_AP50": 0.04277263321051916
+   },
+   "2": {
+    "cst_drone_AP50": 0.06955769626575015,
+    "anti_uav_drone_AP50": 0.0010342716823101838,
+    "drone_AP50": 0.02541650610630397
+   }
+  }
+ },
+ "training_curves": {
+  "gen_spd_fp_f0_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.66539,
+   "monitor_mAP50_slope_last5": 0.006909000000000006,
+   "train_loss_last": 2.0991256535053253,
+   "train_loss_slope_last5": -0.015143814682960735
+  },
+  "gen_spd_fp_f1_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.7274,
+   "monitor_mAP50_slope_last5": 0.004918999999999943,
+   "train_loss_last": 2.1298584043979645,
+   "train_loss_slope_last5": -0.015911221504211644
+  },
+  "gen_spd_fp_f2_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.64055,
+   "monitor_mAP50_slope_last5": 0.004606999999999895,
+   "train_loss_last": 2.1632251739501953,
+   "train_loss_slope_last5": -0.011047485470771919
+  },
+  "gen_stock_f0_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.64005,
+   "monitor_mAP50_slope_last5": 0.009175999999999976,
+   "train_loss_last": 2.120131731033325,
+   "train_loss_slope_last5": -0.01685915589332583
+  },
+  "gen_stock_f1_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.72727,
+   "monitor_mAP50_slope_last5": 0.005612999999999854,
+   "train_loss_last": 2.1083272099494934,
+   "train_loss_slope_last5": -0.01604930162429826
+  },
+  "gen_stock_f2_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.65374,
+   "monitor_mAP50_slope_last5": 0.0055389999999999814,
+   "train_loss_last": 2.109489679336548,
+   "train_loss_slope_last5": -0.010800343751907599
+  },
+  "gen_temporal_fp_g1_f0_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.61702,
+   "monitor_mAP50_slope_last5": 0.0009659999999999686,
+   "train_loss_last": 2.1198403239250183,
+   "train_loss_slope_last5": -0.015462386608123796
+  },
+  "gen_temporal_fp_g1_f1_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.70144,
+   "monitor_mAP50_slope_last5": 0.008900999999999923,
+   "train_loss_last": 2.098329037427902,
+   "train_loss_slope_last5": -0.016076564788818467
+  },
+  "gen_temporal_fp_g1_f2_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.62707,
+   "monitor_mAP50_slope_last5": 0.003056999999999956,
+   "train_loss_last": 2.098939001560211,
+   "train_loss_slope_last5": -0.012965479493141412
+  },
+  "gen_temporal_fp_g4_f0_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.66849,
+   "monitor_mAP50_slope_last5": 0.009461000000000002,
+   "train_loss_last": 2.1023643612861633,
+   "train_loss_slope_last5": -0.014945963025093401
+  },
+  "gen_temporal_fp_g4_f1_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.7127,
+   "monitor_mAP50_slope_last5": 0.0071839999999999135,
+   "train_loss_last": 2.091418296098709,
+   "train_loss_slope_last5": -0.017860785126686485
+  },
+  "gen_temporal_fp_g4_f2_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.5869,
+   "monitor_mAP50_slope_last5": -0.0035010000000000215,
+   "train_loss_last": 2.0917721688747406,
+   "train_loss_slope_last5": -0.013610371947288532
+  },
+  "gen_temporal_fp_g4_full_e20": {
+   "epochs": 20,
+   "monitor_mAP50_last": 0.73359,
+   "monitor_mAP50_slope_last5": 0.008245999999999953,
+   "train_loss_last": 2.1383255422115326,
+   "train_loss_slope_last5": -0.015403470396995815
+  }
+ }
+}

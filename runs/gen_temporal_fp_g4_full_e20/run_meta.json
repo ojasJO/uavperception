@@ -1,0 +1,73 @@
+{
+  "run_name": "gen_temporal_fp_g4_full_e20",
+  "series": "aerotrack_generalization",
+  "config": "temporal_fp_g4",
+  "config_definition": {
+    "layout": "stride",
+    "gap": 4,
+    "question": "H2: a motion-matched gap (g=4 from CST's 0.53 px/frame)"
+  },
+  "gap": 4,
+  "layout": "stride",
+  "fold": "full",
+  "seed": 0,
+  "epochs": 20,
+  "batch": 32,
+  "init": "function_preserving",
+  "recipe": "c_model/train.py STAGES['baseline']",
+  "folds_sha256": "ea48bbd1e1f652ae4a6590375fb7a26f87a9f76112a07c6ce3730a3c02bcaf29",
+  "smoke": false,
+  "overrides": {
+    "samples_per_epoch": null,
+    "monitor_cap": null
+  },
+  "data": {
+    "manifest_sha256": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+    "splits_sha256": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586"
+  },
+  "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+  "attempts": [
+    {
+      "timestamp_start": "2026-09-27T09:35:31+0530",
+      "command": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_generalization\\scripts\\train_gen.py --_child --config temporal_fp_g4 --fold full --epochs 20 --batch 32 --workers 4 --seed 0 --name gen_temporal_fp_g4_full_e20",
+      "resumed_from": null,
+      "epochs_on_disk_at_start": 0,
+      "workers_requested": 4,
+      "git": {
+        "commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+        "dirty": true
+      },
+      "env": {
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "torch": "2.13.0+cu130",
+        "cuda_available": true,
+        "cuda_version": "13.0",
+        "cudnn_version": 92000,
+        "cudnn_benchmark": false,
+        "torchvision": "0.28.0+cu130",
+        "numpy": "2.4.6",
+        "cv2": "5.0.0",
+        "PIL": "12.3.0",
+        "yaml": "6.0.3",
+        "gpu": {
+          "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+          "total_memory_gb": 8.55,
+          "compute_capability": "12.0",
+          "driver": "592.19"
+        }
+      },
+      "attempt": 1,
+      "timestamp_end": "2026-09-27T11:48:09+0530",
+      "seconds": 7957.0,
+      "return_code": 0,
+      "epochs_on_disk_at_end": 20,
+      "workers_used": 4
+    }
+  ],
+  "timestamp_end": "2026-09-27T11:48:09+0530",
+  "return_code": 0,
+  "train_seconds": 7957.0,
+  "best_pt_sha256": "44f960ffda5b3b3642a2a5cfd79041b15480c3dc130ff1faa32ba0189d4fc3e2",
+  "last_pt_sha256": "d26641b2cedb77fffc547689eca0d75c62c5ffaeb4601472a9d2c2625766ea5f"
+}

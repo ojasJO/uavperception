@@ -1,0 +1,451 @@
+{
+ "registration": "experiments/aerotrack_v3/preregistration_X1_cst_protocol_matched.json",
+ "candidate": "v3_n__causal_g4_cst_s0_e20",
+ "weights_sha256": "e52a5645b8520c62e1f8c05775049aadc56bd3ab0717e17135bab131ac66f69b",
+ "frozen": {
+  "registration": "experiments/aerotrack_v3/preregistration_X1_cst_protocol_matched.json",
+  "candidate": "v3_n__causal_g4_cst_s0_e20",
+  "v2_selected": "causal_g4",
+  "network": "n",
+  "f1_status": "NOT SUPPORTED",
+  "x1c_val_reference": "v2_causal_g4_s0_e20",
+  "written": "2026-10-10T07:30:37+0530",
+  "rule": "tuned on ALL CST VAL by systems/scripts/track_eval.py (maximum mSA); commit before the single TEST pass",
+  "ste": {
+   "det_thr": 0.15,
+   "init_thr": 0.5,
+   "reacq_thr": 0.5,
+   "max_coast": 5,
+   "output": "det",
+   "coast_output": false,
+   "gate_chi2": 25.0
+  },
+  "argmax": {
+   "thr": 0.3
+  },
+  "val_cross_fitted_mSA": {
+   "argmax": {
+    "cst_IR": {
+     "n_sequences": 40,
+     "mSA": 62.595470667612055,
+     "located_rate": 0.7521444117270516,
+     "false_alarm_rate": 0.35952,
+     "n_invisible_frames": 6250,
+     "reappearances": 166,
+     "recover_frames_median": 14.0,
+     "recover_frames_mean": 56.48192771084337,
+     "frame_attr_SA": {
+      "CDB": {
+       "SA": 55.3617731420691,
+       "n_frames": 17720
+      },
+      "DBC": {
+       "SA": 55.69187670521042,
+       "n_frames": 19418
+      },
+      "FM": {
+       "SA": 22.947585704517014,
+       "n_frames": 54
+      },
+      "OC": {
+       "SA": 54.95743558391023,
+       "n_frames": 3228
+      },
+      "OV": {
+       "SA": 75.16521739130435,
+       "n_frames": 2875
+      },
+      "SV": {
+       "SA": 52.170277472087534,
+       "n_frames": 20708
+      },
+      "TC": {
+       "SA": 51.708016422147594,
+       "n_frames": 29532
+      },
+      "size_large": {
+       "SA": 2.5870227574100095,
+       "n_frames": 347
+      },
+      "size_normal": {
+       "SA": 61.70508678863309,
+       "n_frames": 2134
+      },
+      "size_small": {
+       "SA": 66.37075985249841,
+       "n_frames": 28525
+      },
+      "size_tiny": {
+       "SA": 39.661979489259664,
+       "n_frames": 8049
+      }
+     }
+    }
+   },
+   "ste": {
+    "cst_IR": {
+     "n_sequences": 40,
+     "mSA": 63.61312367868648,
+     "located_rate": 0.7527845346306491,
+     "false_alarm_rate": 0.27584,
+     "n_invisible_frames": 6250,
+     "reappearances": 166,
+     "recover_frames_median": 19.5,
+     "recover_frames_mean": 76.3855421686747,
+     "frame_attr_SA": {
+      "CDB": {
+       "SA": 56.024802509452584,
+       "n_frames": 17720
+      },
+      "DBC": {
+       "SA": 57.733737517794964,
+       "n_frames": 19418
+      },
+      "FM": {
+       "SA": 15.83429855378624,
+       "n_frames": 54
+      },
+      "OC": {
+       "SA": 62.980979573996976,
+       "n_frames": 3228
+      },
+      "OV": {
+       "SA": 83.79130434782608,
+       "n_frames": 2875
+      },
+      "SV": {
+       "SA": 52.02476019054071,
+       "n_frames": 20708
+      },
+      "TC": {
+       "SA": 52.98508245091204,
+       "n_frames": 29532
+      },
+      "size_large": {
+       "SA": 2.683698242649901,
+       "n_frames": 347
+      },
+      "size_normal": {
+       "SA": 60.84498802589541,
+       "n_frames": 2134
+      },
+      "size_small": {
+       "SA": 66.4904430421316,
+       "n_frames": 28525
+      },
+      "size_tiny": {
+       "SA": 39.94763802569335,
+       "n_frames": 8049
+      }
+     }
+    }
+   }
+  }
+ },
+ "started": "2026-10-12T05:23:34+0530",
+ "detection": {
+  "drone_AP50": 0.26962014801641915,
+  "anti_uav_drone_AP50": 0.08701026253090557,
+  "cst_drone_AP50": 0.6193067507949498,
+  "det_fly_drone_AP50": 0.018738208001545922,
+  "cst_drone_micro_AP50": 0.4875341015229633,
+  "mAP50": 0.13481007400820957,
+  "cst_building_drone_AP50": 0.4365194809934543,
+  "cst_building_n_images": 589,
+  "cst_cn_mountains_drone_AP50": 0.75900821032083,
+  "cst_cn_mountains_n_images": 794,
+  "cst_cn_sky_drone_AP50": 0.8931657273226985,
+  "cst_cn_sky_n_images": 463,
+  "cst_jungle_drone_AP50": 0.7112597028557235,
+  "cst_jungle_n_images": 952,
+  "cst_urban-areas_drone_AP50": 0.46877351288527846,
+  "cst_urban-areas_n_images": 1865,
+  "cst_water_drone_AP50": 0.9404557111746441,
+  "cst_water_n_images": 337,
+  "n_images": 11567
+ },
+ "sot": {
+  "ste": {
+   "cst_IR": {
+    "n_sequences": 60,
+    "mSA": 60.081252017353535,
+    "located_rate": 0.7085400843881856,
+    "false_alarm_rate": 0.2897485493230174,
+    "n_invisible_frames": 12925,
+    "reappearances": 314,
+    "recover_frames_median": 17.0,
+    "recover_frames_mean": 63.82484076433121,
+    "frame_attr_SA": {
+     "CDB": {
+      "SA": 52.217236625168,
+      "n_frames": 14381
+     },
+     "DBC": {
+      "SA": 65.40344249219345,
+      "n_frames": 8624
+     },
+     "FM": {
+      "SA": 31.755736549457623,
+      "n_frames": 93
+     },
+     "OC": {
+      "SA": 74.51451169033602,
+      "n_frames": 6469
+     },
+     "OV": {
+      "SA": 67.277711949499,
+      "n_frames": 6310
+     },
+     "SV": {
+      "SA": 52.19110817532394,
+      "n_frames": 33445
+     },
+     "TC": {
+      "SA": 51.46857560767701,
+      "n_frames": 42202
+     },
+     "size_large": {
+      "SA": 23.3779009091417,
+      "n_frames": 484
+     },
+     "size_normal": {
+      "SA": 67.24368488855498,
+      "n_frames": 2600
+     },
+     "size_small": {
+      "SA": 60.212953552187244,
+      "n_frames": 45812
+     },
+     "size_tiny": {
+      "SA": 39.879298544125376,
+      "n_frames": 10354
+     }
+    }
+   }
+  },
+  "argmax": {
+   "cst_IR": {
+    "n_sequences": 60,
+    "mSA": 59.69530057555016,
+    "located_rate": 0.7119662447257384,
+    "false_alarm_rate": 0.3220889748549323,
+    "n_invisible_frames": 12925,
+    "reappearances": 314,
+    "recover_frames_median": 10.0,
+    "recover_frames_mean": 44.82165605095541,
+    "frame_attr_SA": {
+     "CDB": {
+      "SA": 52.15550945771324,
+      "n_frames": 14381
+     },
+     "DBC": {
+      "SA": 61.850562779677745,
+      "n_frames": 8624
+     },
+     "FM": {
+      "SA": 40.28564042758758,
+      "n_frames": 93
+     },
+     "OC": {
+      "SA": 70.51622382574058,
+      "n_frames": 6469
+     },
+     "OV": {
+      "SA": 64.80920165755607,
+      "n_frames": 6310
+     },
+     "SV": {
+      "SA": 52.38860636621176,
+      "n_frames": 33445
+     },
+     "TC": {
+      "SA": 51.41120609836917,
+      "n_frames": 42202
+     },
+     "size_large": {
+      "SA": 22.34369087446603,
+      "n_frames": 484
+     },
+     "size_normal": {
+      "SA": 68.72601420183885,
+      "n_frames": 2600
+     },
+     "size_small": {
+      "SA": 60.306168154515426,
+      "n_frames": 45812
+     },
+     "size_tiny": {
+      "SA": 40.43261566655788,
+      "n_frames": 10354
+     }
+    }
+   }
+  }
+ },
+ "per_sequence_SA": {
+  "ste": {
+   "building_66": 41.417534026781944,
+   "building_67": 38.488877654985785,
+   "building_68": 38.17394962438401,
+   "building_69": 76.94702758943656,
+   "building_70": 36.08775134597558,
+   "building_71": 49.022542197369404,
+   "building_72": 53.91642189510194,
+   "building_73": 61.55802531171829,
+   "building_74": 39.4366143336817,
+   "cn_mountains_30": 70.79440051492611,
+   "cn_mountains_31": 70.65821696563162,
+   "cn_mountains_32": 56.039958644999075,
+   "cn_mountains_33": 63.4252994207875,
+   "cn_mountains_34": 52.55762055548713,
+   "cn_mountains_35": 86.45027997137868,
+   "cn_mountains_36": 78.61808405101304,
+   "cn_mountains_37": 56.19736784152809,
+   "cn_mountains_38": 81.23798756015664,
+   "cn_sky_11": 76.8682047259134,
+   "cn_sky_12": 70.77569957833697,
+   "cn_sky_13": 77.33971892434344,
+   "cn_sky_14": 75.95915466047288,
+   "cn_sky_15": 70.41701883333802,
+   "cn_sky_16": 74.14538229706524,
+   "jungle_10": 72.95132143906385,
+   "jungle_11": 73.51459708386923,
+   "jungle_12": 65.48499173629835,
+   "jungle_13": 39.905912514499875,
+   "jungle_14": 67.53149324127541,
+   "jungle_15": 57.22894765520549,
+   "jungle_16": 49.869921156219796,
+   "jungle_17": 59.22785829836425,
+   "jungle_18": 22.807930338995554,
+   "jungle_19": 47.805744317016334,
+   "jungle_7": 61.760108047379724,
+   "jungle_8": 68.94444197395376,
+   "jungle_9": 57.303271498381925,
+   "urban-areas_24": 58.807112949981565,
+   "urban-areas_25": 48.753303261059955,
+   "urban-areas_26": 44.049206291864174,
+   "urban-areas_35": 27.384816124596295,
+   "urban-areas_36": 40.7543396352055,
+   "urban-areas_37": 44.71567959016674,
+   "urban-areas_38": 70.52475532091496,
+   "urban-areas_39": 62.53704247949374,
+   "urban-areas_40": 55.92627545305935,
+   "urban-areas_41": 46.61599625840623,
+   "urban-areas_42": 52.848986283214316,
+   "urban-areas_43": 53.746832476628946,
+   "urban-areas_44": 48.83742567221929,
+   "urban-areas_45": 63.12724935646566,
+   "urban-areas_46": 42.335679706189694,
+   "urban-areas_47": 64.58675094287729,
+   "urban-areas_48": 50.8886214621768,
+   "water_20": 82.60230900462729,
+   "water_21": 82.3971814108504,
+   "water_22": 88.61860747586037,
+   "water_23": 72.86836574722297,
+   "water_24": 75.69377968787087,
+   "water_25": 85.38512662492242
+  },
+  "argmax": {
+   "building_66": 36.263443741549985,
+   "building_67": 37.622986673848025,
+   "building_68": 46.290924035993505,
+   "building_69": 72.72653329002765,
+   "building_70": 39.22692748903824,
+   "building_71": 46.04193440031063,
+   "building_72": 52.563377795143765,
+   "building_73": 61.11216245083487,
+   "building_74": 31.99251857699803,
+   "cn_mountains_30": 68.46601461127455,
+   "cn_mountains_31": 71.32088568452248,
+   "cn_mountains_32": 56.54741283286199,
+   "cn_mountains_33": 61.82598214364815,
+   "cn_mountains_34": 50.99649905798361,
+   "cn_mountains_35": 86.6683828453803,
+   "cn_mountains_36": 78.57275213903041,
+   "cn_mountains_37": 56.62027766262246,
+   "cn_mountains_38": 80.37177004331353,
+   "cn_sky_11": 77.7398091055916,
+   "cn_sky_12": 70.74534909500053,
+   "cn_sky_13": 78.0203474443739,
+   "cn_sky_14": 75.97473990254366,
+   "cn_sky_15": 70.71701883333802,
+   "cn_sky_16": 73.69032323327144,
+   "jungle_10": 71.04775633351584,
+   "jungle_11": 72.02386337437908,
+   "jungle_12": 64.70654228317461,
+   "jungle_13": 45.93171084690662,
+   "jungle_14": 68.51560389861778,
+   "jungle_15": 49.06525189716467,
+   "jungle_16": 48.70204368657035,
+   "jungle_17": 57.09952406246828,
+   "jungle_18": 38.39403634296744,
+   "jungle_19": 49.84292948214494,
+   "jungle_7": 58.92850304063315,
+   "jungle_8": 64.77450665087817,
+   "jungle_9": 56.0892552957928,
+   "urban-areas_24": 58.40446722822206,
+   "urban-areas_25": 49.155374128625084,
+   "urban-areas_26": 44.12907005099094,
+   "urban-areas_35": 27.800209400682164,
+   "urban-areas_36": 40.38372618137275,
+   "urban-areas_37": 44.17190993009244,
+   "urban-areas_38": 70.55623874993942,
+   "urban-areas_39": 61.7971475574671,
+   "urban-areas_40": 53.773727977721656,
+   "urban-areas_41": 44.68251575665727,
+   "urban-areas_42": 48.8957155419492,
+   "urban-areas_43": 53.4483581188624,
+   "urban-areas_44": 47.3344193238634,
+   "urban-areas_45": 63.03462567319515,
+   "urban-areas_46": 41.978174333775115,
+   "urban-areas_47": 65.77953655899346,
+   "urban-areas_48": 51.59692224469676,
+   "water_20": 82.60230900462729,
+   "water_21": 82.50222342765711,
+   "water_22": 88.50419099988783,
+   "water_23": 72.86836574722297,
+   "water_24": 75.69377968787087,
+   "water_25": 85.38512662492242
+  }
+ },
+ "predictions_dir": "runs/aerotrack_v3/x1_test_predictions",
+ "tracker_ms_per_frame": {
+  "ste": 0.12636477974797353,
+  "argmax": 0.01312163223908936
+ },
+ "X1_a": {
+  "ours_mSA": 60.08125201735352,
+  "ci95": [
+   56.04990654257263,
+   63.98828310911615
+  ],
+  "published": {
+   "GlobalTrack": 35.92,
+   "SiamDT": 35.84,
+   "MixFormer-V2": 29.39
+  },
+  "reference": 35.92,
+  "verdict": "exceeds the best published CST tracker"
+ },
+ "X1_b_tiny": {
+  "ours_frame_SA": 39.87929854412538,
+  "frames": 10354,
+  "ci95": [
+   30.203558893995293,
+   49.01905191586184
+  ],
+  "published": {
+   "GlobalTrack": 15.83,
+   "PrDiMP (best tiny)": 28.2
+  },
+  "note": "descriptive (frame-level SA on frames whose ground-truth diagonal <= 10 px)"
+ },
+ "X1_c": {
+  "v2_candidate": "v2_causal_g4_s0_e20",
+  "v2_cst_ste_mSA": 56.554081545589575,
+  "x1_cst_ste_mSA": 60.081252017353535,
+  "note": "descriptive, unpaired across passes"
+ },
+ "finished": "2026-10-12T05:38:57+0530",
+ "minutes": 15.4
+}

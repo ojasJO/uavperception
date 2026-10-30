@@ -1,0 +1,22 @@
+{
+  "augment": {
+    "hflip": 0.5,
+    "scale": [
+      0.9,
+      1.25
+    ],
+    "translate": 0.1,
+    "brightness": 0.15,
+    "contrast": 0.15,
+    "copy_paste": 0.3,
+    "copy_paste_max": 3
+  },
+  "sampler_weights": {
+    "bird": 8.0,
+    "micro": 6.0,
+    "small": 3.0,
+    "standard": 1.0,
+    "empty": 0.5
+  },
+  "temporal_gap": 1
+}

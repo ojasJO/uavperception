@@ -1,0 +1,40 @@
+[
+  {
+    "run": "aerotrack_spd_v1",
+    "mode": "normal",
+    "n_images": 11567,
+    "mAP50": 0.54906,
+    "mAP50-95": 0.24277,
+    "drone_AP50": 0.65898,
+    "bird_AP50": 0.43914,
+    "micro_AP50": 0.20486,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.56925,
+    "std_AP50": 0.49968,
+    "anti_uav_AP50": 0.90149,
+    "cst_AP50": 0.44715,
+    "det_fly_AP50": 0.41449,
+    "bird_img_FP/img@.25": 17.90721649484536,
+    "empty_FP/img@.25": 0.2696214219759926,
+    "sec": 207.1
+  },
+  {
+    "run": "aerotrack_spd_finetuned",
+    "mode": "normal",
+    "n_images": 11567,
+    "mAP50": 0.73441,
+    "mAP50-95": 0.37757,
+    "drone_AP50": 0.67446,
+    "bird_AP50": 0.79435,
+    "micro_AP50": 0.28623,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.7678,
+    "std_AP50": 0.90791,
+    "anti_uav_AP50": 0.87869,
+    "cst_AP50": 0.39331,
+    "det_fly_AP50": 0.76847,
+    "bird_img_FP/img@.25": 13.989690721649485,
+    "empty_FP/img@.25": 0.43490304709141275,
+    "sec": 194.6
+  }
+]

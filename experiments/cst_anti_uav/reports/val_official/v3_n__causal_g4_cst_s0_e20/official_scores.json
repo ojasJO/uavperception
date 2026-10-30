@@ -1,0 +1,341 @@
+{
+ "generated": "2026-10-12T03:13:58+0530",
+ "subset": "val",
+ "n_sequences": 40,
+ "toolkit": {
+  "path": "data\\cst_anti_uav_official\\toolkit",
+  "commit": "bd92b984ff2c5271200497243b4ee6466d7cbdbe",
+  "experiment_sha256": "976f2a91201aa020b113b274e35e5e855e3ceccf91d83f30083854eaf1166301",
+  "frame_experiment_sha256": "fdc048125a368be373f0b8bfc6be7dc74d85d314de66693fca5e7b8426a837db"
+ },
+ "published_missing_from_archive": [],
+ "trackers": {
+  "X1-ste": {
+   "path": "runs\\cst_anti_uav\\val_predictions\\v3_n__causal_g4_cst_s0_e20\\ste",
+   "mSA": 64.03370365520725,
+   "success_auc": 62.67405146843173,
+   "precision_20px": 82.07575027793327,
+   "success_rate_iou_0_5": 77.58730125527264,
+   "sequence_attr_SA": {
+    "OC": 57.433063237049495,
+    "OV": 60.28409296903712,
+    "SV": 64.03370365520725,
+    "TC": 62.8973296691489,
+    "DBC": 59.61378285400154,
+    "CDB": 55.61853060283423,
+    "FM": 60.53779140834783,
+    "TS": 61.85072981855186,
+    "SS": 64.03370365520725,
+    "MS": 62.34059417721851,
+    "NS": 52.70817373734121
+   },
+   "frame_attr_SA_official": {
+    "OC": 100.0,
+    "OV": 82.35936111408103,
+    "SV": 51.66280858053989,
+    "TC": 53.539171686216655,
+    "DBC": 58.26444245000294,
+    "CDB": 56.129623463088066,
+    "FM": 15.834298553786239
+   },
+   "frame_attr_SA_corrected": {
+    "OC": {
+     "SA": 69.39361897920143,
+     "n_frames": 3228
+    },
+    "OV": {
+     "SA": 87.02608695652174,
+     "n_frames": 2875
+    },
+    "SV": {
+     "SA": 51.66280858053966,
+     "n_frames": 20708
+    },
+    "TC": {
+     "SA": 53.53917168621668,
+     "n_frames": 29532
+    },
+    "DBC": {
+     "SA": 58.264442450003074,
+     "n_frames": 19418
+    },
+    "CDB": {
+     "SA": 56.12962346308807,
+     "n_frames": 17720
+    },
+    "FM": {
+     "SA": 15.83429855378624,
+     "n_frames": 54
+    },
+    "tiny": {
+     "SA": 39.97818463342125,
+     "n_frames": 8049
+    },
+    "small": {
+     "SA": 66.1614002122632,
+     "n_frames": 28525
+    },
+    "normal": {
+     "SA": 60.58137294731082,
+     "n_frames": 2134
+    },
+    "large": {
+     "SA": 3.845016340739654,
+     "n_frames": 347
+    }
+   },
+   "per_sequence_SA": {
+    "building_41": 74.13846608113893,
+    "building_42": 76.6586359329888,
+    "building_43": 83.48382968332157,
+    "building_44": 75.09922630675104,
+    "building_45": 40.02555651159232,
+    "building_46": 70.02909881505695,
+    "building_47": 41.10472793204318,
+    "building_48": 22.341507726211386,
+    "building_49": 66.9878564077205,
+    "building_50": 68.58821239236845,
+    "building_51": 57.99780714209566,
+    "building_52": 36.224780134092605,
+    "building_53": 56.2781608083959,
+    "building_54": 54.93966519446093,
+    "cn_mountains_21": 73.49449548940326,
+    "cn_mountains_22": 77.31174818083748,
+    "cn_mountains_23": 69.93086169638954,
+    "cn_mountains_24": 78.33107967668295,
+    "cn_mountains_25": 80.64277643597006,
+    "cn_mountains_26": 78.08398443155974,
+    "cn_mountains_27": 70.87300017174194,
+    "cn_mountains_28": 63.057206852925,
+    "cn_mountains_29": 67.96679519527595,
+    "cn_sky_10": 71.6356902639634,
+    "cn_sky_9": 78.40231400586795,
+    "jungle_6": 90.26361881120756,
+    "urban-areas_27": 43.27005005232634,
+    "urban-areas_28": 63.48496638798733,
+    "urban-areas_29": 37.619145421389526,
+    "urban-areas_30": 34.36974258988165,
+    "urban-areas_31": 41.77185361444645,
+    "urban-areas_32": 43.07176467684622,
+    "urban-areas_33": 49.7846560397732,
+    "urban-areas_34": 54.190704916988,
+    "water_14": 87.76578909730988,
+    "water_15": 67.23513724020724,
+    "water_16": 73.26279868833112,
+    "water_17": 78.61773395806743,
+    "water_18": 81.33107123981064,
+    "water_19": 81.681630004862
+   },
+   "track_a_crosscheck": {
+    "mSA": 64.03370365520725,
+    "max_abs_seq_diff": 0.0
+   },
+   "result_sha256": {
+    "building_41": "d97971df3baddb2c5eec08c073c1bec5f7bbc71a59fc2bd9138bb28da07bb591",
+    "building_42": "9811b2c7321168ac298b8421f670641e90ecf3a406b2e9f07a46aba4b14e5274",
+    "building_43": "9b1ae88a3dac03469d89f4edbce5c2bc837b99244fd8b654ae1d32c190849e46",
+    "building_44": "ed94cd961148f1c58c16232d0c06113edf5451304f775af8cc7cc9861e0406f3",
+    "building_45": "931f05aff9da57adaff16cf2b9864600637ac3ec424ac53817d5b962337cea65",
+    "building_46": "3febe80dfef6a71fe6c5a6f8f84dae7538cbe79d400cc228b9fe69bbe2acec0e",
+    "building_47": "e01ae6aead9f24c13234688738c0b9d02ec42f1af87dbc1ff7e2e537dfeb73bd",
+    "building_48": "db0d730ed689fa8d432b773a1c69da93441056607c57399db129b6208ed50c18",
+    "building_49": "ec3bf17ce1125f1f7ef4e181cb8f5e4ff429a99a20f99d0c896a1b76f65865da",
+    "building_50": "3f3bbf772212b4fb76b229c9e8759ec9b9b9a69af492a9ded8fe2a1bc0366a48",
+    "building_51": "fea18a0409f82ca1eaeca822978fe34f89a610e94ddd2e6cf76b59f69f7e35cc",
+    "building_52": "74544957a8b492c321f159706406a6ab73baf17662d82387df33d341c8bc7541",
+    "building_53": "27021e8857a6577b7764736767668bf1500a953e3a978818010bf98619d78390",
+    "building_54": "936341f277f72d3d501bf1a4bf5fef7abf8811091b1c74f6eb34dd6af1e1f828",
+    "cn_mountains_21": "83cf0c3e5745ad4eacb7b244d277dcfa6496c0f7c48c7e70453e8d4250816455",
+    "cn_mountains_22": "5feecdbdcf865d7750cf8d5ea203d81585c21edc2f718ee78bb41976c466d4b3",
+    "cn_mountains_23": "32797fd5f4d1cb21638e1cc93ad8d0a4ef716f7e0fce472e14cce19b449e0ea1",
+    "cn_mountains_24": "974d3a76c8f0507cd2514336aeb956011b274a3f66298e4fabdb5201f4b27bc1",
+    "cn_mountains_25": "641bb432fbfd2a155486d387cabea9f917be333d47d640cee7ff036acbdd19a7",
+    "cn_mountains_26": "0465e3e49f7b3c395756d17a6807caa4ad7ead9d48d437be3103f8290e2ad020",
+    "cn_mountains_27": "d4eab751a8b51647b8ba22a07468df47fa18dc22924f2dfe69d785eafdb1d337",
+    "cn_mountains_28": "0a56c782fc6b6ad4c16e8949b4ccb5c326a5a2b44a08a2ac36bd836c63178e5c",
+    "cn_mountains_29": "cae3d70d3a67bd4342ecb87f43de0f473b376db625a3998ff6c7bae333c37827",
+    "cn_sky_10": "500c04e3b7784dc37727bb65f493aea1679172f471e578ddc87902f43276a0ee",
+    "cn_sky_9": "26979c35c326dcecd291f6a9efff4a639da6f35a02817e8a5a173659e0b639ca",
+    "jungle_6": "4bbb0d622537a31973d379a065d779e225f602891b6e6e8cc0a5a2fee7238d34",
+    "urban-areas_27": "5fa300c021256c012be4171dab4aa64dcceda0a8f9d8b2036d813209c9b9ad6a",
+    "urban-areas_28": "c83751235802b84589730a8d8d9901938369f6b8e6646b956b122d933cf3f2cb",
+    "urban-areas_29": "b455c3337644ce0a62446d496acbbecb884561a0594f0974cf8e0768b8c31a57",
+    "urban-areas_30": "963f0e2e8d6311157918667d6d5ba10962f920e15379d38ea17bfaa11b2729a1",
+    "urban-areas_31": "81ff09c4c5753e81fde46bb55354363acb8c63fd2ba995f94e864911a12fa022",
+    "urban-areas_32": "855a86de09496f787dacf134f3c0e26d58320ebd5300002e1aef343537ba3431",
+    "urban-areas_33": "96855681fd8fe2cfe46d68a07364cd71e3db78ff6c7756b62253851c5f7c34f4",
+    "urban-areas_34": "b3e859595b16f101dc869b8cbbae3879b589608ba684a12e1ecb245d0f7ee70d",
+    "water_14": "a355a233b1e088e1a5aeb8afb8c0816f37983cb052026fa1cf9c819e8ff961a2",
+    "water_15": "64fcade82391c7232a49a4071f7ab318235f7aac22c043a39f0eaa056c0fbb00",
+    "water_16": "918a456a19070469a61d462cda27fdb3339e1711dd12c178f27e8e20409cc81d",
+    "water_17": "958614f23b88e7455174132b5fb6d9ca518ba32abd35cfec28e4ebf6964f5953",
+    "water_18": "89dddca361e5c6b03d299487731e74bff5dd020fd8b100344ad3eb49f2c814e5",
+    "water_19": "52b4a7c58bbdd1967c387b35ec0c0b5dc97e95adc60a839a4183f5780349321d"
+   }
+  },
+  "X1-argmax": {
+   "path": "runs\\cst_anti_uav\\val_predictions\\v3_n__causal_g4_cst_s0_e20\\argmax",
+   "mSA": 63.41935521526892,
+   "success_auc": 62.08364688728819,
+   "precision_20px": 81.44096144499849,
+   "success_rate_iou_0_5": 77.01218594838481,
+   "sequence_attr_SA": {
+    "OC": 56.81973358982203,
+    "OV": 59.49963130427154,
+    "SV": 63.41935521526892,
+    "TC": 62.329122714069065,
+    "DBC": 58.805928976240665,
+    "CDB": 54.793138243953535,
+    "FM": 59.67620656870734,
+    "TS": 61.06428775991122,
+    "SS": 63.41935521526892,
+    "MS": 61.87681275355884,
+    "NS": 52.42973264847103
+   },
+   "frame_attr_SA_official": {
+    "OC": 100.0,
+    "OV": 83.45826221298212,
+    "SV": 51.766908010588274,
+    "TC": 52.85510443941346,
+    "DBC": 57.066836405334286,
+    "CDB": 55.81144939778922,
+    "FM": 19.81036422538177
+   },
+   "frame_attr_SA_corrected": {
+    "OC": {
+     "SA": 63.69349506346414,
+     "n_frames": 3228
+    },
+    "OV": {
+     "SA": 83.79130434782608,
+     "n_frames": 2875
+    },
+    "SV": {
+     "SA": 51.76690801058806,
+     "n_frames": 20708
+    },
+    "TC": {
+     "SA": 52.85510443941348,
+     "n_frames": 29532
+    },
+    "DBC": {
+     "SA": 57.06683640533439,
+     "n_frames": 19418
+    },
+    "CDB": {
+     "SA": 55.81144939778915,
+     "n_frames": 17720
+    },
+    "FM": {
+     "SA": 19.81036422538177,
+     "n_frames": 54
+    },
+    "tiny": {
+     "SA": 39.59779240900921,
+     "n_frames": 8049
+    },
+    "small": {
+     "SA": 66.11830493794423,
+     "n_frames": 28525
+    },
+    "normal": {
+     "SA": 61.18017352710832,
+     "n_frames": 2134
+    },
+    "large": {
+     "SA": 3.5400099037932455,
+     "n_frames": 347
+    }
+   },
+   "per_sequence_SA": {
+    "building_41": 73.94856404078566,
+    "building_42": 74.10885947257162,
+    "building_43": 80.50175637882165,
+    "building_44": 74.86995609862015,
+    "building_45": 38.27608633547884,
+    "building_46": 69.21401688269032,
+    "building_47": 41.89185038103278,
+    "building_48": 23.14098443209486,
+    "building_49": 65.78328050431614,
+    "building_50": 68.17075681034949,
+    "building_51": 60.528853334027566,
+    "building_52": 35.975607908285525,
+    "building_53": 54.07790209224924,
+    "building_54": 54.465488770629364,
+    "cn_mountains_21": 72.81950910051545,
+    "cn_mountains_22": 75.89329796551444,
+    "cn_mountains_23": 69.1696393956347,
+    "cn_mountains_24": 78.70885920081884,
+    "cn_mountains_25": 80.75388003911678,
+    "cn_mountains_26": 77.99807377863878,
+    "cn_mountains_27": 71.01884680024779,
+    "cn_mountains_28": 62.44734516548682,
+    "cn_mountains_29": 67.72640134966584,
+    "cn_sky_10": 71.4136373040039,
+    "cn_sky_9": 75.61104492208437,
+    "jungle_6": 89.93574995874854,
+    "urban-areas_27": 42.64905727536662,
+    "urban-areas_28": 63.7125644793653,
+    "urban-areas_29": 34.1369917728984,
+    "urban-areas_30": 33.22294556181189,
+    "urban-areas_31": 39.95630983237181,
+    "urban-areas_32": 42.02500210588944,
+    "urban-areas_33": 47.75516139775648,
+    "urban-areas_34": 54.064394646208356,
+    "water_14": 87.76578909730988,
+    "water_15": 67.64218616662382,
+    "water_16": 73.26279868833112,
+    "water_17": 78.51052450538354,
+    "water_18": 81.33107123981064,
+    "water_19": 82.28916341919978
+   },
+   "track_a_crosscheck": {
+    "mSA": 63.41935521526892,
+    "max_abs_seq_diff": 0.0
+   },
+   "result_sha256": {
+    "building_41": "76caa7f9784835a7f7b2252bcea153b99c4fe0491c887ddfba08a94faafc3c6b",
+    "building_42": "6bbaa5b0c73058c18a44f3f9d71f73e32cccf9470a59e65e3cb21327820a2fde",
+    "building_43": "15f9d725811df8d5c708db4163e72e25cc83d34d23a6cd8e3045340e75383e07",
+    "building_44": "64137f62c687f2d5cc873bb38651ec6f698634edce384caee3f1c3778f4681ae",
+    "building_45": "cea50dc06c0b941402914bc1a45c2cb555519310c46701b785021191f2dd006d",
+    "building_46": "f8ef89668e305f53dd43156a38959adc990a5b9621397e44b6ed0543ce0e11db",
+    "building_47": "677c636ccbab28cff7e1fc769664dd06ab360222d79690471ddcab7443da74e6",
+    "building_48": "c8cfe6c0c05cb13e75f2fa7f4d558e0f64c387bcba410bc663d632961fd5f45e",
+    "building_49": "0ca7ea8c019c438caee96682ecb39cf6a45104c3dd39255967f1cbe806ec61f2",
+    "building_50": "58587b6bad35edcd2df973ebbb18e2cbb282fabbd4a2d6fc34f9006e9b07539f",
+    "building_51": "3217b308d47d46951fe5d5623e02b7db8ca659f36c777bd41b493e1a30d2360b",
+    "building_52": "baaba49d34c1fef126850b0b9cc951050d2d575fb8594c28bade650930970bc1",
+    "building_53": "76448f25a06da2ea17639eb37ccf84b4ef3b2799b01b3fdbd3b09bddabb4c622",
+    "building_54": "3a306418f99f21d318752bdd3b350e95e9c942d5187970b4e103f53c74328fae",
+    "cn_mountains_21": "d3cb4536d9247a5c339a4244fe72e7a2713a8c884849091d971bfac6cad173d6",
+    "cn_mountains_22": "58d12e3f8cd167d4ac864c4aa545106e5a4fb869c5e6115075cdabe8738bcfb6",
+    "cn_mountains_23": "630804d2c14bd75c8cbac2c42afe98e02dfb68471d8a9c336d66d8075a4e4115",
+    "cn_mountains_24": "ea0bde94430e3bdfa8d9e2211eab217c8436f80b21310aa3f03107f755244604",
+    "cn_mountains_25": "7487994ff8b7431ad26f08af26d51ad69ca93b0515f40057c50a6650dc0f82ee",
+    "cn_mountains_26": "fd191401e85939ae441cdb45144daaea8d98121ed0a5bd1b15ea58cb9e279837",
+    "cn_mountains_27": "a2597685a7a2321804566736694e41851e0a21217bf27ed3504c656857ff6ede",
+    "cn_mountains_28": "1278c742d8448cae950b1a3addd639c2dd637e2a237d2d9921434be47f3e887c",
+    "cn_mountains_29": "37892cbb80fd2480f8742552193cfa3974004a2d313eab7e9d008d7f5884ffac",
+    "cn_sky_10": "c7fd1c9212bd4377a8b66654866c1ff537b6703040523d13fb541d8e6debf03a",
+    "cn_sky_9": "3aefed4bdfd3cdee34fdb738dee12970b175a75219bfc4d9c3a9bcb3475f093e",
+    "jungle_6": "fcaa8a35f5027c43d5fe2c7e27c2755ea906e2b344af86319a2c2da209fbaca0",
+    "urban-areas_27": "e536f7a107d37d47d93b6bf9ed0f82f5d88ebbea953a144d7893544c43d9bf3a",
+    "urban-areas_28": "68c811e4fa35f2980d96b597120c9cd0a32a1d9b84169d48f35ca9ee7d43563e",
+    "urban-areas_29": "faf849aac64b26e2b72a2f57342fb915f0918a94bbe0dc1ef8bc5795c3419f7a",
+    "urban-areas_30": "5e6c782badceec617eb559ded80bc0f140dce092f584e0e079dab2b0713a3a5b",
+    "urban-areas_31": "c1547442327f75ec8635dd40c0c57270248e61c805a26423b9b36e13ff8cd535",
+    "urban-areas_32": "c53ae30fd6e49c794c50efa0cf5d0547e5e0170d2697adb66071274531dec425",
+    "urban-areas_33": "b756bbde71fe3b1053dcb4922aa69546c9e5d5a90779d8298aff12a3e4faaf6d",
+    "urban-areas_34": "ba9a26fedfb69a0bd3961871dac637f38643292300e6f022f691239fda7b3dec",
+    "water_14": "a355a233b1e088e1a5aeb8afb8c0816f37983cb052026fa1cf9c819e8ff961a2",
+    "water_15": "7a7e18a5351fe643420f8a31311c65dc9d21bae9ab7e7fbf3bcced3ae80bada8",
+    "water_16": "918a456a19070469a61d462cda27fdb3339e1711dd12c178f27e8e20409cc81d",
+    "water_17": "66d06f7b0840d1b1811d722095a35b0f069173f9be0223cfccb303076f4c2a08",
+    "water_18": "89dddca361e5c6b03d299487731e74bff5dd020fd8b100344ad3eb49f2c814e5",
+    "water_19": "4b25279f7aac6af2b0f14d4a8cb12ace3f1f8ef7c35e12b65f47cb3038693725"
+   }
+  }
+ },
+ "seconds": 15.9
+}

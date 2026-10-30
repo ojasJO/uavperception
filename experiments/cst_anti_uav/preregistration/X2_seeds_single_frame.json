@@ -1,0 +1,42 @@
+{
+  "id": "X2_seeds_single_frame",
+  "registered": "see the git commit that added this file (2026-10-12): before any X2 run is trained, before X1's TEST pass, and before any X2 TEST access",
+  "class": "controlled extension of X1 (experiments/aerotrack_v3/preregistration_X1_cst_protocol_matched.json); design on CST VAL; ONE registered TEST pass",
+  "questions": {
+    "Q-seeds": "does the CST-only AeroTrack stack exceed the best published CST tracker (GlobalTrack, 35.92 mSA) for every training seed, not just X1's seed 0?",
+    "Q-temporal": "under the official single-object-tracking protocol, does the causal temporal window [t-4, t, t-8] beat the single-frame input of the same network trained on the same CST data?"
+  },
+  "why": "X1 is one seed and has no single-frame control; the existing temporal evidence (v2 C1, C2) is detection AP50 on all-domain detectors, not the benchmark's state accuracy. Seeds 0-2 and a single-frame arm answer both with the benchmark's own metric.",
+  "arms": {
+    "causal_g4": {"config": "n__causal_g4", "runs": ["v3_n__causal_g4_cst_s0_e20 (= the X1 candidate, already trained)", "v3_n__causal_g4_cst_s1_e20", "v3_n__causal_g4_cst_s2_e20"]},
+    "ttt": {"config": "n__ttt", "runs": ["v3_n__ttt_cst_s0_e20", "v3_n__ttt_cst_s1_e20", "v3_n__ttt_cst_s2_e20"], "note": "single frame: the current frame in all three input slots; same network 'n', same function-preserving init, same recipe"}
+  },
+  "recipe": "identical to X1: experiments/aerotrack_v3/scripts/train_v3.py --config <config> --seed <s> --batch 32 --train-domains cst (20 epochs x 25,000 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine, fp16 on the V100), last.pt; training on CST train (120 sequences) only",
+  "val_design": [
+    "per run: eval_v3.py on corpus-v2 VAL (detection AP50), full CST VAL detection cache, systems/scripts/track_eval.py (STE / argmax cross-fitted by recording-group halves and tuned on all CST VAL)",
+    "per run, the settings tuned on ALL CST VAL are frozen in experiments/cst_anti_uav/frozen_x2_params.json (X1's run keeps frozen_x1_params.json, identical by construction) and committed before the TEST pass",
+    "V1 (VAL, descriptive because CST val shares source videos with CST train): causal_g4 minus ttt, cross-fitted STE SA per sequence, seed-mean per sequence, sequence bootstrap B = 10000 (numpy default_rng(0)); also detection AP50 per seed",
+    "no model selection: all six runs go to TEST as registered"
+  ],
+  "final_test": {
+    "order": "after X1's own single TEST pass (x1_test_ledger.jsonl must exist); X1's seed-0 result is reused, never re-scored",
+    "single_pass": "experiments/cst_anti_uav/scripts/x2_final.py --final-eval: the five new runs, each once (detection AP50 via eval_v3 --set test --final-eval, full CST TEST cache, STE / argmax at the frozen settings, official-format export); experiments/cst_anti_uav/reports/x2_test_ledger.jsonl refuses a second pass of any weights",
+    "scoring": "the unmodified official toolkit (experiments/cst_anti_uav/scripts/official_eval.py) on the exported predictions; Track A's value must agree",
+    "comparisons": [
+      {"id": "T1", "what": "per run: official STE mSA vs the published 35.92", "rule": "sequence-bootstrap 95 % CI (B = 10000); 'exceeds' if the lower bound > 35.92, 'below' if the upper bound < 35.92, else 'not distinguishable'; the claim 'seed-robust' requires 'exceeds' for all three seeds of an arm"},
+      {"id": "T2", "what": "per arm: seed-mean per-sequence SA minus the released CST-trained GlobalTrack per-sequence SA (60 paired sequences)", "rule": "'exceeds GlobalTrack (paired)' if the bootstrap CI lower bound > 0"},
+      {"id": "T3", "what": "temporal vs single frame on TEST: seed-mean per-sequence SA of causal_g4 minus that of ttt", "rule": "SUPPORTED if the bootstrap CI lower bound > 0, OPPOSITE if the upper bound < 0, else NOT DETECTED; per-seed paired deltas and the Wilcoxon p reported alongside; seed noise enters through the three per-seed deltas, which are reported"},
+      {"id": "T4", "what": "frame-level attribute and size-bin SA (tiny / small / normal / large; OC OV SV TC DBC CDB FM) per arm", "rule": "descriptive, with frame counts"}
+    ]
+  },
+  "component_gate": {
+    "measured_failure": "single-seed benchmark claim; temporal benefit never measured with the benchmark's metric under the benchmark's training data",
+    "baseline": "the same network with a single-frame input (ttt), and the 21 released CST-trained trackers",
+    "isolating_ablation": "window only (causal_g4 vs ttt); everything else identical",
+    "rtx5050": "same network as the deployed detector (deployment gate of v2_causal_g4_s0_e20: TensorRT fp16 e2e p99 8.0 ms)",
+    "falsifier": "T1 not 'exceeds' for some seed; T3 NOT DETECTED or OPPOSITE"
+  },
+  "estimated_gpu_hours": "5 x ~0.75 h training (X1 took 44.7 min on a V100) + 5 x ~0.4 h VAL evaluation / cache + ~1.3 h TEST pass",
+  "execution": "HPC PBS: training jobs in parallel on free GPU nodes (each writes only its own runs/<name>/ and one ledger line), then ONE sequential VAL-design job (eval_v3 rewrites a shared results file), then the TEST pass after X1's pass; scheduler dependencies (afterok)",
+  "outputs": "runs/v3_n__{causal_g4,ttt}_cst_s{0,1,2}_e20/ ; experiments/cst_anti_uav/frozen_x2_params.json ; experiments/cst_anti_uav/reports/{X2_val, x2_final_test, X2_test_official}.{json,md}"
+}

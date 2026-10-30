@@ -1,0 +1,1 @@
+2026-10-05T16:05:07+0530 stopped by the agent before training (still in its gate): system commit 2.9 / 40.6 GB free beside the v2 GPU training; C1c moved to tools/chains/cpu_trackc_window.json (H3-evaluation window, no GPU training)

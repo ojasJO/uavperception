@@ -1,0 +1,41 @@
+{"t": "2026-09-26T10:55:39+0530", "event": "start", "pid": 31400, "smoke": false, "argv": "A:\\AEROTRACK_OMEN\\experiments\\aerotrack_generalization\\scripts\\run_gen.py"}
+{"t": "2026-09-26T10:55:39+0530", "event": "plan_frozen", "sha": "f4f9d4d237ac"}
+{"t": "2026-09-26T10:55:39+0530", "event": "integrity_ok", "when": "start", "files": 31}
+{"t": "2026-09-26T10:55:39+0530", "event": "train_launch", "run": "gen_stock_f0_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T12:22:06+0530", "event": "train_complete", "run": "gen_stock_f0_e20", "epochs": 20, "train_seconds": 5182.6}
+{"t": "2026-09-26T12:27:28+0530", "event": "train_launch", "run": "gen_spd_fp_f0_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T14:02:57+0530", "event": "train_complete", "run": "gen_spd_fp_f0_e20", "epochs": 20, "train_seconds": 5723.7}
+{"t": "2026-09-26T14:08:29+0530", "event": "train_launch", "run": "gen_temporal_fp_g1_f0_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T16:04:49+0530", "event": "train_complete", "run": "gen_temporal_fp_g1_f0_e20", "epochs": 20, "train_seconds": 6976.2}
+{"t": "2026-09-26T16:11:37+0530", "event": "train_launch", "run": "gen_temporal_fp_g4_f0_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T18:10:54+0530", "event": "train_complete", "run": "gen_temporal_fp_g4_f0_e20", "epochs": 20, "train_seconds": 7151.9}
+{"t": "2026-09-26T18:17:47+0530", "event": "decisions", "spd_fp": "pending", "temporal_fp_g1": "pending", "temporal_fp_g4": "pending", "budget_h4": "pending"}
+{"t": "2026-09-26T18:17:47+0530", "event": "stage_a_done", "survivors": ["spd_fp", "temporal_fp_g1", "temporal_fp_g4"]}
+{"t": "2026-09-26T18:17:47+0530", "event": "train_launch", "run": "gen_stock_f1_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T19:53:34+0530", "event": "train_complete", "run": "gen_stock_f1_e20", "epochs": 20, "train_seconds": 5741.8}
+{"t": "2026-09-26T19:58:56+0530", "event": "train_launch", "run": "gen_spd_fp_f1_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T21:35:42+0530", "event": "train_complete", "run": "gen_spd_fp_f1_e20", "epochs": 20, "train_seconds": 5801.9}
+{"t": "2026-09-26T21:41:07+0530", "event": "train_launch", "run": "gen_temporal_fp_g1_f1_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T23:38:36+0530", "event": "train_complete", "run": "gen_temporal_fp_g1_f1_e20", "epochs": 20, "train_seconds": 7044.2}
+{"t": "2026-09-26T23:45:13+0530", "event": "train_launch", "run": "gen_temporal_fp_g4_f1_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-27T01:47:53+0530", "event": "train_complete", "run": "gen_temporal_fp_g4_f1_e20", "epochs": 20, "train_seconds": 7355.4}
+{"t": "2026-09-27T01:54:29+0530", "event": "train_launch", "run": "gen_stock_f2_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-27T03:29:21+0530", "event": "train_complete", "run": "gen_stock_f2_e20", "epochs": 20, "train_seconds": 5686.7}
+{"t": "2026-09-27T03:34:48+0530", "event": "train_launch", "run": "gen_spd_fp_f2_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-27T05:14:11+0530", "event": "train_complete", "run": "gen_spd_fp_f2_e20", "epochs": 20, "train_seconds": 5958.2}
+{"t": "2026-09-27T05:19:36+0530", "event": "train_launch", "run": "gen_temporal_fp_g1_f2_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-27T07:16:50+0530", "event": "train_complete", "run": "gen_temporal_fp_g1_f2_e20", "epochs": 20, "train_seconds": 7028.6}
+{"t": "2026-09-27T07:23:27+0530", "event": "train_launch", "run": "gen_temporal_fp_g4_f2_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-27T09:25:24+0530", "event": "train_complete", "run": "gen_temporal_fp_g4_f2_e20", "epochs": 20, "train_seconds": 7312.3}
+{"t": "2026-09-27T09:33:50+0530", "event": "decisions", "spd_fp": "not supported: (1) mean delta > 0.02, (3) bootstrap CI excludes 0", "temporal_fp_g1": "not supported: (1) mean delta > 0.02, (3) bootstrap CI excludes 0", "temporal_fp_g4": "supported", "budget_h4": "pending"}
+{"t": "2026-09-27T09:33:50+0530", "event": "skipped_time_budget", "run": "gen_stock_f0_e40", "hours": 4.8500000000000005}
+{"t": "2026-09-27T09:35:30+0530", "event": "decisions", "spd_fp": "not supported: (1) mean delta > 0.02, (3) bootstrap CI excludes 0", "temporal_fp_g1": "not supported: (1) mean delta > 0.02, (3) bootstrap CI excludes 0", "temporal_fp_g4": "supported", "budget_h4": "pending"}
+{"t": "2026-09-27T09:35:30+0530", "event": "development_done", "supported": ["temporal_fp_g4"]}
+{"t": "2026-09-27T09:35:30+0530", "event": "final_candidate", "candidate": "temporal_fp_g4", "mean_delta": 0.044791623613263755}
+{"t": "2026-09-27T09:35:30+0530", "event": "train_launch", "run": "gen_temporal_fp_g4_full_e20", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-27T11:48:12+0530", "event": "train_complete", "run": "gen_temporal_fp_g4_full_e20", "epochs": 20, "train_seconds": 7957.0}
+{"t": "2026-09-27T11:51:37+0530", "event": "test_eval_start", "run": "gen_temporal_fp_g4_full_e20"}
+{"t": "2026-09-27T11:55:00+0530", "event": "test_eval_done", "run": "gen_temporal_fp_g4_full_e20"}
+{"t": "2026-09-27T11:55:00+0530", "event": "report", "rc": 0, "log": "report_20260927_115500.log"}
+{"t": "2026-09-27T11:55:01+0530", "event": "integrity_ok", "when": "end", "files": 31}
+{"t": "2026-09-27T11:55:01+0530", "event": "complete", "hours": 24.99}

@@ -1,0 +1,42 @@
+{
+ "name": "post_v2_causal_caches",
+ "purpose": "Track C inputs: full corpus-v2 VAL detection caches of two CAUSAL detectors (single frame and [t-8,t-4,t]) for C1b (forecasting on tracker histories) and C3 (tracking); GPU, after the post-v2 chain; VAL only",
+ "state_dir": "runs/_chains/post_v2_causal_caches",
+ "wait_for": "runs/_chains/post_v2",
+ "jobs": [
+  {
+   "name": "cache_v2_stock_s0",
+   "required": false,
+   "env": {
+    "AEROTRACK_CORPUS": "data_unified_v2"
+   },
+   "when_exists": "runs/v2_stock_s0_e20/weights/last.pt",
+   "cmd": [
+    "{python}",
+    "-u",
+    "experiments/systems/scripts/cache_detections.py",
+    "--run",
+    "v2_stock_s0_e20",
+    "--corpus",
+    "data_unified_v2"
+   ]
+  },
+  {
+   "name": "cache_v2_causal_g4_s0",
+   "required": false,
+   "env": {
+    "AEROTRACK_CORPUS": "data_unified_v2"
+   },
+   "when_exists": "runs/v2_causal_g4_s0_e20/weights/last.pt",
+   "cmd": [
+    "{python}",
+    "-u",
+    "experiments/systems/scripts/cache_detections.py",
+    "--run",
+    "v2_causal_g4_s0_e20",
+    "--corpus",
+    "data_unified_v2"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+python tools/hpc/decode_antiuav.py --out /home/y_rajeshwar/aerotrack_server/shared_data/root/b_pipeline/data_unified/anti_uav/images --workers 12

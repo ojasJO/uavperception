@@ -1,0 +1,2 @@
+box_loss,cls_loss,dfl_loss,epoch,epoch_time_s,fitness,img_per_s,lr,mAP50,mAP50-95,micro_AP50,n_val_images
+3.5499751567840576,8.429838180541992,2.421574831008911,0,4.9,0.0,65.45,1.000000000000001e-05,0.0,0.0,0.0,180

@@ -1,0 +1,4 @@
+[bench] split=val cap=5000 -> 11,565 images {'anti_uav': 5000, 'cst': 5000, 'det_fly': 1565}
+[bench] aerotrack_spd_v1           normal    mAP50 0.6074 mAP50-95 0.2991 drone 0.7925 bird 0.4224 micro 0.2929 (n=2008) cst 0.6767 (207s)
+[bench] aerotrack_spd_finetuned    normal    mAP50 0.7788 mAP50-95 0.4140 drone 0.8027 bird 0.7548 micro 0.4078 (n=2008) cst 0.63917 (195s)
+[bench] wrote A:\AEROTRACK_OMEN\runs\audit\summary_val_cap5000.json

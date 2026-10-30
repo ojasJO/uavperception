@@ -1,0 +1,38 @@
+{
+ "c1_mlp_abs_s0": {
+  "checked": "2026-10-05T08:55:35+0530",
+  "onnx": "runs\\aerotrack_temporal\\c1\\onnx\\c1_mlp_abs_s0.onnx",
+  "onnx_sha256": "7c54b4c4fab0a35de462f2670fdae42e3d82a8bcbc509c95c6325596a87a2806",
+  "opset": 18,
+  "n_samples": 1033,
+  "max_abs_diff_mean": 3.814697265625e-06,
+  "max_abs_diff_log_sigma": 2.1457672119140625e-06,
+  "ort_cpu_batch1_ms": 0.1314,
+  "params": 173664,
+  "parity_ok": true
+ },
+ "c1_tfm_abs_s0": {
+  "checked": "2026-10-05T14:07:07+0530",
+  "onnx": "runs\\aerotrack_temporal\\c1\\onnx\\c1_tfm_abs_s0.onnx",
+  "onnx_sha256": "7dac2323054eb0463e4a3e12473761fcc4232ef38bc9201ebfb9e6263b363bbd",
+  "opset": 18,
+  "n_samples": 1033,
+  "max_abs_diff_mean": 8.58306884765625e-06,
+  "max_abs_diff_log_sigma": 1.7881393432617188e-06,
+  "ort_cpu_batch1_ms": 0.6285,
+  "params": 110368,
+  "parity_ok": true
+ },
+ "c1_gru_abs_s0": {
+  "checked": "2026-10-05T12:32:08+0530",
+  "onnx": "runs\\aerotrack_temporal\\c1\\onnx\\c1_gru_abs_s0.onnx",
+  "onnx_sha256": "a9de3384a5364a10c6098284f04365dad4efded25c1f9e738a2b6da31ab4e0ba",
+  "opset": 18,
+  "n_samples": 1033,
+  "max_abs_diff_mean": 7.62939453125e-06,
+  "max_abs_diff_log_sigma": 2.1457672119140625e-06,
+  "ort_cpu_batch1_ms": 0.3213,
+  "params": 133280,
+  "parity_ok": true
+ }
+}

@@ -1,0 +1,6 @@
+{"kind": "start", "job": "wait_v2_sym_start", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u tools/wait_for_event.py --file runs/aerotrack_v2/_runner/events.jsonl --contains \"kind\": \"start\" --contains train_v2_sym_g4_s0 --after 240 --also-done runs/aerotrack_v2/_runner", "t": "2026-10-05T14:11:24+0530"}
+{"kind": "end", "job": "wait_v2_sym_start", "rc": 0, "minutes": 103.0, "t": "2026-10-05T15:54:24+0530"}
+{"kind": "start", "job": "c1c_train", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/aerotrack_temporal/scripts/tc_c1c.py --stage train", "t": "2026-10-05T15:54:24+0530"}
+{"kind": "end", "job": "c1c_train", "rc": 4294967295, "minutes": 5.0, "t": "2026-10-05T15:59:23+0530"}
+{"kind": "failed", "error": "RuntimeError: required job c1c_train failed (rc 4294967295)", "t": "2026-10-05T15:59:23+0530"}
+{"kind": "start", "job": "wait_v2_sym_start", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u tools/wait_for_event.py --file runs/aerotrack_v2/_runner/events.jsonl --contains \"kind\": \"start\" --contains train_v2_sym_g4_s0 --after 240 --also-done runs/aerotrack_v2/_runner", "t": "2026-10-05T16:01:02+0530"}

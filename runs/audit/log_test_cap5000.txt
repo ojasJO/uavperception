@@ -1,0 +1,4 @@
+[bench] split=test cap=5000 -> 11,567 images {'anti_uav': 5000, 'cst': 5000, 'det_fly': 1567}
+[bench] aerotrack_spd_v1           normal    mAP50 0.5491 mAP50-95 0.2428 drone 0.6590 bird 0.4391 micro 0.2049 (n=2722) cst 0.44715 (207s)
+[bench] aerotrack_spd_finetuned    normal    mAP50 0.7344 mAP50-95 0.3776 drone 0.6745 bird 0.7944 micro 0.2862 (n=2722) cst 0.39331 (195s)
+[bench] wrote A:\AEROTRACK_OMEN\runs\audit\summary_test_cap5000.json

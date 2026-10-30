@@ -1,0 +1,52 @@
+{
+  "aerotrack_spd_v1": {
+    "n_images": 1565,
+    "conf>=0.25": {
+      "bird_only_images": 97,
+      "drone_alarms_per_bird_only_image": 0.526,
+      "bird_only_images_with_>=1_drone_alarm_pct": 20.6,
+      "drone_only_images": 1468,
+      "bird_preds_per_drone_only_image": 0.0,
+      "gt_birds": 1991,
+      "gt_birds_labelled_drone_pct": 0.8,
+      "gt_drones": 1468,
+      "gt_drones_labelled_bird_pct": 0.0
+    },
+    "conf>=0.5": {
+      "bird_only_images": 97,
+      "drone_alarms_per_bird_only_image": 0.124,
+      "bird_only_images_with_>=1_drone_alarm_pct": 7.2,
+      "drone_only_images": 1468,
+      "bird_preds_per_drone_only_image": 0.0,
+      "gt_birds": 1991,
+      "gt_birds_labelled_drone_pct": 0.3,
+      "gt_drones": 1468,
+      "gt_drones_labelled_bird_pct": 0.0
+    }
+  },
+  "aerotrack_spd_finetuned": {
+    "n_images": 1565,
+    "conf>=0.25": {
+      "bird_only_images": 97,
+      "drone_alarms_per_bird_only_image": 0.0,
+      "bird_only_images_with_>=1_drone_alarm_pct": 0.0,
+      "drone_only_images": 1468,
+      "bird_preds_per_drone_only_image": 0.0,
+      "gt_birds": 1991,
+      "gt_birds_labelled_drone_pct": 0.0,
+      "gt_drones": 1468,
+      "gt_drones_labelled_bird_pct": 0.0
+    },
+    "conf>=0.5": {
+      "bird_only_images": 97,
+      "drone_alarms_per_bird_only_image": 0.0,
+      "bird_only_images_with_>=1_drone_alarm_pct": 0.0,
+      "drone_only_images": 1468,
+      "bird_preds_per_drone_only_image": 0.0,
+      "gt_birds": 1991,
+      "gt_birds_labelled_drone_pct": 0.0,
+      "gt_drones": 1468,
+      "gt_drones_labelled_bird_pct": 0.0
+    }
+  }
+}

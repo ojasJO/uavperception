@@ -1,0 +1,101 @@
+{
+ "run_name": "v2_sym_g4_s0_e20",
+ "series": "aerotrack_v2",
+ "config": "sym_g4",
+ "config_definition": {
+  "layout": "stride",
+  "gap": 4,
+  "window": "symmetric"
+ },
+ "window": "symmetric",
+ "gap": 4,
+ "layout": "stride",
+ "seed": 0,
+ "epochs": 20,
+ "batch": 32,
+ "init": "function_preserving",
+ "recipe": "c_model/train.py STAGES['baseline']",
+ "smoke": false,
+ "overrides": {
+  "samples_per_epoch": null,
+  "monitor_cap": null
+ },
+ "data": {
+  "corpus": "data_unified_v2",
+  "manifest_sha256": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347",
+  "splits_sha256": "30f0e35f35ca6dfd4ddcf89fa9c9acc907c37f9a846a976ff2300573d1bf8a6e",
+  "train_split": "corpus v2 TRAIN (all three datasets)"
+ },
+ "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+ "attempts": [
+  {
+   "timestamp_start": "2026-10-05T15:50:04+0530",
+   "command": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\train_v2.py --_child --config sym_g4 --seed 0 --epochs 20 --batch 32 --workers 4 --name v2_sym_g4_s0_e20",
+   "resumed_from": null,
+   "epochs_on_disk_at_start": 0,
+   "git": {
+    "commit": "9478db511dc063af5009cd01579075e80331e31b",
+    "dirty": true
+   },
+   "env": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "cudnn_benchmark": false,
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cv2": "5.0.0",
+    "PIL": "12.3.0",
+    "yaml": "6.0.3",
+    "gpu": {
+     "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+     "total_memory_gb": 8.55,
+     "compute_capability": "12.0",
+     "driver": "592.19"
+    }
+   },
+   "attempt": 1,
+   "timestamp_end": "2026-10-05T19:20:32+0530",
+   "seconds": 12627.0,
+   "return_code": 4294967295,
+   "epochs_on_disk_at_end": 11
+  },
+  {
+   "timestamp_start": "2026-10-05T19:20:34+0530",
+   "command": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u A:\\AEROTRACK_OMEN\\experiments\\aerotrack_v2\\scripts\\train_v2.py --_child --config sym_g4 --seed 0 --epochs 20 --batch 32 --workers 4 --name v2_sym_g4_s0_e20 --resume-from A:\\AEROTRACK_OMEN\\runs\\v2_sym_g4_s0_e20\\weights\\last.pt",
+   "resumed_from": "A:\\AEROTRACK_OMEN\\runs\\v2_sym_g4_s0_e20\\weights\\last.pt",
+   "epochs_on_disk_at_start": 11,
+   "git": {
+    "commit": "d5c7b27e90d500d8c8d60b8d490026b99c3a978d",
+    "dirty": true
+   },
+   "env": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "cudnn_benchmark": false,
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cv2": "5.0.0",
+    "PIL": "12.3.0",
+    "yaml": "6.0.3",
+    "gpu": {
+     "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+     "total_memory_gb": 8.55,
+     "compute_capability": "12.0",
+     "driver": "592.19"
+    }
+   },
+   "attempt": 2
+  }
+ ],
+ "train_seconds": 12627.0,
+ "best_pt_sha256": "4b1bf4fed243ad978544fa512b308d02c7eca971736d425e65e78e3c164ae65a",
+ "last_pt_sha256": "d2897321c9814e814b661b01f0a67549436ba3c80b03ad8465a090a961be6677"
+}

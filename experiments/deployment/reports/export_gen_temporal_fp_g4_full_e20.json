@@ -1,0 +1,82 @@
+{
+  "run": "gen_temporal_fp_g4_full_e20",
+  "weights": "runs\\gen_temporal_fp_g4_full_e20\\weights\\last.pt",
+  "weights_sha256": "d26641b2cedb77fffc547689eca0d75c62c5ffaeb4601472a9d2c2625766ea5f",
+  "checkpoint_epoch": 19,
+  "temporal_gap": 4,
+  "window": "symmetric",
+  "input": {
+    "name": "images",
+    "shape": [
+      1,
+      9,
+      640,
+      640
+    ],
+    "dtype": "float32",
+    "range": "[0, 1]",
+    "layout": "RGB x3 frames (t-g, t, t+g)"
+  },
+  "output": {
+    "name": "preds",
+    "shape": [
+      6,
+      8400
+    ],
+    "content": "xywh (input px) + sigmoid class scores"
+  },
+  "onnx": {
+    "path": "artifacts\\deploy\\gen_temporal_fp_g4_full_e20\\gen_temporal_fp_g4_full_e20_b1_op18.onnx",
+    "sha256": "ed84a52d278890920344e907929cd628dfaddfc96d187951d1599c0482054679",
+    "bytes": 10683542,
+    "opset": 18,
+    "exporter": "torch.onnx TorchScript exporter, torch 2.13.0+cu130",
+    "onnx": "1.23.1",
+    "op_types": [
+      "Add",
+      "Concat",
+      "Constant",
+      "Conv",
+      "Div",
+      "Gather",
+      "MatMul",
+      "MaxPool",
+      "Mul",
+      "Reshape",
+      "Resize",
+      "Shape",
+      "Sigmoid",
+      "Slice",
+      "Softmax",
+      "Split",
+      "Sub",
+      "Transpose"
+    ],
+    "export_seconds": 0.7
+  },
+  "model": {
+    "params": 2604918,
+    "gflops_640": 6.619648,
+    "checkpoint_bytes": 32338079,
+    "ema": true,
+    "fused": true
+  },
+  "precision": "fp32",
+  "parity_ort_cpu_fp32": {
+    "n_inputs": 12,
+    "inputs": "registered VAL order, first 4 images per dataset",
+    "max_abs_diff_box_px": 0.0001220703125,
+    "max_abs_diff_box_px_all_anchors": 0.0047760009765625,
+    "box_diff_scope": "anchors with reference score >= 0.05",
+    "max_abs_diff_score": 1.1920928955078125e-06,
+    "same_top_detection": 12,
+    "tolerance": {
+      "box_px": 0.05,
+      "score": 0.0001,
+      "same_top_anchor": "all"
+    },
+    "onnxruntime": "1.30.0",
+    "pass": true
+  },
+  "generated": "2026-10-05T02:07:28+0530"
+}

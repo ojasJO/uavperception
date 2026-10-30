@@ -1,0 +1,1471 @@
+{
+ "generated": "2026-10-05T07:19:41+0530",
+ "run": "gen_temporal_fp_g4_full_e20",
+ "corpus": "data_unified",
+ "cache": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val",
+ "ste_params": "cross-fitted per half from track_gen_temporal_fp_g4_full_e20_data_unified.json",
+ "selection": "quantiles (0.1, 0.3, 0.5, 0.7, 0.9) of the severity measure",
+ "frames_per_group": {
+  "anti_uav_IR": 61999,
+  "anti_uav_RGB": 61999,
+  "cst_IR": 15007
+ },
+ "counts": {
+  "anti_uav_IR": {
+   "true_positive": 59737,
+   "trajectory_undershoot": 44269,
+   "_ellipse": 59296,
+   "trajectory_overshoot": 7732,
+   "false_negative": 800,
+   "false_positive": 127,
+   "high_confidence_wrong": 24,
+   "reacquisition_success": 7,
+   "low_confidence_correct": 59,
+   "identity_failure": 9,
+   "micro_miss": 78,
+   "occlusion_failure": 55,
+   "high_uncertainty": 37
+  },
+  "anti_uav_RGB": {
+   "true_positive": 56687,
+   "trajectory_undershoot": 45568,
+   "_ellipse": 56648,
+   "trajectory_overshoot": 8988,
+   "false_negative": 1536,
+   "high_confidence_wrong": 250,
+   "low_confidence_correct": 85,
+   "false_positive": 874,
+   "reacquisition_success": 20,
+   "occlusion_failure": 81,
+   "identity_failure": 5,
+   "micro_miss": 116,
+   "high_uncertainty": 6309
+  },
+  "cst_IR": {
+   "true_positive": 10572,
+   "_ellipse": 10961,
+   "trajectory_undershoot": 5331,
+   "trajectory_overshoot": 2249,
+   "low_confidence_correct": 255,
+   "false_negative": 1430,
+   "micro_miss": 758,
+   "false_positive": 108,
+   "reacquisition_success": 17,
+   "occlusion_failure": 119,
+   "high_confidence_wrong": 4,
+   "reacquisition_failure": 1
+  }
+ },
+ "examples": {
+  "true_positive": [
+   {
+    "seq": "antiuav_val_20190926_103046_1_2__RGB",
+    "frame": 752,
+    "score": 0.81640625,
+    "mode": "track",
+    "iou": 0.9132312519703657,
+    "gt": [
+     893.0,
+     461.0,
+     183.0,
+     52.0
+    ],
+    "out": [
+     894.75,
+     463.125,
+     177.75,
+     48.890625
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.1,
+    "severity": 0.0867687480296343,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_103046_1_2__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_222534_1_7__RGB",
+    "frame": 335,
+    "score": 0.7890625,
+    "mode": "track",
+    "iou": 0.8681857173493459,
+    "gt": [
+     1212.0,
+     641.0,
+     89.0,
+     37.0
+    ],
+    "out": [
+     1215.375,
+     641.0625,
+     87.75,
+     40.03125
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": 0.1318142826506541,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_7__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_144550_1_7__IR",
+    "frame": 831,
+    "score": 0.796875,
+    "mode": "track",
+    "iou": 0.828700343924526,
+    "gt": [
+     261.0,
+     305.0,
+     59.0,
+     21.0
+    ],
+    "out": [
+     261.375,
+     303.625,
+     60.625,
+     24.375
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.5,
+    "severity": 0.17129965607547404,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_7__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_144550_1_4__RGB",
+    "frame": 56,
+    "score": 0.7890625,
+    "mode": "track",
+    "iou": 0.7798972585172103,
+    "gt": [
+     962.0,
+     468.0,
+     159.0,
+     51.0
+    ],
+    "out": [
+     948.375,
+     471.9375,
+     181.875,
+     49.3125
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.7,
+    "severity": 0.22010274148278974,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_4__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_183400_1_1__RGB",
+    "frame": 630,
+    "score": 0.70703125,
+    "mode": "track",
+    "iou": 0.6911590509181462,
+    "gt": [
+     800.0,
+     532.0,
+     159.0,
+     103.0
+    ],
+    "out": [
+     798.75,
+     560.25,
+     154.5,
+     75.421875
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.9,
+    "severity": 0.3088409490818538,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183400_1_1__RGB.npz"
+   }
+  ],
+  "false_positive": [
+   {
+    "seq": "antiuav_val_20190926_195921_1_5__RGB",
+    "frame": 537,
+    "score": 0.1484375,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": null,
+    "out": [
+     1375.125,
+     368.625,
+     193.125,
+     49.875
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.1,
+    "severity": 0.1484375,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_5__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_152412_1_3__RGB",
+    "frame": 74,
+    "score": 0.453125,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": null,
+    "out": [
+     1027.875,
+     269.0625,
+     72.9375,
+     56.53125
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": 0.453125,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_222534_1_5__RGB",
+    "frame": 309,
+    "score": 0.578125,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": null,
+    "out": [
+     1603.59375,
+     1047.75,
+     64.40625,
+     32.25
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.5,
+    "severity": 0.578125,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_222534_1_5__RGB",
+    "frame": 477,
+    "score": 0.6640625,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": null,
+    "out": [
+     1470.0,
+     1042.03125,
+     98.625,
+     37.96875
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.7,
+    "severity": 0.6640625,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_222534_1_5__RGB",
+    "frame": 833,
+    "score": 0.75390625,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": null,
+    "out": [
+     1465.875,
+     1047.609375,
+     99.75,
+     32.390625
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.9,
+    "severity": 0.75390625,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+   }
+  ],
+  "false_negative": [
+   {
+    "seq": "antiuav_val_20190925_143900_1_2__RGB",
+    "frame": 461,
+    "score": 0.0,
+    "mode": "coast",
+    "iou": 0.0,
+    "gt": [
+     952.0,
+     59.0,
+     93.0,
+     62.0
+    ],
+    "out": null,
+    "group": "anti_uav_RGB",
+    "quantile": 0.1,
+    "severity": -93.0,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_2__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_183941_1_5__RGB",
+    "frame": 845,
+    "score": 0.0,
+    "mode": "coast",
+    "iou": 0.0,
+    "gt": [
+     808.0,
+     448.0,
+     51.0,
+     43.0
+    ],
+    "out": null,
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": -51.0,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183941_1_5__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_133630_1_9__IR",
+    "frame": 697,
+    "score": 0.0,
+    "mode": "coast",
+    "iou": 0.0,
+    "gt": [
+     394.0,
+     236.0,
+     30.0,
+     24.0
+    ],
+    "out": null,
+    "group": "anti_uav_IR",
+    "quantile": 0.5,
+    "severity": -30.0,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_133630_1_9__IR.npz"
+   },
+   {
+    "seq": "cst_train_cn_mountains_9",
+    "frame": 998,
+    "score": 0.4140625,
+    "mode": "track",
+    "iou": 0.19446778537819187,
+    "gt": [
+     212.4390106201172,
+     144.1317901611328,
+     16.257204055786133,
+     10.73430347442627
+    ],
+    "out": [
+     217.375,
+     149.9375,
+     16.5625,
+     10.15625
+    ],
+    "group": "cst_IR",
+    "quantile": 0.7,
+    "severity": -16.257204055786133,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_9.npz"
+   },
+   {
+    "seq": "cst_train_building_1",
+    "frame": 906,
+    "score": 0.6640625,
+    "mode": "track",
+    "iou": 0.49890683600922453,
+    "gt": [
+     330.1892395019531,
+     37.80132293701172,
+     6.480923652648926,
+     4.505326271057129
+    ],
+    "out": [
+     329.640625,
+     37.0,
+     8.265625,
+     7.08056640625
+    ],
+    "group": "cst_IR",
+    "quantile": 0.9,
+    "severity": -6.480923652648926,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_1.npz"
+   }
+  ],
+  "micro_miss": [
+   {
+    "seq": "cst_train_cn_mountains_18",
+    "frame": 385,
+    "score": 0.765625,
+    "mode": "track",
+    "iou": 0.4758498464533093,
+    "gt": [
+     300.8302307128906,
+     87.86951446533203,
+     17.815839767456055,
+     4.9260382652282715
+    ],
+    "out": [
+     298.1875,
+     86.6875,
+     19.125,
+     8.578125
+    ],
+    "group": "cst_IR",
+    "quantile": 0.1,
+    "severity": -0.000267826858907938,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_18.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_195921_1_6__RGB",
+    "frame": 105,
+    "score": 0.0,
+    "mode": "absent",
+    "iou": 0.0,
+    "gt": [
+     952.0,
+     493.0,
+     21.0,
+     21.0
+    ],
+    "out": null,
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": -0.0002126736111111111,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_6__RGB.npz"
+   },
+   {
+    "seq": "cst_train_building_20",
+    "frame": 710,
+    "score": 0.0,
+    "mode": "absent",
+    "iou": 0.0,
+    "gt": [
+     451.3407897949219,
+     285.175048828125,
+     7.082141876220703,
+     4.789097785949707
+    ],
+    "out": null,
+    "group": "cst_IR",
+    "quantile": 0.5,
+    "severity": -0.00010350667871534824,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_20.npz"
+   },
+   {
+    "seq": "cst_train_building_4",
+    "frame": 421,
+    "score": 0.0,
+    "mode": "coast",
+    "iou": 0.0,
+    "gt": [
+     318.6444091796875,
+     266.931396484375,
+     4.510293960571289,
+     4.5962042808532715
+    ],
+    "out": null,
+    "group": "cst_IR",
+    "quantile": 0.7,
+    "severity": -6.326364818960428e-05,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_4.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_213001_1_1__IR",
+    "frame": 625,
+    "score": 0.0,
+    "mode": "absent",
+    "iou": 0.0,
+    "gt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "out": null,
+    "group": "anti_uav_IR",
+    "quantile": 0.9,
+    "severity": -0.0,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_1__IR.npz"
+   }
+  ],
+  "occlusion_failure": [
+   {
+    "seq": "cst_train_cn_mountains_8",
+    "frame": 665,
+    "score": 0.0,
+    "mode": "absent",
+    "iou": 0.0,
+    "gt": [
+     569.3641357421875,
+     62.30057907104492,
+     17.91907501220703,
+     9.826589584350586
+    ],
+    "out": null,
+    "group": "cst_IR",
+    "quantile": 0.1,
+    "severity": 0,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_8.npz"
+   },
+   {
+    "seq": "cst_train_building_38",
+    "frame": 841,
+    "score": 0.0,
+    "mode": "absent",
+    "iou": 0.0,
+    "gt": [
+     332.56195068359375,
+     0.0,
+     12.690736770629883,
+     5.954133987426758
+    ],
+    "out": null,
+    "group": "cst_IR",
+    "quantile": 0.3,
+    "severity": 3,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_38.npz"
+   },
+   {
+    "seq": "cst_train_cn_mountains_8",
+    "frame": 671,
+    "score": 0.0,
+    "mode": "absent",
+    "iou": 0.0,
+    "gt": [
+     569.3641357421875,
+     62.30057907104492,
+     17.91907501220703,
+     9.826589584350586
+    ],
+    "out": null,
+    "group": "cst_IR",
+    "quantile": 0.5,
+    "severity": 6,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_8.npz"
+   },
+   {
+    "seq": "cst_train_building_34",
+    "frame": 454,
+    "score": 0.0,
+    "mode": "coast",
+    "iou": 0.0,
+    "gt": [
+     453.74560546875,
+     390.70849609375,
+     10.947854995727539,
+     6.331663608551025
+    ],
+    "out": null,
+    "group": "cst_IR",
+    "quantile": 0.7,
+    "severity": 10,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
+   },
+   {
+    "seq": "cst_train_building_34",
+    "frame": 418,
+    "score": 0.0,
+    "mode": "absent",
+    "iou": 0.0,
+    "gt": [
+     451.50115966796875,
+     447.8059997558594,
+     14.0881986618042,
+     5.425934314727783
+    ],
+    "out": null,
+    "group": "cst_IR",
+    "quantile": 0.9,
+    "severity": 20,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
+   }
+  ],
+  "reacquisition_success": [
+   {
+    "seq": "antiuav_val_20190925_152412_1_3__IR",
+    "frame": 59,
+    "score": 0.53125,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": [
+     1.0,
+     356.0,
+     28.0,
+     16.0
+    ],
+    "out": [
+     0.0,
+     354.9375,
+     30.625,
+     17.25
+    ],
+    "frames_to_recover": 0,
+    "group": "anti_uav_IR",
+    "quantile": 0.1,
+    "severity": 0,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_195921_1_5__RGB",
+    "frame": 509,
+    "score": 0.314453125,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": [
+     1132.0,
+     497.0,
+     46.0,
+     32.0
+    ],
+    "out": [
+     1139.8125,
+     493.59375,
+     37.96875,
+     46.59375
+    ],
+    "frames_to_recover": 0,
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": 0,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_5__RGB.npz"
+   },
+   {
+    "seq": "cst_train_cn_mountains_17",
+    "frame": 191,
+    "score": 0.70703125,
+    "mode": "reacquired",
+    "iou": 0.0,
+    "gt": [
+     190.80459594726562,
+     216.1839141845703,
+     19.439815521240234,
+     11.018095970153809
+    ],
+    "out": [
+     191.71875,
+     216.125,
+     19.59375,
+     11.28125
+    ],
+    "frames_to_recover": 0,
+    "group": "cst_IR",
+    "quantile": 0.5,
+    "severity": 0,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_17.npz"
+   },
+   {
+    "seq": "cst_train_building_34",
+    "frame": 416,
+    "score": 0.0,
+    "mode": "coast",
+    "iou": 0.0,
+    "gt": [
+     453.16094970703125,
+     426.5651550292969,
+     12.388018608093262,
+     2.9304988384246826
+    ],
+    "out": null,
+    "frames_to_recover": 1,
+    "group": "cst_IR",
+    "quantile": 0.7,
+    "severity": 1,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_34.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_152412_1_3__RGB",
+    "frame": 81,
+    "score": 0.6640625,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": [
+     892.0,
+     671.0,
+     95.0,
+     37.0
+    ],
+    "out": [
+     1028.625,
+     274.125,
+     73.21875,
+     51.75
+    ],
+    "frames_to_recover": 6,
+    "group": "anti_uav_RGB",
+    "quantile": 0.9,
+    "severity": 6,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_152412_1_3__RGB.npz"
+   }
+  ],
+  "reacquisition_failure": [
+   {
+    "seq": "cst_train_building_7",
+    "frame": 93,
+    "score": 0.578125,
+    "mode": "init",
+    "iou": 0.0,
+    "gt": [
+     402.9870300292969,
+     137.78346252441406,
+     8.393242835998535,
+     7.833693027496338
+    ],
+    "out": [
+     403.9937744140625,
+     139.685546875,
+     5.6624755859375,
+     3.814453125
+    ],
+    "group": "cst_IR",
+    "quantile": 0.1,
+    "severity": 30,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_7.npz"
+   }
+  ],
+  "identity_failure": [
+   {
+    "seq": "antiuav_val_20190925_213001_1_1__IR",
+    "frame": 613,
+    "score": 0.484375,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "out": [
+     442.375,
+     287.625,
+     29.375,
+     27.375
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.1,
+    "severity": 0.484375,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_1__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_195921_1_6__RGB",
+    "frame": 82,
+    "score": 0.53125,
+    "mode": "reacquired",
+    "iou": 0.0,
+    "gt": [
+     1019.0,
+     529.0,
+     25.0,
+     31.0
+    ],
+    "out": [
+     1777.5,
+     42.0,
+     69.796875,
+     47.8125
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": 0.53125,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_6__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_141816_1_6__IR",
+    "frame": 938,
+    "score": 0.63671875,
+    "mode": "reacquired",
+    "iou": 0.0,
+    "gt": [
+     562.0,
+     230.0,
+     56.0,
+     25.0
+    ],
+    "out": [
+     309.1875,
+     300.28125,
+     32.5625,
+     28.96875
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.5,
+    "severity": 0.63671875,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_6__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_183941_1_3__IR",
+    "frame": 723,
+    "score": 0.6796875,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "out": [
+     472.125,
+     319.3125,
+     48.875,
+     17.6875
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.7,
+    "severity": 0.6796875,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183941_1_3__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_222534_1_7__IR",
+    "frame": 655,
+    "score": 0.7890625,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "out": [
+     439.125,
+     256.5,
+     40.4375,
+     33.25
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.9,
+    "severity": 0.7890625,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_7__IR.npz"
+   }
+  ],
+  "trajectory_overshoot": [
+   {
+    "seq": "antiuav_val_20190926_144550_1_7__IR",
+    "frame": 391,
+    "score": 0.796875,
+    "mode": "track",
+    "iou": 0.844992230038316,
+    "gt": [
+     306.0,
+     302.0,
+     53.0,
+     22.0
+    ],
+    "out": [
+     303.875,
+     303.0,
+     55.875,
+     22.625
+    ],
+    "forecast_h12": [
+     324.8609375177515,
+     316.95241115205494
+    ],
+    "gt_h12": [
+     325.0,
+     315.0
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.1,
+    "severity": 0.6374304657327996,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_144550_1_7__IR.npz"
+   },
+   {
+    "seq": "cst_train_building_11",
+    "frame": 44,
+    "score": 0.8359375,
+    "mode": "track",
+    "iou": 0.8496932104480543,
+    "gt": [
+     522.9706420898438,
+     310.9941101074219,
+     17.491973876953125,
+     12.074105262756348
+    ],
+    "out": [
+     521.5625,
+     311.125,
+     19.4375,
+     12.53125
+    ],
+    "forecast_h12": [
+     520.9316574635661,
+     317.74552090010707
+    ],
+    "gt_h12": [
+     523.2498168945312,
+     317.8717346191406
+    ],
+    "group": "cst_IR",
+    "quantile": 0.3,
+    "severity": 2.294349925161315,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_11.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_205804_1_5__IR",
+    "frame": 54,
+    "score": 0.828125,
+    "mode": "track",
+    "iou": 0.901916783543712,
+    "gt": [
+     288.0,
+     213.0,
+     60.0,
+     40.0
+    ],
+    "out": [
+     291.125,
+     213.25,
+     56.875,
+     41.625
+    ],
+    "forecast_h12": [
+     379.2759312819458,
+     235.53061561623127
+    ],
+    "gt_h12": [
+     374.0,
+     236.5
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.5,
+    "severity": 5.205188380171961,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_205804_1_5__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_183946_1_3__IR",
+    "frame": 460,
+    "score": 0.77734375,
+    "mode": "track",
+    "iou": 0.8582198043639856,
+    "gt": [
+     342.0,
+     281.0,
+     54.0,
+     39.0
+    ],
+    "out": [
+     339.625,
+     282.25,
+     57.875,
+     39.875
+    ],
+    "forecast_h12": [
+     366.0686983471076,
+     253.63171487603296
+    ],
+    "gt_h12": [
+     366.5,
+     266.0
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.7,
+    "severity": 12.367111426943707,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_183946_1_3__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_195921_1_1__RGB",
+    "frame": 270,
+    "score": 0.796875,
+    "mode": "track",
+    "iou": 0.8886113128551288,
+    "gt": [
+     1237.0,
+     450.0,
+     75.0,
+     72.0
+    ],
+    "out": [
+     1241.15625,
+     452.4375,
+     72.09375,
+     68.8125
+    ],
+    "forecast_h12": [
+     1367.6799330912002,
+     467.0074846277439
+    ],
+    "gt_h12": [
+     1302.5,
+     461.5
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.9,
+    "severity": 45.42619553421381,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_195921_1_1__RGB.npz"
+   }
+  ],
+  "trajectory_undershoot": [
+   {
+    "seq": "antiuav_val_20190926_133516_1_2__IR",
+    "frame": 775,
+    "score": 0.8515625,
+    "mode": "track",
+    "iou": 0.797016515716569,
+    "gt": [
+     364.0,
+     312.0,
+     75.0,
+     45.0
+    ],
+    "out": [
+     360.5,
+     312.5,
+     71.5,
+     41.25
+    ],
+    "forecast_h12": [
+     401.4067585185425,
+     336.8897366595494
+    ],
+    "gt_h12": [
+     402.0,
+     340.0
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.1,
+    "severity": 3.151199799220046,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_133516_1_2__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_210802_1_3__RGB",
+    "frame": 814,
+    "score": 0.828125,
+    "mode": "track",
+    "iou": 0.9200002115603635,
+    "gt": [
+     1191.0,
+     648.0,
+     156.0,
+     60.0
+    ],
+    "out": [
+     1191.9375,
+     648.84375,
+     155.0625,
+     63.09375
+    ],
+    "forecast_h12": [
+     1144.7570723695537,
+     676.7588841587791
+    ],
+    "gt_h12": [
+     1129.5,
+     675.0
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": 15.291361558144404,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_210802_1_3__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_141816_1_2__IR",
+    "frame": 900,
+    "score": 0.77734375,
+    "mode": "track",
+    "iou": 0.7543268090935433,
+    "gt": [
+     230.0,
+     295.0,
+     118.0,
+     37.0
+    ],
+    "out": [
+     233.0,
+     300.875,
+     116.0,
+     34.125
+    ],
+    "forecast_h12": [
+     281.9240133190292,
+     306.71762164576046
+    ],
+    "gt_h12": [
+     323.0,
+     292.5
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.5,
+    "severity": 42.418627084039166,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_2__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_183400_1_4__RGB",
+    "frame": 627,
+    "score": 0.6796875,
+    "mode": "track",
+    "iou": 0.7844418749722679,
+    "gt": [
+     1082.0,
+     511.0,
+     96.0,
+     40.0
+    ],
+    "out": [
+     1075.5,
+     509.71875,
+     109.875,
+     37.96875
+    ],
+    "forecast_h12": [
+     1135.2571952241833,
+     574.488057405045
+    ],
+    "gt_h12": [
+     1134.0,
+     472.5
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.7,
+    "severity": 101.66471759747854,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_183400_1_4__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_213001_1_3__IR",
+    "frame": 733,
+    "score": 0.796875,
+    "mode": "track",
+    "iou": 0.7983916909536745,
+    "gt": [
+     393.0,
+     279.0,
+     45.0,
+     29.0
+    ],
+    "out": [
+     393.0,
+     276.3125,
+     42.5625,
+     29.3125
+    ],
+    "forecast_h12": [
+     468.4448479067829,
+     293.1987377572144
+    ],
+    "gt_h12": [
+     208.0,
+     293.0
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.9,
+    "severity": 260.4445816528798,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_213001_1_3__IR.npz"
+   }
+  ],
+  "high_uncertainty": [
+   {
+    "seq": "antiuav_val_20190925_143900_1_7__RGB",
+    "frame": 650,
+    "score": 0.80859375,
+    "mode": "reacquired",
+    "iou": 0.7391213610632424,
+    "gt": [
+     1184.0,
+     157.0,
+     108.0,
+     67.0
+    ],
+    "out": [
+     1192.03125,
+     162.375,
+     91.59375,
+     66.0
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.1,
+    "severity": 98263.65794652746,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_7__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_130434_1_1__RGB",
+    "frame": 887,
+    "score": 0.75390625,
+    "mode": "track",
+    "iou": 0.8196981627867519,
+    "gt": [
+     403.0,
+     521.0,
+     272.0,
+     208.0
+    ],
+    "out": [
+     419.25,
+     530.25,
+     237.0,
+     202.5
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": 114627.96692542954,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_130434_1_1__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_142435_1_9__RGB",
+    "frame": 111,
+    "score": 0.7890625,
+    "mode": "track",
+    "iou": 0.9015970456749215,
+    "gt": [
+     732.0,
+     506.0,
+     269.0,
+     69.0
+    ],
+    "out": [
+     741.0,
+     506.4375,
+     270.75,
+     70.3125
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.5,
+    "severity": 144989.10434967768,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_142435_1_9__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_130434_1_5__RGB",
+    "frame": 654,
+    "score": 0.8359375,
+    "mode": "track",
+    "iou": 0.9122302461060392,
+    "gt": [
+     1025.0,
+     360.0,
+     133.0,
+     99.0
+    ],
+    "out": [
+     1023.9375,
+     363.0,
+     128.0625,
+     96.75
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.7,
+    "severity": 172536.62405470878,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_130434_1_5__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190926_141816_1_2__RGB",
+    "frame": 253,
+    "score": 0.75390625,
+    "mode": "track",
+    "iou": 0.8682195818271443,
+    "gt": [
+     718.0,
+     492.0,
+     358.0,
+     102.0
+    ],
+    "out": [
+     733.5,
+     500.0625,
+     337.5,
+     93.9375
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.9,
+    "severity": 234555.12983799304,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190926_141816_1_2__RGB.npz"
+   }
+  ],
+  "low_confidence_correct": [
+   {
+    "seq": "cst_train_building_38",
+    "frame": 164,
+    "score": 0.275390625,
+    "mode": "track",
+    "iou": 0.622227898012452,
+    "gt": [
+     358.1241149902344,
+     311.1400146484375,
+     18.993684768676758,
+     10.935757637023926
+    ],
+    "out": [
+     360.0625,
+     311.46875,
+     15.9375,
+     8.109375
+    ],
+    "group": "cst_IR",
+    "quantile": 0.1,
+    "severity": 0.02460937499999999,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_38.npz"
+   },
+   {
+    "seq": "cst_train_cn_mountains_9",
+    "frame": 669,
+    "score": 0.2177734375,
+    "mode": "track",
+    "iou": 0.6922699947821992,
+    "gt": [
+     311.4450378417969,
+     376.70025634765625,
+     17.43148422241211,
+     10.272124290466309
+    ],
+    "out": [
+     308.71875,
+     377.078125,
+     20.53125,
+     8.109375
+    ],
+    "group": "cst_IR",
+    "quantile": 0.3,
+    "severity": 0.08222656249999999,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_9.npz"
+   },
+   {
+    "seq": "cst_train_building_1",
+    "frame": 292,
+    "score": 0.1728515625,
+    "mode": "track",
+    "iou": 0.6664988546265106,
+    "gt": [
+     353.58837890625,
+     281.9149475097656,
+     6.18686580657959,
+     4.759127616882324
+    ],
+    "out": [
+     353.21875,
+     281.640625,
+     8.59375,
+     5.140625
+    ],
+    "group": "cst_IR",
+    "quantile": 0.5,
+    "severity": 0.1271484375,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_building_1.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_133630_1_9__IR",
+    "frame": 692,
+    "score": 0.12255859375,
+    "mode": "track",
+    "iou": 0.835733596488523,
+    "gt": [
+     383.0,
+     237.0,
+     26.0,
+     27.0
+    ],
+    "out": [
+     384.6875,
+     235.875,
+     25.4375,
+     27.25
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.7,
+    "severity": 0.17744140625,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_133630_1_9__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_140917_1_3__RGB",
+    "frame": 922,
+    "score": 0.07177734375,
+    "mode": "track",
+    "iou": 0.5477606236677321,
+    "gt": [
+     1106.0,
+     487.0,
+     75.0,
+     65.0
+    ],
+    "out": [
+     1068.5625,
+     485.53125,
+     130.6875,
+     63.84375
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.9,
+    "severity": 0.22822265625,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_140917_1_3__RGB.npz"
+   }
+  ],
+  "high_confidence_wrong": [
+   {
+    "seq": "cst_train_cn_mountains_15",
+    "frame": 1121,
+    "score": 0.70703125,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": null,
+    "out": [
+     255.53125,
+     0.0,
+     6.484375,
+     5.4296875
+    ],
+    "group": "cst_IR",
+    "quantile": 0.1,
+    "severity": 0.70703125,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/cst_train_cn_mountains_15.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_101846_1_4__RGB",
+    "frame": 498,
+    "score": 0.7421875,
+    "mode": "reacquired",
+    "iou": 0.08423149356657744,
+    "gt": [
+     667.0,
+     421.0,
+     58.0,
+     41.0
+    ],
+    "out": [
+     667.40625,
+     391.78125,
+     48.46875,
+     35.8125
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.3,
+    "severity": 0.7421875,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_101846_1_4__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_222534_1_5__RGB",
+    "frame": 435,
+    "score": 0.75390625,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": null,
+    "out": [
+     1382.25,
+     1027.125,
+     114.0,
+     47.8125
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.5,
+    "severity": 0.75390625,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_143900_1_2__IR",
+    "frame": 393,
+    "score": 0.77734375,
+    "mode": "reacquired",
+    "iou": 0.0,
+    "gt": [
+     322.0,
+     152.0,
+     35.0,
+     32.0
+    ],
+    "out": [
+     328.0,
+     106.625,
+     27.0625,
+     24.125
+    ],
+    "group": "anti_uav_IR",
+    "quantile": 0.7,
+    "severity": 0.77734375,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_143900_1_2__IR.npz"
+   },
+   {
+    "seq": "antiuav_val_20190925_222534_1_5__RGB",
+    "frame": 429,
+    "score": 0.796875,
+    "mode": "track",
+    "iou": 0.0,
+    "gt": null,
+    "out": [
+     1307.625,
+     1023.1875,
+     113.25,
+     46.03125
+    ],
+    "group": "anti_uav_RGB",
+    "quantile": 0.9,
+    "severity": 0.796875,
+    "source": "runs/systems/_cache/gen_temporal_fp_g4_full_e20/data_unified/val/antiuav_val_20190925_222534_1_5__RGB.npz"
+   }
+  ]
+ },
+ "seconds": 83.1
+}

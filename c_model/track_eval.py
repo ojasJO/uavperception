@@ -220,12 +220,22 @@ def main():
             "\n[REFUSED] --split test needs --confirm-test. cst[test] is the "
             "project's only\n  honest cross-domain measurement; spend it once.\n")
 
-    device = require_gpu()
+    if torch.cuda.is_available():
+        device = require_gpu()
+    else:
+        print("\n" + "=" * 78)
+        print("[NOTICE] No active CUDA GPU detected.")
+        print("         HP OMEN laptops disable the RTX 5050 when running on battery (Eco Mode).")
+        print("         -> PLUG IN YOUR LAPTOP CHARGER (AC adapter) to run on NVIDIA RTX 5050 GPU.")
+        print("         Continuing track evaluation on CPU...")
+        print("=" * 78 + "\n")
+        device = torch.device("cpu")
     w = Path(a.weights)
     if not w.exists():
         raise SystemExit(f"[ABORT] weights not found: {w}")
     model, ck = load_checkpoint(w, device, prefer_ema=True)
-    amp = torch.bfloat16 if torch.cuda.is_bf16_supported() else None
+    from precision import amp_dtype as _amp_dtype
+    amp = _amp_dtype()          # bf16 on sm>=8.0, fp16 on the V100 (D-2026-10-06-04)
     cache = load_label_cache(LABEL_CACHE_PATH)
     print(f"[track] {w} (epoch {ck.get('epoch')})")
 

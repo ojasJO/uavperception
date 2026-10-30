@@ -1,0 +1,6 @@
+{"kind": "waiting", "dir": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\_h4_native_scale", "t": "2026-10-05T00:12:18+0530"}
+{"kind": "go", "sentinel": "DONE", "t": "2026-10-05T06:04:18+0530"}
+{"kind": "start", "job": "deploy_gate_g4", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/deployment/scripts/deploy_gate.py --weights runs/gen_temporal_fp_g4_full_e20/weights/last.pt", "t": "2026-10-05T06:04:18+0530"}
+{"kind": "end", "job": "deploy_gate_g4", "rc": 0, "minutes": 8.3, "t": "2026-10-05T06:12:34+0530"}
+{"kind": "start", "job": "cache_val_g4", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/systems/scripts/cache_detections.py --run gen_temporal_fp_g4_full_e20 --corpus auto", "t": "2026-10-05T06:12:34+0530"}
+{"kind": "end", "job": "cache_val_g4", "rc": 0, "minutes": 42.7, "t": "2026-10-05T06:55:15+0530"}

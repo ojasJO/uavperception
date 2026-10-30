@@ -1,0 +1,74 @@
+{
+  "id": "CF_final_causal_system",
+  "track": "C: the complete causal system -- frame window -> detection -> association -> track history -> state -> future path -> uncertainty -> re-acquisition",
+  "registered": "see the git commit that added this file (2026-10-05): before any corpus-v2 causal detector exists, before C1 / C1b / C2 / C3 have produced results, and before any Track C TEST access",
+  "class": "single registered TEST pass of a system whose every component is chosen by an already-registered rule on VAL; nothing is chosen after the pass",
+  "components": {
+    "detector": "rule: if C2 (preregistration/C2_causal_windows.json) selected a W1-superior causal window -> that window's seed-0 run; elif the v2 campaign's comparison C1 (causal_g4 vs stock) is SUPPORTED -> v2_causal_g4_s0_e20; else v2_stock_s0_e20 (single frame, also causal). Look-ahead is 0 in every branch. NETWORK (amendment 2026-10-05): the one F1 adopts -- if F1 is SUPPORTED, the standard-YOLO11n (n_std) run of the chosen window (seed 0), trained before CF if it does not exist; else the as-built run named above.",
+    "tracker": "per domain (Anti-UAV IR, Anti-UAV RGB, CST): the tracker type adopted by C3's rule (argmax / ste_cv / fste_classical / fste_learned); its settings re-tuned on ALL of the chosen detector's VAL cache with the C3 grids (maximum mean group mSA) and frozen in experiments/aerotrack_temporal/frozen_cf.json, committed before the pass",
+    "forecaster": "per domain: the forecast output adopted by C1b's rule (learned clean / aug or the classical reference with its TRAIN-residual variance)",
+    "absence": "the tracker's own 'absent' output (counts in SA exactly as in the benchmarks)"
+  },
+  "test_split": "corpus-v2 TEST: Anti-UAV IR 91 + RGB 91 sequences, CST 60 sequences (labels byte-identical to the releases)",
+  "single_pass": "one pass, recorded in experiments/aerotrack_temporal/reports/cf_test_ledger.jsonl; a second pass is refused",
+  "metrics": {
+    "sot": "mSA (Eq. 1, Track A's code, official annotations) per group; Anti-UAV attributes and CST size bins / frame attributes; located rate; false alarms on invisible frames; recovery after reappearance",
+    "identity_continuity": "MOT protocol (no init box): HOTA / DetA / AssA (TrackEval-identical), IDF1, MOTA, MT / ML, fragmentation, longest run, recovery after loss and re-entry, ids per target",
+    "prediction": "on tracker histories: ADE / FDE@24 / error by horizon / NLL / 50-95 % coverage / calibration error of the adopted forecaster, with the TRAIN-calibrated Kalman and constant position as same-history baselines",
+    "deployment": "measured on VAL inputs only (never TEST): RTX 5050, batch 1, TensorRT fp16 detector + CPU tracker + forecaster, per-frame p50 / p99 per stage and end to end, frame buffering included, look-ahead 0"
+  },
+  "comparisons": [
+    {
+      "id": "CF-a",
+      "what": "Anti-UAV IR SOT mSA vs our faithful GlobalTrack (Track A normal_ir seed 0, test 70.58), same 91 sequences",
+      "analysis": "paired per-sequence bootstrap 95 % CI (B = 2000)",
+      "claim_rule": "better / worse only if the CI excludes 0; else 'no detectable difference'",
+      "caveat": "training data differ (multi-domain vs Anti-UAV IR only)"
+    },
+    {
+      "id": "CF-b",
+      "what": "adopted forecaster vs Kalman and constant position on the same test histories",
+      "analysis": "C1 rules (paired cluster bootstrap)"
+    },
+    {
+      "id": "CF-c",
+      "what": "adopted tracker vs argmax at its frozen threshold on the same test sequences",
+      "analysis": "paired per-sequence bootstrap"
+    },
+    {
+      "id": "CF-d",
+      "what": "cost of causality: CF's detector vs the v2 candidate's test numbers (if the v2 candidate is non-causal)",
+      "analysis": "descriptive, unpaired across passes"
+    }
+  ],
+  "ordering": "after C2, C3 and C1b have produced their adoption decisions and frozen_cf.json is committed; independent of the v2 and X1 TEST passes (each candidate is scored once)",
+  "component_gate": {
+    "measured_failure": "no Track C component has yet been scored on TEST or as a complete causal system",
+    "baseline": "argmax on the same detector; Kalman / constant position forecasts; GlobalTrack (Anti-UAV IR)",
+    "falsifier": "CF-a 'worse' and CF-c 'no detectable difference': the temporal stack adds nothing over per-frame detection"
+  },
+  "outputs": "experiments/aerotrack_temporal/reports/CF_final_causal_system.{json,md}",
+  "amendments": [
+    {
+      "when": "2026-10-05, before any CF component exists",
+      "what": "detector network follows F1's verdict",
+      "why": "experiments/aerotrack_v2/ERRATUM_architecture.md"
+    },
+    {
+      "id": "CF-A2",
+      "when": "2026-10-12, before frozen_cf.json exists and before any CF TEST access (no Track C component has been scored on TEST)",
+      "what": [
+        "detector = v2_causal_g4_s0_e20 by the registered branch: C2 selected the W1-superior window causal_g4 (C2_causal_windows.json 'selected_causal_window'); F1 NOT SUPPORTED -> as-built network",
+        "tracker type per domain by C3's adoption rule on the CF detector's cache (C3_tracking_motion_models_v2_causal_g4_s0_e20.json). The clause 'fste_classical beats argmax by the same rule' (needed where H1 is not SUPPORTED) is evaluated exactly like C3's registered comparisons: per-sequence cross-fitted SA with C3's recorded params_per_half, per-group sequence bootstrap B = 2000 (default_rng(0)), C3's verdict (SUPPORTED iff mean delta > 0.5 SA and CI lower bound > 0)",
+        "'settings re-tuned on ALL of the chosen detector's VAL cache with the C3 grids (maximum mean group mSA)': for each adopted tracker type, the grid setting maximising the mean of the group mSAs over the groups that deploy that type (a type deployed in one group is tuned on that group alone). Grids: track_eval.GRID_ARGMAX / GRID_STE, tc_c3.GRID_FSTE",
+        "CF-c baseline 'argmax at its frozen threshold': GRID_ARGMAX tuned on ALL VAL over the same groups as the adopted tracker of that domain, frozen in frozen_cf.json",
+        "forecaster per domain by C1b's adoption rule on the CF detector's cache (C1b_forecasting_on_tracker_histories_v2_causal_g4_s0_e20.json): learned family (aug if H4 SUPPORTED, else clean = abs) where H1b SUPPORTED and H2b != LOSES, else the domain's classical reference with its TRAIN-residual variance (runs/aerotrack_temporal/c3/prep.json). The deployed learned model is seed 0 of that family (as C3's fste_learned / prep export); CF-b reports all three seeds with C1's verdict rules",
+        "TEST detections: the existing full TEST cache of v2_causal_g4_s0_e20 (runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/test, made by the v2 final pass; index weights_sha256 must equal the run's recorded last.pt sha256) is reused instead of re-running the detector -- identical weights, NMS and precision as the VAL cache used for every decision",
+        "forecasting histories on TEST = the CF tracker's own SOT outputs (argmax: frames where it outputs a box; ste_cv: frames it associated a detection, as C1b); anchors need the target visible at t in the ground truth (as C1b)",
+        "CF-d: the v2 candidate (v2_causal_g4_s0_e20) is itself causal, so the cost-of-causality comparison does not apply; the v2 final TEST numbers are quoted descriptively",
+        "execution: SOT / MOT / prediction on the OMEN CPU from the cached detections; deployment latency on the RTX 5050 with VAL inputs by experiments/deployment/scripts/stack_gate.py (TensorRT fp16 detector + tracker + forecaster)"
+      ],
+      "why": "the registration fixes every component by rule but leaves these execution details implicit; they are fixed here, before any CF TEST access, so that nothing is chosen after the pass"
+    }
+  ]
+}

@@ -1,0 +1,495 @@
+{
+ "generated": "2026-10-05T07:14:57+0530",
+ "run": "gen_temporal_fp_g4_full_e20",
+ "corpus": "data_unified",
+ "cache_set_sha256": "3b15c413bed5bee560955df5755faf8af38305035e7145cf124c61e9a2fd6644",
+ "window": "symmetric",
+ "n_sequences": 149,
+ "halves": {
+  "0": 89,
+  "1": 60
+ },
+ "grid_sizes": {
+  "argmax": 11,
+  "ste": 504
+ },
+ "trackers": {
+  "argmax": {
+   "cross_fitted": {
+    "anti_uav_IR": {
+     "n_sequences": 67,
+     "mSA": 80.56182977702794,
+     "located_rate": 0.9861395287439773,
+     "false_alarm_rate": 0.12510785159620363,
+     "n_invisible_frames": 1159,
+     "reappearances": 9,
+     "recover_frames_median": 1.0,
+     "recover_frames_mean": 3.5555555555555554
+    },
+    "anti_uav_RGB": {
+     "n_sequences": 67,
+     "mSA": 81.3988183064589,
+     "located_rate": 0.9790186996054212,
+     "false_alarm_rate": 0.23302967969438731,
+     "n_invisible_frames": 3403,
+     "reappearances": 21,
+     "recover_frames_median": 0.0,
+     "recover_frames_mean": 1.4761904761904763
+    },
+    "cst_IR": {
+     "n_sequences": 15,
+     "mSA": 72.11329000496852,
+     "located_rate": 0.8552051260713989,
+     "false_alarm_rate": 0.030100334448160536,
+     "n_invisible_frames": 2990,
+     "reappearances": 21,
+     "recover_frames_median": 3.0,
+     "recover_frames_mean": 18.80952380952381,
+     "frame_attr_SA": {
+      "CDB": {
+       "SA": 70.69395078391027,
+       "n_frames": 940
+      },
+      "DBC": {
+       "SA": 60.17427828148103,
+       "n_frames": 943
+      },
+      "FM": {
+       "SA": 73.25227494652394,
+       "n_frames": 1
+      },
+      "OC": {
+       "SA": 98.05356750338466,
+       "n_frames": 1011
+      },
+      "OV": {
+       "SA": 96.28297201053687,
+       "n_frames": 1982
+      },
+      "SV": {
+       "SA": 65.09787485177999,
+       "n_frames": 3129
+      },
+      "TC": {
+       "SA": 58.52825350327873,
+       "n_frames": 6600
+      },
+      "size_large": {
+       "SA": null,
+       "n_frames": 0
+      },
+      "size_normal": {
+       "SA": 67.03812440249857,
+       "n_frames": 11
+      },
+      "size_small": {
+       "SA": 66.86830727337059,
+       "n_frames": 9032
+      },
+      "size_tiny": {
+       "SA": 63.98960104811252,
+       "n_frames": 2974
+      }
+     }
+    }
+   },
+   "params_per_half": {
+    "0": {
+     "thr": 0.4
+    },
+    "1": {
+     "thr": 0.3
+    }
+   },
+   "tuned_on_all_val": {
+    "params": {
+     "thr": 0.3
+    },
+    "summary": {
+     "anti_uav_IR": {
+      "n_sequences": 67,
+      "mSA": 80.63851705312591,
+      "located_rate": 0.9870470596000264,
+      "false_alarm_rate": 0.12510785159620363,
+      "n_invisible_frames": 1159,
+      "reappearances": 9,
+      "recover_frames_median": 1.0,
+      "recover_frames_mean": 3.5555555555555554
+     },
+     "anti_uav_RGB": {
+      "n_sequences": 67,
+      "mSA": 81.4016898480619,
+      "located_rate": 0.9808028821410191,
+      "false_alarm_rate": 0.258007640317367,
+      "n_invisible_frames": 3403,
+      "reappearances": 21,
+      "recover_frames_median": 0.0,
+      "recover_frames_mean": 1.1904761904761905
+     },
+     "cst_IR": {
+      "n_sequences": 15,
+      "mSA": 72.28291553038468,
+      "located_rate": 0.8701839061329782,
+      "false_alarm_rate": 0.0782608695652174,
+      "n_invisible_frames": 2990,
+      "reappearances": 21,
+      "recover_frames_median": 2.0,
+      "recover_frames_mean": 16.761904761904763,
+      "frame_attr_SA": {
+       "CDB": {
+        "SA": 70.95137234070769,
+        "n_frames": 940
+       },
+       "DBC": {
+        "SA": 62.51592544989507,
+        "n_frames": 943
+       },
+       "FM": {
+        "SA": 73.25227494652394,
+        "n_frames": 1
+       },
+       "OC": {
+        "SA": 94.69056057954688,
+        "n_frames": 1011
+       },
+       "OV": {
+        "SA": 90.78347655140468,
+        "n_frames": 1982
+       },
+       "SV": {
+        "SA": 65.9113288573315,
+        "n_frames": 3129
+       },
+       "TC": {
+        "SA": 60.25414826550578,
+        "n_frames": 6600
+       },
+       "size_large": {
+        "SA": null,
+        "n_frames": 0
+       },
+       "size_normal": {
+        "SA": 67.03812440249857,
+        "n_frames": 11
+       },
+       "size_small": {
+        "SA": 68.2174455068718,
+        "n_frames": 9032
+       },
+       "size_tiny": {
+        "SA": 64.9449406577773,
+        "n_frames": 2974
+       }
+      }
+     }
+    }
+   },
+   "vs_globaltrack_anti_uav_IR": {
+    "mean_delta_mSA": 1.2744166626912596,
+    "ci95": [
+     -0.3397641681297118,
+     4.203751544763779
+    ],
+    "wins": 30,
+    "losses": 37
+   }
+  },
+  "ste": {
+   "cross_fitted": {
+    "anti_uav_IR": {
+     "n_sequences": 67,
+     "mSA": 80.67341964796884,
+     "located_rate": 0.9867995511847403,
+     "false_alarm_rate": 0.1095772217428818,
+     "n_invisible_frames": 1159,
+     "reappearances": 9,
+     "recover_frames_median": 1.0,
+     "recover_frames_mean": 4.333333333333333
+    },
+    "anti_uav_RGB": {
+     "n_sequences": 67,
+     "mSA": 81.06601210149515,
+     "located_rate": 0.9736489963973237,
+     "false_alarm_rate": 0.2568322068762856,
+     "n_invisible_frames": 3403,
+     "reappearances": 21,
+     "recover_frames_median": 0.0,
+     "recover_frames_mean": 1.9523809523809523
+    },
+    "cst_IR": {
+     "n_sequences": 15,
+     "mSA": 73.95608636951269,
+     "located_rate": 0.8810019139552301,
+     "false_alarm_rate": 0.036120401337792644,
+     "n_invisible_frames": 2990,
+     "reappearances": 21,
+     "recover_frames_median": 1.0,
+     "recover_frames_mean": 15.619047619047619,
+     "frame_attr_SA": {
+      "CDB": {
+       "SA": 72.45566023310059,
+       "n_frames": 940
+      },
+      "DBC": {
+       "SA": 61.635285893034556,
+       "n_frames": 943
+      },
+      "FM": {
+       "SA": 73.25227494652394,
+       "n_frames": 1
+      },
+      "OC": {
+       "SA": 96.86662388320661,
+       "n_frames": 1011
+      },
+      "OV": {
+       "SA": 96.03070157663171,
+       "n_frames": 1982
+      },
+      "SV": {
+       "SA": 67.580081745364,
+       "n_frames": 3129
+      },
+      "TC": {
+       "SA": 61.79096534489154,
+       "n_frames": 6600
+      },
+      "size_large": {
+       "SA": null,
+       "n_frames": 0
+      },
+      "size_normal": {
+       "SA": 67.03812440249857,
+       "n_frames": 11
+      },
+      "size_small": {
+       "SA": 69.28646310444289,
+       "n_frames": 9032
+      },
+      "size_tiny": {
+       "SA": 66.02906203098709,
+       "n_frames": 2974
+      }
+     }
+    }
+   },
+   "params_per_half": {
+    "0": {
+     "det_thr": 0.05,
+     "init_thr": 0.5,
+     "reacq_thr": 0.5,
+     "max_coast": 5,
+     "output": "det",
+     "coast_output": false,
+     "gate_chi2": 9.2103
+    },
+    "1": {
+     "det_thr": 0.05,
+     "init_thr": 0.5,
+     "reacq_thr": 0.5,
+     "max_coast": 60,
+     "output": "det",
+     "coast_output": false,
+     "gate_chi2": 25.0
+    }
+   },
+   "tuned_on_all_val": {
+    "params": {
+     "det_thr": 0.05,
+     "init_thr": 0.5,
+     "reacq_thr": 0.5,
+     "max_coast": 20,
+     "output": "det",
+     "coast_output": false,
+     "gate_chi2": 9.2103
+    },
+    "summary": {
+     "anti_uav_IR": {
+      "n_sequences": 67,
+      "mSA": 80.67581150434722,
+      "located_rate": 0.9867995511847403,
+      "false_alarm_rate": 0.10785159620362382,
+      "n_invisible_frames": 1159,
+      "reappearances": 9,
+      "recover_frames_median": 1.0,
+      "recover_frames_mean": 4.333333333333333
+     },
+     "anti_uav_RGB": {
+      "n_sequences": 67,
+      "mSA": 81.09916255088775,
+      "located_rate": 0.9736661519986276,
+      "false_alarm_rate": 0.25066118131060827,
+      "n_invisible_frames": 3403,
+      "reappearances": 21,
+      "recover_frames_median": 0.0,
+      "recover_frames_mean": 2.1904761904761907
+     },
+     "cst_IR": {
+      "n_sequences": 15,
+      "mSA": 74.54493802607665,
+      "located_rate": 0.8877423649829408,
+      "false_alarm_rate": 0.032441471571906355,
+      "n_invisible_frames": 2990,
+      "reappearances": 21,
+      "recover_frames_median": 1.0,
+      "recover_frames_mean": 15.619047619047619,
+      "frame_attr_SA": {
+       "CDB": {
+        "SA": 72.45566023310059,
+        "n_frames": 940
+       },
+       "DBC": {
+        "SA": 65.75389120336632,
+        "n_frames": 943
+       },
+       "FM": {
+        "SA": 73.25227494652394,
+        "n_frames": 1
+       },
+       "OC": {
+        "SA": 97.06444781990297,
+        "n_frames": 1011
+       },
+       "OV": {
+        "SA": 96.48478835766099,
+        "n_frames": 1982
+       },
+       "SV": {
+        "SA": 67.95600797018304,
+        "n_frames": 3129
+       },
+       "TC": {
+        "SA": 62.74567057470213,
+        "n_frames": 6600
+       },
+       "size_large": {
+        "SA": null,
+        "n_frames": 0
+       },
+       "size_normal": {
+        "SA": 67.03812440249857,
+        "n_frames": 11
+       },
+       "size_small": {
+        "SA": 69.80074665362793,
+        "n_frames": 9032
+       },
+       "size_tiny": {
+        "SA": 66.552278406411,
+        "n_frames": 2974
+       }
+      }
+     }
+    }
+   },
+   "defaults_untuned": {
+    "params": {
+     "det_thr": 0.1,
+     "init_thr": 0.4,
+     "reacq_thr": 0.6,
+     "gate_chi2": 9.2103,
+     "max_coast": 10,
+     "output": "det",
+     "coast_output": true,
+     "min_scale": 10.0,
+     "q_pos": 0.05,
+     "q_vel": 0.00625,
+     "r_meas": 0.05
+    },
+    "summary": {
+     "anti_uav_IR": {
+      "n_sequences": 67,
+      "mSA": 80.2971435963286,
+      "located_rate": 0.9859250214507294,
+      "false_alarm_rate": 0.2942191544434858,
+      "n_invisible_frames": 1159,
+      "reappearances": 9,
+      "recover_frames_median": 1.0,
+      "recover_frames_mean": 3.6666666666666665
+     },
+     "anti_uav_RGB": {
+      "n_sequences": 67,
+      "mSA": 80.19380028265644,
+      "located_rate": 0.9698747641104821,
+      "false_alarm_rate": 0.3749632677049662,
+      "n_invisible_frames": 3403,
+      "reappearances": 21,
+      "recover_frames_median": 0.0,
+      "recover_frames_mean": 6.9523809523809526
+     },
+     "cst_IR": {
+      "n_sequences": 15,
+      "mSA": 72.56750010776423,
+      "located_rate": 0.8893234584338854,
+      "false_alarm_rate": 0.1588628762541806,
+      "n_invisible_frames": 2990,
+      "reappearances": 21,
+      "recover_frames_median": 2.0,
+      "recover_frames_mean": 15.80952380952381,
+      "frame_attr_SA": {
+       "CDB": {
+        "SA": 72.45566023310059,
+        "n_frames": 940
+       },
+       "DBC": {
+        "SA": 63.69059678281454,
+        "n_frames": 943
+       },
+       "FM": {
+        "SA": 73.25227494652394,
+        "n_frames": 1
+       },
+       "OC": {
+        "SA": 86.08521933325608,
+        "n_frames": 1011
+       },
+       "OV": {
+        "SA": 83.00064141148194,
+        "n_frames": 1982
+       },
+       "SV": {
+        "SA": 68.54306835228388,
+        "n_frames": 3129
+       },
+       "TC": {
+        "SA": 62.87324229861629,
+        "n_frames": 6600
+       },
+       "size_large": {
+        "SA": null,
+        "n_frames": 0
+       },
+       "size_normal": {
+        "SA": 67.03812440249857,
+        "n_frames": 11
+       },
+       "size_small": {
+        "SA": 70.23960665086793,
+        "n_frames": 9032
+       },
+       "size_tiny": {
+        "SA": 67.76815965707958,
+        "n_frames": 2974
+       }
+      }
+     }
+    }
+   },
+   "vs_globaltrack_anti_uav_IR": {
+    "mean_delta_mSA": 1.3860065336321465,
+    "ci95": [
+     -0.24113566813544948,
+     4.351327777390775
+    ],
+    "wins": 32,
+    "losses": 35
+   }
+  }
+ },
+ "globaltrack_same_sequences": {
+  "source": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last\\metrics.json",
+  "n_sequences": 67,
+  "mSA": 79.28741311433669
+ },
+ "seconds": 1177.8
+}

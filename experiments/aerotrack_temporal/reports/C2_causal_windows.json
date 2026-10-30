@@ -1,0 +1,278 @@
+{
+ "generated": "2026-10-10T13:26:00+0530",
+ "B": 1000,
+ "registration": "experiments/aerotrack_temporal/preregistration/C2_causal_windows.json",
+ "frame_set_sha256": "8cff3a4bb0726cb4602149147656994310b726e7c0187435402a2fa077f1423f",
+ "margins": {
+  "superiority": 0.02,
+  "anti_uav_non_inferiority": 0.02
+ },
+ "W1_superiority_vs_stock": {
+  "causal_g1": {
+   "pairs": [
+    [
+     "v2_causal_g1_s0_e20",
+     "v2_stock_s0_e20"
+    ],
+    [
+     "v2_causal_g1_s1_e20",
+     "v2_stock_s1_e20"
+    ]
+   ],
+   "per_seed": [
+    0.05124698114528381,
+    0.013054486097666018
+   ],
+   "mean_delta": 0.032150733621474914,
+   "ci95": [
+    0.014509211980370104,
+    0.050480641608936665
+   ],
+   "anti_uav_mean_delta": -0.0004745698551748001,
+   "per_category": {
+    "building": 0.024671194601628532,
+    "cn_mountains": 0.0761300825654666,
+    "cn_sky": 0.040525554583518586,
+    "jungle": 0.0007731612209224137,
+    "urban-areas": 0.02957753942273844,
+    "water": 0.007089498621745072
+   },
+   "status": "SUPPORTED",
+   "failed": []
+  },
+  "causal_g2": {
+   "pairs": [
+    [
+     "v2_causal_g2_s0_e20",
+     "v2_stock_s0_e20"
+    ],
+    [
+     "v2_causal_g2_s1_e20",
+     "v2_stock_s1_e20"
+    ]
+   ],
+   "per_seed": [
+    0.10688646268459634,
+    0.07890300592214317
+   ],
+   "mean_delta": 0.09289473430336975,
+   "ci95": [
+    0.059264291390989,
+    0.12983445183206382
+   ],
+   "anti_uav_mean_delta": -0.0013191319092087928,
+   "per_category": {
+    "building": 0.06365091478255369,
+    "cn_mountains": 0.17460670324498517,
+    "cn_sky": 0.025195657795449133,
+    "jungle": 0.0007731612209224137,
+    "urban-areas": 0.08685032409257451,
+    "water": 0.009110032419999747
+   },
+   "status": "SUPPORTED",
+   "failed": []
+  },
+  "causal_g4": {
+   "pairs": [
+    [
+     "v2_causal_g4_s0_e20",
+     "v2_stock_s0_e20"
+    ],
+    [
+     "v2_causal_g4_s1_e20",
+     "v2_stock_s1_e20"
+    ]
+   ],
+   "per_seed": [
+    0.11236934303146029,
+    0.10962534216952202
+   ],
+   "mean_delta": 0.11099734260049116,
+   "ci95": [
+    0.07102087386232038,
+    0.15456924649508857
+   ],
+   "anti_uav_mean_delta": 0.000917532715533409,
+   "per_category": {
+    "building": 0.0875846384819754,
+    "cn_mountains": 0.20967584755986685,
+    "cn_sky": 0.03469909293943746,
+    "jungle": 0.0007731612209224137,
+    "urban-areas": 0.08986526805428563,
+    "water": 0.0036304129464713175
+   },
+   "status": "SUPPORTED",
+   "failed": []
+  },
+  "causal_g8": {
+   "pairs": [
+    [
+     "v2_causal_g8_s0_e20",
+     "v2_stock_s0_e20"
+    ],
+    [
+     "v2_causal_g8_s1_e20",
+     "v2_stock_s1_e20"
+    ]
+   ],
+   "per_seed": [
+    0.10318423029095425,
+    0.11535107737099048
+   ],
+   "mean_delta": 0.10926765383097237,
+   "ci95": [
+    0.0662689915888057,
+    0.1588883011671859
+   ],
+   "anti_uav_mean_delta": 0.00231041271686383,
+   "per_category": {
+    "building": 0.07601068607129341,
+    "cn_mountains": 0.23646443349315588,
+    "cn_sky": 0.04442450334730469,
+    "jungle": 0.0007731612209224137,
+    "urban-areas": 0.07737894343727539,
+    "water": 0.009549221386610018
+   },
+   "status": "SUPPORTED",
+   "failed": []
+  }
+ },
+ "W2_levels": {
+  "stock": {
+   "runs": [
+    "v2_stock_s0_e20",
+    "v2_stock_s1_e20"
+   ],
+   "seed_mean_cst_ap50": 0.5698450809864591,
+   "per_seed": [
+    0.5635891034610527,
+    0.5761010585118655
+   ],
+   "ci95": [
+    0.47517988858860444,
+    0.6613921867927431
+   ],
+   "anti_uav_seed_mean": 0.980037574966338,
+   "reach": "[t, t, t]"
+  },
+  "causal_g1": {
+   "runs": [
+    "v2_causal_g1_s0_e20",
+    "v2_causal_g1_s1_e20"
+   ],
+   "seed_mean_cst_ap50": 0.601995814607934,
+   "per_seed": [
+    0.6148360846063365,
+    0.5891555446095316
+   ],
+   "ci95": [
+    0.5078400772742427,
+    0.6875165415961104
+   ],
+   "anti_uav_seed_mean": 0.9795630051111632,
+   "reach": "[t-2, t-1, t]"
+  },
+  "causal_g2": {
+   "runs": [
+    "v2_causal_g2_s0_e20",
+    "v2_causal_g2_s1_e20"
+   ],
+   "seed_mean_cst_ap50": 0.662739815289829,
+   "per_seed": [
+    0.6704755661456491,
+    0.6550040644340087
+   ],
+   "ci95": [
+    0.5772863530285499,
+    0.7441616451855627
+   ],
+   "anti_uav_seed_mean": 0.9787184430571292,
+   "reach": "[t-4, t-2, t]"
+  },
+  "causal_g4": {
+   "runs": [
+    "v2_causal_g4_s0_e20",
+    "v2_causal_g4_s1_e20"
+   ],
+   "seed_mean_cst_ap50": 0.6808424235869504,
+   "per_seed": [
+    0.675958446492513,
+    0.6857264006813876
+   ],
+   "ci95": [
+    0.5974762745640657,
+    0.7599211339439612
+   ],
+   "anti_uav_seed_mean": 0.9809551076818714,
+   "reach": "[t-8, t-4, t]"
+  },
+  "causal_g8": {
+   "runs": [
+    "v2_causal_g8_s0_e20",
+    "v2_causal_g8_s1_e20"
+   ],
+   "seed_mean_cst_ap50": 0.6791127348174315,
+   "per_seed": [
+    0.666773333752007,
+    0.691452135882856
+   ],
+   "ci95": [
+    0.5932631820066571,
+    0.7600952031818399
+   ],
+   "anti_uav_seed_mean": 0.9823479876832019,
+   "reach": "[t-16, t-8, t]"
+  },
+  "sym_g4": {
+   "runs": [
+    "v2_sym_g4_s0_e20",
+    "v2_sym_g4_s1_e20"
+   ],
+   "seed_mean_cst_ap50": 0.6734738485630078,
+   "per_seed": [
+    0.6780477823549913,
+    0.6688999147710245
+   ],
+   "ci95": [
+    0.5902278577449812,
+    0.7543248735861453
+   ],
+   "anti_uav_seed_mean": 0.9802737374630718,
+   "reach": "[t-4, t, t+4]"
+  }
+ },
+ "W3_cost_of_causality": {
+  "pairs": [
+   [
+    "v2_causal_g4_s0_e20",
+    "v2_sym_g4_s0_e20"
+   ],
+   [
+    "v2_causal_g4_s1_e20",
+    "v2_sym_g4_s1_e20"
+   ]
+  ],
+  "per_seed": [
+   -0.002089335862478281,
+   0.016826485910363065
+  ],
+  "mean_delta": 0.007368575023942392,
+  "ci95": [
+   -0.00022470399621119517,
+   0.01606524874674916
+  ],
+  "anti_uav_mean_delta": 0.0006813702187996595,
+  "per_category": {
+   "building": 9.710200668683333e-05,
+   "cn_mountains": 0.01510358871998152,
+   "cn_sky": -0.008157575913184889,
+   "jungle": 0.0,
+   "urban-areas": 0.021877574381274884,
+   "water": -0.006678372040724856
+  },
+  "status": "NON-INFERIOR (conclusive)",
+  "window": "causal_g4"
+ },
+ "selected_causal_window": "causal_g4",
+ "caveat": "bootstrap = sampling noise over VAL sequences; seed noise only via the per-seed deltas (2 seeds); the selected window's VAL delta is optimistic (winner's curse) until a TEST pass"
+}

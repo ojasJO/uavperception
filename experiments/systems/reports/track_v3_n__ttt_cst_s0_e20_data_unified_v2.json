@@ -1,0 +1,372 @@
+{
+ "generated": "2026-10-12T10:44:10+0530",
+ "run": "v3_n__ttt_cst_s0_e20",
+ "corpus": "data_unified_v2",
+ "cache_set_sha256": "ec07f695df26a612c96ad4b3da43dbf6dc499bef964c78074179d92d6f9adc36",
+ "window": "ttt",
+ "n_sequences": 40,
+ "halves": {
+  "0": 17,
+  "1": 23
+ },
+ "grid_sizes": {
+  "argmax": 11,
+  "ste": 504
+ },
+ "trackers": {
+  "argmax": {
+   "cross_fitted": {
+    "cst_IR": {
+     "n_sequences": 40,
+     "mSA": 54.16559728232247,
+     "located_rate": 0.6274996799385482,
+     "false_alarm_rate": 0.3024,
+     "n_invisible_frames": 6250,
+     "reappearances": 166,
+     "recover_frames_median": 40.5,
+     "recover_frames_mean": 105.18072289156626,
+     "frame_attr_SA": {
+      "CDB": {
+       "SA": 43.43628155270496,
+       "n_frames": 17720
+      },
+      "DBC": {
+       "SA": 44.47061619404793,
+       "n_frames": 19418
+      },
+      "FM": {
+       "SA": 16.05749729169346,
+       "n_frames": 54
+      },
+      "OC": {
+       "SA": 67.69836962859154,
+       "n_frames": 3228
+      },
+      "OV": {
+       "SA": 73.4608695652174,
+       "n_frames": 2875
+      },
+      "SV": {
+       "SA": 39.64540168154859,
+       "n_frames": 20708
+      },
+      "TC": {
+       "SA": 43.549116451982286,
+       "n_frames": 29532
+      },
+      "size_large": {
+       "SA": 0.34410859192402177,
+       "n_frames": 347
+      },
+      "size_normal": {
+       "SA": 42.87627591059118,
+       "n_frames": 2134
+      },
+      "size_small": {
+       "SA": 55.81340975488816,
+       "n_frames": 28525
+      },
+      "size_tiny": {
+       "SA": 30.656165357563776,
+       "n_frames": 8049
+      }
+     }
+    }
+   },
+   "params_per_half": {
+    "0": {
+     "thr": 0.3
+    },
+    "1": {
+     "thr": 0.5
+    }
+   },
+   "tuned_on_all_val": {
+    "params": {
+     "thr": 0.5
+    },
+    "summary": {
+     "cst_IR": {
+      "n_sequences": 40,
+      "mSA": 54.87818355644431,
+      "located_rate": 0.6184355396236078,
+      "false_alarm_rate": 0.18768,
+      "n_invisible_frames": 6250,
+      "reappearances": 166,
+      "recover_frames_median": 41.0,
+      "recover_frames_mean": 113.76506024096386,
+      "frame_attr_SA": {
+       "CDB": {
+        "SA": 43.52886466557786,
+        "n_frames": 17720
+       },
+       "DBC": {
+        "SA": 45.471431230850186,
+        "n_frames": 19418
+       },
+       "FM": {
+        "SA": 13.7963086277569,
+        "n_frames": 54
+       },
+       "OC": {
+        "SA": 77.36379713788521,
+        "n_frames": 3228
+       },
+       "OV": {
+        "SA": 86.74782608695652,
+        "n_frames": 2875
+       },
+       "SV": {
+        "SA": 38.66212715555718,
+        "n_frames": 20708
+       },
+       "TC": {
+        "SA": 44.49206798942786,
+        "n_frames": 29532
+       },
+       "size_large": {
+        "SA": 0.34410859192402177,
+        "n_frames": 347
+       },
+       "size_normal": {
+        "SA": 41.43107567153773,
+        "n_frames": 2134
+       },
+       "size_small": {
+        "SA": 55.06986683398503,
+        "n_frames": 28525
+       },
+       "size_tiny": {
+        "SA": 30.151094435840083,
+        "n_frames": 8049
+       }
+      }
+     }
+    }
+   }
+  },
+  "ste": {
+   "cross_fitted": {
+    "cst_IR": {
+     "n_sequences": 40,
+     "mSA": 55.40401733709276,
+     "located_rate": 0.6356932531045961,
+     "false_alarm_rate": 0.2784,
+     "n_invisible_frames": 6250,
+     "reappearances": 166,
+     "recover_frames_median": 52.5,
+     "recover_frames_mean": 119.22289156626506,
+     "frame_attr_SA": {
+      "CDB": {
+       "SA": 46.159682316854564,
+       "n_frames": 17720
+      },
+      "DBC": {
+       "SA": 47.07396875540763,
+       "n_frames": 19418
+      },
+      "FM": {
+       "SA": 13.7963086277569,
+       "n_frames": 54
+      },
+      "OC": {
+       "SA": 69.71200035969439,
+       "n_frames": 3228
+      },
+      "OV": {
+       "SA": 76.6608695652174,
+       "n_frames": 2875
+      },
+      "SV": {
+       "SA": 40.478942281302096,
+       "n_frames": 20708
+      },
+      "TC": {
+       "SA": 43.55490123518128,
+       "n_frames": 29532
+      },
+      "size_large": {
+       "SA": 0.38016546970130294,
+       "n_frames": 347
+      },
+      "size_normal": {
+       "SA": 43.97538264135305,
+       "n_frames": 2134
+      },
+      "size_small": {
+       "SA": 57.12087421514936,
+       "n_frames": 28525
+      },
+      "size_tiny": {
+       "SA": 30.59034568095608,
+       "n_frames": 8049
+      }
+     }
+    }
+   },
+   "params_per_half": {
+    "0": {
+     "det_thr": 0.3,
+     "init_thr": 0.5,
+     "reacq_thr": 0.5,
+     "max_coast": 5,
+     "output": "det",
+     "coast_output": true,
+     "gate_chi2": 25.0
+    },
+    "1": {
+     "det_thr": 0.3,
+     "init_thr": 0.5,
+     "reacq_thr": 0.7,
+     "max_coast": 60,
+     "output": "det",
+     "coast_output": false,
+     "gate_chi2": 25.0
+    }
+   },
+   "tuned_on_all_val": {
+    "params": {
+     "det_thr": 0.3,
+     "init_thr": 0.5,
+     "reacq_thr": 0.5,
+     "max_coast": 5,
+     "output": "det",
+     "coast_output": false,
+     "gate_chi2": 25.0
+    },
+    "summary": {
+     "cst_IR": {
+      "n_sequences": 40,
+      "mSA": 55.943443919407244,
+      "located_rate": 0.638535398796569,
+      "false_alarm_rate": 0.22784,
+      "n_invisible_frames": 6250,
+      "reappearances": 166,
+      "recover_frames_median": 54.0,
+      "recover_frames_mean": 119.3012048192771,
+      "frame_attr_SA": {
+       "CDB": {
+        "SA": 45.950336330157796,
+        "n_frames": 17720
+       },
+       "DBC": {
+        "SA": 47.734576388610826,
+        "n_frames": 19418
+       },
+       "FM": {
+        "SA": 13.7963086277569,
+        "n_frames": 54
+       },
+       "OC": {
+        "SA": 74.69960878596453,
+        "n_frames": 3228
+       },
+       "OV": {
+        "SA": 81.35652173913043,
+        "n_frames": 2875
+       },
+       "SV": {
+        "SA": 39.71590101197771,
+        "n_frames": 20708
+       },
+       "TC": {
+        "SA": 44.64752990221172,
+        "n_frames": 29532
+       },
+       "size_large": {
+        "SA": 0.5832171818704094,
+        "n_frames": 347
+       },
+       "size_normal": {
+        "SA": 42.31055447367299,
+        "n_frames": 2134
+       },
+       "size_small": {
+        "SA": 57.245989246370584,
+        "n_frames": 28525
+       },
+       "size_tiny": {
+        "SA": 30.496367000426837,
+        "n_frames": 8049
+       }
+      }
+     }
+    }
+   },
+   "defaults_untuned": {
+    "params": {
+     "det_thr": 0.1,
+     "init_thr": 0.4,
+     "reacq_thr": 0.6,
+     "gate_chi2": 9.2103,
+     "max_coast": 10,
+     "output": "det",
+     "coast_output": true,
+     "min_scale": 10.0,
+     "q_pos": 0.05,
+     "q_vel": 0.00625,
+     "r_meas": 0.05
+    },
+    "summary": {
+     "cst_IR": {
+      "n_sequences": 40,
+      "mSA": 52.686012509226074,
+      "located_rate": 0.6293176289847651,
+      "false_alarm_rate": 0.51296,
+      "n_invisible_frames": 6250,
+      "reappearances": 166,
+      "recover_frames_median": 63.5,
+      "recover_frames_mean": 127.7710843373494,
+      "frame_attr_SA": {
+       "CDB": {
+        "SA": 44.72944207298749,
+        "n_frames": 17720
+       },
+       "DBC": {
+        "SA": 44.39063307628123,
+        "n_frames": 19418
+       },
+       "FM": {
+        "SA": 13.7963086277569,
+        "n_frames": 54
+       },
+       "OC": {
+        "SA": 47.15467770451576,
+        "n_frames": 3228
+       },
+       "OV": {
+        "SA": 52.10434782608696,
+        "n_frames": 2875
+       },
+       "SV": {
+        "SA": 39.80519245541621,
+        "n_frames": 20708
+       },
+       "TC": {
+        "SA": 41.37810847384739,
+        "n_frames": 29532
+       },
+       "size_large": {
+        "SA": 1.63927616048545,
+        "n_frames": 347
+       },
+       "size_normal": {
+        "SA": 44.864091527366384,
+        "n_frames": 2134
+       },
+       "size_small": {
+        "SA": 57.597984270061744,
+        "n_frames": 28525
+       },
+       "size_tiny": {
+        "SA": 28.043988294379066,
+        "n_frames": 8049
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "seconds": 1267.1
+}

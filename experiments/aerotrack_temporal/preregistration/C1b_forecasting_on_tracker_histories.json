@@ -1,0 +1,61 @@
+{
+  "id": "C1b_forecasting_on_tracker_histories",
+  "track": "C (track history -> future path -> uncertainty: the system's prediction OUTPUT, as deployed)",
+  "registered": "see the git commit that added this file (2026-10-05): before C1's VAL pass, before any corpus-v2 detection cache exists and before C3",
+  "class": "controlled experiment on corpus-v2 VAL; forecasters are C1's (trained on TRAIN, fixed by sha256) and C1's TRAIN-tuned classical forecasters; nothing is fitted on VAL except the tracker settings, which come from C3's cross-fitting; TEST untouched",
+  "question": "When the history is what the deployed tracker actually produced from a causal detector (noisy boxes, misses, re-acquisitions), which forecaster predicts the GROUND-TRUTH future path best and with calibrated uncertainty -- and does noise-augmented training help there?",
+  "inputs": {
+    "primary": "VAL caches of v2_causal_g4_s0_e20 (zero look-ahead), corpus v2",
+    "replication": "VAL caches of v2_stock_s0_e20",
+    "histories": "ste_cv (experiments/systems/scripts/ste.py) run under the SOT protocol with the cross-fitted settings of C3's report for the same cache (each VAL half uses the other half's settings); a frame enters the history only when the tracker associated a detection there (modes init / track / reacquired; coasted predictions are not measurements)",
+    "targets": "ground-truth centres at t+1..t+24 where the target is visible (official annotations)"
+  },
+  "samples": "anchor t: tracker associations at t and t-1, target visible at t in the ground truth, >= 1 visible ground-truth frame in t+1..t+24; history t-15..t (causal by construction: tracker outputs at frames <= t, from a zero-look-ahead detector)",
+  "forecasters": {
+    "classical": "each domain's C1 reference (TRAIN-tuned) and the TRAIN-calibrated Kalman (runs/aerotrack_temporal/c1/classical_tuning.json)",
+    "learned_clean": "C1 model family, abs inputs, seeds 0 / 1 / 2 (runs/aerotrack_temporal/c1, sha256 in learned_registry.json)",
+    "learned_aug": "the same family trained on augmented histories (C1 'aug' arm), seeds 0 / 1 / 2"
+  },
+  "metrics": "as C1 (per domain pooled ADE over h = 1..24, FDE@24, error by horizon, NLL, 50 / 68 / 90 / 95 % coverage, calibration error; cluster bootstrap over sequences, B = 2000)",
+  "hypotheses": {
+    "H1b_point": {
+      "comparison": "learned_clean vs the domain's classical reference, each seed",
+      "rule": "C1 H1 rule (all seeds: rel <= -5 % and CI upper < 0 -> SUPPORTED; all seeds CI lower > 0 -> LOSES; else NOT_SUPPORTED)"
+    },
+    "H2b_uncertainty": {
+      "comparison": "learned_clean vs Kalman",
+      "rule": "C1 H2 rule"
+    },
+    "H4_augmentation": {
+      "comparison": "learned_aug vs learned_clean, seed i vs seed i",
+      "SUPPORTED": "all 3 pairs: rel ADE <= -2 % and CI upper < 0",
+      "REVERSED": "all 3 pairs: CI lower > 0",
+      "else": "NOT_SUPPORTED"
+    }
+  },
+  "adoption_rule": "the system's forecast output per domain = the learned family (aug variant if H4 SUPPORTED, else clean) where H1b is SUPPORTED and H2b is not LOSES; elsewhere the domain's classical reference with its TRAIN-residual variance (C3 prep); C1 (oracle histories) alone never decides deployment",
+  "component_gate": {
+    "measured_failure": "forecast_eval (v1, symmetric detector): Kalman forecasts from tracker outputs are no better than zero velocity on Anti-UAV and their 95 % ellipses cover 0.73",
+    "why": "tracker histories add detection noise and gaps to the camera-motion problem C1 isolates",
+    "baseline": "domain classical reference and calibrated Kalman on the same histories",
+    "novelty": "the realistic evaluation of the stack's prediction output (causal detector -> tracker -> forecaster) against ground truth, with calibration",
+    "cost": "as C1 (CPU, microseconds to < 1 ms per forecast)",
+    "isolating_ablation": "same histories for every forecaster; aug vs clean isolates training-time noise",
+    "rtx5050": "CPU-side",
+    "exportable": "ONNX (C1 export check)",
+    "falsifier": "H1b NOT_SUPPORTED / LOSES everywhere: the deployed prediction output stays classical"
+  },
+  "run_order": [
+    "after C3 (its cross-fitted ste_cv settings) on the same caches",
+    "experiments/aerotrack_temporal/scripts/tc_c1b.py",
+    "reports/C1b_forecasting_on_tracker_histories_<run>.{json,md}"
+  ],
+  "outputs": "experiments/aerotrack_temporal/reports/C1b_forecasting_on_tracker_histories_<run>.{json,md}",
+  "amendments": [
+    {
+      "when": "2026-10-05, before any C1c training and before this experiment's first run",
+      "what": "the learned forecaster per domain is the one offered by the C1 / C1c adoption rule (preregistration/C1c_domain_aware_forecasting.json): the C1c model where C1c offers it, else C1's pooled model where C1 adopted it, else none",
+      "why": "C1's pooled model loses on CST; C1c (registered before its training) tests camera-mode-aware models; downstream experiments must use whichever the registered rules adopt, decided without seeing their own results"
+    }
+  ]
+}

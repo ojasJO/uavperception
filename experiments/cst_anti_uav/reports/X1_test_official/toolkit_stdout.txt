@@ -1,0 +1,30 @@
+Evaluating AeroTrack-X1-STE
+Evaluating AeroTrack-X1-argmax
+[Overall]         Tracker name   Experiments metric: Scores
+[Overall]     AeroTrack-X1-STE       State accuracy: 0.6008
+[Overall]  AeroTrack-X1-argmax       State accuracy: 0.5970
+[Attribute]     AeroTrack-X1-STE            Occlusion: 0.5834
+[Attribute]     AeroTrack-X1-STE          Out-of-View: 0.5901
+[Attribute]     AeroTrack-X1-STE      Scale Variation: 0.6008
+[Attribute]     AeroTrack-X1-STE    Thermal Crossover: 0.5994
+[Attribute]     AeroTrack-X1-STE Dynamic Background Clutter: 0.5756
+[Attribute]     AeroTrack-X1-STE Complex Dynamic Background: 0.5424
+[Attribute]     AeroTrack-X1-STE          Fast Motion: 0.5668
+[Attribute]     AeroTrack-X1-STE            Tiny Size: 0.5880
+[Attribute]     AeroTrack-X1-STE           Small Size: 0.6008
+[Attribute]     AeroTrack-X1-STE          Medium Size: 0.5845
+[Attribute]     AeroTrack-X1-STE          Normal Size: 0.6415
+[Attribute]  AeroTrack-X1-argmax            Occlusion: 0.5809
+[Attribute]  AeroTrack-X1-argmax          Out-of-View: 0.5885
+[Attribute]  AeroTrack-X1-argmax      Scale Variation: 0.5970
+[Attribute]  AeroTrack-X1-argmax    Thermal Crossover: 0.5965
+[Attribute]  AeroTrack-X1-argmax Dynamic Background Clutter: 0.5666
+[Attribute]  AeroTrack-X1-argmax Complex Dynamic Background: 0.5387
+[Attribute]  AeroTrack-X1-argmax          Fast Motion: 0.5638
+[Attribute]  AeroTrack-X1-argmax            Tiny Size: 0.5858
+[Attribute]  AeroTrack-X1-argmax           Small Size: 0.5970
+[Attribute]  AeroTrack-X1-argmax          Medium Size: 0.5730
+[Attribute]  AeroTrack-X1-argmax          Normal Size: 0.6307
+Saving state accuracy scores to A:\AEROTRACK_OMEN\experiments\cst_anti_uav\reports\X1_test_official\toolkit_reports\CSTAntiUAV\test\state_accuracy_scores.txt
+Evaluating AeroTrack-X1-STE
+Evaluating AeroTrack-X1-argmax

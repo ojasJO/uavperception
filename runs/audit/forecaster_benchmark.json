@@ -1,0 +1,201 @@
+{
+  "config": {
+    "obs": 16,
+    "pred": 12,
+    "stride": 4,
+    "hidden": 128,
+    "layers": 1,
+    "epochs": 10,
+    "lr": 0.001,
+    "jump_px": 30.0,
+    "device": "cuda:0"
+  },
+  "kalman_val_sweep_best": {
+    "q": 1.0,
+    "r": 1e-05,
+    "val_ADE": 65.13158148870022
+  },
+  "ADE_FDE_by_subset": {
+    "all test windows": {
+      "n": 54651,
+      "zero_vel": {
+        "ADE_px": 41.877,
+        "FDE_px": 65.637
+      },
+      "last_vel": {
+        "ADE_px": 57.633,
+        "FDE_px": 114.902
+      },
+      "mean_vel_4": {
+        "ADE_px": 56.452,
+        "FDE_px": 107.119
+      },
+      "mean_vel_8": {
+        "ADE_px": 56.378,
+        "FDE_px": 102.094
+      },
+      "mean_vel_16": {
+        "ADE_px": 52.321,
+        "FDE_px": 88.516
+      },
+      "kalman_project(q=1e-2,r=1e-1)": {
+        "ADE_px": 56.5,
+        "FDE_px": 106.009
+      },
+      "kalman_tuned(q=1,r=1e-05)": {
+        "ADE_px": 54.793,
+        "FDE_px": 107.409
+      },
+      "lstm": {
+        "ADE_px": 41.848,
+        "FDE_px": 65.577
+      }
+    },
+    "sudden-jump (>30px in horizon)": {
+      "n": 10752,
+      "zero_vel": {
+        "ADE_px": 109.862,
+        "FDE_px": 160.863
+      },
+      "last_vel": {
+        "ADE_px": 165.006,
+        "FDE_px": 333.604
+      },
+      "mean_vel_4": {
+        "ADE_px": 151.665,
+        "FDE_px": 290.143
+      },
+      "mean_vel_8": {
+        "ADE_px": 143.476,
+        "FDE_px": 258.278
+      },
+      "mean_vel_16": {
+        "ADE_px": 134.103,
+        "FDE_px": 219.106
+      },
+      "kalman_project(q=1e-2,r=1e-1)": {
+        "ADE_px": 149.164,
+        "FDE_px": 281.404
+      },
+      "kalman_tuned(q=1,r=1e-05)": {
+        "ADE_px": 155.414,
+        "FDE_px": 308.609
+      },
+      "lstm": {
+        "ADE_px": 109.795,
+        "FDE_px": 160.594
+      }
+    },
+    "smooth": {
+      "n": 43899,
+      "zero_vel": {
+        "ADE_px": 25.225,
+        "FDE_px": 42.313
+      },
+      "last_vel": {
+        "ADE_px": 31.334,
+        "FDE_px": 61.336
+      },
+      "mean_vel_4": {
+        "ADE_px": 33.132,
+        "FDE_px": 62.292
+      },
+      "mean_vel_8": {
+        "ADE_px": 35.045,
+        "FDE_px": 63.841
+      },
+      "mean_vel_16": {
+        "ADE_px": 32.291,
+        "FDE_px": 56.531
+      },
+      "kalman_project(q=1e-2,r=1e-1)": {
+        "ADE_px": 33.804,
+        "FDE_px": 63.05
+      },
+      "kalman_tuned(q=1,r=1e-05)": {
+        "ADE_px": 30.148,
+        "FDE_px": 58.13
+      },
+      "lstm": {
+        "ADE_px": 25.206,
+        "FDE_px": 42.306
+      }
+    },
+    "Anti-UAV": {
+      "n": 40314,
+      "zero_vel": {
+        "ADE_px": 52.306,
+        "FDE_px": 80.96
+      },
+      "last_vel": {
+        "ADE_px": 71.897,
+        "FDE_px": 144.551
+      },
+      "mean_vel_4": {
+        "ADE_px": 73.365,
+        "FDE_px": 139.422
+      },
+      "mean_vel_8": {
+        "ADE_px": 73.388,
+        "FDE_px": 132.842
+      },
+      "mean_vel_16": {
+        "ADE_px": 67.675,
+        "FDE_px": 114.042
+      },
+      "kalman_project(q=1e-2,r=1e-1)": {
+        "ADE_px": 73.692,
+        "FDE_px": 138.388
+      },
+      "kalman_tuned(q=1,r=1e-05)": {
+        "ADE_px": 70.128,
+        "FDE_px": 138.141
+      },
+      "lstm": {
+        "ADE_px": 52.247,
+        "FDE_px": 80.854
+      }
+    },
+    "CST Anti-UAV": {
+      "n": 14337,
+      "zero_vel": {
+        "ADE_px": 12.55,
+        "FDE_px": 22.549
+      },
+      "last_vel": {
+        "ADE_px": 17.523,
+        "FDE_px": 31.533
+      },
+      "mean_vel_4": {
+        "ADE_px": 8.896,
+        "FDE_px": 16.287
+      },
+      "mean_vel_8": {
+        "ADE_px": 8.547,
+        "FDE_px": 15.635
+      },
+      "mean_vel_16": {
+        "ADE_px": 9.148,
+        "FDE_px": 16.738
+      },
+      "kalman_project(q=1e-2,r=1e-1)": {
+        "ADE_px": 8.158,
+        "FDE_px": 14.962
+      },
+      "kalman_tuned(q=1,r=1e-05)": {
+        "ADE_px": 11.673,
+        "FDE_px": 20.995
+      },
+      "lstm": {
+        "ADE_px": 12.608,
+        "FDE_px": 22.622
+      }
+    }
+  },
+  "diagnostics": {
+    "lstm_mean_pred_step_norm": 0.00021107535576447845,
+    "true_mean_future_step_norm": 0.007054201327264309,
+    "mean_last_obs_step_norm": 0.007081941701471806,
+    "corr(lstm_step1, last_obs)": -0.24491853782550277
+  }
+}

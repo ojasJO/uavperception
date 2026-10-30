@@ -1,0 +1,10 @@
+[bench] split=val cap=1000 -> 3,000 images {'anti_uav': 1000, 'cst': 1000, 'det_fly': 1000}
+[bench] aerotrack_spd_v1           normal    mAP50 0.5662 mAP50-95 0.2665 drone 0.6992 bird 0.4332 micro 0.2566 (n=558) cst 0.67293 (62s)
+[bench] aerotrack_spd_v1           static    mAP50 0.5617 mAP50-95 0.2618 drone 0.6890 bird 0.4343 micro 0.2501 (n=558) cst 0.65432 (50s)
+[bench] aerotrack_spd_v1           reversed  mAP50 0.5671 mAP50-95 0.2665 drone 0.6998 bird 0.4345 micro 0.2554 (n=558) cst 0.67881 (48s)
+[bench] aerotrack_spd_v1           zero_nb   mAP50 0.4363 mAP50-95 0.2023 drone 0.5799 bird 0.2926 micro 0.1052 (n=558) cst 0.41577 (58s)
+[bench] aerotrack_spd_finetuned    normal    mAP50 0.7881 mAP50-95 0.4184 drone 0.7880 bird 0.7883 micro 0.4634 (n=558) cst 0.64121 (36s)
+[bench] aerotrack_spd_finetuned    static    mAP50 0.7853 mAP50-95 0.4158 drone 0.7822 bird 0.7883 micro 0.4693 (n=558) cst 0.63018 (35s)
+[bench] aerotrack_spd_finetuned    reversed  mAP50 0.7883 mAP50-95 0.4171 drone 0.7883 bird 0.7883 micro 0.4670 (n=558) cst 0.6502 (34s)
+[bench] aerotrack_spd_finetuned    zero_nb   mAP50 0.1023 mAP50-95 0.0504 drone 0.1977 bird 0.0069 micro 0.0004 (n=558) cst 0.07031 (32s)
+[bench] wrote A:\AEROTRACK_OMEN\runs\audit\summary_val_cap1000.json

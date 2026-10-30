@@ -1,0 +1,4 @@
+{"t": "2026-10-06T12:41:47+0530", "job": "gpuprobe_node02_1241", "kind": "submitted", "pbs_job": "92870.amritahpc", "host": "node02", "ncpus": 1, "mem_gb": 1, "walltime": "00:03:00", "gpu": 1, "stage": 0, "depend": "", "commit": "ae370f1fd199133cc82138ef80acb54f624190d4"}
+{"t": "2026-10-06T18:46:15+0530", "job": "gpuprobe_node02_1241", "kind": "start", "pbs_job": "92870.amritahpc", "host": "node02"}
+{"t": "2026-10-06T18:46:37+0530", "job": "gpuprobe_node02_1241", "kind": "run", "cmd": "true"}
+{"t": "2026-10-06T18:46:37+0530", "job": "gpuprobe_node02_1241", "kind": "end", "rc": 0, "minutes": 0}

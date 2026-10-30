@@ -21,6 +21,7 @@ import csv
 import gc
 import json
 import math
+import os
 import time
 import inspect
 import datetime
@@ -100,11 +101,11 @@ def build_model(cfg, ch=9, nc=2, verbose=False, hyp=None, class_weights=None):
 def transfer_pretrained(model, weights, verbose=True):
     """Copy every COCO tensor whose NAME and SHAPE both match (roadmap §4.1).
 
-    Most of this network is architecturally stock yolo11n -- only the five
-    downsampling convs became SPDConv and the head went 80 -> 2 classes. Those
-    tensors are skipped automatically by the shape check; everything else (the
-    C3k2 blocks, SPPF, C2PSA, the whole neck) transfers and starts from COCO
-    features instead of noise."""
+    Tensors whose name or shape differ are skipped (the 9-channel stem is tiled, the 2-class head and SPDConv stems
+    never match). CAUTION (erratum 2026-10-05, experiments/aerotrack_v2/ERRATUM_architecture.md): with Ultralytics
+    8.4.115 a YAML without a scale letter / `scales` block resolves scale '' and every C3k2 is built with c3k=True,
+    so the C3k2 internals of yolo11n.pt do NOT transfer (417 / 649 tensors load, 64.3 %); c_model/yolo11-stride-std.yaml
+    (explicit `scales: n`) builds standard YOLO11n and loads 448 / 499 (89.8 %)."""
     import ultralytics.nn.tasks as UT
     sd_pre = None
     # Ultralytics renames its loader every couple of minor versions
@@ -128,16 +129,29 @@ def transfer_pretrained(model, weights, verbose=True):
     sd_new = model.state_dict()
     copied = {k: v for k, v in sd_pre.items()
               if k in sd_new and sd_new[k].shape == v.shape}
+    # Repair (2026-09-21): a plain 9-channel stem (stride models: [64,9,3,3]) has a
+    # 3-channel COCO counterpart ([64,3,3,3]). Tile it over the three stacked
+    # frames and divide by 3: with t-1 == t == t+1 the response equals the stock
+    # 3-channel stem exactly, so the "stock YOLO11n" control really starts from
+    # COCO. SPDConv stems (36 input channels) have no counterpart and stay at init.
+    tiled = []
+    for k, v in sd_pre.items():
+        if k in sd_new and k not in copied and v.ndim == 4 and sd_new[k].ndim == 4 \
+                and sd_new[k].shape[1] == 3 * v.shape[1] \
+                and sd_new[k].shape[0] == v.shape[0] and sd_new[k].shape[2:] == v.shape[2:]:
+            copied[k] = v.repeat(1, 3, 1, 1) / 3.0
+            tiled.append(k)
     model.load_state_dict(copied, strict=False)
     if verbose:
         n_bb = sum(1 for k in copied if k.startswith("model.") and
                    int(k.split(".")[1]) < 11)
         print(f"[transfer] {len(copied):,}/{len(sd_new):,} tensors copied from "
               f"{Path(weights).name} ({len(copied)/max(len(sd_new),1)*100:.1f}%) "
-              f"— {n_bb} in the backbone")
+              f"— {n_bb} in the backbone"
+              + (f"; 3-ch->9-ch stem tiled (/3): {tiled}" if tiled else ""))
         skipped = [k for k in sd_new if k not in copied]
         print(f"[transfer] {len(skipped):,} left at init "
-              f"(SPDConv stems + Detect head): e.g. {skipped[:3]}")
+              f"(name / shape mismatch: head, SPDConv stems, C3k2 variant -- see ERRATUM_architecture.md): e.g. {skipped[:3]}")
     return len(copied), len(sd_new)
 
 
@@ -229,7 +243,7 @@ class TrainConfig(SimpleNamespace):
             train_inflight_gb=1.0, val_inflight_gb=0.35, val_workers=2,
             imgsz=640,
             # --- numerics ---------------------------------------------------
-            amp=True, amp_dtype="bf16", grad_clip=10.0,
+            amp=True, amp_dtype="auto", grad_clip=10.0,   # auto: bf16 on sm>=8.0, fp16 on the V100 (c_model/precision.py)
             # This card also drives the desktop. A CUDA OOM caused by a browser
             # or a slideshow briefly taking VRAM costs one batch; only a
             # sustained run of them means the batch size is genuinely too big.
@@ -350,8 +364,11 @@ class AeroTrackTrainer:
 
         self.amp_dtype = None
         if cfg.amp and device.type == "cuda":
-            self.amp_dtype = (torch.bfloat16 if cfg.amp_dtype == "bf16"
-                              else torch.float16)
+            name = cfg.amp_dtype
+            if name == "auto":
+                from precision import amp_name
+                name = amp_name(device)
+            self.amp_dtype = {"bf16": torch.bfloat16, "fp16": torch.float16}.get(name)
         self.scaler = (torch.amp.GradScaler("cuda")
                        if self.amp_dtype is torch.float16 else None)
 
@@ -551,7 +568,7 @@ class AeroTrackTrainer:
         }
         if extra:
             ck.update(extra)
-        torch.save(ck, path)
+        _atomic_torch_save(ck, path)
 
     # ---- the loop -------------------------------------------------------- #
     def train(self, resume_from=None):
@@ -747,6 +764,33 @@ def _isnum(v):
         return True
     except (TypeError, ValueError):
         return False
+
+
+def _atomic_torch_save(obj, path, retries=20, wait_s=0.5):
+    """`torch.save` to a sibling temp file, then `os.replace` it over `path`.
+
+    Repair (grid runner): writing `last.pt` in place meant a crash, a killed
+    process or a power cut DURING the save left a truncated file -- and with it
+    an unresumable run. `os.replace` is atomic on NTFS and POSIX, so `path` is
+    always either the previous complete checkpoint or the new one. On Windows a
+    reader (an antivirus scan of the file just written, say) can hold the target
+    for a moment; retry, and only as a last resort write in place, which is
+    exactly the old behaviour."""
+    path = Path(path)
+    tmp = path.with_name(path.name + ".tmp")
+    torch.save(obj, tmp)
+    for _ in range(retries):
+        try:
+            os.replace(tmp, path)
+            return
+        except PermissionError:
+            time.sleep(wait_s)
+    print(f"[checkpoint] could not replace {path.name} atomically; writing in place", flush=True)
+    torch.save(obj, path)
+    try:
+        tmp.unlink()
+    except OSError:
+        pass
 
 
 def _detached_copy(model):

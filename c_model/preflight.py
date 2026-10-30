@@ -10,7 +10,7 @@ They take about a minute and they run every time.
 
   E0  environment  CUDA present, sm_120 in the arch list, a real kernel launches
   T1  dataset      batch is exactly [B,9,640,640] and pixel values are in range
-  T2  boundary     frame_idx 0 -> channels[0:3] == channels[3:6] (t-1 duplicated)
+  T2  window       declared window kind (single / symmetric / causal), boundary clamping, causal = no frame after t
   T3  labels       every box coordinate is inside [0,1]
   T4  LEAKAGE      train seq_keys n val seq_keys == 0        <- the important one
   T5  collate      the loss batch dict is well-formed; batch_idx < B
@@ -106,26 +106,61 @@ def check_dataset(dataset, batch_size=4, expect_channels=9, imgsz=640):
     return _try("T1/T3 dataset+labels", _f)
 
 
+def window_offsets(index):
+    """Frame offsets of the prev / next channels relative to the centre frame, from the frame number in each image file name
+    (every corpus names frames by number: Anti-UAV / CST `000123.jpg`), so subsampled sample sets resolve too.
+    -> (known mask, d_prev, d_next); a sample is known when all three file names carry a frame number."""
+    import re
+    pat = re.compile(rb"(\d+)\.(?:jpg|jpeg|png|bmp)$", re.I)
+    num = np.array([int(m.group(1)) if (m := pat.search(p)) else -1 for p in index.paths], dtype=np.int64)
+    pf, cf, nf = num[index.prev_i], num[index.cur_i], num[index.next_i]
+    known = (pf >= 0) & (cf >= 0) & (nf >= 0)
+    return known, pf - cf, nf - cf
+
+
 def check_boundary(dataset):
-    """T2 — temporal boundary duplication is intact after letterbox/augment-off."""
+    """T2 — the temporal window is the one the samples declare, and its sequence-start / -end clamping is intact after
+    letterbox / augment-off. The window kind is read from the data (frame offsets of the prev / next channels):
+      single frame [t,t,t]     every channel is frame t
+      symmetric [t-g,t,t+g]    t=0: prev duplicated (ch[0:3]==ch[3:6]); t=N-1: next duplicated (ch[6:9]==ch[3:6]);
+                               prev <= t <= next for every sample
+      causal [t-g,t,t-2g]      t=0: both neighbours duplicated; NO sample's prev or next is after t (zero look-ahead)
+    (Before 2026-10-05 only the symmetric rule existed; it rejected causal windows, whose next channel is a past frame.)"""
     def _f():
         idx = dataset.index
+        known, dp, dn = window_offsets(idx)
+        kp, kn = dp[known], dn[known]
+        if not known.any():
+            return True, "no sample with resolvable neighbours (skipped)"
+        if (kp == 0).all() and (kn == 0).all():
+            kind = "single frame"
+        elif np.median(kn[kn != 0]) > 0:
+            kind = "symmetric"
+        else:
+            kind = "causal"
         first = np.flatnonzero(idx.frame_idx == 0)
         last = np.flatnonzero((idx.frame_idx == idx.seq_len - 1) & (idx.seq_len > 1))
-        msgs = []
+        msgs = [f"window {kind} (offsets prev {int(np.median(kp)):+d} / next {int(np.median(kn)):+d}, "
+                f"{int(known.sum()):,}/{len(known):,} samples resolvable)"]
         ok = True
+        if kind == "symmetric":
+            e = bool(((kp <= 0) & (kn >= 0)).all())
+            ok &= e
+            msgs.append(f"prev <= t <= next for all -> {e}")
+        else:
+            e = bool(((kp <= 0) & (kn <= 0)).all())             # single frame / causal: nothing after t
+            ok &= e
+            msgs.append(f"no channel after t -> {e} (max offset {int(max(kp.max(), kn.max())):+d})")
         if len(first):
             x = dataset[int(first[0])][0]
-            e = torch.equal(x[0:3], x[3:6])
+            e = torch.equal(x[0:3], x[3:6]) and (kind == "symmetric" or torch.equal(x[6:9], x[3:6]))
             ok &= e
-            msgs.append(f"t=0: ch[0:3]==ch[3:6] -> {e}")
-        if len(last):
+            msgs.append(f"t=0: neighbours duplicated -> {e}")
+        if len(last) and kind != "causal":
             x = dataset[int(last[0])][0]
             e = torch.equal(x[6:9], x[3:6])
             ok &= e
             msgs.append(f"t=N-1: ch[6:9]==ch[3:6] -> {e}")
-        if not msgs:
-            return True, "no boundary frames in this sample set (skipped)"
         return ok, " | ".join(msgs)
     return _try("T2 temporal boundary", _f)
 
@@ -247,8 +282,13 @@ def check_checkpoint_roundtrip(trainer, device, tmp_dir=None, imgsz=640, ch=9,
         # 2. geometry: the first SPDConv folds each 2x2 into channels, so a
         #    9-channel input reaches its convolution as 36 channels. If the
         #    reload had rebuilt from YAML with the default ch=3, this reads 12.
+        #    Repair (grid runner): a stride-2 stem (the no_spd / stock_yolo11n
+        #    ablations, yolo11-stride.yaml) sees the 9 channels directly, so the
+        #    expected width is taken from the live model -- the old `== 4 * ch`
+        #    failed T6 and aborted every stride-layout run before epoch 0.
         first_conv = next(m for m in m1.modules() if isinstance(m, torch.nn.Conv2d))
-        ch_ok = first_conv.in_channels == 4 * ch
+        want_in = next(m for m in m0.modules() if isinstance(m, torch.nn.Conv2d)).in_channels
+        ch_ok = first_conv.in_channels == want_in and want_in in (ch, 4 * ch)
 
         # 3. forward
         x = torch.randn(1, ch, imgsz, imgsz, device=device)
@@ -272,7 +312,8 @@ def check_checkpoint_roundtrip(trainer, device, tmp_dir=None, imgsz=640, ch=9,
         return (ok,
                 f"weights: {len(sd0)} tensors, {len(bad)} mismatched, "
                 f"{len(missing)} missing | first conv in_channels="
-                f"{first_conv.in_channels} (expect {4*ch}) | out {tuple(a.shape)} "
+                f"{first_conv.in_channels} (expect {want_in}: "
+                f"{'SPD 4 x' if want_in == 4 * ch else 'stride, 1 x'} ch={ch}) | out {tuple(a.shape)} "
                 f"| max|dscore|={d_cls:.2e} (tol {score_tol}) "
                 f"max|dbox|={d_box:.3f} px (tol {tol_px:.1f} = stride/4) "
                 f"[weights are exact; the box delta is fp16 DFL sensitivity]")

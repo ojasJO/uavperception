@@ -1,0 +1,271 @@
+{
+ "rows": [
+  {
+   "run": "gen_stock_f0_e1_smoke",
+   "set": "dev",
+   "config": "stock",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 1,
+   "gap": 0,
+   "checkpoint": "last",
+   "epoch": 0,
+   "weights_sha256": "899e458da678",
+   "set_identity": {
+    "split": "dev_fold0",
+    "cap": 60,
+    "n_images": 180,
+    "per_dataset": {
+     "anti_uav": 60,
+     "cst": 60,
+     "det_fly": 60
+    },
+    "n_sequences": 144,
+    "sha256": "b93a2081c34c564820b41c62806c09d14292166d735201a5022725e3e5f42a4f"
+   },
+   "metrics": {
+    "drone_AP50": 0.0,
+    "anti_uav_drone_AP50": 0.0,
+    "cst_drone_AP50": 0.0,
+    "det_fly_drone_AP50": 0.0,
+    "cst_drone_micro_AP50": 0.0,
+    "reg_micro_AP50": 0.0,
+    "reg_cst_AP50": 0.0,
+    "reg_cst_micro_AP50": 0.0,
+    "mAP50": 0.0,
+    "n_images": 180
+   },
+   "seconds": 10.3,
+   "timestamp": "2026-09-26T10:32:54+0530"
+  },
+  {
+   "run": "gen_spd_fp_f0_e1_smoke",
+   "set": "dev",
+   "config": "spd_fp",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 1,
+   "gap": 0,
+   "checkpoint": "last",
+   "epoch": 0,
+   "weights_sha256": "ba5d91a29f3d",
+   "set_identity": {
+    "split": "dev_fold0",
+    "cap": 60,
+    "n_images": 180,
+    "per_dataset": {
+     "anti_uav": 60,
+     "cst": 60,
+     "det_fly": 60
+    },
+    "n_sequences": 144,
+    "sha256": "b93a2081c34c564820b41c62806c09d14292166d735201a5022725e3e5f42a4f"
+   },
+   "metrics": {
+    "drone_AP50": 0.0,
+    "anti_uav_drone_AP50": 0.0,
+    "cst_drone_AP50": 0.0,
+    "det_fly_drone_AP50": 0.0,
+    "cst_drone_micro_AP50": 0.0,
+    "reg_micro_AP50": 0.0,
+    "reg_cst_AP50": 0.0,
+    "reg_cst_micro_AP50": 0.0,
+    "mAP50": 0.0,
+    "n_images": 180
+   },
+   "seconds": 10.7,
+   "timestamp": "2026-09-26T10:34:11+0530"
+  },
+  {
+   "run": "gen_temporal_fp_g1_f0_e1_smoke",
+   "set": "dev",
+   "config": "temporal_fp_g1",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 1,
+   "gap": 1,
+   "checkpoint": "last",
+   "epoch": 0,
+   "weights_sha256": "992258003091",
+   "set_identity": {
+    "split": "dev_fold0",
+    "cap": 60,
+    "n_images": 180,
+    "per_dataset": {
+     "anti_uav": 60,
+     "cst": 60,
+     "det_fly": 60
+    },
+    "n_sequences": 144,
+    "sha256": "b93a2081c34c564820b41c62806c09d14292166d735201a5022725e3e5f42a4f"
+   },
+   "metrics": {
+    "drone_AP50": 0.0,
+    "anti_uav_drone_AP50": 0.0,
+    "cst_drone_AP50": 0.0,
+    "det_fly_drone_AP50": 0.0,
+    "cst_drone_micro_AP50": 0.0,
+    "reg_micro_AP50": 0.0,
+    "reg_cst_AP50": 0.0,
+    "reg_cst_micro_AP50": 0.0,
+    "mAP50": 0.0,
+    "n_images": 180
+   },
+   "seconds": 10.4,
+   "timestamp": "2026-09-26T10:35:33+0530"
+  },
+  {
+   "run": "gen_temporal_fp_g4_f0_e1_smoke",
+   "set": "dev",
+   "config": "temporal_fp_g4",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 1,
+   "gap": 4,
+   "checkpoint": "last",
+   "epoch": 0,
+   "weights_sha256": "ff5e7012197a",
+   "set_identity": {
+    "split": "dev_fold0",
+    "cap": 60,
+    "n_images": 180,
+    "per_dataset": {
+     "anti_uav": 60,
+     "cst": 60,
+     "det_fly": 60
+    },
+    "n_sequences": 144,
+    "sha256": "b93a2081c34c564820b41c62806c09d14292166d735201a5022725e3e5f42a4f"
+   },
+   "metrics": {
+    "drone_AP50": 0.0,
+    "anti_uav_drone_AP50": 0.0,
+    "cst_drone_AP50": 0.0,
+    "det_fly_drone_AP50": 0.0,
+    "cst_drone_micro_AP50": 0.0,
+    "reg_micro_AP50": 0.0,
+    "reg_cst_AP50": 0.0,
+    "reg_cst_micro_AP50": 0.0,
+    "mAP50": 0.0,
+    "n_images": 180
+   },
+   "seconds": 10.4,
+   "timestamp": "2026-09-26T10:36:57+0530"
+  },
+  {
+   "run": "gen_stock_f0_e2_smoke",
+   "set": "dev",
+   "config": "stock",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 2,
+   "gap": 0,
+   "checkpoint": "last",
+   "epoch": 1,
+   "weights_sha256": "56db1e25b4b2",
+   "set_identity": {
+    "split": "dev_fold0",
+    "cap": 60,
+    "n_images": 180,
+    "per_dataset": {
+     "anti_uav": 60,
+     "cst": 60,
+     "det_fly": 60
+    },
+    "n_sequences": 144,
+    "sha256": "b93a2081c34c564820b41c62806c09d14292166d735201a5022725e3e5f42a4f"
+   },
+   "metrics": {
+    "drone_AP50": 0.0,
+    "anti_uav_drone_AP50": 0.0,
+    "cst_drone_AP50": 0.0,
+    "det_fly_drone_AP50": 0.0,
+    "cst_drone_micro_AP50": 0.0,
+    "reg_micro_AP50": 0.0,
+    "reg_cst_AP50": 0.0,
+    "reg_cst_micro_AP50": 0.0,
+    "mAP50": 0.0,
+    "n_images": 180
+   },
+   "seconds": 10.6,
+   "timestamp": "2026-09-26T10:38:26+0530"
+  },
+  {
+   "run": "gen_stock_f2_e3_smoke",
+   "set": "dev",
+   "config": "stock",
+   "fold": "2",
+   "seed": 2,
+   "epochs": 3,
+   "gap": 0,
+   "checkpoint": "last",
+   "epoch": 2,
+   "weights_sha256": "9a298484342a",
+   "set_identity": {
+    "split": "dev_fold2",
+    "cap": 60,
+    "n_images": 180,
+    "per_dataset": {
+     "anti_uav": 60,
+     "cst": 60,
+     "det_fly": 60
+    },
+    "n_sequences": 143,
+    "sha256": "69b8880b737243b4f692212a5296005e80aa2cf80fe7fcefd915571c632f0b9f"
+   },
+   "metrics": {
+    "drone_AP50": 0.4276095249759849,
+    "anti_uav_drone_AP50": 0.7629457049995212,
+    "cst_drone_AP50": 0.41903791458389145,
+    "det_fly_drone_AP50": 0.07333995821794824,
+    "cst_drone_micro_AP50": 0.4291547481463295,
+    "reg_micro_AP50": 0.2263749252907956,
+    "reg_cst_AP50": 0.41903791458389145,
+    "reg_cst_micro_AP50": 0.4291547481463295,
+    "mAP50": 0.21380476248799246,
+    "n_images": 180
+   },
+   "seconds": 6.4,
+   "timestamp": "2026-09-26T10:54:12+0530"
+  },
+  {
+   "run": "gen_temporal_fp_g4_f2_e3_smoke",
+   "set": "dev",
+   "config": "temporal_fp_g4",
+   "fold": "2",
+   "seed": 2,
+   "epochs": 3,
+   "gap": 4,
+   "checkpoint": "last",
+   "epoch": 2,
+   "weights_sha256": "8df2977b4150",
+   "set_identity": {
+    "split": "dev_fold2",
+    "cap": 60,
+    "n_images": 180,
+    "per_dataset": {
+     "anti_uav": 60,
+     "cst": 60,
+     "det_fly": 60
+    },
+    "n_sequences": 143,
+    "sha256": "69b8880b737243b4f692212a5296005e80aa2cf80fe7fcefd915571c632f0b9f"
+   },
+   "metrics": {
+    "drone_AP50": 0.3640169132503156,
+    "anti_uav_drone_AP50": 0.7492008718548447,
+    "cst_drone_AP50": 0.26621971557727525,
+    "det_fly_drone_AP50": 0.05534039437570788,
+    "cst_drone_micro_AP50": 0.14230481388865973,
+    "reg_micro_AP50": 0.08526939023953937,
+    "reg_cst_AP50": 0.26621971557727525,
+    "reg_cst_micro_AP50": 0.14230481388865973,
+    "mAP50": 0.18227727382945888,
+    "n_images": 180
+   },
+   "seconds": 6.5,
+   "timestamp": "2026-09-26T10:54:26+0530"
+  }
+ ],
+ "generated": "2026-09-26T10:54:26+0530"
+}

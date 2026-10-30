@@ -1,0 +1,4 @@
+{"t": "2026-10-06T02:09:35+0530", "job": "a2_zeroshot_globaltrack_rgb", "kind": "submitted", "pbs_job": "92836.amritahpc", "host": "node03", "ncpus": 6, "mem_gb": 32, "walltime": "02:00:00", "gpu": 1, "stage": 0, "depend": "92835.amritahpc", "commit": "4bfd24c30f8590b23284a6049acda82955ded32c"}
+{"t": "2026-10-06T03:11:46+0530", "job": "a2_zeroshot_globaltrack_rgb", "kind": "start", "pbs_job": "92836.amritahpc", "host": "node03"}
+{"t": "2026-10-06T03:11:55+0530", "job": "a2_zeroshot_globaltrack_rgb", "kind": "run", "cmd": "cd experiments/anti_uav/scripts && python zeroshot_globaltrack.py --converted /home/y_rajeshwar/aerotrack_server/checkpoints/globaltrack/globaltrack_qgrcnn_torchvision.pt --modality RGB --n 8 --out /home/y_rajeshwar/aerotrack_server/reports/hpc/a2_zeroshot_globaltrack_rgb.json"}
+{"t": "2026-10-06T03:37:30+0530", "job": "a2_zeroshot_globaltrack_rgb", "kind": "end", "rc": 0, "minutes": 25}

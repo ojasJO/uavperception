@@ -1,0 +1,4 @@
+{"t": "2026-10-06T01:08:36+05:30", "kind": "push", "file": "Anti-UAV-RGBT.zip", "from_byte": 0, "size": 6037566331, "attempt": 1}
+{"t": "2026-10-06T01:26:26+05:30", "kind": "pushed", "file": "Anti-UAV-RGBT.zip", "seconds": 1070}
+{"t": "2026-10-06T01:26:49+05:30", "kind": "verified", "file": "Anti-UAV-RGBT.zip", "sha256": "ed7d80bbd8ca8e01ea784c64eb0782eae8b3a1572177535c0fada9beb53fdca8"}
+{"t": "2026-10-06T01:26:49+05:30", "kind": "done"}

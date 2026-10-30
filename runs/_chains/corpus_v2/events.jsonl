@@ -1,0 +1,6 @@
+{"kind": "start", "job": "extract_and_verify", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/cst_completion/scripts/extract_and_verify.py", "t": "2026-10-05T08:18:37+0530"}
+{"kind": "end", "job": "extract_and_verify", "rc": 0, "minutes": 114.5, "t": "2026-10-05T10:13:06+0530"}
+{"kind": "start", "job": "build_corpus_v2", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/cst_completion/scripts/build_corpus_v2.py", "t": "2026-10-05T10:13:06+0530"}
+{"kind": "end", "job": "build_corpus_v2", "rc": 0, "minutes": 56.7, "t": "2026-10-05T11:09:49+0530"}
+{"kind": "start", "job": "dataset_card_v2", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u tools/dataset_card.py", "t": "2026-10-05T11:09:49+0530"}
+{"kind": "end", "job": "dataset_card_v2", "rc": 0, "minutes": 0.1, "t": "2026-10-05T11:09:54+0530"}

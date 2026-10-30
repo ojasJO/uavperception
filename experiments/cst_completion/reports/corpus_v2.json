@@ -1,0 +1,117 @@
+{
+  "generated": "2026-10-05T11:09:48+0530",
+  "corpus": "data_unified_v2",
+  "manifest_sha256": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347",
+  "splits_sha256": "30f0e35f35ca6dfd4ddcf89fa9c9acc907c37f9a846a976ff2300573d1bf8a6e",
+  "v1_manifest_sha256": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+  "rows": 847103,
+  "rows_copied_from_v1": {
+    "det_fly": 7830,
+    "anti_uav": 593802
+  },
+  "cst": {
+    "sequences_per_split": {
+      "test": 60,
+      "train": 120,
+      "val": 40
+    },
+    "categories_per_split": {
+      "train": {
+        "building": 51,
+        "cn_mountains": 20,
+        "cn_sky": 8,
+        "jungle": 5,
+        "urban-areas": 23,
+        "water": 13
+      },
+      "val": {
+        "building": 14,
+        "cn_mountains": 9,
+        "cn_sky": 2,
+        "jungle": 1,
+        "urban-areas": 8,
+        "water": 6
+      },
+      "test": {
+        "building": 9,
+        "cn_mountains": 9,
+        "cn_sky": 6,
+        "jungle": 13,
+        "urban-areas": 17,
+        "water": 6
+      }
+    },
+    "frames": {
+      "sequences": 220,
+      "frames": 245471,
+      "with_target": 208221,
+      "empty": 37250,
+      "junctions": 220,
+      "materialized": 245471
+    },
+    "attributes_rows": 245471
+  },
+  "checks": {
+    "cst_test_labels_identical_to_v1": true,
+    "cst_test_frames_v1": 72175,
+    "cst_test_frames_v2": 72175,
+    "v1_cst_train_labels_identical": true,
+    "v1_cst_train_frames": 90012,
+    "official_val_used": true
+  },
+  "splits_counts": {
+    "train": {
+      "anti_uav": {
+        "sequences": 320,
+        "frames": 299056,
+        "materialized": 299056
+      },
+      "cst": {
+        "sequences": 120,
+        "frames": 127991,
+        "materialized": 127991
+      },
+      "det_fly": {
+        "sequences": 4698,
+        "frames": 4698,
+        "materialized": 4698
+      }
+    },
+    "val": {
+      "anti_uav": {
+        "sequences": 134,
+        "frames": 123998,
+        "materialized": 123998
+      },
+      "cst": {
+        "sequences": 40,
+        "frames": 45305,
+        "materialized": 45305
+      },
+      "det_fly": {
+        "sequences": 1565,
+        "frames": 1565,
+        "materialized": 1565
+      }
+    },
+    "test": {
+      "anti_uav": {
+        "sequences": 182,
+        "frames": 170748,
+        "materialized": 170748
+      },
+      "cst": {
+        "sequences": 60,
+        "frames": 72175,
+        "materialized": 72175
+      },
+      "det_fly": {
+        "sequences": 1567,
+        "frames": 1567,
+        "materialized": 1567
+      }
+    }
+  },
+  "seconds": 3402.7,
+  "verdict": "OK"
+}

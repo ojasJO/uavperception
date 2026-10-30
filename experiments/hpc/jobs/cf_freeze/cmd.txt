@@ -1,0 +1,1 @@
+python -u experiments/aerotrack_temporal/scripts/tc_cf.py --stage freeze --workers 8

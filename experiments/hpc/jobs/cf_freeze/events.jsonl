@@ -1,0 +1,4 @@
+{"t": "2026-10-12T14:01:35+0530", "job": "cf_freeze", "kind": "submitted", "pbs_job": "93030.amritahpc", "host": "node04", "ncpus": 16, "mem_gb": 64, "walltime": "02:00:00", "gpu": 0, "stage": 0, "depend": "", "commit": "6b9415a9562e7a1a518769151abad74ecb430ce7"}
+{"t": "2026-10-12T14:01:37+0530", "job": "cf_freeze", "kind": "start", "pbs_job": "93030.amritahpc", "host": "node04"}
+{"t": "2026-10-12T14:01:42+0530", "job": "cf_freeze", "kind": "run", "cmd": "python -u experiments/aerotrack_temporal/scripts/tc_cf.py --stage freeze --workers 8"}
+{"t": "2026-10-12T14:26:40+0530", "job": "cf_freeze", "kind": "end", "rc": 0, "minutes": 24}

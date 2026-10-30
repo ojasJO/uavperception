@@ -1,0 +1,11 @@
+{
+ "name": "corpus_v2",
+ "purpose": "complete-CST corpus gate (user go-ahead 2026-10-05 08:1x): independent verification of the extracted archive, corpus v2 build (refuses unless the verification verdict is COMPLETE_AND_CONSISTENT), v2 dataset card",
+ "state_dir": "runs/_chains/corpus_v2",
+ "wait_for": null,
+ "jobs": [
+  {"name": "extract_and_verify", "required": true, "cmd": ["{python}", "-u", "experiments/cst_completion/scripts/extract_and_verify.py"]},
+  {"name": "build_corpus_v2", "required": true, "cmd": ["{python}", "-u", "experiments/cst_completion/scripts/build_corpus_v2.py"]},
+  {"name": "dataset_card_v2", "required": false, "cmd": ["{python}", "-u", "tools/dataset_card.py"], "env": {"AEROTRACK_CORPUS": "data_unified_v2"}}
+ ]
+}

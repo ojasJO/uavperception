@@ -1,0 +1,565 @@
+{
+ "generated": "2026-10-05T14:04:05+0530",
+ "run": "gen_temporal_fp_g4_full_e20",
+ "corpus": "data_unified",
+ "groups_kept": [
+  "anti_uav_IR",
+  "anti_uav_RGB"
+ ],
+ "cache_set_sha256": "3b15c413bed5bee560955df5755faf8af38305035e7145cf124c61e9a2fd6644",
+ "cross_fitted_source": "track_gen_temporal_fp_g4_full_e20_data_unified.json",
+ "protocol": "MOT (no init box); drone detections conf >= 0.05; one GT identity per sequence",
+ "results": {
+  "bytetrack": {
+   "anti_uav_IR": {
+    "hota": {
+     "HOTA": 0.5737021254342742,
+     "DetA": 0.7413145600190081,
+     "AssA": 0.4453225082101012,
+     "LocA": 0.8219744695912788,
+     "DetRe": 0.7864922120543852,
+     "DetPr": 0.7984652391475079,
+     "AssRe": 0.46360605019493223,
+     "AssPr": 0.8330267086066597,
+     "HOTA(0)": 0.7307069179685977
+    },
+    "clear": {
+     "MOTA": 0.9257,
+     "IDF1_mean_per_sequence": 0.60416,
+     "id_switches": 1391,
+     "id_switches_at_occlusion_reentry": 1,
+     "fragmentations": 908,
+     "false_positives": 1102,
+     "false_negatives": 2011,
+     "n_gt_boxes": 60620,
+     "n_gt_ids": 67,
+     "n_pred_ids": 1029,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 1.0,
+     "PT": 0.0,
+     "ML": 0.0,
+     "fragments": 908,
+     "fragments_per_target": 13.552238805970148,
+     "longest_run_frac_mean": 0.48356562509123374,
+     "coverage_mean": 0.9659128798643032,
+     "ids_per_target_mean": 14.522388059701493,
+     "recovery_reentry": {
+      "events": 12,
+      "recovered": 12,
+      "never": 0,
+      "median_frames": 2.5,
+      "p90_frames": 17.400000000000002,
+      "within_window": 0.9166666666666666
+     },
+     "recovery_loss": {
+      "events": 903,
+      "recovered": 901,
+      "never": 2,
+      "median_frames": 1.0,
+      "p90_frames": 4.0,
+      "within_window": 0.9922480620155039
+     },
+     "recover_window_frames": 25
+    }
+   },
+   "anti_uav_RGB": {
+    "hota": {
+     "HOTA": 0.5433684620705655,
+     "DetA": 0.7159822582573333,
+     "AssA": 0.41422128968101335,
+     "LocA": 0.8319494463941947,
+     "DetRe": 0.7945723627789243,
+     "DetPr": 0.7738529291003932,
+     "AssRe": 0.43226295243453255,
+     "AssPr": 0.8456348617929609,
+     "HOTA(0)": 0.6776963493715593
+    },
+    "clear": {
+     "MOTA": 0.85242,
+     "IDF1_mean_per_sequence": 0.5615,
+     "id_switches": 2011,
+     "id_switches_at_occlusion_reentry": 11,
+     "fragmentations": 1135,
+     "false_positives": 4077,
+     "false_negatives": 2516,
+     "n_gt_boxes": 58302,
+     "n_gt_ids": 67,
+     "n_pred_ids": 1232,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 0.9701492537313433,
+     "PT": 0.029850746268656716,
+     "ML": 0.0,
+     "fragments": 1135,
+     "fragments_per_target": 16.940298507462686,
+     "longest_run_frac_mean": 0.49785953174760395,
+     "coverage_mean": 0.9589643379644158,
+     "ids_per_target_mean": 17.149253731343283,
+     "recovery_reentry": {
+      "events": 26,
+      "recovered": 26,
+      "never": 0,
+      "median_frames": 0.0,
+      "p90_frames": 6.0,
+      "within_window": 0.9615384615384616
+     },
+     "recovery_loss": {
+      "events": 1131,
+      "recovered": 1128,
+      "never": 3,
+      "median_frames": 1.0,
+      "p90_frames": 4.0,
+      "within_window": 0.9902740937223696
+     },
+     "recover_window_frames": 25
+    }
+   }
+  },
+  "sort": {
+   "anti_uav_IR": {
+    "hota": {
+     "HOTA": 0.5751035579910375,
+     "DetA": 0.7453466548431236,
+     "AssA": 0.4450784829550097,
+     "LocA": 0.8224521341250347,
+     "DetRe": 0.7842270225216621,
+     "DetPr": 0.8057736928636614,
+     "AssRe": 0.4632159556535878,
+     "AssPr": 0.8352740207027933,
+     "HOTA(0)": 0.7315380615513695
+    },
+    "clear": {
+     "MOTA": 0.9325,
+     "IDF1_mean_per_sequence": 0.60543,
+     "id_switches": 1339,
+     "id_switches_at_occlusion_reentry": 2,
+     "fragmentations": 908,
+     "false_positives": 566,
+     "false_negatives": 2187,
+     "n_gt_boxes": 60620,
+     "n_gt_ids": 67,
+     "n_pred_ids": 980,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 0.9850746268656716,
+     "PT": 0.014925373134328358,
+     "ML": 0.0,
+     "fragments": 908,
+     "fragments_per_target": 13.552238805970148,
+     "longest_run_frac_mean": 0.48362914577812316,
+     "coverage_mean": 0.9629334749038627,
+     "ids_per_target_mean": 14.328358208955224,
+     "recovery_reentry": {
+      "events": 12,
+      "recovered": 12,
+      "never": 0,
+      "median_frames": 5.0,
+      "p90_frames": 17.400000000000002,
+      "within_window": 0.9166666666666666
+     },
+     "recovery_loss": {
+      "events": 905,
+      "recovered": 903,
+      "never": 2,
+      "median_frames": 1.0,
+      "p90_frames": 4.0,
+      "within_window": 0.988950276243094
+     },
+     "recover_window_frames": 25
+    }
+   },
+   "anti_uav_RGB": {
+    "hota": {
+     "HOTA": 0.5438116439224601,
+     "DetA": 0.7367430072717488,
+     "AssA": 0.4034147889222453,
+     "LocA": 0.8338299736478192,
+     "DetRe": 0.7881854734603309,
+     "DetPr": 0.8055392047415108,
+     "AssRe": 0.41988258901609943,
+     "AssPr": 0.8526948688071588,
+     "HOTA(0)": 0.6722537246332315
+    },
+    "clear": {
+     "MOTA": 0.88208,
+     "IDF1_mean_per_sequence": 0.54997,
+     "id_switches": 1965,
+     "id_switches_at_occlusion_reentry": 10,
+     "fragmentations": 1232,
+     "false_positives": 1827,
+     "false_negatives": 3083,
+     "n_gt_boxes": 58302,
+     "n_gt_ids": 67,
+     "n_pred_ids": 1267,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 0.9701492537313433,
+     "PT": 0.029850746268656716,
+     "ML": 0.0,
+     "fragments": 1232,
+     "fragments_per_target": 18.388059701492537,
+     "longest_run_frac_mean": 0.4811825509400407,
+     "coverage_mean": 0.9492381350751299,
+     "ids_per_target_mean": 17.71641791044776,
+     "recovery_reentry": {
+      "events": 26,
+      "recovered": 26,
+      "never": 0,
+      "median_frames": 0.5,
+      "p90_frames": 9.0,
+      "within_window": 0.9615384615384616
+     },
+     "recovery_loss": {
+      "events": 1230,
+      "recovered": 1226,
+      "never": 4,
+      "median_frames": 1.0,
+      "p90_frames": 4.0,
+      "within_window": 0.983739837398374
+     },
+     "recover_window_frames": 25
+    }
+   }
+  },
+  "argmax@cf": {
+   "anti_uav_IR": {
+    "hota": {
+     "HOTA": 0.7887225932539729,
+     "DetA": 0.7785796874505464,
+     "AssA": 0.8001223516982624,
+     "LocA": 0.8343890821860225,
+     "DetRe": 0.8175597770407542,
+     "DetPr": 0.821884772793329,
+     "AssRe": 0.8342247946158592,
+     "AssPr": 0.8393759498393459,
+     "HOTA(0)": 0.9896097254703684
+    },
+    "clear": {
+     "MOTA": 0.97699,
+     "IDF1_mean_per_sequence": 0.98159,
+     "id_switches": 0,
+     "id_switches_at_occlusion_reentry": 0,
+     "fragmentations": 289,
+     "false_positives": 538,
+     "false_negatives": 857,
+     "n_gt_boxes": 60620,
+     "n_gt_ids": 67,
+     "n_pred_ids": 67,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 0.9850746268656716,
+     "PT": 0.014925373134328358,
+     "ML": 0.0,
+     "fragments": 289,
+     "fragments_per_target": 4.313432835820896,
+     "longest_run_frac_mean": 0.6834507830481993,
+     "coverage_mean": 0.9834828350703083,
+     "ids_per_target_mean": 1.0,
+     "recovery_reentry": {
+      "events": 12,
+      "recovered": 12,
+      "never": 0,
+      "median_frames": 1.0,
+      "p90_frames": 14.600000000000001,
+      "within_window": 0.9166666666666666
+     },
+     "recovery_loss": {
+      "events": 286,
+      "recovered": 286,
+      "never": 0,
+      "median_frames": 1.0,
+      "p90_frames": 5.0,
+      "within_window": 0.9790209790209791
+     },
+     "recover_window_frames": 25
+    }
+   },
+   "anti_uav_RGB": {
+    "hota": {
+     "HOTA": 0.7979475014203599,
+     "DetA": 0.781486969439995,
+     "AssA": 0.8164188796149333,
+     "LocA": 0.8467920726109943,
+     "DetRe": 0.8318564498103341,
+     "DetPr": 0.8259911222978764,
+     "AssRe": 0.8544566613866739,
+     "AssPr": 0.8529337718207113,
+     "HOTA(0)": 0.9793899484697568
+    },
+    "clear": {
+     "MOTA": 0.95064,
+     "IDF1_mean_per_sequence": 0.96925,
+     "id_switches": 0,
+     "id_switches_at_occlusion_reentry": 0,
+     "fragmentations": 454,
+     "false_positives": 1646,
+     "false_negatives": 1232,
+     "n_gt_boxes": 58302,
+     "n_gt_ids": 67,
+     "n_pred_ids": 67,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 0.9850746268656716,
+     "PT": 0.014925373134328358,
+     "ML": 0.0,
+     "fragments": 454,
+     "fragments_per_target": 6.776119402985074,
+     "longest_run_frac_mean": 0.7484160996677651,
+     "coverage_mean": 0.9791724279659622,
+     "ids_per_target_mean": 1.0,
+     "recovery_reentry": {
+      "events": 26,
+      "recovered": 26,
+      "never": 0,
+      "median_frames": 0.0,
+      "p90_frames": 6.5,
+      "within_window": 1.0
+     },
+     "recovery_loss": {
+      "events": 450,
+      "recovered": 448,
+      "never": 2,
+      "median_frames": 1.0,
+      "p90_frames": 6.0,
+      "within_window": 0.9711111111111111
+     },
+     "recover_window_frames": 25
+    }
+   }
+  },
+  "ste@cf": {
+   "anti_uav_IR": {
+    "hota": {
+     "HOTA": 0.7888809731025068,
+     "DetA": 0.7789158764261574,
+     "AssA": 0.8000994931847352,
+     "LocA": 0.8341783988207098,
+     "DetRe": 0.8180850509645939,
+     "DetPr": 0.8216225548712484,
+     "AssRe": 0.8345628993812678,
+     "AssPr": 0.8388240262785265,
+     "HOTA(0)": 0.9907340342426568
+    },
+    "clear": {
+     "MOTA": 0.97709,
+     "IDF1_mean_per_sequence": 0.98218,
+     "id_switches": 0,
+     "id_switches_at_occlusion_reentry": 0,
+     "fragmentations": 286,
+     "false_positives": 564,
+     "false_negatives": 825,
+     "n_gt_boxes": 60620,
+     "n_gt_ids": 67,
+     "n_pred_ids": 67,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 1.0,
+     "PT": 0.0,
+     "ML": 0.0,
+     "fragments": 286,
+     "fragments_per_target": 4.268656716417911,
+     "longest_run_frac_mean": 0.6822350683777023,
+     "coverage_mean": 0.9841370385690299,
+     "ids_per_target_mean": 1.0,
+     "recovery_reentry": {
+      "events": 12,
+      "recovered": 12,
+      "never": 0,
+      "median_frames": 1.0,
+      "p90_frames": 16.400000000000002,
+      "within_window": 0.9166666666666666
+     },
+     "recovery_loss": {
+      "events": 282,
+      "recovered": 282,
+      "never": 0,
+      "median_frames": 1.0,
+      "p90_frames": 4.0,
+      "within_window": 0.9787234042553191
+     },
+     "recover_window_frames": 25
+    }
+   },
+   "anti_uav_RGB": {
+    "hota": {
+     "HOTA": 0.795188773546467,
+     "DetA": 0.7773034315687828,
+     "AssA": 0.8151320069643901,
+     "LocA": 0.8467388480576188,
+     "DetRe": 0.8293829407314725,
+     "DetPr": 0.8239700811199849,
+     "AssRe": 0.8540102334354467,
+     "AssPr": 0.8517628365741402,
+     "HOTA(0)": 0.9766904499072269
+    },
+    "clear": {
+     "MOTA": 0.9404,
+     "IDF1_mean_per_sequence": 0.96435,
+     "id_switches": 0,
+     "id_switches_at_occlusion_reentry": 0,
+     "fragmentations": 438,
+     "false_positives": 1929,
+     "false_negatives": 1546,
+     "n_gt_boxes": 58302,
+     "n_gt_ids": 67,
+     "n_pred_ids": 67,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 0.9701492537313433,
+     "PT": 0.029850746268656716,
+     "ML": 0.0,
+     "fragments": 438,
+     "fragments_per_target": 6.537313432835821,
+     "longest_run_frac_mean": 0.75037432563444,
+     "coverage_mean": 0.9746729966202067,
+     "ids_per_target_mean": 1.0,
+     "recovery_reentry": {
+      "events": 26,
+      "recovered": 26,
+      "never": 0,
+      "median_frames": 0.0,
+      "p90_frames": 8.0,
+      "within_window": 0.9615384615384616
+     },
+     "recovery_loss": {
+      "events": 432,
+      "recovered": 431,
+      "never": 1,
+      "median_frames": 1.0,
+      "p90_frames": 8.0,
+      "within_window": 0.9768518518518519
+     },
+     "recover_window_frames": 25
+    }
+   }
+  },
+  "ste@cf/segments": {
+   "anti_uav_IR": {
+    "hota": {
+     "HOTA": 0.773928145368615,
+     "DetA": 0.7789158764261574,
+     "AssA": 0.7701336218607947,
+     "LocA": 0.8341783988207098,
+     "DetRe": 0.8180850509645939,
+     "DetPr": 0.8216225548712484,
+     "AssRe": 0.802501661700379,
+     "AssPr": 0.839207931222012,
+     "HOTA(0)": 0.9713265922110195
+    },
+    "clear": {
+     "MOTA": 0.97695,
+     "IDF1_mean_per_sequence": 0.95079,
+     "id_switches": 8,
+     "id_switches_at_occlusion_reentry": 1,
+     "fragmentations": 286,
+     "false_positives": 564,
+     "false_negatives": 825,
+     "n_gt_boxes": 60620,
+     "n_gt_ids": 67,
+     "n_pred_ids": 76,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 1.0,
+     "PT": 0.0,
+     "ML": 0.0,
+     "fragments": 286,
+     "fragments_per_target": 4.268656716417911,
+     "longest_run_frac_mean": 0.6822350683777023,
+     "coverage_mean": 0.9841370385690299,
+     "ids_per_target_mean": 1.1194029850746268,
+     "recovery_reentry": {
+      "events": 12,
+      "recovered": 12,
+      "never": 0,
+      "median_frames": 1.0,
+      "p90_frames": 16.400000000000002,
+      "within_window": 0.9166666666666666
+     },
+     "recovery_loss": {
+      "events": 282,
+      "recovered": 282,
+      "never": 0,
+      "median_frames": 1.0,
+      "p90_frames": 4.0,
+      "within_window": 0.9787234042553191
+     },
+     "recover_window_frames": 25
+    }
+   },
+   "anti_uav_RGB": {
+    "hota": {
+     "HOTA": 0.7665355210132044,
+     "DetA": 0.7773034315687828,
+     "AssA": 0.7577776106477441,
+     "LocA": 0.8467388480576188,
+     "DetRe": 0.8293829407314725,
+     "DetPr": 0.8239700811199849,
+     "AssRe": 0.7896407865858809,
+     "AssPr": 0.8539244136480424,
+     "HOTA(0)": 0.9364572933902666
+    },
+    "clear": {
+     "MOTA": 0.93992,
+     "IDF1_mean_per_sequence": 0.90193,
+     "id_switches": 28,
+     "id_switches_at_occlusion_reentry": 7,
+     "fragmentations": 438,
+     "false_positives": 1929,
+     "false_negatives": 1546,
+     "n_gt_boxes": 58302,
+     "n_gt_ids": 67,
+     "n_pred_ids": 107,
+     "n_sequences": 67
+    },
+    "continuity": {
+     "targets": 67,
+     "MT": 0.9701492537313433,
+     "PT": 0.029850746268656716,
+     "ML": 0.0,
+     "fragments": 438,
+     "fragments_per_target": 6.537313432835821,
+     "longest_run_frac_mean": 0.75037432563444,
+     "coverage_mean": 0.9746729966202067,
+     "ids_per_target_mean": 1.4179104477611941,
+     "recovery_reentry": {
+      "events": 26,
+      "recovered": 26,
+      "never": 0,
+      "median_frames": 0.0,
+      "p90_frames": 8.0,
+      "within_window": 0.9615384615384616
+     },
+     "recovery_loss": {
+      "events": 432,
+      "recovered": 431,
+      "never": 1,
+      "median_frames": 1.0,
+      "p90_frames": 8.0,
+      "within_window": 0.9768518518518519
+     },
+     "recover_window_frames": 25
+    }
+   }
+  }
+ },
+ "seconds": 475.2
+}

@@ -1,0 +1,53 @@
+{
+  "id": "aerotrack_v2",
+  "registered": "see the git commit that added this file (2026-10-04/05), made before corpus v2 existed and before any v2 training run",
+  "track": "aerotrack",
+  "class": "controlled experiment; development on corpus-v2 VAL only; TEST untouched until one pre-selected candidate is scored once",
+  "motivation": [
+    "the generalization series supported a motion-matched temporal window (t-4, t, t+4: +0.045 CST drone AP50 on held-out folds) that needs 4 future frames (+160 ms at 25 fps), a real-time liability",
+    "the corpus used so far lacks 36 of 120 CST training sequences (every urban-areas and water sequence) and the official 40-sequence CST val split (truncated archive, docs/AGENT_CONTEXT.md); the dominant test failure was exactly those scene types"
+  ],
+  "corpus": "b_pipeline/data_unified_v2 (complete CST release; experiments/cst_completion); identity recorded by the runner at campaign start",
+  "configurations": {
+    "stock": "YOLO11n stride layout, input [t, t, t]",
+    "sym_g4": "same network, input [t-4, t, t+4] (the generalization series' supported window)",
+    "causal_g4": "same network, input [t-4, t, t-8]: past frames only, zero look-ahead"
+  },
+  "held_fixed": "c_model/train.py STAGES['baseline'] recipe (20 epochs x 25,000 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine), letterbox 640, augmentation, sampler, function-preserving initialisation (every configuration starts as COCO YOLO11n on frame t), checkpoint = last.pt",
+  "seeds": [0, 1],
+  "evaluation": "corpus-v2 VAL, every dataset capped at 5,000 images evenly over its sequences (same frames for every configuration), conf 0.001 / NMS IoU 0.7 / max_det 30 / bf16",
+  "primary_metric": "cst (CST drone AP50 on the official CST val split)",
+  "secondary": ["anti_uav (Anti-UAV drone AP50; non-inferiority)", "CST drone AP50 per scene category", "CST drone-micro AP50", "pooled drone AP50"],
+  "rules": {
+    "margin": 0.02,
+    "non_inferiority_anti_uav": 0.02,
+    "superiority": "(1) seed-mean delta > margin; (2) delta > 0 for every seed; (3) paired, dataset-stratified, sequence-level bootstrap 95 % CI of the seed-mean delta excludes 0 (B = 1000); (4) seed-mean Anti-UAV delta > -0.02",
+    "non_inferiority": "seed-mean delta >= -margin; called conclusive only if the CI lower bound >= -margin"
+  },
+  "comparisons": [
+    {"id": "C1", "question": "causal window vs single frame", "metric": "cst", "rule": "superiority",
+     "pairs": [["v2_causal_g4_s0_e20", "v2_stock_s0_e20"], ["v2_causal_g4_s1_e20", "v2_stock_s1_e20"]]},
+    {"id": "C2", "question": "symmetric window vs single frame (replication on complete data)", "metric": "cst", "rule": "superiority",
+     "pairs": [["v2_sym_g4_s0_e20", "v2_stock_s0_e20"], ["v2_sym_g4_s1_e20", "v2_stock_s1_e20"]]},
+    {"id": "C3", "question": "causal vs symmetric window (cost of removing the look-ahead)", "metric": "cst", "rule": "non_inferiority",
+     "pairs": [["v2_causal_g4_s0_e20", "v2_sym_g4_s0_e20"], ["v2_causal_g4_s1_e20", "v2_sym_g4_s1_e20"]]},
+    {"id": "C4", "question": "data effect: complete vs truncated CST training data (same window, seed 0; n = 1 seed, CI = sampling noise only)",
+     "metric": "cst", "rule": "superiority", "pairs": [["v2_sym_g4_s0_e20", "gen_temporal_fp_g4_full_e20"]]}
+  ],
+  "run_order": [
+    "evaluate gen_temporal_fp_g4_full_e20 (v1-trained, seed 0) on v2 VAL (no training)",
+    "stage 1: v2_stock_s0, v2_sym_g4_s0, v2_causal_g4_s0 (train, then evaluate each)",
+    "futility after stage 1: a candidate whose seed-0 CST delta vs stock is <= 0 cannot satisfy superiority rule (2) and is not run at seed 1; stock_s1 runs if any candidate survives; if none survives stage 2 is skipped",
+    "stage 2: seed 1 of stock and of the surviving candidates",
+    "analysis: scripts/analyze_v2.py"
+  ],
+  "selection_rule": {
+    "if_C1_and_C3": "causal_g4",
+    "elif_C2": "sym_g4",
+    "else": "stock",
+    "note": "the selected configuration's seed-0 run is the final candidate; it is scored on corpus-v2 TEST once, after the tracker/state estimator has been designed on VAL"
+  },
+  "test_usage": "none in this series until the final candidate's single pre-registered pass (reports/v2_test_ledger.jsonl refuses a second one)",
+  "estimated_gpu_hours": 15.5,
+  "hardware": "local OMEN RTX 5050 Laptop (remote HPC access unavailable as of 2026-10-04)"
+}

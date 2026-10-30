@@ -1,0 +1,39 @@
+{
+  "commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+  "branch": "aerotrack-repair",
+  "status_porcelain": [
+    " M c_model/aerotrack_trainer.py",
+    " M c_model/preflight.py",
+    " M c_model/train.py",
+    " M experiments/aerotrack_repair/README.template.md",
+    " M experiments/aerotrack_repair/scripts/evaluate_detector.py",
+    " M experiments/aerotrack_repair/scripts/render_report.py",
+    " M experiments/aerotrack_repair/scripts/train_ablation.py",
+    "?? experiments/aerotrack_repair/scripts/grid_report.py",
+    "?? experiments/aerotrack_repair/scripts/run_grid.py",
+    "?? runs/repair_grid_e20/"
+  ],
+  "untracked": [
+    "experiments/aerotrack_repair/scripts/grid_report.py",
+    "experiments/aerotrack_repair/scripts/run_grid.py",
+    "runs/repair_grid_e20/"
+  ],
+  "source_sha256": {
+    "c_model/train.py": "4c82270f5ca1c1632edc5bb24dc1724dbc67577fb8ab635010ef65aaf022bf85",
+    "c_model/aerotrack_trainer.py": "1f3bba0b8f65f1118c04a3b549ff7462d7d000a7c5298857a203ac4e2dbf0616",
+    "c_model/preflight.py": "85347b35d818a249a1d82fddb37553e5a5dd57d22d24690c3965b6175867041e",
+    "c_model/evaluation.py": "09f833eb9a764e8e7a906fc9490befb48f2b03709452e94da3468f9d5ae6c84e",
+    "c_model/custom_modules.py": "5c1b6f4aab50ca013c71e82ec22690b9853294a66a6c301154b8f98cac5cb9d3",
+    "c_model/yolo11-spd.yaml": "f36973aeb5180af850fccc02c4ea5db4809b3ca893769261d969bf60a04c4690",
+    "c_model/yolo11-stride.yaml": "8a1ea23922bd56d35ffbc85dab877c08908c99bc5adefe9a46dab26c01c10371",
+    "b_pipeline/stacked_dataset.py": "4de6583061b2a213a5e863f05457df6a8c13a01c92be1fabf0bc9b2680ee8c5b",
+    "b_pipeline/imbalance_sampler.py": "29932ff82ea648346448629cf2bf749713dd11decbae958e85b66088bfa4e2b3",
+    "experiments/aerotrack_repair/scripts/train_ablation.py": "33f796bf98c3cec32445867e09961b19cf716b3ca459206bd66760ff77dc363b",
+    "experiments/aerotrack_repair/scripts/evaluate_detector.py": "a080750274cee2065770172423ac0d22e686dd92d027c0b96cb100aa2677ecf3",
+    "experiments/aerotrack_repair/scripts/render_report.py": "a860c49bd96a5ca7c7d96a627669a699d1b93c7d10d561771d668db9bccdb666",
+    "experiments/aerotrack_repair/scripts/grid_report.py": "81f6bb2f3a9540237837b136998fc81138f9fef1d10bf4f7fd3388458709fe4e",
+    "experiments/aerotrack_repair/scripts/run_grid.py": "2524454654c0c33e52f0a4d3d125626dfe845cdfb2e4cff465b19cac8d2d2a2f",
+    "experiments/aerotrack_repair/scripts/_bootstrap.py": "182df33f7a0904cb62e19169e91fec2919aec9ffea8ad2262a042410677ce4a5",
+    "experiments/aerotrack_repair/README.template.md": "e44f8c89829df4f28578e091f4f72bb6d979d6ea1c297495d84bde39c6534bd3"
+  }
+}

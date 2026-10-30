@@ -1,0 +1,9 @@
+{
+ "name": "gpu_handoff",
+ "purpose": "after the corpus-v2 gate: if verdict OK, H3 yields the GPU at its arm boundary and the v2 campaign, post-v2 causal caches, H3 resume and Track C C2 are queued in that order (tools/gpu_handoff.py); if not OK nothing is launched",
+ "state_dir": "runs/_chains/gpu_handoff",
+ "wait_for": "runs/_chains/corpus_v2",
+ "jobs": [
+  {"name": "gpu_handoff", "required": true, "cmd": ["{python}", "-u", "tools/gpu_handoff.py"]}
+ ]
+}

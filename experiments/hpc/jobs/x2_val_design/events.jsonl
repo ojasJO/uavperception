@@ -1,0 +1,4 @@
+{"t": "2026-10-12T05:23:40+0530", "job": "x2_val_design", "kind": "submitted", "pbs_job": "93020.amritahpc", "host": "node02", "ncpus": 16, "mem_gb": 96, "walltime": "05:00:00", "gpu": 1, "stage": 1, "depend": "afterok:93018,afterany:93019", "commit": "f9bbd3afe9fada2f7b4bd6e4a14910aad549e651"}
+{"t": "2026-10-12T09:10:09+0530", "job": "x2_val_design", "kind": "start", "pbs_job": "93020.amritahpc", "host": "node02"}
+{"t": "2026-10-12T09:10:18+0530", "job": "x2_val_design", "kind": "run", "cmd": "export AEROTRACK_WORKERS=12; python -u experiments/cst_anti_uav/scripts/run_x2.py --val-design"}
+{"t": "2026-10-12T11:53:33+0530", "job": "x2_val_design", "kind": "end", "rc": 0, "minutes": 163}

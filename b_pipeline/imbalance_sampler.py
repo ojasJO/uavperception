@@ -44,7 +44,9 @@ DEFAULT_WEIGHTS = {
 }
 CATEGORIES = ["bird", "micro", "small", "standard", "empty"]
 
-_CACHE = Path(__file__).resolve().parent / "data_unified" / "sample_hardness.csv"
+import corpus as _corpus  # noqa: E402  (AEROTRACK_CORPUS selects the corpus; default b_pipeline/data_unified)
+
+_CACHE = _corpus.HARDNESS_CSV
 
 
 # --------------------------------------------------------------------------- #
@@ -289,7 +291,7 @@ if __name__ == "__main__":
     ap.add_argument("--draws", type=int, default=40000)
     args = ap.parse_args()
 
-    MANIFEST = HERE / "data_unified" / "manifest.csv"
+    MANIFEST = _corpus.MANIFEST
     print("building sample list (anti_uav + cst + det_fly)...")
     all_samples = build_samples_from_manifest(
         MANIFEST, datasets=["anti_uav", "cst", "det_fly"], require_image=True)

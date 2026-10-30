@@ -1,0 +1,81 @@
+{
+  "id": "X1_cst_protocol_matched",
+  "track": "B (detector) -> the AeroTrack single-target stack under an external benchmark's own protocol",
+  "registered": "see the git commit that added this file (2026-10-05): before the v2 campaign has selected its window, before any CST-only training and before any X1 TEST access",
+  "class": "controlled benchmark arm; design on corpus-v2 VAL; ONE registered TEST pass",
+  "why": "the CST Anti-UAV benchmark (Xie et al., ICCVW 2025, arXiv:2507.23473) retrains its 20 SOT trackers on the 120 CST training sequences only and reports SA (the Anti-UAV Eq. 1 state accuracy, one-pass evaluation from the first-frame ground truth) on the 60 test sequences: GlobalTrack 35.92, SiamDT 35.84, MixFormer-V2 29.39; tiny-target SA GlobalTrack 15.83, best PrDiMP 28.20. Our v2 candidate also trains on Anti-UAV and Det-Fly, so the registered v2 comparison F2 is descriptive only. X1 removes the training-data difference.",
+  "protocol_audit_2026_10_05": {
+    "metric": "matches: SA = sum_t [IoU_t d(v_t>0) + p_t (1 - d(v_t>0))] / T per sequence, mSA = mean over sequences (Track A's implementation of the same equation)",
+    "initialisation": "matches: one-pass evaluation from the first-frame ground-truth box (our SOT protocol uses the official start frame = first visible frame)",
+    "split": "matches: the official 60-sequence CST test split (corpus-v2 CST TEST labels byte-identical to the release)",
+    "training_data": "matched by X1: CST train (120 sequences) only; the official 40-sequence val split is used to design the tracker (the benchmark used default configurations, no val tuning)",
+    "remaining_differences": "paradigm (class-specific detector + single-target state estimator vs class-agnostic template trackers), pretraining (COCO YOLO11n vs each tracker's own), compute; stated with every number"
+  },
+  "configuration": {
+    "model": "the network adopted by F1 (experiments/aerotrack_v3/reports/F1_standard_yolo11n.json): v3 'n_std' (standard YOLO11n, c_model/yolo11-stride-std.yaml) if F1 is SUPPORTED, else v3 'n' (the as-built v2 network); function-preserving init either way",
+    "window": "the window of the configuration selected by experiments/aerotrack_v2/reports/v2_decisions.json (causal_g4 -> causal_g4, sym_g4 -> sym_g4, stock -> ttt); decided by v2's registered rule, not by X1",
+    "training_domains": "cst only (experiments/aerotrack_v3/scripts/train_v3.py --train-domains cst)",
+    "recipe": "the v2 recipe unchanged (20 epochs x 25,000 weighted samples, batch 32 x accumulate 2, AdamW 1e-3 cosine), last.pt",
+    "seed": 0,
+    "run_name": "v3_<n | n_std>__<window>_cst_s0_e20"
+  },
+  "val_design": [
+    "eval_v3.py on corpus-v2 VAL (CST drone AP50, per category, micro; Anti-UAV AP50 reported as out-of-domain transfer)",
+    "full CST VAL detection cache (systems/scripts/cache_detections.py --datasets cst)",
+    "systems/scripts/track_eval.py on that cache: STE and argmax cross-fitted (reported) and tuned on ALL CST VAL (the frozen TEST settings, as in the v2 final protocol)",
+    "experiments/aerotrack_v3/frozen_x1_params.json written by the runner and committed before the TEST pass"
+  ],
+  "final_test": {
+    "single_pass": "one pass over the 60 CST test sequences, recorded in experiments/aerotrack_v3/reports/x1_test_ledger.jsonl; a second pass is refused",
+    "metrics": "SOT mSA (Eq. 1, Track A's code, official annotations) for STE and argmax at the frozen settings; frame-level SA per CST size bin (tiny <= 10 px diagonal, small, normal, large) and per CST frame attribute (OC, OV, SV, TC, DBC, CDB, FM); located rate, false alarms on invisible frames, recovery after reappearance; CST detection AP50",
+    "comparisons": [
+      {
+        "id": "X1-a",
+        "what": "STE mSA vs the best published CST tracker (GlobalTrack 35.92)",
+        "analysis": "sequence bootstrap 95 % CI of our mSA (B = 2000; per-sequence published results are not available, so the published value is a fixed reference)",
+        "claim_rule": "'exceeds the best published CST tracker' only if the CI lower bound > 35.92; 'below' only if the CI upper bound < 35.92; else 'not distinguishable'"
+      },
+      {
+        "id": "X1-b",
+        "what": "tiny-target frame-level SA vs Table 5 (GlobalTrack 15.83, best PrDiMP 28.20)",
+        "analysis": "descriptive with a frame bootstrap over sequences"
+      },
+      {
+        "id": "X1-c",
+        "what": "CST-only vs all-domain training of the SAME network and window: on VAL paired (v2_<cfg>_s0_e20 for 'n', v3_n_std__<window>_s0_e20 for 'n_std'), and on TEST descriptively against the v2 candidate's own pass",
+        "analysis": "descriptive, unpaired across passes: the effect of the extra training domains"
+      }
+    ]
+  },
+  "component_gate": {
+    "measured_failure": "the program's CST comparison was not protocol-matched (training data), so no benchmark claim was defensible",
+    "baseline": "the CST benchmark's 20 retrained trackers (published numbers)",
+    "isolating_ablation": "same network, recipe and window as the v2 candidate; only the training domains change (X1-c)",
+    "rtx5050": "same network as the deployed detector",
+    "falsifier": "X1-a 'below' or 'not distinguishable'"
+  },
+  "estimated_gpu_hours": "2.2-4.5 (training) + ~1.2 (VAL evaluation and cache) + ~0.5 (TEST pass)",
+  "queue": "after tools/chains/post_v2_causal_caches.json, before the Anti-UAV H3 evaluations (h3_resume_after_v2) and Track C C2",
+  "outputs": "runs/v3_n__<window>_cst_s0_e20/ ; experiments/aerotrack_v3/reports/{v3_results.json, x1_*} ; experiments/systems/reports/track_v3_n__<window>_cst_s0_e20_data_unified_v2.*",
+  "amendments": [
+    {
+      "when": "2026-10-05, before any X1 run",
+      "what": "network = the one F1 adopts (standard YOLO11n if F1 is SUPPORTED, else the as-built network); X1-c reference = the all-domain run of the same network and window",
+      "why": "the knowledge audit found that the as-built 'YOLO11n' resolves to C3k2(c3k=True) with only 64.3 % of the COCO tensors loaded (experiments/aerotrack_v2/ERRATUM_architecture.md); a benchmark arm should use the best-established network, chosen by a registered rule"
+    },
+    {
+      "id": "X1-A1",
+      "when": "2026-10-12, before any X1 TEST access (x1_test_ledger.jsonl absent; no CST test cache of the X1 candidate exists)",
+      "what": [
+        "the single pass additionally writes the per-frame STE and argmax outputs in the official CST result format (JSON {'res': [box or []]}, one file per official sequence name) to runs/aerotrack_v3/x1_test_predictions/<tracker>/, the per-sequence SA (official sequence names) and the STE per-frame wall time into x1_final_test.json; nothing about the candidate, the frozen settings or the primary claim rule changes",
+        "official scoring: the exported STE / argmax predictions are scored by the unmodified official toolkit (github.com/PCwenyue/CST-Anti-UAV @ bd92b984, experiments/cst_anti_uav/scripts/official_eval.py). The reported X1 mSA is the toolkit's value; it must equal Track A's value to 1e-9 (shown identical on all 21 released trackers, experiments/cst_anti_uav/reports/PAPER_PROTOCOL.md) or the discrepancy is reported and the toolkit's value stands",
+        "X1-a2 (secondary, paired): per-sequence SA of the X1 STE minus that of the released CST-trained GlobalTrack predictions (TrainedCST.zip, sha256 1c886465697b...; their official mSA = the published 35.92 exactly) on the same 60 sequences: mean difference, sequence-bootstrap 95 % CI (B = 10000, numpy default_rng(0)), wins / losses, two-sided Wilcoxon signed-rank p. Claim 'exceeds GlobalTrack, paired' only if the CI lower bound > 0. Same analysis, descriptive, vs SiamDT (35.84)",
+        "X1-b uses the size bin of the paper (GT diagonal <= 10 px, = the release's SIZE code 1) and is additionally compared with the released trackers' tiny-target SA computed the same way (GlobalTrack 15.83, PrDiMP 28.21)",
+        "official success AUC and precision@20px of the X1 STE are reported next to Table 3's P / S columns (descriptive)",
+        "defect fix found before the pass: x1_final.py imported track_eval by name after cache_detections had put c_model/ first on sys.path, which loads c_model/track_eval.py (the F-05 defect of the v2 pass; reproduced on the OMEN 2026-10-12) and would have crashed the pass after its detection step; both systems modules are now imported by explicit path"
+      ],
+      "why": "the authors' released per-frame predictions were obtained and verified on 2026-10-12 (all 21 released trackers reproduce Table 3 exactly with the official toolkit), which makes a paired, sequence-level comparison possible; scoring by the official code removes any doubt about our metric implementation",
+      "unchanged": "candidate v3_n__causal_g4_cst_s0_e20, frozen_x1_params.json (tuned on CST VAL 2026-10-10), primary rule X1-a (sequence-bootstrap CI of our mSA vs the fixed 35.92), single pass"
+    }
+  ]
+}

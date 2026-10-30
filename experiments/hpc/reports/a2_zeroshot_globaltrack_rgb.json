@@ -1,0 +1,130 @@
+{
+ "split": "train",
+ "modality": "RGB",
+ "sequences": [
+  "20190925_101846_1_1",
+  "20190925_133630_1_4",
+  "20190925_143900_1_8",
+  "20190925_200320_1_3",
+  "20190925_213001_1_8",
+  "20190926_133516_1_4",
+  "20190926_143632_1_5",
+  "20190926_183941_1_8"
+ ],
+ "class": "EXPLORATORY",
+ "converted": {
+  "sha256": null,
+  "n_sequences": 8,
+  "mSA": 0.744116065342689,
+  "mSA_percent": 74.4116065342689,
+  "precision_20px": 0.9336470600646591,
+  "success_auc": 0.759102460430807,
+  "frames_total": 7079,
+  "frames_exist": 6809,
+  "by_attribute": {
+   "OV": {
+    "n_sequences": 1,
+    "mSA_percent": 64.21655848445741
+   },
+   "OC": {
+    "n_sequences": 0,
+    "mSA_percent": null
+   },
+   "FM": {
+    "n_sequences": 4,
+    "mSA_percent": 71.14637387684907
+   },
+   "SV": {
+    "n_sequences": 1,
+    "mSA_percent": 64.21655848445741
+   },
+   "LI": {
+    "n_sequences": 3,
+    "mSA_percent": 73.68482550815952
+   },
+   "TC-EASY": {
+    "n_sequences": 4,
+    "mSA_percent": 77.50545431630381
+   },
+   "TC-MID": {
+    "n_sequences": 1,
+    "mSA_percent": 63.7653496351381
+   },
+   "TC-HARD": {
+    "n_sequences": 0,
+    "mSA_percent": null
+   },
+   "TC": {
+    "n_sequences": 5,
+    "mSA_percent": 74.75743338007067
+   },
+   "LR": {
+    "n_sequences": 0,
+    "mSA_percent": null
+   }
+  },
+  "mSA_all_frames_percent": 74.4116065342689,
+  "prestart_frames_excluded": 0,
+  "n_fallback_frames": 0,
+  "tracker_fps_mean": 9.074774398894936,
+  "scoring": "frames_from_start_frame (primary; paper protocol with official start frames)"
+ },
+ "coco_init_control": {
+  "n_sequences": 8,
+  "mSA": 0.046974408190341994,
+  "mSA_percent": 4.6974408190342,
+  "precision_20px": 0.03173222901801864,
+  "success_auc": 0.08805432729533855,
+  "frames_total": 7079,
+  "frames_exist": 6809,
+  "by_attribute": {
+   "OV": {
+    "n_sequences": 1,
+    "mSA_percent": 6.282926070973802
+   },
+   "OC": {
+    "n_sequences": 0,
+    "mSA_percent": null
+   },
+   "FM": {
+    "n_sequences": 4,
+    "mSA_percent": 3.159678962749747
+   },
+   "SV": {
+    "n_sequences": 1,
+    "mSA_percent": 6.282926070973802
+   },
+   "LI": {
+    "n_sequences": 3,
+    "mSA_percent": 0.167385422945824
+   },
+   "TC-EASY": {
+    "n_sequences": 4,
+    "mSA_percent": 7.698611053115581
+   },
+   "TC-MID": {
+    "n_sequences": 1,
+    "mSA_percent": 0.18399517855096922
+   },
+   "TC-HARD": {
+    "n_sequences": 0,
+    "mSA_percent": null
+   },
+   "TC": {
+    "n_sequences": 5,
+    "mSA_percent": 6.1956878782026585
+   },
+   "LR": {
+    "n_sequences": 0,
+    "mSA_percent": null
+   }
+  },
+  "mSA_all_frames_percent": 4.6974408190342,
+  "prestart_frames_excluded": 0,
+  "n_fallback_frames": 0,
+  "tracker_fps_mean": 9.555065589266004,
+  "scoring": "frames_from_start_frame (primary; paper protocol with official start frames)"
+ },
+ "pass": true,
+ "seconds": 1530
+}

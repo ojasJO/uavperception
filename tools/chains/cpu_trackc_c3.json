@@ -1,0 +1,19 @@
+{
+ "name": "cpu_trackc_c3",
+ "purpose": "Track C (registered C3 then C1b) on the corpus-v2 causal-detector caches: primary v2_causal_g4_s0_e20, replication v2_stock_s0_e20; CPU; starts 4 min after X1's single training has sized its loader workers (no other GPU training starts during it), or when X1 is skipped",
+ "state_dir": "runs/_chains/cpu_trackc_c3",
+ "wait_for": "runs/_chains/post_v2_causal_caches",
+ "jobs": [
+  {"name": "wait_x1_training_start", "required": false,
+   "cmd": ["{python}", "-u", "tools/wait_for_event.py", "--file", "runs/aerotrack_v3/_x1_runner/events.jsonl", "--contains", "\"kind\": \"start\"",
+           "--contains", "train_v3_", "--exclude", "_smoke", "--after", "240", "--also-done", "runs/_chains/x1_cst_only"]},
+  {"name": "c3_causal_g4", "required": false, "when_exists": "runs/systems/_cache/v2_causal_g4_s0_e20/data_unified_v2/val/index.json",
+   "cmd": ["{python}", "-u", "experiments/aerotrack_temporal/scripts/tc_c3.py", "--stage", "run", "--run", "v2_causal_g4_s0_e20", "--workers", "4"]},
+  {"name": "c3_stock", "required": false, "when_exists": "runs/systems/_cache/v2_stock_s0_e20/data_unified_v2/val/index.json",
+   "cmd": ["{python}", "-u", "experiments/aerotrack_temporal/scripts/tc_c3.py", "--stage", "run", "--run", "v2_stock_s0_e20", "--workers", "4"]},
+  {"name": "c1b_causal_g4", "required": false, "when_exists": "experiments/aerotrack_temporal/reports/C3_tracking_motion_models_v2_causal_g4_s0_e20.json",
+   "cmd": ["{python}", "-u", "experiments/aerotrack_temporal/scripts/tc_c1b.py", "--run", "v2_causal_g4_s0_e20"]},
+  {"name": "c1b_stock", "required": false, "when_exists": "experiments/aerotrack_temporal/reports/C3_tracking_motion_models_v2_stock_s0_e20.json",
+   "cmd": ["{python}", "-u", "experiments/aerotrack_temporal/scripts/tc_c1b.py", "--run", "v2_stock_s0_e20"]}
+ ]
+}

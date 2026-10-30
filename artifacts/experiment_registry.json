@@ -1,0 +1,4124 @@
+{
+ "generated": "2026-10-06T12:39:53+0530",
+ "generator": "tools/build_registry.py",
+ "schema": {
+  "runs": [
+   "id",
+   "track",
+   "git_commit",
+   "git_dirty",
+   "config_hash",
+   "dataset_hash",
+   "split_hash",
+   "seed",
+   "checkpoint",
+   "checkpoint_sha256",
+   "environment",
+   "hardware",
+   "status"
+  ],
+  "evaluations": [
+   "id",
+   "track",
+   "run",
+   "split",
+   "test",
+   "set_hash",
+   "metrics",
+   "source"
+  ],
+  "experiments": [
+   "id",
+   "track",
+   "hypothesis",
+   "preregistration",
+   "status",
+   "verdict",
+   "interpretation",
+   "report"
+  ]
+ },
+ "runs": [
+  {
+   "id": "anti_uav/dfsc_ir",
+   "track": "anti_uav",
+   "run_dir": "experiments/anti_uav/runs/dfsc_ir",
+   "git_commit": "77accee6c416dfd03ccfb28a99ae8a731c05f8f6",
+   "git_dirty": true,
+   "config_hash": "81b589ae373ef70f6fbb4677c87ea41fd84ad3d4460ab1d5f790740164cf4f76",
+   "phase": "A_faithful_reproduction",
+   "dfsc_alpha": 1.0,
+   "dataset_hash": null,
+   "split_hash": "frozen manifest experiments/anti_uav/manifests/antiuav_IR_train.manifest.json",
+   "seed": 0,
+   "checkpoint": "experiments/anti_uav/runs/dfsc_ir/weights/last.pt",
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 8378.3
+  },
+  {
+   "id": "anti_uav/largescale_globaltrack",
+   "track": "anti_uav",
+   "run_dir": "experiments/anti_uav/runs/largescale_globaltrack",
+   "git_commit": null,
+   "git_dirty": null,
+   "config_hash": null,
+   "phase": "A_faithful_reproduction",
+   "dfsc_alpha": null,
+   "dataset_hash": null,
+   "split_hash": "frozen manifest experiments/anti_uav/manifests/antiuav_IR_train.manifest.json",
+   "seed": null,
+   "checkpoint": "experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt",
+   "checkpoint_sha256": "302a74c5da0a8af73e4d53009a0b7aeb9a6efe31249d369e42d9cbc1828a7abc",
+   "environment": {},
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU (local OMEN)",
+   "status": "completed",
+   "train_seconds": null
+  },
+  {
+   "id": "anti_uav/normal_ir",
+   "track": "anti_uav",
+   "run_dir": "experiments/anti_uav/runs/normal_ir",
+   "git_commit": "77accee6c416dfd03ccfb28a99ae8a731c05f8f6",
+   "git_dirty": true,
+   "config_hash": "1c728145532fe179fa1213c31d5e8643135be46cf7d8330c769c8915bf06824f",
+   "phase": "A_faithful_reproduction",
+   "dfsc_alpha": 0.0,
+   "dataset_hash": null,
+   "split_hash": "frozen manifest experiments/anti_uav/manifests/antiuav_IR_train.manifest.json",
+   "seed": 0,
+   "checkpoint": "experiments/anti_uav/runs/normal_ir/weights/last.pt",
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7251.4
+  },
+  {
+   "id": "anti_uav/phaseB_dfsc_ir_ism_cross",
+   "track": "anti_uav",
+   "run_dir": "experiments/anti_uav/runs/phaseB_dfsc_ir_ism_cross",
+   "git_commit": "3b2d48bd38b8151dc070bed038e8027bb43dda3f",
+   "git_dirty": true,
+   "config_hash": "3793b16be4b9a39b0957d3692205b2d55d3f78073200dfbec82492e30ac90b93",
+   "phase": "B_controlled_improvement",
+   "dfsc_alpha": 1.0,
+   "dataset_hash": null,
+   "split_hash": "frozen manifest experiments/anti_uav/manifests/antiuav_IR_train.manifest.json",
+   "seed": 0,
+   "checkpoint": "experiments/anti_uav/runs/phaseB_dfsc_ir_ism_cross/weights/last.pt",
+   "checkpoint_sha256": "708ce9666ff84f1856b0a9d4fe6d213cc32215c50bb8ee968e908a897840bb5f",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 9171.7
+  },
+  {
+   "id": "anti_uav/phaseB_dfsc_ir_lr0.02_accum8",
+   "track": "anti_uav",
+   "run_dir": "experiments/anti_uav/runs/phaseB_dfsc_ir_lr0.02_accum8",
+   "git_commit": "6843f0a47518e5d56daafab960141b64cd286898",
+   "git_dirty": true,
+   "config_hash": "1cf49b2f9b6b4b24b19705eb6336cb6484c59168b29e6ebf036a6297261db478",
+   "phase": "B_controlled_improvement",
+   "dfsc_alpha": 1.0,
+   "dataset_hash": null,
+   "split_hash": "frozen manifest experiments/anti_uav/manifests/antiuav_IR_train.manifest.json",
+   "seed": 0,
+   "checkpoint": "experiments/anti_uav/runs/phaseB_dfsc_ir_lr0.02_accum8/weights/last.pt",
+   "checkpoint_sha256": "acebb60a1fc21dcbe9f99143befc3d1eedeaa0351a8dae39985f604d9341c682",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 8304.3
+  },
+  {
+   "id": "anti_uav/phaseB_dfsc_ir_seed1",
+   "track": "anti_uav",
+   "run_dir": "experiments/anti_uav/runs/phaseB_dfsc_ir_seed1",
+   "git_commit": "619449e3b004e096b3503a9e6c65c5be221272f1",
+   "git_dirty": true,
+   "config_hash": "e0859124341f4ae6ebb07635db4af0b0ee742bf0d6deb209f3745c8af75079c3",
+   "phase": "B_controlled_improvement",
+   "dfsc_alpha": 1.0,
+   "dataset_hash": null,
+   "split_hash": "frozen manifest experiments/anti_uav/manifests/antiuav_IR_train.manifest.json",
+   "seed": 1,
+   "checkpoint": "experiments/anti_uav/runs/phaseB_dfsc_ir_seed1/weights/last.pt",
+   "checkpoint_sha256": "dc0b3e643b53222bc7f24a65a4104b08a4cf748306f082ca535c9269b4899542",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 8407.8
+  },
+  {
+   "id": "anti_uav/phaseB_normal_ir_lr0.02_accum8",
+   "track": "anti_uav",
+   "run_dir": "experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8",
+   "git_commit": "d41d06cb854fed60a53d74f157c5cf5c9651677e",
+   "git_dirty": true,
+   "config_hash": "64c827043b37e28121d986936477881514266d03ad8388a43771486b2e352353",
+   "phase": "B_controlled_improvement",
+   "dfsc_alpha": 0.0,
+   "dataset_hash": null,
+   "split_hash": "frozen manifest experiments/anti_uav/manifests/antiuav_IR_train.manifest.json",
+   "seed": 0,
+   "checkpoint": "experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/weights/last.pt",
+   "checkpoint_sha256": "785caff254c159beb8867938bbb2d2231e523c1b8afdd002c107395543f23d54",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7885.6
+  },
+  {
+   "id": "anti_uav/phaseB_normal_ir_seed1",
+   "track": "anti_uav",
+   "run_dir": "experiments/anti_uav/runs/phaseB_normal_ir_seed1",
+   "git_commit": "619449e3b004e096b3503a9e6c65c5be221272f1",
+   "git_dirty": true,
+   "config_hash": "3f38815123d0f0dcc9ca7e957ea086577fc43cb03f33eb5c08414d5075941895",
+   "phase": "B_controlled_improvement",
+   "dfsc_alpha": 0.0,
+   "dataset_hash": null,
+   "split_hash": "frozen manifest experiments/anti_uav/manifests/antiuav_IR_train.manifest.json",
+   "seed": 1,
+   "checkpoint": "experiments/anti_uav/runs/phaseB_normal_ir_seed1/weights/last.pt",
+   "checkpoint_sha256": "414ef0164e2bfc6520fb19b2e1d487fbb5df14836433da4923223b24f5032b13",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7414.6
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f0_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_spd_fp_f0_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "spd",
+    "gap": 0,
+    "question": "H1: SPD-Conv once it starts from the pretrained function"
+   },
+   "config_hash": "876680e1ed1bfc7f67644449efec03be7828580825a655d7db3389d606d3c204",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_spd_fp_f0_e20/weights/last.pt",
+   "checkpoint_sha256": "83d7710651082da6dc4d98aa27c4f3bb3f1e6ab0a6da273e6c636ebaa2c0c919",
+   "best_pt_sha256": "a8ffd1f9375644ce3322c305207a753984ea2c79a6c155016c5bea2b580f48ec",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 5723.7
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f1_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_spd_fp_f1_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "spd",
+    "gap": 0,
+    "question": "H1: SPD-Conv once it starts from the pretrained function"
+   },
+   "config_hash": "876680e1ed1bfc7f67644449efec03be7828580825a655d7db3389d606d3c204",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "1",
+   "seed": 1,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_spd_fp_f1_e20/weights/last.pt",
+   "checkpoint_sha256": "a5f883bd347da3b58ffda5997f201f4670a896ec34329c1c12e72b40e8de9f65",
+   "best_pt_sha256": "3f27314357d444b71e38517e034f9545d32ef5516eba0159d61e8b240fd6854d",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 5801.9
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f2_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_spd_fp_f2_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "spd",
+    "gap": 0,
+    "question": "H1: SPD-Conv once it starts from the pretrained function"
+   },
+   "config_hash": "876680e1ed1bfc7f67644449efec03be7828580825a655d7db3389d606d3c204",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "2",
+   "seed": 2,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_spd_fp_f2_e20/weights/last.pt",
+   "checkpoint_sha256": "e27497e356e6c38ca049d6cf87694da47bc41bc9e8318d348e1d0d26092b6649",
+   "best_pt_sha256": "98ee2172de113225406491370663a90efa13f78e8817170968b7888b63836125",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 5958.2
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f0_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_stock_f0_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 0,
+    "question": "reference: stock YOLO11n layout, single frame, COCO"
+   },
+   "config_hash": "6e9ccaf88c40baab9f30cb2ecbc50bda73b55750e9048b1781fbb0f1f7c1a33c",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_stock_f0_e20/weights/last.pt",
+   "checkpoint_sha256": "711b435462238d238a9429c34663b99606b0263e87e4b5924eecef71c18a6bd8",
+   "best_pt_sha256": "b3b2f86c0c69f212d67619b559e321e5f10c29d90cc244fc13fca1c0779eab60",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 5182.6
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f1_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_stock_f1_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 0,
+    "question": "reference: stock YOLO11n layout, single frame, COCO"
+   },
+   "config_hash": "6e9ccaf88c40baab9f30cb2ecbc50bda73b55750e9048b1781fbb0f1f7c1a33c",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "1",
+   "seed": 1,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_stock_f1_e20/weights/last.pt",
+   "checkpoint_sha256": "21ac66700e2b3bcd77d033641a29a808890214edb34a7a3b3935b9d5a1afbf1c",
+   "best_pt_sha256": "c59745b6f5bb5ccc834c6a5456b7b71d615baca124e08126737ac4923605d122",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 5741.8
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f2_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_stock_f2_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 0,
+    "question": "reference: stock YOLO11n layout, single frame, COCO"
+   },
+   "config_hash": "6e9ccaf88c40baab9f30cb2ecbc50bda73b55750e9048b1781fbb0f1f7c1a33c",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "2",
+   "seed": 2,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_stock_f2_e20/weights/last.pt",
+   "checkpoint_sha256": "e40b569c734485bd0de3964515f7f18d552b6fb5dfb6656be7faf2bd0b9b1425",
+   "best_pt_sha256": "a0333d4aa3bbcb481cf3a20c0ba81c19b8d83d9ed332502ad608940cfd90f9ea",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 5686.7
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f0_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_temporal_fp_g1_f0_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 1,
+    "question": "H1b: the original t-1,t,t+1 stack with a centre-frame init"
+   },
+   "config_hash": "c3f0e219d745d77730ea16a377395e9facb7c40b87efcbff7a9fd23d4b376561",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_temporal_fp_g1_f0_e20/weights/last.pt",
+   "checkpoint_sha256": "cec8530415c65918153f113735f32d1c6e1d262576944f3678aefc7f771b45a6",
+   "best_pt_sha256": "35f854b3a299450c25a921cef67b71069c411972e721abb9cc249757a4784426",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 6976.2
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f1_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_temporal_fp_g1_f1_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 1,
+    "question": "H1b: the original t-1,t,t+1 stack with a centre-frame init"
+   },
+   "config_hash": "c3f0e219d745d77730ea16a377395e9facb7c40b87efcbff7a9fd23d4b376561",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "1",
+   "seed": 1,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_temporal_fp_g1_f1_e20/weights/last.pt",
+   "checkpoint_sha256": "6644e48d6a24d8b20ee4f155ea4228ef3db3949682660cd3539751ff9155d39f",
+   "best_pt_sha256": "013189a521bc6be5dde44b42feb4708ad0f805b731733387c1ee8ebfb583e891",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7044.2
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f2_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_temporal_fp_g1_f2_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 1,
+    "question": "H1b: the original t-1,t,t+1 stack with a centre-frame init"
+   },
+   "config_hash": "c3f0e219d745d77730ea16a377395e9facb7c40b87efcbff7a9fd23d4b376561",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "2",
+   "seed": 2,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_temporal_fp_g1_f2_e20/weights/last.pt",
+   "checkpoint_sha256": "f918d081366ddb6cc561fb9c9b2f1e6382422425f185420a173c5a9197096c90",
+   "best_pt_sha256": "8abe0b8c06560c395f7b85c5f3814fc8a96f5c0775bbb148582915c37b3588c3",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7028.6
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f0_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_temporal_fp_g4_f0_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 4,
+    "question": "H2: a motion-matched gap (g=4 from CST's 0.53 px/frame)"
+   },
+   "config_hash": "8f841a75b720a9669118b09e912e67fa0bc6ba4cccf6ccb485a06f196c8e224e",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "0",
+   "seed": 0,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_temporal_fp_g4_f0_e20/weights/last.pt",
+   "checkpoint_sha256": "4bdaf3f50fd1261490625ece6d20e8b10430f8fe6a4143e7441e4c36cbfc362e",
+   "best_pt_sha256": "ef2b23e8750e56d4b5305c68abc6f2ec35a86d14edcb269d939b50d8a231b9b1",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7151.9
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f1_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_temporal_fp_g4_f1_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 4,
+    "question": "H2: a motion-matched gap (g=4 from CST's 0.53 px/frame)"
+   },
+   "config_hash": "8f841a75b720a9669118b09e912e67fa0bc6ba4cccf6ccb485a06f196c8e224e",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "1",
+   "seed": 1,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_temporal_fp_g4_f1_e20/weights/last.pt",
+   "checkpoint_sha256": "1e2ca653aae1135e7bc265c8b89e71b13e644df2e6b27feceefc9b0980a71850",
+   "best_pt_sha256": "7828c774e5ceefcb86a92542272f0c3ea92dd13725346d95622b669e8c74d772",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7355.4
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f2_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_temporal_fp_g4_f2_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 4,
+    "question": "H2: a motion-matched gap (g=4 from CST's 0.53 px/frame)"
+   },
+   "config_hash": "8f841a75b720a9669118b09e912e67fa0bc6ba4cccf6ccb485a06f196c8e224e",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "2",
+   "seed": 2,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_temporal_fp_g4_f2_e20/weights/last.pt",
+   "checkpoint_sha256": "8e49e2421df2cdc28ef1f14036541676cdb24d07ad9585181614f5e03be71b64",
+   "best_pt_sha256": "7b81c74d840cbb30e15324081454a432b0763007ef01df77c4680e9cb8bef732",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7312.3
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_full_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_generalization",
+   "run_dir": "runs/gen_temporal_fp_g4_full_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 4,
+    "question": "H2: a motion-matched gap (g=4 from CST's 0.53 px/frame)"
+   },
+   "config_hash": "8f841a75b720a9669118b09e912e67fa0bc6ba4cccf6ccb485a06f196c8e224e",
+   "dataset_hash": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+   "split_hash": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+   "corpus": "data_unified (v1)",
+   "fold": "full",
+   "seed": 0,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/gen_temporal_fp_g4_full_e20/weights/last.pt",
+   "checkpoint_sha256": "d26641b2cedb77fffc547689eca0d75c62c5ffaeb4601472a9d2c2625766ea5f",
+   "best_pt_sha256": "44f960ffda5b3b3642a2a5cfd79041b15480c3dc130ff1faa32ba0189d4fc3e2",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7957.0
+  },
+  {
+   "id": "aerotrack_repair_grid/repair_abl_baseline_ctrl_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_repair_grid",
+   "run_dir": "runs/repair_abl_baseline_ctrl_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "name": "abl_baseline"
+   },
+   "config_hash": "59ce80374223ba2d90e69641cbb41427d439e701ef9fcb971a7d3663f4a7e8e4",
+   "dataset_hash": null,
+   "split_hash": null,
+   "corpus": "data_unified (v1)",
+   "fold": null,
+   "seed": null,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "best.pt = max fitness (0.30 mAP50 + 0.35 mAP50-95 + 0.35 micro AP50 on the capped val set); last.pt = final epoch; BOTH are evaluated by evaluate_detector.py",
+   "checkpoint": "runs/repair_abl_baseline_ctrl_e20/weights/last.pt",
+   "checkpoint_sha256": "2e02ebc5ef232bfcd247f068da3549a4286f975be6e3ce24df292575997d90ed",
+   "best_pt_sha256": "815ebed2d9a2ebf70c11cdcc3411f963cb56ce52b16db9c48448cacbd0c541be",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7717.4
+  },
+  {
+   "id": "aerotrack_repair_grid/repair_abl_no_spd_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_repair_grid",
+   "run_dir": "runs/repair_abl_no_spd_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "model_cfg": "yolo11-stride.yaml",
+    "name": "abl_no_spd"
+   },
+   "config_hash": "e62aa70a54bcf201798f360d1c9caf0a8d49530ac2a18fc443a2ed0840da389c",
+   "dataset_hash": null,
+   "split_hash": null,
+   "corpus": "data_unified (v1)",
+   "fold": null,
+   "seed": null,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "best.pt = max fitness (0.30 mAP50 + 0.35 mAP50-95 + 0.35 micro AP50 on the capped val set); last.pt = final epoch; BOTH are evaluated by evaluate_detector.py",
+   "checkpoint": "runs/repair_abl_no_spd_e20/weights/last.pt",
+   "checkpoint_sha256": "2aebbb3bcb6c7f513a1c6897939a6e08c41eb9fcd2ab0a9ff4486e9e2181ee72",
+   "best_pt_sha256": "084f1dd8f0f6762023fb55dd7bb724e212ea3759872c01380abd89bd6bf6231f",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 8837.8
+  },
+  {
+   "id": "aerotrack_repair_grid/repair_abl_single_frame_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_repair_grid",
+   "run_dir": "runs/repair_abl_single_frame_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "temporal_gap": 0,
+    "name": "abl_single_frame"
+   },
+   "config_hash": "01a1f854d204316e77a3363e5d180bbad3f608f0bf32be32d87f17b4d10c6e33",
+   "dataset_hash": null,
+   "split_hash": null,
+   "corpus": "data_unified (v1)",
+   "fold": null,
+   "seed": null,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "best.pt = max fitness (0.30 mAP50 + 0.35 mAP50-95 + 0.35 micro AP50 on the capped val set); last.pt = final epoch; BOTH are evaluated by evaluate_detector.py",
+   "checkpoint": "runs/repair_abl_single_frame_e20/weights/last.pt",
+   "checkpoint_sha256": "d6138d0944382c4e36da4696deb49c38efe7ecffcb2342570dd25fcf85f1debb",
+   "best_pt_sha256": "deccf5e701054c7c5dbd33009a5fc6f0974fdf6b6e9ae7348e3523d6f6f0537b",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 6797.4
+  },
+  {
+   "id": "aerotrack_repair_grid/repair_abl_stock_yolo11n_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_repair_grid",
+   "run_dir": "runs/repair_abl_stock_yolo11n_e20",
+   "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+   "git_dirty": true,
+   "config": {
+    "model_cfg": "yolo11-stride.yaml",
+    "temporal_gap": 0,
+    "name": "abl_stock_yolo11n"
+   },
+   "config_hash": "7fd5c1c0f51d7e272f10e10a9bbc57f58b6bd23b3d242a2978374680e7615e2a",
+   "dataset_hash": null,
+   "split_hash": null,
+   "corpus": "data_unified (v1)",
+   "fold": null,
+   "seed": null,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "best.pt = max fitness (0.30 mAP50 + 0.35 mAP50-95 + 0.35 micro AP50 on the capped val set); last.pt = final epoch; BOTH are evaluated by evaluate_detector.py",
+   "checkpoint": "runs/repair_abl_stock_yolo11n_e20/weights/last.pt",
+   "checkpoint_sha256": "eda773e9c1f9e1818e3e70a0f55dde5ec9eac0f5e4839b58f6d992b9f7315c81",
+   "best_pt_sha256": "07744c380618f73a7505c43cb8c76ba633acc3495dc8350b3f7d9f956a44f1fb",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 6700.8
+  },
+  {
+   "id": "aerotrack_v2/v2_causal_g4_s0_e2_smoke",
+   "track": "aerotrack",
+   "series": "aerotrack_v2",
+   "run_dir": "runs/v2_causal_g4_s0_e2_smoke",
+   "git_commit": "8088ce036747e69caaf015ad0e36fa88101a05ec",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 4,
+    "window": "causal"
+   },
+   "config_hash": "c22efeef943ac22232d2a8a17cf24a7e654ea2db7166e1721daca7d7e6cd9799",
+   "dataset_hash": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347",
+   "split_hash": "30f0e35f35ca6dfd4ddcf89fa9c9acc907c37f9a846a976ff2300573d1bf8a6e",
+   "corpus": "data_unified_v2",
+   "fold": null,
+   "seed": 0,
+   "epochs": 2,
+   "smoke": true,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/v2_causal_g4_s0_e2_smoke/weights/last.pt",
+   "checkpoint_sha256": "e8e3e9cb9db5623f971b9bf6f28f0243d1a5b6cddeed611a3d7a76c0d9c20fb2",
+   "best_pt_sha256": "a3be6de108cabb69f3c14e60fda92c66b5bca421ee30d248636b88393782ffe7",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 95.3
+  },
+  {
+   "id": "aerotrack_v2/v2_stock_s0_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_v2",
+   "run_dir": "runs/v2_stock_s0_e20",
+   "git_commit": "8e454dc575c6ef4e0bda47ea5868a6fb193b3221",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 0,
+    "window": "ttt"
+   },
+   "config_hash": "654e170cfde311345c1271875a6ef9acb7dd61a8eb72a870362b52d4f1d4a6dc",
+   "dataset_hash": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347",
+   "split_hash": "30f0e35f35ca6dfd4ddcf89fa9c9acc907c37f9a846a976ff2300573d1bf8a6e",
+   "corpus": "data_unified_v2",
+   "fold": null,
+   "seed": 0,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/v2_stock_s0_e20/weights/last.pt",
+   "checkpoint_sha256": "5bba24c8dece77a1657605b68d63bbdd29dc4f37200391649c9360269f6d7bc1",
+   "best_pt_sha256": "61fc29e073554b5384d7033ddd721cd6c848de2158ba4641f02f8d796b5330c7",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "completed",
+   "train_seconds": 7689.1
+  },
+  {
+   "id": "aerotrack_v2/v2_sym_g4_s0_e20",
+   "track": "aerotrack",
+   "series": "aerotrack_v2",
+   "run_dir": "runs/v2_sym_g4_s0_e20",
+   "git_commit": "9478db511dc063af5009cd01579075e80331e31b",
+   "git_dirty": true,
+   "config": {
+    "layout": "stride",
+    "gap": 4,
+    "window": "symmetric"
+   },
+   "config_hash": "e47d81a1a5f5a7a3719d3ad1aac192a62f030c28f636c5942b66d36294ee5234",
+   "dataset_hash": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347",
+   "split_hash": "30f0e35f35ca6dfd4ddcf89fa9c9acc907c37f9a846a976ff2300573d1bf8a6e",
+   "corpus": "data_unified_v2",
+   "fold": null,
+   "seed": 0,
+   "epochs": 20,
+   "smoke": false,
+   "checkpoint_policy": "last.pt is the scored checkpoint (fixed before any run); best.pt is kept but not used",
+   "checkpoint": "runs/v2_sym_g4_s0_e20/weights/last.pt",
+   "checkpoint_sha256": "d2897321c9814e814b661b01f0a67549436ba3c80b03ad8465a090a961be6677",
+   "best_pt_sha256": "4b1bf4fed243ad978544fa512b308d02c7eca971736d425e65e78e3c164ae65a",
+   "environment": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu130",
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "platform": "Windows-10-10.0.26200-SP0"
+   },
+   "hardware": "NVIDIA GeForce RTX 5050 Laptop GPU",
+   "status": "running",
+   "train_seconds": 12627.0
+  },
+  {
+   "id": "historical/aerotrack_spd_v1",
+   "track": "aerotrack",
+   "series": "historical_review2",
+   "run_dir": "runs/aerotrack_spd_v1",
+   "git_commit": null,
+   "config_hash": "d2eefb44a584ff37cbb08c15f2ce2d272437b95e78d7f05229f08161ad0f37d0",
+   "seed": 0,
+   "epochs": 150,
+   "checkpoint": "runs/aerotrack_spd_v1/weights/best.pt",
+   "status": "completed (stopped early; see audit)",
+   "note": "pre-protocol run: no run_meta.json; superseded, kept as evidence"
+  },
+  {
+   "id": "historical/aerotrack_spd_finetuned",
+   "track": "aerotrack",
+   "series": "historical_review2",
+   "run_dir": "runs/aerotrack_spd_finetuned",
+   "git_commit": null,
+   "config_hash": "f3c0dcb1a5534a4ab8dbbf488b4d00f93b062bfbe329ec6b6339dda674304cb0",
+   "seed": 0,
+   "epochs": 25,
+   "checkpoint": "runs/aerotrack_spd_finetuned/weights/best.pt",
+   "status": "completed (stopped early; see audit)",
+   "note": "pre-protocol run: no run_meta.json; superseded, kept as evidence"
+  },
+  {
+   "id": "aerotrack_temporal/c1_gru_abs_s0",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "gru",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "7a6d72497b8938234eaecfcd7bd09f4a6deb3632ad13d4b78d16c4f6a0d27e40",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 0,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_gru_abs_s0.pt",
+   "checkpoint_sha256": "f56398093130a3c91500b92660b2cc5c36f164d5a02fe2b48d266c479a7f4ab6",
+   "best_epoch": 4,
+   "dev_nll": 4.7310385273390665,
+   "dev_ade_px": 52.04217414981651,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_gru_abs_s1",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "gru",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "7a6d72497b8938234eaecfcd7bd09f4a6deb3632ad13d4b78d16c4f6a0d27e40",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 1,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_gru_abs_s1.pt",
+   "checkpoint_sha256": "97bb961c47c0183f397d3f96ce3cf0f29c8e30aa556bcf25433bd093b1997655",
+   "best_epoch": 6,
+   "dev_nll": 4.7342111825016655,
+   "dev_ade_px": 51.16526274670651,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_gru_abs_s2",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "gru",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "7a6d72497b8938234eaecfcd7bd09f4a6deb3632ad13d4b78d16c4f6a0d27e40",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 2,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_gru_abs_s2.pt",
+   "checkpoint_sha256": "22669917f4e89057501af3a87afcedbbd7363bb02708a25a52ce02fb0d98345c",
+   "best_epoch": 5,
+   "dev_nll": 4.510238135008023,
+   "dev_ade_px": 52.05514741196457,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_mlp_abs_s0",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "mlp",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "abcca34dec0845bde248a07f45901efa0642e43b1c7830b250456f25baceadfb",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 0,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_mlp_abs_s0.pt",
+   "checkpoint_sha256": "26e6a4faa2b32f2d9d16e54e5773b796cb045a17b11c0b8f1e837db750a19f51",
+   "best_epoch": 3,
+   "dev_nll": 4.863698443082702,
+   "dev_ade_px": 52.04078307375463,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_mlp_abs_s1",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "mlp",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "abcca34dec0845bde248a07f45901efa0642e43b1c7830b250456f25baceadfb",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 1,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_mlp_abs_s1.pt",
+   "checkpoint_sha256": "8c763505df1a6ede95c1c317df8ecc7f1c9acbd06a9a930f4db591530430d476",
+   "best_epoch": 5,
+   "dev_nll": 4.6178941147827945,
+   "dev_ade_px": 51.119047949150115,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_mlp_abs_s2",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "mlp",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "abcca34dec0845bde248a07f45901efa0642e43b1c7830b250456f25baceadfb",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 2,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_mlp_abs_s2.pt",
+   "checkpoint_sha256": "3b4baf92ea557949b952ee133a21460ede32aab0269d5a9d57d31cd440fc8222",
+   "best_epoch": 3,
+   "dev_nll": 4.812465461526904,
+   "dev_ade_px": 51.6391484562162,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_abs_s0",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "4a8d8af3d162038ce6a3364e575b0dd233a3d476c77ed8acb2bd3c7c35033dfa",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 0,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_abs_s0.pt",
+   "checkpoint_sha256": "dfd8ee3ad92e90be6a06394d0893759f55968b87aa1ad201f889465301ad986c",
+   "best_epoch": 5,
+   "dev_nll": 4.593185944824174,
+   "dev_ade_px": 51.71751152526596,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_abs_s1",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "4a8d8af3d162038ce6a3364e575b0dd233a3d476c77ed8acb2bd3c7c35033dfa",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 1,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_abs_s1.pt",
+   "checkpoint_sha256": "019748daf9a353bf6ab81c1de878c5d3fe7fc90629af1964fe42dd923196c219",
+   "best_epoch": 3,
+   "dev_nll": 4.639841435614683,
+   "dev_ade_px": 52.5011714347708,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_abs_s2",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "abs",
+    "abs_pos": true,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "4a8d8af3d162038ce6a3364e575b0dd233a3d476c77ed8acb2bd3c7c35033dfa",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 2,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_abs_s2.pt",
+   "checkpoint_sha256": "1b51b507cc80b6d77d49d170716d321df6e421928c6270d2b7c3043625e666b6",
+   "best_epoch": 5,
+   "dev_nll": 4.57827621485378,
+   "dev_ade_px": 52.12558282129177,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_aug_s0",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "aug",
+    "abs_pos": true,
+    "aug": true,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "1ecfc111795318d3ec1e221fc9a7e2510b1c16ccada8cd0072b4b95f83bfeec9",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 0,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_aug_s0.pt",
+   "checkpoint_sha256": "ac8d40c82e76fdf7d2d7e0a2a785521dc115b35ab5933499bb407011a5fc123d",
+   "best_epoch": 7,
+   "dev_nll": 4.945114371792462,
+   "dev_ade_px": 52.12570613454256,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_aug_s1",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "aug",
+    "abs_pos": true,
+    "aug": true,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "1ecfc111795318d3ec1e221fc9a7e2510b1c16ccada8cd0072b4b95f83bfeec9",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 1,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_aug_s1.pt",
+   "checkpoint_sha256": "982349662b96a89cf1239adcf66a29f9b980afd90c1550aa0268d53d3c21e86e",
+   "best_epoch": 1,
+   "dev_nll": 5.040787783556404,
+   "dev_ade_px": 56.15959372865611,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_aug_s2",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "aug",
+    "abs_pos": true,
+    "aug": true,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "1ecfc111795318d3ec1e221fc9a7e2510b1c16ccada8cd0072b4b95f83bfeec9",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 2,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_aug_s2.pt",
+   "checkpoint_sha256": "d61379956f34c2e705411623dac5146f7af88e34cfbb7e547b2a1a345825ec05",
+   "best_epoch": 9,
+   "dev_nll": 4.97785002241568,
+   "dev_ade_px": 52.32783209541514,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_noabs_s0",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "noabs",
+    "abs_pos": false,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "ae42e903b64255be7e2d957f58d2e2aeeb469d8881712c3445a748f719657aef",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 0,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_noabs_s0.pt",
+   "checkpoint_sha256": "19dda45ae779af596749741a05b4137905ff2826e043fc8c6b21ee9dbb62c5c2",
+   "best_epoch": 5,
+   "dev_nll": 4.744176656984348,
+   "dev_ade_px": 53.420764052689556,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_noabs_s1",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "noabs",
+    "abs_pos": false,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "ae42e903b64255be7e2d957f58d2e2aeeb469d8881712c3445a748f719657aef",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 1,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_noabs_s1.pt",
+   "checkpoint_sha256": "6426cffb464380832123c42f5ef0e0f962e08a9a49f30bdb167760565755cce9",
+   "best_epoch": 3,
+   "dev_nll": 4.651446739514618,
+   "dev_ade_px": 53.20620198887107,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  },
+  {
+   "id": "aerotrack_temporal/c1_tfm_noabs_s2",
+   "track": "C",
+   "series": "C1_trajectory_forecasting",
+   "run_dir": "runs/aerotrack_temporal/c1",
+   "config": {
+    "arch": "tfm",
+    "variant": "noabs",
+    "abs_pos": false,
+    "aug": false,
+    "L": 16,
+    "H": 24,
+    "epochs": 12
+   },
+   "config_hash": "ae42e903b64255be7e2d957f58d2e2aeeb469d8881712c3445a748f719657aef",
+   "dataset_hash": "2683c40d7cab8638f6a37b1a6282541ba8a14c581e189df40a2b4f032ce2a932",
+   "seed": 2,
+   "checkpoint": "runs/aerotrack_temporal/c1/c1_tfm_noabs_s2.pt",
+   "checkpoint_sha256": "e4adbbf7d372dfb61a1ddda5102164482f8c959d5d859841c369270e56489414",
+   "best_epoch": 5,
+   "dev_nll": 4.655203681943089,
+   "dev_ade_px": 53.74830325564267,
+   "hardware": "OMEN CPU",
+   "status": "completed"
+  }
+ ],
+ "evaluations": [
+  {
+   "id": "anti_uav/repro/normal_ir/seed0/val",
+   "track": "anti_uav",
+   "class": "FAITHFUL_REPRODUCTION",
+   "run": "normal_ir",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 79.2874,
+    "precision_20px": 99.5647,
+    "success_auc": 79.3229
+   },
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "source": "experiments/anti_uav/runs/normal_ir/eval_val_IR_last/metrics.json"
+  },
+  {
+   "id": "anti_uav/repro/normal_ir/seed0/val/benchmark_2026-09-22",
+   "track": "anti_uav",
+   "class": "FAITHFUL_REPRODUCTION",
+   "run": "normal_ir",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 79.2874,
+    "precision_20px": 99.5647,
+    "success_auc": 79.3229
+   },
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "source": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/normal_ir__val_IR/metrics.json"
+  },
+  {
+   "id": "anti_uav/repro/normal_ir/seed0/test",
+   "track": "anti_uav",
+   "class": "FAITHFUL_REPRODUCTION",
+   "run": "normal_ir",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 2,
+   "metrics": {
+    "mSA": 70.5796,
+    "precision_20px": 91.8451,
+    "success_auc": 71.0078
+   },
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "source": "experiments/anti_uav/runs/normal_ir/eval_test_IR_last/metrics.json"
+  },
+  {
+   "id": "anti_uav/repro/normal_ir/seed0/test/benchmark_2026-09-22",
+   "track": "anti_uav",
+   "class": "FAITHFUL_REPRODUCTION",
+   "run": "normal_ir",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 5,
+   "metrics": {
+    "mSA": 70.5796,
+    "precision_20px": 91.8451,
+    "success_auc": 71.0078
+   },
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "source": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/normal_ir__test_IR/metrics.json"
+  },
+  {
+   "id": "anti_uav/repro/dfsc_ir/seed0/val",
+   "track": "anti_uav",
+   "class": "FAITHFUL_REPRODUCTION",
+   "run": "dfsc_ir",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 79.2559,
+    "precision_20px": 99.5662,
+    "success_auc": 79.2867
+   },
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "source": "experiments/anti_uav/runs/dfsc_ir/eval_val_IR_last/metrics.json"
+  },
+  {
+   "id": "anti_uav/repro/dfsc_ir/seed0/val/benchmark_2026-09-22",
+   "track": "anti_uav",
+   "class": "FAITHFUL_REPRODUCTION",
+   "run": "dfsc_ir",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 79.2559,
+    "precision_20px": 99.5662,
+    "success_auc": 79.2866
+   },
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "source": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/dfsc_ir__val_IR/metrics.json"
+  },
+  {
+   "id": "anti_uav/repro/dfsc_ir/seed0/test",
+   "track": "anti_uav",
+   "class": "FAITHFUL_REPRODUCTION",
+   "run": "dfsc_ir",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 1,
+   "metrics": {
+    "mSA": 70.2868,
+    "precision_20px": 91.6541,
+    "success_auc": 70.7224
+   },
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "source": "experiments/anti_uav/runs/dfsc_ir/eval_test_IR_last/metrics.json"
+  },
+  {
+   "id": "anti_uav/repro/dfsc_ir/seed0/test/benchmark_2026-09-22",
+   "track": "anti_uav",
+   "class": "FAITHFUL_REPRODUCTION",
+   "run": "dfsc_ir",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 6,
+   "metrics": {
+    "mSA": 70.2866,
+    "precision_20px": 91.6541,
+    "success_auc": 70.7225
+   },
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "source": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/dfsc_ir__test_IR/metrics.json"
+  },
+  {
+   "id": "anti_uav/repl/phaseB_normal_ir_seed1/val",
+   "track": "anti_uav",
+   "class": "CONTROLLED_REPLICATION",
+   "run": "phaseB_normal_ir_seed1",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 79.3637,
+    "precision_20px": 99.569,
+    "success_auc": 79.3853
+   },
+   "checkpoint_sha256": "414ef0164e2bfc6520fb19b2e1d487fbb5df14836433da4923223b24f5032b13",
+   "source": "experiments/anti_uav/runs/phaseB_normal_ir_seed1/eval_val_IR_last/metrics.json"
+  },
+  {
+   "id": "anti_uav/repl/phaseB_normal_ir_seed1/test",
+   "track": "anti_uav",
+   "class": "CONTROLLED_REPLICATION",
+   "run": "phaseB_normal_ir_seed1",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 7,
+   "metrics": {
+    "mSA": 70.2152,
+    "precision_20px": 91.2996,
+    "success_auc": 70.6579
+   },
+   "checkpoint_sha256": "414ef0164e2bfc6520fb19b2e1d487fbb5df14836433da4923223b24f5032b13",
+   "source": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/seed_variance/phaseB_normal_ir_seed1__test_IR/metrics.json"
+  },
+  {
+   "id": "anti_uav/repl/phaseB_dfsc_ir_seed1/val",
+   "track": "anti_uav",
+   "class": "CONTROLLED_REPLICATION",
+   "run": "phaseB_dfsc_ir_seed1",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 79.4318,
+    "precision_20px": 99.5675,
+    "success_auc": 79.4778
+   },
+   "checkpoint_sha256": "dc0b3e643b53222bc7f24a65a4104b08a4cf748306f082ca535c9269b4899542",
+   "source": "experiments/anti_uav/runs/phaseB_dfsc_ir_seed1/eval_val_IR_last/metrics.json"
+  },
+  {
+   "id": "anti_uav/repl/phaseB_dfsc_ir_seed1/test",
+   "track": "anti_uav",
+   "class": "CONTROLLED_REPLICATION",
+   "run": "phaseB_dfsc_ir_seed1",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 8,
+   "metrics": {
+    "mSA": 70.1373,
+    "precision_20px": 91.3623,
+    "success_auc": 70.5826
+   },
+   "checkpoint_sha256": "dc0b3e643b53222bc7f24a65a4104b08a4cf748306f082ca535c9269b4899542",
+   "source": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/seed_variance/phaseB_dfsc_ir_seed1__test_IR/metrics.json"
+  },
+  {
+   "id": "anti_uav/expl/absence_thr/normal_ir/val",
+   "track": "anti_uav",
+   "class": "EXPLORATORY_EXPERIMENT",
+   "run": "normal_ir",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 80.797,
+    "precision_20px": 99.4091,
+    "success_auc": 79.2442
+   },
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "source": "experiments/anti_uav/runs/normal_ir/phaseB_absence_thr/val/metrics.json"
+  },
+  {
+   "id": "anti_uav/expl/h4_native_scale/normal_ir/val",
+   "track": "anti_uav",
+   "class": "EXPLORATORY_EXPERIMENT",
+   "run": "normal_ir",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 75.264,
+    "precision_20px": 99.3303,
+    "success_auc": 75.4414
+   },
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "source": "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/val/metrics.json"
+  },
+  {
+   "id": "anti_uav/expl/absence_thr/normal_ir/test",
+   "track": "anti_uav",
+   "class": "EXPLORATORY_EXPERIMENT",
+   "run": "normal_ir",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 4,
+   "metrics": {
+    "mSA": 70.8721,
+    "precision_20px": 89.8666,
+    "success_auc": 69.8738
+   },
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "source": "experiments/anti_uav/runs/normal_ir/phaseB_absence_thr/test/metrics.json"
+  },
+  {
+   "id": "anti_uav/expl/h4_native_scale/normal_ir/test",
+   "track": "anti_uav",
+   "class": "EXPLORATORY_EXPERIMENT",
+   "run": "normal_ir",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 9,
+   "metrics": {
+    "mSA": 66.1468,
+    "precision_20px": 90.2959,
+    "success_auc": 66.7625
+   },
+   "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+   "source": "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/test/metrics.json"
+  },
+  {
+   "id": "anti_uav/expl/absence_thr/dfsc_ir/val",
+   "track": "anti_uav",
+   "class": "EXPLORATORY_EXPERIMENT",
+   "run": "dfsc_ir",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 80.758,
+    "precision_20px": 99.3739,
+    "success_auc": 79.1967
+   },
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "source": "experiments/anti_uav/runs/dfsc_ir/phaseB_absence_thr/val/metrics.json"
+  },
+  {
+   "id": "anti_uav/expl/h4_native_scale/dfsc_ir/val",
+   "track": "anti_uav",
+   "class": "EXPLORATORY_EXPERIMENT",
+   "run": "dfsc_ir",
+   "split": "val",
+   "test": false,
+   "test_ledger_line": null,
+   "metrics": {
+    "mSA": 74.6463,
+    "precision_20px": 99.3178,
+    "success_auc": 74.8795
+   },
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "source": "experiments/anti_uav/runs/dfsc_ir/phaseB_test_scale_640x512/val/metrics.json"
+  },
+  {
+   "id": "anti_uav/expl/absence_thr/dfsc_ir/test",
+   "track": "anti_uav",
+   "class": "EXPLORATORY_EXPERIMENT",
+   "run": "dfsc_ir",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 3,
+   "metrics": {
+    "mSA": 70.7038,
+    "precision_20px": 89.9071,
+    "success_auc": 69.7134
+   },
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "source": "experiments/anti_uav/runs/dfsc_ir/phaseB_absence_thr/test/metrics.json"
+  },
+  {
+   "id": "anti_uav/expl/h4_native_scale/dfsc_ir/test",
+   "track": "anti_uav",
+   "class": "EXPLORATORY_EXPERIMENT",
+   "run": "dfsc_ir",
+   "split": "test",
+   "test": true,
+   "test_ledger_line": 10,
+   "metrics": {
+    "mSA": 66.0065,
+    "precision_20px": 90.3252,
+    "success_auc": 66.6101
+   },
+   "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+   "source": "experiments/anti_uav/runs/dfsc_ir/phaseB_test_scale_640x512/test/metrics.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f0_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_stock_f0_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "0897a2ba2502e361a6b62dc669ddeb908ce767dab9a7ae5feb9740f714df6596",
+   "metrics": {
+    "drone_AP50": 0.7905696834356172,
+    "anti_uav_drone_AP50": 0.9489139303243631,
+    "cst_drone_AP50": 0.7263647147256749,
+    "det_fly_drone_AP50": 0.3249011105271724,
+    "cst_drone_micro_AP50": 0.6903989545836633,
+    "reg_micro_AP50": 0.3273585848653765,
+    "reg_cst_AP50": 0.7263647147256749,
+    "reg_cst_micro_AP50": 0.6903989545836633,
+    "mAP50": 0.6168847801011291,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "711b43546223",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f0_e20/val",
+   "track": "aerotrack",
+   "run": "gen_stock_f0_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.823114057587196,
+    "anti_uav_drone_AP50": 0.9651964420341419,
+    "cst_drone_AP50": 0.7381869448386179,
+    "det_fly_drone_AP50": 0.4677716156450449,
+    "cst_drone_micro_AP50": 0.7240102938903792,
+    "reg_micro_AP50": 0.3072840553078228,
+    "reg_cst_AP50": 0.7381869448386179,
+    "reg_cst_micro_AP50": 0.7240102938903792,
+    "mAP50": 0.6589060373287496,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "711b43546223",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f0_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_spd_fp_f0_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "0897a2ba2502e361a6b62dc669ddeb908ce767dab9a7ae5feb9740f714df6596",
+   "metrics": {
+    "drone_AP50": 0.7876527358630379,
+    "anti_uav_drone_AP50": 0.9415156101928619,
+    "cst_drone_AP50": 0.7415457396464924,
+    "det_fly_drone_AP50": 0.3493888160484817,
+    "cst_drone_micro_AP50": 0.7100176724954663,
+    "reg_micro_AP50": 0.3602301527522978,
+    "reg_cst_AP50": 0.7415457396464924,
+    "reg_cst_micro_AP50": 0.7100176724954663,
+    "mAP50": 0.6424207232424952,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "83d771065108",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f0_e20/val",
+   "track": "aerotrack",
+   "run": "gen_spd_fp_f0_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8212335780280668,
+    "anti_uav_drone_AP50": 0.9721220784743605,
+    "cst_drone_AP50": 0.7330198262060981,
+    "det_fly_drone_AP50": 0.48855078972106647,
+    "cst_drone_micro_AP50": 0.7102542886546188,
+    "reg_micro_AP50": 0.3350242531551462,
+    "reg_cst_AP50": 0.7330198262060981,
+    "reg_cst_micro_AP50": 0.7102542886546188,
+    "mAP50": 0.6819974505247323,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "83d771065108",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f0_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g1_f0_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "0897a2ba2502e361a6b62dc669ddeb908ce767dab9a7ae5feb9740f714df6596",
+   "metrics": {
+    "drone_AP50": 0.7718776261506103,
+    "anti_uav_drone_AP50": 0.9511690998149813,
+    "cst_drone_AP50": 0.7367031128369563,
+    "det_fly_drone_AP50": 0.2505680013710736,
+    "cst_drone_micro_AP50": 0.6937785724871715,
+    "reg_micro_AP50": 0.2968353938870763,
+    "reg_cst_AP50": 0.7367031128369563,
+    "reg_cst_micro_AP50": 0.6937785724871715,
+    "mAP50": 0.6067094541614417,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "cec8530415c6",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f0_e20/val",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g1_f0_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8160565036837786,
+    "anti_uav_drone_AP50": 0.9767190256382701,
+    "cst_drone_AP50": 0.7582610721487818,
+    "det_fly_drone_AP50": 0.39655247226912804,
+    "cst_drone_micro_AP50": 0.7198735974111352,
+    "reg_micro_AP50": 0.288996348397294,
+    "reg_cst_AP50": 0.7582610721487818,
+    "reg_cst_micro_AP50": 0.7198735974111352,
+    "mAP50": 0.6639105888728398,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "cec8530415c6",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f0_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_f0_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "0897a2ba2502e361a6b62dc669ddeb908ce767dab9a7ae5feb9740f714df6596",
+   "metrics": {
+    "drone_AP50": 0.8053807517399949,
+    "anti_uav_drone_AP50": 0.9446420326936311,
+    "cst_drone_AP50": 0.7709321116378021,
+    "det_fly_drone_AP50": 0.3410159030422613,
+    "cst_drone_micro_AP50": 0.7285986820321105,
+    "reg_micro_AP50": 0.3480075598299926,
+    "reg_cst_AP50": 0.7709321116378021,
+    "reg_cst_micro_AP50": 0.7285986820321105,
+    "mAP50": 0.6433909036464546,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "4bdaf3f50fd1",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f0_e20/val",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_f0_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8618521159515016,
+    "anti_uav_drone_AP50": 0.9750548469861088,
+    "cst_drone_AP50": 0.8322862913468012,
+    "det_fly_drone_AP50": 0.4671127224478173,
+    "cst_drone_micro_AP50": 0.7923736539628892,
+    "reg_micro_AP50": 0.35467779427439833,
+    "reg_cst_AP50": 0.8322862913468012,
+    "reg_cst_micro_AP50": 0.7923736539628892,
+    "mAP50": 0.6973557635260565,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "4bdaf3f50fd1",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f1_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_stock_f1_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "f6f1e91d20d128eb6441fb9ae93c496635b5b57f392811ec152a965083caaa40",
+   "metrics": {
+    "drone_AP50": 0.8033226616066622,
+    "anti_uav_drone_AP50": 0.9428743999627093,
+    "cst_drone_AP50": 0.738370683693572,
+    "det_fly_drone_AP50": 0.46170071359505016,
+    "cst_drone_micro_AP50": 0.6399662361233236,
+    "reg_micro_AP50": 0.2940573572955243,
+    "reg_cst_AP50": 0.738370683693572,
+    "reg_cst_micro_AP50": 0.6399662361233236,
+    "mAP50": 0.6800100320765188,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "21ac66700e2b",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f1_e20/val",
+   "track": "aerotrack",
+   "run": "gen_stock_f1_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8097114440099817,
+    "anti_uav_drone_AP50": 0.9703283713291916,
+    "cst_drone_AP50": 0.6952241825931831,
+    "det_fly_drone_AP50": 0.4873526705903444,
+    "cst_drone_micro_AP50": 0.6135970942520951,
+    "reg_micro_AP50": 0.2827496319390701,
+    "reg_cst_AP50": 0.6952241825931831,
+    "reg_cst_micro_AP50": 0.6135970942520951,
+    "mAP50": 0.6810653874172671,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "21ac66700e2b",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f1_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_spd_fp_f1_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "f6f1e91d20d128eb6441fb9ae93c496635b5b57f392811ec152a965083caaa40",
+   "metrics": {
+    "drone_AP50": 0.8199388734669723,
+    "anti_uav_drone_AP50": 0.9472344594028727,
+    "cst_drone_AP50": 0.7548640874120924,
+    "det_fly_drone_AP50": 0.46950651248445446,
+    "cst_drone_micro_AP50": 0.68132613951374,
+    "reg_micro_AP50": 0.314975881938427,
+    "reg_cst_AP50": 0.7548640874120924,
+    "reg_cst_micro_AP50": 0.68132613951374,
+    "mAP50": 0.6994807164104677,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "a5f883bd347d",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f1_e20/val",
+   "track": "aerotrack",
+   "run": "gen_spd_fp_f1_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8223894228715722,
+    "anti_uav_drone_AP50": 0.9703822287708174,
+    "cst_drone_AP50": 0.7269760189392382,
+    "det_fly_drone_AP50": 0.5026831283101363,
+    "cst_drone_micro_AP50": 0.6545871020418887,
+    "reg_micro_AP50": 0.29779500150608945,
+    "reg_cst_AP50": 0.7269760189392382,
+    "reg_cst_micro_AP50": 0.6545871020418887,
+    "mAP50": 0.6827347036843154,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "a5f883bd347d",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f1_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g1_f1_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "f6f1e91d20d128eb6441fb9ae93c496635b5b57f392811ec152a965083caaa40",
+   "metrics": {
+    "drone_AP50": 0.8132101919989276,
+    "anti_uav_drone_AP50": 0.9356264051154995,
+    "cst_drone_AP50": 0.7511389644683231,
+    "det_fly_drone_AP50": 0.48101487835230017,
+    "cst_drone_micro_AP50": 0.6790212912368758,
+    "reg_micro_AP50": 0.3059902939176199,
+    "reg_cst_AP50": 0.7511389644683231,
+    "reg_cst_micro_AP50": 0.6790212912368758,
+    "mAP50": 0.6775581055977542,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "6644e48d6a24",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f1_e20/val",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g1_f1_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8193275621229589,
+    "anti_uav_drone_AP50": 0.9653954975557437,
+    "cst_drone_AP50": 0.7208341902975672,
+    "det_fly_drone_AP50": 0.5024410966376733,
+    "cst_drone_micro_AP50": 0.6195632241511912,
+    "reg_micro_AP50": 0.2749935827313996,
+    "reg_cst_AP50": 0.7208341902975672,
+    "reg_cst_micro_AP50": 0.6195632241511912,
+    "mAP50": 0.6569118758336492,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "6644e48d6a24",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f1_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_f1_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "f6f1e91d20d128eb6441fb9ae93c496635b5b57f392811ec152a965083caaa40",
+   "metrics": {
+    "drone_AP50": 0.8285758311668334,
+    "anti_uav_drone_AP50": 0.9428066428725705,
+    "cst_drone_AP50": 0.7745664880938645,
+    "det_fly_drone_AP50": 0.48992786336232225,
+    "cst_drone_micro_AP50": 0.7220572316414607,
+    "reg_micro_AP50": 0.32466288696830425,
+    "reg_cst_AP50": 0.7745664880938645,
+    "reg_cst_micro_AP50": 0.7220572316414607,
+    "mAP50": 0.6933597521020266,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "1e2ca653aae1",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f1_e20/val",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_f1_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8524840772205009,
+    "anti_uav_drone_AP50": 0.9687359489273599,
+    "cst_drone_AP50": 0.7873374895345626,
+    "det_fly_drone_AP50": 0.5084983694071824,
+    "cst_drone_micro_AP50": 0.6766716949638899,
+    "reg_micro_AP50": 0.3005821898208558,
+    "reg_cst_AP50": 0.7873374895345626,
+    "reg_cst_micro_AP50": 0.6766716949638899,
+    "mAP50": 0.6891973167640032,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "1e2ca653aae1",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f2_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_stock_f2_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "59c15461878818214564c6bad32e70e212cdae51d41ebdb518ee50aabd781284",
+   "metrics": {
+    "drone_AP50": 0.7904137935792375,
+    "anti_uav_drone_AP50": 0.9292054297325633,
+    "cst_drone_AP50": 0.7124034773293613,
+    "det_fly_drone_AP50": 0.42822570163522283,
+    "cst_drone_micro_AP50": 0.6684352560040252,
+    "reg_micro_AP50": 0.2913830694509474,
+    "reg_cst_AP50": 0.7124034773293613,
+    "reg_cst_micro_AP50": 0.6684352560040252,
+    "mAP50": 0.6582342245848739,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "e40b569c7344",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_stock_f2_e20/val",
+   "track": "aerotrack",
+   "run": "gen_stock_f2_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8319325811747852,
+    "anti_uav_drone_AP50": 0.9647203526085044,
+    "cst_drone_AP50": 0.7363462419586162,
+    "det_fly_drone_AP50": 0.5388107462143534,
+    "cst_drone_micro_AP50": 0.7299256385001238,
+    "reg_micro_AP50": 0.322783608941608,
+    "reg_cst_AP50": 0.7363462419586162,
+    "reg_cst_micro_AP50": 0.7299256385001238,
+    "mAP50": 0.6944820891503172,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "e40b569c7344",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f2_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_spd_fp_f2_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "59c15461878818214564c6bad32e70e212cdae51d41ebdb518ee50aabd781284",
+   "metrics": {
+    "drone_AP50": 0.7842998187385576,
+    "anti_uav_drone_AP50": 0.9066839033852352,
+    "cst_drone_AP50": 0.7223281347025498,
+    "det_fly_drone_AP50": 0.4555083398619878,
+    "cst_drone_micro_AP50": 0.6846380341522951,
+    "reg_micro_AP50": 0.2832093588205431,
+    "reg_cst_AP50": 0.7223281347025498,
+    "reg_cst_micro_AP50": 0.6846380341522951,
+    "mAP50": 0.6550691267187065,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "e27497e356e6",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_spd_fp_f2_e20/val",
+   "track": "aerotrack",
+   "run": "gen_spd_fp_f2_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8235486375330647,
+    "anti_uav_drone_AP50": 0.9600184058055193,
+    "cst_drone_AP50": 0.7157503581573997,
+    "det_fly_drone_AP50": 0.5608416610900591,
+    "cst_drone_micro_AP50": 0.6840556385027509,
+    "reg_micro_AP50": 0.29723035181265905,
+    "reg_cst_AP50": 0.7157503581573997,
+    "reg_cst_micro_AP50": 0.6840556385027509,
+    "mAP50": 0.6771460384421628,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "e27497e356e6",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f2_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g1_f2_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "59c15461878818214564c6bad32e70e212cdae51d41ebdb518ee50aabd781284",
+   "metrics": {
+    "drone_AP50": 0.7878577627543253,
+    "anti_uav_drone_AP50": 0.9338687268813057,
+    "cst_drone_AP50": 0.7159453553558053,
+    "det_fly_drone_AP50": 0.3833460678862591,
+    "cst_drone_micro_AP50": 0.6592109396668467,
+    "reg_micro_AP50": 0.28716269150415075,
+    "reg_cst_AP50": 0.7159453553558053,
+    "reg_cst_micro_AP50": 0.6592109396668467,
+    "mAP50": 0.6393217510861262,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "f918d081366d",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g1_f2_e20/val",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g1_f2_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8274315349319661,
+    "anti_uav_drone_AP50": 0.967214050765639,
+    "cst_drone_AP50": 0.7342709933224585,
+    "det_fly_drone_AP50": 0.4920835894227618,
+    "cst_drone_micro_AP50": 0.6866015681922673,
+    "reg_micro_AP50": 0.30773615018424383,
+    "reg_cst_AP50": 0.7342709933224585,
+    "reg_cst_micro_AP50": 0.6866015681922673,
+    "mAP50": 0.670031655656213,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "f918d081366d",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f2_e20/dev",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_f2_e20",
+   "split": "dev",
+   "test": false,
+   "set_hash": "59c15461878818214564c6bad32e70e212cdae51d41ebdb518ee50aabd781284",
+   "metrics": {
+    "drone_AP50": 0.8036764228940214,
+    "anti_uav_drone_AP50": 0.9291573832339124,
+    "cst_drone_AP50": 0.7660151468567328,
+    "det_fly_drone_AP50": 0.3588898292854009,
+    "cst_drone_micro_AP50": 0.700752889409032,
+    "reg_micro_AP50": 0.28481762598489707,
+    "reg_cst_AP50": 0.7660151468567328,
+    "reg_cst_micro_AP50": 0.700752889409032,
+    "mAP50": 0.6144798371962561,
+    "n_images": 11566
+   },
+   "checkpoint_sha256": "8e49e2421df2",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_f2_e20/val",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_f2_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8573490872810892,
+    "anti_uav_drone_AP50": 0.9657546242908146,
+    "cst_drone_AP50": 0.8059039382243663,
+    "det_fly_drone_AP50": 0.5171146285367777,
+    "cst_drone_micro_AP50": 0.750620926912172,
+    "reg_micro_AP50": 0.33090515012395033,
+    "reg_cst_AP50": 0.8059039382243663,
+    "reg_cst_micro_AP50": 0.750620926912172,
+    "mAP50": 0.6760108930023159,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "8e49e2421df2",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_full_e20/val",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "202e849e9b61f52520da79f695a921661229356a86e66086a255a89f0dbfe3ed",
+   "metrics": {
+    "drone_AP50": 0.8655134878691289,
+    "anti_uav_drone_AP50": 0.9805377935657177,
+    "cst_drone_AP50": 0.8105645113673338,
+    "det_fly_drone_AP50": 0.4897056449896574,
+    "cst_drone_micro_AP50": 0.7455291484206508,
+    "reg_micro_AP50": 0.3454012798833461,
+    "reg_cst_AP50": 0.8105645113673338,
+    "reg_cst_micro_AP50": 0.7455291484206508,
+    "mAP50": 0.7033006966372795,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "d26641b2cedb",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_generalization/gen_temporal_fp_g4_full_e20/test",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "a859a6bb6f6561f5cc7576ca4e4b769f494234c3d53d53af2c1a2d24b8650d78",
+   "metrics": {
+    "drone_AP50": 0.7182552808758924,
+    "anti_uav_drone_AP50": 0.9185276472709225,
+    "cst_drone_AP50": 0.5208829979452316,
+    "det_fly_drone_AP50": 0.5381579511144644,
+    "cst_drone_micro_AP50": 0.4254994829417115,
+    "reg_micro_AP50": 0.27345254657902307,
+    "reg_cst_AP50": 0.5208829979452316,
+    "reg_cst_micro_AP50": 0.4254994829417115,
+    "mAP50": 0.6326945583969084,
+    "n_images": 11567
+   },
+   "checkpoint_sha256": "d26641b2cedb",
+   "source": "experiments/aerotrack_generalization/reports/gen_results.json"
+  },
+  {
+   "id": "aerotrack_repair/aerotrack_spd_v1/best/val",
+   "track": "aerotrack",
+   "run": "aerotrack_spd_v1",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.60743,
+    "mAP50-95": 0.29913,
+    "drone_AP50": 0.79246,
+    "bird_AP50": 0.4224,
+    "micro_AP50": 0.29292,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.62401,
+    "standard_AP50": 0.4932,
+    "anti_uav_AP50": 0.97748,
+    "cst_AP50": 0.6767,
+    "cst_micro_AP50": 0.6594,
+    "det_fly_AP50": 0.39739,
+    "bird_only_img_drone_alarm_pct@.25": 20.618556701030926,
+    "gt_birds_boxed_as_drone_pct@.25": 0.8036162732295329,
+    "empty_frame_drone_FP/img@.25": 0.07036423841059603,
+    "seconds": 214.6
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/aerotrack_spd_v1/last/val",
+   "track": "aerotrack",
+   "run": "aerotrack_spd_v1",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.65053,
+    "mAP50-95": 0.31879,
+    "drone_AP50": 0.82864,
+    "bird_AP50": 0.47242,
+    "micro_AP50": 0.32929,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.66018,
+    "standard_AP50": 0.5358,
+    "anti_uav_AP50": 0.98126,
+    "cst_AP50": 0.74203,
+    "cst_micro_AP50": 0.68459,
+    "det_fly_AP50": 0.44541,
+    "bird_only_img_drone_alarm_pct@.25": 3.0927835051546393,
+    "gt_birds_boxed_as_drone_pct@.25": 0.15067805123053743,
+    "empty_frame_drone_FP/img@.25": 0.07781456953642384,
+    "seconds": 212.0
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/aerotrack_spd_finetuned/best/val",
+   "track": "aerotrack",
+   "run": "aerotrack_spd_finetuned",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.77875,
+    "mAP50-95": 0.41405,
+    "drone_AP50": 0.80269,
+    "bird_AP50": 0.7548,
+    "micro_AP50": 0.4078,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.79333,
+    "standard_AP50": 0.84535,
+    "anti_uav_AP50": 0.95343,
+    "cst_AP50": 0.63917,
+    "cst_micro_AP50": 0.60907,
+    "det_fly_AP50": 0.73875,
+    "bird_only_img_drone_alarm_pct@.25": 0.0,
+    "gt_birds_boxed_as_drone_pct@.25": 0.0,
+    "empty_frame_drone_FP/img@.25": 0.0869205298013245,
+    "seconds": 211.3
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/aerotrack_spd_finetuned/last/val",
+   "track": "aerotrack",
+   "run": "aerotrack_spd_finetuned",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.77993,
+    "mAP50-95": 0.41576,
+    "drone_AP50": 0.80493,
+    "bird_AP50": 0.75492,
+    "micro_AP50": 0.40623,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.79427,
+    "standard_AP50": 0.85465,
+    "anti_uav_AP50": 0.95332,
+    "cst_AP50": 0.64357,
+    "cst_micro_AP50": 0.61122,
+    "det_fly_AP50": 0.74067,
+    "bird_only_img_drone_alarm_pct@.25": 0.0,
+    "gt_birds_boxed_as_drone_pct@.25": 0.0,
+    "empty_frame_drone_FP/img@.25": 0.08774834437086093,
+    "seconds": 228.3
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_baseline_ctrl_e20/best/val",
+   "track": "aerotrack",
+   "run": "repair_abl_baseline_ctrl_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.60516,
+    "mAP50-95": 0.30086,
+    "drone_AP50": 0.77905,
+    "bird_AP50": 0.43127,
+    "micro_AP50": 0.27902,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.61701,
+    "standard_AP50": 0.51046,
+    "anti_uav_AP50": 0.97515,
+    "cst_AP50": 0.63736,
+    "cst_micro_AP50": 0.61872,
+    "det_fly_AP50": 0.40949,
+    "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
+    "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
+    "empty_frame_drone_FP/img@.25": 0.12003311258278146,
+    "seconds": 256.4
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_baseline_ctrl_e20/last/val",
+   "track": "aerotrack",
+   "run": "repair_abl_baseline_ctrl_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.64088,
+    "mAP50-95": 0.32329,
+    "drone_AP50": 0.80299,
+    "bird_AP50": 0.47878,
+    "micro_AP50": 0.28041,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.65848,
+    "standard_AP50": 0.6494,
+    "anti_uav_AP50": 0.98157,
+    "cst_AP50": 0.6677,
+    "cst_micro_AP50": 0.62693,
+    "det_fly_AP50": 0.46501,
+    "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
+    "gt_birds_boxed_as_drone_pct@.25": 0.050226017076845805,
+    "empty_frame_drone_FP/img@.25": 0.10182119205298014,
+    "seconds": 114.0
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_no_spd_e20/best/val",
+   "track": "aerotrack",
+   "run": "repair_abl_no_spd_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.62786,
+    "mAP50-95": 0.30546,
+    "drone_AP50": 0.79752,
+    "bird_AP50": 0.4582,
+    "micro_AP50": 0.29491,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.6452,
+    "standard_AP50": 0.47802,
+    "anti_uav_AP50": 0.97184,
+    "cst_AP50": 0.70985,
+    "cst_micro_AP50": 0.65794,
+    "det_fly_AP50": 0.39077,
+    "bird_only_img_drone_alarm_pct@.25": 16.49484536082474,
+    "gt_birds_boxed_as_drone_pct@.25": 0.3515821195379206,
+    "empty_frame_drone_FP/img@.25": 0.24089403973509935,
+    "seconds": 279.9
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_no_spd_e20/last/val",
+   "track": "aerotrack",
+   "run": "repair_abl_no_spd_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.69956,
+    "mAP50-95": 0.34526,
+    "drone_AP50": 0.84147,
+    "bird_AP50": 0.55765,
+    "micro_AP50": 0.35879,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.71142,
+    "standard_AP50": 0.53873,
+    "anti_uav_AP50": 0.98145,
+    "cst_AP50": 0.76209,
+    "cst_micro_AP50": 0.72883,
+    "det_fly_AP50": 0.51627,
+    "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
+    "gt_birds_boxed_as_drone_pct@.25": 0.20090406830738322,
+    "empty_frame_drone_FP/img@.25": 0.1316225165562914,
+    "seconds": 129.0
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_single_frame_e20/best/val",
+   "track": "aerotrack",
+   "run": "repair_abl_single_frame_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.65333,
+    "mAP50-95": 0.32444,
+    "drone_AP50": 0.80648,
+    "bird_AP50": 0.50018,
+    "micro_AP50": 0.28733,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.67074,
+    "standard_AP50": 0.56089,
+    "anti_uav_AP50": 0.98074,
+    "cst_AP50": 0.68246,
+    "cst_micro_AP50": 0.61191,
+    "det_fly_AP50": 0.45589,
+    "bird_only_img_drone_alarm_pct@.25": 7.216494845360824,
+    "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
+    "empty_frame_drone_FP/img@.25": 0.07781456953642384,
+    "seconds": 202.9
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_single_frame_e20/last/val",
+   "track": "aerotrack",
+   "run": "repair_abl_single_frame_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.65333,
+    "mAP50-95": 0.32444,
+    "drone_AP50": 0.80648,
+    "bird_AP50": 0.50018,
+    "micro_AP50": 0.28733,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.67074,
+    "standard_AP50": 0.56089,
+    "anti_uav_AP50": 0.98074,
+    "cst_AP50": 0.68246,
+    "cst_micro_AP50": 0.61191,
+    "det_fly_AP50": 0.45589,
+    "bird_only_img_drone_alarm_pct@.25": 7.216494845360824,
+    "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
+    "empty_frame_drone_FP/img@.25": 0.07781456953642384,
+    "seconds": 128.3
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_stock_yolo11n_e20/best/val",
+   "track": "aerotrack",
+   "run": "repair_abl_stock_yolo11n_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.67083,
+    "mAP50-95": 0.33714,
+    "drone_AP50": 0.83375,
+    "bird_AP50": 0.50792,
+    "micro_AP50": 0.31824,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.68373,
+    "standard_AP50": 0.58939,
+    "anti_uav_AP50": 0.98198,
+    "cst_AP50": 0.73051,
+    "cst_micro_AP50": 0.70784,
+    "det_fly_AP50": 0.52076,
+    "bird_only_img_drone_alarm_pct@.25": 1.0309278350515463,
+    "gt_birds_boxed_as_drone_pct@.25": 0.0,
+    "empty_frame_drone_FP/img@.25": 0.11672185430463576,
+    "seconds": 187.7
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_stock_yolo11n_e20/last/val",
+   "track": "aerotrack",
+   "run": "repair_abl_stock_yolo11n_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+   "metrics": {
+    "n_images": 11565,
+    "mAP50": 0.67898,
+    "mAP50-95": 0.34147,
+    "drone_AP50": 0.83793,
+    "bird_AP50": 0.52003,
+    "micro_AP50": 0.31843,
+    "micro_n_gt": 2008,
+    "small_AP50": 0.69374,
+    "standard_AP50": 0.58794,
+    "anti_uav_AP50": 0.98278,
+    "cst_AP50": 0.73267,
+    "cst_micro_AP50": 0.70915,
+    "det_fly_AP50": 0.53357,
+    "bird_only_img_drone_alarm_pct@.25": 3.0927835051546393,
+    "gt_birds_boxed_as_drone_pct@.25": 0.050226017076845805,
+    "empty_frame_drone_FP/img@.25": 0.11258278145695365,
+    "seconds": 129.0
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/aerotrack_spd_v1/best/test",
+   "track": "aerotrack",
+   "run": "aerotrack_spd_v1",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.54906,
+    "mAP50-95": 0.24277,
+    "drone_AP50": 0.65898,
+    "bird_AP50": 0.43914,
+    "micro_AP50": 0.20486,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.56925,
+    "standard_AP50": 0.49968,
+    "anti_uav_AP50": 0.90149,
+    "cst_AP50": 0.44715,
+    "cst_micro_AP50": 0.39499,
+    "det_fly_AP50": 0.41449,
+    "bird_only_img_drone_alarm_pct@.25": 18.556701030927837,
+    "gt_birds_boxed_as_drone_pct@.25": 0.7375537799631223,
+    "empty_frame_drone_FP/img@.25": 0.2696214219759926,
+    "seconds": 287.3
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/aerotrack_spd_v1/last/test",
+   "track": "aerotrack",
+   "run": "aerotrack_spd_v1",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.58583,
+    "mAP50-95": 0.26288,
+    "drone_AP50": 0.68611,
+    "bird_AP50": 0.48554,
+    "micro_AP50": 0.25428,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.60072,
+    "standard_AP50": 0.56301,
+    "anti_uav_AP50": 0.9064,
+    "cst_AP50": 0.48757,
+    "cst_micro_AP50": 0.42357,
+    "det_fly_AP50": 0.46127,
+    "bird_only_img_drone_alarm_pct@.25": 0.0,
+    "gt_birds_boxed_as_drone_pct@.25": 0.0,
+    "empty_frame_drone_FP/img@.25": 0.46999076638965837,
+    "seconds": 128.1
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/aerotrack_spd_finetuned/best/test",
+   "track": "aerotrack",
+   "run": "aerotrack_spd_finetuned",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.73441,
+    "mAP50-95": 0.37757,
+    "drone_AP50": 0.67446,
+    "bird_AP50": 0.79435,
+    "micro_AP50": 0.28623,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.7678,
+    "standard_AP50": 0.90791,
+    "anti_uav_AP50": 0.87869,
+    "cst_AP50": 0.39331,
+    "cst_micro_AP50": 0.31741,
+    "det_fly_AP50": 0.76847,
+    "bird_only_img_drone_alarm_pct@.25": 2.0618556701030926,
+    "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+    "empty_frame_drone_FP/img@.25": 0.43490304709141275,
+    "seconds": 127.7
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/aerotrack_spd_finetuned/last/test",
+   "track": "aerotrack",
+   "run": "aerotrack_spd_finetuned",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.73394,
+    "mAP50-95": 0.37744,
+    "drone_AP50": 0.67546,
+    "bird_AP50": 0.79242,
+    "micro_AP50": 0.28771,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.76763,
+    "standard_AP50": 0.90728,
+    "anti_uav_AP50": 0.88159,
+    "cst_AP50": 0.3931,
+    "cst_micro_AP50": 0.31817,
+    "det_fly_AP50": 0.76679,
+    "bird_only_img_drone_alarm_pct@.25": 2.0618556701030926,
+    "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+    "empty_frame_drone_FP/img@.25": 0.4376731301939058,
+    "seconds": 127.7
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_baseline_ctrl_e20/best/test",
+   "track": "aerotrack",
+   "run": "repair_abl_baseline_ctrl_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.53957,
+    "mAP50-95": 0.24022,
+    "drone_AP50": 0.65574,
+    "bird_AP50": 0.42339,
+    "micro_AP50": 0.17257,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.56362,
+    "standard_AP50": 0.54289,
+    "anti_uav_AP50": 0.90117,
+    "cst_AP50": 0.4245,
+    "cst_micro_AP50": 0.33986,
+    "det_fly_AP50": 0.40168,
+    "bird_only_img_drone_alarm_pct@.25": 5.154639175257731,
+    "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+    "empty_frame_drone_FP/img@.25": 0.3878116343490305,
+    "seconds": 127.5
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_baseline_ctrl_e20/last/test",
+   "track": "aerotrack",
+   "run": "repair_abl_baseline_ctrl_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.56929,
+    "mAP50-95": 0.25839,
+    "drone_AP50": 0.66066,
+    "bird_AP50": 0.47792,
+    "micro_AP50": 0.16406,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.59819,
+    "standard_AP50": 0.62502,
+    "anti_uav_AP50": 0.90872,
+    "cst_AP50": 0.41176,
+    "cst_micro_AP50": 0.32902,
+    "det_fly_AP50": 0.46916,
+    "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
+    "gt_birds_boxed_as_drone_pct@.25": 0.0,
+    "empty_frame_drone_FP/img@.25": 0.6361957525392429,
+    "seconds": 127.6
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_no_spd_e20/best/test",
+   "track": "aerotrack",
+   "run": "repair_abl_no_spd_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.55672,
+    "mAP50-95": 0.25146,
+    "drone_AP50": 0.65276,
+    "bird_AP50": 0.46068,
+    "micro_AP50": 0.20333,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.57232,
+    "standard_AP50": 0.51112,
+    "anti_uav_AP50": 0.89916,
+    "cst_AP50": 0.43652,
+    "cst_micro_AP50": 0.3422,
+    "det_fly_AP50": 0.40264,
+    "bird_only_img_drone_alarm_pct@.25": 15.463917525773196,
+    "gt_birds_boxed_as_drone_pct@.25": 0.6146281499692686,
+    "empty_frame_drone_FP/img@.25": 0.6952908587257618,
+    "seconds": 127.9
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_no_spd_e20/last/test",
+   "track": "aerotrack",
+   "run": "repair_abl_no_spd_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.61244,
+    "mAP50-95": 0.2776,
+    "drone_AP50": 0.66793,
+    "bird_AP50": 0.55696,
+    "micro_AP50": 0.21286,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.626,
+    "standard_AP50": 0.48704,
+    "anti_uav_AP50": 0.9175,
+    "cst_AP50": 0.43838,
+    "cst_micro_AP50": 0.33529,
+    "det_fly_AP50": 0.52935,
+    "bird_only_img_drone_alarm_pct@.25": 11.34020618556701,
+    "gt_birds_boxed_as_drone_pct@.25": 0.5531653349723418,
+    "empty_frame_drone_FP/img@.25": 0.7091412742382271,
+    "seconds": 127.9
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_single_frame_e20/best/test",
+   "track": "aerotrack",
+   "run": "repair_abl_single_frame_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.58385,
+    "mAP50-95": 0.2642,
+    "drone_AP50": 0.67395,
+    "bird_AP50": 0.49374,
+    "micro_AP50": 0.20446,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.60641,
+    "standard_AP50": 0.56412,
+    "anti_uav_AP50": 0.90124,
+    "cst_AP50": 0.46718,
+    "cst_micro_AP50": 0.40554,
+    "det_fly_AP50": 0.46882,
+    "bird_only_img_drone_alarm_pct@.25": 5.154639175257731,
+    "gt_birds_boxed_as_drone_pct@.25": 0.0,
+    "empty_frame_drone_FP/img@.25": 0.5891043397968606,
+    "seconds": 129.0
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_single_frame_e20/last/test",
+   "track": "aerotrack",
+   "run": "repair_abl_single_frame_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.58385,
+    "mAP50-95": 0.2642,
+    "drone_AP50": 0.67395,
+    "bird_AP50": 0.49374,
+    "micro_AP50": 0.20446,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.60641,
+    "standard_AP50": 0.56412,
+    "anti_uav_AP50": 0.90124,
+    "cst_AP50": 0.46718,
+    "cst_micro_AP50": 0.40554,
+    "det_fly_AP50": 0.46882,
+    "bird_only_img_drone_alarm_pct@.25": 5.154639175257731,
+    "gt_birds_boxed_as_drone_pct@.25": 0.0,
+    "empty_frame_drone_FP/img@.25": 0.5891043397968606,
+    "seconds": 127.2
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_stock_yolo11n_e20/best/test",
+   "track": "aerotrack",
+   "run": "repair_abl_stock_yolo11n_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.57783,
+    "mAP50-95": 0.26916,
+    "drone_AP50": 0.67378,
+    "bird_AP50": 0.48187,
+    "micro_AP50": 0.21466,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.586,
+    "standard_AP50": 0.6019,
+    "anti_uav_AP50": 0.90779,
+    "cst_AP50": 0.45079,
+    "cst_micro_AP50": 0.39871,
+    "det_fly_AP50": 0.51899,
+    "bird_only_img_drone_alarm_pct@.25": 1.0309278350515463,
+    "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+    "empty_frame_drone_FP/img@.25": 0.5475530932594644,
+    "seconds": 126.9
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_repair/repair_abl_stock_yolo11n_e20/last/test",
+   "track": "aerotrack",
+   "run": "repair_abl_stock_yolo11n_e20",
+   "split": "test",
+   "test": true,
+   "set_hash": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+   "metrics": {
+    "n_images": 11567,
+    "mAP50": 0.59126,
+    "mAP50-95": 0.27555,
+    "drone_AP50": 0.68372,
+    "bird_AP50": 0.4988,
+    "micro_AP50": 0.21312,
+    "micro_n_gt": 2722,
+    "small_AP50": 0.6061,
+    "standard_AP50": 0.61521,
+    "anti_uav_AP50": 0.91055,
+    "cst_AP50": 0.45608,
+    "cst_micro_AP50": 0.39963,
+    "det_fly_AP50": 0.53449,
+    "bird_only_img_drone_alarm_pct@.25": 2.0618556701030926,
+    "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+    "empty_frame_drone_FP/img@.25": 0.5503231763619575,
+    "seconds": 127.6
+   },
+   "source": "experiments/aerotrack_repair/reports/ablation_grid_e20.json"
+  },
+  {
+   "id": "aerotrack_v2/gen_temporal_fp_g4_full_e20/val",
+   "track": "aerotrack",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "8cff3a4bb0726cb4602149147656994310b726e7c0187435402a2fa077f1423f",
+   "metrics": {
+    "drone_AP50": 0.784375581360039,
+    "anti_uav_drone_AP50": 0.9805377935657177,
+    "cst_drone_AP50": 0.6006629977049048,
+    "det_fly_drone_AP50": 0.4897056449896574,
+    "cst_drone_micro_AP50": 0.46548595936061743,
+    "mAP50": 0.6625857444037022,
+    "cst_building_drone_AP50": 0.585217647722054,
+    "cst_building_n_images": 1553,
+    "cst_cn_mountains_drone_AP50": 0.7262462231920921,
+    "cst_cn_mountains_n_images": 1195,
+    "cst_cn_sky_drone_AP50": 0.7519212312722184,
+    "cst_cn_sky_n_images": 249,
+    "cst_jungle_drone_AP50": 0.9999999999999909,
+    "cst_jungle_n_images": 135,
+    "cst_urban-areas_drone_AP50": 0.24430392146752686,
+    "cst_urban-areas_n_images": 1332,
+    "cst_water_drone_AP50": 0.8856824644220833,
+    "cst_water_n_images": 536,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "d26641b2cedb77fffc547689eca0d75c62c5ffaeb4601472a9d2c2625766ea5f",
+   "source": "experiments/aerotrack_v2/reports/v2_results.json"
+  },
+  {
+   "id": "aerotrack_v2/v2_stock_s0_e20/val",
+   "track": "aerotrack",
+   "run": "v2_stock_s0_e20",
+   "split": "val",
+   "test": false,
+   "set_hash": "8cff3a4bb0726cb4602149147656994310b726e7c0187435402a2fa077f1423f",
+   "metrics": {
+    "drone_AP50": 0.7583507258245225,
+    "anti_uav_drone_AP50": 0.9763810525310054,
+    "cst_drone_AP50": 0.5672566631130314,
+    "det_fly_drone_AP50": 0.4704477120913306,
+    "cst_drone_micro_AP50": 0.45093873119555244,
+    "mAP50": 0.6421587854910054,
+    "cst_building_drone_AP50": 0.5458598224804784,
+    "cst_building_n_images": 1553,
+    "cst_cn_mountains_drone_AP50": 0.6008505223141056,
+    "cst_cn_mountains_n_images": 1195,
+    "cst_cn_sky_drone_AP50": 0.7438756764433756,
+    "cst_cn_sky_n_images": 249,
+    "cst_jungle_drone_AP50": 0.9998405485131059,
+    "cst_jungle_n_images": 135,
+    "cst_urban-areas_drone_AP50": 0.2879432460005945,
+    "cst_urban-areas_n_images": 1332,
+    "cst_water_drone_AP50": 0.9535269455763664,
+    "cst_water_n_images": 536,
+    "n_images": 11565
+   },
+   "checkpoint_sha256": "5bba24c8dece77a1657605b68d63bbdd29dc4f37200391649c9360269f6d7bc1",
+   "source": "experiments/aerotrack_v2/reports/v2_results.json"
+  },
+  {
+   "id": "deployment/gen_temporal_fp_g4_full_e20/torch_fp32",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 16.654301600152394,
+     "p50_ms": 18.517149997933302,
+     "p95_ms": 21.492429997670115,
+     "p99_ms": 24.14696400104731,
+     "max_ms": 28.25279999524355,
+     "fps_from_mean": 60.04454728926307
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 27.19583000005897,
+     "p50_ms": 28.962300002604024,
+     "p95_ms": 33.56866499962053,
+     "p99_ms": 36.3462029981747,
+     "max_ms": 40.631399999256246,
+     "fps_from_mean": 36.770343100314705
+    },
+    "parity": {
+     "drone_AP50": 0.799335074491039,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9757892064506202,
+     "cst_drone_AP50": 0.8292111674166713,
+     "det_fly_drone_AP50": 0.5050498777747452
+    }
+   },
+   "source": "experiments/deployment/reports/gate_gen_temporal_fp_g4_full_e20.json"
+  },
+  {
+   "id": "deployment/gen_temporal_fp_g4_full_e20/torch_bf16",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 21.90372620015114,
+     "p50_ms": 23.526349999883678,
+     "p95_ms": 28.2756450058514,
+     "p99_ms": 30.024762997054484,
+     "max_ms": 34.22799999680137,
+     "fps_from_mean": 45.65433254881992
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 22.749559999819642,
+     "p50_ms": 19.73829999769805,
+     "p95_ms": 30.484914995759027,
+     "p99_ms": 31.402507997336215,
+     "max_ms": 32.80559999984689,
+     "fps_from_mean": 43.95689411170713
+    },
+    "parity": {
+     "drone_AP50": 0.7961232796470663,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9755552871680488,
+     "cst_drone_AP50": 0.8236818263424365,
+     "det_fly_drone_AP50": 0.49864408258759607
+    }
+   },
+   "source": "experiments/deployment/reports/gate_gen_temporal_fp_g4_full_e20.json"
+  },
+  {
+   "id": "deployment/gen_temporal_fp_g4_full_e20/torch_fp16",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 16.22299860008934,
+     "p50_ms": 17.811199999414384,
+     "p95_ms": 21.036004995403342,
+     "p99_ms": 22.87294799723895,
+     "max_ms": 24.997300002723932,
+     "fps_from_mean": 61.64088555086807
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 17.15875894752619,
+     "p50_ms": 14.528099996823585,
+     "p95_ms": 23.204944998724386,
+     "p99_ms": 23.57555899819999,
+     "max_ms": 24.253399998997338,
+     "fps_from_mean": 58.279273172269356
+    },
+    "parity": {
+     "drone_AP50": 0.7945187260056522,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9758263549738764,
+     "cst_drone_AP50": 0.821819905682566,
+     "det_fly_drone_AP50": 0.49286912651408854
+    }
+   },
+   "source": "experiments/deployment/reports/gate_gen_temporal_fp_g4_full_e20.json"
+  },
+  {
+   "id": "deployment/gen_temporal_fp_g4_full_e20/ort_cuda",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 9.711592199804727,
+     "p50_ms": 9.710049998830073,
+     "p95_ms": 12.58097000099951,
+     "p99_ms": 14.407396001697633,
+     "max_ms": 16.05260000360431,
+     "fps_from_mean": 102.96972725235592
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 10.991934473809364,
+     "p50_ms": 9.834999997110572,
+     "p95_ms": 14.225634996182634,
+     "p99_ms": 14.837532998571987,
+     "max_ms": 16.71160000114469,
+     "fps_from_mean": 90.9757970612647
+    },
+    "parity": {
+     "drone_AP50": 0.7998286671983701,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9757818632790511,
+     "cst_drone_AP50": 0.8308014584499392,
+     "det_fly_drone_AP50": 0.5053131268540975
+    }
+   },
+   "source": "experiments/deployment/reports/gate_gen_temporal_fp_g4_full_e20.json"
+  },
+  {
+   "id": "deployment/gen_temporal_fp_g4_full_e20/trt_fp32",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 3.6006574000348337,
+     "p50_ms": 3.544050003256416,
+     "p95_ms": 4.526100003931788,
+     "p99_ms": 5.132730994228041,
+     "max_ms": 6.239599999389611,
+     "fps_from_mean": 277.72706172776276
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 7.27366421045812,
+     "p50_ms": 7.297400003153598,
+     "p95_ms": 8.845650005241623,
+     "p99_ms": 9.778157997643564,
+     "max_ms": 11.251399999309797,
+     "fps_from_mean": 137.4822883028053
+    },
+    "parity": {
+     "drone_AP50": 0.7989334798623648,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9757607128444301,
+     "cst_drone_AP50": 0.829189925735704,
+     "det_fly_drone_AP50": 0.503511596371935
+    }
+   },
+   "source": "experiments/deployment/reports/gate_gen_temporal_fp_g4_full_e20.json"
+  },
+  {
+   "id": "deployment/gen_temporal_fp_g4_full_e20/trt_fp16",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 3.6865735999308527,
+     "p50_ms": 3.488000002107583,
+     "p95_ms": 4.824974999428377,
+     "p99_ms": 5.48438900266774,
+     "max_ms": 6.605199996556621,
+     "fps_from_mean": 271.2545871914117
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 6.377280526354106,
+     "p50_ms": 5.929100003413623,
+     "p95_ms": 7.815494999886141,
+     "p99_ms": 8.32365899797878,
+     "max_ms": 8.503699995344505,
+     "fps_from_mean": 156.80665071381145
+    },
+    "parity": {
+     "drone_AP50": 0.7934523261348063,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.975715661677497,
+     "cst_drone_AP50": 0.8202970989634708,
+     "det_fly_drone_AP50": 0.4911065206505947
+    }
+   },
+   "source": "experiments/deployment/reports/gate_gen_temporal_fp_g4_full_e20.json"
+  },
+  {
+   "id": "deployment/v2_causal_g4_s0_e20/torch_fp32",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "v2_causal_g4_s0_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 9.015182999995886,
+     "p50_ms": 8.360700001503574,
+     "p95_ms": 13.654924998627394,
+     "p99_ms": 17.74438899825327,
+     "max_ms": 25.028199997905176,
+     "fps_from_mean": 110.92398235293241
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 24.81985368413964,
+     "p50_ms": 26.273499999661,
+     "p95_ms": 30.26821500279766,
+     "p99_ms": 33.05861099863247,
+     "max_ms": 36.48220000468427,
+     "fps_from_mean": 40.29032615284993
+    },
+    "parity": {
+     "drone_AP50": 0.7300149372731071,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9767961473261957,
+     "cst_drone_AP50": 0.656766619062926,
+     "det_fly_drone_AP50": 0.44982044592865333
+    }
+   },
+   "source": "experiments/deployment/reports/gate_v2_causal_g4_s0_e20.json"
+  },
+  {
+   "id": "deployment/v2_causal_g4_s0_e20/torch_bf16",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "v2_causal_g4_s0_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 12.67332940005872,
+     "p50_ms": 11.793999998189975,
+     "p95_ms": 19.652069995936472,
+     "p99_ms": 23.325786997593237,
+     "max_ms": 24.993999999423977,
+     "fps_from_mean": 78.90586352118069
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 20.23870000013726,
+     "p50_ms": 17.104099999414757,
+     "p95_ms": 28.52175000407442,
+     "p99_ms": 30.825428002644905,
+     "max_ms": 33.8499000063166,
+     "fps_from_mean": 49.41028820987603
+    },
+    "parity": {
+     "drone_AP50": 0.7274446882206564,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9754584645598504,
+     "cst_drone_AP50": 0.654588210566512,
+     "det_fly_drone_AP50": 0.44240703741349674
+    }
+   },
+   "source": "experiments/deployment/reports/gate_v2_causal_g4_s0_e20.json"
+  },
+  {
+   "id": "deployment/v2_causal_g4_s0_e20/torch_fp16",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "v2_causal_g4_s0_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 8.697624800202902,
+     "p50_ms": 7.924099998490419,
+     "p95_ms": 14.442350004173928,
+     "p99_ms": 16.44436900416622,
+     "max_ms": 17.35309999639867,
+     "fps_from_mean": 114.97391793408605
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 15.33030868415249,
+     "p50_ms": 12.94380000399542,
+     "p95_ms": 21.549255001446,
+     "p99_ms": 22.7525160035293,
+     "max_ms": 26.174600003287196,
+     "fps_from_mean": 65.23025860749544
+    },
+    "parity": {
+     "drone_AP50": 0.7287566947196252,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9766728607775639,
+     "cst_drone_AP50": 0.663673413108653,
+     "det_fly_drone_AP50": 0.43822435266498017
+    }
+   },
+   "source": "experiments/deployment/reports/gate_v2_causal_g4_s0_e20.json"
+  },
+  {
+   "id": "deployment/v2_causal_g4_s0_e20/ort_cuda",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "v2_causal_g4_s0_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 6.5929572001623455,
+     "p50_ms": 5.8233999989170115,
+     "p95_ms": 9.332400000857888,
+     "p99_ms": 9.726333998914924,
+     "max_ms": 9.887000000162516,
+     "fps_from_mean": 151.67700466421593
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 10.31068921049729,
+     "p50_ms": 9.407249999640044,
+     "p95_ms": 13.23577999828558,
+     "p99_ms": 14.21365500282262,
+     "max_ms": 15.125400001124945,
+     "fps_from_mean": 96.98672703488164
+    },
+    "parity": {
+     "drone_AP50": 0.7298251900238344,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9768013121125005,
+     "cst_drone_AP50": 0.6567776206211442,
+     "det_fly_drone_AP50": 0.44988145557167236
+    }
+   },
+   "source": "experiments/deployment/reports/gate_v2_causal_g4_s0_e20.json"
+  },
+  {
+   "id": "deployment/v2_causal_g4_s0_e20/trt_fp32",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "v2_causal_g4_s0_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 3.068646199986688,
+     "p50_ms": 3.110949997790158,
+     "p95_ms": 3.9869549993454707,
+     "p99_ms": 4.489160997472936,
+     "max_ms": 5.403600000136066,
+     "fps_from_mean": 325.8766031758038
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 6.343950262874531,
+     "p50_ms": 6.454799997300142,
+     "p95_ms": 7.535575002475525,
+     "p99_ms": 8.054355996791854,
+     "max_ms": 12.421100000210572,
+     "fps_from_mean": 157.63049181707902
+    },
+    "parity": {
+     "drone_AP50": 0.727921213594642,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9767316098066067,
+     "cst_drone_AP50": 0.6568297872007905,
+     "det_fly_drone_AP50": 0.4429229102415731
+    }
+   },
+   "source": "experiments/deployment/reports/gate_v2_causal_g4_s0_e20.json"
+  },
+  {
+   "id": "deployment/v2_causal_g4_s0_e20/trt_fp16",
+   "track": "aerotrack",
+   "kind": "deployment_gate",
+   "run": "v2_causal_g4_s0_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "available": true,
+    "latency": {
+     "n": 500,
+     "mean_ms": 3.0573339999245945,
+     "p50_ms": 3.203749998647254,
+     "p95_ms": 4.341305000343709,
+     "p99_ms": 4.661309994116891,
+     "max_ms": 4.860900000494439,
+     "fps_from_mean": 327.0823534571832
+    },
+    "e2e": {
+     "n": 380,
+     "mean_ms": 5.866582368176559,
+     "p50_ms": 5.425850002211519,
+     "p95_ms": 7.391244997779722,
+     "p99_ms": 7.994041999918409,
+     "max_ms": 10.657400001946371,
+     "fps_from_mean": 170.45699476146933
+    },
+    "parity": {
+     "drone_AP50": 0.7289761831765387,
+     "n_images": 3000,
+     "anti_uav_drone_AP50": 0.9766542457115597,
+     "cst_drone_AP50": 0.663115182747868,
+     "det_fly_drone_AP50": 0.4398270679137314
+    }
+   },
+   "source": "experiments/deployment/reports/gate_v2_causal_g4_s0_e20.json"
+  },
+  {
+   "id": "systems/track_gen_temporal_fp_g4_full_e20_data_unified",
+   "track": "aerotrack",
+   "kind": "sot_tracking",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "argmax": {
+     "anti_uav_IR": {
+      "n_sequences": 67,
+      "mSA": 80.56182977702794,
+      "located_rate": 0.9861395287439773,
+      "false_alarm_rate": 0.12510785159620363,
+      "n_invisible_frames": 1159,
+      "reappearances": 9,
+      "recover_frames_median": 1.0,
+      "recover_frames_mean": 3.5555555555555554
+     },
+     "anti_uav_RGB": {
+      "n_sequences": 67,
+      "mSA": 81.3988183064589,
+      "located_rate": 0.9790186996054212,
+      "false_alarm_rate": 0.23302967969438731,
+      "n_invisible_frames": 3403,
+      "reappearances": 21,
+      "recover_frames_median": 0.0,
+      "recover_frames_mean": 1.4761904761904763
+     },
+     "cst_IR": {
+      "n_sequences": 15,
+      "mSA": 72.11329000496852,
+      "located_rate": 0.8552051260713989,
+      "false_alarm_rate": 0.030100334448160536,
+      "n_invisible_frames": 2990,
+      "reappearances": 21,
+      "recover_frames_median": 3.0,
+      "recover_frames_mean": 18.80952380952381,
+      "frame_attr_SA": {
+       "CDB": {
+        "SA": 70.69395078391027,
+        "n_frames": 940
+       },
+       "DBC": {
+        "SA": 60.17427828148103,
+        "n_frames": 943
+       },
+       "FM": {
+        "SA": 73.25227494652394,
+        "n_frames": 1
+       },
+       "OC": {
+        "SA": 98.05356750338466,
+        "n_frames": 1011
+       },
+       "OV": {
+        "SA": 96.28297201053687,
+        "n_frames": 1982
+       },
+       "SV": {
+        "SA": 65.09787485177999,
+        "n_frames": 3129
+       },
+       "TC": {
+        "SA": 58.52825350327873,
+        "n_frames": 6600
+       },
+       "size_large": {
+        "SA": null,
+        "n_frames": 0
+       },
+       "size_normal": {
+        "SA": 67.03812440249857,
+        "n_frames": 11
+       },
+       "size_small": {
+        "SA": 66.86830727337059,
+        "n_frames": 9032
+       },
+       "size_tiny": {
+        "SA": 63.98960104811252,
+        "n_frames": 2974
+       }
+      }
+     }
+    },
+    "ste": {
+     "anti_uav_IR": {
+      "n_sequences": 67,
+      "mSA": 80.67341964796884,
+      "located_rate": 0.9867995511847403,
+      "false_alarm_rate": 0.1095772217428818,
+      "n_invisible_frames": 1159,
+      "reappearances": 9,
+      "recover_frames_median": 1.0,
+      "recover_frames_mean": 4.333333333333333
+     },
+     "anti_uav_RGB": {
+      "n_sequences": 67,
+      "mSA": 81.06601210149515,
+      "located_rate": 0.9736489963973237,
+      "false_alarm_rate": 0.2568322068762856,
+      "n_invisible_frames": 3403,
+      "reappearances": 21,
+      "recover_frames_median": 0.0,
+      "recover_frames_mean": 1.9523809523809523
+     },
+     "cst_IR": {
+      "n_sequences": 15,
+      "mSA": 73.95608636951269,
+      "located_rate": 0.8810019139552301,
+      "false_alarm_rate": 0.036120401337792644,
+      "n_invisible_frames": 2990,
+      "reappearances": 21,
+      "recover_frames_median": 1.0,
+      "recover_frames_mean": 15.619047619047619,
+      "frame_attr_SA": {
+       "CDB": {
+        "SA": 72.45566023310059,
+        "n_frames": 940
+       },
+       "DBC": {
+        "SA": 61.635285893034556,
+        "n_frames": 943
+       },
+       "FM": {
+        "SA": 73.25227494652394,
+        "n_frames": 1
+       },
+       "OC": {
+        "SA": 96.86662388320661,
+        "n_frames": 1011
+       },
+       "OV": {
+        "SA": 96.03070157663171,
+        "n_frames": 1982
+       },
+       "SV": {
+        "SA": 67.580081745364,
+        "n_frames": 3129
+       },
+       "TC": {
+        "SA": 61.79096534489154,
+        "n_frames": 6600
+       },
+       "size_large": {
+        "SA": null,
+        "n_frames": 0
+       },
+       "size_normal": {
+        "SA": 67.03812440249857,
+        "n_frames": 11
+       },
+       "size_small": {
+        "SA": 69.28646310444289,
+        "n_frames": 9032
+       },
+       "size_tiny": {
+        "SA": 66.02906203098709,
+        "n_frames": 2974
+       }
+      }
+     }
+    }
+   },
+   "source": "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.json"
+  },
+  {
+   "id": "aerotrack_temporal/tracking_gen_temporal_fp_g4_full_e20_data_unified",
+   "track": "C",
+   "kind": "tracking_identity_continuity",
+   "run": "gen_temporal_fp_g4_full_e20",
+   "split": "val",
+   "test": false,
+   "groups": [
+    "anti_uav_IR",
+    "anti_uav_RGB"
+   ],
+   "metrics": {
+    "bytetrack": {
+     "anti_uav_IR": {
+      "HOTA": 0.5737021254342742,
+      "IDF1": 0.60416,
+      "MOTA": 0.9257
+     },
+     "anti_uav_RGB": {
+      "HOTA": 0.5433684620705655,
+      "IDF1": 0.5615,
+      "MOTA": 0.85242
+     }
+    },
+    "sort": {
+     "anti_uav_IR": {
+      "HOTA": 0.5751035579910375,
+      "IDF1": 0.60543,
+      "MOTA": 0.9325
+     },
+     "anti_uav_RGB": {
+      "HOTA": 0.5438116439224601,
+      "IDF1": 0.54997,
+      "MOTA": 0.88208
+     }
+    },
+    "argmax@cf": {
+     "anti_uav_IR": {
+      "HOTA": 0.7887225932539729,
+      "IDF1": 0.98159,
+      "MOTA": 0.97699
+     },
+     "anti_uav_RGB": {
+      "HOTA": 0.7979475014203599,
+      "IDF1": 0.96925,
+      "MOTA": 0.95064
+     }
+    },
+    "ste@cf": {
+     "anti_uav_IR": {
+      "HOTA": 0.7888809731025068,
+      "IDF1": 0.98218,
+      "MOTA": 0.97709
+     },
+     "anti_uav_RGB": {
+      "HOTA": 0.795188773546467,
+      "IDF1": 0.96435,
+      "MOTA": 0.9404
+     }
+    },
+    "ste@cf/segments": {
+     "anti_uav_IR": {
+      "HOTA": 0.773928145368615,
+      "IDF1": 0.95079,
+      "MOTA": 0.97695
+     },
+     "anti_uav_RGB": {
+      "HOTA": 0.7665355210132044,
+      "IDF1": 0.90193,
+      "MOTA": 0.93992
+     }
+    }
+   },
+   "source": "experiments/aerotrack_temporal/reports/tracking_gen_temporal_fp_g4_full_e20_data_unified.json"
+  },
+  {
+   "id": "aerotrack_temporal/C1/antiuav_IR",
+   "track": "C",
+   "kind": "forecasting",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "cp": {
+     "ade_px": 38.28109206120143,
+     "nll": null
+    },
+    "cv": {
+     "ade_px": 74.35460609248675,
+     "nll": null
+    },
+    "mv2": {
+     "ade_px": 72.55932642491655,
+     "nll": null
+    },
+    "mv4": {
+     "ade_px": 71.21174598101003,
+     "nll": null
+    },
+    "mv8": {
+     "ade_px": 67.76317170254336,
+     "nll": null
+    },
+    "mv15": {
+     "ade_px": 59.824261177282246,
+     "nll": null
+    },
+    "ca": {
+     "ade_px": 385.8743467683038,
+     "nll": null
+    },
+    "dcv": {
+     "ade_px": 37.91617772626324,
+     "nll": null
+    },
+    "ou": {
+     "ade_px": 37.68508748793651,
+     "nll": null
+    },
+    "oudcv": {
+     "ade_px": 37.283013176334194,
+     "nll": null
+    },
+    "kalman": {
+     "ade_px": 38.284903485655,
+     "nll": 10.553595964963773
+    },
+    "c1_tfm_abs_s0": {
+     "ade_px": 33.74353298095015,
+     "nll": 8.941473514863265
+    },
+    "c1_tfm_abs_s1": {
+     "ade_px": 34.34589758297649,
+     "nll": 9.168068833793917
+    },
+    "c1_tfm_abs_s2": {
+     "ade_px": 33.74607405832402,
+     "nll": 9.012627204825996
+    },
+    "c1_tfm_noabs_s0": {
+     "ade_px": 35.05644115905694,
+     "nll": 9.064726010999621
+    },
+    "c1_tfm_noabs_s1": {
+     "ade_px": 34.89677171254501,
+     "nll": 9.166749662523223
+    },
+    "c1_tfm_noabs_s2": {
+     "ade_px": 34.76536512079729,
+     "nll": 9.062505503271979
+    },
+    "c1_tfm_aug_s0": {
+     "ade_px": 34.51901302281113,
+     "nll": 9.348397997253283
+    },
+    "c1_tfm_aug_s1": {
+     "ade_px": 37.17938470979499,
+     "nll": 10.063762894138838
+    },
+    "c1_tfm_aug_s2": {
+     "ade_px": 34.73131436144907,
+     "nll": 9.671693893884214
+    }
+   },
+   "source": "experiments/aerotrack_temporal/reports/C1_trajectory_forecasting.json"
+  },
+  {
+   "id": "aerotrack_temporal/C1/antiuav_RGB",
+   "track": "C",
+   "kind": "forecasting",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "cp": {
+     "ade_px": 101.26859819354738,
+     "nll": null
+    },
+    "cv": {
+     "ade_px": 197.07445853591213,
+     "nll": null
+    },
+    "mv2": {
+     "ade_px": 194.08530306533433,
+     "nll": null
+    },
+    "mv4": {
+     "ade_px": 190.6654995216243,
+     "nll": null
+    },
+    "mv8": {
+     "ade_px": 180.97991669295706,
+     "nll": null
+    },
+    "mv15": {
+     "ade_px": 159.52096080212272,
+     "nll": null
+    },
+    "ca": {
+     "ade_px": 1070.8469187590322,
+     "nll": null
+    },
+    "dcv": {
+     "ade_px": 100.81030630862756,
+     "nll": null
+    },
+    "ou": {
+     "ade_px": 98.21631725509219,
+     "nll": null
+    },
+    "oudcv": {
+     "ade_px": 97.65391772669285,
+     "nll": null
+    },
+    "kalman": {
+     "ade_px": 101.28672336545418,
+     "nll": 12.56867093194116
+    },
+    "c1_tfm_abs_s0": {
+     "ade_px": 89.10492809946945,
+     "nll": 11.130999291000844
+    },
+    "c1_tfm_abs_s1": {
+     "ade_px": 90.91208341243401,
+     "nll": 11.367786770292456
+    },
+    "c1_tfm_abs_s2": {
+     "ade_px": 89.0339030302192,
+     "nll": 11.218880087195128
+    },
+    "c1_tfm_noabs_s0": {
+     "ade_px": 92.69167587594858,
+     "nll": 11.43367786583468
+    },
+    "c1_tfm_noabs_s1": {
+     "ade_px": 92.08605919919509,
+     "nll": 11.366007681883003
+    },
+    "c1_tfm_noabs_s2": {
+     "ade_px": 91.83751751154514,
+     "nll": 11.306704346968608
+    },
+    "c1_tfm_aug_s0": {
+     "ade_px": 90.97529061533507,
+     "nll": 11.443337745225206
+    },
+    "c1_tfm_aug_s1": {
+     "ade_px": 98.29150063491714,
+     "nll": 12.283959935791012
+    },
+    "c1_tfm_aug_s2": {
+     "ade_px": 91.71464532592832,
+     "nll": 11.815477140236247
+    }
+   },
+   "source": "experiments/aerotrack_temporal/reports/C1_trajectory_forecasting.json"
+  },
+  {
+   "id": "aerotrack_temporal/C1/cst",
+   "track": "C",
+   "kind": "forecasting",
+   "split": "val",
+   "test": false,
+   "metrics": {
+    "cp": {
+     "ade_px": 20.671684088447453,
+     "nll": null
+    },
+    "cv": {
+     "ade_px": 26.042257974549905,
+     "nll": null
+    },
+    "mv2": {
+     "ade_px": 18.086515306566476,
+     "nll": null
+    },
+    "mv4": {
+     "ade_px": 13.328719103464117,
+     "nll": null
+    },
+    "mv8": {
+     "ade_px": 12.659189001443172,
+     "nll": null
+    },
+    "mv15": {
+     "ade_px": 13.379697003023583,
+     "nll": null
+    },
+    "ca": {
+     "ade_px": 335.04771117890726,
+     "nll": null
+    },
+    "dcv": {
+     "ade_px": 12.13102904277455,
+     "nll": null
+    },
+    "ou": {
+     "ade_px": 20.671684088447453,
+     "nll": null
+    },
+    "oudcv": {
+     "ade_px": 12.131029042774552,
+     "nll": null
+    },
+    "kalman": {
+     "ade_px": 12.17417386923135,
+     "nll": 8.196173494608852
+    },
+    "c1_tfm_abs_s0": {
+     "ade_px": 17.48363248005882,
+     "nll": 7.124221500759786
+    },
+    "c1_tfm_abs_s1": {
+     "ade_px": 17.578511521103774,
+     "nll": 7.22118082856511
+    },
+    "c1_tfm_abs_s2": {
+     "ade_px": 17.93697928828064,
+     "nll": 7.112819027104489
+    },
+    "c1_tfm_noabs_s0": {
+     "ade_px": 16.930658493350908,
+     "nll": 7.106905812178973
+    },
+    "c1_tfm_noabs_s1": {
+     "ade_px": 18.58705479679116,
+     "nll": 7.094593714743299
+    },
+    "c1_tfm_noabs_s2": {
+     "ade_px": 17.592773214200953,
+     "nll": 7.169249422846342
+    },
+    "c1_tfm_aug_s0": {
+     "ade_px": 16.60042585161924,
+     "nll": 6.942474886653584
+    },
+    "c1_tfm_aug_s1": {
+     "ade_px": 19.02237921862348,
+     "nll": 7.363344453925026
+    },
+    "c1_tfm_aug_s2": {
+     "ade_px": 16.295293293659153,
+     "nll": 7.052443929683214
+    }
+   },
+   "source": "experiments/aerotrack_temporal/reports/C1_trajectory_forecasting.json"
+  }
+ ],
+ "experiments": [
+  {
+   "id": "anti_uav/phase_A",
+   "track": "anti_uav",
+   "hypothesis": "DFSC on GlobalTrack reproduces the paper's Protocol II IR results",
+   "status": "completed",
+   "report": "experiments/anti_uav/reports/FINAL_PROTOCOL_II_IR_BENCHMARK_REPORT.md",
+   "interpretation": "val reproduced within 1 pt; test 4-5 pt above the paper; DFSC gain not observed (2 seeds); see artifacts/anti_uav_ledger.json claims"
+  },
+  {
+   "id": "anti_uav/H2_absence",
+   "track": "anti_uav",
+   "hypothesis": "absence handling explains the val discrepancy",
+   "status": "completed",
+   "interpretation": "explains val OV/OC/SV deficits; cannot explain the test surplus"
+  },
+  {
+   "id": "anti_uav/H4_native_scale",
+   "track": "anti_uav",
+   "hypothesis": "test-time input scale explains the test surplus",
+   "preregistration": "experiments/anti_uav/preregistration/H4_native_scale.json",
+   "status": "completed",
+   "verdict": "NOT_SUPPORTED_VAL_BREAKS",
+   "interpretation": "native evaluation no longer reproduces the paper's validation for at least one model",
+   "report": "experiments/anti_uav/reports/H4_native_scale.md"
+  },
+  {
+   "id": "aerotrack/repair_grid_e20",
+   "track": "aerotrack",
+   "hypothesis": "SPD-Conv / temporal stack / full recipe beat their ablations",
+   "status": "completed",
+   "report": "experiments/aerotrack_repair/reports/ablation_grid_e20.md",
+   "interpretation": "no factor credited; later shown to be an initialisation confound (generalization series D2)"
+  },
+  {
+   "id": "aerotrack/generalization",
+   "track": "aerotrack",
+   "hypothesis": "with function-preserving init, SPD-Conv / t\u00b11 / t\u00b14 beat stock on held-out folds",
+   "preregistration": "experiments/aerotrack_generalization/ledger.jsonl (P1)",
+   "status": "completed",
+   "verdict": {
+    "spd_fp": "not supported: (1) mean delta > 0.02, (3) bootstrap CI excludes 0",
+    "temporal_fp_g1": "not supported: (1) mean delta > 0.02, (3) bootstrap CI excludes 0",
+    "temporal_fp_g4": "supported"
+   },
+   "report": "experiments/aerotrack_generalization/reports/GEN_REPORT.md",
+   "interpretation": "temporal_fp_g4 supported (+0.045 CST drone AP50); spd_fp and temporal_fp_g1 not supported; TEST used once"
+  },
+  {
+   "id": "aerotrack/v2_complete_cst",
+   "track": "aerotrack",
+   "hypothesis": "causal temporal window keeps the temporal gain without look-ahead; complete CST data improves CST generalisation",
+   "preregistration": "experiments/aerotrack_v2/preregistration.json",
+   "status": "running",
+   "verdict": null,
+   "selected_candidate": null,
+   "report": "experiments/aerotrack_v2/reports/v2_decisions.md"
+  },
+  {
+   "id": "data/cst_completion",
+   "track": "data",
+   "hypothesis": "the local CST archive is truncated (z01-z07 of 11)",
+   "status": "completed",
+   "report": "experiments/cst_completion/reports/",
+   "interpretation": "84/120 train, 0/40 val, 60/60 test sequences held locally before completion"
+  },
+  {
+   "id": "anti_uav/H3_optimisation_regime",
+   "track": "anti_uav",
+   "hypothesis": "the paper's 8-GPU optimisation regime (accumulate 8, LR 0.02) explains the test surplus / reveals the DFSC gain",
+   "preregistration": "experiments/anti_uav/preregistration/H3_optimisation_regime.json",
+   "status": "completed",
+   "verdict": null,
+   "report": "experiments/anti_uav/reports/H3_optimisation_regime.md"
+  },
+  {
+   "id": "C/C1_trajectory_forecasting",
+   "track": "C",
+   "hypothesis": "a learned forecaster beats the per-domain TRAIN-best classical forecaster, with better-calibrated uncertainty; absolute image position helps on gimbal footage",
+   "preregistration": "experiments/aerotrack_temporal/preregistration/C1_trajectory_forecasting.json",
+   "status": "completed",
+   "verdict": {
+    "antiuav_IR": {
+     "H1_point": "SUPPORTED",
+     "H2_uncertainty": "NOT_SUPPORTED",
+     "H3_absolute_position": "NOT_SUPPORTED"
+    },
+    "antiuav_RGB": {
+     "H1_point": "SUPPORTED",
+     "H2_uncertainty": "SUPPORTED",
+     "H3_absolute_position": "NOT_SUPPORTED"
+    },
+    "cst": {
+     "H1_point": "LOSES",
+     "H2_uncertainty": "SUPPORTED",
+     "H3_absolute_position": "NOT_SUPPORTED"
+    }
+   },
+   "report": "experiments/aerotrack_temporal/reports/C1_trajectory_forecasting.md"
+  },
+  {
+   "id": "C/C2_causal_windows",
+   "track": "C",
+   "hypothesis": "a zero-look-ahead 3-frame window ([t-2g, t-g, t], g = 1, 2, 4, 8) beats the single-frame detector; gap dependence; cost vs the symmetric window",
+   "preregistration": "experiments/aerotrack_temporal/preregistration/C2_causal_windows.json",
+   "status": "registered (GPU queue: after v2, post-v2, H3)",
+   "verdict": null,
+   "report": "experiments/aerotrack_temporal/reports/C2_causal_windows.md"
+  },
+  {
+   "id": "C/C1b_forecasting_on_tracker_histories",
+   "track": "C",
+   "hypothesis": "on histories produced by the deployed tracker from a causal detector, a learned forecaster (clean / noise-augmented) beats the classical reference with calibrated uncertainty",
+   "preregistration": "experiments/aerotrack_temporal/preregistration/C1b_forecasting_on_tracker_histories.json",
+   "status": "registered (after C3)",
+   "report": "experiments/aerotrack_temporal/reports/C1b_forecasting_on_tracker_histories_<run>.md"
+  },
+  {
+   "id": "C/C3_tracking_motion_models",
+   "track": "C",
+   "hypothesis": "temporal state beats per-frame argmax; a domain / learned motion model beats the constant-velocity Kalman inside the same tracker",
+   "preregistration": "experiments/aerotrack_temporal/preregistration/C3_tracking_motion_models.json",
+   "status": "registered (after C1 VAL + causal caches)",
+   "report": "experiments/aerotrack_temporal/reports/C3_tracking_motion_models_<run>.md"
+  },
+  {
+   "id": "deployment/onnx_export",
+   "track": "aerotrack",
+   "hypothesis": "the selected detector (and SPD-Conv) export to ONNX with numerical parity",
+   "status": "completed",
+   "report": "experiments/deployment/reports/",
+   "interpretation": "both export with standard ops; parity at fp32 rounding"
+  }
+ ],
+ "test_ledgers": {
+  "anti_uav": {
+   "path": "experiments/anti_uav/reports/test_evaluation_ledger.jsonl",
+   "entries": 12
+  },
+  "aerotrack_repair": {
+   "path": "experiments/aerotrack_repair/reports/test_evaluation_ledger.jsonl",
+   "entries": 12
+  },
+  "aerotrack_generalization": {
+   "path": "experiments/aerotrack_generalization/reports/gen_test_ledger.jsonl",
+   "entries": 1
+  },
+  "aerotrack_v2": {
+   "path": "experiments/aerotrack_v2/reports/v2_test_ledger.jsonl",
+   "entries": 0
+  }
+ }
+}

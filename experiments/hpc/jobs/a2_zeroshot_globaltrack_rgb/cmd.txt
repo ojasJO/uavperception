@@ -1,0 +1,1 @@
+cd experiments/anti_uav/scripts && python zeroshot_globaltrack.py --converted /home/y_rajeshwar/aerotrack_server/checkpoints/globaltrack/globaltrack_qgrcnn_torchvision.pt --modality RGB --n 8 --out /home/y_rajeshwar/aerotrack_server/reports/hpc/a2_zeroshot_globaltrack_rgb.json

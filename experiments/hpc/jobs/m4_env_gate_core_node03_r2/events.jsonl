@@ -1,0 +1,4 @@
+{"t": "2026-10-06T01:38:42+0530", "job": "m4_env_gate_core_node03_r2", "kind": "submitted", "pbs_job": "92827.amritahpc", "host": "node03", "ncpus": 8, "mem_gb": 32, "walltime": "00:30:00", "gpu": 1, "stage": 0, "commit": "337927646540d10ef48e95517c1c29245d0520d9"}
+{"t": "2026-10-06T01:38:44+0530", "job": "m4_env_gate_core_node03_r2", "kind": "start", "pbs_job": "92827.amritahpc", "host": "node03"}
+{"t": "2026-10-06T01:38:53+0530", "job": "m4_env_gate_core_node03_r2", "kind": "run", "cmd": "python tools/hpc/env_gate.py --part core --out /home/y_rajeshwar/aerotrack_server/reports/hpc/m4_env_gate_core_node03_r2.json"}
+{"t": "2026-10-06T01:39:13+0530", "job": "m4_env_gate_core_node03_r2", "kind": "end", "rc": 1, "minutes": 0}

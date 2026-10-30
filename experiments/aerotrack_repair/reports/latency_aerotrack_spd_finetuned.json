@@ -1,0 +1,101 @@
+{
+  "forward_bf16": {
+    "mean_ms": 12.39,
+    "p50_ms": 11.09,
+    "p95_ms": 20.12
+  },
+  "forward_fp32": {
+    "mean_ms": 8.17,
+    "p50_ms": 7.57,
+    "p95_ms": 10.62
+  },
+  "preprocess_3frame_letterbox": {
+    "mean_ms": 5.76,
+    "p50_ms": 5.67,
+    "p95_ms": 6.36
+  },
+  "nms_cpu_demo_conf.25_iou.45": {
+    "mean_ms": 0.5,
+    "p50_ms": 0.51,
+    "p95_ms": 0.63
+  },
+  "nms_cpu_eval_conf.001_iou.7": {
+    "mean_ms": 11.39,
+    "p50_ms": 8.47,
+    "p95_ms": 16.98
+  },
+  "bytetrack_update": {
+    "mean_ms": 0.17,
+    "p50_ms": 0.16,
+    "p95_ms": 0.19
+  },
+  "end_to_end_fp32_no_tracker_ms": 14.43,
+  "end_to_end_fp32_no_tracker_fps": 69.3,
+  "end_to_end_bf16_no_tracker_ms": 18.65,
+  "end_to_end_bf16_no_tracker_fps": 53.6,
+  "structural_lookahead_latency_ms": 40.0,
+  "notes": [
+    "inference.py runs fp32 (no autocast): the fp32 row is the deployed configuration",
+    "the 9-channel stack needs frame t+1 before frame t is processed: add one source frame period",
+    "tracker row shown for reference only; see the tracker comparison for whether it is used"
+  ],
+  "_meta": {
+    "weights": "runs/aerotrack_spd_finetuned/weights/best.pt",
+    "weights_sha256": "72de9bba9fecf230b20e72ac7d9a17f51db9565f54665f45f0c71403dfbbf023",
+    "epoch": 23,
+    "iters": 200,
+    "gpu": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "git": {
+      "commit": "d1e468551f73ecb008d3d2b61c3606c47a641cf9",
+      "branch": "aerotrack-repair",
+      "dirty": true,
+      "dirty_files": [
+        "_model/track_eval.py",
+        "c_model/train.py",
+        "c_model/val.py",
+        "c_model/visual_demo.py",
+        "run_aerotrack.py",
+        "runs/aerotrack_spd_finetuned/eval_val/AP_by_size.png",
+        "runs/aerotrack_spd_finetuned/eval_val/PR_curve.png",
+        "runs/aerotrack_spd_finetuned/eval_val/evaluation_report.json",
+        "train.ipynb",
+        "anti_uav_research_paper.pdf",
+        "assets/lstm_trajectory_demo.gif",
+        "assets/lstm_trajectory_plot.png",
+        "assets/spd_conv_demo.gif",
+        "assets/temporal_motion_demo.gif",
+        "audit/",
+        "experiments/aerotrack_repair/",
+        "progress/AEROTRACK_REPAIR_PROGRESS.md",
+        "rev2.ipynb",
+        "runs/aerotrack_spd_finetuned/eval_repair_val_cap5000/",
+        "runs/aerotrack_spd_finetuned/tracking_repair/",
+        "runs/aerotrack_spd_v1/eval_repair_val_cap5000/",
+        "runs/audit/",
+        "runs/lstm_forecaster/"
+      ]
+    },
+    "env": {
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "torch": "2.13.0+cu130",
+      "cuda_available": true,
+      "cuda_version": "13.0",
+      "cudnn_version": 92000,
+      "cudnn_benchmark": true,
+      "torchvision": "0.28.0+cu130",
+      "numpy": "2.4.6",
+      "cv2": "5.0.0",
+      "PIL": "12.3.0",
+      "yaml": "6.0.3",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+        "total_memory_gb": 8.55,
+        "compute_capability": "12.0",
+        "driver": "592.19"
+      }
+    },
+    "command": "experiments/aerotrack_repair/scripts/latency_repair.py --weights runs/aerotrack_spd_finetuned/weights/best.pt",
+    "timestamp": "2026-09-21T16:34:55+0530"
+  }
+}

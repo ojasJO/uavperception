@@ -1,0 +1,122 @@
+{
+  "id": "C1_trajectory_forecasting",
+  "track": "C (AeroTrack temporal / tracking / prediction system; experiments/aerotrack_temporal) -- separate from Track A (Anti-UAV reproduction) and Track B (AeroTrack detector)",
+  "registered": "see the git commit that added this file (2026-10-05): after TRAIN-only tuning of the classical forecasters and TRAIN/dev smoke tests of the learned ones, before ANY forecaster (classical or learned) is evaluated on VAL in this experiment",
+  "class": "controlled experiment; fitting on TRAIN, recipe/architecture choices on a TRAIN-held-out dev split, ONE registered pass on VAL; TEST sealed (tc_data refuses it outside a final evaluation)",
+  "question": "For image-plane UAV trajectories (Anti-UAV IR, Anti-UAV RGB, CST complete release), does a learned forecaster beat strong classical forecasters, is its uncertainty better calibrated, and does the absolute image position (camera re-centring) carry forecastable information?",
+  "prior_evidence": [
+    "experiments/systems/reports/forecast_gen_temporal_fp_g4_full_e20_data_unified.md (VAL, tracker histories, symmetric-window detector): on Anti-UAV IR the Kalman forecast is no better than zero velocity (ADE 28.0 vs 27.8 px) and its 95 % ellipses cover 0.73 (0.35-0.44 on sudden jumps)",
+    "TRAIN-only probe (runs/aerotrack_temporal/c1/classical_tuning_probe0_pooled.json): pooled over domains, constant position (56.0 px) beats damped velocity (60.0), Kalman (60.0), constant velocity (104.9) and constant acceleration (625); the tuned damping / velocity noise sat on the grid edges, so the grids were widened and a mean-reversion (gimbal re-centring) baseline added before this registration"
+  ],
+  "data": {
+    "builder": "experiments/aerotrack_temporal/scripts/tc_data.py (official annotations; CST from data/cst_anti_uav_full = the complete release; per-sequence label sha256 in runs/aerotrack_temporal/_data/traj_<split>.json)",
+    "train": "TRAIN groups with md5(group) % 10 != 0 (group = Anti-UAV recording session with IR and RGB together, or CST sequence)",
+    "dev": "TRAIN groups with md5(group) % 10 == 0: learned models' epoch choice and the architecture choice only",
+    "val": "official VAL: Anti-UAV 67 IR + 67 RGB sequences, CST 40 sequences; read only by tc_c1.py --stage val",
+    "test": "sealed"
+  },
+  "samples": "anchor t: target visible at t and t-1 in the history source and visible at >= 1 of t+1..t+24; history L = 16 frames (t-15..t, causal, unit-tested), horizon H = 24 frames; every eligible anchor (stride 1); errors only on visible future frames; pixel units of each sequence's native frame",
+  "conditions": {
+    "C1a (this registration)": "oracle histories: the ground-truth trajectory up to t",
+    "C1b (registered separately, later)": "tracker histories: STE outputs on VAL detection caches of a CAUSAL detector (corpus-v2 stock or causal-window run), so that no history value depends on frames after t"
+  },
+  "forecasters": {
+    "classical": {
+      "set": [
+        "cp",
+        "cv",
+        "mv2",
+        "mv4",
+        "mv8",
+        "mv15",
+        "ca",
+        "dcv",
+        "ou",
+        "oudcv",
+        "kalman"
+      ],
+      "definitions": "experiments/aerotrack_temporal/scripts/tc_forecast.py docstring",
+      "tuning": "per domain on TRAIN: parameters of dcv / ou / oudcv / kalman by pooled TRAIN ADE over the grids in tc_c1.py; the Kalman covariance scale by TRAIN NLL (scaling Q and R together leaves the mean unchanged); a chosen value on a grid edge is flagged in classical_tuning.json",
+      "reference": "per domain, the classical forecaster with the lowest TRAIN ADE (recorded in runs/aerotrack_temporal/c1/classical_tuning.json before --stage val)"
+    },
+    "learned": {
+      "families": {
+        "mlp": "2 x 256 GELU",
+        "gru": "GRU 128 on per-frame features",
+        "tfm": "2-layer pre-norm transformer, d 64, 4 heads, anchor token pooled"
+      },
+      "inputs": "per history frame: visible flag, displacement to c_t, log size ratio (zeros when invisible), in percent of the image width; global: log target size; abs variant adds the anchor position in the image (c_t / (W, H) - 0.5)",
+      "outputs": "per horizon h = 1..24: mean displacement and log sigma per axis (diagonal Gaussian)",
+      "recipe": "Gaussian NLL on visible future points; AdamW lr 2e-3, wd 1e-4, batch 1024, 12 epochs, linear warm-up 5 % then cosine; gradient clip 5; the epoch with the lowest dev NLL is kept; CPU, deterministic seeds",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "training_pool": "one model for all three domains (no domain input)",
+      "arms": {
+        "main": "mlp / gru / tfm with abs inputs, clean histories, 3 seeds each",
+        "architecture_choice": "the family with the lowest seed-mean dev NLL = the C1 model (decided before --stage val)",
+        "noabs": "the C1 model's family without the absolute-position input, 3 seeds",
+        "aug": "the C1 model's family trained on augmented histories (Gaussian jitter sigma = 0.1 x target size on every visible history centre, dropout p 0.1 of frames before t-1), 3 seeds; a-priori noise model, no VAL statistics"
+      }
+    }
+  },
+  "metrics": {
+    "primary": "per domain pooled ADE (px) over h = 1..24 and visible future frames",
+    "probabilistic": "per domain mean Gaussian NLL (nats per 2-D point, pixel units); coverage of the 50 / 68 / 90 / 95 % ellipses; calibration error = mean |coverage - p| over p = 0.1..0.9",
+    "secondary": "FDE@24, error by horizon (1, 2, 4, 8, 12, 16, 24), median error, error / target size, miss rates (> 2 x target size, > 20 px)",
+    "inference": "paired cluster bootstrap over VAL sequences (B = 2000, seed 0) of the pooled-ADE difference and of the NLL difference, per domain"
+  },
+  "hypotheses": {
+    "H1_point": {
+      "comparison": "C1 model (abs, clean) vs the domain's classical reference, each seed separately",
+      "SUPPORTED": "in that domain, for all 3 seeds: relative ADE change <= -5 % and bootstrap CI upper bound < 0",
+      "LOSES": "for all 3 seeds: bootstrap CI lower bound > 0 (the learned forecaster is worse -- a reportable result)",
+      "NOT_SUPPORTED": "otherwise"
+    },
+    "H2_uncertainty": {
+      "comparison": "C1 model vs the TRAIN-calibrated Kalman, each seed",
+      "SUPPORTED": "for all 3 seeds: NLL lower with bootstrap CI upper bound < 0 AND calibration error lower than the Kalman's",
+      "LOSES": "for all 3 seeds: Kalman NLL lower with CI excluding 0",
+      "NOT_SUPPORTED": "otherwise"
+    },
+    "H3_absolute_position": {
+      "comparison": "C1 model family abs vs noabs, seed i vs seed i",
+      "a_priori_direction": "improvement on Anti-UAV (gimbal-following footage); no directional expectation on CST",
+      "SUPPORTED": "for all 3 seed pairs: relative ADE change <= -2 % and CI upper bound < 0",
+      "REVERSED": "for all 3 seed pairs: CI lower bound > 0",
+      "NOT_SUPPORTED": "otherwise"
+    },
+    "H4_augmentation": "descriptive only on oracle histories; decided in C1b on tracker histories"
+  },
+  "multiplicity": "3 domains x 3 hypotheses; each claim requires all three seeds; no pooled-over-domain claims; every arm and domain is reported whatever its outcome",
+  "adoption_rule": "the system adopts the C1 model as its forecaster only in domains where H1 is SUPPORTED and H2 is not LOSES; elsewhere it keeps the domain's classical reference (with the TRAIN-calibrated Kalman covariance if the reference has none). A learned forecaster that does not beat the classical one is not adopted.",
+  "component_gate": {
+    "measured_failure": "CV / Kalman forecasts are worse than constant position on gimbal footage and their 95 % ellipses under-cover (prior evidence above)",
+    "why": "image-plane motion = target motion + camera re-centring + re-slews; inertial models assume the first only",
+    "baseline": "per-domain TRAIN-tuned best of ten classical forecasters, incl. mean reversion to the image centre (ou, oudcv) and a calibrated Kalman",
+    "novelty": "modest: learned trajectory forecasters are standard; the measurable contribution is gimbal-aware, calibrated forecasting for tiny UAVs inside a deployable stack, which must beat a physics prior (ou) that encodes the same effect",
+    "cost": "< 0.5 M parameters; microseconds per target on CPU; minutes of CPU training",
+    "isolating_ablation": "abs vs noabs (H3); learned vs ou / oudcv (inside H1's reference set)",
+    "rtx5050": "trivially (runs on the CPU)",
+    "exportable": "MLP / GRU / transformer export to ONNX opset 18 (checked before adoption)",
+    "falsifier": "H1 NOT_SUPPORTED or LOSES in every domain"
+  },
+  "run_order": [
+    "tc_data.py (done before registration)",
+    "tc_c1.py --stage tune (TRAIN; classical_tuning.json)",
+    "tc_c1.py --stage train --variants abs (mlp / gru / tfm x 3 seeds), architecture choice on dev, then --variants noabs,aug for the chosen family",
+    "commit classical_tuning.json + learned_registry.json (checkpoint sha256) -> tc_c1.py --stage val (one pass) -> reports/C1_trajectory_forecasting.{json,md}"
+  ],
+  "compute": "CPU only (the GPU stays with the queued GPU campaigns)",
+  "outputs": "runs/aerotrack_temporal/c1/ ; experiments/aerotrack_temporal/reports/C1_trajectory_forecasting.{json,md}",
+  "amendments": [
+    {
+      "when": "2026-10-05, after the first per-domain TRAIN tuning and before any VAL access",
+      "what": "classical grids widened: look-back k adds 12 and 15 (15 = the whole 16-frame history; mv15 added), oudcv damping adds 0.98 / 1.0 and k 8 / 15, Kalman q_pos adds 1/160 / 1/80, covariance scale range 0.01-500 (was 0.05-20); natural limits (k 1 / 15, g 0 / 1, rho 1) are no longer flagged as edges",
+      "why": "on CST the TRAIN optimum sat on artificial edges (dcv k = 8, Kalman q_pos = 1/40, covariance scale = 20 = grid maximum), i.e. the classical references (and the Kalman calibration baseline for H2) would have been under-tuned; the anti-UAV optimum of the CV Kalman is its constant-position limit (q_pos max, q_vel and r_meas min), reported as such",
+      "first_tuning_kept": "runs/aerotrack_temporal/c1/classical_tuning_v1_grid.json"
+    }
+  ]
+}

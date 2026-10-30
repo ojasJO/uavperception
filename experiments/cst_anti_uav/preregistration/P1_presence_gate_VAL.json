@@ -1,0 +1,21 @@
+{
+  "id": "P1_presence_gate_VAL",
+  "registered": "see the git commit that added this file (2026-10-12): after the X1 / X2 TEST passes (whose results are known and are NOT used here), before any P1 computation",
+  "class": "EXPLORATORY follow-up on TRAIN / VAL only. No TEST access, no TEST claim. A TEST evaluation of any P1 outcome needs its own registration and an authorised TEST budget.",
+  "motivation_val_only": "explore/presence_v3_n__causal_g4_cst_s0_e20.json (CST VAL, X1's frozen cross-fitted STE): absent-frame false alarms are 10 % and wrong-object boxes 17 % of the frame-SA loss; their associated detection scores (median 0.52 / 0.51) are far below those of correct frames (median 0.78; AUC 0.88). The STE couples association and output through one threshold det_thr (grid max 0.3).",
+  "hypothesis": "an output (presence) gate decoupled from association -- the STE keeps its state and associations, but reports 'absent' when the associated detection score (or its short exponential average) is below tau_out -- raises cross-fitted CST VAL mSA",
+  "candidate": {
+    "tracker": "experiments/systems/scripts/ste.py unchanged; a wrapper replaces an output box by 'absent' when gate(score) < tau_out; init frame (given ground truth) always output",
+    "variants": {"instant": "gate = score of the frame's associated detection (0 when coasting)", "ema": "gate = 0.5 * score_t + 0.5 * gate_{t-1}, reset to 1 at init"},
+    "grid_tau_out": [0.0, 0.3, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7],
+    "unchanged": "detector, detections (cached), the STE settings of each VAL half = track_eval's cross-fitted params_per_half of the run"
+  },
+  "runs": ["v3_n__causal_g4_cst_s0_e20 (X1)", "v3_n__causal_g4_cst_s1_e20", "v3_n__causal_g4_cst_s2_e20"],
+  "selection": "cross-fitted over track_eval's two VAL halves: (variant, tau_out) chosen on one half by maximum mSA, applied to the other; tau_out = 0 (= the frozen STE) is in the grid, so 'no change' can be selected",
+  "primary_comparison": "per run: cross-fitted per-sequence SA of the gated STE minus the frozen STE's cross-fitted per-sequence SA (40 CST VAL sequences), sequence bootstrap B = 10000 (default_rng(0)), Wilcoxon alongside",
+  "acceptance_rule": "PROMISING iff the bootstrap CI lower bound > 0 for at least 2 of the 3 runs AND the 3-run mean delta > 0.3 SA; HARMFUL iff the CI upper bound < 0 for at least 2 runs; else NO_GAIN",
+  "secondary_descriptive": ["absent-frame false-alarm rate, visible-frame miss rate and located rate of both trackers (the trade-off, not one metric)", "chosen (variant, tau_out) per half and run"],
+  "caveat": "CST VAL shares source videos with CST TRAIN (paper section 3.3); VAL gains are optimistic and not a benchmark claim",
+  "compute": "CPU only, single process on the OMEN: 3 runs x 18 gate settings x 40 sequences re-using one STE pass per sequence and half (minutes)",
+  "outputs": "experiments/cst_anti_uav/reports/explore/P1_presence_gate_VAL.{json,md}"
+}

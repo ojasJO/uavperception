@@ -1,0 +1,359 @@
+{
+ "B": 1000,
+ "resampling": "sequences with replacement, stratified by dataset, paired across models",
+ "point": {
+  "repair_abl_baseline_ctrl_e20__best": {
+   "drone_AP50": 0.7790491241340316,
+   "micro_AP50": 0.2790205691787594,
+   "cst_AP50": 0.6373634574395829,
+   "cst_micro_AP50": 0.6187172610495448
+  },
+  "repair_abl_baseline_ctrl_e20__last": {
+   "drone_AP50": 0.8029863117273179,
+   "micro_AP50": 0.280411503010659,
+   "cst_AP50": 0.6676955674280085,
+   "cst_micro_AP50": 0.626934164567748
+  },
+  "repair_abl_no_spd_e20__best": {
+   "drone_AP50": 0.7975162455521765,
+   "micro_AP50": 0.2949067615728598,
+   "cst_AP50": 0.7098477108868402,
+   "cst_micro_AP50": 0.6579371162729966
+  },
+  "repair_abl_no_spd_e20__last": {
+   "drone_AP50": 0.8414681835375208,
+   "micro_AP50": 0.3587914350044108,
+   "cst_AP50": 0.7620905700794289,
+   "cst_micro_AP50": 0.7288347864847062
+  },
+  "repair_abl_single_frame_e20__best": {
+   "drone_AP50": 0.8064759389979247,
+   "micro_AP50": 0.2873313270988155,
+   "cst_AP50": 0.6824584846911115,
+   "cst_micro_AP50": 0.611914664642131
+  },
+  "repair_abl_single_frame_e20__last": {
+   "drone_AP50": 0.8064759389979247,
+   "micro_AP50": 0.2873313270988155,
+   "cst_AP50": 0.6824584846911115,
+   "cst_micro_AP50": 0.611914664642131
+  },
+  "repair_abl_stock_yolo11n_e20__best": {
+   "drone_AP50": 0.8337463421008479,
+   "micro_AP50": 0.3182382932173981,
+   "cst_AP50": 0.730514835706937,
+   "cst_micro_AP50": 0.7078428970286919
+  },
+  "repair_abl_stock_yolo11n_e20__last": {
+   "drone_AP50": 0.8379264102416547,
+   "micro_AP50": 0.3184254959443765,
+   "cst_AP50": 0.7326721094172297,
+   "cst_micro_AP50": 0.7091466873938579
+  }
+ },
+ "per_model_ci95": {
+  "repair_abl_baseline_ctrl_e20__best": {
+   "drone_AP50": [
+    0.7304605031962139,
+    0.8266378583685231
+   ],
+   "micro_AP50": [
+    0.18654725060097477,
+    0.3372234125472258
+   ],
+   "cst_AP50": [
+    0.5124748972618633,
+    0.7538008869321512
+   ],
+   "cst_micro_AP50": [
+    0.4460717637962972,
+    0.7265157568491933
+   ]
+  },
+  "repair_abl_baseline_ctrl_e20__last": {
+   "drone_AP50": [
+    0.7555653803715038,
+    0.8502335669502943
+   ],
+   "micro_AP50": [
+    0.19403229878320327,
+    0.3364386083858739
+   ],
+   "cst_AP50": [
+    0.5391467710071203,
+    0.7889045257005595
+   ],
+   "cst_micro_AP50": [
+    0.4569098936692873,
+    0.7423622184192574
+   ]
+  },
+  "repair_abl_no_spd_e20__best": {
+   "drone_AP50": [
+    0.7530328822194959,
+    0.8430558049795609
+   ],
+   "micro_AP50": [
+    0.21786751944771607,
+    0.3522619593726087
+   ],
+   "cst_AP50": [
+    0.5881550283753728,
+    0.8189122783305557
+   ],
+   "cst_micro_AP50": [
+    0.5099219284640034,
+    0.7629406392329573
+   ]
+  },
+  "repair_abl_no_spd_e20__last": {
+   "drone_AP50": [
+    0.8033547454180078,
+    0.8800069103041745
+   ],
+   "micro_AP50": [
+    0.27484756955979966,
+    0.41785765820462095
+   ],
+   "cst_AP50": [
+    0.6551539355881172,
+    0.8574911416495927
+   ],
+   "cst_micro_AP50": [
+    0.601305381654197,
+    0.8221015520474055
+   ]
+  },
+  "repair_abl_single_frame_e20__best": {
+   "drone_AP50": [
+    0.7596243627062017,
+    0.851977343236317
+   ],
+   "micro_AP50": [
+    0.2092342450090407,
+    0.3429432661535241
+   ],
+   "cst_AP50": [
+    0.554059785419856,
+    0.7999263952951171
+   ],
+   "cst_micro_AP50": [
+    0.45721446567133645,
+    0.727942915497201
+   ]
+  },
+  "repair_abl_single_frame_e20__last": {
+   "drone_AP50": [
+    0.7596243627062017,
+    0.851977343236317
+   ],
+   "micro_AP50": [
+    0.2092342450090407,
+    0.3429432661535241
+   ],
+   "cst_AP50": [
+    0.554059785419856,
+    0.7999263952951171
+   ],
+   "cst_micro_AP50": [
+    0.45721446567133645,
+    0.727942915497201
+   ]
+  },
+  "repair_abl_stock_yolo11n_e20__best": {
+   "drone_AP50": [
+    0.7874542575052075,
+    0.8765042468399071
+   ],
+   "micro_AP50": [
+    0.24339455671235247,
+    0.37858935355487755
+   ],
+   "cst_AP50": [
+    0.6034028320575446,
+    0.8385889509263041
+   ],
+   "cst_micro_AP50": [
+    0.5674803042539261,
+    0.8119666378834937
+   ]
+  },
+  "repair_abl_stock_yolo11n_e20__last": {
+   "drone_AP50": [
+    0.7925638997372704,
+    0.8807806912196353
+   ],
+   "micro_AP50": [
+    0.24124141105010746,
+    0.3760840595387712
+   ],
+   "cst_AP50": [
+    0.6067086926480294,
+    0.84012240795454
+   ],
+   "cst_micro_AP50": [
+    0.5693761247610375,
+    0.8141177595284323
+   ]
+  }
+ },
+ "comparisons": [
+  {
+   "factor": "SPD-Conv",
+   "full": "repair_abl_baseline_ctrl_e20__best",
+   "ablated": "repair_abl_no_spd_e20__best",
+   "metric": "micro_AP50",
+   "delta": -0.015886192394100385,
+   "ci95": [
+    -0.04502467038601517,
+    0.004846047570746001
+   ],
+   "p_delta_gt_0.02": 0.001,
+   "p_delta_lt_0": 0.924
+  },
+  {
+   "factor": "SPD-Conv",
+   "full": "repair_abl_baseline_ctrl_e20__last",
+   "ablated": "repair_abl_no_spd_e20__last",
+   "metric": "micro_AP50",
+   "delta": -0.07837993199375182,
+   "ci95": [
+    -0.11429077958129737,
+    -0.05030767484578265
+   ],
+   "p_delta_gt_0.02": 0.0,
+   "p_delta_lt_0": 1.0
+  },
+  {
+   "factor": "SPD-Conv",
+   "full": "repair_abl_baseline_ctrl_e20__best",
+   "ablated": "repair_abl_no_spd_e20__best",
+   "metric": "cst_micro_AP50",
+   "delta": -0.03921985522345173,
+   "ci95": [
+    -0.10405221309456204,
+    0.009068634386404402
+   ],
+   "p_delta_gt_0.02": 0.003,
+   "p_delta_lt_0": 0.94
+  },
+  {
+   "factor": "SPD-Conv",
+   "full": "repair_abl_baseline_ctrl_e20__last",
+   "ablated": "repair_abl_no_spd_e20__last",
+   "metric": "cst_micro_AP50",
+   "delta": -0.10190062191695826,
+   "ci95": [
+    -0.15514975649567372,
+    -0.0673967467889396
+   ],
+   "p_delta_gt_0.02": 0.0,
+   "p_delta_lt_0": 1.0
+  },
+  {
+   "factor": "temporal stack",
+   "full": "repair_abl_baseline_ctrl_e20__best",
+   "ablated": "repair_abl_single_frame_e20__best",
+   "metric": "cst_AP50",
+   "delta": -0.045095027251528585,
+   "ci95": [
+    -0.07977766242396933,
+    -0.004817749867894279
+   ],
+   "p_delta_gt_0.02": 0.0,
+   "p_delta_lt_0": 0.984
+  },
+  {
+   "factor": "temporal stack",
+   "full": "repair_abl_baseline_ctrl_e20__last",
+   "ablated": "repair_abl_single_frame_e20__last",
+   "metric": "cst_AP50",
+   "delta": -0.01476291726310297,
+   "ci95": [
+    -0.034056662571618254,
+    0.0084505740694419
+   ],
+   "p_delta_gt_0.02": 0.001,
+   "p_delta_lt_0": 0.889
+  },
+  {
+   "factor": "temporal stack",
+   "full": "repair_abl_baseline_ctrl_e20__best",
+   "ablated": "repair_abl_single_frame_e20__best",
+   "metric": "drone_AP50",
+   "delta": -0.02742681486389309,
+   "ci95": [
+    -0.040966967496524787,
+    -0.01336646542353472
+   ],
+   "p_delta_gt_0.02": 0.0,
+   "p_delta_lt_0": 1.0
+  },
+  {
+   "factor": "temporal stack",
+   "full": "repair_abl_baseline_ctrl_e20__last",
+   "ablated": "repair_abl_single_frame_e20__last",
+   "metric": "drone_AP50",
+   "delta": -0.0034896272706067544,
+   "ci95": [
+    -0.01217751996410854,
+    0.005650146786470578
+   ],
+   "p_delta_gt_0.02": 0.0,
+   "p_delta_lt_0": 0.761
+  },
+  {
+   "factor": "full recipe vs stock YOLO11n",
+   "full": "repair_abl_baseline_ctrl_e20__best",
+   "ablated": "repair_abl_stock_yolo11n_e20__best",
+   "metric": "drone_AP50",
+   "delta": -0.05469721796681626,
+   "ci95": [
+    -0.06824039122512573,
+    -0.040162925658363074
+   ],
+   "p_delta_gt_0.02": 0.0,
+   "p_delta_lt_0": 1.0
+  },
+  {
+   "factor": "full recipe vs stock YOLO11n",
+   "full": "repair_abl_baseline_ctrl_e20__last",
+   "ablated": "repair_abl_stock_yolo11n_e20__last",
+   "metric": "drone_AP50",
+   "delta": -0.03494009851433677,
+   "ci95": [
+    -0.04383823059844794,
+    -0.025107074795479727
+   ],
+   "p_delta_gt_0.02": 0.0,
+   "p_delta_lt_0": 1.0
+  },
+  {
+   "factor": "[exploratory] temporal within the stride layout",
+   "full": "repair_abl_no_spd_e20__best",
+   "ablated": "repair_abl_stock_yolo11n_e20__best",
+   "metric": "cst_AP50",
+   "delta": -0.020667124820096805,
+   "ci95": [
+    -0.04011562587682748,
+    -0.00529886449900156
+   ],
+   "p_delta_gt_0.02": 0.0,
+   "p_delta_lt_0": 0.993
+  },
+  {
+   "factor": "[exploratory] temporal within the stride layout",
+   "full": "repair_abl_no_spd_e20__last",
+   "ablated": "repair_abl_stock_yolo11n_e20__last",
+   "metric": "cst_AP50",
+   "delta": 0.02941846066219922,
+   "ci95": [
+    0.007744312391068095,
+    0.053470007586287414
+   ],
+   "p_delta_gt_0.02": 0.777,
+   "p_delta_lt_0": 0.003
+  }
+ ],
+ "caveat": "sampling noise over VAL sequences only; training/seed noise not included (one run per config)"
+}

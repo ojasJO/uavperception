@@ -1,0 +1,4 @@
+{"t": "2026-10-12T12:03:50+0530", "job": "x2_final_test", "kind": "submitted", "pbs_job": "93029.amritahpc", "host": "node02", "ncpus": 16, "mem_gb": 96, "walltime": "03:00:00", "gpu": 1, "stage": 1, "depend": "", "commit": "3ffee1131be8e177b8b36b6472fe29df8234cb26"}
+{"t": "2026-10-12T12:03:53+0530", "job": "x2_final_test", "kind": "start", "pbs_job": "93029.amritahpc", "host": "node02"}
+{"t": "2026-10-12T12:04:03+0530", "job": "x2_final_test", "kind": "run", "cmd": "export AEROTRACK_WORKERS=12; python -u experiments/cst_anti_uav/scripts/x2_final.py --final-eval"}
+{"t": "2026-10-12T13:18:39+0530", "job": "x2_final_test", "kind": "end", "rc": 0, "minutes": 74}

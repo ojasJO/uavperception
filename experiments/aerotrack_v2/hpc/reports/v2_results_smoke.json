@@ -1,0 +1,52 @@
+{
+ "rows": [
+  {
+   "run": "v2_causal_g4_s0_e2_smoke",
+   "set": "val",
+   "series": "aerotrack_v2",
+   "config": "causal_g4",
+   "seed": 0,
+   "window": "causal",
+   "gap": 4,
+   "train_corpus": "data_unified_v2",
+   "checkpoint": "last",
+   "epoch": 1,
+   "weights_sha256": "570efa6fe199957b8a12ab09a2c3c1e8f8f3aaa7c090e69df3d3fafe4c3cd628",
+   "set_identity": {
+    "set": "v2_val_cap50",
+    "n_images": 150,
+    "per_dataset": {
+     "anti_uav": 50,
+     "cst": 50,
+     "det_fly": 50
+    },
+    "n_sequences": 140,
+    "sha256": "c7619572373d31d126a78229b02f3818c95f8a19119d86c48d5b9553a34dd56c"
+   },
+   "metrics": {
+    "drone_AP50": 0.0,
+    "anti_uav_drone_AP50": 0.0,
+    "cst_drone_AP50": 0.0,
+    "det_fly_drone_AP50": 0.0,
+    "cst_drone_micro_AP50": 0.0,
+    "mAP50": 0.0,
+    "cst_building_drone_AP50": 0.0,
+    "cst_building_n_images": 16,
+    "cst_cn_mountains_drone_AP50": 0.0,
+    "cst_cn_mountains_n_images": 11,
+    "cst_cn_sky_drone_AP50": 0.0,
+    "cst_cn_sky_n_images": 3,
+    "cst_jungle_drone_AP50": 0.0,
+    "cst_jungle_n_images": 1,
+    "cst_urban-areas_drone_AP50": 0.0,
+    "cst_urban-areas_n_images": 13,
+    "cst_water_drone_AP50": 0.0,
+    "cst_water_n_images": 6,
+    "n_images": 150
+   },
+   "seconds": 21.7,
+   "timestamp": "2026-10-06T04:39:25+0530"
+  }
+ ],
+ "generated": "2026-10-06T04:39:25+0530"
+}

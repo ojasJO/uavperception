@@ -1,0 +1,6 @@
+{"kind": "waiting", "dir": "A:\\AEROTRACK_OMEN\\runs\\_chains\\post_v2_causal_caches", "t": "2026-10-05T11:10:27+0530"}
+{"kind": "go", "sentinel": "DONE", "t": "2026-10-05T11:12:27+0530"}
+{"kind": "start", "job": "consume_pause_flag", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -c import pathlib,time; d=pathlib.Path('experiments/anti_uav/runs/_h3_optimisation'); f=d/'PAUSE_AFTER_ARM'; f.exists() and f.rename(d/('PAUSE_AFTER_ARM.consumed_'+time.strftime('%Y%m%dT%H%M%S'))); print('pause flag consumed' if not f.exists() else 'flag still present')", "t": "2026-10-05T11:12:27+0530"}
+{"kind": "end", "job": "consume_pause_flag", "rc": 0, "minutes": 0.0, "t": "2026-10-05T11:12:27+0530"}
+{"kind": "start", "job": "run_h3", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u experiments/anti_uav/scripts/run_h3.py", "t": "2026-10-05T11:12:27+0530"}
+{"kind": "end", "job": "run_h3", "rc": 0, "minutes": 138.6, "t": "2026-10-05T13:31:01+0530"}

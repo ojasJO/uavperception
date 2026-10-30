@@ -1,0 +1,227 @@
+MODEL STATISTICS (both research directions)
+============================================================
+Compiled 2026-10-26 from the workspace registry and the run reports. Nothing here was re-run: every number is
+copied from a recorded result, and each section names its source file (paths relative to the repo root).
+
+  registry/models.json          every checkpoint identity (SHA-256, status, architecture, training data)
+  registry/experiments.jsonl    317 recorded results (training ledger, VAL / TEST evaluations, paper numbers)
+  model_benchmark/logs/         copies of all training / evaluation / job logs (index: model_benchmark/LOG_INDEX.csv)
+
+Metric glossary
+  mSA            mean state accuracy (%), the Anti-UAV / CST tracking score: IoU on frames where the target is
+                 visible, plus credit for correctly reporting "absent" when it is not. Higher is better.
+  success AUC    area under the IoU-threshold success curve (%).
+  precision@20   % of frames whose predicted centre is within 20 px of ground truth.
+  AP50 / mAP50   detection average precision at IoU 0.5 (0-1). "drone AP50" = drone class only.
+  ADE px         average displacement error of a trajectory forecast, in pixels. Lower is better.
+  VAL / TEST     validation split (used for every decision) / held-out test split (used only in registered passes).
+  last.pt        the checkpoint every evaluation uses (fixed before any run; fitness-selected best.pt is not used).
+
+
+1. HOW MANY MODELS
+------------------
+95 model runs in the registry (314 checkpoint files; most runs keep best.pt + last.pt, GlobalTrack keeps per-epoch).
+
+  Trained in this project ............ 87 runs  (78 full runs + 9 short smoke tests)
+  Deployment export packages .........  4      (ONNX / TensorRT builds of trained detectors)
+  External weights ...................  4      (YOLO11n, YOLO11s, GlobalTrack pretrained, paper's large-scale GlobalTrack)
+
+  family                                         runs   full / smoke   status
+  ---------------------------------------------  -----  ------------   ------------------------------
+  A  CST-only detectors (X1 / X2)                   6     6 / 0        registered (CST TEST passes)
+  A  v2 campaign detectors (temporal windows)      14    13 / 1        validated; causal_g4 selected
+  A  F1 standard-YOLO11n-layout detectors           2     2 / 0        experimental (F1 not supported)
+  A  generalization series (grouped folds)         21    13 / 8        legacy
+  A  repair ablation grid                           4     4 / 0        legacy (init-confounded)
+  A  Review 1/2 detectors (SPD v1, fine-tuned)      2     2 / 0        legacy
+  A  Track C forecasters, pooled (C1)              15    15 / 0        validated
+  A  Track C forecasters, domain-aware (C1c)       12    12 / 0        experimental
+  A  LSTM forecaster (Review 2)                     2     2 / 0        retired
+  B  GlobalTrack fine-tuned on Anti-UAV             9     9 / 0        registered (1 run invalid)
+                                                  ---
+                                                   87
+
+
+2. MODEL SPECIFICATIONS
+-----------------------
+Direction A detector (all AeroTrack detector families)
+  architecture     YOLO11n "as-built" (stride layout, c3k=True), 2,604,918 parameters, 6.7 GFLOPs (fused)
+  input            3 frames stacked into 9 channels, letterbox 640x640; window per run, e.g.
+                   causal_g4 = [t-8, t-4, t], stock = [t, t, t] (single frame), sym_g4 = [t-4, t, t+4]
+  output           detections -> STE single-target state estimator (Kalman-style) -> one box or "absent" per frame
+  framework        PyTorch + Ultralytics 8.4.115, 20 epochs, COCO-pretrained YOLO11n init
+  training data    corpus v2 = Anti-UAV + complete CST + Det-Fly (v2, F1); CST train only, 120 sequences (X1/X2);
+                   corpus v1 with truncated CST (generalization, repair, Review 1/2)
+  hardware         RTX 5050 Laptop GPU (OMEN) about 1.4-2.5 h per run; X1/X2, F1 and most v2 runs on Amrita HPC
+
+Direction A forecasters (Track C)
+  C1   MLP / GRU / transformer history encoder + per-horizon Gaussian head; 16 frames of history -> 24 future
+       frames (mean centre + variance per axis); PyTorch on CPU; Anti-UAV IR/RGB + CST training trajectories
+  C1c  transformer + Gaussian head; "domtok" = pooled with a camera token, "perdom" = one model per domain
+  LSTM retired Review-2 forecaster (c_model/lstm_forecaster.py)
+
+Direction B tracker (Anti-UAV 2021 paper reproduction)
+  architecture     GlobalTrack QG-RCNN, ResNet-50-FPN (torchvision re-implementation)
+  input            Anti-UAV IR (640x512) or RGB (1920x1080) frames + frame-0 ground-truth box
+  output           one box + score per frame (never reports "absent")
+  training         18 epochs, batch 2, LR 0.0025 (x0.1 at epochs 12 and 15), init from COCO Faster R-CNN,
+                   Anti-UAV train (160 sequences) of the run's modality; about 2.0-2.5 h per run on the RTX 5050
+  variants         normal = standard training; DFSC = the paper's proposed dynamic feature selection
+
+
+3. DIRECTION A - AEROTRACK RESULTS
+----------------------------------
+3.1 CST-only detectors X1 / X2 - CST benchmark TEST (60 sequences, IR)       [experiments/cst_anti_uav/reports/FINAL_REPORT.md]
+
+  model                                  seed   mSA     success AUC   prec@20   success@IoU0.5   VAL mSA*
+  -------------------------------------  ----   -----   -----------   -------   --------------   --------
+  causal_g4 (X1)   v3_n__causal_g4_cst     0    60.08      58.53        77.42        71.78          63.61
+  causal_g4 (X2)   v3_n__causal_g4_cst     1    60.26      58.72        77.61        72.27          65.08
+  causal_g4 (X2)   v3_n__causal_g4_cst     2    60.60      59.03        77.79        72.36          64.46
+  single frame     v3_n__ttt_cst           0    46.83      45.58        58.60        56.08          55.40
+  single frame     v3_n__ttt_cst           1    49.81      48.49        62.33        60.00          55.47
+  single frame     v3_n__ttt_cst           2    49.79      48.46        61.94        59.56          55.15
+  * VAL mSA is cross-fitted over two VAL halves.  All rows use the STE tracker (argmax tracker within ~1 SA).
+
+  Published trackers on the same CST TEST split (re-scored from their released predictions):
+    GlobalTrack 35.92 | SiamDT 35.84 | PrDiMP 29.76 | MixFormerV2 29.39 | AQATrack 27.60 | RomTrack 27.43
+    GRM 26.96 | DropTrack 26.89 | AiATrack 26.83 | SeqTrack 26.53 | Refocus-TIR 26.51 | Mixformer 26.46
+    OSTrack-256 26.34 | KYS 26.28 | Stark-ST 25.63 | HIPTrack 25.62 | OSTrack-384 25.25 | ARTrack-384 25.19
+    ARTrack-256 25.14 | Stark-S 23.27 | ToMP 22.84
+  -> X1 (60.08) is +24.2 mSA over the best published tracker (GlobalTrack 35.92). The temporal window adds about
+     +11.5 mSA over the single-frame control (seed means 60.31 vs 48.81).
+
+3.2 v2 campaign - temporal window sweep, corpus-v2 VAL, 2 seeds each       [experiments/aerotrack_temporal/reports/C2_causal_windows.md]
+
+  window       frames          look-ahead   CST drone AP50 (seed mean)   per seed          Anti-UAV AP50
+  ----------   -------------   ----------   --------------------------   ---------------   -------------
+  stock        [t, t, t]        none                0.5698                0.5636, 0.5761       0.9800
+  causal_g1    [t-2, t-1, t]    none                0.6020                0.6148, 0.5892       0.9796
+  causal_g2    [t-4, t-2, t]    none                0.6627                0.6705, 0.6550       0.9787
+  causal_g4    [t-8, t-4, t]    none                0.6808                0.6760, 0.6857       0.9810   <- selected
+  causal_g8    [t-16, t-8, t]   none                0.6791                0.6668, 0.6915       0.9823
+  sym_g4       [t-4, t, t+4]    4 frames            0.6735                0.6780, 0.6689       0.9803
+
+  Pre-registered decisions (experiments/aerotrack_v2/hpc/reports/v2_decisions.md):
+    C1 causal window vs single frame    +0.111 CST AP50  [+0.071, +0.155]   SUPPORTED
+    C2 symmetric window vs single frame +0.104           [+0.065, +0.146]   SUPPORTED
+    C3 causal vs symmetric              +0.007           [-0.000, +0.016]   NON-INFERIOR (look-ahead not needed)
+    C4 complete vs truncated CST data   +0.079           [+0.056, +0.102]   SUPPORTED
+
+  Full v2 VAL detection table, seed 0 / seed 1 (experiments/aerotrack_v2/hpc/reports/V2_REPORT.md):
+    run                      drone AP50   CST AP50   CST micro   Anti-UAV   Det-Fly   mAP50
+    v2_causal_g4_s0_e20        0.8054      0.6760     0.5551      0.9820     0.4447    0.6627
+    v2_causal_g4_s1_e20        0.8124      0.6857     0.5389      0.9800     0.4869    0.6628
+    v2_sym_g4_s0_e20           0.8030      0.6780     0.5515      0.9791     0.4400    0.6546
+    v2_sym_g4_s1_e20           0.8056      0.6689     0.5387      0.9814     0.4847    0.6446
+    v2_stock_s0_e20            0.7552      0.5636     0.4537      0.9787     0.4720    0.6337
+    v2_stock_s1_e20            0.7678      0.5761     0.4743      0.9814     0.5013    0.6529
+    omen_v2_stock_s0_e20       0.7579      0.5662     0.4498      0.9768     0.4708    0.6423
+    gen_temporal_fp_g4_full    0.7839      0.5992     0.4621      0.9801     0.4981    0.6611   (previous detector)
+
+3.3 CF final system (v2_causal_g4_s0_e20 last.pt + STE) - single registered TEST pass
+                                                                 [experiments/aerotrack_temporal/reports/TRACK_C_SUMMARY.md]
+  domain           sequences   mSA     located rate   false-alarm rate
+  Anti-UAV IR          91      68.89       87.0 %         21.6 %
+  Anti-UAV RGB         91      74.10       91.5 %         11.3 %
+  CST IR               60      56.55       67.1 %         33.1 %
+  VAL mSA (STE): Anti-UAV IR 80.53, Anti-UAV RGB 81.20, CST 63.02.
+
+3.4 Deployment speed - v2_causal_g4_s0_e20 on RTX 5050 Laptop GPU, batch 1, 640x640
+                                                                 [experiments/aerotrack_v2/hpc/reports/V2_REPORT.md]
+  backend      model p50 / p95 / p99 ms    end-to-end p50 / p99 ms   GPU memory   drone AP50
+  torch_fp32      8.36 / 13.65 / 17.74          26.27 / 33.06           126 MB      0.7300
+  torch_bf16     11.79 / 19.65 / 23.33          17.10 / 30.83            68 MB      0.7274
+  torch_fp16      7.92 / 14.44 / 16.44          12.94 / 22.75            54 MB      0.7288
+  ort_cuda        5.82 /  9.33 /  9.73           9.41 / 14.21            80 MB      0.7298
+  trt_fp32        3.11 /  3.99 /  4.49           6.45 /  8.05           106 MB      0.7279
+  trt_fp16        3.20 /  4.34 /  4.66           5.43 /  7.99           100 MB      0.7290
+  -> TensorRT fp16 runs end to end at about 5.4 ms per frame (~185 fps); accuracy is unchanged across backends.
+
+3.5 F1 - standard YOLO11n layout vs as-built network (corpus-v2 VAL)  [experiments/aerotrack_v3/reports/F1_standard_yolo11n.md]
+  v3_n_std__causal_g4_s0 vs v2_causal_g4_s0   CST AP50 +0.0044
+  v3_n_std__causal_g4_s1 vs v2_causal_g4_s1   CST AP50 -0.0243
+  seed mean -0.0100, 95 % CI [-0.026, +0.006] -> NOT SUPPORTED; X1 and CF stay on the as-built network.
+
+3.6 Generalization series (corpus v1, grouped DEV folds f0-f2)    [experiments/aerotrack_generalization/reports/GEN_REPORT.md]
+  run                          fold   VAL mAP50   VAL CST AP50   DEV mAP50   DEV CST AP50
+  gen_stock                     f0      0.6589       0.7382        0.6169       0.7264
+  gen_stock                     f1      0.6811       0.6952        0.6800       0.7384
+  gen_stock                     f2      0.6945       0.7363        0.6582       0.7124
+  gen_spd_fp (SPD-Conv)         f0      0.6820       0.7330        0.6424       0.7415
+  gen_spd_fp                    f1      0.6827       0.7270        0.6995       0.7549
+  gen_spd_fp                    f2      0.6771       0.7158        0.6551       0.7223
+  gen_temporal_fp_g1            f0      0.6639       0.7583        0.6067       0.7367
+  gen_temporal_fp_g1            f1      0.6569       0.7208        0.6776       0.7511
+  gen_temporal_fp_g1            f2      0.6700       0.7343        0.6393       0.7159
+  gen_temporal_fp_g4            f0      0.6974       0.8323        0.6434       0.7709
+  gen_temporal_fp_g4            f1      0.6892       0.7873        0.6934       0.7746
+  gen_temporal_fp_g4            f2      0.6760       0.8059        0.6145       0.7660
+  gen_temporal_fp_g4_full       all     0.7033       0.8106        TEST: mAP50 0.6327, CST AP50 0.5209 (single pass)
+  Verdict: temporal g4 window SUPPORTED (+0.045 CST); SPD-Conv and t+-1 window NOT supported.
+  (These VAL numbers use the truncated CST of corpus v1 and are not comparable with the corpus-v2 numbers in 3.2.)
+
+3.7 Repair ablation grid and Review 1/2 detectors (corpus v1)              [docs/AEROTRACK_REPAIR_REPORT.md]
+  run (last.pt)                     VAL mAP50   VAL mAP50-95   TEST mAP50   TEST mAP50-95
+  repair_abl_baseline_ctrl_e20        0.6409       0.3233        0.5693        0.2584
+  repair_abl_no_spd_e20               0.6996       0.3453        0.6124        0.2776
+  repair_abl_single_frame_e20         0.6533       0.3244        0.5838        0.2642
+  repair_abl_stock_yolo11n_e20        0.6790       0.3415        0.5913        0.2756
+  aerotrack_spd_v1 (Review 1)         0.6505       0.3188        0.5858        0.2629
+  aerotrack_spd_finetuned (Review 2)  0.7799       0.4158        0.7339        0.3774
+  The repair grid's verdicts were overturned by the generalization series (runs were not initialised alike).
+  Review 2's higher mAP50 comes from the bird class; its drone AP50 is 0.80 VAL / 0.68 TEST, CST AP50 0.39 TEST.
+
+3.8 Track C trajectory forecasters - CF TEST pass, average displacement error (px, lower is better)
+                                                                 [experiments/aerotrack_temporal/reports/TRACK_C_SUMMARY.md]
+  domain          Kalman    constant-pos   c1_tfm_abs s0 / s1 / s2       samples
+  Anti-UAV IR      43.58       43.58        38.94 / 39.78 / 39.02        75,530
+  Anti-UAV RGB    106.41      106.40        94.75 / 96.53 / 94.67        75,081
+  CST              51.17       47.52        (none adopted; classical dcv 49.91)   47,679
+  VAL findings: the pooled learned forecaster beats classical on Anti-UAV IR (-3.5 px) and RGB (-8.5 px) but LOSES
+  on CST (+5.4 px, negative transfer). Per-domain C1c removes that loss (about 17.6 -> 11.9 px) but does not beat
+  the classical dcv forecaster (CI spans 0), so CST uses no learned forecaster. LSTM (Review 2): retired, collapsed.
+
+
+4. DIRECTION B - ANTI-UAV 2021 PAPER REPRODUCTION (GlobalTrack)
+---------------------------------------------------------------
+                                          [experiments/anti_uav/runs/*/report.md, benchmark/, registry/experiments.jsonl]
+  run                                     modality   VAL mSA   TEST mSA   TEST prec@20   TEST success AUC   paper VAL / TEST
+  --------------------------------------  --------   -------   --------   ------------   ----------------   ----------------
+  normal_ir                                  IR       79.29     70.58        91.85            71.01          79.60 / 65.36
+  dfsc_ir                                    IR       79.26     70.29        91.65            70.72          80.09 / 66.04
+  phaseB_normal_ir_seed1                     IR       79.36     70.22        91.30            70.66               -
+  phaseB_dfsc_ir_seed1                       IR       79.43     70.14        91.36            70.58               -
+  phaseB_normal_ir_lr0.02_accum8             IR       79.16     70.40          -                -                 -
+  phaseB_dfsc_ir_lr0.02_accum8               IR       79.14     69.76          -                -                 -
+  normal_rgb                                 RGB      77.95     72.88          -                -            73.25 / 69.27
+  dfsc_rgb                                   RGB      78.02     72.90          -                -            73.73 / 69.84
+  phaseB_dfsc_ir_ism_cross (DFSC-all)        IR        -       INVALID: TEST scored on 54 of 91 sequences only
+  paper's large-scale GlobalTrack (external) RGB      70.50        -             -                -            67.28 / 66.24
+
+  Findings:
+  - VAL reproduces the paper (IR 79.3 vs 79.6 / 80.1); TEST comes out 3-5 mSA above the paper (IR +4.3 to +5.2, RGB +3.1 to +3.6).
+  - DFSC gives no gain over normal training (IR -0.3 TEST, RGB +0.02 TEST; seed-to-seed spread is up to about 0.4).
+  - Exploratory post-processing (not registered as headline): absence threshold raises VAL to 80.80 (normal IR);
+    native-scale inference (H4) lowers it to 75.26.
+
+
+5. TEST-SPLIT USAGE
+-------------------
+Every TEST number above comes from a registered single pass, run after the settings were frozen on VAL:
+  CST TEST              X1 pass + X2 pass (both used)       Anti-UAV TEST    paper-reproduction passes + CF pass
+  corpus v1 TEST        repair grid + generalization final  Track C TEST     CF pass
+All TEST splits in this repository have now been exposed; any new claim needs VAL only or a fresh dataset.
+
+
+6. LOG FOLDER GUIDE
+-------------------
+model_benchmark/logs/ copies every *.log, train_log*.txt, Ultralytics results.csv and metrics.jsonl found in
+the repo (excluding venv/, data/, datasets/ and the existing benchmark/ folder). The original paths are kept under
+three direction folders:
+  A_aerotrack/              323 files   detector training (results.csv per epoch), CST X1/X2, v2, Track C, deployment
+  B_antiuav_repro/           82 files   GlobalTrack training (train_log.txt, metrics.jsonl), evaluations, H3/H4
+  shared_infrastructure/     37 files   data pipeline, HPC probes / environment gates, sync and job-chain logs
+  .../hpc_backup/                       logs that exist only in the HPC recovery backup (artifacts/hpc_recovery_20261013)
+LOG_INDEX.csv lists all 563 files found: source path, copy location, size, SHA-256. 121 backup files byte-identical
+to a workspace log are indexed only ("identical to ..."). The originals were not moved or changed.

@@ -1,0 +1,88 @@
+{
+ "generated": "2026-10-06T23:35:36+0530",
+ "B": 1000,
+ "v2_selected": "causal_g4",
+ "pairs": [
+  [
+   "v3_n_std__causal_g4_s0_e20",
+   "v2_causal_g4_s0_e20"
+  ],
+  [
+   "v3_n_std__causal_g4_s1_e20",
+   "v2_causal_g4_s1_e20"
+  ]
+ ],
+ "per_seed_cst_delta": [
+  0.0043751320671345795,
+  -0.02431752837755241
+ ],
+ "mean_delta": -0.009971198155208916,
+ "ci95": [
+  -0.025910832226823746,
+  0.006426914140137612
+ ],
+ "anti_uav_mean_delta": -0.00021131143898783789,
+ "micro_mean_delta": null,
+ "per_category": {
+  "building": -0.017802529950116552,
+  "cn_mountains": 0.009135709267847736,
+  "cn_sky": -0.04516899043109501,
+  "jungle": -0.000363793595077877,
+  "urban-areas": 0.014838658729203591,
+  "water": 0.00997367368177976
+ },
+ "point": {
+  "v3_n_std__causal_g4_s1_e20": {
+   "cst": 0.6614088723038352,
+   "anti_uav": 0.9813620540435196,
+   "pooled": 0.8099473401260576,
+   "cst_building": 0.6108972426464145,
+   "cst_cn_mountains": 0.8462425964112464,
+   "cst_cn_sky": 0.7083341863143797,
+   "cst_jungle": 0.9992724128098351,
+   "cst_urban-areas": 0.3669929022495444,
+   "cst_water": 0.954909582801952
+  },
+  "v2_causal_g4_s1_e20": {
+   "cst": 0.6857264006813876,
+   "anti_uav": 0.9799545202546769,
+   "pooled": 0.8124275903665701,
+   "cst_building": 0.6433139936397689,
+   "cst_cn_mountains": 0.8398830980143617,
+   "cst_cn_sky": 0.7225837461087955,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.3635155615451634,
+   "cst_water": 0.9410897591057189
+  },
+  "v3_n_std__causal_g4_s0_e20": {
+   "cst": 0.6803335785596476,
+   "anti_uav": 0.9801255384422476,
+   "pooled": 0.8151975666650981,
+   "cst_building": 0.6350175062654472,
+   "cst_cn_mountains": 0.7994871096299457,
+   "cst_cn_sky": 0.7477552726521137,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.402854805283742,
+   "cst_water": 0.9569508172293344
+  },
+  "v2_causal_g4_s0_e20": {
+   "cst": 0.675958446492513,
+   "anti_uav": 0.981955695109066,
+   "pooled": 0.8053918464378987,
+   "cst_building": 0.6382058151723259,
+   "cst_cn_mountains": 0.787575189491135,
+   "cst_cn_sky": 0.823843693719888,
+   "cst_jungle": 0.9999999999999909,
+   "cst_urban-areas": 0.3766548285297158,
+   "cst_water": 0.950823293562008
+  }
+ },
+ "status": "NOT SUPPORTED",
+ "failed": [
+  "(1) mean delta -0.0100 <= 0.02",
+  "(2) not positive for every seed",
+  "(3) CI includes 0"
+ ],
+ "frame_set_sha256": "8cff3a4bb0726cb4602149147656994310b726e7c0187435402a2fa077f1423f",
+ "adoption": "X1 and CF stay on the as-built network"
+}

@@ -1,0 +1,129 @@
+# Project knowledge record (memory layer for future sessions)
+
+*Written 2026-10-05 from a repository-wide knowledge audit (triage of every document, ledger, registry and report; deep reads of the
+sources below; numerical cross-checks). Complements — does not repeat — `docs/AGENT_CONTEXT.md` (architecture map, scientific state)
+and `progress/RESEARCH_PROGRAM_PROGRESS.md` (live job table, decisions). Authority order when sources disagree: append-only ledgers
+and run metadata > generated reports (from JSON) > registrations > hand-written docs > memory notes.*
+
+Sources deep-read in this audit: `00_PROJECT_JOURNAL.md` (timeline, §5 problems, §6–7), `audit/AUDIT_REPORT.md` (§0, §1, §3–6),
+`experiments/aerotrack_generalization/REPORT_NOTES.md`, `experiments/anti_uav/reports/POST_SHUTDOWN_BENCHMARK_STATUS.md` (§1),
+`experiments/anti_uav/configs/deferred/README.md`, the four memory notes, every TEST ledger, `README.md` (generated), the run
+metadata of the baseline and candidate runs, the CST benchmark paper (arXiv:2507.23473), and the code paths of model building.
+
+## A. Newly discovered information
+
+1. **Every AeroTrack detector is built as a non-standard "YOLO11n" and loads only 64 % of the COCO weights** (verified 2026-10-05).
+   Our YAMLs (`c_model/yolo11-stride.yaml`, `-spd`, `-stride-p2fp`, `-stride-scale-s`) have flat multipliers and no scale letter;
+   Ultralytics 8.4.115 resolves `scale = ''` and `parse_model`'s `if scale in "mlx"` is True for the empty string, so every C3k2 is
+   built with `c3k=True` (YOLO11 m/l/x block, inner `C3k`) instead of YOLO11n's `Bottleneck`. 417 / 649 tensors of `yolo11n.pt`
+   (trained with Ultralytics 8.2.100) load (64.3 %; the C3k2 internals of layers 2, 4, 13, 16, 19 start random). The earlier memory
+   note ("cv1 1x1 vs 3x3") described a symptom; the 2026-09-19 audit had already counted "60 % of weights COCO-pretrained (388/649)"
+   without a cause. `c_model/yolo11-stride-std.yaml` (explicit `scales: n`) builds standard YOLO11n: 448 / 499 (89.8 %) load,
+   function-preserving init exact. Registered test: **F1** (`experiments/aerotrack_v3/preregistration_F1_standard_yolo11n.json`);
+   erratum: `experiments/aerotrack_v2/ERRATUM_architecture.md`; regression test pins both builds.
+2. **"stock YOLO11n" in every series is the as-built network on a single frame** (`yolo11-stride.yaml`, t,t,t; repair grid
+   `stock_yolo11n`, generalization `gen_stock_*`, v2 `stock`) — never the official 3-channel YOLO11n. All comparisons are therefore
+   internally consistent; the label is a misnomer.
+3. **CST benchmark protocol audit**: metric (Anti-UAV Eq. 1 SA), one-pass first-frame initialisation and the 60-sequence test split
+   match ours; its 20 trackers are trained on CST train only, ours on four domains -> the registered v2 comparison F2 is descriptive;
+   protocol-matched arm **X1** registered (CST-only training, one test pass, claim only if the CI lower bound > 35.92).
+4. **Track A TEST exposure is larger than "once"**: each seed-0 checkpoint (`normal_ir`, `dfsc_ir`) has been scored on TEST four
+   times, each a registered evaluation variant (Phase A 09-20; Phase B absence threshold 09-20; paper-benchmark re-run 09-23,
+   identical to <= 0.00016 pt; H4 native scale 10-05). Seed-1 checkpoints once each (unscoped, adopted with a provenance note).
+   Nothing was tuned on test, but the count must be stated in any final Track A report.
+5. **An interrupted, invalid Track A test pass exists outside the ledger**: the Table VI "DFSC-all" checkpoint
+   (`phaseB_dfsc_ir_ism_cross`, trained 18/18 epochs on 2026-09-23) was being scored on TEST when the machine crashed
+   (Kernel-Power event 41, 20:03–20:12); it stopped at 54 / 91 sequences, has no ledger line and no valid result. A future test pass
+   on that checkpoint would not be a clean first look; do not run it without an explicit decision.
+6. **AeroTrack TEST exposure (detection)**: 13 checkpoints, one pass each, all on the v1 TEST set (sha256 `37e944793773`): 12 from
+   the repair grid (2026-09-26) and 1 from the generalization series (2026-09-27). CST TEST labels are byte-identical in corpus v2, so
+   the v2 / X1 / CF passes will score the same CST test images again (each a new, pre-registered candidate).
+7. **All generalization-series models were still improving at epoch 20** (+0.005 to +0.010 mAP50 / epoch); the 40-epoch question was
+   skipped by the 24 h guard. Together with item 1, absolute detector accuracy is very likely below what the data supports.
+8. **Track A remaining gap**: the visible-modality rows and the paper's "large-scale" row need GlobalTrack's mmdetection checkpoint
+   (Google Drive id `1ouTJDS5NACLukd810uiKCvmLxJfga48x`) plus a key-by-key conversion into the torchvision QG-RCNN — not written;
+   the RGB configs in `experiments/anti_uav/configs/deferred/` are not faithful until then (licence of that checkpoint unchecked).
+9. **The top-level `README.md` (generated by the repair series, 2026-09-26) was stale** (grid verdicts later overturned); a
+   superseded-in-parts banner now comes from its template (`experiments/aerotrack_repair/README.template.md`). Rule: never hand-edit
+   it; re-render with `experiments/aerotrack_repair/scripts/render_report.py`.
+
+10. **Memory bug in Track C's trajectory loader (fixed 2026-10-05, 67e944c)**: `tc_data.load_split` re-decompressed the npz per
+    sequence and kept ~400 full copies alive (~6 GB RSS for 18 MB of data). It explains C1's 8.6 GB training process and the
+    16:00 near-miss (system commit 1.6 GB free beside the v2 GPU training; the agent stopped C1c to protect it). Values were
+    bit-identical, so no result changes. Rule: Windows commit is the binding resource on this machine; profile a new CPU job's
+    memory before running it beside a GPU training (`psutil` RSS / private bytes per step).
+
+## B. Historical context (what happened before the research program)
+
+| when | event | consequence today |
+|---|---|---|
+| 2026-08-03/04 | datasets acquired; CST delivered as z01–z07 only (believed: only the terminal `.zip` missing; actually z08–z10 + `.zip`, in a second Drive folder) | forward-streaming recovery: 163,275 files, CRC ok, truncated inside `train/urban-areas_1/000657.jpg`; the truncation was reported openly, its size underestimated -> fixed by corpus v2 (2026-10-05) |
+| 2026-08-04 | CST sequence-key collision bug (`building_66 -> 66`): 144 sequences -> 99 dirs | fixed (`cst_{split}_{seqname}`); key format still in use |
+| 2026-08-04 | `data_unified/{cst,det_fly}` images are **directory junctions** into `data/` | **never `rm -rf` / `rmtree` through them** (deletes the source data); corpus v2's CST images are junctions too |
+| 2026-08-04 | Anti-UAV only 9.6 % materialised, caught by `audit_check.py`; full decode 2 h 24 min | 593,802 Anti-UAV frames |
+| 2026-09-03 | move to the OMEN; standardisation without Pillow silently produced 162,187 empty CST labels | lesson: a dependency that degrades to `None` yields a plausible, wrong corpus |
+| 2026-09-03 | split leakage closed (sequence-level splits, T4 assert), letterbox, temporal augmentation, custom trainer, eval suite, "partial COCO transfer" | the partial transfer is item A1 |
+| 2026-09-1x | Review 2 (`rev2.ipynb`) rejected by the professor | audit 2026-09-19: different eval sets, unconverged v1, 8 simultaneous changes, unrun ablations, collapsed LSTM, ByteTrack < argmax, fabricated plot, cherry-picked test demo |
+| 2026-09-19..23 | Track A (Anti-UAV DFSC / GlobalTrack, arXiv:2101.08466) reproduced in torchvision; paper-benchmark suite; machine crash 09-23 | val reproduced, test above paper, DFSC gain absent; generated paper-benchmark reports were hand-corrected — **do not re-run `make_final_paper_report.py` / `make_benchmark_plan.py`** |
+| 2026-09-24..26 | repair series: one-command grid; DataLoader collate memory leak fixed; T6 fixed | grid credited no factor |
+| 2026-09-26..28 | generalization series: function-preserving init; t-4, t, t+4 supported (+0.045 CST); TEST used once | selected detector `gen_temporal_fp_g4_full_e20` |
+| 2026-10-04.. | research program (Tracks A / B / C), corpus v2, deployment gate, Track C | this record |
+
+## C. Reconciled facts
+
+- Anti-UAV TEST ledger: the live file (10 lines) begins with the 2026-09-23 snapshot in `benchmark/3_reports_and_ledger/` (8 lines)
+  exactly; lines 9–10 are H4. Append-only property holds.
+- TEST-ledger counts in the registry (`artifacts/experiment_registry.json`: anti_uav 10, aerotrack_repair 12, aerotrack_generalization 1,
+  aerotrack_v2 0) match the files.
+- The COCO-transfer fraction is consistent across the 2026-09-19 audit (388/649, SPD layout), the repair README (baseline_ctrl
+  388/649, no_spd 418/649) and the v2 smoke log (418/649 incl. the tiled stem); A1 supplies the cause.
+- The generalization `stock` and `temporal` runs share layout `stride`, init `function_preserving`, 20 epochs, batch 32 (run_meta).
+
+## D. Contradictions / unresolved questions
+
+| item | status |
+|---|---|
+| v2 registration "every configuration starts as COCO YOLO11n" vs the C3k build | resolved by erratum (registration untouched while the campaign runs) |
+| `transfer_pretrained` docstring "the C3k2 blocks transfer" | corrected 2026-10-05 |
+| does the standard YOLO11n change any verdict? | open: F1 (GPU queue after the causal caches) |
+| Track A test surplus (+4–5 mSA over the paper while val matches) | open: H3 (both arms trained; evaluations queued); H2 and H4 already exclude absence handling and test scale |
+| CST "unseen scene" failure (urban-areas 0.242) | attributed to the truncated archive (data defect); v2 campaign tests it on complete data |
+| C1 Anti-UAV IR H2 missed by a calibration error 0.001 above the Kalman's (seed 1) | rule applied as registered (NOT_SUPPORTED); NLL is lower for every seed |
+| repair-grid stock test 0.456 quoted next to the selected model's 0.521 | unpaired, different init: descriptive only (as GEN_REPORT says) |
+
+## E. Experiment knowledge
+
+| track | experiment | protocol / data | status | result | validity / interpretation |
+|---|---|---|---|---|---|
+| A | Phase A faithful reproduction (normal / DFSC, seed 0) | IR Protocol II, 18 epochs, 1 GPU x 2, LR 0.0025 | done | val 79.29 / 79.26 (paper 79.60 / 80.09); test 70.58 / 70.29 (paper 65.36 / 66.04) | val reproduced; test 4–5 pt above; four test passes per checkpoint (A4) |
+| A | seed 1 replication | same | done | val 79.36 / 79.43; test 70.22 / 70.14 | DFSC gain absent at both seeds |
+| A | H2 absence threshold | exploratory variant | done | val +1.5, test +0.29 / +0.42 | explains val attribute gaps, not the test surplus |
+| A | H4 native test scale | registered | done | NOT_SUPPORTED_VAL_BREAKS (val -4.0 / -4.6, test -4.4 / -4.3) | scale mismatch, not the cause |
+| A | H3 optimisation regime | registered; accumulate 8, LR 0.02 | arms trained, evals queued | — | decides H3a / H3b |
+| A | DFSC-all (Table VI) | unscoped | training done; test pass interrupted 54/91 | no valid result | see A5 |
+| A | visible rows, large-scale row | need GlobalTrack checkpoint conversion | blocked | — | remaining reproduction gap |
+| B | repair grid | 20 epochs, repair init | done | no factor credited | superseded (init confound) |
+| B | generalization series | 3 grouped dev folds, function-preserving init | done; TEST once | g4 +0.045 [+0.021, +0.072]; SPD, g1 not supported | valid relative to the as-built network (A1, A2) |
+| B | corpus v2 | complete CST, official val | done (verdict OK) | 120 / 40 / 60 | CST TEST labels identical to v1 |
+| B | v2 campaign | stock / sym_g4 / causal_g4 x seeds 0, 1 | running (attempt 2; attempt 1 failed in its smoke on the T2 rule) | — | headline Track B evidence |
+| B | F1 standard YOLO11n | n_std vs v2's runs, 2 seeds | registered, queued | — | decides X1 / CF network |
+| B | X1 CST protocol-matched | CST-only training, one test pass | registered, queued | — | the defensible CST benchmark claim |
+| B | deployment gate (v1 detector) | RTX 5050, batch 1 | done | TRT fp16 e2e p99 8.3 ms; look-ahead 160 ms | redone for v2 / CF candidates |
+| C | C1 trajectory forecasting (oracle histories) | TRAIN-tuned classical vs transformer (3 seeds), VAL once | done | learned SUPPORTED on Anti-UAV IR (-8 to -10 % ADE) and RGB (-7 to -9 %); LOSES on CST (+44 to +48 %); uncertainty SUPPORTED on RGB / CST | pooled model learns gimbal re-centring, wrong for CST |
+| C | tracking metrics on v1 cache (Anti-UAV) | development | done | single-target HOTA 0.79–0.80, IDF1 0.96–0.98; ByteTrack / SORT HOTA 0.54–0.58 | HOTA identical to TrackEval |
+| C | C1b, C2, C3, CF | registered | queued (C3 prep running) | — | the second model's benchmark |
+
+## F. Current execution state
+
+Authoritative: `progress/RESEARCH_PROGRAM_PROGRESS.md` (job table) and the sentinel directories it lists. Snapshot at writing: GPU =
+v2 campaign stage 1 (`v2_stock_s0_e20`, 4 loader workers, ~6.3 min / epoch); queue v2 -> post-v2 -> causal caches -> F1 -> X1 -> H3
+evaluations -> C2; CPU = C3 prep; C3 / C1b wait for the causal caches.
+
+## G. Research implications
+
+1. Track B verdicts (window, SPD, recipe) stand as relative findings on the as-built network; absolute numbers (and the CST benchmark
+   comparison) should be re-established on standard YOLO11n if F1 supports it — and on a training budget beyond 20 epochs.
+2. The CST headline comparison is only defensible through X1 (protocol-matched training data); F2 stays descriptive.
+3. Track A's discrepancy narrative must state the number of test passes per checkpoint and the interrupted DFSC-all pass.
+4. Track C: a learned forecaster is useful exactly where the camera re-centres the target (Anti-UAV); domain-pooled training hurts the
+   static-camera domain (CST). A domain-conditioned forecaster would be a new, separately registered question — not a re-analysis of C1.

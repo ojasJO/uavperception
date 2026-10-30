@@ -1,0 +1,1736 @@
+{
+  "generated": "2026-09-26T09:17:25+0530",
+  "git": {
+    "commit": "9268640bdbd29724cf304c6f199c1ef0243fed18",
+    "branch": "aerotrack-repair",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "b_pipeline/stacked_dataset.py",
+      "c_model/aerotrack_trainer.py",
+      "c_model/preflight.py",
+      "c_model/train.py",
+      "docs/AEROTRACK_REPAIR_REPORT.md",
+      "experiments/aerotrack_repair/README.template.md",
+      "experiments/aerotrack_repair/reports/detector_val_cap5000.json",
+      "experiments/aerotrack_repair/reports/detector_val_cap5000.md",
+      "experiments/aerotrack_repair/scripts/evaluate_detector.py",
+      "experiments/aerotrack_repair/scripts/render_report.py",
+      "experiments/aerotrack_repair/scripts/train_ablation.py",
+      "progress/AEROTRACK_REPAIR_PROGRESS.md",
+      "experiments/aerotrack_repair/reports/ablation_grid_e20.json",
+      "experiments/aerotrack_repair/reports/ablation_grid_e20.md",
+      "experiments/aerotrack_repair/reports/detector_test_cap5000.json",
+      "experiments/aerotrack_repair/reports/detector_test_cap5000.md",
+      "experiments/aerotrack_repair/reports/test_evaluation_ledger.jsonl",
+      "experiments/aerotrack_repair/scripts/grid_report.py",
+      "experiments/aerotrack_repair/scripts/run_grid.py",
+      "runs/aerotrack_spd_finetuned/eval_repair_test_cap5000/",
+      "runs/aerotrack_spd_v1/eval_repair_test_cap5000/",
+      "runs/repair_abl_baseline_ctrl_e20/",
+      "runs/repair_abl_no_spd_e20/",
+      "runs/repair_abl_single_frame_e20/",
+      "runs/repair_abl_stock_yolo11n_e20/",
+      "runs/repair_grid_e20/"
+    ]
+  },
+  "epochs": 20,
+  "workflow_complete": true,
+  "rule": {
+    "margin_ap50": 0.02,
+    "both_checkpoints": true,
+    "split": "val",
+    "targets": {
+      "SPD-Conv": [
+        "micro_AP50",
+        "cst_micro_AP50"
+      ],
+      "temporal stack": [
+        "cst_AP50",
+        "drone_AP50"
+      ],
+      "full recipe vs stock YOLO11n": [
+        "drone_AP50"
+      ]
+    }
+  },
+  "val_set": {
+    "split": "val",
+    "cap": 5000,
+    "datasets": [
+      "anti_uav",
+      "cst",
+      "det_fly"
+    ],
+    "n_images": 11565,
+    "per_dataset": {
+      "anti_uav": 5000,
+      "cst": 5000,
+      "det_fly": 1565
+    },
+    "n_sequences": 1714,
+    "sha256": "6fb41d44d45be8f1693d401b3bf248fc576378cec442279b708e637567ec5927",
+    "manifest_csv_sha256": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+    "splits_json_sha256": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586"
+  },
+  "test_set": {
+    "split": "test",
+    "cap": 5000,
+    "datasets": [
+      "anti_uav",
+      "cst",
+      "det_fly"
+    ],
+    "n_images": 11567,
+    "per_dataset": {
+      "anti_uav": 5000,
+      "cst": 5000,
+      "det_fly": 1567
+    },
+    "n_sequences": 1809,
+    "sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+    "manifest_csv_sha256": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+    "splits_json_sha256": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586"
+  },
+  "runs": {
+    "baseline_ctrl": {
+      "run": "repair_abl_baseline_ctrl_e20",
+      "change": "full recipe (SPD + 9-ch stack)",
+      "input": "t\u22121,t,t+1",
+      "status": "completed",
+      "epochs_completed": 20,
+      "epochs_planned": 20,
+      "launches": 2,
+      "launch_outcomes": [
+        {
+          "attempt": 1,
+          "timestamp_start": "2026-09-25T23:29:54+0530",
+          "timestamp_end": "2026-09-25T23:33:28+0530",
+          "seconds": 214.4,
+          "return_code": 1,
+          "resumed_from": null,
+          "epochs_on_disk_at_start": 0,
+          "epochs_on_disk_at_end": 0,
+          "workers_requested": 4,
+          "workers_used": 4,
+          "outcome": null
+        },
+        {
+          "attempt": 2,
+          "timestamp_start": "2026-09-25T23:48:29+0530",
+          "timestamp_end": "2026-09-26T01:53:32+0530",
+          "seconds": 7503.0,
+          "return_code": 0,
+          "resumed_from": null,
+          "epochs_on_disk_at_start": 0,
+          "epochs_on_disk_at_end": 20,
+          "workers_requested": 4,
+          "workers_used": 4,
+          "outcome": null
+        }
+      ],
+      "train_seconds_sum_of_launches": 7717.4,
+      "wall_clock_seconds_first_start_to_end": 8618.0,
+      "epoch_train_time_s_median": 344.15,
+      "model_cfg": "yolo11-spd.yaml",
+      "temporal_gap": 1,
+      "batch": 32,
+      "accumulate": 2,
+      "workers_used": 4,
+      "lr0": 0.001,
+      "lrf": 0.01,
+      "coco_transfer": {
+        "copied": 388,
+        "total": 649,
+        "pct": 59.8,
+        "tiled_stem": []
+      },
+      "best_pt": {
+        "path": "runs\\repair_abl_baseline_ctrl_e20\\weights\\best.pt",
+        "sha256": "815ebed2d9a2ebf70c11cdcc3411f963cb56ce52b16db9c48448cacbd0c541be",
+        "epoch": 13,
+        "fitness": 0.45778
+      },
+      "last_pt": {
+        "path": "runs\\repair_abl_baseline_ctrl_e20\\weights\\last.pt",
+        "sha256": "2e02ebc5ef232bfcd247f068da3549a4286f975be6e3ce24df292575997d90ed",
+        "epoch": 19
+      },
+      "final_epoch_val_capped": {
+        "mAP50": "0.69671",
+        "mAP50-95": "0.3494",
+        "micro_AP50": "0.32138",
+        "fitness": "0.44379"
+      }
+    },
+    "no_spd": {
+      "run": "repair_abl_no_spd_e20",
+      "change": "SPDConv \u2192 stride-2 Conv",
+      "input": "t\u22121,t,t+1",
+      "status": "completed",
+      "epochs_completed": 20,
+      "epochs_planned": 20,
+      "launches": 1,
+      "launch_outcomes": [
+        {
+          "attempt": 1,
+          "timestamp_start": "2026-09-26T02:07:21+0530",
+          "timestamp_end": "2026-09-26T04:34:39+0530",
+          "seconds": 8837.8,
+          "return_code": 0,
+          "resumed_from": null,
+          "epochs_on_disk_at_start": 0,
+          "epochs_on_disk_at_end": 20,
+          "workers_requested": 4,
+          "workers_used": 4,
+          "outcome": null
+        }
+      ],
+      "train_seconds_sum_of_launches": 8837.8,
+      "wall_clock_seconds_first_start_to_end": 8838.0,
+      "epoch_train_time_s_median": 382.3,
+      "model_cfg": "yolo11-stride.yaml",
+      "temporal_gap": 1,
+      "batch": 32,
+      "accumulate": 2,
+      "workers_used": 4,
+      "lr0": 0.001,
+      "lrf": 0.01,
+      "coco_transfer": {
+        "copied": 418,
+        "total": 649,
+        "pct": 64.4,
+        "tiled_stem": [
+          "model.0.conv.weight"
+        ]
+      },
+      "best_pt": {
+        "path": "runs\\repair_abl_no_spd_e20\\weights\\best.pt",
+        "sha256": "084f1dd8f0f6762023fb55dd7bb724e212ea3759872c01380abd89bd6bf6231f",
+        "epoch": 10,
+        "fitness": 0.49477
+      },
+      "last_pt": {
+        "path": "runs\\repair_abl_no_spd_e20\\weights\\last.pt",
+        "sha256": "2aebbb3bcb6c7f513a1c6897939a6e08c41eb9fcd2ab0a9ff4486e9e2181ee72",
+        "epoch": 19
+      },
+      "final_epoch_val_capped": {
+        "mAP50": "0.72385",
+        "mAP50-95": "0.3547",
+        "micro_AP50": "0.3836",
+        "fitness": "0.47556"
+      }
+    },
+    "single_frame": {
+      "run": "repair_abl_single_frame_e20",
+      "change": "t\u22121 = t = t+1 (no motion)",
+      "input": "t,t,t",
+      "status": "completed",
+      "epochs_completed": 20,
+      "epochs_planned": 20,
+      "launches": 1,
+      "launch_outcomes": [
+        {
+          "attempt": 1,
+          "timestamp_start": "2026-09-26T04:42:10+0530",
+          "timestamp_end": "2026-09-26T06:35:28+0530",
+          "seconds": 6797.4,
+          "return_code": 0,
+          "resumed_from": null,
+          "epochs_on_disk_at_start": 0,
+          "epochs_on_disk_at_end": 20,
+          "workers_requested": 4,
+          "workers_used": 4,
+          "outcome": null
+        }
+      ],
+      "train_seconds_sum_of_launches": 6797.4,
+      "wall_clock_seconds_first_start_to_end": 6798.0,
+      "epoch_train_time_s_median": 307.05,
+      "model_cfg": "yolo11-spd.yaml",
+      "temporal_gap": 0,
+      "batch": 32,
+      "accumulate": 2,
+      "workers_used": 4,
+      "lr0": 0.001,
+      "lrf": 0.01,
+      "coco_transfer": {
+        "copied": 388,
+        "total": 649,
+        "pct": 59.8,
+        "tiled_stem": []
+      },
+      "best_pt": {
+        "path": "runs\\repair_abl_single_frame_e20\\weights\\best.pt",
+        "sha256": "deccf5e701054c7c5dbd33009a5fc6f0974fdf6b6e9ae7348e3523d6f6f0537b",
+        "epoch": 19,
+        "fitness": 0.44365
+      },
+      "last_pt": {
+        "path": "runs\\repair_abl_single_frame_e20\\weights\\last.pt",
+        "sha256": "d6138d0944382c4e36da4696deb49c38efe7ecffcb2342570dd25fcf85f1debb",
+        "epoch": 19
+      },
+      "final_epoch_val_capped": {
+        "mAP50": "0.68428",
+        "mAP50-95": "0.33789",
+        "micro_AP50": "0.34314",
+        "fitness": "0.44365"
+      }
+    },
+    "stock_yolo11n": {
+      "run": "repair_abl_stock_yolo11n_e20",
+      "change": "stride-2 AND single frame (stock YOLO11n)",
+      "input": "t,t,t",
+      "status": "completed",
+      "epochs_completed": 20,
+      "epochs_planned": 20,
+      "launches": 1,
+      "launch_outcomes": [
+        {
+          "attempt": 1,
+          "timestamp_start": "2026-09-26T06:41:44+0530",
+          "timestamp_end": "2026-09-26T08:33:25+0530",
+          "seconds": 6700.8,
+          "return_code": 0,
+          "resumed_from": null,
+          "epochs_on_disk_at_start": 0,
+          "epochs_on_disk_at_end": 20,
+          "workers_requested": 4,
+          "workers_used": 4,
+          "outcome": null
+        }
+      ],
+      "train_seconds_sum_of_launches": 6700.8,
+      "wall_clock_seconds_first_start_to_end": 6701.0,
+      "epoch_train_time_s_median": 304.25,
+      "model_cfg": "yolo11-stride.yaml",
+      "temporal_gap": 0,
+      "batch": 32,
+      "accumulate": 2,
+      "workers_used": 4,
+      "lr0": 0.001,
+      "lrf": 0.01,
+      "coco_transfer": {
+        "copied": 418,
+        "total": 649,
+        "pct": 64.4,
+        "tiled_stem": [
+          "model.0.conv.weight"
+        ]
+      },
+      "best_pt": {
+        "path": "runs\\repair_abl_stock_yolo11n_e20\\weights\\best.pt",
+        "sha256": "07744c380618f73a7505c43cb8c76ba633acc3495dc8350b3f7d9f956a44f1fb",
+        "epoch": 18,
+        "fitness": 0.61604
+      },
+      "last_pt": {
+        "path": "runs\\repair_abl_stock_yolo11n_e20\\weights\\last.pt",
+        "sha256": "eda773e9c1f9e1818e3e70a0f55dde5ec9eac0f5e4839b58f6d992b9f7315c81",
+        "epoch": 19
+      },
+      "final_epoch_val_capped": {
+        "mAP50": "0.69928",
+        "mAP50-95": "0.35551",
+        "micro_AP50": "0.30314",
+        "fitness": "0.44031"
+      }
+    }
+  },
+  "args_json_keys_that_differ": [
+    "name"
+  ],
+  "common_config": {
+    "epochs": 20,
+    "iters_per_epoch": null,
+    "samples_per_epoch": 25000,
+    "warmup_epochs": 3.0,
+    "lr0": 0.001,
+    "lrf": 0.01,
+    "momentum": 0.937,
+    "weight_decay": 0.0005,
+    "optimizer": "AdamW",
+    "cos_lr": true,
+    "patience": 30,
+    "batch": 32,
+    "nbs": 64,
+    "workers": 4,
+    "prefetch_factor": 4,
+    "persistent_workers": true,
+    "train_inflight_gb": 1.0,
+    "val_inflight_gb": 0.35,
+    "val_workers": 2,
+    "imgsz": 640,
+    "amp": true,
+    "amp_dtype": "bf16",
+    "grad_clip": 10.0,
+    "max_consecutive_oom": 8,
+    "channels_last": true,
+    "cudnn_benchmark": true,
+    "compile": false,
+    "ema": true,
+    "ema_decay": 0.9999,
+    "ema_tau": 2000,
+    "val_interval": 1,
+    "val_max_images": 6000,
+    "val_conf": 0.005,
+    "val_iou": 0.7,
+    "val_max_det": 30,
+    "fitness_weights": [
+      0.3,
+      0.35,
+      0.35
+    ],
+    "class_weights": null,
+    "reset_epochs": false,
+    "project": "A:\\AEROTRACK_OMEN\\runs",
+    "name": "repair_abl_baseline_ctrl_e20",
+    "seed": 0,
+    "save_period": -1,
+    "log_interval": 50
+  },
+  "augmentation_defaults": {
+    "hflip": 0.5,
+    "scale": [
+      0.9,
+      1.25
+    ],
+    "translate": 0.1,
+    "brightness": 0.15,
+    "contrast": 0.15,
+    "copy_paste": 0.3,
+    "copy_paste_max": 3,
+    "noise_std": 0.0,
+    "gray_p": 0.0
+  },
+  "sampler_weights": {
+    "bird": 8.0,
+    "micro": 6.0,
+    "small": 3.0,
+    "standard": 1.0,
+    "empty": 0.5
+  },
+  "val_rows": [
+    {
+      "run": "aerotrack_spd_v1",
+      "checkpoint": "best",
+      "epoch": 15,
+      "weights_sha256": "8b75b17a0a4f",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.60743,
+      "mAP50-95": 0.29913,
+      "drone_AP50": 0.79246,
+      "bird_AP50": 0.4224,
+      "micro_AP50": 0.29292,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.62401,
+      "standard_AP50": 0.4932,
+      "anti_uav_AP50": 0.97748,
+      "cst_AP50": 0.6767,
+      "cst_micro_AP50": 0.6594,
+      "det_fly_AP50": 0.39739,
+      "bird_only_img_drone_alarm_pct@.25": 20.618556701030926,
+      "gt_birds_boxed_as_drone_pct@.25": 0.8036162732295329,
+      "empty_frame_drone_FP/img@.25": 0.07036423841059603,
+      "seconds": 214.6,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_v1\\eval_repair_val_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "aerotrack_spd_v1",
+      "checkpoint": "last",
+      "epoch": 21,
+      "weights_sha256": "4af997d300e5",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.65053,
+      "mAP50-95": 0.31879,
+      "drone_AP50": 0.82864,
+      "bird_AP50": 0.47242,
+      "micro_AP50": 0.32929,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.66018,
+      "standard_AP50": 0.5358,
+      "anti_uav_AP50": 0.98126,
+      "cst_AP50": 0.74203,
+      "cst_micro_AP50": 0.68459,
+      "det_fly_AP50": 0.44541,
+      "bird_only_img_drone_alarm_pct@.25": 3.0927835051546393,
+      "gt_birds_boxed_as_drone_pct@.25": 0.15067805123053743,
+      "empty_frame_drone_FP/img@.25": 0.07781456953642384,
+      "seconds": 212.0,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_v1\\eval_repair_val_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "aerotrack_spd_finetuned",
+      "checkpoint": "best",
+      "epoch": 23,
+      "weights_sha256": "72de9bba9fec",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.77875,
+      "mAP50-95": 0.41405,
+      "drone_AP50": 0.80269,
+      "bird_AP50": 0.7548,
+      "micro_AP50": 0.4078,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.79333,
+      "standard_AP50": 0.84535,
+      "anti_uav_AP50": 0.95343,
+      "cst_AP50": 0.63917,
+      "cst_micro_AP50": 0.60907,
+      "det_fly_AP50": 0.73875,
+      "bird_only_img_drone_alarm_pct@.25": 0.0,
+      "gt_birds_boxed_as_drone_pct@.25": 0.0,
+      "empty_frame_drone_FP/img@.25": 0.0869205298013245,
+      "seconds": 211.3,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\eval_repair_val_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "aerotrack_spd_finetuned",
+      "checkpoint": "last",
+      "epoch": 24,
+      "weights_sha256": "bcb6d557a40e",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.77993,
+      "mAP50-95": 0.41576,
+      "drone_AP50": 0.80493,
+      "bird_AP50": 0.75492,
+      "micro_AP50": 0.40623,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.79427,
+      "standard_AP50": 0.85465,
+      "anti_uav_AP50": 0.95332,
+      "cst_AP50": 0.64357,
+      "cst_micro_AP50": 0.61122,
+      "det_fly_AP50": 0.74067,
+      "bird_only_img_drone_alarm_pct@.25": 0.0,
+      "gt_birds_boxed_as_drone_pct@.25": 0.0,
+      "empty_frame_drone_FP/img@.25": 0.08774834437086093,
+      "seconds": 228.3,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\eval_repair_val_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_baseline_ctrl_e20",
+      "checkpoint": "best",
+      "epoch": 13,
+      "weights_sha256": "815ebed2d9a2",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.60516,
+      "mAP50-95": 0.30086,
+      "drone_AP50": 0.77905,
+      "bird_AP50": 0.43127,
+      "micro_AP50": 0.27902,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.61701,
+      "standard_AP50": 0.51046,
+      "anti_uav_AP50": 0.97515,
+      "cst_AP50": 0.63736,
+      "cst_micro_AP50": 0.61872,
+      "det_fly_AP50": 0.40949,
+      "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
+      "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
+      "empty_frame_drone_FP/img@.25": 0.12003311258278146,
+      "input": "t-1,t,t+1",
+      "seconds": 256.4,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\eval_repair_val_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_baseline_ctrl_e20",
+      "checkpoint": "last",
+      "epoch": 19,
+      "weights_sha256": "2e02ebc5ef23",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.64088,
+      "mAP50-95": 0.32329,
+      "drone_AP50": 0.80299,
+      "bird_AP50": 0.47878,
+      "micro_AP50": 0.28041,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.65848,
+      "standard_AP50": 0.6494,
+      "anti_uav_AP50": 0.98157,
+      "cst_AP50": 0.6677,
+      "cst_micro_AP50": 0.62693,
+      "det_fly_AP50": 0.46501,
+      "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
+      "gt_birds_boxed_as_drone_pct@.25": 0.050226017076845805,
+      "empty_frame_drone_FP/img@.25": 0.10182119205298014,
+      "input": "t-1,t,t+1",
+      "seconds": 114.0,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\eval_repair_val_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_no_spd_e20",
+      "checkpoint": "best",
+      "epoch": 10,
+      "weights_sha256": "084f1dd8f0f6",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.62786,
+      "mAP50-95": 0.30546,
+      "drone_AP50": 0.79752,
+      "bird_AP50": 0.4582,
+      "micro_AP50": 0.29491,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.6452,
+      "standard_AP50": 0.47802,
+      "anti_uav_AP50": 0.97184,
+      "cst_AP50": 0.70985,
+      "cst_micro_AP50": 0.65794,
+      "det_fly_AP50": 0.39077,
+      "bird_only_img_drone_alarm_pct@.25": 16.49484536082474,
+      "gt_birds_boxed_as_drone_pct@.25": 0.3515821195379206,
+      "empty_frame_drone_FP/img@.25": 0.24089403973509935,
+      "input": "t-1,t,t+1",
+      "seconds": 279.9,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\eval_repair_val_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_no_spd_e20",
+      "checkpoint": "last",
+      "epoch": 19,
+      "weights_sha256": "2aebbb3bcb6c",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.69956,
+      "mAP50-95": 0.34526,
+      "drone_AP50": 0.84147,
+      "bird_AP50": 0.55765,
+      "micro_AP50": 0.35879,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.71142,
+      "standard_AP50": 0.53873,
+      "anti_uav_AP50": 0.98145,
+      "cst_AP50": 0.76209,
+      "cst_micro_AP50": 0.72883,
+      "det_fly_AP50": 0.51627,
+      "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
+      "gt_birds_boxed_as_drone_pct@.25": 0.20090406830738322,
+      "empty_frame_drone_FP/img@.25": 0.1316225165562914,
+      "input": "t-1,t,t+1",
+      "seconds": 129.0,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\eval_repair_val_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_single_frame_e20",
+      "checkpoint": "best",
+      "epoch": 19,
+      "weights_sha256": "deccf5e70105",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.65333,
+      "mAP50-95": 0.32444,
+      "drone_AP50": 0.80648,
+      "bird_AP50": 0.50018,
+      "micro_AP50": 0.28733,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.67074,
+      "standard_AP50": 0.56089,
+      "anti_uav_AP50": 0.98074,
+      "cst_AP50": 0.68246,
+      "cst_micro_AP50": 0.61191,
+      "det_fly_AP50": 0.45589,
+      "bird_only_img_drone_alarm_pct@.25": 7.216494845360824,
+      "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
+      "empty_frame_drone_FP/img@.25": 0.07781456953642384,
+      "input": "t,t,t",
+      "seconds": 202.9,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\eval_repair_val_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_single_frame_e20",
+      "checkpoint": "last",
+      "epoch": 19,
+      "weights_sha256": "d6138d094438",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.65333,
+      "mAP50-95": 0.32444,
+      "drone_AP50": 0.80648,
+      "bird_AP50": 0.50018,
+      "micro_AP50": 0.28733,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.67074,
+      "standard_AP50": 0.56089,
+      "anti_uav_AP50": 0.98074,
+      "cst_AP50": 0.68246,
+      "cst_micro_AP50": 0.61191,
+      "det_fly_AP50": 0.45589,
+      "bird_only_img_drone_alarm_pct@.25": 7.216494845360824,
+      "gt_birds_boxed_as_drone_pct@.25": 0.10045203415369161,
+      "empty_frame_drone_FP/img@.25": 0.07781456953642384,
+      "input": "t,t,t",
+      "seconds": 128.3,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\eval_repair_val_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_stock_yolo11n_e20",
+      "checkpoint": "best",
+      "epoch": 18,
+      "weights_sha256": "07744c380618",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.67083,
+      "mAP50-95": 0.33714,
+      "drone_AP50": 0.83375,
+      "bird_AP50": 0.50792,
+      "micro_AP50": 0.31824,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.68373,
+      "standard_AP50": 0.58939,
+      "anti_uav_AP50": 0.98198,
+      "cst_AP50": 0.73051,
+      "cst_micro_AP50": 0.70784,
+      "det_fly_AP50": 0.52076,
+      "bird_only_img_drone_alarm_pct@.25": 1.0309278350515463,
+      "gt_birds_boxed_as_drone_pct@.25": 0.0,
+      "empty_frame_drone_FP/img@.25": 0.11672185430463576,
+      "input": "t,t,t",
+      "seconds": 187.7,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\eval_repair_val_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_stock_yolo11n_e20",
+      "checkpoint": "last",
+      "epoch": 19,
+      "weights_sha256": "eda773e9c1f9",
+      "set_sha256": "6fb41d44d45b",
+      "n_images": 11565,
+      "mAP50": 0.67898,
+      "mAP50-95": 0.34147,
+      "drone_AP50": 0.83793,
+      "bird_AP50": 0.52003,
+      "micro_AP50": 0.31843,
+      "micro_n_gt": 2008,
+      "small_AP50": 0.69374,
+      "standard_AP50": 0.58794,
+      "anti_uav_AP50": 0.98278,
+      "cst_AP50": 0.73267,
+      "cst_micro_AP50": 0.70915,
+      "det_fly_AP50": 0.53357,
+      "bird_only_img_drone_alarm_pct@.25": 3.0927835051546393,
+      "gt_birds_boxed_as_drone_pct@.25": 0.050226017076845805,
+      "empty_frame_drone_FP/img@.25": 0.11258278145695365,
+      "input": "t,t,t",
+      "seconds": 129.0,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\eval_repair_val_cap5000\\last\\evaluation_report.json"
+    }
+  ],
+  "verdicts": [
+    {
+      "factor": "SPD-Conv",
+      "ablation": "no_spd",
+      "metrics": [
+        {
+          "metric": "micro_AP50",
+          "evaluated": true,
+          "full_best": 0.27902,
+          "ablated_best": 0.29491,
+          "delta_best": -0.015890000000000015,
+          "full_last": 0.28041,
+          "ablated_last": 0.35879,
+          "delta_last": -0.07838,
+          "credited": false
+        },
+        {
+          "metric": "cst_micro_AP50",
+          "evaluated": true,
+          "full_best": 0.61872,
+          "ablated_best": 0.65794,
+          "delta_best": -0.03921999999999992,
+          "full_last": 0.62693,
+          "ablated_last": 0.72883,
+          "delta_last": -0.10189999999999999,
+          "credited": false
+        }
+      ]
+    },
+    {
+      "factor": "temporal stack",
+      "ablation": "single_frame",
+      "metrics": [
+        {
+          "metric": "cst_AP50",
+          "evaluated": true,
+          "full_best": 0.63736,
+          "ablated_best": 0.68246,
+          "delta_best": -0.04509999999999992,
+          "full_last": 0.6677,
+          "ablated_last": 0.68246,
+          "delta_last": -0.014759999999999995,
+          "credited": false
+        },
+        {
+          "metric": "drone_AP50",
+          "evaluated": true,
+          "full_best": 0.77905,
+          "ablated_best": 0.80648,
+          "delta_best": -0.027429999999999954,
+          "full_last": 0.80299,
+          "ablated_last": 0.80648,
+          "delta_last": -0.003489999999999993,
+          "credited": false
+        }
+      ]
+    },
+    {
+      "factor": "full recipe vs stock YOLO11n",
+      "ablation": "stock_yolo11n",
+      "metrics": [
+        {
+          "metric": "drone_AP50",
+          "evaluated": true,
+          "full_best": 0.77905,
+          "ablated_best": 0.83375,
+          "delta_best": -0.05469999999999997,
+          "full_last": 0.80299,
+          "ablated_last": 0.83793,
+          "delta_last": -0.03493999999999997,
+          "credited": false
+        }
+      ]
+    }
+  ],
+  "test_rows": [
+    {
+      "run": "aerotrack_spd_v1",
+      "checkpoint": "best",
+      "epoch": 15,
+      "weights_sha256": "8b75b17a0a4f",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.54906,
+      "mAP50-95": 0.24277,
+      "drone_AP50": 0.65898,
+      "bird_AP50": 0.43914,
+      "micro_AP50": 0.20486,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.56925,
+      "standard_AP50": 0.49968,
+      "anti_uav_AP50": 0.90149,
+      "cst_AP50": 0.44715,
+      "cst_micro_AP50": 0.39499,
+      "det_fly_AP50": 0.41449,
+      "bird_only_img_drone_alarm_pct@.25": 18.556701030927837,
+      "gt_birds_boxed_as_drone_pct@.25": 0.7375537799631223,
+      "empty_frame_drone_FP/img@.25": 0.2696214219759926,
+      "input": "t-1,t,t+1",
+      "seconds": 287.3,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_v1\\eval_repair_test_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "aerotrack_spd_v1",
+      "checkpoint": "last",
+      "epoch": 21,
+      "weights_sha256": "4af997d300e5",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.58583,
+      "mAP50-95": 0.26288,
+      "drone_AP50": 0.68611,
+      "bird_AP50": 0.48554,
+      "micro_AP50": 0.25428,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.60072,
+      "standard_AP50": 0.56301,
+      "anti_uav_AP50": 0.9064,
+      "cst_AP50": 0.48757,
+      "cst_micro_AP50": 0.42357,
+      "det_fly_AP50": 0.46127,
+      "bird_only_img_drone_alarm_pct@.25": 0.0,
+      "gt_birds_boxed_as_drone_pct@.25": 0.0,
+      "empty_frame_drone_FP/img@.25": 0.46999076638965837,
+      "input": "t-1,t,t+1",
+      "seconds": 128.1,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_v1\\eval_repair_test_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "aerotrack_spd_finetuned",
+      "checkpoint": "best",
+      "epoch": 23,
+      "weights_sha256": "72de9bba9fec",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.73441,
+      "mAP50-95": 0.37757,
+      "drone_AP50": 0.67446,
+      "bird_AP50": 0.79435,
+      "micro_AP50": 0.28623,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.7678,
+      "standard_AP50": 0.90791,
+      "anti_uav_AP50": 0.87869,
+      "cst_AP50": 0.39331,
+      "cst_micro_AP50": 0.31741,
+      "det_fly_AP50": 0.76847,
+      "bird_only_img_drone_alarm_pct@.25": 2.0618556701030926,
+      "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+      "empty_frame_drone_FP/img@.25": 0.43490304709141275,
+      "input": "t-1,t,t+1",
+      "seconds": 127.7,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\eval_repair_test_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "aerotrack_spd_finetuned",
+      "checkpoint": "last",
+      "epoch": 24,
+      "weights_sha256": "bcb6d557a40e",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.73394,
+      "mAP50-95": 0.37744,
+      "drone_AP50": 0.67546,
+      "bird_AP50": 0.79242,
+      "micro_AP50": 0.28771,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.76763,
+      "standard_AP50": 0.90728,
+      "anti_uav_AP50": 0.88159,
+      "cst_AP50": 0.3931,
+      "cst_micro_AP50": 0.31817,
+      "det_fly_AP50": 0.76679,
+      "bird_only_img_drone_alarm_pct@.25": 2.0618556701030926,
+      "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+      "empty_frame_drone_FP/img@.25": 0.4376731301939058,
+      "input": "t-1,t,t+1",
+      "seconds": 127.7,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\eval_repair_test_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_baseline_ctrl_e20",
+      "checkpoint": "best",
+      "epoch": 13,
+      "weights_sha256": "815ebed2d9a2",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.53957,
+      "mAP50-95": 0.24022,
+      "drone_AP50": 0.65574,
+      "bird_AP50": 0.42339,
+      "micro_AP50": 0.17257,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.56362,
+      "standard_AP50": 0.54289,
+      "anti_uav_AP50": 0.90117,
+      "cst_AP50": 0.4245,
+      "cst_micro_AP50": 0.33986,
+      "det_fly_AP50": 0.40168,
+      "bird_only_img_drone_alarm_pct@.25": 5.154639175257731,
+      "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+      "empty_frame_drone_FP/img@.25": 0.3878116343490305,
+      "input": "t-1,t,t+1",
+      "seconds": 127.5,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\eval_repair_test_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_baseline_ctrl_e20",
+      "checkpoint": "last",
+      "epoch": 19,
+      "weights_sha256": "2e02ebc5ef23",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.56929,
+      "mAP50-95": 0.25839,
+      "drone_AP50": 0.66066,
+      "bird_AP50": 0.47792,
+      "micro_AP50": 0.16406,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.59819,
+      "standard_AP50": 0.62502,
+      "anti_uav_AP50": 0.90872,
+      "cst_AP50": 0.41176,
+      "cst_micro_AP50": 0.32902,
+      "det_fly_AP50": 0.46916,
+      "bird_only_img_drone_alarm_pct@.25": 4.123711340206185,
+      "gt_birds_boxed_as_drone_pct@.25": 0.0,
+      "empty_frame_drone_FP/img@.25": 0.6361957525392429,
+      "input": "t-1,t,t+1",
+      "seconds": 127.6,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\eval_repair_test_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_no_spd_e20",
+      "checkpoint": "best",
+      "epoch": 10,
+      "weights_sha256": "084f1dd8f0f6",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.55672,
+      "mAP50-95": 0.25146,
+      "drone_AP50": 0.65276,
+      "bird_AP50": 0.46068,
+      "micro_AP50": 0.20333,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.57232,
+      "standard_AP50": 0.51112,
+      "anti_uav_AP50": 0.89916,
+      "cst_AP50": 0.43652,
+      "cst_micro_AP50": 0.3422,
+      "det_fly_AP50": 0.40264,
+      "bird_only_img_drone_alarm_pct@.25": 15.463917525773196,
+      "gt_birds_boxed_as_drone_pct@.25": 0.6146281499692686,
+      "empty_frame_drone_FP/img@.25": 0.6952908587257618,
+      "input": "t-1,t,t+1",
+      "seconds": 127.9,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\eval_repair_test_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_no_spd_e20",
+      "checkpoint": "last",
+      "epoch": 19,
+      "weights_sha256": "2aebbb3bcb6c",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.61244,
+      "mAP50-95": 0.2776,
+      "drone_AP50": 0.66793,
+      "bird_AP50": 0.55696,
+      "micro_AP50": 0.21286,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.626,
+      "standard_AP50": 0.48704,
+      "anti_uav_AP50": 0.9175,
+      "cst_AP50": 0.43838,
+      "cst_micro_AP50": 0.33529,
+      "det_fly_AP50": 0.52935,
+      "bird_only_img_drone_alarm_pct@.25": 11.34020618556701,
+      "gt_birds_boxed_as_drone_pct@.25": 0.5531653349723418,
+      "empty_frame_drone_FP/img@.25": 0.7091412742382271,
+      "input": "t-1,t,t+1",
+      "seconds": 127.9,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\eval_repair_test_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_single_frame_e20",
+      "checkpoint": "best",
+      "epoch": 19,
+      "weights_sha256": "deccf5e70105",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.58385,
+      "mAP50-95": 0.2642,
+      "drone_AP50": 0.67395,
+      "bird_AP50": 0.49374,
+      "micro_AP50": 0.20446,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.60641,
+      "standard_AP50": 0.56412,
+      "anti_uav_AP50": 0.90124,
+      "cst_AP50": 0.46718,
+      "cst_micro_AP50": 0.40554,
+      "det_fly_AP50": 0.46882,
+      "bird_only_img_drone_alarm_pct@.25": 5.154639175257731,
+      "gt_birds_boxed_as_drone_pct@.25": 0.0,
+      "empty_frame_drone_FP/img@.25": 0.5891043397968606,
+      "input": "t,t,t",
+      "seconds": 129.0,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\eval_repair_test_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_single_frame_e20",
+      "checkpoint": "last",
+      "epoch": 19,
+      "weights_sha256": "d6138d094438",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.58385,
+      "mAP50-95": 0.2642,
+      "drone_AP50": 0.67395,
+      "bird_AP50": 0.49374,
+      "micro_AP50": 0.20446,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.60641,
+      "standard_AP50": 0.56412,
+      "anti_uav_AP50": 0.90124,
+      "cst_AP50": 0.46718,
+      "cst_micro_AP50": 0.40554,
+      "det_fly_AP50": 0.46882,
+      "bird_only_img_drone_alarm_pct@.25": 5.154639175257731,
+      "gt_birds_boxed_as_drone_pct@.25": 0.0,
+      "empty_frame_drone_FP/img@.25": 0.5891043397968606,
+      "input": "t,t,t",
+      "seconds": 127.2,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\eval_repair_test_cap5000\\last\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_stock_yolo11n_e20",
+      "checkpoint": "best",
+      "epoch": 18,
+      "weights_sha256": "07744c380618",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.57783,
+      "mAP50-95": 0.26916,
+      "drone_AP50": 0.67378,
+      "bird_AP50": 0.48187,
+      "micro_AP50": 0.21466,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.586,
+      "standard_AP50": 0.6019,
+      "anti_uav_AP50": 0.90779,
+      "cst_AP50": 0.45079,
+      "cst_micro_AP50": 0.39871,
+      "det_fly_AP50": 0.51899,
+      "bird_only_img_drone_alarm_pct@.25": 1.0309278350515463,
+      "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+      "empty_frame_drone_FP/img@.25": 0.5475530932594644,
+      "input": "t,t,t",
+      "seconds": 126.9,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\eval_repair_test_cap5000\\best\\evaluation_report.json"
+    },
+    {
+      "run": "repair_abl_stock_yolo11n_e20",
+      "checkpoint": "last",
+      "epoch": 19,
+      "weights_sha256": "eda773e9c1f9",
+      "set_sha256": "37e944793773",
+      "n_images": 11567,
+      "mAP50": 0.59126,
+      "mAP50-95": 0.27555,
+      "drone_AP50": 0.68372,
+      "bird_AP50": 0.4988,
+      "micro_AP50": 0.21312,
+      "micro_n_gt": 2722,
+      "small_AP50": 0.6061,
+      "standard_AP50": 0.61521,
+      "anti_uav_AP50": 0.91055,
+      "cst_AP50": 0.45608,
+      "cst_micro_AP50": 0.39963,
+      "det_fly_AP50": 0.53449,
+      "bird_only_img_drone_alarm_pct@.25": 2.0618556701030926,
+      "gt_birds_boxed_as_drone_pct@.25": 0.06146281499692686,
+      "empty_frame_drone_FP/img@.25": 0.5503231763619575,
+      "input": "t,t,t",
+      "seconds": 127.6,
+      "report": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\eval_repair_test_cap5000\\last\\evaluation_report.json"
+    }
+  ],
+  "test_ledger": [
+    {
+      "timestamp": "2026-09-26T08:44:40+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_v1\\weights\\best.pt",
+      "weights_sha256": "8b75b17a0a4f477bbc3734521cb979fcdf9dd6a8e96d9fc607e01eaa7119f003",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.54906,
+      "input": "t-1,t,t+1",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T08:47:00+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_v1\\weights\\last.pt",
+      "weights_sha256": "4af997d300e5a838eb82e697d6fc89dac1d33e952955ef483a5d7e795f89fa20",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.58583,
+      "input": "t-1,t,t+1",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T08:49:21+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\weights\\best.pt",
+      "weights_sha256": "72de9bba9fecf230b20e72ac7d9a17f51db9565f54665f45f0c71403dfbbf023",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.73441,
+      "input": "t-1,t,t+1",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T08:51:42+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\aerotrack_spd_finetuned\\weights\\last.pt",
+      "weights_sha256": "bcb6d557a40e8e6da1b0d0509a675cc5fe77bb20cd9ed27febd01422eb12b818",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.73394,
+      "input": "t-1,t,t+1",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T08:54:03+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\weights\\best.pt",
+      "weights_sha256": "815ebed2d9a2ebf70c11cdcc3411f963cb56ce52b16db9c48448cacbd0c541be",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.53957,
+      "input": "t-1,t,t+1",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T08:56:23+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_baseline_ctrl_e20\\weights\\last.pt",
+      "weights_sha256": "2e02ebc5ef232bfcd247f068da3549a4286f975be6e3ce24df292575997d90ed",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.56929,
+      "input": "t-1,t,t+1",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T08:58:45+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\weights\\best.pt",
+      "weights_sha256": "084f1dd8f0f6762023fb55dd7bb724e212ea3759872c01380abd89bd6bf6231f",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.55672,
+      "input": "t-1,t,t+1",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T09:01:05+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_no_spd_e20\\weights\\last.pt",
+      "weights_sha256": "2aebbb3bcb6c7f513a1c6897939a6e08c41eb9fcd2ab0a9ff4486e9e2181ee72",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.61244,
+      "input": "t-1,t,t+1",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T09:03:28+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\weights\\best.pt",
+      "weights_sha256": "deccf5e701054c7c5dbd33009a5fc6f0974fdf6b6e9ae7348e3523d6f6f0537b",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.58385,
+      "input": "t,t,t",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T09:05:48+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_single_frame_e20\\weights\\last.pt",
+      "weights_sha256": "d6138d0944382c4e36da4696deb49c38efe7ecffcb2342570dd25fcf85f1debb",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.58385,
+      "input": "t,t,t",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T09:08:08+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\weights\\best.pt",
+      "weights_sha256": "07744c380618f73a7505c43cb8c76ba633acc3495dc8350b3f7d9f956a44f1fb",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.57783,
+      "input": "t,t,t",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    },
+    {
+      "timestamp": "2026-09-26T09:10:28+0530",
+      "weights": "A:\\AEROTRACK_OMEN\\runs\\repair_abl_stock_yolo11n_e20\\weights\\last.pt",
+      "weights_sha256": "eda773e9c1f9e1818e3e70a0f55dde5ec9eac0f5e4839b58f6d992b9f7315c81",
+      "set_sha256": "37e94479377389c07f0a3b888a43bd9cb55a3bbbbb5ab4110eb2358b96238349",
+      "mAP50": 0.59126,
+      "input": "t,t,t",
+      "git_commit": "9268640bdbd29724cf304c6f199c1ef0243fed18"
+    }
+  ],
+  "test_descriptive_deltas": [
+    {
+      "factor": "SPD-Conv",
+      "metric": "micro_AP50",
+      "delta_best": -0.03076000000000001,
+      "delta_last": -0.04879999999999998
+    },
+    {
+      "factor": "SPD-Conv",
+      "metric": "cst_micro_AP50",
+      "delta_best": -0.0023400000000000087,
+      "delta_last": -0.006269999999999998
+    },
+    {
+      "factor": "temporal stack",
+      "metric": "cst_AP50",
+      "delta_best": -0.042679999999999996,
+      "delta_last": -0.05541999999999997
+    },
+    {
+      "factor": "temporal stack",
+      "metric": "drone_AP50",
+      "delta_best": -0.01821000000000006,
+      "delta_last": -0.013290000000000024
+    },
+    {
+      "factor": "full recipe vs stock YOLO11n",
+      "metric": "drone_AP50",
+      "delta_best": -0.018040000000000056,
+      "delta_last": -0.02305999999999997
+    }
+  ],
+  "events": [
+    {
+      "t": "2026-09-25T23:24:46+0530",
+      "event": "preflight",
+      "ok": false,
+      "record": "preflight_20260925_232446.json"
+    },
+    {
+      "t": "2026-09-25T23:33:32+0530",
+      "event": "train_failed",
+      "run": "repair_abl_baseline_ctrl_e20",
+      "launch": 1,
+      "rc": 1,
+      "kind": "host_memory",
+      "detail": "LoaderWorkerDied",
+      "epochs_before": 0,
+      "epochs_after": 0,
+      "log": "train_baseline_ctrl_launch1_20260925_232951.log"
+    },
+    {
+      "t": "2026-09-25T23:33:32+0530",
+      "event": "train_recover",
+      "run": "repair_abl_baseline_ctrl_e20",
+      "action": "resume after 180s",
+      "workers": 2,
+      "kind": "host_memory"
+    },
+    {
+      "t": "2026-09-25T23:36:32+0530",
+      "event": "stopped",
+      "reason": "STOP requested"
+    },
+    {
+      "t": "2026-09-25T23:52:52+0530",
+      "event": "operator_note",
+      "text": "Operator stop of the first baseline_ctrl launch (23:33-23:36): its 4 DataLoader workers grew ~1.7 GB private per 30 s each and the machine reached 98.6 % RAM; the OS killed a worker at 23:33:32 (event above). Reproduced in isolation: training-config loader, 1 worker, +1.25 GB per 10 batches (one batch retained per batch); dataset alone in one process: flat. Fix: b_pipeline/stacked_dataset.py::aerotrack_collate stacks into shared memory inside workers (bit-exact vs the old stack; 4 workers flat at ~1.7 GB over 60 batches). A loader-memory probe was added to the pre-flight; the grid was relaunched with the same command at 23:44 and baseline_ctrl restarted from scratch (no epoch had finished)."
+    },
+    {
+      "t": "2026-09-25T23:53:01+0530",
+      "event": "operator_note",
+      "text": "The pre-flight at 23:24:46 (ok: False) failed only its 'no other GPU job' check: on Windows the venv python.exe is a launcher whose child is the real interpreter, and the check flagged the runner's own launcher (its parent) as a foreign job. Fixed in run_grid.py (ancestors count as the runner's own tree) before any training; the next pre-flight passed every check."
+    },
+    {
+      "t": "2026-09-26T01:56:15+0530",
+      "event": "operator_note",
+      "text": "The runner started at 23:44:35 (pid 16996) was killed externally between 01:50:50 and 01:51:52 (no traceback, no event; its console log simply stops). Its training child kept running and finished baseline_ctrl cleanly at 01:53:32 (20/20 epochs, rc 0, recorded by train_ablation.py). Most likely the agent tool that launched the runner cleaned up the process it had started. Mitigations: --detach now starts the runner through a short-lived spawner (never a process of the calling shell), and a relaunched runner first waits for any still-running step of an earlier runner (orphan adoption). Relaunched with the same command; baseline_ctrl is verified from its files, not retrained."
+    }
+  ],
+  "grid_launches": 6,
+  "preflight": {
+    "file": "preflight_20260926_091703.json",
+    "ok": true,
+    "checks": [
+      {
+        "name": "python/venv",
+        "ok": true,
+        "fatal": true,
+        "detail": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe (Python 3.11.9)"
+      },
+      {
+        "name": "packages",
+        "ok": true,
+        "fatal": true,
+        "detail": "torch 2.13.0+cu130, torchvision 0.28.0+cu130, ultralytics 8.4.115, numpy 2.4.6, cv2 5.0.0, psutil 7.2.2, matplotlib 3.11.1, pandas 3.0.5, yaml 6.0.3, PIL 12.3.0"
+      },
+      {
+        "name": "CUDA",
+        "ok": true,
+        "fatal": true,
+        "detail": "NVIDIA GeForce RTX 5050 Laptop GPU sm_120 (in wheel: True), CUDA 13.0, kernel launch ok: True, bf16: True"
+      },
+      {
+        "name": "VRAM",
+        "ok": true,
+        "fatal": true,
+        "detail": "6.84 GB free of 7.96 GB (batch-32 peak ~4.8 GB; T8 wants 1.5 GB headroom on real batches); nvidia-smi: 592.19, 981 MiB, 8151 MiB, 45, 27.33 W, P0"
+      },
+      {
+        "name": "no other GPU job",
+        "ok": true,
+        "fatal": true,
+        "detail": "none"
+      },
+      {
+        "name": "jupyter kernels",
+        "ok": true,
+        "fatal": false,
+        "detail": "2 running (not GPU clients now, but one could claim VRAM mid-run)"
+      },
+      {
+        "name": "data files",
+        "ok": true,
+        "fatal": true,
+        "detail": "manifest bd7c1ec29ba8 / splits 893026dfbc1a match the registered val set 6fb41d44d45b (cap 5000, 11565 images)"
+      },
+      {
+        "name": "image files",
+        "ok": true,
+        "fatal": true,
+        "detail": "767/767 sampled image paths exist {'test': 246, 'train': 394, 'val': 127}"
+      },
+      {
+        "name": "model files",
+        "ok": true,
+        "fatal": true,
+        "detail": "yolo11-spd.yaml, yolo11-stride.yaml, yolo11n.pt 0ebbc80d4a76"
+      },
+      {
+        "name": "historical checkpoints",
+        "ok": true,
+        "fatal": true,
+        "detail": "v1 + v2 best/last present and hash-identical to their val rows"
+      },
+      {
+        "name": "disk",
+        "ok": true,
+        "fatal": true,
+        "detail": "156 GB free on A:\\ (need >= 20; the grid writes < 2 GB)"
+      },
+      {
+        "name": "output dirs",
+        "ok": true,
+        "fatal": true,
+        "detail": "runs\\repair_grid_e20 and experiments\\aerotrack_repair\\reports writable"
+      },
+      {
+        "name": "host memory",
+        "ok": true,
+        "fatal": true,
+        "detail": "13.6 of 23.6 GB RAM free, 33.3 GB commit free -> train.py would plan 4 of 4 loader workers now (it re-plans at every launch)"
+      },
+      {
+        "name": "scripts",
+        "ok": true,
+        "fatal": true,
+        "detail": "all compile; render_report.py --check OK"
+      },
+      {
+        "name": "grid state",
+        "ok": true,
+        "fatal": false,
+        "detail": "baseline_ctrl: exists (will resume/verify), no_spd: exists (will resume/verify), single_frame: exists (will resume/verify), stock_yolo11n: exists (will resume/verify); test ledger: 12 entries"
+      },
+      {
+        "name": "power",
+        "ok": true,
+        "fatal": false,
+        "detail": "on AC"
+      },
+      {
+        "name": "pending reboot",
+        "ok": true,
+        "fatal": false,
+        "detail": "none"
+      },
+      {
+        "name": "eval smoke (temporal)",
+        "ok": true,
+        "fatal": true,
+        "detail": "[smoke aerotrack_spd_v1/last ep21 input t-1,t,t+1 (--input-mode temporal)] 64 images, 243 predictions, mAP50 0.8199 (4s)"
+      },
+      {
+        "name": "eval smoke (single_frame)",
+        "ok": true,
+        "fatal": true,
+        "detail": "[smoke aerotrack_spd_v1/last ep21 input t,t,t (--input-mode single_frame)] 64 images, 238 predictions, mAP50 0.8336 (4s)"
+      },
+      {
+        "name": "loader memory",
+        "ok": true,
+        "fatal": true,
+        "detail": "train loader, 2 workers x 40 batches: worker private [1.6675605773925781, 1.6860618591308594] -> [1.6583328247070312, 1.6570968627929688] GB, max growth -0.009227752685546875 GB (limit 0.5), 33.3 img/s"
+      },
+      {
+        "name": "T1-T8 baseline_ctrl",
+        "ok": true,
+        "fatal": true,
+        "detail": "yolo11-spd.yaml 5 SPDConv, batch 32 x acc 2, 781 it/epoch, 4 workers, COCO transfer 388/649 (59.8 %), T6 first conv 36 ch, VRAM peak 4.77 GB (headroom 2.0), loader 62.2 samples/s"
+      },
+      {
+        "name": "T1-T8 no_spd",
+        "ok": true,
+        "fatal": true,
+        "detail": "yolo11-stride.yaml 0 SPDConv, batch 32 x acc 2, 781 it/epoch, 4 workers, COCO transfer 418/649 (64.4 %), T6 first conv 9 ch, VRAM peak 4.76 GB (headroom 2.02), loader 110.5 samples/s"
+      },
+      {
+        "name": "T1-T8 single_frame",
+        "ok": true,
+        "fatal": true,
+        "detail": "yolo11-spd.yaml 5 SPDConv, batch 32 x acc 2, 781 it/epoch, 4 workers, COCO transfer 388/649 (59.8 %), T6 first conv 36 ch, VRAM peak 4.77 GB (headroom 2.01), loader 116.1 samples/s"
+      },
+      {
+        "name": "T1-T8 stock_yolo11n",
+        "ok": true,
+        "fatal": true,
+        "detail": "yolo11-stride.yaml 0 SPDConv, batch 32 x acc 2, 781 it/epoch, 4 workers, COCO transfer 418/649 (64.4 %), T6 first conv 9 ch, VRAM peak 4.76 GB (headroom 2.02), loader 126.4 samples/s"
+      }
+    ],
+    "environment": {
+      "versions": {
+        "torch": "2.13.0+cu130",
+        "torchvision": "0.28.0+cu130",
+        "ultralytics": "8.4.115",
+        "numpy": "2.4.6",
+        "cv2": "5.0.0",
+        "psutil": "7.2.2",
+        "matplotlib": "3.11.1",
+        "pandas": "3.0.5",
+        "yaml": "6.0.3",
+        "PIL": "12.3.0"
+      },
+      "cuda": true,
+      "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+      "sm": "sm_120",
+      "arch_ok": true,
+      "bf16": true,
+      "cuda_version": "13.0",
+      "kernel_ok": true,
+      "free_gb": 6.84,
+      "total_gb": 7.96
+    },
+    "ablations": {
+      "baseline_ctrl": {
+        "passed": true,
+        "transfer": {
+          "copied": 388,
+          "total": 649,
+          "pct": 59.8,
+          "tiled_stem": []
+        },
+        "model_cfg": "yolo11-spd.yaml",
+        "params_m": 4.07,
+        "n_spdconv": 5,
+        "batch": 32,
+        "accumulate": 2,
+        "iters_per_epoch": 781,
+        "precision": "bf16",
+        "train_workers_planned": 4,
+        "train_samples": 378759,
+        "val_samples": 2000,
+        "t6_first_conv_in": 36,
+        "loader_samples_per_s": 62.2,
+        "loader_epoch_min_estimate": 6.7,
+        "vram_peak_gb": 4.77,
+        "vram_headroom_gb": 2.0,
+        "checks": [
+          [
+            "PASS",
+            "E0"
+          ],
+          [
+            "PASS",
+            "T1/T3"
+          ],
+          [
+            "PASS",
+            "T2"
+          ],
+          [
+            "PASS",
+            "T4"
+          ],
+          [
+            "PASS",
+            "T5"
+          ],
+          [
+            "PASS",
+            "T6"
+          ],
+          [
+            "PASS",
+            "T7"
+          ],
+          [
+            "PASS",
+            "T8"
+          ]
+        ],
+        "rc": 0,
+        "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_baseline_ctrl_20260926_091411.log"
+      },
+      "no_spd": {
+        "passed": true,
+        "transfer": {
+          "copied": 418,
+          "total": 649,
+          "pct": 64.4,
+          "tiled_stem": [
+            "model.0.conv.weight"
+          ]
+        },
+        "model_cfg": "yolo11-stride.yaml",
+        "params_m": 2.61,
+        "n_spdconv": 0,
+        "batch": 32,
+        "accumulate": 2,
+        "iters_per_epoch": 781,
+        "precision": "bf16",
+        "train_workers_planned": 4,
+        "train_samples": 378759,
+        "val_samples": 2000,
+        "t6_first_conv_in": 9,
+        "loader_samples_per_s": 110.5,
+        "loader_epoch_min_estimate": 3.8,
+        "vram_peak_gb": 4.76,
+        "vram_headroom_gb": 2.02,
+        "checks": [
+          [
+            "PASS",
+            "E0"
+          ],
+          [
+            "PASS",
+            "T1/T3"
+          ],
+          [
+            "PASS",
+            "T2"
+          ],
+          [
+            "PASS",
+            "T4"
+          ],
+          [
+            "PASS",
+            "T5"
+          ],
+          [
+            "PASS",
+            "T6"
+          ],
+          [
+            "PASS",
+            "T7"
+          ],
+          [
+            "PASS",
+            "T8"
+          ]
+        ],
+        "rc": 0,
+        "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_no_spd_20260926_091501.log"
+      },
+      "single_frame": {
+        "passed": true,
+        "transfer": {
+          "copied": 388,
+          "total": 649,
+          "pct": 59.8,
+          "tiled_stem": []
+        },
+        "model_cfg": "yolo11-spd.yaml",
+        "params_m": 4.07,
+        "n_spdconv": 5,
+        "batch": 32,
+        "accumulate": 2,
+        "iters_per_epoch": 781,
+        "precision": "bf16",
+        "train_workers_planned": 4,
+        "train_samples": 378759,
+        "val_samples": 2000,
+        "t6_first_conv_in": 36,
+        "loader_samples_per_s": 116.1,
+        "loader_epoch_min_estimate": 3.6,
+        "vram_peak_gb": 4.77,
+        "vram_headroom_gb": 2.01,
+        "checks": [
+          [
+            "PASS",
+            "E0"
+          ],
+          [
+            "PASS",
+            "T1/T3"
+          ],
+          [
+            "PASS",
+            "T2"
+          ],
+          [
+            "PASS",
+            "T4"
+          ],
+          [
+            "PASS",
+            "T5"
+          ],
+          [
+            "PASS",
+            "T6"
+          ],
+          [
+            "PASS",
+            "T7"
+          ],
+          [
+            "PASS",
+            "T8"
+          ]
+        ],
+        "rc": 0,
+        "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_single_frame_20260926_091541.log"
+      },
+      "stock_yolo11n": {
+        "passed": true,
+        "transfer": {
+          "copied": 418,
+          "total": 649,
+          "pct": 64.4,
+          "tiled_stem": [
+            "model.0.conv.weight"
+          ]
+        },
+        "model_cfg": "yolo11-stride.yaml",
+        "params_m": 2.61,
+        "n_spdconv": 0,
+        "batch": 32,
+        "accumulate": 2,
+        "iters_per_epoch": 781,
+        "precision": "bf16",
+        "train_workers_planned": 4,
+        "train_samples": 378759,
+        "val_samples": 2000,
+        "t6_first_conv_in": 9,
+        "loader_samples_per_s": 126.4,
+        "loader_epoch_min_estimate": 3.3,
+        "vram_peak_gb": 4.76,
+        "vram_headroom_gb": 2.02,
+        "checks": [
+          [
+            "PASS",
+            "E0"
+          ],
+          [
+            "PASS",
+            "T1/T3"
+          ],
+          [
+            "PASS",
+            "T2"
+          ],
+          [
+            "PASS",
+            "T4"
+          ],
+          [
+            "PASS",
+            "T5"
+          ],
+          [
+            "PASS",
+            "T6"
+          ],
+          [
+            "PASS",
+            "T7"
+          ],
+          [
+            "PASS",
+            "T8"
+          ]
+        ],
+        "rc": 0,
+        "log": "A:\\AEROTRACK_OMEN\\runs\\repair_grid_e20\\logs\\preflight_stock_yolo11n_20260926_091623.log"
+      }
+    }
+  },
+  "changes": [
+    "`c_model/preflight.py` \u2014 T6 required a 36-channel first convolution (the SPD stem). The stride-2 stem of the `no_spd` and `stock_yolo11n` layouts has 9, so both runs would have aborted before epoch 0. T6 now takes the expected width from the live model (and still requires 9 or 36, so a reload that fell back to 3 channels still fails).",
+    "`b_pipeline/stacked_dataset.py::aerotrack_collate` \u2014 inside a DataLoader worker the batch is now stacked straight into shared memory, as torch's own `default_collate` does. On this machine the old stack-then-share path left every batch behind in the worker (+118 MB per batch per worker, measured); the first launch of `baseline_ctrl` ran the machine out of memory 3.5 min in and lost a worker. Verified bit-exact against the old stack, flat memory at 4 workers; a loader-memory probe now guards it in the pre-flight.",
+    "`c_model/aerotrack_trainer.py` \u2014 checkpoints are written to a temporary file and renamed atomically, so an interruption can never leave a truncated `last.pt` (the resume point).",
+    "`c_model/train.py` \u2014 `--preflight-only`: build the exact job and run T1\u2013T8, train nothing (used to check all four jobs up front).",
+    "`scripts/train_ablation.py` \u2014 a resumed run keeps ONE `run_meta.json` (first start time, one `attempts` entry per launch, summed training time, workers used) and refuses a changed recipe; `--resume-from`; `--preflight-only`.",
+    "`scripts/evaluate_detector.py` \u2014 runs trained with temporal_gap 0 (`single_frame`, `stock_yolo11n`) are scored on t,t,t, the input they were trained and validated on (`c_model/train.py::build`), instead of the 3-frame stack; the image set and its hash are unchanged and each row records its `input`. The summary is written after every checkpoint and before the test-ledger line; `--smoke`.",
+    "`scripts/render_report.py`, `README.template.md` \u2014 grid runs in the run-facts table, an `input` column, verdicts only from finished, hash-matched runs at one budget (rule and target metrics unchanged), plan items 2\u20134 computed from the grid, a test-ledger note, the one-command reproduction, and a corrected sentence on which COCO tensors are transferred.",
+    "new `scripts/run_grid.py` (the one command: pre-flight, sequential training with resume/watchdog, evaluations, test once, reports) and `scripts/grid_report.py` (this report).",
+    "Not changed: metrics, splits, image sets, caps, thresholds, the training recipe, the epoch budget, the checkpoint-selection rule, the attribution rule, the COCO-transfer rule."
+  ],
+  "reproduce": "venv\\Scripts\\python.exe experiments\\aerotrack_repair\\scripts\\run_grid.py"
+}

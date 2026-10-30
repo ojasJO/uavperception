@@ -1,0 +1,1 @@
+python tools/hpc/fp16_diag.py

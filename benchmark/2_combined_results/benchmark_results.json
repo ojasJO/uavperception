@@ -1,0 +1,813 @@
+{
+  "generated": "2026-09-23T03:39:16+0530",
+  "paper": "Anti-UAV: A Large Multi-Modal Benchmark for UAV Tracking (Jiang et al., arXiv:2101.08466v3, 2021)",
+  "protocol": "Protocol II (Anti-UAV train split used for fine-tuning), infrared modality",
+  "metric_definitions": {
+    "mSA": "paper Eq. (1), averaged over frames of a sequence then over sequences; scored from the official start frame onward (spec SS6 primary convention)",
+    "precision": "OTB: fraction of exist==1 frames with centre-location error <= 20 px",
+    "success": "OTB: AUC of the success-rate vs IoU-threshold curve (thresholds 0, .05, ..., 1), over exist==1 frames"
+  },
+  "verdict_thresholds": {
+    "reproduced_pt": 1.0,
+    "approximately_reproduced_pt": 3.0
+  },
+  "column_semantics": {
+    "A_paper": "the value the paper reports (Table V / Table VII)",
+    "B_prior_reproduction": "what this implementation measured in the earlier reproduction evaluations",
+    "C_live_benchmark": "what the current trained checkpoint measures in THIS task's live execution"
+  },
+  "runs": {
+    "normal_ir/val": {
+      "executed": true,
+      "our_run": "normal_ir",
+      "paper_row": "normal",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint": "experiments\\anti_uav\\runs\\normal_ir\\weights\\last.pt",
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "checkpoint_epoch": 18,
+      "seed": 0,
+      "manifest_sha256": "a688bf92c46dfc52e781e68060f74d4199aa2a1c671fc199872fb486e7275dfa",
+      "manifest_verified": true,
+      "git_commit": "3b2d48bd38b8151dc070bed038e8027bb43dda3f",
+      "git_dirty": true,
+      "command": "python.exe experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/normal_ir/weights/last.pt --split val --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853/normal_ir__val_IR",
+      "device": "cuda",
+      "amp": "none",
+      "env": {
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "torch": "2.13.0+cu130",
+        "cuda_available": true,
+        "cuda_version": "13.0",
+        "cudnn_version": 92000,
+        "cudnn_benchmark": true,
+        "torchvision": "0.28.0+cu130",
+        "numpy": "2.4.6",
+        "cv2": "5.0.0",
+        "PIL": "12.3.0",
+        "yaml": "6.0.3",
+        "gpu": {
+          "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+          "total_memory_gb": 8.55,
+          "compute_capability": "12.0",
+          "driver": "592.19"
+        }
+      },
+      "timestamp_start": "2026-09-22T19:41:28+0530",
+      "timestamp_end": "2026-09-22T21:29:29+0530",
+      "tracking_seconds": 6478.4,
+      "n_sequences": 67,
+      "n_frames": 61763,
+      "n_frames_exist": 60604,
+      "n_predictions": 61763,
+      "n_fallback_frames": 0,
+      "tracker_fps_mean": 9.555730979166306,
+      "prestart_frames_excluded": 236,
+      "scoring": "frames_from_start_frame (primary; paper protocol with official start frames)",
+      "out_dir": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\paper_benchmarks_20260922T193853\\normal_ir__val_IR",
+      "mSA_percent": 79.28741311433669,
+      "mSA_all_frames_percent": 79.37521897207239,
+      "precision_20px_percent": 99.56472485957745,
+      "success_auc_percent": 79.32293767128525
+    },
+    "normal_ir/test": {
+      "executed": true,
+      "our_run": "normal_ir",
+      "paper_row": "normal",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint": "experiments\\anti_uav\\runs\\normal_ir\\weights\\last.pt",
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "checkpoint_epoch": 18,
+      "seed": 0,
+      "manifest_sha256": "1fc351c74f4b29ccc8569eba8c0fcbfae15b67994df0d4674405a8c214cf0adf",
+      "manifest_verified": true,
+      "git_commit": "3b2d48bd38b8151dc070bed038e8027bb43dda3f",
+      "git_dirty": true,
+      "command": "python.exe experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/normal_ir/weights/last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853/normal_ir__test_IR --final-eval",
+      "device": "cuda",
+      "amp": "none",
+      "env": {
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "torch": "2.13.0+cu130",
+        "cuda_available": true,
+        "cuda_version": "13.0",
+        "cudnn_version": 92000,
+        "cudnn_benchmark": true,
+        "torchvision": "0.28.0+cu130",
+        "numpy": "2.4.6",
+        "cv2": "5.0.0",
+        "PIL": "12.3.0",
+        "yaml": "6.0.3",
+        "gpu": {
+          "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+          "total_memory_gb": 8.55,
+          "compute_capability": "12.0",
+          "driver": "592.19"
+        }
+      },
+      "timestamp_start": "2026-09-22T23:03:17+0530",
+      "timestamp_end": "2026-09-23T01:34:14+0530",
+      "tracking_seconds": 9054.3,
+      "n_sequences": 91,
+      "n_frames": 85312,
+      "n_frames_exist": 84221,
+      "n_predictions": 85312,
+      "n_fallback_frames": 0,
+      "tracker_fps_mean": 9.4205637176648,
+      "prestart_frames_excluded": 62,
+      "scoring": "frames_from_start_frame (primary; paper protocol with official start frames)",
+      "out_dir": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\paper_benchmarks_20260922T193853\\normal_ir__test_IR",
+      "mSA_percent": 70.57962479985672,
+      "mSA_all_frames_percent": 70.61342629068176,
+      "precision_20px_percent": 91.84512769925493,
+      "success_auc_percent": 71.00777086941635
+    },
+    "dfsc_ir/val": {
+      "executed": true,
+      "our_run": "dfsc_ir",
+      "paper_row": "DFSC",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint": "experiments\\anti_uav\\runs\\dfsc_ir\\weights\\last.pt",
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "checkpoint_epoch": 18,
+      "seed": 0,
+      "manifest_sha256": "a688bf92c46dfc52e781e68060f74d4199aa2a1c671fc199872fb486e7275dfa",
+      "manifest_verified": true,
+      "git_commit": "3b2d48bd38b8151dc070bed038e8027bb43dda3f",
+      "git_dirty": true,
+      "command": "python.exe experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/dfsc_ir/weights/last.pt --split val --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853/dfsc_ir__val_IR",
+      "device": "cuda",
+      "amp": "none",
+      "env": {
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "torch": "2.13.0+cu130",
+        "cuda_available": true,
+        "cuda_version": "13.0",
+        "cudnn_version": 92000,
+        "cudnn_benchmark": true,
+        "torchvision": "0.28.0+cu130",
+        "numpy": "2.4.6",
+        "cv2": "5.0.0",
+        "PIL": "12.3.0",
+        "yaml": "6.0.3",
+        "gpu": {
+          "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+          "total_memory_gb": 8.55,
+          "compute_capability": "12.0",
+          "driver": "592.19"
+        }
+      },
+      "timestamp_start": "2026-09-22T21:29:53+0530",
+      "timestamp_end": "2026-09-22T23:03:13+0530",
+      "tracking_seconds": 5597.7,
+      "n_sequences": 67,
+      "n_frames": 61763,
+      "n_frames_exist": 60604,
+      "n_predictions": 61763,
+      "n_fallback_frames": 0,
+      "tracker_fps_mean": 11.076957741786005,
+      "prestart_frames_excluded": 236,
+      "scoring": "frames_from_start_frame (primary; paper protocol with official start frames)",
+      "out_dir": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\paper_benchmarks_20260922T193853\\dfsc_ir__val_IR",
+      "mSA_percent": 79.25589792076993,
+      "mSA_all_frames_percent": 79.34351038159735,
+      "precision_20px_percent": 99.56618086198407,
+      "success_auc_percent": 79.28659048136923
+    },
+    "dfsc_ir/test": {
+      "executed": true,
+      "our_run": "dfsc_ir",
+      "paper_row": "DFSC",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint": "experiments\\anti_uav\\runs\\dfsc_ir\\weights\\last.pt",
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "checkpoint_epoch": 18,
+      "seed": 0,
+      "manifest_sha256": "1fc351c74f4b29ccc8569eba8c0fcbfae15b67994df0d4674405a8c214cf0adf",
+      "manifest_verified": true,
+      "git_commit": "3b2d48bd38b8151dc070bed038e8027bb43dda3f",
+      "git_dirty": true,
+      "command": "python.exe experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/dfsc_ir/weights/last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853/dfsc_ir__test_IR --final-eval",
+      "device": "cuda",
+      "amp": "none",
+      "env": {
+        "python": "3.11.9",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "torch": "2.13.0+cu130",
+        "cuda_available": true,
+        "cuda_version": "13.0",
+        "cudnn_version": 92000,
+        "cudnn_benchmark": true,
+        "torchvision": "0.28.0+cu130",
+        "numpy": "2.4.6",
+        "cv2": "5.0.0",
+        "PIL": "12.3.0",
+        "yaml": "6.0.3",
+        "gpu": {
+          "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+          "total_memory_gb": 8.55,
+          "compute_capability": "12.0",
+          "driver": "592.19"
+        }
+      },
+      "timestamp_start": "2026-09-23T01:34:18+0530",
+      "timestamp_end": "2026-09-23T03:38:10+0530",
+      "tracking_seconds": 7428.9,
+      "n_sequences": 91,
+      "n_frames": 85312,
+      "n_frames_exist": 84221,
+      "n_predictions": 85312,
+      "n_fallback_frames": 0,
+      "tracker_fps_mean": 11.484858255155254,
+      "prestart_frames_excluded": 62,
+      "scoring": "frames_from_start_frame (primary; paper protocol with official start frames)",
+      "out_dir": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\paper_benchmarks_20260922T193853\\dfsc_ir__test_IR",
+      "mSA_percent": 70.2866177208201,
+      "mSA_all_frames_percent": 70.32040519696615,
+      "precision_20px_percent": 91.65408252861002,
+      "success_auc_percent": 70.72246457057733
+    }
+  },
+  "table_V_mSA": {
+    "normal_ir/val": {
+      "OV": {
+        "paper": 78.09,
+        "ours_live": 56.05,
+        "ours_prior": 56.05,
+        "ours_live_exact": 56.05147461869624,
+        "ours_prior_exact": 56.05147461869624,
+        "delta_live_minus_paper": -22.04,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 4,
+        "verdict": "not reproduced"
+      },
+      "OC": {
+        "paper": 81.42,
+        "ours_live": 78.26,
+        "ours_prior": 78.26,
+        "ours_live_exact": 78.25701910970191,
+        "ours_prior_exact": 78.25701910970191,
+        "delta_live_minus_paper": -3.16,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 5,
+        "verdict": "not reproduced"
+      },
+      "FM": {
+        "paper": 78.66,
+        "ours_live": 79.47,
+        "ours_prior": 79.47,
+        "ours_live_exact": 79.47210479916805,
+        "ours_prior_exact": 79.47210479916805,
+        "delta_live_minus_paper": 0.81,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 23,
+        "verdict": "reproduced"
+      },
+      "SV": {
+        "paper": 76.61,
+        "ours_live": 72.89,
+        "ours_prior": 72.89,
+        "ours_live_exact": 72.88949546503531,
+        "ours_prior_exact": 72.88949546503531,
+        "delta_live_minus_paper": -3.72,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 17,
+        "verdict": "not reproduced"
+      },
+      "LI": {
+        "paper": 79.95,
+        "ours_live": 79.94,
+        "ours_prior": 79.94,
+        "ours_live_exact": 79.94363945372719,
+        "ours_prior_exact": 79.94363945372719,
+        "delta_live_minus_paper": -0.01,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 29,
+        "verdict": "reproduced"
+      },
+      "TC-EASY": {
+        "paper": 81.23,
+        "ours_live": 81.62,
+        "ours_prior": 81.62,
+        "ours_live_exact": 81.6164774864794,
+        "ours_prior_exact": 81.6164774864794,
+        "delta_live_minus_paper": 0.39,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 17,
+        "verdict": "reproduced"
+      },
+      "TC-MID": {
+        "paper": 76.56,
+        "ours_live": 77.78,
+        "ours_prior": 77.78,
+        "ours_live_exact": 77.7797362154713,
+        "ours_prior_exact": 77.7797362154713,
+        "delta_live_minus_paper": 1.22,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 8,
+        "verdict": "approximately reproduced"
+      },
+      "TC-HARD": {
+        "paper": 74.04,
+        "ours_live": 76.71,
+        "ours_prior": 76.71,
+        "ours_live_exact": 76.71388594442435,
+        "ours_prior_exact": 76.71388594442435,
+        "delta_live_minus_paper": 2.67,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 7,
+        "verdict": "approximately reproduced"
+      },
+      "TC": {
+        "paper": 78.49,
+        "ours_live": 79.58,
+        "ours_prior": 79.58,
+        "ours_live_exact": 79.58485026890283,
+        "ours_prior_exact": 79.58485026890283,
+        "delta_live_minus_paper": 1.09,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 32,
+        "verdict": "approximately reproduced"
+      },
+      "LR": {
+        "paper": 73.55,
+        "ours_live": 76.94,
+        "ours_prior": 76.94,
+        "ours_live_exact": 76.9420115885202,
+        "ours_prior_exact": 76.9420115885202,
+        "delta_live_minus_paper": 3.39,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 10,
+        "verdict": "not reproduced"
+      },
+      "ALL": {
+        "paper": 79.6,
+        "ours_live": 79.29,
+        "ours_prior": 79.29,
+        "ours_live_exact": 79.28741311433669,
+        "ours_prior_exact": 79.28741311433669,
+        "delta_live_minus_paper": -0.31,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 67,
+        "verdict": "reproduced"
+      }
+    },
+    "normal_ir/test": {
+      "OV": {
+        "paper": 70.44,
+        "ours_live": 69.57,
+        "ours_prior": 69.57,
+        "ours_live_exact": 69.56529118945855,
+        "ours_prior_exact": 69.56529114609218,
+        "delta_live_minus_paper": -0.87,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 18,
+        "verdict": "reproduced"
+      },
+      "OC": {
+        "paper": 68.94,
+        "ours_live": 64.52,
+        "ours_prior": 64.52,
+        "ours_live_exact": 64.51839681418633,
+        "ours_prior_exact": 64.51839533154768,
+        "delta_live_minus_paper": -4.42,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 2,
+        "verdict": "not reproduced"
+      },
+      "FM": {
+        "paper": 60.66,
+        "ours_live": 70.43,
+        "ours_prior": 70.43,
+        "ours_live_exact": 70.42688110939383,
+        "ours_prior_exact": 70.4268652654134,
+        "delta_live_minus_paper": 9.77,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 31,
+        "verdict": "not reproduced"
+      },
+      "SV": {
+        "paper": 55.48,
+        "ours_live": 64.64,
+        "ours_prior": 64.64,
+        "ours_live_exact": 64.64313128246238,
+        "ours_prior_exact": 64.64313250538297,
+        "delta_live_minus_paper": 9.16,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 18,
+        "verdict": "not reproduced"
+      },
+      "LI": {
+        "paper": 59.78,
+        "ours_live": 75.51,
+        "ours_prior": 75.51,
+        "ours_live_exact": 75.51062557791485,
+        "ours_prior_exact": 75.51062599272886,
+        "delta_live_minus_paper": 15.73,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 18,
+        "verdict": "not reproduced"
+      },
+      "TC-EASY": {
+        "paper": 77.07,
+        "ours_live": 77.01,
+        "ours_prior": 77.01,
+        "ours_live_exact": 77.01436101676221,
+        "ours_prior_exact": 77.01436224693707,
+        "delta_live_minus_paper": -0.06,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 14,
+        "verdict": "reproduced"
+      },
+      "TC-MID": {
+        "paper": 64.64,
+        "ours_live": 72.31,
+        "ours_prior": 72.31,
+        "ours_live_exact": 72.31424857320773,
+        "ours_prior_exact": 72.31423223193833,
+        "delta_live_minus_paper": 7.67,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 31,
+        "verdict": "not reproduced"
+      },
+      "TC-HARD": {
+        "paper": 44.61,
+        "ours_live": 51.63,
+        "ours_prior": 51.63,
+        "ours_live_exact": 51.6326195874203,
+        "ours_prior_exact": 51.63261970137155,
+        "delta_live_minus_paper": 7.02,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 18,
+        "verdict": "not reproduced"
+      },
+      "TC": {
+        "paper": 61.68,
+        "ours_live": 67.45,
+        "ours_prior": 67.45,
+        "ours_live_exact": 67.44968115202661,
+        "ours_prior_exact": 67.44967341701421,
+        "delta_live_minus_paper": 5.77,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 63,
+        "verdict": "not reproduced"
+      },
+      "LR": {
+        "paper": 52.94,
+        "ours_live": 70.24,
+        "ours_prior": 70.24,
+        "ours_live_exact": 70.2382752521556,
+        "ours_prior_exact": 70.23827527795146,
+        "delta_live_minus_paper": 17.3,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 15,
+        "verdict": "not reproduced"
+      },
+      "ALL": {
+        "paper": 65.36,
+        "ours_live": 70.58,
+        "ours_prior": 70.58,
+        "ours_live_exact": 70.57962479985672,
+        "ours_prior_exact": 70.57961955231671,
+        "delta_live_minus_paper": 5.22,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 91,
+        "verdict": "not reproduced"
+      }
+    },
+    "dfsc_ir/val": {
+      "OV": {
+        "paper": 77.72,
+        "ours_live": 56.03,
+        "ours_prior": 56.03,
+        "ours_live_exact": 56.027070678854905,
+        "ours_prior_exact": 56.02707485482552,
+        "delta_live_minus_paper": -21.69,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 4,
+        "verdict": "not reproduced"
+      },
+      "OC": {
+        "paper": 82.7,
+        "ours_live": 78.24,
+        "ours_prior": 78.24,
+        "ours_live_exact": 78.24296727726359,
+        "ours_prior_exact": 78.24296727726359,
+        "delta_live_minus_paper": -4.46,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 5,
+        "verdict": "not reproduced"
+      },
+      "FM": {
+        "paper": 79.34,
+        "ours_live": 79.41,
+        "ours_prior": 79.41,
+        "ours_live_exact": 79.41159098783221,
+        "ours_prior_exact": 79.41180532421942,
+        "delta_live_minus_paper": 0.07,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 23,
+        "verdict": "reproduced"
+      },
+      "SV": {
+        "paper": 77.58,
+        "ours_live": 72.91,
+        "ours_prior": 72.91,
+        "ours_live_exact": 72.90749507220143,
+        "ours_prior_exact": 72.90740149436357,
+        "delta_live_minus_paper": -4.67,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 17,
+        "verdict": "not reproduced"
+      },
+      "LI": {
+        "paper": 80.31,
+        "ours_live": 79.88,
+        "ours_prior": 79.88,
+        "ours_live_exact": 79.88470787655895,
+        "ours_prior_exact": 79.88470787655895,
+        "delta_live_minus_paper": -0.43,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 29,
+        "verdict": "reproduced"
+      },
+      "TC-EASY": {
+        "paper": 81.48,
+        "ours_live": 81.68,
+        "ours_prior": 81.68,
+        "ours_live_exact": 81.67608821603565,
+        "ours_prior_exact": 81.67600218799707,
+        "delta_live_minus_paper": 0.2,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 17,
+        "verdict": "reproduced"
+      },
+      "TC-MID": {
+        "paper": 76.83,
+        "ours_live": 77.76,
+        "ours_prior": 77.76,
+        "ours_live_exact": 77.75935110876632,
+        "ours_prior_exact": 77.75934686721386,
+        "delta_live_minus_paper": 0.93,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 8,
+        "verdict": "reproduced"
+      },
+      "TC-HARD": {
+        "paper": 75.65,
+        "ours_live": 76.72,
+        "ours_prior": 76.72,
+        "ours_live_exact": 76.71806166703539,
+        "ours_prior_exact": 76.71808038908082,
+        "delta_live_minus_paper": 1.07,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 7,
+        "verdict": "approximately reproduced"
+      },
+      "TC": {
+        "paper": 79.04,
+        "ours_live": 79.61,
+        "ours_prior": 79.61,
+        "ours_live_exact": 79.6123356316245,
+        "ours_prior_exact": 79.61229296428833,
+        "delta_live_minus_paper": 0.57,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 32,
+        "verdict": "reproduced"
+      },
+      "LR": {
+        "paper": 74.33,
+        "ours_live": 76.94,
+        "ours_prior": 76.94,
+        "ours_live_exact": 76.93787649424327,
+        "ours_prior_exact": 76.93783372053014,
+        "delta_live_minus_paper": 2.61,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 10,
+        "verdict": "approximately reproduced"
+      },
+      "ALL": {
+        "paper": 80.09,
+        "ours_live": 79.26,
+        "ours_prior": 79.26,
+        "ours_live_exact": 79.25589792076993,
+        "ours_prior_exact": 79.25591549978726,
+        "delta_live_minus_paper": -0.83,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 67,
+        "verdict": "reproduced"
+      }
+    },
+    "dfsc_ir/test": {
+      "OV": {
+        "paper": 70.16,
+        "ours_live": 69.46,
+        "ours_prior": 69.46,
+        "ours_live_exact": 69.46151344832371,
+        "ours_prior_exact": 69.46120483268645,
+        "delta_live_minus_paper": -0.7,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 18,
+        "verdict": "reproduced"
+      },
+      "OC": {
+        "paper": 68.07,
+        "ours_live": 64.78,
+        "ours_prior": 64.78,
+        "ours_live_exact": 64.77870039121672,
+        "ours_prior_exact": 64.77810569962458,
+        "delta_live_minus_paper": -3.29,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 2,
+        "verdict": "not reproduced"
+      },
+      "FM": {
+        "paper": 60.95,
+        "ours_live": 69.77,
+        "ours_prior": 69.77,
+        "ours_live_exact": 69.77243958196811,
+        "ours_prior_exact": 69.77394985316616,
+        "delta_live_minus_paper": 8.82,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 31,
+        "verdict": "not reproduced"
+      },
+      "SV": {
+        "paper": 55.55,
+        "ours_live": 63.87,
+        "ours_prior": 63.87,
+        "ours_live_exact": 63.870450332073425,
+        "ours_prior_exact": 63.870172839363846,
+        "delta_live_minus_paper": 8.32,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 18,
+        "verdict": "not reproduced"
+      },
+      "LI": {
+        "paper": 60.13,
+        "ours_live": 74.5,
+        "ours_prior": 74.5,
+        "ours_live_exact": 74.5037060820872,
+        "ours_prior_exact": 74.50338329905428,
+        "delta_live_minus_paper": 14.37,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 18,
+        "verdict": "not reproduced"
+      },
+      "TC-EASY": {
+        "paper": 77.96,
+        "ours_live": 77.34,
+        "ours_prior": 77.34,
+        "ours_live_exact": 77.344950473258,
+        "ours_prior_exact": 77.34488545272471,
+        "delta_live_minus_paper": -0.62,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 14,
+        "verdict": "reproduced"
+      },
+      "TC-MID": {
+        "paper": 65.85,
+        "ours_live": 71.99,
+        "ours_prior": 72.0,
+        "ours_live_exact": 71.99491716377979,
+        "ours_prior_exact": 71.99757278748403,
+        "delta_live_minus_paper": 6.14,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 31,
+        "verdict": "not reproduced"
+      },
+      "TC-HARD": {
+        "paper": 45.59,
+        "ours_live": 50.8,
+        "ours_prior": 50.8,
+        "ours_live_exact": 50.80015467169072,
+        "ours_prior_exact": 50.796500428471504,
+        "delta_live_minus_paper": 5.21,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 18,
+        "verdict": "not reproduced"
+      },
+      "TC": {
+        "paper": 62.75,
+        "ours_live": 67.13,
+        "ours_prior": 67.13,
+        "ours_live_exact": 67.12816702846379,
+        "ours_prior_exact": 67.12841524543872,
+        "delta_live_minus_paper": 4.38,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 63,
+        "verdict": "not reproduced"
+      },
+      "LR": {
+        "paper": 53.1,
+        "ours_live": 69.11,
+        "ours_prior": 69.11,
+        "ours_live_exact": 69.10595809116496,
+        "ours_prior_exact": 69.10562624280145,
+        "delta_live_minus_paper": 16.01,
+        "delta_live_minus_prior": 0.0,
+        "n_sequences": 15,
+        "verdict": "not reproduced"
+      },
+      "ALL": {
+        "paper": 66.04,
+        "ours_live": 70.29,
+        "ours_prior": 70.29,
+        "ours_live_exact": 70.2866177208201,
+        "ours_prior_exact": 70.28677954130464,
+        "delta_live_minus_paper": 4.25,
+        "delta_live_minus_prior": -0.0,
+        "n_sequences": 91,
+        "verdict": "not reproduced"
+      }
+    }
+  },
+  "table_VII_precision_success": {
+    "normal_ir/val": {
+      "_paper_split_note": "not stated in the paper (inferred: test)",
+      "precision": {
+        "paper": 87.61,
+        "ours_live": 99.56,
+        "ours_prior": 99.56,
+        "delta_live_minus_paper": 11.95,
+        "verdict": "not reproduced"
+      },
+      "success": {
+        "paper": 62.88,
+        "ours_live": 79.32,
+        "ours_prior": 79.32,
+        "delta_live_minus_paper": 16.44,
+        "verdict": "not reproduced"
+      }
+    },
+    "normal_ir/test": {
+      "_paper_split_note": "not stated in the paper (inferred: test)",
+      "precision": {
+        "paper": 87.61,
+        "ours_live": 91.85,
+        "ours_prior": 91.85,
+        "delta_live_minus_paper": 4.24,
+        "verdict": "not reproduced"
+      },
+      "success": {
+        "paper": 62.88,
+        "ours_live": 71.01,
+        "ours_prior": 71.01,
+        "delta_live_minus_paper": 8.13,
+        "verdict": "not reproduced"
+      }
+    },
+    "dfsc_ir/val": {
+      "_paper_split_note": "not stated in the paper (inferred: test)",
+      "precision": {
+        "paper": 87.77,
+        "ours_live": 99.57,
+        "ours_prior": 99.57,
+        "delta_live_minus_paper": 11.8,
+        "verdict": "not reproduced"
+      },
+      "success": {
+        "paper": 63.24,
+        "ours_live": 79.29,
+        "ours_prior": 79.29,
+        "delta_live_minus_paper": 16.05,
+        "verdict": "not reproduced"
+      }
+    },
+    "dfsc_ir/test": {
+      "_paper_split_note": "not stated in the paper (inferred: test)",
+      "precision": {
+        "paper": 87.77,
+        "ours_live": 91.65,
+        "ours_prior": 91.65,
+        "delta_live_minus_paper": 3.88,
+        "verdict": "not reproduced"
+      },
+      "success": {
+        "paper": 63.24,
+        "ours_live": 70.72,
+        "ours_prior": 70.72,
+        "delta_live_minus_paper": 7.48,
+        "verdict": "not reproduced"
+      }
+    }
+  },
+  "dfsc_effect_mSA_pt": {
+    "val": {
+      "ours_live_DFSC_minus_normal": -0.03,
+      "paper_DFSC_minus_normal": 0.49,
+      "note": "difference of two single-seed runs; no variance estimate was measured in this task"
+    },
+    "test": {
+      "ours_live_DFSC_minus_normal": -0.29,
+      "paper_DFSC_minus_normal": 0.68,
+      "note": "difference of two single-seed runs; no variance estimate was measured in this task"
+    }
+  }
+}

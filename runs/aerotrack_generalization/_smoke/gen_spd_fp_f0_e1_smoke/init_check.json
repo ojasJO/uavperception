@@ -1,0 +1,6 @@
+{
+ "ignores_neighbours_max_abs_diff": 0.0,
+ "spd_vs_stride_max_abs_diff": 0.000823974609375,
+ "output_max_abs": 315.0267333984375,
+ "ok": true
+}

@@ -1,0 +1,163 @@
+{
+ "registration": "experiments/cst_anti_uav/preregistration/X2_seeds_single_frame.json",
+ "written": "2026-10-12T11:47:33+0530",
+ "rule": "per run: STE / argmax settings tuned on ALL CST VAL by systems/scripts/track_eval.py (maximum mSA); commit before the TEST pass",
+ "runs": {
+  "v3_n__causal_g4_cst_s0_e20": {
+   "arm": "causal_g4",
+   "seed": 0,
+   "weights_sha256": "e52a5645b8520c62e1f8c05775049aadc56bd3ab0717e17135bab131ac66f69b",
+   "ste": {
+    "det_thr": 0.15,
+    "init_thr": 0.5,
+    "reacq_thr": 0.5,
+    "max_coast": 5,
+    "output": "det",
+    "coast_output": false,
+    "gate_chi2": 25.0
+   },
+   "argmax": {
+    "thr": 0.3
+   },
+   "val_cross_fitted_mSA": {
+    "ste": 63.61312367868648,
+    "argmax": 62.595470667612055
+   },
+   "val_tuned_on_all_mSA": {
+    "ste": 64.03370365520725,
+    "argmax": 63.41935521526892
+   },
+   "val_cst_drone_AP50": 0.6936213825366238
+  },
+  "v3_n__causal_g4_cst_s1_e20": {
+   "arm": "causal_g4",
+   "seed": 1,
+   "weights_sha256": "b716d1aeccd754a10e97b15718d4f601cccfb57b3448a90eceb141d24fb08ebf",
+   "ste": {
+    "det_thr": 0.15,
+    "init_thr": 0.5,
+    "reacq_thr": 0.5,
+    "max_coast": 20,
+    "output": "det",
+    "coast_output": false,
+    "gate_chi2": 25.0
+   },
+   "argmax": {
+    "thr": 0.4
+   },
+   "val_cross_fitted_mSA": {
+    "ste": 65.08461159218253,
+    "argmax": 64.37932601782859
+   },
+   "val_tuned_on_all_mSA": {
+    "ste": 65.75520421118088,
+    "argmax": 64.57061271062413
+   },
+   "val_cst_drone_AP50": 0.7003241337188708
+  },
+  "v3_n__causal_g4_cst_s2_e20": {
+   "arm": "causal_g4",
+   "seed": 2,
+   "weights_sha256": "5f5c9e400d5b6b8c7369ebc354833dbae25b4af7a72de238056ab8a1be71f1cb",
+   "ste": {
+    "det_thr": 0.05,
+    "init_thr": 0.5,
+    "reacq_thr": 0.5,
+    "max_coast": 20,
+    "output": "det",
+    "coast_output": false,
+    "gate_chi2": 25.0
+   },
+   "argmax": {
+    "thr": 0.3
+   },
+   "val_cross_fitted_mSA": {
+    "ste": 64.45611793360196,
+    "argmax": 63.51547761817159
+   },
+   "val_tuned_on_all_mSA": {
+    "ste": 65.20158967990184,
+    "argmax": 64.31058504772216
+   },
+   "val_cst_drone_AP50": 0.7029884261543451
+  },
+  "v3_n__ttt_cst_s0_e20": {
+   "arm": "ttt",
+   "seed": 0,
+   "weights_sha256": "c04cba2654878b84be4b0c53641fd2fcad78289d678e8765408d4c2eb4b3c1af",
+   "ste": {
+    "det_thr": 0.3,
+    "init_thr": 0.5,
+    "reacq_thr": 0.5,
+    "max_coast": 5,
+    "output": "det",
+    "coast_output": false,
+    "gate_chi2": 25.0
+   },
+   "argmax": {
+    "thr": 0.5
+   },
+   "val_cross_fitted_mSA": {
+    "ste": 55.40401733709276,
+    "argmax": 54.16559728232247
+   },
+   "val_tuned_on_all_mSA": {
+    "ste": 55.943443919407244,
+    "argmax": 54.87818355644431
+   },
+   "val_cst_drone_AP50": 0.5399478134802864
+  },
+  "v3_n__ttt_cst_s1_e20": {
+   "arm": "ttt",
+   "seed": 1,
+   "weights_sha256": "ee3da997f79cc0c3335d1085ede610cccde7c6cb613df0e113e1b432f8d0161b",
+   "ste": {
+    "det_thr": 0.3,
+    "init_thr": 0.5,
+    "reacq_thr": 0.5,
+    "max_coast": 0,
+    "output": "det",
+    "coast_output": true,
+    "gate_chi2": 25.0
+   },
+   "argmax": {
+    "thr": 0.5
+   },
+   "val_cross_fitted_mSA": {
+    "ste": 55.46870357761649,
+    "argmax": 54.83771184193035
+   },
+   "val_tuned_on_all_mSA": {
+    "ste": 56.65792151992244,
+    "argmax": 55.72591094372194
+   },
+   "val_cst_drone_AP50": 0.5746779145950096
+  },
+  "v3_n__ttt_cst_s2_e20": {
+   "arm": "ttt",
+   "seed": 2,
+   "weights_sha256": "3b062e497f47282b92441dc89cc4f284c8ec13e699b393f4c226b0bbe123e675",
+   "ste": {
+    "det_thr": 0.3,
+    "init_thr": 0.5,
+    "reacq_thr": 0.5,
+    "max_coast": 5,
+    "output": "det",
+    "coast_output": false,
+    "gate_chi2": 25.0
+   },
+   "argmax": {
+    "thr": 0.5
+   },
+   "val_cross_fitted_mSA": {
+    "ste": 55.153619008187015,
+    "argmax": 54.2551553678285
+   },
+   "val_tuned_on_all_mSA": {
+    "ste": 55.84550533957866,
+    "argmax": 54.35905972784719
+   },
+   "val_cst_drone_AP50": 0.5403502742007401
+  }
+ }
+}

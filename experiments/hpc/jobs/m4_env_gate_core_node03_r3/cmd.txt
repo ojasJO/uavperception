@@ -1,0 +1,1 @@
+python tools/hpc/env_gate.py --part core --out /home/y_rajeshwar/aerotrack_server/reports/hpc/m4_env_gate_core_node03_r3.json

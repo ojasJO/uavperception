@@ -1,0 +1,4 @@
+{"t": "2026-10-06T14:17:29+0530", "job": "v2_final_test_causal_g4", "kind": "submitted", "pbs_job": "92877.amritahpc", "host": "node03", "ncpus": 8, "mem_gb": 48, "walltime": "12:00:00", "gpu": 1, "stage": 1, "depend": "", "commit": "e6d5180422100ee42d50da03236dd3d105480248"}
+{"t": "2026-10-06T14:17:31+0530", "job": "v2_final_test_causal_g4", "kind": "start", "pbs_job": "92877.amritahpc", "host": "node03"}
+{"t": "2026-10-06T14:17:35+0530", "job": "v2_final_test_causal_g4", "kind": "run", "cmd": "python -u experiments/aerotrack_v2/scripts/final_eval.py --final-eval --candidate v2_causal_g4_s0_e20"}
+{"t": "2026-10-06T15:08:19+0530", "job": "v2_final_test_causal_g4", "kind": "end", "rc": 1, "minutes": 50}

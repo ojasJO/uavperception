@@ -1,0 +1,4 @@
+{"t": "2026-10-12T05:23:20+0530", "job": "x1_final_test", "kind": "submitted", "pbs_job": "93019.amritahpc", "host": "node04", "ncpus": 16, "mem_gb": 64, "walltime": "03:00:00", "gpu": 1, "stage": 1, "depend": "", "commit": "f9bbd3afe9fada2f7b4bd6e4a14910aad549e651"}
+{"t": "2026-10-12T05:23:22+0530", "job": "x1_final_test", "kind": "start", "pbs_job": "93019.amritahpc", "host": "node04"}
+{"t": "2026-10-12T05:23:32+0530", "job": "x1_final_test", "kind": "run", "cmd": "export AEROTRACK_WORKERS=12; python -u experiments/aerotrack_v3/scripts/x1_final.py --final-eval"}
+{"t": "2026-10-12T05:39:00+0530", "job": "x1_final_test", "kind": "end", "rc": 0, "minutes": 15}

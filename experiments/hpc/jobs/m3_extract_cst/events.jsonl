@@ -1,0 +1,4 @@
+{"t": "2026-10-06T02:39:06+0530", "job": "m3_extract_cst", "kind": "submitted", "pbs_job": "92837.amritahpc", "host": "node03", "ncpus": 4, "mem_gb": 16, "walltime": "04:00:00", "gpu": 0, "stage": 0, "depend": "", "commit": "09284252398e74e6374f61a7d71f5a0d8a8815f5"}
+{"t": "2026-10-06T02:39:08+0530", "job": "m3_extract_cst", "kind": "start", "pbs_job": "92837.amritahpc", "host": "node03"}
+{"t": "2026-10-06T02:39:11+0530", "job": "m3_extract_cst", "kind": "run", "cmd": "python tools/hpc/extract_cst.py --archives /home/y_rajeshwar/aerotrack_server/shared_data/source_archives/2_cst-antiuav --out /home/y_rajeshwar/aerotrack_server/reports/hpc/m3_cst_extraction.json"}
+{"t": "2026-10-06T02:59:47+0530", "job": "m3_extract_cst", "kind": "end", "rc": 0, "minutes": 20}

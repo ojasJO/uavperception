@@ -1,0 +1,156 @@
+{
+  "timestamp": "2026-09-25T23:24:34+0530",
+  "epochs": 20,
+  "batch": 32,
+  "workers": 4,
+  "checks": [
+    {
+      "name": "python/venv",
+      "ok": true,
+      "fatal": true,
+      "detail": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe (Python 3.11.9)"
+    },
+    {
+      "name": "packages",
+      "ok": true,
+      "fatal": true,
+      "detail": "torch 2.13.0+cu130, torchvision 0.28.0+cu130, ultralytics 8.4.115, numpy 2.4.6, cv2 5.0.0, psutil 7.2.2, matplotlib 3.11.1, pandas 3.0.5, yaml 6.0.3, PIL 12.3.0"
+    },
+    {
+      "name": "CUDA",
+      "ok": true,
+      "fatal": true,
+      "detail": "NVIDIA GeForce RTX 5050 Laptop GPU sm_120 (in wheel: True), CUDA 13.0, kernel launch ok: True, bf16: True"
+    },
+    {
+      "name": "VRAM",
+      "ok": true,
+      "fatal": true,
+      "detail": "6.84 GB free of 7.96 GB (batch-32 peak ~4.8 GB; T8 wants 1.5 GB headroom on real batches); nvidia-smi: 592.19, 901 MiB, 8151 MiB, 45, 22.69 W, P0"
+    },
+    {
+      "name": "no other GPU job",
+      "ok": false,
+      "fatal": true,
+      "detail": "ML processes: [{'pid': 8252, 'cmdline': 'A:\\\\AEROTRACK_OMEN\\\\venv\\\\Scripts\\\\python.exe -u experiments/aerotrack_repair/scripts/run_grid.py --preflight-only'}]; python GPU clients: []"
+    },
+    {
+      "name": "jupyter kernels",
+      "ok": true,
+      "fatal": false,
+      "detail": "1 running (not GPU clients now, but one could claim VRAM mid-run)"
+    },
+    {
+      "name": "data files",
+      "ok": true,
+      "fatal": true,
+      "detail": "manifest bd7c1ec29ba8 / splits 893026dfbc1a match the registered val set 6fb41d44d45b (cap 5000, 11565 images)"
+    },
+    {
+      "name": "image files",
+      "ok": true,
+      "fatal": true,
+      "detail": "767/767 sampled image paths exist {'test': 246, 'train': 394, 'val': 127}"
+    },
+    {
+      "name": "model files",
+      "ok": true,
+      "fatal": true,
+      "detail": "yolo11-spd.yaml, yolo11-stride.yaml, yolo11n.pt 0ebbc80d4a76"
+    },
+    {
+      "name": "historical checkpoints",
+      "ok": true,
+      "fatal": true,
+      "detail": "v1 + v2 best/last present and hash-identical to their val rows"
+    },
+    {
+      "name": "disk",
+      "ok": true,
+      "fatal": true,
+      "detail": "156 GB free on A:\\ (need >= 20; the grid writes < 2 GB)"
+    },
+    {
+      "name": "output dirs",
+      "ok": true,
+      "fatal": true,
+      "detail": "runs\\repair_grid_e20 and experiments\\aerotrack_repair\\reports writable"
+    },
+    {
+      "name": "host memory",
+      "ok": true,
+      "fatal": true,
+      "detail": "16.3 of 23.6 GB RAM free, 35.7 GB commit free -> train.py would plan 4 of 4 loader workers now (it re-plans at every launch)"
+    },
+    {
+      "name": "scripts",
+      "ok": true,
+      "fatal": true,
+      "detail": "all compile; render_report.py --check OK"
+    },
+    {
+      "name": "grid state",
+      "ok": true,
+      "fatal": false,
+      "detail": "baseline_ctrl: new, no_spd: new, single_frame: new, stock_yolo11n: new; test ledger: 0 entries"
+    },
+    {
+      "name": "power",
+      "ok": true,
+      "fatal": false,
+      "detail": "on AC"
+    },
+    {
+      "name": "pending reboot",
+      "ok": true,
+      "fatal": false,
+      "detail": "none"
+    }
+  ],
+  "environment": {
+    "versions": {
+      "torch": "2.13.0+cu130",
+      "torchvision": "0.28.0+cu130",
+      "ultralytics": "8.4.115",
+      "numpy": "2.4.6",
+      "cv2": "5.0.0",
+      "psutil": "7.2.2",
+      "matplotlib": "3.11.1",
+      "pandas": "3.0.5",
+      "yaml": "6.0.3",
+      "PIL": "12.3.0"
+    },
+    "cuda": true,
+    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "sm": "sm_120",
+    "arch_ok": true,
+    "bf16": true,
+    "cuda_version": "13.0",
+    "kernel_ok": true,
+    "free_gb": 6.84,
+    "total_gb": 7.96
+  },
+  "nvidia_smi": "592.19, 901 MiB, 8151 MiB, 45, 22.69 W, P0",
+  "data": {
+    "manifest_csv_sha256": "bd7c1ec29ba8ab16435607738b4b2d11e893f1fd65e9a561e102b1c7479ce30c",
+    "splits_json_sha256": "893026dfbc1a2fcd27ff145e6fdc0fe6896358dd400257426cb3d41615d81586",
+    "label_cache_sha256": "020bb0983b41461b6a4c2d0828d01dccec67bb7d5c7b297f22c624828e683df3"
+  },
+  "host_memory": {
+    "ram_total_gb": 23.6,
+    "ram_available_gb": 16.3,
+    "commit_free_gb": 35.7,
+    "reserve_gb": 4.0,
+    "workers_estimate": 4
+  },
+  "grid_on_disk": {
+    "baseline_ctrl": false,
+    "no_spd": false,
+    "single_frame": false,
+    "stock_yolo11n": false
+  },
+  "fingerprint": "bfc6455cb515b55ffa948c19426f43c9efd131c37f8feaf9483f3db8f6d63ba6",
+  "ablations": {},
+  "heavy_ok": true,
+  "ok": false
+}

@@ -1,0 +1,4 @@
+{"kind": "waiting", "dir": "A:\\AEROTRACK_OMEN\\runs\\_chains\\corpus_v2", "t": "2026-10-05T09:01:24+0530"}
+{"kind": "go", "sentinel": "DONE", "t": "2026-10-05T11:10:24+0530"}
+{"kind": "start", "job": "gpu_handoff", "cmd": "A:\\AEROTRACK_OMEN\\venv\\Scripts\\python.exe -u tools/gpu_handoff.py", "t": "2026-10-05T11:10:24+0530"}
+{"kind": "end", "job": "gpu_handoff", "rc": 0, "minutes": 0.1, "t": "2026-10-05T11:10:29+0530"}

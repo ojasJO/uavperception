@@ -1,0 +1,633 @@
+{
+  "generated": "2026-09-23T09:34:44+0530",
+  "_correction_2026-09-23": "Hand-edited during post-shutdown documentation reconciliation. This plan was generated at 09:34, before DFSC-all training began (14:00), and pre-emptively recorded DFSC-all as executed. Actual outcome: DFSC-all training was completed, but its test evaluation was interrupted before completion (54/91 sequences) and therefore produces no valid final test benchmark result. The 'follow-up' seed-1 test evaluations and DFSC-all run have no authorisation record and are classified supplementary/unscoped. See reports/FINAL_PROTOCOL_II_IR_BENCHMARK_REPORT.md. Re-running make_benchmark_plan.py would overwrite this correction.",
+  "paper": "Anti-UAV: A Large Multi-Modal Benchmark for UAV Tracking (Jiang et al., arXiv:2101.08466v3, 8 Feb 2021) - anti_uav_research_paper.pdf",
+  "benchmark_run_dir": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853",
+  "classification_scheme": {
+    "RUN": "runnable as-is on our trained checkpoint; authorised and will be executed",
+    "RUN_WITH_ADAPTATION": "implementable with existing code but needs a new artifact (a training run); `executed` records whether it was actually run",
+    "NOT_APPLICABLE": "the protocol or table does not admit our model, for the stated reason",
+    "BLOCKED_BY_MISSING_ARTIFACT": "requires a checkpoint/model we do not possess"
+  },
+  "attributes_reported": [
+    "OV",
+    "OC",
+    "FM",
+    "SV",
+    "LI",
+    "TC-EASY",
+    "TC-MID",
+    "TC-HARD",
+    "TC",
+    "LR",
+    "ALL"
+  ],
+  "models_benchmarked": [
+    {
+      "our_name": "normal_ir",
+      "paper_row": "normal",
+      "role": "PAPER BASELINE 'normal' - GlobalTrack fine-tuned on Anti-UAV IR train without DFSC",
+      "config": "experiments/anti_uav/configs/normal_ir.yaml",
+      "dfsc": {
+        "alpha": 0.0,
+        "cross_terms": [
+          "cls",
+          "reg"
+        ],
+        "ism_modulation": "same"
+      },
+      "checkpoint": "experiments/anti_uav/runs/normal_ir/weights/last.pt",
+      "epoch": 18,
+      "seed": 0,
+      "modality": "IR"
+    },
+    {
+      "our_name": "dfsc_ir",
+      "paper_row": "DFSC (Ours) == DFSC-a1",
+      "role": "OUR REPRODUCTION of the paper's method - DFSC alpha = 1",
+      "config": "experiments/anti_uav/configs/dfsc_ir.yaml",
+      "dfsc": {
+        "alpha": 1.0,
+        "cross_terms": [
+          "cls",
+          "reg"
+        ],
+        "ism_modulation": "same"
+      },
+      "checkpoint": "experiments/anti_uav/runs/dfsc_ir/weights/last.pt",
+      "epoch": 18,
+      "seed": 0,
+      "modality": "IR"
+    }
+  ],
+  "models_not_benchmarked": [
+    {
+      "our_name": "phaseB_normal_ir_seed1",
+      "reason": "seed-1 replicate of normal_ir; Phase B. Explicitly excluded from the authorised scope of this task (it answers a seed-variance question, not a paper-benchmark question)."
+    },
+    {
+      "our_name": "phaseB_dfsc_ir_seed1",
+      "reason": "seed-1 replicate of dfsc_ir; Phase B. Excluded from the authorised scope, as above."
+    },
+    {
+      "our_name": "runs/_smoke/*",
+      "reason": "pipeline smoke test, not a trained model."
+    },
+    {
+      "our_name": "runs/aerotrack_spd_finetuned and every other runs/ entry at the repository root",
+      "reason": "AeroTrack-Net is a YOLO DETECTOR with mAP-style metrics. It is not an implementation of this paper and shares no metric with it. Never mixed into these tables."
+    }
+  ],
+  "measured_cost_basis": {
+    "val_eval_hours": 1.8,
+    "test_eval_hours": 2.4,
+    "train_hours": 2.5
+  },
+  "inventory": [
+    {
+      "id": "table_I",
+      "paper_item": "Table I - dataset comparison (sequence/box counts of Anti-UAV vs other SOT datasets)",
+      "kind": "dataset statistic",
+      "metric": "counts",
+      "split": "all",
+      "modality": "both",
+      "classification": "NOT_APPLICABLE",
+      "applicable_to_our_model": false,
+      "existing_implementation": "experiments/anti_uav/scripts/verify_dataset.py",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "reason": "Describes the dataset, not a tracker. Already verified independently in reports/dataset_verification.json (which records a ~2 % box-count shortfall vs Table I, carried into the discrepancy section of the final report)."
+    },
+    {
+      "id": "table_II",
+      "paper_item": "Table II - attribute definitions (OV, OC, FM, SV, LI, TC, LR)",
+      "kind": "definition",
+      "metric": "none",
+      "split": "all",
+      "modality": "IR",
+      "classification": "NOT_APPLICABLE",
+      "applicable_to_our_model": false,
+      "existing_implementation": "eval/metrics.py ATTRIBUTE_ORDER + data/anti_uav/label_new/*.json",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "reason": "Definitional. Consumed by the attribute-wise evaluation below rather than reproduced."
+    },
+    {
+      "id": "fig_3",
+      "paper_item": "Fig. 3 - dataset position/scale statistics",
+      "kind": "dataset statistic",
+      "metric": "distributions",
+      "split": "all",
+      "modality": "both",
+      "classification": "NOT_APPLICABLE",
+      "applicable_to_our_model": false,
+      "existing_implementation": null,
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "reason": "Dataset property, not a tracker result."
+    },
+    {
+      "id": "fig_8",
+      "paper_item": "Fig. 8 - qualitative comparison of DFSC vs other methods",
+      "kind": "qualitative figure",
+      "metric": "none",
+      "split": "test",
+      "modality": "both",
+      "classification": "NOT_APPLICABLE",
+      "applicable_to_our_model": false,
+      "existing_implementation": null,
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "reason": "Carries no number to compare. Protocol SS5 additionally forbids rendering TEST sequences for demonstration purposes."
+    },
+    {
+      "id": "table_III",
+      "paper_item": "Table III - mSA (%) of baseline trackers, per attribute [Protocol I]",
+      "kind": "Protocol I benchmark",
+      "metric": "mSA + attributes",
+      "split": "val",
+      "modality": "IR + visible",
+      "classification": "NOT_APPLICABLE",
+      "applicable_to_our_model": false,
+      "existing_implementation": "metric yes (eval/metrics.py); the 40+ trackers no",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "reason": "Protocol I is defined by the paper (SS III-E) as evaluation of trackers that used 'any training set except for those with UAV objects'. Both of our checkpoints are fine-tuned on the Anti-UAV IR train split, so entering them into Protocol I would violate the protocol's own precondition. Separately, the 40+ comparison trackers of Tables III/IV are third-party methods whose implementations and weights are not present in this repository, so the ranking itself cannot be reproduced. Our model's numbers under the identical metric are reported under Protocol II instead."
+    },
+    {
+      "id": "table_IV",
+      "paper_item": "Table IV - mSA (%) of baseline trackers, per attribute [Protocol I]",
+      "kind": "Protocol I benchmark",
+      "metric": "mSA + attributes",
+      "split": "test",
+      "modality": "IR + visible",
+      "classification": "NOT_APPLICABLE",
+      "applicable_to_our_model": false,
+      "existing_implementation": "metric yes (eval/metrics.py); the 40+ trackers no",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "reason": "Protocol I is defined by the paper (SS III-E) as evaluation of trackers that used 'any training set except for those with UAV objects'. Both of our checkpoints are fine-tuned on the Anti-UAV IR train split, so entering them into Protocol I would violate the protocol's own precondition. Separately, the 40+ comparison trackers of Tables III/IV are third-party methods whose implementations and weights are not present in this repository, so the ranking itself cannot be reproduced. Our model's numbers under the identical metric are reported under Protocol II instead."
+    },
+    {
+      "id": "fig_7",
+      "paper_item": "Fig. 7 - Protocol I precision and success plots",
+      "kind": "Protocol I benchmark",
+      "metric": "precision / success curves",
+      "split": "val + test",
+      "modality": "IR + visible",
+      "classification": "NOT_APPLICABLE",
+      "applicable_to_our_model": false,
+      "existing_implementation": "curves yes (per-sequence success_curve is stored); the trackers no",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "reason": "Protocol I is defined by the paper (SS III-E) as evaluation of trackers that used 'any training set except for those with UAV objects'. Both of our checkpoints are fine-tuned on the Anti-UAV IR train split, so entering them into Protocol I would violate the protocol's own precondition. Separately, the 40+ comparison trackers of Tables III/IV are third-party methods whose implementations and weights are not present in this repository, so the ranking itself cannot be reproduced. Our model's numbers under the identical metric are reported under Protocol II instead."
+    },
+    {
+      "id": "table_V_IR_val_normal_ir",
+      "paper_item": "Table V - Protocol II, mSA (%), IR, val split, row 'normal'",
+      "kind": "Protocol II benchmark",
+      "metric": "mSA overall + 10 attributes",
+      "split": "val",
+      "modality": "IR",
+      "classification": "RUN",
+      "applicable_to_our_model": true,
+      "existing_implementation": "experiments/anti_uav/scripts/evaluate.py + eval/metrics.py",
+      "needs_new_implementation": false,
+      "will_run": true,
+      "executed": null,
+      "our_model": "normal_ir",
+      "checkpoint": "experiments/anti_uav/runs/normal_ir/weights/last.pt",
+      "command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\normal_ir\\weights\\last.pt --split val --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\normal_ir__val_IR",
+      "estimated_hours": 1.8,
+      "reason": "Directly runnable: our checkpoint is exactly the Protocol II model this row describes (GlobalTrack fine-tuned on the Anti-UAV IR train split), the metric is implemented from paper Eq. (1), and the split is the paper's official one."
+    },
+    {
+      "id": "table_V_IR_test_normal_ir",
+      "paper_item": "Table V - Protocol II, mSA (%), IR, test split, row 'normal'",
+      "kind": "Protocol II benchmark",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR",
+      "classification": "RUN",
+      "applicable_to_our_model": true,
+      "existing_implementation": "experiments/anti_uav/scripts/evaluate.py + eval/metrics.py",
+      "needs_new_implementation": false,
+      "will_run": true,
+      "executed": null,
+      "our_model": "normal_ir",
+      "checkpoint": "experiments/anti_uav/runs/normal_ir/weights/last.pt",
+      "command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\normal_ir\\weights\\last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\normal_ir__test_IR --final-eval",
+      "estimated_hours": 2.4,
+      "reason": "Directly runnable: our checkpoint is exactly the Protocol II model this row describes (GlobalTrack fine-tuned on the Anti-UAV IR train split), the metric is implemented from paper Eq. (1), and the split is the paper's official one."
+    },
+    {
+      "id": "table_V_IR_val_dfsc_ir",
+      "paper_item": "Table V - Protocol II, mSA (%), IR, val split, row 'DFSC (Ours) == DFSC-a1'",
+      "kind": "Protocol II benchmark",
+      "metric": "mSA overall + 10 attributes",
+      "split": "val",
+      "modality": "IR",
+      "classification": "RUN",
+      "applicable_to_our_model": true,
+      "existing_implementation": "experiments/anti_uav/scripts/evaluate.py + eval/metrics.py",
+      "needs_new_implementation": false,
+      "will_run": true,
+      "executed": null,
+      "our_model": "dfsc_ir",
+      "checkpoint": "experiments/anti_uav/runs/dfsc_ir/weights/last.pt",
+      "command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\dfsc_ir\\weights\\last.pt --split val --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\dfsc_ir__val_IR",
+      "estimated_hours": 1.8,
+      "reason": "Directly runnable: our checkpoint is exactly the Protocol II model this row describes (GlobalTrack fine-tuned on the Anti-UAV IR train split), the metric is implemented from paper Eq. (1), and the split is the paper's official one."
+    },
+    {
+      "id": "table_V_IR_test_dfsc_ir",
+      "paper_item": "Table V - Protocol II, mSA (%), IR, test split, row 'DFSC (Ours) == DFSC-a1'",
+      "kind": "Protocol II benchmark",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR",
+      "classification": "RUN",
+      "applicable_to_our_model": true,
+      "existing_implementation": "experiments/anti_uav/scripts/evaluate.py + eval/metrics.py",
+      "needs_new_implementation": false,
+      "will_run": true,
+      "executed": null,
+      "our_model": "dfsc_ir",
+      "checkpoint": "experiments/anti_uav/runs/dfsc_ir/weights/last.pt",
+      "command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\dfsc_ir\\weights\\last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\dfsc_ir__test_IR --final-eval",
+      "estimated_hours": 2.4,
+      "reason": "Directly runnable: our checkpoint is exactly the Protocol II model this row describes (GlobalTrack fine-tuned on the Anti-UAV IR train split), the metric is implemented from paper Eq. (1), and the split is the paper's official one."
+    },
+    {
+      "id": "table_V_IR_val_large_scale",
+      "paper_item": "Table V - IR, val split, row 'large-scale'",
+      "kind": "Protocol II benchmark",
+      "metric": "mSA overall + 10 attributes",
+      "split": "val",
+      "modality": "IR",
+      "classification": "BLOCKED_BY_MISSING_ARTIFACT",
+      "applicable_to_our_model": false,
+      "existing_implementation": "evaluator yes; checkpoint no",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "missing_artifact": "public GlobalTrack checkpoint (mmdet 1.x layout) + verified conversion",
+      "reason": "The 'large-scale' row is the public GlobalTrack checkpoint (MS COCO + LaSOT + GOT-10k). It is distributed only in mmdetection-1.x key layout via Google Drive; this repository has no copy and no verified conversion to the torchvision-based QG-RCNN re-implementation (spec S1/S6). Producing it would require a weight conversion that no official source provides."
+    },
+    {
+      "id": "table_V_IR_test_large_scale",
+      "paper_item": "Table V - IR, test split, row 'large-scale'",
+      "kind": "Protocol II benchmark",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR",
+      "classification": "BLOCKED_BY_MISSING_ARTIFACT",
+      "applicable_to_our_model": false,
+      "existing_implementation": "evaluator yes; checkpoint no",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "missing_artifact": "public GlobalTrack checkpoint (mmdet 1.x layout) + verified conversion",
+      "reason": "The 'large-scale' row is the public GlobalTrack checkpoint (MS COCO + LaSOT + GOT-10k). It is distributed only in mmdetection-1.x key layout via Google Drive; this repository has no copy and no verified conversion to the torchvision-based QG-RCNN re-implementation (spec S1/S6). Producing it would require a weight conversion that no official source provides."
+    },
+    {
+      "id": "table_V_visible",
+      "paper_item": "Table V - Visible ('All') column, all three rows, val and test",
+      "kind": "Protocol II benchmark",
+      "metric": "mSA",
+      "split": "val + test",
+      "modality": "visible (RGB)",
+      "classification": "BLOCKED_BY_MISSING_ARTIFACT",
+      "applicable_to_our_model": false,
+      "existing_implementation": "evaluator and RGB manifests yes; trained RGB model no",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "missing_artifact": "a trained visible-modality model (and the GlobalTrack init it requires)",
+      "reason": "No visible-modality (RGB) model has been trained. Per the paper (SS V-B) the visible tracker is initialised from the GlobalTrack pretrained model, which is the same unavailable artifact as the 'large-scale' row (spec S6). RGB configs exist but are parked in configs/deferred/ for exactly this reason. IR numbers are never reported as RGB numbers."
+    },
+    {
+      "id": "table_VI_DFSC-all",
+      "paper_item": "Table VI - ablation on the TEST set, mSA (%), variant 'DFSC-all'",
+      "kind": "Protocol II ablation",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR",
+      "classification": "RUN_WITH_ADAPTATION",
+      "applicable_to_our_model": true,
+      "existing_implementation": "training + evaluation implemented; config added for this run",
+      "needs_new_implementation": false,
+      "will_run": true,
+      "executed": false,
+      "config": "experiments/anti_uav/configs/phase_b/dfsc_ir_ism_cross.yaml",
+      "config_switches": {
+        "alpha": 1.0,
+        "cross_terms": [
+          "cls",
+          "reg"
+        ],
+        "ism_modulation": "cross"
+      },
+      "our_run": "phaseB_dfsc_ir_ism_cross",
+      "train_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\train.py --config experiments\\anti_uav\\configs\\phase_b\\dfsc_ir_ism_cross.yaml",
+      "eval_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\phaseB_dfsc_ir_ism_cross\\weights\\last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\phaseB_dfsc_ir_ism_cross__test_IR --final-eval",
+      "out_dir": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/ablation/phaseB_dfsc_ir_ism_cross__test_IR",
+      "estimated_train_hours": 2.5,
+      "estimated_eval_hours": 2.4,
+      "estimated_total_hours": 4.9,
+      "reason": "[corrected] DFSC-all training was completed (18/18 epochs, last.pt sha256 708ce966...), but its test evaluation was interrupted before completion (54/91 sequences, machine shutdown 2026-09-23 ~20:04) and therefore produces no valid final test benchmark result. Originally selected as the only Table VI variant whose paper-reported effect (-2.05 pt) exceeds plausible run-to-run noise.",
+      "execution_status": "TRAINING_COMPLETE__TEST_EVAL_INTERRUPTED_INCOMPLETE",
+      "test_eval_sequences_completed": "54/91",
+      "valid_final_test_result": false,
+      "authorisation_record_found": false
+    },
+    {
+      "id": "table_VI_DFSC-cls",
+      "paper_item": "Table VI - ablation on the TEST set, mSA (%), variant 'DFSC-cls'",
+      "kind": "Protocol II ablation",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR (+ visible column, blocked)",
+      "classification": "RUN_WITH_ADAPTATION",
+      "applicable_to_our_model": true,
+      "existing_implementation": "training + evaluation both fully implemented; only the config is new",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "config": "configs/phase_b/dfsc_ir_cls_only.yaml (TO BE CREATED from dfsc_ir.yaml)",
+      "config_switches": {
+        "alpha": 1.0,
+        "cross_terms": [
+          "cls"
+        ],
+        "ism_modulation": "same"
+      },
+      "train_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\train.py --config experiments\\anti_uav\\configs\\phase_b\\dfsc_ir_cls_only.yaml",
+      "eval_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\phaseB_dfsc_cls\\weights\\last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\phaseB_dfsc_cls__test_IR --final-eval",
+      "estimated_train_hours": 2.5,
+      "estimated_eval_hours": 2.4,
+      "estimated_total_hours": 4.9,
+      "reason": "Every Table VI variant is implementable with existing config switches (dfsc.alpha, dfsc.cross_terms, dfsc.ism_modulation) and needs no new code, but each requires a NEW 18-epoch training run before it can be evaluated. Training was explicitly excluded from the authorised scope of this benchmark task, so these are recorded as implementable-but-not-executed, with the exact command and measured cost."
+    },
+    {
+      "id": "table_VI_DFSC-reg",
+      "paper_item": "Table VI - ablation on the TEST set, mSA (%), variant 'DFSC-reg'",
+      "kind": "Protocol II ablation",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR (+ visible column, blocked)",
+      "classification": "RUN_WITH_ADAPTATION",
+      "applicable_to_our_model": true,
+      "existing_implementation": "training + evaluation both fully implemented; only the config is new",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "config": "configs/phase_b/dfsc_ir_reg_only.yaml (TO BE CREATED from dfsc_ir.yaml)",
+      "config_switches": {
+        "alpha": 1.0,
+        "cross_terms": [
+          "reg"
+        ],
+        "ism_modulation": "same"
+      },
+      "train_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\train.py --config experiments\\anti_uav\\configs\\phase_b\\dfsc_ir_reg_only.yaml",
+      "eval_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\phaseB_dfsc_reg\\weights\\last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\phaseB_dfsc_reg__test_IR --final-eval",
+      "estimated_train_hours": 2.5,
+      "estimated_eval_hours": 2.4,
+      "estimated_total_hours": 4.9,
+      "reason": "Every Table VI variant is implementable with existing config switches (dfsc.alpha, dfsc.cross_terms, dfsc.ism_modulation) and needs no new code, but each requires a NEW 18-epoch training run before it can be evaluated. Training was explicitly excluded from the authorised scope of this benchmark task, so these are recorded as implementable-but-not-executed, with the exact command and measured cost."
+    },
+    {
+      "id": "table_VI_DFSC-a0.25",
+      "paper_item": "Table VI - ablation on the TEST set, mSA (%), variant 'DFSC-a0.25'",
+      "kind": "Protocol II ablation",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR (+ visible column, blocked)",
+      "classification": "RUN_WITH_ADAPTATION",
+      "applicable_to_our_model": true,
+      "existing_implementation": "training + evaluation both fully implemented; only the config is new",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "config": "configs/phase_b/dfsc_ir_alpha0.25.yaml (EXISTS)",
+      "config_switches": {
+        "alpha": 0.25,
+        "cross_terms": [
+          "cls",
+          "reg"
+        ],
+        "ism_modulation": "same"
+      },
+      "train_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\train.py --config experiments\\anti_uav\\configs\\phase_b\\dfsc_ir_alpha0.25.yaml",
+      "eval_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\phaseB_dfsc_a025\\weights\\last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\phaseB_dfsc_a025__test_IR --final-eval",
+      "estimated_train_hours": 2.5,
+      "estimated_eval_hours": 2.4,
+      "estimated_total_hours": 4.9,
+      "reason": "Every Table VI variant is implementable with existing config switches (dfsc.alpha, dfsc.cross_terms, dfsc.ism_modulation) and needs no new code, but each requires a NEW 18-epoch training run before it can be evaluated. Training was explicitly excluded from the authorised scope of this benchmark task, so these are recorded as implementable-but-not-executed, with the exact command and measured cost."
+    },
+    {
+      "id": "table_VI_DFSC-a0.5",
+      "paper_item": "Table VI - ablation on the TEST set, mSA (%), variant 'DFSC-a0.5'",
+      "kind": "Protocol II ablation",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR (+ visible column, blocked)",
+      "classification": "RUN_WITH_ADAPTATION",
+      "applicable_to_our_model": true,
+      "existing_implementation": "training + evaluation both fully implemented; only the config is new",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "config": "configs/phase_b/dfsc_ir_alpha0.5.yaml (TO BE CREATED from dfsc_ir.yaml)",
+      "config_switches": {
+        "alpha": 0.5,
+        "cross_terms": [
+          "cls",
+          "reg"
+        ],
+        "ism_modulation": "same"
+      },
+      "train_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\train.py --config experiments\\anti_uav\\configs\\phase_b\\dfsc_ir_alpha0.5.yaml",
+      "eval_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\phaseB_dfsc_a05\\weights\\last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\phaseB_dfsc_a05__test_IR --final-eval",
+      "estimated_train_hours": 2.5,
+      "estimated_eval_hours": 2.4,
+      "estimated_total_hours": 4.9,
+      "reason": "Every Table VI variant is implementable with existing config switches (dfsc.alpha, dfsc.cross_terms, dfsc.ism_modulation) and needs no new code, but each requires a NEW 18-epoch training run before it can be evaluated. Training was explicitly excluded from the authorised scope of this benchmark task, so these are recorded as implementable-but-not-executed, with the exact command and measured cost."
+    },
+    {
+      "id": "table_VI_DFSC-a2",
+      "paper_item": "Table VI - ablation on the TEST set, mSA (%), variant 'DFSC-a2'",
+      "kind": "Protocol II ablation",
+      "metric": "mSA overall + 10 attributes",
+      "split": "test",
+      "modality": "IR (+ visible column, blocked)",
+      "classification": "RUN_WITH_ADAPTATION",
+      "applicable_to_our_model": true,
+      "existing_implementation": "training + evaluation both fully implemented; only the config is new",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "config": "configs/phase_b/dfsc_ir_alpha2.yaml (TO BE CREATED from dfsc_ir.yaml)",
+      "config_switches": {
+        "alpha": 2.0,
+        "cross_terms": [
+          "cls",
+          "reg"
+        ],
+        "ism_modulation": "same"
+      },
+      "train_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\train.py --config experiments\\anti_uav\\configs\\phase_b\\dfsc_ir_alpha2.yaml",
+      "eval_command": "venv\\Scripts\\python.exe experiments\\anti_uav\\scripts\\evaluate.py --checkpoint experiments\\anti_uav\\runs\\phaseB_dfsc_a2\\weights\\last.pt --split test --modality IR --out-dir experiments/anti_uav/runs/paper_benchmarks_20260922T193853\\phaseB_dfsc_a2__test_IR --final-eval",
+      "estimated_train_hours": 2.5,
+      "estimated_eval_hours": 2.4,
+      "estimated_total_hours": 4.9,
+      "reason": "Every Table VI variant is implementable with existing config switches (dfsc.alpha, dfsc.cross_terms, dfsc.ism_modulation) and needs no new code, but each requires a NEW 18-epoch training run before it can be evaluated. Training was explicitly excluded from the authorised scope of this benchmark task, so these are recorded as implementable-but-not-executed, with the exact command and measured cost."
+    },
+    {
+      "id": "table_VI_visible",
+      "paper_item": "Table VI - Visible column of every ablation row",
+      "kind": "Protocol II ablation",
+      "metric": "mSA",
+      "split": "test",
+      "modality": "visible (RGB)",
+      "classification": "BLOCKED_BY_MISSING_ARTIFACT",
+      "applicable_to_our_model": false,
+      "existing_implementation": "no trained RGB model",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "missing_artifact": "a trained visible-modality model",
+      "reason": "No visible-modality (RGB) model has been trained. Per the paper (SS V-B) the visible tracker is initialised from the GlobalTrack pretrained model, which is the same unavailable artifact as the 'large-scale' row (spec S6). RGB configs exist but are parked in configs/deferred/ for exactly this reason. IR numbers are never reported as RGB numbers."
+    },
+    {
+      "id": "table_VII_IR_normal_ir",
+      "paper_item": "Table VII - precision (%) and success (%) on Anti-UAV, IR, row 'normal'",
+      "kind": "Protocol II benchmark",
+      "metric": "OTB precision@20px + success AUC",
+      "split": "test (inferred) and val (both reported)",
+      "modality": "IR",
+      "classification": "RUN",
+      "applicable_to_our_model": true,
+      "existing_implementation": "eval/metrics.py (computed in the same pass as mSA)",
+      "needs_new_implementation": false,
+      "will_run": true,
+      "executed": null,
+      "our_model": "normal_ir",
+      "command": "(no extra run - produced by the Table V evaluations above)",
+      "estimated_hours": 0.0,
+      "reason": "Precision and success come out of the same saved predictions as mSA, so these rows cost no additional GPU time. The paper does not state which split Table VII refers to; we report BOTH val and test and label the ambiguity rather than picking one."
+    },
+    {
+      "id": "table_VII_IR_dfsc_ir",
+      "paper_item": "Table VII - precision (%) and success (%) on Anti-UAV, IR, row 'DFSC (Ours) == DFSC-a1'",
+      "kind": "Protocol II benchmark",
+      "metric": "OTB precision@20px + success AUC",
+      "split": "test (inferred) and val (both reported)",
+      "modality": "IR",
+      "classification": "RUN",
+      "applicable_to_our_model": true,
+      "existing_implementation": "eval/metrics.py (computed in the same pass as mSA)",
+      "needs_new_implementation": false,
+      "will_run": true,
+      "executed": null,
+      "our_model": "dfsc_ir",
+      "command": "(no extra run - produced by the Table V evaluations above)",
+      "estimated_hours": 0.0,
+      "reason": "Precision and success come out of the same saved predictions as mSA, so these rows cost no additional GPU time. The paper does not state which split Table VII refers to; we report BOTH val and test and label the ambiguity rather than picking one."
+    },
+    {
+      "id": "table_VII_other_rows",
+      "paper_item": "Table VII - rows 'large-scale' and every ablation variant; all Visible columns",
+      "kind": "Protocol II benchmark",
+      "metric": "precision / success",
+      "split": "test (inferred)",
+      "modality": "IR + visible",
+      "classification": "BLOCKED_BY_MISSING_ARTIFACT",
+      "applicable_to_our_model": false,
+      "existing_implementation": "metric yes; the models no",
+      "needs_new_implementation": false,
+      "will_run": false,
+      "executed": false,
+      "missing_artifact": "the GlobalTrack public checkpoint (large-scale), a trained RGB model (visible columns), and the six un-trained ablation checkpoints (ablation rows)",
+      "reason": "The 'large-scale' row is the public GlobalTrack checkpoint (MS COCO + LaSOT + GOT-10k). It is distributed only in mmdetection-1.x key layout via Google Drive; this repository has no copy and no verified conversion to the torchvision-based QG-RCNN re-implementation (spec S1/S6). Producing it would require a weight conversion that no official source provides. No visible-modality (RGB) model has been trained. Per the paper (SS V-B) the visible tracker is initialised from the GlobalTrack pretrained model, which is the same unavailable artifact as the 'large-scale' row (spec S6). RGB configs exist but are parked in configs/deferred/ for exactly this reason. IR numbers are never reported as RGB numbers. Ablation rows: Every Table VI variant is implementable with existing config switches (dfsc.alpha, dfsc.cross_terms, dfsc.ism_modulation) and needs no new code, but each requires a NEW 18-epoch training run before it can be evaluated. Training was explicitly excluded from the authorised scope of this benchmark task, so these are recorded as implementable-but-not-executed, with the exact command and measured cost."
+    },
+    {
+      "id": "protocol_III",
+      "paper_item": "Protocol III - unaligned multi-modal (RGB + IR) tracking",
+      "kind": "Protocol III",
+      "metric": "mSA on both modalities",
+      "split": "n/a",
+      "modality": "RGB + IR",
+      "classification": "NOT_APPLICABLE",
+      "applicable_to_our_model": false,
+      "existing_implementation": null,
+      "needs_new_implementation": true,
+      "will_run": false,
+      "executed": false,
+      "reason": "Protocol III (unaligned multi-modal RGB+IR) is proposed by the paper as future work: the paper reports no Protocol III result anywhere, so there is no paper value to compare against. Our model is also single-modality (IR only), and no multi-modal fusion is implemented."
+    }
+  ],
+  "summary": {
+    "inventory_items": 25,
+    "by_classification": {
+      "NOT_APPLICABLE": 8,
+      "RUN": 6,
+      "BLOCKED_BY_MISSING_ARTIFACT": 5,
+      "RUN_WITH_ADAPTATION": 6
+    },
+    "items_executed_so_far": 0,
+    "authorised_runs": 4,
+    "authorised_gpu_hours": 8.4,
+    "table_VI_gpu_hours_if_run": 24.5,
+    "table_VI_variants_executed": [],
+    "table_VI_variants_not_executed": [
+      "DFSC-cls",
+      "DFSC-reg",
+      "DFSC-a0.25",
+      "DFSC-a0.5",
+      "DFSC-a2"
+    ],
+    "table_VI_variants_trained_without_valid_result": [
+      "DFSC-all"
+    ]
+  },
+  "follow_up_executions": {
+    "_note": "[corrected] Originally described as 'added after the initial four-run benchmark, under a later authorisation'; no authorisation record was found, so these are supplementary/unscoped and not part of the primary benchmark. These are not paper table rows in their own right; they exist to make the table rows interpretable.",
+    "seed_variance": {
+      "purpose": "a second seed for both Phase A configurations on TEST, so the DFSC effect can be read against run-to-run noise",
+      "runs": [
+        "phaseB_normal_ir_seed1",
+        "phaseB_dfsc_ir_seed1"
+      ],
+      "training_required": false,
+      "estimated_hours": 4.8,
+      "script": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/run_seed_variance.sh",
+      "outcome": "completed and independently verified (ledger lines 7-8); supplementary/unscoped"
+    },
+    "ablation_DFSC_all": {
+      "purpose": "the one Table VI variant whose paper effect (-2.05 pt) exceeds plausible seed noise; tests whether our DFSC implementation reproduces a measurable ablation",
+      "runs": [
+        "phaseB_dfsc_ir_ism_cross"
+      ],
+      "training_required": true,
+      "estimated_hours": 4.9,
+      "script": "experiments/anti_uav/runs/paper_benchmarks_20260922T193853/run_ablation_dfsc_all.sh",
+      "outcome": "training completed; test evaluation interrupted at 54/91 sequences; NO valid final test result"
+    },
+    "metric_audit": {
+      "purpose": "from-scratch re-implementation of Eq. (1)/precision/success to audit the reported numbers; CPU only",
+      "training_required": false,
+      "estimated_hours": 0.0,
+      "script": "experiments/anti_uav/scripts/verify_metrics_independently.py",
+      "outcome": "completed (CPU only)"
+    }
+  }
+}

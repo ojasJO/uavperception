@@ -1,0 +1,9 @@
+{
+ "det_thr": 0.15,
+ "init_thr": 0.5,
+ "reacq_thr": 0.5,
+ "max_coast": 60,
+ "output": "det",
+ "coast_output": false,
+ "gate_chi2": 25.0
+}

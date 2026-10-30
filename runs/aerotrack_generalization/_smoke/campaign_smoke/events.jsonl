@@ -1,0 +1,24 @@
+{"t": "2026-09-26T10:30:29+0530", "event": "start", "pid": 22416, "smoke": true, "argv": "experiments/aerotrack_generalization/scripts/run_gen.py --smoke"}
+{"t": "2026-09-26T10:30:29+0530", "event": "plan_frozen", "sha": "f4f9d4d237ac"}
+{"t": "2026-09-26T10:30:29+0530", "event": "integrity_ok", "when": "start", "files": 31}
+{"t": "2026-09-26T10:30:29+0530", "event": "train_launch", "run": "gen_stock_f0_e1_smoke", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T10:31:35+0530", "event": "start", "pid": 24904, "smoke": true, "argv": "experiments/aerotrack_generalization/scripts/run_gen.py --smoke"}
+{"t": "2026-09-26T10:31:35+0530", "event": "integrity_ok", "when": "start", "files": 31}
+{"t": "2026-09-26T10:31:35+0530", "event": "train_launch", "run": "gen_stock_f0_e1_smoke", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T10:32:38+0530", "event": "train_complete", "run": "gen_stock_f0_e1_smoke", "epochs": 1, "train_seconds": 58.0}
+{"t": "2026-09-26T10:32:55+0530", "event": "train_launch", "run": "gen_spd_fp_f0_e1_smoke", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T10:33:54+0530", "event": "train_complete", "run": "gen_spd_fp_f0_e1_smoke", "epochs": 1, "train_seconds": 54.2}
+{"t": "2026-09-26T10:34:12+0530", "event": "train_launch", "run": "gen_temporal_fp_g1_f0_e1_smoke", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T10:35:17+0530", "event": "train_complete", "run": "gen_temporal_fp_g1_f0_e1_smoke", "epochs": 1, "train_seconds": 60.5}
+{"t": "2026-09-26T10:35:35+0530", "event": "train_launch", "run": "gen_temporal_fp_g4_f0_e1_smoke", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T10:36:41+0530", "event": "train_complete", "run": "gen_temporal_fp_g4_f0_e1_smoke", "epochs": 1, "train_seconds": 61.1}
+{"t": "2026-09-26T10:37:00+0530", "event": "decisions", "spd_fp": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "temporal_fp_g1": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "temporal_fp_g4": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "budget_h4": "pending"}
+{"t": "2026-09-26T10:37:00+0530", "event": "stage_a_done", "survivors": []}
+{"t": "2026-09-26T10:37:01+0530", "event": "decisions", "spd_fp": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "temporal_fp_g1": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "temporal_fp_g4": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "budget_h4": "pending"}
+{"t": "2026-09-26T10:37:01+0530", "event": "train_launch", "run": "gen_stock_f0_e2_smoke", "launch": 1, "workers": 4, "mode": "fresh start"}
+{"t": "2026-09-26T10:38:10+0530", "event": "train_complete", "run": "gen_stock_f0_e2_smoke", "epochs": 2, "train_seconds": 63.9}
+{"t": "2026-09-26T10:38:29+0530", "event": "decisions", "spd_fp": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "temporal_fp_g1": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "temporal_fp_g4": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)", "budget_h4": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)"}
+{"t": "2026-09-26T10:38:29+0530", "event": "development_done", "supported": []}
+{"t": "2026-09-26T10:38:29+0530", "event": "report_failed", "rc": 1, "log": "report_20260926_103829.log"}
+{"t": "2026-09-26T10:38:30+0530", "event": "integrity_ok", "when": "end", "files": 31}
+{"t": "2026-09-26T10:38:30+0530", "event": "complete", "hours": 0.13}

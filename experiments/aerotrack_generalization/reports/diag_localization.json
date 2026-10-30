@@ -1,0 +1,30 @@
+{
+ "repair_abl_baseline_ctrl_e20__last": {
+  "cst_micro_drone_gt": 1579,
+  "iou_ge_0.5": 0.719,
+  "iou_0.25_to_0.5_found_but_mislocalised": 0.07,
+  "iou_lt_0.25_missed": 0.21,
+  "centre_hit": 0.79
+ },
+ "repair_abl_no_spd_e20__last": {
+  "cst_micro_drone_gt": 1579,
+  "iou_ge_0.5": 0.785,
+  "iou_0.25_to_0.5_found_but_mislocalised": 0.081,
+  "iou_lt_0.25_missed": 0.134,
+  "centre_hit": 0.867
+ },
+ "repair_abl_single_frame_e20__last": {
+  "cst_micro_drone_gt": 1579,
+  "iou_ge_0.5": 0.724,
+  "iou_0.25_to_0.5_found_but_mislocalised": 0.087,
+  "iou_lt_0.25_missed": 0.189,
+  "centre_hit": 0.811
+ },
+ "repair_abl_stock_yolo11n_e20__last": {
+  "cst_micro_drone_gt": 1579,
+  "iou_ge_0.5": 0.773,
+  "iou_0.25_to_0.5_found_but_mislocalised": 0.065,
+  "iou_lt_0.25_missed": 0.162,
+  "centre_hit": 0.838
+ }
+}

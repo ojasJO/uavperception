@@ -1,0 +1,21 @@
+{
+ "name": "cpu_failures_g4",
+ "purpose": "CPU-only deterministic failure analysis on the full VAL cache with the cross-fitted STE parameters",
+ "state_dir": "runs/_chains/cpu_failures_g4",
+ "wait_for": "runs/_chains/cpu_forecast_eval_g4",
+ "jobs": [
+  {
+   "name": "failure_cases_g4",
+   "required": false,
+   "cmd": [
+    "{python}",
+    "-u",
+    "experiments/systems/scripts/failure_cases.py",
+    "--run",
+    "gen_temporal_fp_g4_full_e20",
+    "--corpus",
+    "auto"
+   ]
+  }
+ ]
+}

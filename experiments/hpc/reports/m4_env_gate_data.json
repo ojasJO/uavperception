@@ -1,0 +1,63 @@
+{
+ "part": "data",
+ "host": "node03",
+ "t": "2026-10-06T03:01:52+0530",
+ "ok": true,
+ "checks": [
+  {
+   "check": "D1 corpus identity (sha256 = OMEN)",
+   "ok": true,
+   "detail": {
+    "manifest": "f842d03909cf2534130f5852e5c9d6df2e498e8d03532fc9bb1f7ce9309c9347",
+    "splits": "30f0e35f35ca6dfd4ddcf89fa9c9acc907c37f9a846a976ff2300573d1bf8a6e",
+    "corpus": "data_unified_v2",
+    "path_map": "A:\\AEROTRACK_OMEN=>/home/y_rajeshwar/aerotrack_server/shared_data/root"
+   },
+   "seconds": 2.1
+  },
+  {
+   "check": "D2 every TRAIN/VAL image path resolves",
+   "ok": true,
+   "detail": {
+    "train_val_images": 602613,
+    "missing": 0,
+    "examples": []
+   },
+   "seconds": 91.88
+  },
+  {
+   "check": "D3 200 random frames decode at the expected size",
+   "ok": true,
+   "detail": {
+    "decoded": 200,
+    "bad": []
+   },
+   "seconds": 3.04
+  },
+  {
+   "check": "D4 label cache aligned with the manifest",
+   "ok": true,
+   "detail": {
+    "manifest_rows": 847103,
+    "cache_offsets": 847104,
+    "boxes": 797172
+   },
+   "seconds": 0.13
+  },
+  {
+   "check": "D5 sequence-level leakage assert",
+   "ok": true,
+   "detail": {
+    "train": 431745,
+    "val": 170868,
+    "test": 244490,
+    "pairs": [
+     "train/val",
+     "train/test",
+     "val/test"
+    ]
+   },
+   "seconds": 5.64
+  }
+ ]
+}

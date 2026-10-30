@@ -1,0 +1,14 @@
+{
+ "server": "antiuav_val_20190925_101846_1_4__IR.npz",
+ "local": "smoke_val_20190925_101846_1_4_IR.frames.jsonl",
+ "frames": 1000,
+ "presence_agreement": 1.0,
+ "frames_with_both": 1000,
+ "top1_iou_mean": 0.9846897220787043,
+ "top1_iou_p05": 0.9734508729948632,
+ "top1_iou_min": 0.944253519511333,
+ "frac_iou_ge_0.9": 1.0,
+ "abs_score_diff_mean": 0.0003408203125,
+ "abs_score_diff_p95": 0.00146484375,
+ "conf": 0.05
+}

@@ -1,0 +1,38 @@
+{
+  "id": "F1_standard_yolo11n",
+  "track": "B (detector architecture correctness)",
+  "registered": "see the git commit that added this file (2026-10-05): during the v2 campaign's first training, before any run of the corrected network",
+  "class": "controlled experiment on corpus-v2 VAL (TEST untouched); one factor: how the network is built",
+  "finding_that_motivates_it": {
+    "what": "every AeroTrack detector so far (repair series, generalization series, v2 campaign; planned v3 / X1 / C2) was built from YAMLs with flat multipliers and no scale letter; Ultralytics 8.4.115 then resolves scale = '' and parse_model's `if scale in \"mlx\"` is True for the empty string, so every C3k2 block is built with c3k=True (the YOLO11 m/l/x block with an inner C3k) instead of YOLO11n's Bottleneck",
+    "consequence": "the network is not YOLO11n (2.613 M params) and only 417 / 649 tensors (64.3 %) of yolo11n.pt (trained with Ultralytics 8.2.100) load into it; the C3k2 internals of layers 2, 4, 13, 16, 19 start from random init. The earlier diagnosis ('C3k2 cv1 convs are 1x1 in 8.4.115 vs 3x3 in the checkpoint') described a symptom; c_model/aerotrack_trainer.transfer_pretrained's docstring ('the C3k2 blocks ... transfer') and the v2 registration's 'starts as COCO YOLO11n on frame t' are therefore inaccurate (erratum: experiments/aerotrack_v2/ERRATUM_architecture.md)",
+    "what_stays_valid": "every registered comparison so far is between arms built the same way (same mis-built architecture, identical starting weights apart from zeroed neighbour channels), so window / SPD / recipe verdicts are internally valid; absolute accuracy may be below what the intended network reaches",
+    "fix": "c_model/yolo11-stride-std.yaml = yolo11-stride.yaml with `scales: {n: [0.50, 0.25, 1024]}` -> C3k2(c3k=False): 2.591 M params, 448 / 499 tensors (89.8 %) load (the rest: 2-class head internals); function-preserving init exact (max |diff| 0.0)"
+  },
+  "arms": {
+    "as_built": "the v2 campaign's runs of the configuration it selects: v2_<cfg>_s0_e20, v2_<cfg>_s1_e20 (shared; no new training)",
+    "standard": "v3 model 'n_std' (c_model/yolo11-stride-std.yaml, COCO yolo11n.pt + centre-frame stem, gen_lib function-preserving init) with the same window: v3_n_std__<window>_s0_e20, _s1_e20",
+    "window": "from experiments/aerotrack_v2/reports/v2_decisions.json selected_candidate (causal_g4 -> causal_g4, sym_g4 -> sym_g4, stock -> ttt); decided by v2's rule, not here"
+  },
+  "held_fixed": "the v2 recipe, corpus v2, seeds 0 / 1, monitoring, evaluation protocol and frame set, checkpoint = last.pt",
+  "primary_metric": "CST drone AP50 on corpus-v2 VAL (as v2)",
+  "rule": "the v2 superiority rule with the v2 margins: seed-mean delta (standard - as_built) > 0.02; delta > 0 for every seed; paired dataset-stratified sequence bootstrap 95 % CI excludes 0 (B = 1000); seed-mean Anti-UAV delta > -0.02. Futility: if the seed-0 CST delta <= 0, seed 1 is not trained and F1 is NOT SUPPORTED.",
+  "downstream_adoption": {
+    "if_SUPPORTED": "X1 trains n_std (amended in its registration before it runs); CF's detector uses n_std (an n_std run of C2's selected window is trained before CF if that window differs); C2 stays on the as-built network (a relative window study sharing v2's runs) and says so",
+    "if_NOT_SUPPORTED": "everything stays on the as-built network; the erratum stands as documentation"
+  },
+  "component_gate": {
+    "measured_failure": "35.7 % of the pretrained tensors never loaded (random init) because of the parser's empty-scale branch",
+    "why": "with 20 epochs x 25,000 samples, features that start from COCO are likely better on tiny / low-contrast targets than random C3k blocks",
+    "baseline": "the as-built network (v2's own runs, same seeds)",
+    "novelty": "none (a correctness fix); its value is the measured size of the effect",
+    "cost": "-0.022 M params; identical FLOPs class; no runtime change",
+    "isolating_ablation": "only the C3k2 inner block (and hence the transferable fraction) changes",
+    "rtx5050": "yes (same family, slightly smaller)",
+    "exportable": "yes (standard Ultralytics modules)",
+    "falsifier": "seed-mean delta <= 0.02 or a non-positive seed"
+  },
+  "estimated_gpu_hours": "2.2-4.5 (seed 0) + 2.2-4.5 (seed 1 if not futile) + evaluations",
+  "queue": "after the causal-detector caches, before X1 (whose network depends on this verdict)",
+  "outputs": "runs/v3_n_std__<window>_s{0,1}_e20/ ; experiments/aerotrack_v3/reports/{v3_results.json, F1_standard_yolo11n.json, F1_standard_yolo11n.md}"
+}

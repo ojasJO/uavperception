@@ -1,0 +1,110 @@
+{
+ "generated": "2026-09-26T10:38:29+0530",
+ "rule": "Pre-registered decisions of the generalization series (the runner calls this; the rules below are fixed before any run).\n\n    python experiments/aerotrack_generalization/scripts/analyze_gen.py [--tag _smoke]\n\nPrimary metric: CST drone AP50 on the held-out DEV fold (drone class only; last.pt). Non-inferiority: Anti-UAV drone AP50.\nA candidate is SUPPORTED versus `stock` (same fold, same seed) only if\n  (1) fold-mean delta > +0.02, (2) delta > 0 in every one of the 3 folds, (3) the fold-pooled paired sequence bootstrap 95 % CI\n  of the mean delta excludes 0, and (4) the fold-mean Anti-UAV delta > -0.02.\nFutility: a candidate not ahead on fold 0 (delta <= 0) cannot satisfy (2) and is REJECTED without running folds 1-2.\nBudget check (H4): `stock` at 40 epochs vs `stock` at 20 epochs under the same rule.",
+ "candidates": {
+  "spd_fp": {
+   "candidate": "spd_fp",
+   "reference": "stock",
+   "primary": "cst_drone_AP50",
+   "folds": {
+    "0": {
+     "candidate": 0.0,
+     "reference": 0.0,
+     "delta": 0.0,
+     "relative_pct": null,
+     "anti_uav_delta": 0.0,
+     "secondary_deltas": {
+      "drone_AP50": 0.0,
+      "anti_uav_drone_AP50": 0.0,
+      "cst_drone_AP50": 0.0,
+      "det_fly_drone_AP50": 0.0,
+      "cst_drone_micro_AP50": 0.0,
+      "reg_micro_AP50": 0.0,
+      "reg_cst_AP50": 0.0,
+      "reg_cst_micro_AP50": 0.0,
+      "mAP50": 0.0
+     }
+    }
+   },
+   "status": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)"
+  },
+  "temporal_fp_g1": {
+   "candidate": "temporal_fp_g1",
+   "reference": "stock",
+   "primary": "cst_drone_AP50",
+   "folds": {
+    "0": {
+     "candidate": 0.0,
+     "reference": 0.0,
+     "delta": 0.0,
+     "relative_pct": null,
+     "anti_uav_delta": 0.0,
+     "secondary_deltas": {
+      "drone_AP50": 0.0,
+      "anti_uav_drone_AP50": 0.0,
+      "cst_drone_AP50": 0.0,
+      "det_fly_drone_AP50": 0.0,
+      "cst_drone_micro_AP50": 0.0,
+      "reg_micro_AP50": 0.0,
+      "reg_cst_AP50": 0.0,
+      "reg_cst_micro_AP50": 0.0,
+      "mAP50": 0.0
+     }
+    }
+   },
+   "status": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)"
+  },
+  "temporal_fp_g4": {
+   "candidate": "temporal_fp_g4",
+   "reference": "stock",
+   "primary": "cst_drone_AP50",
+   "folds": {
+    "0": {
+     "candidate": 0.0,
+     "reference": 0.0,
+     "delta": 0.0,
+     "relative_pct": null,
+     "anti_uav_delta": 0.0,
+     "secondary_deltas": {
+      "drone_AP50": 0.0,
+      "anti_uav_drone_AP50": 0.0,
+      "cst_drone_AP50": 0.0,
+      "det_fly_drone_AP50": 0.0,
+      "cst_drone_micro_AP50": 0.0,
+      "reg_micro_AP50": 0.0,
+      "reg_cst_AP50": 0.0,
+      "reg_cst_micro_AP50": 0.0,
+      "mAP50": 0.0
+     }
+    }
+   },
+   "status": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)"
+  }
+ },
+ "budget_h4": {
+  "candidate": "stock_e2",
+  "reference": "stock",
+  "primary": "cst_drone_AP50",
+  "folds": {
+   "0": {
+    "candidate": 0.0,
+    "reference": 0.0,
+    "delta": 0.0,
+    "relative_pct": null,
+    "anti_uav_delta": 0.0,
+    "secondary_deltas": {
+     "drone_AP50": 0.0,
+     "anti_uav_drone_AP50": 0.0,
+     "cst_drone_AP50": 0.0,
+     "det_fly_drone_AP50": 0.0,
+     "cst_drone_micro_AP50": 0.0,
+     "reg_micro_AP50": 0.0,
+     "reg_cst_AP50": 0.0,
+     "reg_cst_micro_AP50": 0.0,
+     "mAP50": 0.0
+    }
+   }
+  },
+  "status": "rejected: not ahead on fold 0 (pre-registered futility; rule (2) cannot hold)"
+ }
+}

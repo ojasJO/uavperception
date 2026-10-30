@@ -254,10 +254,12 @@ def cmd_demo(args):
         cmd.extend(["--modality", args.modality])
     if getattr(args, "list", False):
         cmd.append("--list")
+    if getattr(args, "one_button", False):
+        cmd.append("--one-button")
 
     if not getattr(args, "list", False):
         print("[run] Launching interactive visual tracking window...")
-        print("[run] Streaming live telemetry to terminal. Press [Space] to pause, [Q] to quit.")
+        print("[run] Streaming live telemetry to terminal. Press [Enter] or [N] for Next Video, [Space] to pause, [Q] to quit.")
     sys.exit(subprocess.call(cmd))
 
 
@@ -371,6 +373,7 @@ def build_parser():
     p_demo.add_argument("--rgb", action="store_true", help="Play only visible RGB daylight drone videos")
     p_demo.add_argument("--ir", action="store_true", help="Play only thermal IR drone videos")
     p_demo.add_argument("--list", action="store_true", help="List all available curated sequences and exit")
+    p_demo.add_argument("--one-button", action="store_true", help="One-button mode: Pressing Space or Enter advances to next video")
     p_demo.set_defaults(func=cmd_demo)
 
     return p

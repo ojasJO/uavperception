@@ -1,0 +1,4 @@
+{"t": "2026-10-06T01:07:05+05:30", "kind": "push", "file": "Det-Fly.v5i.yolov11.zip", "from_byte": 0, "size": 331694930, "attempt": 1}
+{"t": "2026-10-06T01:08:02+05:30", "kind": "pushed", "file": "Det-Fly.v5i.yolov11.zip", "seconds": 57}
+{"t": "2026-10-06T01:08:07+05:30", "kind": "verified", "file": "Det-Fly.v5i.yolov11.zip", "sha256": "f8381cb06ede74ac84aa81217d88b694b93d7cbe62cec339ed67fe7979d3c561"}
+{"t": "2026-10-06T01:08:07+05:30", "kind": "done"}

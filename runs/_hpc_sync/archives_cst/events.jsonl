@@ -1,0 +1,34 @@
+{"t": "2026-10-06T01:27:02+05:30", "kind": "push", "file": "CST-AntiUAV.z01", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T01:36:50+05:30", "kind": "pushed", "file": "CST-AntiUAV.z01", "seconds": 588}
+{"t": "2026-10-06T01:36:59+05:30", "kind": "verified", "file": "CST-AntiUAV.z01", "sha256": "e05f31068443380474f4f157f3f7b141c7d8fce28302bfe670e5e4448e32b553"}
+{"t": "2026-10-06T01:37:08+05:30", "kind": "push", "file": "CST-AntiUAV.z02", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T01:43:04+05:30", "kind": "pushed", "file": "CST-AntiUAV.z02", "seconds": 356}
+{"t": "2026-10-06T01:43:13+05:30", "kind": "verified", "file": "CST-AntiUAV.z02", "sha256": "3af80de8e56023224aeefa0cab975e7d370a676ab273e960aacde1a450726b43"}
+{"t": "2026-10-06T01:43:21+05:30", "kind": "push", "file": "CST-AntiUAV.z03", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T01:49:27+05:30", "kind": "pushed", "file": "CST-AntiUAV.z03", "seconds": 365}
+{"t": "2026-10-06T01:49:36+05:30", "kind": "verified", "file": "CST-AntiUAV.z03", "sha256": "970b4c6d361acb95eedc67a50cb9d43b2fb6e6c8b3dc2863301e8e60abc3bae6"}
+{"t": "2026-10-06T01:49:45+05:30", "kind": "push", "file": "CST-AntiUAV.z04", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T01:55:42+05:30", "kind": "pushed", "file": "CST-AntiUAV.z04", "seconds": 357}
+{"t": "2026-10-06T01:55:51+05:30", "kind": "verified", "file": "CST-AntiUAV.z04", "sha256": "47ce7042b5bf92746a313b128fff9a0d9c8d8ca36d7b2f181f3007f1117cacd3"}
+{"t": "2026-10-06T01:56:00+05:30", "kind": "push", "file": "CST-AntiUAV.z05", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T02:01:57+05:30", "kind": "pushed", "file": "CST-AntiUAV.z05", "seconds": 357}
+{"t": "2026-10-06T02:02:06+05:30", "kind": "verified", "file": "CST-AntiUAV.z05", "sha256": "cd88eea91de7cd814e7478eec3e044f634941095f4e64e5ce706091c38381a80"}
+{"t": "2026-10-06T02:02:15+05:30", "kind": "push", "file": "CST-AntiUAV.z06", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T02:08:10+05:30", "kind": "pushed", "file": "CST-AntiUAV.z06", "seconds": 355}
+{"t": "2026-10-06T02:08:20+05:30", "kind": "verified", "file": "CST-AntiUAV.z06", "sha256": "07b3419ed293bf52e8d558b7a5ccec9bcf4d12c61096d18d2c5a611ef43504c1"}
+{"t": "2026-10-06T02:08:28+05:30", "kind": "push", "file": "CST-AntiUAV.z07", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T02:14:25+05:30", "kind": "pushed", "file": "CST-AntiUAV.z07", "seconds": 357}
+{"t": "2026-10-06T02:14:34+05:30", "kind": "verified", "file": "CST-AntiUAV.z07", "sha256": "e603ac26ea4670c03b22d4b99a5482245304bbf78f33495d846ee35f8524055b"}
+{"t": "2026-10-06T02:14:42+05:30", "kind": "push", "file": "CST-AntiUAV.z08", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T02:20:40+05:30", "kind": "pushed", "file": "CST-AntiUAV.z08", "seconds": 358}
+{"t": "2026-10-06T02:20:50+05:30", "kind": "verified", "file": "CST-AntiUAV.z08", "sha256": "b90ce8e25656c35dd257f3ee0cfc7c12db1e58c5a16f4e1ce3fba3e0f029e636"}
+{"t": "2026-10-06T02:20:57+05:30", "kind": "push", "file": "CST-AntiUAV.z09", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T02:26:54+05:30", "kind": "pushed", "file": "CST-AntiUAV.z09", "seconds": 357}
+{"t": "2026-10-06T02:27:04+05:30", "kind": "verified", "file": "CST-AntiUAV.z09", "sha256": "e4df1b99519087ad12a3663e7813da3c29ee027b12c309c162b0882db51690d9"}
+{"t": "2026-10-06T02:27:12+05:30", "kind": "push", "file": "CST-AntiUAV.z10", "from_byte": 0, "size": 2147483648, "attempt": 1}
+{"t": "2026-10-06T02:33:08+05:30", "kind": "pushed", "file": "CST-AntiUAV.z10", "seconds": 356}
+{"t": "2026-10-06T02:33:18+05:30", "kind": "verified", "file": "CST-AntiUAV.z10", "sha256": "b8d3a68b7a5fb2b81a52a676690723a8cf40c049486bce0c27c326edbeff9ae6"}
+{"t": "2026-10-06T02:33:25+05:30", "kind": "push", "file": "CST-AntiUAV.zip", "from_byte": 0, "size": 1785030969, "attempt": 1}
+{"t": "2026-10-06T02:38:21+05:30", "kind": "pushed", "file": "CST-AntiUAV.zip", "seconds": 296}
+{"t": "2026-10-06T02:38:29+05:30", "kind": "verified", "file": "CST-AntiUAV.zip", "sha256": "52a9dc84f00c703987611ef1dcb1071faaea8bdf7b689725dda4462164d49d4c"}
+{"t": "2026-10-06T02:38:29+05:30", "kind": "done"}

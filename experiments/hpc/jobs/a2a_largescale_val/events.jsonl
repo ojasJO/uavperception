@@ -1,0 +1,4 @@
+{"t": "2026-10-06T04:39:23+0530", "job": "a2a_largescale_val", "kind": "submitted", "pbs_job": "92844.amritahpc", "host": "node03", "ncpus": 4, "mem_gb": 32, "walltime": "08:00:00", "gpu": 1, "stage": 0, "depend": "afterany:92842.amritahpc", "commit": "9fff89a9777e74d72dbf7a50984c317ff4318838"}
+{"t": "2026-10-06T12:29:39+0530", "job": "a2a_largescale_val", "kind": "start", "pbs_job": "92844.amritahpc", "host": "node03"}
+{"t": "2026-10-06T12:29:48+0530", "job": "a2a_largescale_val", "kind": "run", "cmd": "python experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt --split val --modality IR && python experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt --split val --modality RGB"}
+{"t": "2026-10-06T15:43:19+0530", "job": "a2a_largescale_val", "kind": "end", "rc": 0, "minutes": 193}
