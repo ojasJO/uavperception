@@ -1,0 +1,2062 @@
+{
+  "generated": "2026-10-05T06:24:40",
+  "thresholds": {
+    "reproduced": 1.0,
+    "approx": 3.0
+  },
+  "rows": [
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA OV",
+      "paper": 78.09,
+      "ours": 56.05147461869624,
+      "delta": -22.038525381303764,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA OC",
+      "paper": 81.42,
+      "ours": 78.25701910970191,
+      "delta": -3.162980890298087,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA FM",
+      "paper": 78.66,
+      "ours": 79.47210479916805,
+      "delta": 0.8121047991680541,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA SV",
+      "paper": 76.61,
+      "ours": 72.88949546503531,
+      "delta": -3.7205045349646895,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA LI",
+      "paper": 79.95,
+      "ours": 79.94363945372719,
+      "delta": -0.0063605462728162365,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA TC-EASY",
+      "paper": 81.23,
+      "ours": 81.6164774864794,
+      "delta": 0.38647748647939295,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA TC-MID",
+      "paper": 76.56,
+      "ours": 77.7797362154713,
+      "delta": 1.2197362154713005,
+      "verdict": "approximately reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA TC-HARD",
+      "paper": 74.04,
+      "ours": 76.71388594442435,
+      "delta": 2.6738859444243417,
+      "verdict": "approximately reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA TC",
+      "paper": 78.49,
+      "ours": 79.58485026890283,
+      "delta": 1.0948502689028317,
+      "verdict": "approximately reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA LR",
+      "paper": 73.55,
+      "ours": 76.9420115885202,
+      "delta": 3.392011588520205,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA All",
+      "paper": 79.6,
+      "ours": 79.28741311433669,
+      "delta": -0.3125868856633076,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA OV",
+      "paper": 70.44,
+      "ours": 69.56529114609218,
+      "delta": -0.8747088539078192,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA OC",
+      "paper": 68.94,
+      "ours": 64.51839533154768,
+      "delta": -4.421604668452318,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA FM",
+      "paper": 60.66,
+      "ours": 70.4268652654134,
+      "delta": 9.7668652654134,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA SV",
+      "paper": 55.48,
+      "ours": 64.64313250538297,
+      "delta": 9.163132505382968,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA LI",
+      "paper": 59.78,
+      "ours": 75.51062599272886,
+      "delta": 15.73062599272886,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA TC-EASY",
+      "paper": 77.07,
+      "ours": 77.01436224693707,
+      "delta": -0.055637753062924844,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA TC-MID",
+      "paper": 64.64,
+      "ours": 72.31423223193833,
+      "delta": 7.674232231938333,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA TC-HARD",
+      "paper": 44.61,
+      "ours": 51.63261970137155,
+      "delta": 7.0226197013715534,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA TC",
+      "paper": 61.68,
+      "ours": 67.44967341701421,
+      "delta": 5.769673417014211,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA LR",
+      "paper": 52.94,
+      "ours": 70.23827527795146,
+      "delta": 17.29827527795146,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "normal",
+      "run": "normal_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA All",
+      "paper": 65.36,
+      "ours": 70.57961955231671,
+      "delta": 5.219619552316715,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA OV",
+      "paper": 77.72,
+      "ours": 56.02707485482552,
+      "delta": -21.692925145174478,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA OC",
+      "paper": 82.7,
+      "ours": 78.24296727726359,
+      "delta": -4.457032722736415,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA FM",
+      "paper": 79.34,
+      "ours": 79.41180532421942,
+      "delta": 0.07180532421941166,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA SV",
+      "paper": 77.58,
+      "ours": 72.90740149436357,
+      "delta": -4.672598505636429,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA LI",
+      "paper": 80.31,
+      "ours": 79.88470787655895,
+      "delta": -0.4252921234410536,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA TC-EASY",
+      "paper": 81.48,
+      "ours": 81.67600218799707,
+      "delta": 0.1960021879970668,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA TC-MID",
+      "paper": 76.83,
+      "ours": 77.75934686721386,
+      "delta": 0.9293468672138658,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA TC-HARD",
+      "paper": 75.65,
+      "ours": 76.71808038908082,
+      "delta": 1.0680803890808193,
+      "verdict": "approximately reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA TC",
+      "paper": 79.04,
+      "ours": 79.61229296428833,
+      "delta": 0.572292964288323,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA LR",
+      "paper": 74.33,
+      "ours": 76.93783372053014,
+      "delta": 2.607833720530138,
+      "verdict": "approximately reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "val",
+      "modality": "IR",
+      "metric": "mSA All",
+      "paper": 80.09,
+      "ours": 79.25591549978726,
+      "delta": -0.8340845002127395,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA OV",
+      "paper": 70.16,
+      "ours": 69.46120483268645,
+      "delta": -0.6987951673135484,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA OC",
+      "paper": 68.07,
+      "ours": 64.77810569962458,
+      "delta": -3.291894300375418,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA FM",
+      "paper": 60.95,
+      "ours": 69.77394985316616,
+      "delta": 8.823949853166155,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA SV",
+      "paper": 55.55,
+      "ours": 63.870172839363846,
+      "delta": 8.320172839363849,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA LI",
+      "paper": 60.13,
+      "ours": 74.50338329905428,
+      "delta": 14.373383299054275,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA TC-EASY",
+      "paper": 77.96,
+      "ours": 77.34488545272471,
+      "delta": -0.615114547275283,
+      "verdict": "reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA TC-MID",
+      "paper": 65.85,
+      "ours": 71.99757278748403,
+      "delta": 6.147572787484037,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA TC-HARD",
+      "paper": 45.59,
+      "ours": 50.796500428471504,
+      "delta": 5.2065004284715,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA TC",
+      "paper": 62.75,
+      "ours": 67.12841524543872,
+      "delta": 4.378415245438717,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA LR",
+      "paper": 53.1,
+      "ours": 69.10562624280145,
+      "delta": 16.005626242801448,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    },
+    {
+      "method": "DFSC",
+      "run": "dfsc_ir",
+      "split": "test",
+      "modality": "IR",
+      "metric": "mSA All",
+      "paper": 66.04,
+      "ours": 70.28677954130464,
+      "delta": 4.246779541304633,
+      "verdict": "not reproduced",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last"
+    }
+  ],
+  "gains": [
+    {
+      "split": "val",
+      "paper_gain": 0.4900000000000091,
+      "our_gain": -0.03149761454942279,
+      "same_sign": false
+    },
+    {
+      "split": "test",
+      "paper_gain": 0.6800000000000068,
+      "our_gain": -0.2928400110120748,
+      "same_sign": false
+    }
+  ],
+  "other_evaluations": [
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_absence_thr\\test",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 1.0,
+      "variant": "absence_by_score_threshold tau=0.3",
+      "mSA_percent": 70.70382069573017,
+      "precision_20px": 89.90711888952269,
+      "success_auc": 69.71335227948882,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 76.74994681529215
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 77.1952603058277
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 71.04217452415013
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 65.27129370944094
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 75.68704099861552
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 74.2267404037915
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 71.59623384992237
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 53.748553435010415
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 67.08145360048987
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 70.37737386393442
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_absence_thr\\val",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 1.0,
+      "variant": "absence_by_score_threshold tau=0.3",
+      "mSA_percent": 80.75803279882606,
+      "precision_20px": 99.37387830303925,
+      "success_auc": 79.19668473327123,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 77.97911519344834
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 80.90887093900612
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 80.06260836906934
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 78.54864688972964
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 80.48573187411105
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 81.65237936377858
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 78.09311118345799
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.89244369973319
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.7213263921885
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.88183588043488
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_test_scale_640x512\\test",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "e010d631735a34ae22d0f274a3ce3a57730ca00e",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 1.0,
+      "variant": "test_scale_640x512",
+      "mSA_percent": 66.00652382326072,
+      "precision_20px": 90.3252274494256,
+      "success_auc": 66.61009150717112,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 63.52690885610372
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 55.33916630797021
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 60.779977180507274
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 55.59692297931688
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 60.2418069654615
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 77.95471701061857
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 67.25508716695407
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 45.409258578791956
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 63.39111737686495
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 53.434967555052225
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_test_scale_640x512\\val",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "e010d631735a34ae22d0f274a3ce3a57730ca00e",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 1.0,
+      "variant": "test_scale_640x512",
+      "mSA_percent": 74.64628878912946,
+      "precision_20px": 99.31777053929206,
+      "success_auc": 74.87952795129007,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 53.702146275460514
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 75.25581942822608
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 75.10017561782549
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 64.45464382855742
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 77.22542501222878
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 78.7213021611978
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 72.51971551606758
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 63.19161967114783
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 73.7737874552168
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 64.97269928628903
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_absence_thr\\test",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 0.0,
+      "variant": "absence_by_score_threshold tau=0.3",
+      "mSA_percent": 70.87211877400786,
+      "precision_20px": 89.86661887048064,
+      "success_auc": 69.87375582346334,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 76.87445999689152
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 76.93375185755347
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 71.6915815885897
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 65.97876820632385
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 76.65875342263759
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 73.4773460760924
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 71.68718309903403
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 54.69916039901359
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 67.23127632250149
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 71.48256886549629
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_absence_thr\\val",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 0.0,
+      "variant": "absence_by_score_threshold tau=0.3",
+      "mSA_percent": 80.79700891830718,
+      "precision_20px": 99.40908302567838,
+      "success_auc": 79.24419066918688,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 77.866179216958
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 81.09694374335533
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 80.1542216019137
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 78.54211832650974
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 80.57242875319336
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 81.59452161901892
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 78.14141449353147
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.88419544524452
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.70086098713392
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.86569290054017
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_test_scale_640x512\\test",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "d89d36bb4399ff4a24ba324bc935e4cf388cb300",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 0.0,
+      "variant": "test_scale_640x512",
+      "mSA_percent": 66.1467557895472,
+      "precision_20px": 90.29587361331204,
+      "success_auc": 66.76250282753664,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 64.0829554746865
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 56.54996506106872
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 60.9733096570506
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 55.5027419142624
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 60.68021837295887
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 77.91262919987547
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 67.38914998895866
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 45.09799329831854
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 63.358799013106484
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 54.006192686927534
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_test_scale_640x512\\val",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "4e14b979fe93f9e96dca03066d78513e6677e3ad",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 0.0,
+      "variant": "test_scale_640x512",
+      "mSA_percent": 75.26399508331578,
+      "precision_20px": 99.33029530805135,
+      "success_auc": 75.44143913989934,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 53.42252977402953
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 76.16316705113665
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 75.69670396583349
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 65.34030616355335
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 77.86892661896144
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 79.27981705693558
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 73.27309019338519
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 64.78954430016574
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 74.60838817550459
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 66.04718785431459
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "phaseB_dfsc_ir_seed1",
+      "eval_dir": "experiments\\anti_uav\\runs\\phaseB_dfsc_ir_seed1\\eval_val_IR_last",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "dc0b3e643b53222bc7f24a65a4104b08a4cf748306f082ca535c9269b4899542",
+      "git_commit": "619449e3b004e096b3503a9e6c65c5be221272f1",
+      "seed": 1,
+      "phase": "B_controlled_improvement",
+      "alpha": 1.0,
+      "variant": null,
+      "mSA_percent": 79.43176658863167,
+      "precision_20px": 99.56745463793791,
+      "success_auc": 79.47780291650459,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 55.9886707608784
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 79.11709555039737
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 79.64782331957294
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 72.91322104776839
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 80.16016836181996
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 82.1169902233736
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 77.76558946717726
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.81416572389503
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.86914717506359
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.93671297573054
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "phaseB_normal_ir_seed1",
+      "eval_dir": "experiments\\anti_uav\\runs\\phaseB_normal_ir_seed1\\eval_val_IR_last",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "414ef0164e2bfc6520fb19b2e1d487fbb5df14836433da4923223b24f5032b13",
+      "git_commit": "619449e3b004e096b3503a9e6c65c5be221272f1",
+      "seed": 1,
+      "phase": "B_controlled_improvement",
+      "alpha": 0.0,
+      "variant": null,
+      "mSA_percent": 79.36374608732683,
+      "precision_20px": 99.56897691011164,
+      "success_auc": 79.38530326666005,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 56.122214283433046
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 78.57204860096716
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 79.55058125858649
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 72.69573124744136
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 80.0563142163118
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 82.02622764124268
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 77.9442232579702
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.9613682248932
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.89778854809812
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.99090161686233
+        }
+      },
+      "n_sequences": 67
+    }
+  ],
+  "all_evaluations": [
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_test_IR_last",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "77accee6c416dfd03ccfb28a99ae8a731c05f8f6",
+      "seed": 0,
+      "phase": "A_faithful_reproduction",
+      "alpha": 1.0,
+      "variant": null,
+      "mSA_percent": 70.28677954130464,
+      "precision_20px": 91.65408252861002,
+      "success_auc": 70.7223962149073,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 69.46120483268645
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 64.77810569962458
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 69.77394985316616
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 63.870172839363846
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 74.50338329905428
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 77.34488545272471
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 71.99757278748403
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 50.796500428471504
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 67.12841524543872
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 69.10562624280145
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\eval_val_IR_last",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "77accee6c416dfd03ccfb28a99ae8a731c05f8f6",
+      "seed": 0,
+      "phase": "A_faithful_reproduction",
+      "alpha": 1.0,
+      "variant": null,
+      "mSA_percent": 79.25591549978726,
+      "precision_20px": 99.56618086198407,
+      "success_auc": 79.28666155457464,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 56.02707485482552
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 78.24296727726359
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 79.41180532421942
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 72.90740149436357
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 79.88470787655895
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 81.67600218799707
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 77.75934686721386
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.71808038908082
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.61229296428833
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.93783372053014
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_absence_thr\\test",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 1.0,
+      "variant": "absence_by_score_threshold tau=0.3",
+      "mSA_percent": 70.70382069573017,
+      "precision_20px": 89.90711888952269,
+      "success_auc": 69.71335227948882,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 76.74994681529215
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 77.1952603058277
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 71.04217452415013
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 65.27129370944094
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 75.68704099861552
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 74.2267404037915
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 71.59623384992237
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 53.748553435010415
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 67.08145360048987
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 70.37737386393442
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_absence_thr\\val",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 1.0,
+      "variant": "absence_by_score_threshold tau=0.3",
+      "mSA_percent": 80.75803279882606,
+      "precision_20px": 99.37387830303925,
+      "success_auc": 79.19668473327123,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 77.97911519344834
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 80.90887093900612
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 80.06260836906934
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 78.54864688972964
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 80.48573187411105
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 81.65237936377858
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 78.09311118345799
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.89244369973319
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.7213263921885
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.88183588043488
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_test_scale_640x512\\test",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "e010d631735a34ae22d0f274a3ce3a57730ca00e",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 1.0,
+      "variant": "test_scale_640x512",
+      "mSA_percent": 66.00652382326072,
+      "precision_20px": 90.3252274494256,
+      "success_auc": 66.61009150717112,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 63.52690885610372
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 55.33916630797021
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 60.779977180507274
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 55.59692297931688
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 60.2418069654615
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 77.95471701061857
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 67.25508716695407
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 45.409258578791956
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 63.39111737686495
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 53.434967555052225
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "dfsc_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_test_scale_640x512\\val",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git_commit": "e010d631735a34ae22d0f274a3ce3a57730ca00e",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 1.0,
+      "variant": "test_scale_640x512",
+      "mSA_percent": 74.64628878912946,
+      "precision_20px": 99.31777053929206,
+      "success_auc": 74.87952795129007,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 53.702146275460514
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 75.25581942822608
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 75.10017561782549
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 64.45464382855742
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 77.22542501222878
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 78.7213021611978
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 72.51971551606758
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 63.19161967114783
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 73.7737874552168
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 64.97269928628903
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_test_IR_last",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "A_faithful_reproduction",
+      "alpha": 0.0,
+      "variant": null,
+      "mSA_percent": 70.57961955231671,
+      "precision_20px": 91.84512769925493,
+      "success_auc": 71.00777086941635,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 69.56529114609218
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 64.51839533154768
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 70.4268652654134
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 64.64313250538297
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 75.51062599272886
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 77.01436224693707
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 72.31423223193833
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 51.63261970137155
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 67.44967341701421
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 70.23827527795146
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\eval_val_IR_last",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "77accee6c416dfd03ccfb28a99ae8a731c05f8f6",
+      "seed": 0,
+      "phase": "A_faithful_reproduction",
+      "alpha": 0.0,
+      "variant": null,
+      "mSA_percent": 79.28741311433669,
+      "precision_20px": 99.56472485957745,
+      "success_auc": 79.32293767128525,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 56.05147461869624
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 78.25701910970191
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 79.47210479916805
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 72.88949546503531
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 79.94363945372719
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 81.6164774864794
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 77.7797362154713
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.71388594442435
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.58485026890283
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.9420115885202
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_absence_thr\\test",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 0.0,
+      "variant": "absence_by_score_threshold tau=0.3",
+      "mSA_percent": 70.87211877400786,
+      "precision_20px": 89.86661887048064,
+      "success_auc": 69.87375582346334,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 76.87445999689152
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 76.93375185755347
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 71.6915815885897
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 65.97876820632385
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 76.65875342263759
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 73.4773460760924
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 71.68718309903403
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 54.69916039901359
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 67.23127632250149
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 71.48256886549629
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_absence_thr\\val",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "0a8a482df992f2b9e544f212693a4959efdecee9",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 0.0,
+      "variant": "absence_by_score_threshold tau=0.3",
+      "mSA_percent": 80.79700891830718,
+      "precision_20px": 99.40908302567838,
+      "success_auc": 79.24419066918688,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 77.866179216958
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 81.09694374335533
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 80.1542216019137
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 78.54211832650974
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 80.57242875319336
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 81.59452161901892
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 78.14141449353147
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.88419544524452
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.70086098713392
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.86569290054017
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_test_scale_640x512\\test",
+      "split": "test",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "d89d36bb4399ff4a24ba324bc935e4cf388cb300",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 0.0,
+      "variant": "test_scale_640x512",
+      "mSA_percent": 66.1467557895472,
+      "precision_20px": 90.29587361331204,
+      "success_auc": 66.76250282753664,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 18,
+          "mSA_percent": 64.0829554746865
+        },
+        "OC": {
+          "n_sequences": 2,
+          "mSA_percent": 56.54996506106872
+        },
+        "FM": {
+          "n_sequences": 31,
+          "mSA_percent": 60.9733096570506
+        },
+        "SV": {
+          "n_sequences": 18,
+          "mSA_percent": 55.5027419142624
+        },
+        "LI": {
+          "n_sequences": 18,
+          "mSA_percent": 60.68021837295887
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "mSA_percent": 77.91262919987547
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "mSA_percent": 67.38914998895866
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "mSA_percent": 45.09799329831854
+        },
+        "TC": {
+          "n_sequences": 63,
+          "mSA_percent": 63.358799013106484
+        },
+        "LR": {
+          "n_sequences": 15,
+          "mSA_percent": 54.006192686927534
+        }
+      },
+      "n_sequences": 91
+    },
+    {
+      "run": "normal_ir",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_test_scale_640x512\\val",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git_commit": "4e14b979fe93f9e96dca03066d78513e6677e3ad",
+      "seed": 0,
+      "phase": "B_additional_control",
+      "alpha": 0.0,
+      "variant": "test_scale_640x512",
+      "mSA_percent": 75.26399508331578,
+      "precision_20px": 99.33029530805135,
+      "success_auc": 75.44143913989934,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 53.42252977402953
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 76.16316705113665
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 75.69670396583349
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 65.34030616355335
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 77.86892661896144
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 79.27981705693558
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 73.27309019338519
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 64.78954430016574
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 74.60838817550459
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 66.04718785431459
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "phaseB_dfsc_ir_seed1",
+      "eval_dir": "experiments\\anti_uav\\runs\\phaseB_dfsc_ir_seed1\\eval_val_IR_last",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "dc0b3e643b53222bc7f24a65a4104b08a4cf748306f082ca535c9269b4899542",
+      "git_commit": "619449e3b004e096b3503a9e6c65c5be221272f1",
+      "seed": 1,
+      "phase": "B_controlled_improvement",
+      "alpha": 1.0,
+      "variant": null,
+      "mSA_percent": 79.43176658863167,
+      "precision_20px": 99.56745463793791,
+      "success_auc": 79.47780291650459,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 55.9886707608784
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 79.11709555039737
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 79.64782331957294
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 72.91322104776839
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 80.16016836181996
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 82.1169902233736
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 77.76558946717726
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.81416572389503
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.86914717506359
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.93671297573054
+        }
+      },
+      "n_sequences": 67
+    },
+    {
+      "run": "phaseB_normal_ir_seed1",
+      "eval_dir": "experiments\\anti_uav\\runs\\phaseB_normal_ir_seed1\\eval_val_IR_last",
+      "split": "val",
+      "modality": "IR",
+      "checkpoint_epoch": 18,
+      "checkpoint_sha256": "414ef0164e2bfc6520fb19b2e1d487fbb5df14836433da4923223b24f5032b13",
+      "git_commit": "619449e3b004e096b3503a9e6c65c5be221272f1",
+      "seed": 1,
+      "phase": "B_controlled_improvement",
+      "alpha": 0.0,
+      "variant": null,
+      "mSA_percent": 79.36374608732683,
+      "precision_20px": 99.56897691011164,
+      "success_auc": 79.38530326666005,
+      "by_attribute": {
+        "OV": {
+          "n_sequences": 4,
+          "mSA_percent": 56.122214283433046
+        },
+        "OC": {
+          "n_sequences": 5,
+          "mSA_percent": 78.57204860096716
+        },
+        "FM": {
+          "n_sequences": 23,
+          "mSA_percent": 79.55058125858649
+        },
+        "SV": {
+          "n_sequences": 17,
+          "mSA_percent": 72.69573124744136
+        },
+        "LI": {
+          "n_sequences": 29,
+          "mSA_percent": 80.0563142163118
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "mSA_percent": 82.02622764124268
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "mSA_percent": 77.9442232579702
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "mSA_percent": 76.9613682248932
+        },
+        "TC": {
+          "n_sequences": 32,
+          "mSA_percent": 79.89778854809812
+        },
+        "LR": {
+          "n_sequences": 10,
+          "mSA_percent": 76.99090161686233
+        }
+      },
+      "n_sequences": 67
+    }
+  ],
+  "seeds": {
+    "test": {
+      "DFSC": {
+        "runs": [
+          {
+            "run": "dfsc_ir",
+            "seed": 0,
+            "mSA": 70.28677954130464
+          }
+        ],
+        "n": 1,
+        "mean": 70.28677954130464,
+        "min": 70.28677954130464,
+        "max": 70.28677954130464,
+        "spread": 0.0
+      },
+      "normal": {
+        "runs": [
+          {
+            "run": "normal_ir",
+            "seed": 0,
+            "mSA": 70.57961955231671
+          }
+        ],
+        "n": 1,
+        "mean": 70.57961955231671,
+        "min": 70.57961955231671,
+        "max": 70.57961955231671,
+        "spread": 0.0
+      },
+      "gain": {
+        "mean_of_means": -0.2928400110120748,
+        "paired_by_seed": [
+          -0.2928400110120748
+        ],
+        "n_pairs": 1,
+        "min_pair": -0.2928400110120748,
+        "max_pair": -0.2928400110120748
+      }
+    },
+    "val": {
+      "DFSC": {
+        "runs": [
+          {
+            "run": "dfsc_ir",
+            "seed": 0,
+            "mSA": 79.25591549978726
+          },
+          {
+            "run": "phaseB_dfsc_ir_seed1",
+            "seed": 1,
+            "mSA": 79.43176658863167
+          }
+        ],
+        "n": 2,
+        "mean": 79.34384104420947,
+        "min": 79.25591549978726,
+        "max": 79.43176658863167,
+        "spread": 0.1758510888444107
+      },
+      "normal": {
+        "runs": [
+          {
+            "run": "normal_ir",
+            "seed": 0,
+            "mSA": 79.28741311433669
+          },
+          {
+            "run": "phaseB_normal_ir_seed1",
+            "seed": 1,
+            "mSA": 79.36374608732683
+          }
+        ],
+        "n": 2,
+        "mean": 79.32557960083176,
+        "min": 79.28741311433669,
+        "max": 79.36374608732683,
+        "spread": 0.0763329729901443
+      },
+      "gain": {
+        "mean_of_means": 0.018261443377710407,
+        "paired_by_seed": [
+          -0.03149761454942279,
+          0.0680205013048436
+        ],
+        "n_pairs": 2,
+        "min_pair": -0.03149761454942279,
+        "max_pair": 0.0680205013048436
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{"run":"normal_ir","split":"val","rc":0,"finished":"2026-09-22T21:29:29+05:30"}
+{"run":"dfsc_ir","split":"val","rc":0,"finished":"2026-09-22T23:03:14+05:30"}
+{"run":"normal_ir","split":"test","rc":0,"finished":"2026-09-23T01:34:15+05:30"}
+{"run":"dfsc_ir","split":"test","rc":0,"finished":"2026-09-23T03:38:10+05:30"}

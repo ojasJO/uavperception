@@ -1,0 +1,521 @@
+{
+  "generated": "2026-10-05T06:03:57",
+  "preregistration": "experiments\\anti_uav\\preregistration\\H4_native_scale.json",
+  "class": "EXPLORATORY EXPERIMENT (Phase B additional control on frozen checkpoints; never merged into the reproduction columns)",
+  "verdict": "NOT_SUPPORTED_VAL_BREAKS",
+  "verdict_reason": "native evaluation no longer reproduces the paper's validation for at least one model",
+  "models": {
+    "normal_ir": {
+      "val": {
+        "ref": 79.28741311433669,
+        "native": 75.26399508331578,
+        "paper": 79.6,
+        "fps_ref": 9.688344189278592,
+        "fps_native": 12.762539877081766,
+        "delta_native_minus_ref": -4.02341803102091,
+        "native_minus_paper": -4.336004916684217
+      },
+      "test": {
+        "ref": 70.57961955231671,
+        "native": 66.1467557895472,
+        "paper": 65.36,
+        "fps_ref": 10.037375984590406,
+        "fps_native": 12.547140625290382,
+        "delta_native_minus_ref": -4.432863762769514,
+        "native_minus_paper": 0.7867557895472004
+      },
+      "asymmetry_delta_test_minus_delta_val": -0.40944573174860466
+    },
+    "dfsc_ir": {
+      "val": {
+        "ref": 79.25591549978726,
+        "native": 74.64628878912946,
+        "paper": 80.09,
+        "fps_ref": 9.930805060997361,
+        "fps_native": 12.143639130560805,
+        "delta_native_minus_ref": -4.609626710657807,
+        "native_minus_paper": -5.443711210870546
+      },
+      "test": {
+        "ref": 70.28677954130464,
+        "native": 66.00652382326072,
+        "paper": 66.04,
+        "fps_ref": 9.124066589344258,
+        "fps_native": 11.911027288291654,
+        "delta_native_minus_ref": -4.280255718043918,
+        "native_minus_paper": -0.033476176739284824
+      },
+      "asymmetry_delta_test_minus_delta_val": 0.3293709926138888
+    }
+  },
+  "by_attribute": [
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "OV",
+      "n_sequences": 4,
+      "ref": 56.05147461869624,
+      "native": 53.42252977402953,
+      "delta": -2.6289448446667123
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "OC",
+      "n_sequences": 5,
+      "ref": 78.25701910970191,
+      "native": 76.16316705113665,
+      "delta": -2.093852058565261
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "FM",
+      "n_sequences": 23,
+      "ref": 79.47210479916805,
+      "native": 75.69670396583349,
+      "delta": -3.775400833334558
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "SV",
+      "n_sequences": 17,
+      "ref": 72.88949546503531,
+      "native": 65.34030616355335,
+      "delta": -7.5491893014819595
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "LI",
+      "n_sequences": 29,
+      "ref": 79.94363945372719,
+      "native": 77.86892661896144,
+      "delta": -2.074712834765748
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "TC-EASY",
+      "n_sequences": 17,
+      "ref": 81.6164774864794,
+      "native": 79.27981705693558,
+      "delta": -2.3366604295438123
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "TC-MID",
+      "n_sequences": 8,
+      "ref": 77.7797362154713,
+      "native": 73.27309019338519,
+      "delta": -4.506646022086116
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "TC-HARD",
+      "n_sequences": 7,
+      "ref": 76.71388594442435,
+      "native": 64.78954430016574,
+      "delta": -11.924341644258604
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "TC",
+      "n_sequences": 32,
+      "ref": 79.58485026890283,
+      "native": 74.60838817550459,
+      "delta": -4.97646209339824
+    },
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "attribute": "LR",
+      "n_sequences": 10,
+      "ref": 76.9420115885202,
+      "native": 66.04718785431459,
+      "delta": -10.894823734205616
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "OV",
+      "n_sequences": 18,
+      "ref": 69.56529114609218,
+      "native": 64.0829554746865,
+      "delta": -5.482335671405679
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "OC",
+      "n_sequences": 2,
+      "ref": 64.51839533154768,
+      "native": 56.54996506106872,
+      "delta": -7.968430270478962
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "FM",
+      "n_sequences": 31,
+      "ref": 70.4268652654134,
+      "native": 60.9733096570506,
+      "delta": -9.453555608362798
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "SV",
+      "n_sequences": 18,
+      "ref": 64.64313250538297,
+      "native": 55.5027419142624,
+      "delta": -9.140390591120564
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "LI",
+      "n_sequences": 18,
+      "ref": 75.51062599272886,
+      "native": 60.68021837295887,
+      "delta": -14.830407619769993
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "TC-EASY",
+      "n_sequences": 14,
+      "ref": 77.01436224693707,
+      "native": 77.91262919987547,
+      "delta": 0.8982669529383998
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "TC-MID",
+      "n_sequences": 31,
+      "ref": 72.31423223193833,
+      "native": 67.38914998895866,
+      "delta": -4.92508224297967
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "TC-HARD",
+      "n_sequences": 18,
+      "ref": 51.63261970137155,
+      "native": 45.09799329831854,
+      "delta": -6.534626403053011
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "TC",
+      "n_sequences": 63,
+      "ref": 67.44967341701421,
+      "native": 63.358799013106484,
+      "delta": -4.090874403907726
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "attribute": "LR",
+      "n_sequences": 15,
+      "ref": 70.23827527795146,
+      "native": 54.006192686927534,
+      "delta": -16.232082591023925
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "OV",
+      "n_sequences": 4,
+      "ref": 56.02707485482552,
+      "native": 53.702146275460514,
+      "delta": -2.3249285793650074
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "OC",
+      "n_sequences": 5,
+      "ref": 78.24296727726359,
+      "native": 75.25581942822608,
+      "delta": -2.9871478490375125
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "FM",
+      "n_sequences": 23,
+      "ref": 79.41180532421942,
+      "native": 75.10017561782549,
+      "delta": -4.31162970639393
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "SV",
+      "n_sequences": 17,
+      "ref": 72.90740149436357,
+      "native": 64.45464382855742,
+      "delta": -8.452757665806146
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "LI",
+      "n_sequences": 29,
+      "ref": 79.88470787655895,
+      "native": 77.22542501222878,
+      "delta": -2.659282864330166
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "TC-EASY",
+      "n_sequences": 17,
+      "ref": 81.67600218799707,
+      "native": 78.7213021611978,
+      "delta": -2.954700026799273
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "TC-MID",
+      "n_sequences": 8,
+      "ref": 77.75934686721386,
+      "native": 72.51971551606758,
+      "delta": -5.239631351146286
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "TC-HARD",
+      "n_sequences": 7,
+      "ref": 76.71808038908082,
+      "native": 63.19161967114783,
+      "delta": -13.526460717932991
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "TC",
+      "n_sequences": 32,
+      "ref": 79.61229296428833,
+      "native": 73.7737874552168,
+      "delta": -5.838505509071524
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "attribute": "LR",
+      "n_sequences": 10,
+      "ref": 76.93783372053014,
+      "native": 64.97269928628903,
+      "delta": -11.965134434241108
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "OV",
+      "n_sequences": 18,
+      "ref": 69.46120483268645,
+      "native": 63.52690885610372,
+      "delta": -5.934295976582732
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "OC",
+      "n_sequences": 2,
+      "ref": 64.77810569962458,
+      "native": 55.33916630797021,
+      "delta": -9.438939391654365
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "FM",
+      "n_sequences": 31,
+      "ref": 69.77394985316616,
+      "native": 60.779977180507274,
+      "delta": -8.993972672658884
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "SV",
+      "n_sequences": 18,
+      "ref": 63.870172839363846,
+      "native": 55.59692297931688,
+      "delta": -8.273249860046967
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "LI",
+      "n_sequences": 18,
+      "ref": 74.50338329905428,
+      "native": 60.2418069654615,
+      "delta": -14.261576333592778
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "TC-EASY",
+      "n_sequences": 14,
+      "ref": 77.34488545272471,
+      "native": 77.95471701061857,
+      "delta": 0.6098315578938553
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "TC-MID",
+      "n_sequences": 31,
+      "ref": 71.99757278748403,
+      "native": 67.25508716695407,
+      "delta": -4.742485620529962
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "TC-HARD",
+      "n_sequences": 18,
+      "ref": 50.796500428471504,
+      "native": 45.409258578791956,
+      "delta": -5.387241849679548
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "TC",
+      "n_sequences": 63,
+      "ref": 67.12841524543872,
+      "native": 63.39111737686495,
+      "delta": -3.737297868573769
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "attribute": "LR",
+      "n_sequences": 15,
+      "ref": 69.10562624280145,
+      "native": 53.434967555052225,
+      "delta": -15.670658687749224
+    }
+  ],
+  "provenance": [
+    {
+      "model": "normal_ir",
+      "split": "val",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_test_scale_640x512\\val",
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git": {
+        "commit": "4e14b979fe93f9e96dca03066d78513e6677e3ad",
+        "branch": "research-program",
+        "dirty": true,
+        "dirty_files": [
+          "experiments/anti_uav/runs/_h4_native_scale/"
+        ]
+      },
+      "test_scale": [
+        640,
+        512
+      ],
+      "timestamp_start": "2026-10-04T23:24:11+0530"
+    },
+    {
+      "model": "normal_ir",
+      "split": "test",
+      "eval_dir": "experiments\\anti_uav\\runs\\normal_ir\\phaseB_test_scale_640x512\\test",
+      "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+      "git": {
+        "commit": "d89d36bb4399ff4a24ba324bc935e4cf388cb300",
+        "branch": "research-program",
+        "dirty": true,
+        "dirty_files": [
+          "xperiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.json",
+          "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.md",
+          "experiments/anti_uav/runs/_h4_native_scale/",
+          "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/",
+          "runs/_chains/cpu_failures_g4/",
+          "runs/_chains/cpu_forecast_eval_g4/",
+          "runs/_chains/fetch_tensorrt/"
+        ]
+      },
+      "test_scale": [
+        640,
+        512
+      ],
+      "timestamp_start": "2026-10-05T00:45:51+0530"
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "val",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_test_scale_640x512\\val",
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git": {
+        "commit": "e010d631735a34ae22d0f274a3ce3a57730ca00e",
+        "branch": "research-program",
+        "dirty": true,
+        "dirty_files": [
+          "xperiments/anti_uav/reports/test_evaluation_ledger.jsonl",
+          "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.json",
+          "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.md",
+          "runs/_chains/_events_seen.json",
+          "experiments/anti_uav/runs/_h4_native_scale/",
+          "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/",
+          "experiments/cst_completion/reports/",
+          "runs/_chains/cpu_failures_g4/",
+          "runs/_chains/cpu_forecast_eval_g4/",
+          "runs/_chains/cpu_mot_eval_g4/",
+          "runs/_chains/fetch_tensorrt/",
+          "runs/_chains/post_v2/"
+        ]
+      },
+      "test_scale": [
+        640,
+        512
+      ],
+      "timestamp_start": "2026-10-05T02:39:25+0530"
+    },
+    {
+      "model": "dfsc_ir",
+      "split": "test",
+      "eval_dir": "experiments\\anti_uav\\runs\\dfsc_ir\\phaseB_test_scale_640x512\\test",
+      "checkpoint_sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+      "git": {
+        "commit": "e010d631735a34ae22d0f274a3ce3a57730ca00e",
+        "branch": "research-program",
+        "dirty": true,
+        "dirty_files": [
+          "xperiments/anti_uav/reports/test_evaluation_ledger.jsonl",
+          "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.json",
+          "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.md",
+          "runs/_chains/_events_seen.json",
+          "experiments/anti_uav/runs/_h4_native_scale/",
+          "experiments/anti_uav/runs/dfsc_ir/phaseB_test_scale_640x512/",
+          "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/",
+          "experiments/cst_completion/reports/",
+          "runs/_chains/cpu_failures_g4/",
+          "runs/_chains/cpu_forecast_eval_g4/",
+          "runs/_chains/cpu_mot_eval_g4/",
+          "runs/_chains/fetch_tensorrt/",
+          "runs/_chains/post_v2/"
+        ]
+      },
+      "test_scale": [
+        640,
+        512
+      ],
+      "timestamp_start": "2026-10-05T04:04:20+0530"
+    }
+  ],
+  "known_confound": "eval-only probe: the checkpoints were trained at the 1000x800 scale, so native evaluation mixes 'lower resolution' with 'train/test scale mismatch'. A symmetric drop on both splits is most likely the mismatch and says little about the paper. Decisive follow-up only if a pronounced asymmetry appears (delta_test - delta_val <= -2 pt for both models): train at native scale and evaluate at native scale (separate pre-registration)."
+}

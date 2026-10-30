@@ -1,0 +1,14 @@
+# PHASE A — VISIBLE (RGB) Protocol II, FAITHFUL init (gap A2; preregistration/A2_visible_and_largescale.json).
+# Init = the public GlobalTrack checkpoint (COCO + GOT-10k + LaSOT; Google Drive 1ouTJDS5NACLukd810uiKCvmLxJfga48x, sha256 e5950365...)
+# converted to this torchvision QG-RCNN by scripts/convert_globaltrack_ckpt.py (sha256 61553b95...; conventions C1/C2 documented there).
+_base_: ../_base_ir.yaml
+run_name: _base_rgb_faithful
+data:
+  modality: RGB                # 1920x1080 -> 1333x750 after rescale
+model:
+  init: checkpoint
+  init_checkpoint: experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt
+  frozen_bn_eps: 1.0e-5        # mmcv BatchNorm eps: the value the GlobalTrack weights were trained with
+train:
+  epochs: 12                   # PAPER-EXPLICIT (visible)
+  lr_steps: [8, 11]            # PAPER-EXPLICIT (visible)

@@ -1,0 +1,76 @@
+{
+ "run_name": "largescale_globaltrack",
+ "phase": "A_faithful_reproduction",
+ "row": "Table V 'large-scale'",
+ "training": "none (public GlobalTrack checkpoint, converted)",
+ "converted_from": "globaltrack_qgrcnn_torchvision.pt",
+ "converted_sha256": "61553b95dd42e87b148b2a752106889a4969913bcf015debdd586c8c66b31b3d",
+ "source": {
+  "source": "qg_rcnn_r50_fpn_coco_got10k_lasot.pth",
+  "source_sha256": "e5950365c96601ed13189877aa8a2319d99895ab5b5ddffb5378362f8454b42e",
+  "source_mmdet_version": "0.6.0+dc341cb",
+  "source_epoch": 6,
+  "source_iter": 36005,
+  "n_tensors": 322,
+  "frozen_bn_eps": 1e-05,
+  "round_trip_exact": true,
+  "mapping_rules": [
+   [
+    "^backbone\\.(conv1|bn1|layer[1-4])\\.(.*)$",
+    "backbone.body.\\1.\\2"
+   ],
+   [
+    "^neck\\.lateral_convs\\.(\\d)\\.conv\\.(weight|bias)$",
+    "backbone.fpn.inner_blocks.\\1.0.\\2"
+   ],
+   [
+    "^neck\\.fpn_convs\\.(\\d)\\.conv\\.(weight|bias)$",
+    "backbone.fpn.layer_blocks.\\1.0.\\2"
+   ],
+   [
+    "^rpn_head\\.rpn_conv\\.(weight|bias)$",
+    "rpn.head.conv.0.0.\\1"
+   ],
+   [
+    "^rpn_head\\.rpn_cls\\.(weight|bias)$",
+    "rpn.head.cls_logits.\\1"
+   ],
+   [
+    "^rpn_head\\.rpn_reg\\.(weight|bias)$",
+    "rpn.head.bbox_pred.\\1"
+   ],
+   [
+    "^bbox_head\\.shared_fcs\\.0\\.(weight|bias)$",
+    "roi_heads.box_head.fc6.\\1"
+   ],
+   [
+    "^bbox_head\\.shared_fcs\\.1\\.(weight|bias)$",
+    "roi_heads.box_head.fc7.\\1"
+   ],
+   [
+    "^bbox_head\\.fc_cls\\.(weight|bias)$",
+    "roi_heads.box_predictor.cls_score.\\1"
+   ],
+   [
+    "^bbox_head\\.fc_reg\\.(weight|bias)$",
+    "roi_heads.box_predictor.bbox_pred.\\1"
+   ],
+   [
+    "^rpn_modulator\\.(.*)$",
+    "rpn_modulator.\\1"
+   ],
+   [
+    "^rcnn_modulator\\.(.*)$",
+    "rcnn_modulator.\\1"
+   ]
+  ],
+  "convention_differences": [
+   "C1 anchor centres (stride-1)/2 vs grid points",
+   "C2 legacy +1 box convention"
+  ],
+  "licence": "none stated in huanglianghua/GlobalTrack; research reproduction only; not redistributed"
+ },
+ "final_checkpoint": "experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt",
+ "final_checkpoint_sha256": "302a74c5da0a8af73e4d53009a0b7aeb9a6efe31249d369e42d9cbc1828a7abc",
+ "timestamp_end": "2026-10-06T02:11:47+0530"
+}

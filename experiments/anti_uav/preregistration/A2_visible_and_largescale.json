@@ -1,0 +1,37 @@
+{
+ "id": "A2_visible_and_largescale",
+ "track": "anti_uav",
+ "status": "pre-registered",
+ "registered": "see the git commit that added this file (2026-10-06), after the GlobalTrack checkpoint conversion and before any A2 VAL or TEST evaluation and before any visible training",
+ "class": "PHASE A — FAITHFUL REPRODUCTION (closes spec substitution S6 and the 'large-scale' row, previously 'not reproduced: component unavailable')",
+ "paper": "Jiang et al., Anti-UAV (arXiv:2101.08466v3), Table V, Protocol II",
+ "component": {
+  "checkpoint": "public GlobalTrack (COCO + GOT-10k + LaSOT), Google Drive 1ouTJDS5NACLukd810uiKCvmLxJfga48x, file qg_rcnn_r50_fpn_coco_got10k_lasot.pth, sha256 e5950365c96601ed13189877aa8a2319d99895ab5b5ddffb5378362f8454b42e, mmdetection 0.6.0, licence not stated (research reproduction only, never redistributed)",
+  "conversion": "scripts/convert_globaltrack_ckpt.py -> torchvision QG-RCNN, 322/322 tensors, strict load, exact round trip, output sha256 61553b95dd42e87b148b2a752106889a4969913bcf015debdd586c8c66b31b3d",
+  "known_deviations": ["C1 anchor centres: mmdet (stride-1)/2 vs torchvision grid points (not corrected)", "C2 mmdet legacy +1 box convention (not corrected)", "plus the Phase A substitutions S1-S5 of docs/ANTI_UAV_REPRODUCTION_SPEC.md (torchvision re-implementation, JPEG frames, 1 GPU x batch 2 with linearly scaled LR)"]
+ },
+ "sanity_gate": "scripts/zeroshot_globaltrack.py on 8 TRAIN RGB sequences (exploratory): converted mSA > COCO-init control + 10; if it fails, A2 stops and the conversion is investigated (never tuned on VAL)",
+ "rows": {
+  "A2a_largescale": {
+   "run": "largescale_globaltrack (no Anti-UAV training; scripts/make_largescale_run.py)",
+   "evaluations": ["VAL IR", "VAL RGB", "TEST IR (--final-eval, once)", "TEST RGB (--final-eval, once)"],
+   "paper_mSA": {"IR": {"val": 72.00, "test": 63.86}, "RGB": {"val": 67.28, "test": 66.24}},
+   "conversion_fidelity_reading": "VAL within 1.0 pt of the paper in both modalities = conversion behaviourally faithful; otherwise the C1/C2 conventions (or another difference) matter for an un-fine-tuned model and the A2b rows carry that caveat"
+  },
+  "A2b_visible": {
+   "runs": {"normal": "configs/phase_a_rgb/normal_rgb.yaml (alpha 0)", "DFSC": "configs/phase_a_rgb/dfsc_rgb.yaml (alpha 1)"},
+   "schedule": "12 epochs, LR x0.1 at epochs 8 and 11 (PAPER-EXPLICIT visible), every other setting as Phase A IR (batch 2, LR 0.0025, 1,600 pairs/epoch, warm-up 500 iterations, grad clip 35, fp32), seed 0, final-epoch checkpoint (no selection)",
+   "evaluations": ["VAL RGB per arm", "TEST RGB per arm (--final-eval, once)"],
+   "paper_mSA": {"normal": {"val": 73.25, "test": 69.27}, "DFSC": {"val": 73.73, "test": 69.84}}
+  }
+ },
+ "rules": {
+  "reproduced_val": "|ours - paper| <= 1.0 mSA on VAL (the Phase A band)",
+  "test_reading": "descriptive vs the paper; the IR test surplus (+4-5 pt) is open, so a visible test surplus is reported as consistent / inconsistent with it",
+  "dfsc_effect": "DFSC - normal on VAL and TEST compared with the paper's +0.48 / +0.57 (one seed: screening only)"
+ },
+ "run_order": "sanity gate -> A2a VAL IR + RGB -> A2b training normal, DFSC -> A2b VAL -> TEST passes (A2a IR, A2a RGB, A2b normal, A2b DFSC; one each) -> analysis; all steps run regardless of intermediate results except the sanity gate",
+ "test_usage": "four new checkpoints/modalities, one TEST pass each, recorded in reports/test_evaluation_ledger.jsonl",
+ "hardware": "HPC V100 (amendment A1); fp32",
+ "estimated_gpu_hours": "~16 (2 x 12-epoch RGB trainings ~3 h each, 6 VAL/TEST tracking passes ~1.5-2.5 h each)"
+}

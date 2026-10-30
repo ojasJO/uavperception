@@ -1,0 +1,13 @@
+
+===== 2026-10-05 06:56:10 launch: A:\AEROTRACK_OMEN\experiments\anti_uav\scripts\train.py --config A:\AEROTRACK_OMEN\experiments\anti_uav\configs\phase_b\normal_ir_lr0.02_accum8.yaml =====
+====================================================================================================
+run=phaseB_normal_ir_lr0.02_accum8 phase=B_controlled_improvement seed=0 | data=IR/train pairs_per_seq=10 | model=qg_rcnn_r50_fpn init=torchvision_coco_fasterrcnn_r50_fpn_v1 | DFSC alpha=0.0 cross_terms=['cls', 'reg'] ism=same | epochs=18 bs=2x8 lr=0.02 steps=[12, 15] amp=none
+run_dir=A:\AEROTRACK_OMEN\experiments\anti_uav\runs\phaseB_normal_ir_lr0.02_accum8
+train: 160 sequences, 1600 pairs/epoch, 800 iterations/epoch (batch 2 x accumulate 8); trainable params 58.71M / 58.93M; device cuda; amp none
+====================================================================================================
+[ep 01/18 it 0001/800] loss 1.2774 | rpn same 0.558/0.002 cross 0.000/0.000 | rcnn 0.717/0.000 | lr 6.67e-03 | gnorm nan | 0.07 it/s | mem 6.8G | ETA epoch 3:16:16 total 58:57:07
+[ep 01/18 it 0020/800] loss 1.0631 | rpn same 0.351/0.004 cross 0.000/0.000 | rcnn 0.702/0.005 | lr 6.72e-03 | gnorm nan | 0.83 it/s | mem 6.8G | ETA epoch 0:15:34 total 4:47:17
+[ep 01/18 it 0040/800] loss 0.9122 | rpn same 0.233/0.007 cross 0.000/0.000 | rcnn 0.663/0.010 | lr 6.77e-03 | gnorm 2.5 | 1.19 it/s | mem 6.8G | ETA epoch 0:10:39 total 3:21:15
+[ep 01/18 it 0060/800] loss 0.7958 | rpn same 0.185/0.008 cross 0.000/0.000 | rcnn 0.590/0.014 | lr 6.85e-03 | gnorm nan | 1.39 it/s | mem 6.8G | ETA epoch 0:08:54 total 2:52:29
+[ep 01/18 it 0080/800] loss 0.6588 | rpn same 0.144/0.007 cross 0.000/0.000 | rcnn 0.484/0.023 | lr 6.91e-03 | gnorm 1.2 | 1.51 it/s | mem 6.8G | ETA epoch 0:07:56 total 2:37:56
+[ep 01/18 it 0100/800] loss 0.5717 | rpn same 0.125/0.008 cross 0.000/0.000 | rcnn 0.409/0.030 | lr 6.99e-03 | gnorm nan | 1.60 it/s | mem 6.8G | ETA epoch 0:07:18 total 2:29:14

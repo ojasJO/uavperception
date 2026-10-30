@@ -1,0 +1,37 @@
+{
+  "id": "H4_native_scale",
+  "track": "anti_uav",
+  "status": "pre-registered",
+  "registered": "2026-10-04T23:30+0530",
+  "authorisation": "2026-10-04 research-program mission, section 9.1 Priority 2: 'Native-resolution evaluation of existing checkpoints'",
+  "class": "EXPLORATORY EXPERIMENT (Phase B additional control on frozen checkpoints; never merged into the reproduction columns)",
+  "question": "Does the test-time input scale explain the test-split surplus of our reproduction over the paper (normal +5.22, DFSC +4.25 mSA) while validation agrees with the paper?",
+  "hypothesis": "H4: the paper's numbers were produced with IR evaluated at native 640x512, whereas our Phase A evaluations rescale IR to 1000x800 (GlobalTrack 1333x800 rule).",
+  "controlled_variable": "test-time rescale target only: (1333, 800) -> 1000x800 [reference = existing Phase A evaluations] vs (640, 512) -> 640x512, no resize [new]",
+  "held_fixed": "checkpoints (final epoch, no selection), tracker, metric implementation, frozen split manifests, start frames, scoring code, git commit of the evaluator",
+  "models": {
+    "normal_ir": {"checkpoint": "experiments/anti_uav/runs/normal_ir/weights/last.pt", "sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+                  "reference_mSA": {"val": 79.29, "test": 70.58}, "paper_mSA": {"val": 79.60, "test": 65.36}},
+    "dfsc_ir": {"checkpoint": "experiments/anti_uav/runs/dfsc_ir/weights/last.pt", "sha256": "1e8219c56d4b9bfe75ebb4f716d7174f8b32f924b679e4553ae58054d863b860",
+                "reference_mSA": {"val": 79.26, "test": 70.29}, "paper_mSA": {"val": 80.09, "test": 66.04}}
+  },
+  "runs": ["normal_ir val", "normal_ir test", "dfsc_ir val", "dfsc_ir test"],
+  "run_policy": "all four run regardless of intermediate results; no early stopping on outcomes; a failed run is re-run once from scratch (evaluate.py has no sequence resume)",
+  "dataset": "Anti-UAV IR (arXiv:2101.08466 Protocol II), frozen manifests val a688bf92c46dfc52..., test 1fc351c74f4b29cc...",
+  "metric": "mSA (paper Eq. 1, frames >= official start frame), plus per-attribute mSA (OV, OC, FM, SV, LI, TC*, LR)",
+  "prediction_if_H4_true": "native-scale mSA reproduces the paper on BOTH splits: test drops by roughly the surplus (4-5 pt), concentrated on LR / LI / FM / SV, while validation stays within 1 pt of the paper",
+  "decision_rule": {
+    "SUPPORTED": "for both models: |native_val - paper_val| <= 1.0 AND |native_test - paper_test| <= 1.0",
+    "PARTIALLY_SUPPORTED": "for both models: |native_val - paper_val| <= 1.0 AND (reference_test - native_test) >= 0.5 * (reference_test - paper_test)",
+    "NOT_SUPPORTED_VAL_BREAKS": "for at least one model: native_val < paper_val - 1.0 (native evaluation no longer reproduces the paper's validation, so it cannot reconcile both splits)",
+    "NOT_SUPPORTED_INSENSITIVE": "for both models: |native - reference| <= 1.0 on both splits",
+    "otherwise": "INCONCLUSIVE (models disagree) - reported descriptively"
+  },
+  "descriptive_outputs": "delta (native - reference) per model x split x attribute; val/test asymmetry (delta_test - delta_val); fps",
+  "known_confound": "eval-only probe: the checkpoints were trained at the 1000x800 scale, so native evaluation mixes 'lower resolution' with 'train/test scale mismatch'. A symmetric drop on both splits is most likely the mismatch and says little about the paper. Decisive follow-up only if a pronounced asymmetry appears (delta_test - delta_val <= -2 pt for both models): train at native scale and evaluate at native scale (separate pre-registration).",
+  "test_exposure": "two additional TEST evaluations of already-evaluated frozen checkpoints, ledger-flagged phase B / variant test_scale_640x512; nothing is selected with them",
+  "disclosure": "Before this registration a 1-sequence code smoke test was run on VAL sequence 20190925_101846_1_4 (normal_ir): SA 72.24 at the reference scale (reproduces the historical predictions, max score diff 2.8e-5) and 64.50 at native scale. No full-split result was seen before the rule above was fixed.",
+  "estimated_cost_gpu_h": 4.2,
+  "hardware": "local OMEN RTX 5050 Laptop (remote HPC access unavailable on 2026-10-04)",
+  "outputs": "experiments/anti_uav/runs/{normal_ir,dfsc_ir}/phaseB_test_scale_640x512/{val,test}/ ; analysis experiments/anti_uav/reports/H4_native_scale.{json,md}"
+}

@@ -1,0 +1,8 @@
+# PHASE B — single factor: optimisation batch. Emulates 8 GPUs x 2 images (effective batch 16) with the
+# paper literal LR 0.02 via gradient accumulation. Same epochs -> 8x fewer optimizer steps than ../dfsc_ir.yaml.
+_base_: ../dfsc_ir.yaml
+run_name: phaseB_dfsc_ir_lr0.02_accum8
+phase: B_controlled_improvement
+train:
+  accumulate_steps: 8
+  lr: 0.02

@@ -1,0 +1,12 @@
+# PHASE B — paper ABLATION "DFSC-all" (Table VI row 1), reproduced.
+# Single factor changed vs ../dfsc_ir.yaml: the ISM stage modulates proposals with the CLASS-LEVEL
+# (cross-sequence) query instead of only the proposal's own sequence query.
+#   paper Table VI: DFSC-all IR test mSA 63.99  vs  DFSC (=alpha1) 66.04  -> a -2.05 pt drop.
+# This is the ONLY Table VI variant whose predicted effect is larger than plausible run-to-run noise,
+# which is why it is the ablation worth measuring: it tests whether our DFSC implementation reproduces
+# the paper's one large, measurable ablation effect.
+_base_: ../dfsc_ir.yaml
+run_name: phaseB_dfsc_ir_ism_cross
+phase: B_controlled_improvement
+dfsc:
+  ism_modulation: cross

@@ -1,0 +1,5 @@
+# PHASE A — OUR REPRODUCTION of "DFSC (Ours)", visible, alpha = 1. Paper (Table V, Visible All mSA): val 73.73, test 69.84.
+_base_: _base_rgb.yaml
+run_name: dfsc_rgb
+dfsc:
+  alpha: 1.0

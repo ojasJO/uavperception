@@ -1,0 +1,46 @@
+{
+  "generated": "2026-10-06T12:29:34",
+  "preregistration": "experiments/anti_uav/preregistration/H3_optimisation_regime.json",
+  "rows": {
+    "normal": {
+      "val": {
+        "h3": 79.15992434491992,
+        "ref": 79.28741311433669,
+        "paper": 79.6
+      },
+      "test": {
+        "h3": 70.40142753543815,
+        "ref": 70.57961955231671,
+        "paper": 65.36
+      }
+    },
+    "DFSC": {
+      "val": {
+        "h3": 79.1353558774017,
+        "ref": 79.25591549978726,
+        "paper": 80.09
+      },
+      "test": {
+        "h3": 69.76256149678622,
+        "ref": 70.28677954130464,
+        "paper": 66.04
+      }
+    }
+  },
+  "H3a_test_surplus": {
+    "verdict": "NOT_SUPPORTED",
+    "reason": "the 8-GPU regime does not reconcile val and test with the paper for both arms"
+  },
+  "H3b_dfsc_effect": {
+    "verdict": "NOT_OBSERVED",
+    "reason": "DFSC - normal <= +0.1 on at least one split"
+  },
+  "dfsc_gain": {
+    "val": -0.024568467518221837,
+    "test": -0.6388660386519263
+  },
+  "dfsc_gain_reference_regime": {
+    "val": -0.03149761454942279,
+    "test": -0.2928400110120748
+  }
+}

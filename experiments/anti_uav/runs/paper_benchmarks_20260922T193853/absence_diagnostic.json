@@ -1,0 +1,298 @@
+{
+  "dfsc_ir/test": {
+    "n_sequences": 91,
+    "reconstruction_max_abs_error": 0.0,
+    "p_t_is_zero_everywhere": true,
+    "mSA_reported": 70.28661772082008,
+    "mSA_exist_frames_only": 71.55626349545187,
+    "mSA_absence_oracle": 71.95283934811609,
+    "absent_frames": 1091,
+    "frames_total": 85312,
+    "absent_fraction_percent": 1.279,
+    "sequences_containing_absent_frames": 20,
+    "by_attribute": {
+      "OV": {
+        "n_sequences": 18,
+        "mSA_reported": 69.46151344832371,
+        "mSA_exist_frames_only": 75.73800356244973,
+        "mSA_absence_oracle": 77.67407834187581
+      },
+      "OC": {
+        "n_sequences": 2,
+        "mSA_reported": 64.77870039121672,
+        "mSA_exist_frames_only": 75.1014285493045,
+        "mSA_absence_oracle": 77.9287003912167
+      },
+      "FM": {
+        "n_sequences": 31,
+        "mSA_reported": 69.77243958196813,
+        "mSA_exist_frames_only": 71.43189623264122,
+        "mSA_absence_oracle": 71.87469268664097
+      },
+      "SV": {
+        "n_sequences": 18,
+        "mSA_reported": 63.87045033207343,
+        "mSA_exist_frames_only": 65.83360695248491,
+        "mSA_absence_oracle": 66.60120553549416
+      },
+      "LI": {
+        "n_sequences": 18,
+        "mSA_reported": 74.50370608208722,
+        "mSA_exist_frames_only": 75.92528528569989,
+        "mSA_absence_oracle": 76.29091976235708
+      },
+      "TC-EASY": {
+        "n_sequences": 14,
+        "mSA_reported": 77.344950473258,
+        "mSA_exist_frames_only": 77.45384228032948,
+        "mSA_absence_oracle": 77.48780761611513
+      },
+      "TC-MID": {
+        "n_sequences": 31,
+        "mSA_reported": 71.9949171637798,
+        "mSA_exist_frames_only": 72.35904142351306,
+        "mSA_absence_oracle": 72.46673612700603
+      },
+      "TC-HARD": {
+        "n_sequences": 18,
+        "mSA_reported": 50.80015467169073,
+        "mSA_exist_frames_only": 54.31047982508653,
+        "mSA_absence_oracle": 55.525067627690156
+      },
+      "TC": {
+        "n_sequences": 63,
+        "mSA_reported": 67.12816702846378,
+        "mSA_exist_frames_only": 68.33448750642975,
+        "mSA_absence_oracle": 68.74205307716224
+      },
+      "LR": {
+        "n_sequences": 15,
+        "mSA_reported": 69.10595809116495,
+        "mSA_exist_frames_only": 70.65476335623885,
+        "mSA_absence_oracle": 71.11199939468588
+      }
+    }
+  },
+  "dfsc_ir/val": {
+    "n_sequences": 67,
+    "reconstruction_max_abs_error": 0.0,
+    "p_t_is_zero_everywhere": true,
+    "mSA_reported": 79.25589792076991,
+    "mSA_exist_frames_only": 80.73569254376618,
+    "mSA_absence_oracle": 81.04041787844669,
+    "absent_frames": 1159,
+    "frames_total": 61763,
+    "absent_fraction_percent": 1.877,
+    "sequences_containing_absent_frames": 9,
+    "by_attribute": {
+      "OV": {
+        "n_sequences": 4,
+        "mSA_reported": 56.027070678854905,
+        "mSA_exist_frames_only": 76.94119032064994,
+        "mSA_absence_oracle": 81.18721307896047
+      },
+      "OC": {
+        "n_sequences": 5,
+        "mSA_reported": 78.24296727726359,
+        "mSA_exist_frames_only": 81.04628062697319,
+        "mSA_absence_oracle": 81.65379441642179
+      },
+      "FM": {
+        "n_sequences": 23,
+        "mSA_reported": 79.41159098783223,
+        "mSA_exist_frames_only": 80.09387224387818,
+        "mSA_absence_oracle": 80.24734175148106
+      },
+      "SV": {
+        "n_sequences": 17,
+        "mSA_reported": 72.90749507220143,
+        "mSA_exist_frames_only": 78.37700595309136,
+        "mSA_absence_oracle": 79.48626046518802
+      },
+      "LI": {
+        "n_sequences": 29,
+        "mSA_reported": 79.88470787655893,
+        "mSA_exist_frames_only": 80.49274198666987,
+        "mSA_absence_oracle": 80.63512250263533
+      },
+      "TC-EASY": {
+        "n_sequences": 17,
+        "mSA_reported": 81.67608821603565,
+        "mSA_exist_frames_only": 81.67608821603565,
+        "mSA_absence_oracle": 81.67608821603565
+      },
+      "TC-MID": {
+        "n_sequences": 8,
+        "mSA_reported": 77.75935110876634,
+        "mSA_exist_frames_only": 78.05259307565859,
+        "mSA_absence_oracle": 78.15182068280285
+      },
+      "TC-HARD": {
+        "n_sequences": 7,
+        "mSA_reported": 76.71806166703539,
+        "mSA_exist_frames_only": 77.14749263996161,
+        "mSA_absence_oracle": 77.24663309560682
+      },
+      "TC": {
+        "n_sequences": 32,
+        "mSA_reported": 79.6123356316245,
+        "mSA_exist_frames_only": 79.77958414867518,
+        "mSA_absence_oracle": 79.82607802513365
+      },
+      "LR": {
+        "n_sequences": 10,
+        "mSA_reported": 76.93787649424327,
+        "mSA_exist_frames_only": 76.95814726579219,
+        "mSA_absence_oracle": 76.96787649424327
+      }
+    }
+  },
+  "normal_ir/test": {
+    "n_sequences": 91,
+    "reconstruction_max_abs_error": 0.0,
+    "p_t_is_zero_everywhere": true,
+    "mSA_reported": 70.57962479985675,
+    "mSA_exist_frames_only": 71.85059605215426,
+    "mSA_absence_oracle": 72.24584642715271,
+    "absent_frames": 1091,
+    "frames_total": 85312,
+    "absent_fraction_percent": 1.279,
+    "sequences_containing_absent_frames": 20,
+    "by_attribute": {
+      "OV": {
+        "n_sequences": 18,
+        "mSA_reported": 69.56529118945852,
+        "mSA_exist_frames_only": 75.84864209937115,
+        "mSA_absence_oracle": 77.77785608301066
+      },
+      "OC": {
+        "n_sequences": 2,
+        "mSA_reported": 64.51839681418633,
+        "mSA_exist_frames_only": 74.8644513602209,
+        "mSA_absence_oracle": 77.66839681418634
+      },
+      "FM": {
+        "n_sequences": 31,
+        "mSA_reported": 70.42688110939383,
+        "mSA_exist_frames_only": 72.09173506754547,
+        "mSA_absence_oracle": 72.52913421406667
+      },
+      "SV": {
+        "n_sequences": 18,
+        "mSA_reported": 64.64313128246238,
+        "mSA_exist_frames_only": 66.61554029053174,
+        "mSA_absence_oracle": 67.37388648588313
+      },
+      "LI": {
+        "n_sequences": 18,
+        "mSA_reported": 75.51062557791487,
+        "mSA_exist_frames_only": 76.93659061847362,
+        "mSA_absence_oracle": 77.29783925818474
+      },
+      "TC-EASY": {
+        "n_sequences": 14,
+        "mSA_reported": 77.01436101676221,
+        "mSA_exist_frames_only": 77.12244074669773,
+        "mSA_absence_oracle": 77.15721815961935
+      },
+      "TC-MID": {
+        "n_sequences": 31,
+        "mSA_reported": 72.31424857320776,
+        "mSA_exist_frames_only": 72.67849748562742,
+        "mSA_absence_oracle": 72.78606753643399
+      },
+      "TC-HARD": {
+        "n_sequences": 18,
+        "mSA_reported": 51.632619587420294,
+        "mSA_exist_frames_only": 55.14322639631751,
+        "mSA_absence_oracle": 56.35753254341975
+      },
+      "TC": {
+        "n_sequences": 63,
+        "mSA_reported": 67.44968115202661,
+        "mSA_exist_frames_only": 68.65596297844337,
+        "mSA_absence_oracle": 69.06356720072505
+      },
+      "LR": {
+        "n_sequences": 15,
+        "mSA_reported": 70.23827525215559,
+        "mSA_exist_frames_only": 71.79329518263675,
+        "mSA_absence_oracle": 72.24431655567652
+      }
+    }
+  },
+  "normal_ir/val": {
+    "n_sequences": 67,
+    "reconstruction_max_abs_error": 0.0,
+    "p_t_is_zero_everywhere": true,
+    "mSA_reported": 79.28741311433669,
+    "mSA_exist_frames_only": 80.77181328793641,
+    "mSA_absence_oracle": 81.07193307201351,
+    "absent_frames": 1159,
+    "frames_total": 61763,
+    "absent_fraction_percent": 1.877,
+    "sequences_containing_absent_frames": 9,
+    "by_attribute": {
+      "OV": {
+        "n_sequences": 4,
+        "mSA_reported": 56.05147461869624,
+        "mSA_exist_frames_only": 77.04681023351198,
+        "mSA_absence_oracle": 81.21161701880177
+      },
+      "OC": {
+        "n_sequences": 5,
+        "mSA_reported": 78.25701910970193,
+        "mSA_exist_frames_only": 81.05590899231557,
+        "mSA_absence_oracle": 81.66784624886013
+      },
+      "FM": {
+        "n_sequences": 23,
+        "mSA_reported": 79.47210479916805,
+        "mSA_exist_frames_only": 80.15381424518624,
+        "mSA_absence_oracle": 80.30785556281685
+      },
+      "SV": {
+        "n_sequences": 17,
+        "mSA_reported": 72.88949546503531,
+        "mSA_exist_frames_only": 78.37862609286395,
+        "mSA_absence_oracle": 79.46826085802189
+      },
+      "LI": {
+        "n_sequences": 29,
+        "mSA_reported": 79.94363945372717,
+        "mSA_exist_frames_only": 80.55070100604274,
+        "mSA_absence_oracle": 80.69405407980354
+      },
+      "TC-EASY": {
+        "n_sequences": 17,
+        "mSA_reported": 81.61647748647938,
+        "mSA_exist_frames_only": 81.61647748647938,
+        "mSA_absence_oracle": 81.61647748647938
+      },
+      "TC-MID": {
+        "n_sequences": 8,
+        "mSA_reported": 77.7797362154713,
+        "mSA_exist_frames_only": 78.07188170693853,
+        "mSA_absence_oracle": 78.17220578950781
+      },
+      "TC-HARD": {
+        "n_sequences": 7,
+        "mSA_reported": 76.71388594442435,
+        "mSA_exist_frames_only": 77.14023251822759,
+        "mSA_absence_oracle": 77.24245737299577
+      },
+      "TC": {
+        "n_sequences": 32,
+        "mSA_reported": 79.58485026890281,
+        "mSA_exist_frames_only": 79.75114995478908,
+        "mSA_absence_oracle": 79.79859266241196
+      },
+      "LR": {
+        "n_sequences": 10,
+        "mSA_reported": 76.94201158852022,
+        "mSA_exist_frames_only": 76.96259639717046,
+        "mSA_absence_oracle": 76.9720115885202
+      }
+    }
+  }
+}

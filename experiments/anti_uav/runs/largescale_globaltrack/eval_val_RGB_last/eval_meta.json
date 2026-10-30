@@ -1,0 +1,91 @@
+{
+  "timestamp_start": "2026-10-06T13:45:50+0530",
+  "command": "python experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt --split val --modality RGB",
+  "cwd": "/home/y_rajeshwar/aerotrack_server/source",
+  "seed": 0,
+  "run_name": "largescale_globaltrack",
+  "phase": "A_faithful_reproduction",
+  "config_source_files": [
+    "/home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/configs/phase_a_rgb/_base_rgb.yaml",
+    "/home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/configs/_base_ir.yaml"
+  ],
+  "git": {
+    "commit": "ae370f1fd199133cc82138ef80acb54f624190d4",
+    "branch": "research-program",
+    "dirty": true,
+    "dirty_files": [
+      "xperiments/anti_uav/runs/largescale_globaltrack/eval_val_IR_last/eval_meta.json",
+      "experiments/aerotrack_v2/reports/v2_decisions.json",
+      "experiments/aerotrack_v2/reports/v2_decisions.md",
+      "experiments/anti_uav/runs/largescale_globaltrack/eval_val_IR_last/metrics.json",
+      "experiments/anti_uav/runs/largescale_globaltrack/eval_val_IR_last/report.md",
+      "runs/aerotrack_v2/_cache/omen_v2_stock_s0_e20__val.pkl",
+      "runs/aerotrack_v2/_cache/v2_causal_g4_s0_e20__val.pkl",
+      "runs/aerotrack_v2/_cache/v2_causal_g4_s1_e20__val.pkl",
+      "runs/aerotrack_v2/_cache/v2_stock_s1_e20__val.pkl",
+      "runs/aerotrack_v2/_cache/v2_sym_g4_s0_e20__val.pkl",
+      "runs/aerotrack_v2/_cache/v2_sym_g4_s1_e20__val.pkl",
+      "runs/aerotrack_v2/_post/",
+      "runs/aerotrack_v2/_runner/DONE",
+      "runs/omen_v2_stock_s0_e20/",
+      "runs/v2_causal_g4_s0_e20/",
+      "runs/v2_causal_g4_s1_e20/",
+      "runs/v2_stock_s1_e20/",
+      "runs/v2_sym_g4_s0_e20/training_curves.png",
+      "runs/v2_sym_g4_s1_e20/"
+    ]
+  },
+  "env": {
+    "python": "3.11.13",
+    "platform": "Linux-3.10.0-693.el7.x86_64-x86_64-with-glibc2.17",
+    "torch": "2.6.0+cu118",
+    "cuda_available": true,
+    "cuda_version": "11.8",
+    "cudnn_version": 90100,
+    "cudnn_benchmark": true,
+    "torchvision": "0.21.0+cu118",
+    "numpy": "2.2.6",
+    "cv2": "5.0.0",
+    "PIL": "12.2.0",
+    "yaml": "6.0.3",
+    "gpu": {
+      "name": "Tesla V100-PCIE-16GB",
+      "total_memory_gb": 16.95,
+      "compute_capability": "7.0",
+      "driver": "510.47.03"
+    }
+  },
+  "kind": "evaluation",
+  "split": "val",
+  "modality": "RGB",
+  "purpose": "tune",
+  "partial": false,
+  "frame_stride": 1,
+  "limit_sequences": null,
+  "checkpoint": "experiments/anti_uav/runs/largescale_globaltrack/weights/last.pt",
+  "checkpoint_sha256": "302a74c5da0a8af73e4d53009a0b7aeb9a6efe31249d369e42d9cbc1828a7abc",
+  "checkpoint_epoch": 0,
+  "train_run_name": "largescale_globaltrack",
+  "manifest": {
+    "path": "/home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/manifests/antiuav_RGB_val.manifest.json",
+    "exists": true,
+    "sha256": "0a9a26d4e99505b14f4176ed178127091df36cdfd34b7dc60fbe67bab45f0120",
+    "verified": true
+  },
+  "out_dir": "experiments/anti_uav/runs/largescale_globaltrack/eval_val_RGB_last",
+  "predictions_dir": "experiments/anti_uav/runs/largescale_globaltrack/eval_val_RGB_last/predictions",
+  "amp": "none",
+  "device": "cuda",
+  "train_scale": [
+    1333,
+    800
+  ],
+  "test_scale": [
+    1333,
+    800
+  ],
+  "variant": null,
+  "tracking_seconds": 7044.6,
+  "timestamp_end": "2026-10-06T15:43:18+0530",
+  "mSA_percent": 70.49641533463479
+}

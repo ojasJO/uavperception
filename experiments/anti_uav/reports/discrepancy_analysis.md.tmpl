@@ -1,0 +1,53 @@
+## Discrepancy analysis (written 2026-09-20 after the Phase A test evaluations; all numbers are filled in from `comparison.json` by `aggregate_results.py`)
+
+### What was reproduced and what was not
+
+| Quantity (IR, mSA %) | Paper | Ours | Δ | Pre-registered verdict |
+|---|---|---|---|---|
+| normal, val | {normal_val_all_paper} | {normal_val_all_ours} | {normal_val_all_delta} | {normal_val_all_verdict} |
+| DFSC, val | {DFSC_val_all_paper} | {DFSC_val_all_ours} | {DFSC_val_all_delta} | {DFSC_val_all_verdict} |
+| normal, test | {normal_test_all_paper} | {normal_test_all_ours} | {normal_test_all_delta} | {normal_test_all_verdict} |
+| DFSC, test | {DFSC_test_all_paper} | {DFSC_test_all_ours} | {DFSC_test_all_delta} | {DFSC_test_all_verdict} |
+| gain DFSC − normal, val | {gain_val_paper} | {gain_val_ours} | | not reproduced (sign differs; single seed) |
+| gain DFSC − normal, test | {gain_test_paper} | {gain_test_ours} | | not reproduced (sign differs; single seed) |
+
+1. **The GlobalTrack fine-tuning baseline and the DFSC model are reproduced on the validation split** (both within the
+   1-pt band). The whole pipeline — data, architecture, training recipe, tracker, metric — lands where the paper lands on
+   the split that shares source videos with training.
+2. **On the independent test split both our models are {normal_test_all_delta}/{DFSC_test_all_delta} pt *above* the paper.**
+   The pre-registered rule labels this "not reproduced" because the difference is material, even though it is in our favour.
+   Our val→test drop is {drop_ours_normal} (normal) / {drop_ours_dfsc} (DFSC) pt against the paper's {drop_paper_normal} / {drop_paper_dfsc} pt.
+3. **The DFSC effect is not observed.** Seed 0 gives {gain_val_ours} (val) / {gain_test_ours} (test) against the paper's
+   {gain_val_paper} / {gain_test_paper}. With the Phase B seed-1 runs the val picture is: normal {seed_val_normal_list} (mean
+   {seed_val_normal_mean}, spread {seed_val_normal_spread}), DFSC {seed_val_DFSC_list} (mean {seed_val_DFSC_mean}, spread
+   {seed_val_DFSC_spread}); gain of seed-means {seed_val_gain_mean}, paired-by-seed gains {seed_val_gain_pairs}. The paper's
+   +0.49 val gain lies outside everything we observe, while the seed-to-seed spread of a single method is of the same order
+   as the paper's claimed effect. The training runs have near-identical loss trajectories and the DFSC cross-sequence RPN
+   losses equal the intra-sequence ones (≈ 0.001) from epoch 3 on — the "any UAV" proposal task adds almost no gradient
+   signal once the RPN has adapted to the IR domain. Honest summary: **no measurable DFSC effect in our reproduction**
+   (n = 2 seeds per arm on val; test has seed 0 only unless the seed-1 test evaluations are run).
+
+### Where the test surplus comes from — hypotheses, evidence, status
+
+| # | Hypothesis | Evidence for / against | Status |
+|---|---|---|---|
+| H1 | **Annotation version.** The paper's runs used an earlier label set; the released labels were revised (the authors publish a start-frame correction table; the released box count is ~2 % below Table I: {boxes_total_ours} vs 585.9k). Attribute pattern fits: the surplus concentrates on attributes where a few pixels of box error move IoU most — LR {normal_test_LR_delta}, LI {normal_test_LI_delta}, FM {normal_test_FM_delta}, SV {normal_test_SV_delta} — while OV ({normal_test_OV_delta}) and TC-easy ({normal_test_TC-EASY_delta}) match. Val/test asymmetry (val matches, test does not) is consistent with a revision that touched the harder test videos more. Released labels are frame-accurate (no 25-frame interpolation signature; `reports/dataset_verification.md`). | plausible; not testable without the original labels |
+| H2 | **Absence handling.** Phase A never declares "absent" (`[INFERRED]`). The Phase B control (score < τ ⇒ absent, τ chosen on val) changes val by {absthr_normal_val_delta}/{absthr_dfsc_val_delta} pt but test by only {absthr_normal_test_delta}/{absthr_dfsc_test_delta} pt. It explains the val OV/OC/SV attribute deficits (one val sequence has the UAV in 77/1000 frames), **not** the test surplus — any absence rule can only raise our test number further. | tested; rejected as cause of the surplus |
+| H3 | **Optimisation regime.** 1 GPU × batch 2 for 18 epochs = 14,400 optimizer steps at LR 0.0025; an 8-GPU × 2 run (the mmdet convention behind "LR 0.02") would take 1,800 steps. More, smaller steps may fit the IR domain better and generalise better to independent videos (smaller val→test drop). | untested; `configs/phase_b/dfsc_ir_lr0.02_accum8.yaml` probes it |
+| H4 | **Input scale.** GlobalTrack's transform up-scales IR 640×512 → 1000×800 (spec S1/§4). If the authors evaluated IR at native resolution, small (LR) and low-contrast (LI) targets would be harder for them — the two attributes with the largest surplus. | untested; a native-resolution eval of the same checkpoints would isolate it (Phase B, evaluation-only) |
+| H5 | **Framework / weights.** torchvision Faster R-CNN (aligned RoIAlign, FrozenBN, anchor centring) and torchvision COCO_V1 weights instead of mmdet 1.x / mmdet 2x checkpoint. Val agreement within 1 pt argues against a large systematic advantage. | plausible minor contributor; not isolable here |
+| H6 | **Evaluation implementation.** The challenge reference's `not_exist` quirk scores absent frames as 0; our Eq.(1) implementation scores an absent-declared frame as 1 — irrelevant in Phase A (no absence declared) and bounded by the 1.4 % absent frames in IR test. Start-frame handling changes our numbers by ≤ 0.05 pt (all-frames variant in each `report.md`). | tested; negligible |
+| H7 | **Paper reporting.** Table VII precision/success for "normal" are {tableVII_normal_prec}/{tableVII_normal_succ}; ours on test are {normal_test_prec_ours}/{normal_test_succ_ours}, a surplus of the same order as mSA — so it is not a metric-specific artefact. A transcription error in the paper cannot be excluded but nothing indicates one. | no evidence |
+
+No hypothesis is declared the cause. H1 is the most consistent with all observations; H3/H4 are the testable ones and are
+queued as single-factor Phase B runs.
+
+### What may be claimed (and what may not)
+
+- May: "The GlobalTrack/DFSC training recipe was reproduced end-to-end; validation mSA agrees with the paper within 1 pt
+  for both the baseline and DFSC; on the independent test split our implementation scores {normal_test_all_delta}–{DFSC_test_all_delta} pt higher
+  than the paper for reasons that could not be isolated (candidates H1, H3, H4)."
+- May: "DFSC gives no measurable improvement over plain fine-tuning in our reproduction: gain of seed-means
+  {seed_val_gain_mean} pt on val (2 seeds per arm), {gain_test_ours} pt on test (seed 0)."
+- May not: "DFSC does not work in general" (two seeds, one modality, one implementation), "our tracker is better than the
+  paper's" (H1/H3/H4 unresolved), anything about the visible modality or the large-scale baseline (not run).

@@ -1,0 +1,1 @@
+2026-10-05T12:26:55+0530 v2 relaunch after the smoke pre-flight fix (T2 window-aware): the registered aerotrack_v2 campaign takes the GPU at the end of the DFSC arm (user instruction 2026-10-05); H3 resumes via tools/chains/h3_resume_after_v2.json

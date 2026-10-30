@@ -1,0 +1,5 @@
+# DEFERRED / ADDITIONAL CONTROL — visible "normal" baseline with COCO init (paper used GlobalTrack pretrained init)
+_base_: _base_rgb.yaml
+run_name: deferred_normal_rgb_cocoinit
+dfsc:
+  alpha: 0.0

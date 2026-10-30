@@ -1,0 +1,1 @@
+2026-10-05T10:24:25+0530 anticipatory: CST archive verification COMPLETE_AND_CONSISTENT at 10:13 (the gate the user named); corpus-v2 build in progress (label cache). The registered aerotrack_v2 campaign takes the GPU (user instruction 2026-10-05) via tools/chains/gpu_handoff.json; if the build verdict is not OK, tools/gpu_handoff.py withdraws this flag and resumes H3.

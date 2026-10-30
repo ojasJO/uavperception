@@ -1,0 +1,18 @@
+# SMOKE TEST ONLY — tiny end-to-end plumbing check (not an experiment; results are meaningless).
+_base_: dfsc_ir.yaml
+run_name: smoke_ir
+phase: smoke
+data:
+  pairs_per_seq: 1
+train:
+  epochs: 2
+  lr_steps: [1]
+  warmup_iters: 4
+  workers: 0
+  log_interval: 1
+  monitor:
+    enabled: true
+    every_epochs: 1
+    num_sequences: 2
+    frame_stride: 100
+    max_frames_per_sequence: 3

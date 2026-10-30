@@ -1,0 +1,73 @@
+{
+  "timestamp_start": "2026-10-06T01:58:40+0530",
+  "command": "python experiments/anti_uav/scripts/evaluate.py --checkpoint experiments/anti_uav/runs/normal_ir/weights/last.pt --split val --out-dir experiments/anti_uav/runs/normal_ir/eval_val_IR_last_hpc_HC3",
+  "cwd": "/home/y_rajeshwar/aerotrack_server/source",
+  "seed": 0,
+  "run_name": "normal_ir",
+  "phase": "A_faithful_reproduction",
+  "config_source_files": [
+    "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\configs\\normal_ir.yaml",
+    "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\configs\\_base_ir.yaml"
+  ],
+  "git": {
+    "commit": "5c019728d4d8ae808997bd67e8d14fc5a1fb8c8c",
+    "branch": "research-program",
+    "dirty": true,
+    "dirty_files": [
+      "runs/omen_v2_stock_s0_e20/"
+    ]
+  },
+  "env": {
+    "python": "3.11.13",
+    "platform": "Linux-3.10.0-693.el7.x86_64-x86_64-with-glibc2.17",
+    "torch": "2.6.0+cu118",
+    "cuda_available": true,
+    "cuda_version": "11.8",
+    "cudnn_version": 90100,
+    "cudnn_benchmark": true,
+    "torchvision": "0.21.0+cu118",
+    "numpy": "2.2.6",
+    "cv2": "5.0.0",
+    "PIL": "12.2.0",
+    "yaml": "6.0.3",
+    "gpu": {
+      "name": "Tesla V100-PCIE-16GB",
+      "total_memory_gb": 16.95,
+      "compute_capability": "7.0",
+      "driver": "510.47.03"
+    }
+  },
+  "kind": "evaluation",
+  "split": "val",
+  "modality": "IR",
+  "purpose": "tune",
+  "partial": false,
+  "frame_stride": 1,
+  "limit_sequences": null,
+  "checkpoint": "experiments/anti_uav/runs/normal_ir/weights/last.pt",
+  "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+  "checkpoint_epoch": 18,
+  "train_run_name": "normal_ir",
+  "manifest": {
+    "path": "/home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/manifests/antiuav_IR_val.manifest.json",
+    "exists": true,
+    "sha256": "a688bf92c46dfc52e781e68060f74d4199aa2a1c671fc199872fb486e7275dfa",
+    "verified": true
+  },
+  "out_dir": "experiments/anti_uav/runs/normal_ir/eval_val_IR_last_hpc_HC3",
+  "predictions_dir": "experiments/anti_uav/runs/normal_ir/eval_val_IR_last_hpc_HC3/predictions",
+  "amp": "none",
+  "device": "cuda",
+  "train_scale": [
+    1333,
+    800
+  ],
+  "test_scale": [
+    1333,
+    800
+  ],
+  "variant": null,
+  "tracking_seconds": 4375.0,
+  "timestamp_end": "2026-10-06T03:11:39+0530",
+  "mSA_percent": 79.28739345794662
+}

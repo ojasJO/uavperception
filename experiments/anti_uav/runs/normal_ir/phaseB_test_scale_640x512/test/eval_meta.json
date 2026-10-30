@@ -1,0 +1,79 @@
+{
+  "timestamp_start": "2026-10-05T00:45:51+0530",
+  "command": "python.exe A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\scripts\\evaluate.py --checkpoint A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\normal_ir\\weights\\last.pt --split test --scale 640 512 --final-eval",
+  "cwd": "A:\\AEROTRACK_OMEN",
+  "seed": 0,
+  "run_name": "normal_ir",
+  "phase": "B_additional_control",
+  "config_source_files": [
+    "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\configs\\normal_ir.yaml",
+    "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\configs\\_base_ir.yaml"
+  ],
+  "git": {
+    "commit": "d89d36bb4399ff4a24ba324bc935e4cf388cb300",
+    "branch": "research-program",
+    "dirty": true,
+    "dirty_files": [
+      "xperiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.json",
+      "experiments/systems/reports/track_gen_temporal_fp_g4_full_e20_data_unified.md",
+      "experiments/anti_uav/runs/_h4_native_scale/",
+      "experiments/anti_uav/runs/normal_ir/phaseB_test_scale_640x512/",
+      "runs/_chains/cpu_failures_g4/",
+      "runs/_chains/cpu_forecast_eval_g4/",
+      "runs/_chains/fetch_tensorrt/"
+    ]
+  },
+  "env": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "cudnn_version": 92000,
+    "cudnn_benchmark": true,
+    "torchvision": "0.28.0+cu130",
+    "numpy": "2.4.6",
+    "cv2": "5.0.0",
+    "PIL": "12.3.0",
+    "yaml": "6.0.3",
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+      "total_memory_gb": 8.55,
+      "compute_capability": "12.0",
+      "driver": "592.19"
+    }
+  },
+  "kind": "evaluation",
+  "split": "test",
+  "modality": "IR",
+  "purpose": "final_eval",
+  "partial": false,
+  "frame_stride": 1,
+  "limit_sequences": null,
+  "checkpoint": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\normal_ir\\weights\\last.pt",
+  "checkpoint_sha256": "ab9890d52684730e734449f65ce8cf4747d9a855e18a63ae6e9272101df93180",
+  "checkpoint_epoch": 18,
+  "train_run_name": "normal_ir",
+  "manifest": {
+    "path": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\manifests\\antiuav_IR_test.manifest.json",
+    "exists": true,
+    "sha256": "1fc351c74f4b29ccc8569eba8c0fcbfae15b67994df0d4674405a8c214cf0adf",
+    "verified": true
+  },
+  "out_dir": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\normal_ir\\phaseB_test_scale_640x512\\test",
+  "predictions_dir": "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\runs\\normal_ir\\phaseB_test_scale_640x512\\test\\predictions",
+  "amp": "none",
+  "device": "cuda",
+  "train_scale": [
+    1333,
+    800
+  ],
+  "test_scale": [
+    640,
+    512
+  ],
+  "variant": "test_scale_640x512",
+  "tracking_seconds": 6806.3,
+  "timestamp_end": "2026-10-05T02:39:22+0530",
+  "mSA_percent": 66.1467557895472
+}

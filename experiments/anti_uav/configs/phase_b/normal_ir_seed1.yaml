@@ -1,0 +1,5 @@
+# PHASE B — single factor: seed 0 -> 1 (variance estimate for the baseline run)
+_base_: ../normal_ir.yaml
+run_name: phaseB_normal_ir_seed1
+phase: B_controlled_improvement
+seed: 1

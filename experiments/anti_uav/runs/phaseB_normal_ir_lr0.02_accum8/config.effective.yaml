@@ -1,0 +1,79 @@
+run_name: phaseB_normal_ir_lr0.02_accum8
+phase: B_controlled_improvement
+seed: 0
+notes: 'IR tracker of Table V (Protocol II). Paper-explicit: 18 epochs, LR x0.1 at
+  epochs 12 and 15, batch 2 per GPU, init from COCO Faster R-CNN, CE + smooth-L1.
+  Repo-derived (GlobalTrack): SGD 0.9 / wd 1e-4 / clip 35, warm-up 500 iters, 10 pairs
+  per sequence per epoch, max pair gap 300, frame filter, photometric + flip augmentation,
+  1333x800 rescale. Inferred: single-GPU LR 0.0025 (= 0.02 x 2/16).
+
+  '
+data:
+  root: data/anti_uav
+  frames_root: b_pipeline/data_unified/anti_uav/images
+  modality: IR
+  train_split: train
+  monitor_split: val
+  pairs_per_seq: 10
+  max_distance: 300
+  frame_filter: globaltrack
+  transforms:
+    scale:
+    - 1333
+    - 800
+    photometric: true
+    channel_swap: true
+    flip_p: 0.5
+    pad_divisor: 32
+model:
+  name: qg_rcnn_r50_fpn
+  init: torchvision_coco_fasterrcnn_r50_fpn_v1
+  trainable_backbone_layers: 3
+  num_classes: 2
+  rcnn_smooth_l1_beta: 1.0
+  rpn:
+    pre_nms_top_n_train: 2000
+    post_nms_top_n_train: 2000
+    pre_nms_top_n_test: 1000
+    post_nms_top_n_test: 1000
+    nms_thresh: 0.7
+  roi:
+    score_thresh: 0.0
+    nms_thresh: 0.5
+    detections_per_img: 1000
+  frozen_bn_eps: 0.0
+dfsc:
+  alpha: 0.0
+  cross_terms:
+  - cls
+  - reg
+  ism_modulation: same
+train:
+  epochs: 18
+  batch_size: 2
+  accumulate_steps: 8
+  lr: 0.02
+  lr_steps:
+  - 12
+  - 15
+  lr_gamma: 0.1
+  momentum: 0.9
+  weight_decay: 0.0001
+  grad_clip_norm: 35.0
+  warmup_iters: 500
+  warmup_ratio: 0.33333333
+  amp: none
+  cudnn_benchmark: true
+  workers: 4
+  log_interval: 20
+  monitor:
+    enabled: true
+    every_epochs: 3
+    num_sequences: 8
+    frame_stride: 10
+eval:
+  frame_stride: 1
+_source_files:
+- A:\AEROTRACK_OMEN\experiments\anti_uav\configs\phase_b\normal_ir_lr0.02_accum8.yaml
+- A:\AEROTRACK_OMEN\experiments\anti_uav\configs\normal_ir.yaml
+- A:\AEROTRACK_OMEN\experiments\anti_uav\configs\_base_ir.yaml

@@ -1,0 +1,8 @@
+# PHASE A — OUR REPRODUCTION of "DFSC (Ours)": alpha = 1 (Table V row == Table VI "DFSC-a1").
+# Paper reference (Table V, IR All mSA): val 80.09, test 66.04.
+_base_: _base_ir.yaml
+run_name: dfsc_ir
+dfsc:
+  alpha: 1.0
+  cross_terms: [cls, reg]
+  ism_modulation: same

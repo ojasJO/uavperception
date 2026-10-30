@@ -1,0 +1,84 @@
+{
+  "timestamp_start": "2026-10-06T08:01:05+0530",
+  "command": "python /home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/scripts/evaluate.py --checkpoint /home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/weights/last.pt --split test --final-eval",
+  "cwd": "/home/y_rajeshwar/aerotrack_server/source",
+  "seed": 0,
+  "run_name": "phaseB_normal_ir_lr0.02_accum8",
+  "phase": "B_controlled_improvement",
+  "config_source_files": [
+    "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\configs\\phase_b\\normal_ir_lr0.02_accum8.yaml",
+    "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\configs\\normal_ir.yaml",
+    "A:\\AEROTRACK_OMEN\\experiments\\anti_uav\\configs\\_base_ir.yaml"
+  ],
+  "git": {
+    "commit": "9fff89a9777e74d72dbf7a50984c317ff4318838",
+    "branch": "research-program",
+    "dirty": true,
+    "dirty_files": [
+      "xperiments/anti_uav/runs/_h3_optimisation/events.jsonl",
+      "experiments/anti_uav/runs/_h3_optimisation/RUNNING",
+      "experiments/anti_uav/runs/largescale_globaltrack/",
+      "experiments/anti_uav/runs/normal_ir/eval_val_IR_last_hpc_HC3/",
+      "experiments/anti_uav/runs/phaseB_dfsc_ir_lr0.02_accum8/eval_val_IR_last/",
+      "experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/eval_val_IR_last/",
+      "runs/aerotrack_v2/_cache/omen_v2_stock_s0_e20__val.pkl",
+      "runs/aerotrack_v2/_cache/v2_sym_g4_s0_e20__val.pkl",
+      "runs/omen_v2_stock_s0_e20/",
+      "runs/v2_causal_g4_s0_e20/",
+      "runs/v2_sym_g4_s0_e20/training_curves.png"
+    ]
+  },
+  "env": {
+    "python": "3.11.13",
+    "platform": "Linux-3.10.0-693.el7.x86_64-x86_64-with-glibc2.17",
+    "torch": "2.6.0+cu118",
+    "cuda_available": true,
+    "cuda_version": "11.8",
+    "cudnn_version": 90100,
+    "cudnn_benchmark": true,
+    "torchvision": "0.21.0+cu118",
+    "numpy": "2.2.6",
+    "cv2": "5.0.0",
+    "PIL": "12.2.0",
+    "yaml": "6.0.3",
+    "gpu": {
+      "name": "Tesla V100-PCIE-16GB",
+      "total_memory_gb": 16.95,
+      "compute_capability": "7.0",
+      "driver": "510.47.03"
+    }
+  },
+  "kind": "evaluation",
+  "split": "test",
+  "modality": "IR",
+  "purpose": "final_eval",
+  "partial": false,
+  "frame_stride": 1,
+  "limit_sequences": null,
+  "checkpoint": "/home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/weights/last.pt",
+  "checkpoint_sha256": "785caff254c159beb8867938bbb2d2231e523c1b8afdd002c107395543f23d54",
+  "checkpoint_epoch": 18,
+  "train_run_name": "phaseB_normal_ir_lr0.02_accum8",
+  "manifest": {
+    "path": "/home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/manifests/antiuav_IR_test.manifest.json",
+    "exists": true,
+    "sha256": "1fc351c74f4b29ccc8569eba8c0fcbfae15b67994df0d4674405a8c214cf0adf",
+    "verified": true
+  },
+  "out_dir": "/home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/eval_test_IR_last",
+  "predictions_dir": "/home/y_rajeshwar/aerotrack_server/source/experiments/anti_uav/runs/phaseB_normal_ir_lr0.02_accum8/eval_test_IR_last/predictions",
+  "amp": "none",
+  "device": "cuda",
+  "train_scale": [
+    1333,
+    800
+  ],
+  "test_scale": [
+    1333,
+    800
+  ],
+  "variant": null,
+  "tracking_seconds": 8491.8,
+  "timestamp_end": "2026-10-06T10:22:41+0530",
+  "mSA_percent": 70.40142753543815
+}

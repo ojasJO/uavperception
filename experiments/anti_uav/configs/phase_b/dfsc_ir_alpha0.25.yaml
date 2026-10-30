@@ -1,0 +1,6 @@
+# PHASE B — single factor: alpha 1.0 -> 0.25 (paper Table VI best value). Everything else == ../dfsc_ir.yaml
+_base_: ../dfsc_ir.yaml
+run_name: phaseB_dfsc_ir_alpha0.25
+phase: B_controlled_improvement
+dfsc:
+  alpha: 0.25

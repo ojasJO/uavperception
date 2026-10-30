@@ -1,0 +1,38 @@
+{
+  "id": "H3_optimisation_regime",
+  "track": "anti_uav",
+  "status": "pre-registered",
+  "registered": "see the git commit that added this file (2026-10-05), after H4 completed (as instructed) and before any H3 training",
+  "authorisation": "2026-10-04 research-program mission, section 9.1 Priority 3 ('LR/batch sensitivity: determine whether the missing DFSC effect is optimization-sensitive'); 2026-10-05 instruction: pre-register H3 after H4 completes",
+  "class": "CONTROLLED EXPERIMENT, Phase B (one factor changed relative to the faithful reproduction; reported apart from the reproduction columns)",
+  "questions": {
+    "H3a_test_surplus": "Does the optimisation regime explain why our test mSA is 4-5 pt above the paper while validation matches? Our Phase A uses 1 GPU x batch 2 with linearly scaled LR 0.0025 = 14,400 optimizer steps; an 8-GPU x 2 mmdetection run (the convention behind 'LR 0.02, batch 2 per GPU') takes 1,800 steps at LR 0.02.",
+    "H3b_dfsc_effect": "Does DFSC's gain over plain fine-tuning (paper +0.49 val / +0.68 test) appear in the paper's optimisation regime, given that it is absent in ours (-0.03 / -0.29 seed 0; +0.07 / -0.08 seed 1)?"
+  },
+  "controlled_variable": "optimisation regime only: gradient accumulation 8 (effective batch 16) and LR 0.02, same 18 epochs, same LR steps (x0.1 at epochs 12 and 15), warm-up 500 OPTIMIZER steps (engine/train.py it_global; the mmdetection 8-GPU convention), i.e. 1,800 optimizer steps over the same 28,800 training pairs",
+  "held_fixed": "data and pair sampling (1,600 pairs/epoch), architecture, COCO_V1 initialisation, seed 0, losses, augmentation, final-epoch checkpoint (no selection), tracker, metric, frozen split manifests, evaluation at the training scale (1000x800)",
+  "arms": {
+    "normal": {"config": "experiments/anti_uav/configs/phase_b/normal_ir_lr0.02_accum8.yaml", "run": "phaseB_normal_ir_lr0.02_accum8", "reference_run": "normal_ir"},
+    "DFSC": {"config": "experiments/anti_uav/configs/phase_b/dfsc_ir_lr0.02_accum8.yaml", "run": "phaseB_dfsc_ir_lr0.02_accum8", "reference_run": "dfsc_ir"}
+  },
+  "paper_mSA": {"normal": {"val": 79.60, "test": 65.36}, "DFSC": {"val": 80.09, "test": 66.04}},
+  "run_order": "train normal, train DFSC (interrupted training resumes from last.pt), evaluate both on VAL, then both on TEST once with --final-eval (two new checkpoints, one ledger line each), then scripts/analyze_h3.py; all steps run regardless of intermediate results",
+  "rules": {
+    "H3a": {
+      "SUPPORTED": "for both arms: |val - paper val| <= 1.0 AND |test - paper test| <= 1.0",
+      "PARTIALLY_SUPPORTED": "for both arms: |val - paper val| <= 1.0 AND (Phase A test - H3 test) >= 0.5 x (Phase A test - paper test)",
+      "NOT_SUPPORTED": "otherwise"
+    },
+    "H3b": {
+      "OBSERVED": "DFSC - normal >= +0.4 on both val and test (single seed: a screening result; a seed-1 pair would be the follow-up)",
+      "NOT_OBSERVED": "DFSC - normal <= +0.1 on at least one split",
+      "INCONCLUSIVE": "otherwise"
+    }
+  },
+  "known_limitations": "one seed per arm (observed Phase A seed range up to 0.36 pt on test, so H3b is a screening test); single implementation (torchvision), single modality (IR)",
+  "context_at_registration": "H4 (native evaluation scale) came out NOT_SUPPORTED_VAL_BREAKS: a symmetric -4 pt drop on both splits, i.e. train/test scale mismatch; H3's design and rules do not depend on it",
+  "scheduling": "queued after the idle-GPU slot (gpu_slot_1). Ordered before the AeroTrack v2 campaign only because v2 is blocked on the user's go-ahead to re-run the CST archive verification; the v2-first rationale (progress log) still holds whenever v2 is unblocked before H3's first training starts",
+  "estimated_gpu_hours": 13,
+  "hardware": "local OMEN RTX 5050 Laptop (HPC access unavailable)",
+  "outputs": "experiments/anti_uav/runs/phaseB_{normal,dfsc}_ir_lr0.02_accum8/ ; reports/H3_optimisation_regime.{json,md}"
+}

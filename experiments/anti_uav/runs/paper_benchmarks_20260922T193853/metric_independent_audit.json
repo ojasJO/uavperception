@@ -1,0 +1,334 @@
+{
+  "tolerance": 1e-09,
+  "all_within_tolerance": true,
+  "results": {
+    "dfsc_ir__test_IR": {
+      "n_sequences": 91,
+      "mSA": {
+        "independent": 70.2866177208201,
+        "reported": 70.2866177208201,
+        "abs_diff": 0.0
+      },
+      "precision_20px": {
+        "independent": 91.65408252861002,
+        "reported": 91.65408252861002,
+        "abs_diff": 0.0
+      },
+      "success_auc": {
+        "independent": 70.72246457057736,
+        "reported": 70.72246457057733,
+        "abs_diff": 2.842170943040401e-14
+      },
+      "worst_per_sequence_SA_abs_diff": 1.887379141862766e-15,
+      "worst_sequence": "20190926_134054_1_7",
+      "by_attribute": {
+        "FM": {
+          "n_sequences": 31,
+          "independent": 69.77243958196813,
+          "reported": 69.77243958196811,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "LI": {
+          "n_sequences": 18,
+          "independent": 74.50370608208719,
+          "reported": 74.5037060820872,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "LR": {
+          "n_sequences": 15,
+          "independent": 69.10595809116495,
+          "reported": 69.10595809116496,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "OC": {
+          "n_sequences": 2,
+          "independent": 64.77870039121672,
+          "reported": 64.77870039121672,
+          "abs_diff": 0.0
+        },
+        "OV": {
+          "n_sequences": 18,
+          "independent": 69.4615134483237,
+          "reported": 69.46151344832371,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "SV": {
+          "n_sequences": 18,
+          "independent": 63.870450332073425,
+          "reported": 63.870450332073425,
+          "abs_diff": 0.0
+        },
+        "TC": {
+          "n_sequences": 63,
+          "independent": 67.12816702846378,
+          "reported": 67.12816702846379,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "independent": 77.344950473258,
+          "reported": 77.344950473258,
+          "abs_diff": 0.0
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "independent": 50.80015467169071,
+          "reported": 50.80015467169072,
+          "abs_diff": 7.105427357601002e-15
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "independent": 71.99491716377979,
+          "reported": 71.99491716377979,
+          "abs_diff": 0.0
+        }
+      }
+    },
+    "dfsc_ir__val_IR": {
+      "n_sequences": 67,
+      "mSA": {
+        "independent": 79.25589792076993,
+        "reported": 79.25589792076993,
+        "abs_diff": 0.0
+      },
+      "precision_20px": {
+        "independent": 99.56618086198407,
+        "reported": 99.56618086198407,
+        "abs_diff": 0.0
+      },
+      "success_auc": {
+        "independent": 79.28659048136923,
+        "reported": 79.28659048136923,
+        "abs_diff": 0.0
+      },
+      "worst_per_sequence_SA_abs_diff": 1.9984014443252818e-15,
+      "worst_sequence": "20190925_213001_1_3",
+      "by_attribute": {
+        "FM": {
+          "n_sequences": 23,
+          "independent": 79.41159098783223,
+          "reported": 79.41159098783221,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "LI": {
+          "n_sequences": 29,
+          "independent": 79.88470787655892,
+          "reported": 79.88470787655895,
+          "abs_diff": 2.842170943040401e-14
+        },
+        "LR": {
+          "n_sequences": 10,
+          "independent": 76.93787649424327,
+          "reported": 76.93787649424327,
+          "abs_diff": 0.0
+        },
+        "OC": {
+          "n_sequences": 5,
+          "independent": 78.24296727726365,
+          "reported": 78.24296727726359,
+          "abs_diff": 5.684341886080802e-14
+        },
+        "OV": {
+          "n_sequences": 4,
+          "independent": 56.027070678854926,
+          "reported": 56.027070678854905,
+          "abs_diff": 2.1316282072803006e-14
+        },
+        "SV": {
+          "n_sequences": 17,
+          "independent": 72.90749507220141,
+          "reported": 72.90749507220143,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "TC": {
+          "n_sequences": 32,
+          "independent": 79.6123356316245,
+          "reported": 79.6123356316245,
+          "abs_diff": 0.0
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "independent": 81.67608821603568,
+          "reported": 81.67608821603565,
+          "abs_diff": 2.842170943040401e-14
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "independent": 76.71806166703537,
+          "reported": 76.71806166703539,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "independent": 77.75935110876628,
+          "reported": 77.75935110876632,
+          "abs_diff": 4.263256414560601e-14
+        }
+      }
+    },
+    "normal_ir__test_IR": {
+      "n_sequences": 91,
+      "mSA": {
+        "independent": 70.57962479985675,
+        "reported": 70.57962479985672,
+        "abs_diff": 2.842170943040401e-14
+      },
+      "precision_20px": {
+        "independent": 91.84512769925495,
+        "reported": 91.84512769925493,
+        "abs_diff": 1.4210854715202004e-14
+      },
+      "success_auc": {
+        "independent": 71.00777086941636,
+        "reported": 71.00777086941635,
+        "abs_diff": 1.4210854715202004e-14
+      },
+      "worst_per_sequence_SA_abs_diff": 1.7763568394002505e-15,
+      "worst_sequence": "20190925_193610_1_9",
+      "by_attribute": {
+        "FM": {
+          "n_sequences": 31,
+          "independent": 70.42688110939383,
+          "reported": 70.42688110939383,
+          "abs_diff": 0.0
+        },
+        "LI": {
+          "n_sequences": 18,
+          "independent": 75.51062557791485,
+          "reported": 75.51062557791485,
+          "abs_diff": 0.0
+        },
+        "LR": {
+          "n_sequences": 15,
+          "independent": 70.23827525215562,
+          "reported": 70.2382752521556,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "OC": {
+          "n_sequences": 2,
+          "independent": 64.51839681418629,
+          "reported": 64.51839681418633,
+          "abs_diff": 4.263256414560601e-14
+        },
+        "OV": {
+          "n_sequences": 18,
+          "independent": 69.5652911894585,
+          "reported": 69.56529118945855,
+          "abs_diff": 4.263256414560601e-14
+        },
+        "SV": {
+          "n_sequences": 18,
+          "independent": 64.64313128246238,
+          "reported": 64.64313128246238,
+          "abs_diff": 0.0
+        },
+        "TC": {
+          "n_sequences": 63,
+          "independent": 67.44968115202663,
+          "reported": 67.44968115202661,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "TC-EASY": {
+          "n_sequences": 14,
+          "independent": 77.01436101676224,
+          "reported": 77.01436101676221,
+          "abs_diff": 2.842170943040401e-14
+        },
+        "TC-HARD": {
+          "n_sequences": 18,
+          "independent": 51.632619587420294,
+          "reported": 51.6326195874203,
+          "abs_diff": 7.105427357601002e-15
+        },
+        "TC-MID": {
+          "n_sequences": 31,
+          "independent": 72.31424857320776,
+          "reported": 72.31424857320773,
+          "abs_diff": 2.842170943040401e-14
+        }
+      }
+    },
+    "normal_ir__val_IR": {
+      "n_sequences": 67,
+      "mSA": {
+        "independent": 79.28741311433669,
+        "reported": 79.28741311433669,
+        "abs_diff": 0.0
+      },
+      "precision_20px": {
+        "independent": 99.56472485957745,
+        "reported": 99.56472485957745,
+        "abs_diff": 0.0
+      },
+      "success_auc": {
+        "independent": 79.32293767128525,
+        "reported": 79.32293767128525,
+        "abs_diff": 0.0
+      },
+      "worst_per_sequence_SA_abs_diff": 1.887379141862766e-15,
+      "worst_sequence": "20190926_143632_1_4",
+      "by_attribute": {
+        "FM": {
+          "n_sequences": 23,
+          "independent": 79.47210479916802,
+          "reported": 79.47210479916805,
+          "abs_diff": 2.842170943040401e-14
+        },
+        "LI": {
+          "n_sequences": 29,
+          "independent": 79.94363945372717,
+          "reported": 79.94363945372719,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "LR": {
+          "n_sequences": 10,
+          "independent": 76.94201158852019,
+          "reported": 76.9420115885202,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "OC": {
+          "n_sequences": 5,
+          "independent": 78.25701910970193,
+          "reported": 78.25701910970191,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "OV": {
+          "n_sequences": 4,
+          "independent": 56.05147461869624,
+          "reported": 56.05147461869624,
+          "abs_diff": 0.0
+        },
+        "SV": {
+          "n_sequences": 17,
+          "independent": 72.88949546503534,
+          "reported": 72.88949546503531,
+          "abs_diff": 2.842170943040401e-14
+        },
+        "TC": {
+          "n_sequences": 32,
+          "independent": 79.58485026890281,
+          "reported": 79.58485026890283,
+          "abs_diff": 1.4210854715202004e-14
+        },
+        "TC-EASY": {
+          "n_sequences": 17,
+          "independent": 81.61647748647935,
+          "reported": 81.6164774864794,
+          "abs_diff": 4.263256414560601e-14
+        },
+        "TC-HARD": {
+          "n_sequences": 7,
+          "independent": 76.71388594442439,
+          "reported": 76.71388594442435,
+          "abs_diff": 4.263256414560601e-14
+        },
+        "TC-MID": {
+          "n_sequences": 8,
+          "independent": 77.77973621547132,
+          "reported": 77.7797362154713,
+          "abs_diff": 1.4210854715202004e-14
+        }
+      }
+    }
+  }
+}

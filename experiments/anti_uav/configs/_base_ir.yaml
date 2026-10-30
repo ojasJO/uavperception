@@ -1,0 +1,76 @@
+# ============================================================================================
+# Anti-UAV Protocol II — infrared tracker — shared base settings (PHASE A: faithful reproduction)
+# Every value is tagged in docs/ANTI_UAV_REPRODUCTION_SPEC.md. Child configs override only what
+# distinguishes the run (alpha for DFSC vs normal). Never point train_split/monitor_split at 'test'.
+# ============================================================================================
+run_name: _base_ir                 # overridden by children
+phase: A_faithful_reproduction
+seed: 0                            # paper: unspecified -> fixed and recorded
+notes: >
+  IR tracker of Table V (Protocol II). Paper-explicit: 18 epochs, LR x0.1 at epochs 12 and 15,
+  batch 2 per GPU, init from COCO Faster R-CNN, CE + smooth-L1. Repo-derived (GlobalTrack): SGD 0.9 /
+  wd 1e-4 / clip 35, warm-up 500 iters, 10 pairs per sequence per epoch, max pair gap 300, frame filter,
+  photometric + flip augmentation, 1333x800 rescale. Inferred: single-GPU LR 0.0025 (= 0.02 x 2/16).
+
+data:
+  root: data/anti_uav                                    # labels + attribute files (repo-relative)
+  frames_root: b_pipeline/data_unified/anti_uav/images   # decoded frames (repo-relative)
+  modality: IR
+  train_split: train            # TRAIN: optimisation only
+  monitor_split: val            # VAL: training-time monitoring only (no checkpoint selection in Phase A)
+  pairs_per_seq: 10             # GlobalTrack Seq2Pair default -> 1600 pairs / epoch for 160 sequences
+  max_distance: 300             # GlobalTrack Seq2Pair default
+  frame_filter: globaltrack     # Seq2Pair._filter (w,h >= 10 px, >= 1% of image side, aspect .2-5, ...)
+  transforms:
+    scale: [1333, 800]          # mmdet/GlobalTrack standard size; IR 640x512 -> 1000x800
+    photometric: true           # ExtraPairTransforms(with_photometric=True)
+    channel_swap: true
+    flip_p: 0.5
+    pad_divisor: 32
+
+model:
+  name: qg_rcnn_r50_fpn
+  init: torchvision_coco_fasterrcnn_r50_fpn_v1   # substitution S2 for mmdet faster_rcnn_r50_fpn_2x (COCO)
+  trainable_backbone_layers: 3                   # == mmdet frozen_stages=1 (stem + res2 frozen)
+  num_classes: 2                                 # background + target
+  rcnn_smooth_l1_beta: 1.0                       # GlobalTrack bbox_head.loss_bbox.beta
+  rpn:
+    pre_nms_top_n_train: 2000
+    post_nms_top_n_train: 2000
+    pre_nms_top_n_test: 1000
+    post_nms_top_n_test: 1000
+    nms_thresh: 0.7
+  roi:
+    score_thresh: 0.0
+    nms_thresh: 0.5
+    detections_per_img: 1000
+
+dfsc:
+  alpha: 0.0                    # overridden: 0 = "normal" GlobalTrack fine-tune, 1 = DFSC (paper main rows)
+  cross_terms: [cls, reg]       # DFSC-cls / DFSC-reg ablations restrict this list
+  ism_modulation: same          # 'cross' = DFSC-all ablation
+
+train:
+  epochs: 18                    # PAPER-EXPLICIT (IR)
+  batch_size: 2                 # PAPER-EXPLICIT "2 per GPU"; 1 GPU here
+  accumulate_steps: 1           # set 8 to emulate an 8-GPU x 2 batch with lr 0.02 (sensitivity run, Phase B)
+  lr: 0.0025                    # INFERRED: 0.02 x (2 / 16) linear scaling; see spec S3
+  lr_steps: [12, 15]            # PAPER-EXPLICIT (0-based epochs >= 12 -> x0.1, >= 15 -> x0.01)
+  lr_gamma: 0.1
+  momentum: 0.9                 # GlobalTrack
+  weight_decay: 0.0001          # GlobalTrack
+  grad_clip_norm: 35.0          # GlobalTrack
+  warmup_iters: 500             # GlobalTrack
+  warmup_ratio: 0.33333333      # GlobalTrack (1/3)
+  amp: none                     # numerical setting only; bf16 allowed if memory requires (recorded in run_meta)
+  cudnn_benchmark: true         # GlobalTrack
+  workers: 4
+  log_interval: 20
+  monitor:                      # cheap progress signal on a fixed, rule-selected VAL subset; NOT used for selection
+    enabled: true
+    every_epochs: 3
+    num_sequences: 8            # evenly spaced over the sorted val split
+    frame_stride: 10
+
+eval:
+  frame_stride: 1               # full evaluation processes every frame

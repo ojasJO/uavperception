@@ -1,0 +1,70 @@
+{
+  "normal_ir/val": {
+    "_paper_split_note": "not stated in the paper (inferred: test)",
+    "precision": {
+      "paper": 87.61,
+      "ours_live": 99.56,
+      "ours_prior": 99.56,
+      "delta_live_minus_paper": 11.95,
+      "verdict": "not reproduced"
+    },
+    "success": {
+      "paper": 62.88,
+      "ours_live": 79.32,
+      "ours_prior": 79.32,
+      "delta_live_minus_paper": 16.44,
+      "verdict": "not reproduced"
+    }
+  },
+  "normal_ir/test": {
+    "_paper_split_note": "not stated in the paper (inferred: test)",
+    "precision": {
+      "paper": 87.61,
+      "ours_live": 91.85,
+      "ours_prior": 91.85,
+      "delta_live_minus_paper": 4.24,
+      "verdict": "not reproduced"
+    },
+    "success": {
+      "paper": 62.88,
+      "ours_live": 71.01,
+      "ours_prior": 71.01,
+      "delta_live_minus_paper": 8.13,
+      "verdict": "not reproduced"
+    }
+  },
+  "dfsc_ir/val": {
+    "_paper_split_note": "not stated in the paper (inferred: test)",
+    "precision": {
+      "paper": 87.77,
+      "ours_live": 99.57,
+      "ours_prior": 99.57,
+      "delta_live_minus_paper": 11.8,
+      "verdict": "not reproduced"
+    },
+    "success": {
+      "paper": 63.24,
+      "ours_live": 79.29,
+      "ours_prior": 79.29,
+      "delta_live_minus_paper": 16.05,
+      "verdict": "not reproduced"
+    }
+  },
+  "dfsc_ir/test": {
+    "_paper_split_note": "not stated in the paper (inferred: test)",
+    "precision": {
+      "paper": 87.77,
+      "ours_live": 91.65,
+      "ours_prior": 91.65,
+      "delta_live_minus_paper": 3.88,
+      "verdict": "not reproduced"
+    },
+    "success": {
+      "paper": 63.24,
+      "ours_live": 70.72,
+      "ours_prior": 70.72,
+      "delta_live_minus_paper": 7.48,
+      "verdict": "not reproduced"
+    }
+  }
+}

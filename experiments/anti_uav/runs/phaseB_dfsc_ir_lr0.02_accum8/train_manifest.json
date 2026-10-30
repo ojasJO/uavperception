@@ -1,0 +1,2490 @@
+{
+  "schema": "anti_uav_repro.manifest.v1",
+  "split": "train",
+  "modality": "IR",
+  "n_sequences": 160,
+  "n_frames": 149528,
+  "n_exist": 148368,
+  "sequences": [
+    {
+      "name": "20190925_101846_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 791,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "OV"
+      ],
+      "label_sha256": "dca65788344d43f69327c96814eaf60cf3933e6a47528cc1159b76fa8374447c",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_101846_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "9e4c40e7736c8f4938c11e57025a4effd6dc3aea5df9e4774511f0575919f818",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_101846_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LR",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "9b72b7438c8c48944c00a81e11be87e9902a92d787c9acddc9fff87ffb955678",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_101846_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "466b82632aa5ef002114dbbc74ad613f287133b6daf77fc718f0b7f1c36a08f4",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_101846_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "d1aa06b8a33c7da39787a2358ef69639a3f8847b4f7bb64889e65959a29894d2",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_101846_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 899,
+      "n_exist": 899,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "9dd3d19e17867777d32175121a99e0e7d8d0f595e78f0c0b016f95bd5833c70b",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_130434_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 923,
+      "start_frame": 11,
+      "attributes": [
+        "FM",
+        "OV"
+      ],
+      "label_sha256": "9ed8863af9323932b61592ddc2068fd8c6f2e819b8ef2b1684f2e48f64298c73",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_130434_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM"
+      ],
+      "label_sha256": "2e7718418c7dda90228a9607bd608a3e387fa9be04934001f79adf6eb73892a9",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_130434_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM"
+      ],
+      "label_sha256": "fda428f2f956745bbb480419e640a98700aa7bb8044c663b919f2010c048ca35",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_130434_1_9",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 869,
+      "n_exist": 869,
+      "start_frame": 0,
+      "attributes": [
+        "FM"
+      ],
+      "label_sha256": "de1083eeb24940a2d1d978445e410881caf456f4ded6edcad1c1e9541af09624",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_131530_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "4ce2281b8c3095ea120c5b05ed3ddd2105ff36dad4fe411f1e534080d4db6541",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_131530_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "c29f239ce8c7272c84af5eaa1051653f0e0fcbd9b72f4ac8d85d5909d1d38559",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_131530_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "052bc624491490dd021116f3c457410f64ef0dea12ae91d8dd97940a8dc3440a",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_131530_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "08f9d7d8abf06cd222f5d5ffde77eee38b82298e14221d00350cadbd071ef25d",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_131530_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "f3d65cdb5681c8498a7faa72bff453a1e6309384805e95ac6461c289ca0d6994",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_131530_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 923,
+      "n_exist": 923,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "14113dda2712fdf72e6ca65965c168f40736f74aa68b393110ac0e9d3341ddad",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "0a86628990e17fa2651fc23a59c8237e7383d59b0785e3324f0b0b1368c0e7eb",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_10",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 658,
+      "n_exist": 658,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-HARD"
+      ],
+      "label_sha256": "a5cbd57090386a83ec3cab870aa7cbe320092b6c92cb60c6f2d3fa3ad713fa61",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "2d5c48df4ed5da275a3238b03ff15f2c4b15f2de929e76494dbd9fcc0352984c",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "c350911c9558c816a49f8fe8b5f6021a10b2a145a3d1b424cc7dd3c463c46127",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "812675cb58c5cb31fa5cfc31fc44656308ddaa6fba5271dce75b61c38a37e445",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "LR",
+        "TC",
+        "TC-HARD"
+      ],
+      "label_sha256": "94671bb54acc00ecc7b47807c727682eecbc07190ecc362c6d065527394664fc",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "TC",
+        "TC-HARD"
+      ],
+      "label_sha256": "2aee14bcd835466340e78eff63fdc677841ae02b81b61e6222287255d3df4d5f",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "TC",
+        "TC-HARD"
+      ],
+      "label_sha256": "1d5d43d88162a55cc8f4a56e4533cab1e704e9eb29a1f325acb8316067d076ae",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_133630_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "69a4245129ec85d1933449fb16f68d73369c87b9ce5e82e95d57f5ecb4d949b5",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_140917_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "20113efb25c8b81d4c06c5cca2499b02d2b47ce4b5f12e849767d83d0d678300",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_140917_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "5da66840122c69900c95d6a599365b0daef5d31e7bdcde20196dc8c2c6ecc95b",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_140917_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "deffe40b171c8c153379cea59202b676603fe57644f72f81d52b735522598919",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_140917_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-HARD"
+      ],
+      "label_sha256": "17d1d508d578fb35b300ef4d9e424ead8bf7389bccdea5a80f54fb985a0e0312",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_140917_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "f8f3d3a8cd855ecac83900ed33fce603c857f218f63378507fa8ec25298b89aa",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_140917_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 404,
+      "n_exist": 404,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "df578043d62210857b36cde3f37a774c8fc000e5d8379f0de3f29d8540dae363",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_141417_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "fa214a2622bf84e4af3864afcb8c7a3ba615efbae5e99dd8d4075309ebba12bd",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_141417_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-HARD"
+      ],
+      "label_sha256": "c1c90b5e108cd42591fc1987243dc7fd0017c2b3520486ec13bfdeaca2d1d14a",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_141417_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "67f2e6ad52cba9f5bc8a77e32175ea6c7151bdebd1573d09c29442151d8abaed",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_141417_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LR",
+        "TC",
+        "TC-HARD"
+      ],
+      "label_sha256": "2f564b2783c71754509003de774d4f7f98e07e4f8cdabd7daa11216597f6167d",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_141417_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 379,
+      "n_exist": 378,
+      "start_frame": 0,
+      "attributes": [
+        "LR",
+        "OV"
+      ],
+      "label_sha256": "5b3553bad2f13e2a93f0eca17096751763913e6299f4b9ccb5bed42fcf7c5fe5",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_143900_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "ef69033ca977d591029d23819be5b43a73fe61d83219258c9c7521ecb1638538",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_143900_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "c2e8fe639a28f338041fda0385a974046a41c0a90f37ac1078ad1a2b0d1a23e3",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_143900_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "c051a7d6dcfd8ec2ff088e98f45431b1b7a4a8daf3235cf7cbf9f96d094038ff",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_143900_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 980,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "OV",
+        "TC-MID"
+      ],
+      "label_sha256": "54b8a527743b68856c1c649357dd3153a74bf94d94e76293d781540710e6e584",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_143900_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 534,
+      "n_exist": 534,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "98610c619a794f59f823b418d2f9a723a09dc8e082a5f6aa7e7c75d154081f05",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_152412_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 963,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LR",
+        "TC",
+        "OV",
+        "TC-MID"
+      ],
+      "label_sha256": "eb41fc2ad4a819a4e5852e0c2e4a72e4fec20c6405c21fdb911c1e0f1de514cd",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_152412_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 994,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "TC",
+        "OV",
+        "TC-MID"
+      ],
+      "label_sha256": "404a32c7158a3f60ef1edec7bcce226b17aedfc4aa4a8c8e47fa73a47e69ced7",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_152412_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "89d7eee4b469e25379b0b93e487b2f2c35a8d178e5953c81fd8b4355d922831f",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_152412_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "6f9847c23545534458dd6f55248d54799a39b5a07bc4f0f203abb3ac80db541f",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_152412_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "2d1b06ce8c58632d9dd8c6d01a2ee1eeafc4add2d5d25d79acc83d0a75ba498c",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_152412_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 604,
+      "n_exist": 604,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "2b2c9042ded96657d311ae8710a634a6ac4c263793bc4d31a069c809250e8dc8",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_183946_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 979,
+      "n_exist": 979,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "24f83b779e92c3ed746e3661708acf653aec035e096bea2b1ab95b5853cb9464",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_183946_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 914,
+      "n_exist": 914,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "3ad1ba6e7cb6c7b6511c7eea7ab5c0e33210beb44e8b84bdf3da427c0c26406c",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_183946_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 929,
+      "n_exist": 929,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "1d74bb9e120bbe2f4fd163cac9034a4fda219a7349efa6faf5798807ba72a818",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_183946_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 920,
+      "n_exist": 920,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "49956783656ed8c0eb20034c443ac5340da3102c3df28e4bd25cae297e6ef75a",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_183946_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 549,
+      "n_exist": 549,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "24a747df3bef391e1db27a6ad7733be0d1dcaecb11a80abe101a880e3cdf17f9",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_194211_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 943,
+      "n_exist": 943,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "96b81c9ae494c2058d984faa80d44dd3dc8f3d8e0b1fbd39281b83ae6b14f295",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_194211_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 956,
+      "n_exist": 727,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI",
+        "OC"
+      ],
+      "label_sha256": "fb17dc07027d7520d8b6258649d92d15a9a142532bdcd93a5aec8646b24e6d03",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_194211_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 959,
+      "n_exist": 922,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI",
+        "LR",
+        "OV"
+      ],
+      "label_sha256": "78472c1ad1896c093df9c58972531d57e0830ada37ca0a037002994fac95e610",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_194211_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 942,
+      "n_exist": 942,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "5338df3c9d708cf582bce05604605f0213cc0430cb781181f3fca0c7389e999e",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_194211_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 924,
+      "n_exist": 924,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI",
+        "LR",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "78507743197cfcf6fa72c8a200062c3066b1d4de3e1f2c5afc116b5e9e12f1d8",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_194211_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 851,
+      "n_exist": 796,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "OV",
+        "TC-MID"
+      ],
+      "label_sha256": "fc33fe6003e4249dd17cac159aae72181702d05e9ef65797de7d8c7768a9bad4",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_200320_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 937,
+      "n_exist": 937,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "489c7ed39fb0bf7441cbd776e01b776367e1478dc960caf539c2b9b2976711c3",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_200320_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 915,
+      "n_exist": 915,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "37588c26dc134b2fc9df03cc0c3bbde701f69c41549068af3bfcab880ae8e759",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_200320_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 857,
+      "n_exist": 857,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "688ccf3abc755652b903242e41633006c84e44349fbac0694d80d697d40bd3fc",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_200320_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 938,
+      "n_exist": 938,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "c276cea413f64216feaa5d256cf7e9f8146efc303229bb895fd5b29e0c1bac71",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_200320_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 898,
+      "n_exist": 898,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "c5b5fe604c8c505255c8a183e59fea2cdb2fac4b902536c5ac538a6175ed39c8",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_200320_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 930,
+      "n_exist": 930,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "f6bed375bdfdf0012296401eb2e970da1066d65da87fa173238b3b172dbac4b7",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_205804_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 898,
+      "n_exist": 887,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI",
+        "LR",
+        "OV"
+      ],
+      "label_sha256": "6b923fe8a13e75f6d664d5af262d28f06813cad25869b1393e5a32f49a802012",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_205804_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 894,
+      "n_exist": 894,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "OC"
+      ],
+      "label_sha256": "05973ea23627a46adcda4fd9ab573f3f3d04214ad733910d410f3d73153ef447",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_205804_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 919,
+      "n_exist": 919,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "01e04f33a308d7df8b12fed160f8464b70089a4610a18b996acae6d7154aa103",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_205804_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 942,
+      "n_exist": 942,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI"
+      ],
+      "label_sha256": "f906fda06cf122ca35b9814e9def27addbbb808c8fdb6aee3937fe4de2e83a45",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_205804_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 950,
+      "n_exist": 950,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "49308469fb9de5b0460c1c058e420239c5f58ff1bdc17de66d786f8d09892384",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_205804_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 530,
+      "n_exist": 530,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "7b0cb0acf3e7c691846552521a9322717316275c94749f11d678c4d1dd531e78",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_210802_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 944,
+      "n_exist": 944,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "d94f977a4875878a19c5a6d5b603d8e1afa98079076d6882af8436afc11865d6",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_210802_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 892,
+      "n_exist": 885,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "OV"
+      ],
+      "label_sha256": "bf589cb9aeab4a8d10843ca2684089f860370994c5dd09602728fc3897f96bea",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_210802_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 907,
+      "n_exist": 906,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "OV"
+      ],
+      "label_sha256": "66eb9adbfced04f739ec95e519ad707d6cb413d636bfd247cacf377471411152",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_210802_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 900,
+      "n_exist": 900,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "c00a7cadb2a37e97ca2a4d6fc49aa5a88116eb123e0ae601d34731b98a2cece1",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_210802_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 934,
+      "n_exist": 934,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "eae5027f84d200f51b1a9606ffbe87bdf6df810800a3f131c7eb743e865c9b06",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_213001_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 936,
+      "n_exist": 889,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "OC"
+      ],
+      "label_sha256": "ade4219ec267a537ee15250d83a924f2a782bebf6a47ca0d2e62889d08805532",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_213001_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 942,
+      "n_exist": 942,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "75e73d3d204fc69dd5d9af0bcfd7f9d78d83a18d6ab7e7830cdb6f9407221bc9",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_213001_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 933,
+      "n_exist": 933,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "0203021432b9768e37579ceadf36d4f081f4dbff91c4d57558b0c4c118900c85",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_213001_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 977,
+      "n_exist": 977,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "c27955d48c1c879d1e56c74e0157268e20c187d0a469c71a78b827652785c77e",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_213001_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 948,
+      "n_exist": 948,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "892194f9e8915373ade2ef40c158808459ad895dfff09f70f2f8c1725d872ef1",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_213001_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 688,
+      "n_exist": 688,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "12fd08c9cb1efbcae4217a717fd71c0f320b6009afdc20e7a37fade8244e3ef7",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_222534_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 979,
+      "n_exist": 979,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI"
+      ],
+      "label_sha256": "dc606ac11121bb4a1a47f433a854f30f114d9ecede84f25eee140cc60c8bdb98",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_222534_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "0a993d57d3bcb1cdc9169b49a8c16ed1bb2f844c9c3eaca544dd3248cc56ae22",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_222534_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 986,
+      "n_exist": 986,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "8a6f63c952c5432935027004ad85f26b83ce962c21d254711ddd1c66af0aa671",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_222534_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 987,
+      "n_exist": 987,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "6dd74f240dee2fe4ce0e4d8231424c843c59b9c944c5d60ec72bd8e0be3b27f1",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190925_222534_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "0faa5abec151d48ef5aa512fc5d29a95b497607018a89d0e5fe326e1836015c8",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_103046_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "5e78437c1f9ef05996e8be9ac47a3ef01e5883f9da745a368e3158498eaa84e8",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_103046_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 974,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "OV",
+        "TC-MID"
+      ],
+      "label_sha256": "85492496e8602ff92a64314fed725b8eaac299c33194ed04a7bbc7c648401532",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_103046_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "8b311cf904ef878f6ef2190073e477996c6f3c9d8d64208d6419f429b2fc04b2",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_103046_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "f176fa499e0907ee8bdaddcd20775aa78e4c096ca8a62aa8a544c5af02312ae0",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_103046_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "1863ba8647db88dd481cd0c78c1ff8962860f4aca5834ba3c952b5cee70f1a6e",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_103046_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "LR"
+      ],
+      "label_sha256": "7a25e9fe7bec6ce458bdadc1e1d7ff2bc2e60fc4d8c116130c0befc16b9479b2",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_130341_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "769524976be3285665df52b6020d3b5eac93b05467045e7c668b31972945d774",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_130341_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "cb9e949b0bb5130fe37316cbf20f4f4c2c7d0ac367cab8f3d1bf2554da784db1",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_130341_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "33bfd0f8a683563504b3ef3580596e8160467cc2b4ef6e43373bc7e22d16df11",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_130341_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "ab5b2f1f60c5312e7d9d5dab9e2281e38f7eb31fba8fe18af2382d6a80efa6b7",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_130341_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "82557adef870fe3111a7fb221c4857975ebb874de8b6a4c4a27a03ac09151383",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_130341_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "41bebd3411fb4fcf702f677b6d089db3caa5f4cc53c34dbe37e9e9ddbd0a5bb9",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_130341_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 28,
+      "n_exist": 28,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "7f2447b8bdee8892c75bbec43dc9550be42ea9c0dc2b8fa7429a419150b0ac0b",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_133516_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "169caa7b2349dba098c853b2ed4dcd96e8339cee4ff45e6f7a9fc1bd6c03d9fd",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_133516_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "c95a68f1d8cc33d158ff0ee18c0278a1eb0a3eddb60842a9793e350f6ad799c4",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_133516_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "85974b2f49bdf30db8716412e03673f9d5b69bba1be30dd5644976acbf7001b4",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_133516_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "f3f006ea7edb75235ff175023aced013d65468f5a13528ebfcd836f7894f3876",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_133516_1_9",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 313,
+      "n_exist": 313,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "7a0a109bdc57b70eaee0cae4147fa8da2ee074a26b09be8a5d8152d466605792",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_141816_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "7e46c0f3101471096198efc62a996f24590e4d00fa990852f044f807122bb707",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_141816_1_10",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 364,
+      "n_exist": 364,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "3a7258114b884cab8b3d0cb8dd83acea725b33d50c9031a5169b097d3057b767",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_141816_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "84920cc34bf2088dfbc350c187c2de8857eab41441af26eccb261f6dc460796d",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_141816_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "8c9abd3dad43697972029a4603a6b009583ae1db9839336e6952c3e55c538457",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_141816_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "26e8d7ddddd8e812cc9927d030b45be280ecca18479d18c8eb2afe9dd64080b4",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_141816_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "e186e65ccfaf1a1fe8e611e0caae0df2b79c771cf13c48e1218ca593765c8487",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_142435_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "9dc3d7598ec52b2357e0f2337d9d56ca1be4a91b1ade87691f0d90a106988255",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_142435_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "8ed8e8f5038964cb5c10596039267fb04b18b5676d38964994d6086b420fef7c",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_142435_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "b84b0d511fd279cad0f0127f915be1e01b2838bb8aa478495242651ee6430275",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_142435_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "cb86d2bfd705c4cfe4cd21461fde35433071cf8500b444f98202acc6afcbcb73",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_142435_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "ae91adb69f9928c87b62ddef1a10960bf74cf843ef39cddfce6b367383612a30",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_142435_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "955e15513c4b242bdcb2fcbc82f33138a9830490ad8d9984c1727092bc4ee1e2",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_142435_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "6c69f7b3fbd1559a0dfffc700f53eaa5b2d54914afcb9b5ba14d4cabb58523ae",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_142435_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "b18c7988298636069c3c81a8e24ac12f74a20b03a36982a63ebe266bc511f865",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_143632_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM"
+      ],
+      "label_sha256": "5e376b521cbc384c9fea6e357f7af2b8dfb63e5576648f87807972303535b305",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_143632_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV"
+      ],
+      "label_sha256": "d3b8a88de97a0feeac80ec41af53fbe43d54041814e8e5aec76d2a65b1a24c83",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_143632_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "29b862d9cc59530d238fc213d86ae8d1a7b19602de0d27037cd92502100f8e3f",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_143632_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LR",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "b076f893a4002187312be81af7060f78c943362a30b13d10ce7a7c90419db609",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_143632_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "LR",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "836b80972394a408edb3067e1fe1627bc879679c09cbc3fd9d03d324a5a17a21",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_144550_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "ea7e4375c108d9d0e140a307e228c1bd76ae00815af06b54b7d76d44a2e49c66",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_144550_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "b6e2aa9c30a380347594bba3724defe4078a2fef2fc0ff8acd060e4dfe6b62ef",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_144550_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "49aa8171c199e0d93b6472546934e0de517a8c4d212f601d137fe76cd67883bb",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_144550_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "cab33ace217347f2a6b825d9214875e8f3dc1453394cffe9dd0a80d9dbba5152",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_144550_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "1616ccde9a4da92eeb422d3082accf5fad337e1c285d60227e84ddec3d045173",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_144550_1_9",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [],
+      "label_sha256": "8c55d1d018bf7676eb53d492a7fd72f363ad5c8862c97458ba51a949ad360a92",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183400_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 979,
+      "n_exist": 979,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI"
+      ],
+      "label_sha256": "3622ca65cfe9aa4029424c33b969cfa7f8f2194811fe5b7379d645c56ac611bc",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183400_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "c7f4335eedd7da5491b1003afdb87947744b9dfaaffe42a26ad35c694bc163d8",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183400_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "c57e651a624d9997cee2c2ed49ac088b44b91f139127036cbdf3fbc008b183bc",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183400_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "c0b44a2379e1cd6b9ad3b52b9a45b1ae8f95b285fa22e91c9914c4a6cb19c9c9",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183400_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "8a3743584fb2688f28a90b6e1c4afe62d0d7ba5be394d6dd231730962ed8fce2",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183400_1_9",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 429,
+      "n_exist": 284,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "LR",
+        "OV"
+      ],
+      "label_sha256": "38f56e8f9585c5e656389a9371b1e83602f2d83bb294872e1e0127d14ef22041",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183941_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI"
+      ],
+      "label_sha256": "e9130e34543731a57d2bd6fb7722c71eebf708215eef08d9128b0ac8df0f0ab2",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183941_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 987,
+      "n_exist": 956,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI",
+        "OC"
+      ],
+      "label_sha256": "ff9aa1abf887c5fdc1ae51c51a974ecb35c0ebb7d970f12c3615a28624cb17e3",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183941_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 904,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "LI",
+        "LR",
+        "OV"
+      ],
+      "label_sha256": "d6896c850f344e6151a44f4cf7fa51bbc437d7d2ff0fefc6a43a4af01e4ec24e",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183941_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "a55e9b3ac1cab39ddda0a8d774ff7c99d8629b47a7de1545ab310fe81aaf4d57",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183941_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "510291491cb1971a0ded04d4691924dbfd0edd792a7a922e6380f5dc21c3ec78",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183941_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "e56d59038765da5066acc1c40ac1186aee7d7ce7e42ae4c3e3cef07a44483c1d",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_183941_1_9",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 163,
+      "n_exist": 163,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "07e92bbf0aac2878880926c702803b0d89a7ad3d6693495af3cb2c7e99052c7d",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_193515_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "c271c280ff4f6dd5e13721c307f4b9237500e70037ae6d0b03e160271b968d30",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_193515_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 939,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "LI",
+        "LR",
+        "TC",
+        "OV",
+        "TC-EASY"
+      ],
+      "label_sha256": "a91ea888fd103a42006c63642061c8dd4137d86167485a4c3e5665bd50bc53ca",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_193515_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 963,
+      "start_frame": 0,
+      "attributes": [
+        "FM",
+        "SV",
+        "LI",
+        "TC",
+        "OV",
+        "TC-EASY"
+      ],
+      "label_sha256": "10fe251bd350062eab252d9214b2ac44a8e0adadd96b332e76e2e75259f8018f",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_193515_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 973,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "OC",
+        "OV",
+        "TC-EASY"
+      ],
+      "label_sha256": "d7a53fd2ddf0b0c60c1a581f79e4f6d538498439919c8701b1d81c66e93df164",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_193515_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "e540b04b81abbbff2833f708886abbc3939762bf7cb7a3f799dfab7f2776f495",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_193515_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "8eb681ece5f1a5241a0fbf8b2316a3577112c863e587734c0bb47fe0692d35bf",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_193515_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "c15374cf9f1ab6d38be61e56348548c130e966a7cabdc8d151dbfdebf4a745e6",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_193515_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 919,
+      "n_exist": 919,
+      "start_frame": 0,
+      "attributes": [
+        "LI"
+      ],
+      "label_sha256": "5df0549ea0b2dd2aedbdc60fe7422f9c4fa9888ff1a2dabd2029dccd16ed335f",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_195921_1_2",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "4296bd82b158f17da4d2d2a4c7c25b881fd20c3bcd711833c67e5da468ba069a",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_195921_1_3",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "f1dd116dbec4f176c898ff54ba14f80796e9de5f42b311fe20607377c8e426cb",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_195921_1_4",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "95d899fa4812006c3815b4aecb16ab800c2c0e5340e3377c712ecc877c76382a",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_195921_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "38eaaa7e4ad400b8181dc5d643943fe99f1b6e497f34468c816c2e7b285362fd",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_195921_1_8",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "SV",
+        "LI",
+        "TC",
+        "TC-MID"
+      ],
+      "label_sha256": "3d5416eeb074bb9614520ecfe13d5d03a221e694170810c23a04ecb9abc6fee8",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_195921_1_9",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 649,
+      "n_exist": 649,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "d91c455689234ea7083ecf5d503a627d39b4caad02a76651e4f9fd551198a44d",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_200510_1_1",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "7e3e1a012c2f12a9567588cfa7c08a28055367a68d8391217aa7d75af58a4791",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_200510_1_5",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "485f99b3f318cfd85abff5df0bcaebd126752d526bbacfeefe91adf6ba4d20d2",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_200510_1_6",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "c04b59768d14e87a7d6c4b7f72b25b74031d6dcd805bd703d6a6d3ff423781dd",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    },
+    {
+      "name": "20190926_200510_1_7",
+      "split": "train",
+      "modality": "IR",
+      "n_frames": 1000,
+      "n_exist": 1000,
+      "start_frame": 0,
+      "attributes": [
+        "LI",
+        "TC",
+        "TC-EASY"
+      ],
+      "label_sha256": "d344320de544c70e2293b445b10e16c1c3cec695247e606c9451f27da0b1a872",
+      "frames_on_disk": null,
+      "frame_sha256": {}
+    }
+  ],
+  "manifest_sha256": "fc646b0535a68cddeb4071a93a79b3644cae4f2123d452fb98775523ce8fff61"
+}

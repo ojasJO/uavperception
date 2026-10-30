@@ -1,0 +1,6 @@
+# PHASE A — PAPER BASELINE "normal": GlobalTrack fine-tuned on Anti-UAV IR without DFSC (alpha = 0).
+# Paper reference (Table V, IR All mSA): val 79.60, test 65.36.
+_base_: _base_ir.yaml
+run_name: normal_ir
+dfsc:
+  alpha: 0.0

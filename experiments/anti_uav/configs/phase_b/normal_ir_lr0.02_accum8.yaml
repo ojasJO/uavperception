@@ -1,0 +1,10 @@
+# PHASE B — single factor: optimisation batch (H3). Emulates 8 GPUs x 2 images (effective batch 16) with the
+# paper-literal LR 0.02 via gradient accumulation; warm-up stays 500 OPTIMIZER steps (engine/train.py it_global),
+# i.e. the mmdetection 8-GPU convention. Same epochs -> 8x fewer optimizer steps than ../normal_ir.yaml.
+# Pairs with dfsc_ir_lr0.02_accum8.yaml (same change on the DFSC arm) so the DFSC effect can be read in this regime.
+_base_: ../normal_ir.yaml
+run_name: phaseB_normal_ir_lr0.02_accum8
+phase: B_controlled_improvement
+train:
+  accumulate_steps: 8
+  lr: 0.02

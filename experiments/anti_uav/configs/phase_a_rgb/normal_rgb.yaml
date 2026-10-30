@@ -1,0 +1,5 @@
+# PHASE A — PAPER BASELINE "normal", visible. Paper (Table V, Visible All mSA): val 73.25, test 69.27.
+_base_: _base_rgb.yaml
+run_name: normal_rgb
+dfsc:
+  alpha: 0.0

@@ -1,0 +1,8 @@
+# DEFERRED — visible modality. See README.md in this folder. NOT faithful until init comes from the GlobalTrack checkpoint.
+_base_: ../_base_ir.yaml
+run_name: _base_rgb
+data:
+  modality: RGB                # 1920x1080 -> 1333x750 after rescale
+train:
+  epochs: 12                   # PAPER-EXPLICIT (visible)
+  lr_steps: [8, 11]            # PAPER-EXPLICIT (visible)
